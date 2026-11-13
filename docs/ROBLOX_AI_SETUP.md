@@ -197,10 +197,18 @@ it; Blender rewrites its prefs on quit):
 ```bash
 B5="$APPDATA/Blender Foundation/Blender/<5.x>/scripts/addons"
 # move an old copy (often addon.py, v1.x) out of the way first:
-[ -f "$B5/addon.py" ] && mv "$B5/addon.py" "<TOOLKIT>/backups/blender_addon_old.py"
-DISABLE_TELEMETRY=true cmd //c uvx mcp-for-blender@<pinned> install-addon --addons-dir "$B5"
-"C:/Program Files/Blender Foundation/Blender <5.x>/blender.exe" -b --python-expr "import addon_utils,bpy; addon_utils.disable('addon', default_set=True); addon_utils.enable('blender_mcp', default_set=True, persistent=True); bpy.ops.wm.save_userpref()"
+cp "$APPDATA/Blender Foundation/Blender/<5.x>/config/userpref.blend" "<TOOLKIT>/backups/"
+[ -f "$B5/addon.py" ] && mv "$B5/addon.py" "<TOOLKIT>/backups/blender_addon_old.py" && rm -rf "$B5/__pycache__"
+# PYTHONIOENCODING: without it the installer writes the file, then crashes printing a unicode arrow
+PYTHONIOENCODING=utf-8 DISABLE_TELEMETRY=true cmd //c uvx mcp-for-blender@<pinned> install-addon --addons-dir "$(cygpath -w "$B5")"
+"C:/Program Files/Blender Foundation/Blender <5.x>/blender.exe" -b --python-expr "
+import addon_utils, bpy
+try: addon_utils.disable('addon', default_set=True)
+except Exception as e: print('old addon:', e)
+addon_utils.enable('blender_mcp', default_set=True, persistent=True)
+bpy.ops.wm.save_userpref(); print('PREFS SAVED')"
 ```
+(Proven 2026-11-13: package 2.2.7 ships addon `bl_info` version 1.8, file `blender_mcp.py`.)
 Then the user reopens Blender; the addon starts its server on port 9876 (N panel > MCP for Blender).
 
 CHECKS (real calls, not just handshakes):
@@ -244,7 +252,8 @@ Non-secret (you set them; values are paths/ids):
 ```powershell
 $v=@{ 'ROBLOX_GAMES_HOME'='<GAMES_HOME>'; 'ROBLOX_AI_HOME'='<TOOLKIT>';
       'BLENDER'='<TOOLKIT>\tools\blender-4.5.x-windows-x64\blender.exe';
-      'ROBLOX_VFX_LIB'='<TOOLKIT>\vfx-library'; 'ROBLOX_USER_ID'='<user id>' }
+      'ROBLOX_VFX_LIB'='<TOOLKIT>\vfx-library'; 'ROBLOX_USER_ID'='<user id>';
+      'KILN_HOME'='<TOOLKIT>\tools\kiln' }
 foreach($k in $v.Keys){ [Environment]::SetEnvironmentVariable($k,$v[$k],'User') }
 ```
 Get the user id from Studio, not from guessing:
@@ -267,9 +276,22 @@ verified) or 10/month.
 Hugging Face: huggingface.co > Settings > Access Tokens (read). Cloudflare: dashboard > Workers AI
 > account id + API token with *Workers AI: Read*.
 
-After setting, the Claude app must be fully restarted to see them.
+After setting, the Claude app must be fully restarted to see them. A key entered while the app
+is running is in the registry but invisible to the session until then (observed 2026-11-14).
 
-CHECK: `check_setup.py` shows each wanted variable as `set` (never the value).
+**Least privilege.** Ask the user to create the Roblox key with ONLY Assets Read+Write (add
+place publishing later if wanted). Observed: a key created with every box ticked had 46 scopes
+(datastore delete, user bans, group admin, marketplace publish). `set-secret.ps1` now warns.
+
+CHECK (no value is ever printed): read each key from `HKCU\Environment` in a child process and
+test it against its own service:
+- Roblox: GET `https://apis.roblox.com/assets/v1/operations/00000000-0000-0000-0000-000000000000`
+  with `x-api-key` -> **404** means it authenticates; POST `/api-keys/v1/introspect`
+  `{"apiKey": ...}` lists scopes: must include `asset` read+write.
+- Hugging Face: GET `https://huggingface.co/api/whoami-v2` (Bearer) -> 200. Tokens start `hf_`
+  and are ~37 chars (we caught a 101-char non-token pasted by mistake).
+- Cloudflare: GET `/client/v4/accounts/<CF_ACCOUNT_ID>/tokens/verify` -> `active` (account-owned
+  tokens fail on `/user/tokens/verify`), and `/accounts/<id>/ai/models/search` -> 200.
 
 ---
 
@@ -317,8 +339,10 @@ Run these and look at the outputs. Use the 4.5 Blender (`$BLENDER`) for every he
    stdin): in `~/.claude/skills/roblox-vfx/sim/tex`: `make_textures.py`, `make_magic_tex.py`,
    `make_painted.py`; in `tex/lib`: `build_library.py` then `check_library.py`; in `sim/mesh` with
    **`$BLENDER` (4.5)**: `-b -P make_meshes.py`, `make_props.py`, `make_dragon.py`; then
-   `tex/make_prop_tex.py`. The SyphoDev texture pack has the same layout as `sim/textures/lib/`
-   and is the fallback if the library build fails. Then `python sim/serve.py` and confirm the three
+   `tex/make_prop_tex.py`. `build_library.py` cannot resume: a reboot mid-build means a full
+   rerun (~45 min with all cores). The SyphoDev texture pack has the same folders as
+   `sim/textures/lib/` but NO `catalog.json`, so `find_tex.py` cannot search it; it is a visual
+   reference / emergency fallback only. Then `python sim/serve.py` and confirm the three
    example effects load.
 7. **VFX harvest library** starts EMPTY by design. Later, the user takes free Creator Store VFX
    packs into their own inventory and you harvest them with `roblox-vfx`. Check each pack's terms.
@@ -426,6 +450,9 @@ restart, push approval). Then how to start:
 | `preflight.py`: "place saved to disk FAIL" on a cloud place | it needs the place id | `place_state.py --place-id <id>` / record ids in game.json |
 | Two Blender MCP addons, port 9876 busy | old `addon.py` + new `blender_mcp.py` | move the old file to backups with Blender closed |
 | VFX `build_library.py` respawns forever | run from stdin on Windows | run it as a file from its folder |
+| Keys "MISSING" in the session right after the user set them | env is read when the app starts | fully restart the Claude app; verify from the registry meanwhile |
+| HF token 401 | something other than the token was pasted | re-run `set-secret.ps1 -Name HF_TOKEN` (it now validates) |
+| Studio MCP lists one instance, `mode: Unavailable` | Studio is on the start page (e.g. after a reboot) | user opens the game's place; never open it via computer-use |
 
 ---
 
@@ -453,6 +480,9 @@ Why each patch exists (all measured on this machine, 2026-11-13):
   P5  (same function) an empty Studio start page registers as an instance with mode
       "Unavailable"; with one open, every call refused with "need exactly one Studio".
       -> ignore instances that have no place open.
+  P6  preflight's "place saved" gate only accepted a place id from --place-id or the global
+      ROBLOX_PLACE_ID env var, so a PUBLISHED game failed preflight. -> fall back to
+      publish.place_id in ./design/game.json (per game, where new_game.py puts it).
 
 Update PINS when you deliberately upgrade the toolchain (and re-run the gate test).
 """
@@ -520,6 +550,27 @@ def patches() -> list[tuple[str, str, str, str]]:
          '        if studios or time.time() > deadline:\n'
          '            break\n'
          '        time.sleep(0.5)'),
+        ("P6 place id from game.json", "create-roblox-game/scripts/place_state.py",
+         '    raw = cli_value if cli_value is not None else os.environ.get("ROBLOX_PLACE_ID", "")\n'
+         '    try:\n'
+         '        return int(str(raw).strip() or 0)\n'
+         '    except ValueError:\n'
+         '        return 0',
+         '    raw = cli_value if cli_value is not None else os.environ.get("ROBLOX_PLACE_ID", "")\n'
+         '    try:\n'
+         '        pid = int(str(raw).strip() or 0)\n'
+         '    except ValueError:\n'
+         '        pid = 0\n'
+         '    if not pid:\n'
+         '        # LOCAL PATCH P6: each game records its own ids in design/game.json (publish.place_id);\n'
+         '        # a global env var would be wrong for every other game. Read the game in the cwd.\n'
+         '        try:\n'
+         '            import json as _json\n'
+         '            with open(os.path.join("design", "game.json"), encoding="utf-8") as fh:\n'
+         '                pid = int((_json.load(fh).get("publish") or {}).get("place_id") or 0)\n'
+         '        except (OSError, ValueError, TypeError, AttributeError):\n'
+         '            pid = 0\n'
+         '    return pid'),
     ]
 
 
@@ -615,6 +666,32 @@ try {
             elseif ($code -in 401, 403) { Write-Host "Open Cloud check: key REJECTED ($code). Check it has Assets Read+Write and is enabled." -ForegroundColor Red }
             else { Write-Host "Open Cloud check: inconclusive (HTTP $code / $($_.Exception.Message))." -ForegroundColor Yellow }
         }
+        # Least privilege: the skills need only asset read+write (plus optional place publishing).
+        try {
+            $info = Invoke-RestMethod -Method Post -Uri 'https://apis.roblox.com/api-keys/v1/introspect' -ContentType 'application/json' -Body (@{ apiKey = $plain } | ConvertTo-Json) -TimeoutSec 25
+            $names = @($info.scopes | ForEach-Object { $_.name })
+            if ($names -notcontains 'asset') { Write-Host "Scopes: MISSING 'asset' (Assets Read+Write). Uploads will fail." -ForegroundColor Red }
+            $extra = @($names | Where-Object { $_ -notin 'asset', 'asset-permissions', 'universe-places', 'universe.place' })
+            if ($extra.Count -gt 0) {
+                Write-Host "Scopes: this key also has $($extra.Count) permissions the skills never use (e.g. $(($extra | Select-Object -First 4) -join ', '))." -ForegroundColor Yellow
+                Write-Host "        If it ever leaks they expose your whole account. Consider a key with only Assets Read+Write." -ForegroundColor Yellow
+            } else { Write-Host "Scopes: minimal (good)." -ForegroundColor Green }
+        } catch { Write-Host "Scopes: could not introspect ($($_.Exception.Message))." -ForegroundColor Yellow }
+    }
+    elseif ($Name -eq 'HF_TOKEN') {
+        if (-not $plain.StartsWith('hf_')) { Write-Host "Warning: Hugging Face tokens start with 'hf_'. This value does not." -ForegroundColor Yellow }
+        try {
+            $me = Invoke-RestMethod -Uri 'https://huggingface.co/api/whoami-v2' -Headers @{ Authorization = "Bearer $plain" } -TimeoutSec 25
+            Write-Host "Hugging Face check: token VALID (account type: $($me.type))." -ForegroundColor Green
+        } catch { Write-Host "Hugging Face check: token REJECTED ($($_.Exception.Response.StatusCode.value__)). Copy it again from huggingface.co > Settings > Access Tokens." -ForegroundColor Red }
+    }
+    elseif ($Name -eq 'CF_API_TOKEN') {
+        $acct = [Environment]::GetEnvironmentVariable('CF_ACCOUNT_ID', 'User')
+        $uri = if ($acct) { "https://api.cloudflare.com/client/v4/accounts/$acct/tokens/verify" } else { 'https://api.cloudflare.com/client/v4/user/tokens/verify' }
+        try {
+            $r = Invoke-RestMethod -Uri $uri -Headers @{ Authorization = "Bearer $plain" } -TimeoutSec 25
+            Write-Host "Cloudflare check: token $($r.result.status)." -ForegroundColor Green
+        } catch { Write-Host "Cloudflare check: token REJECTED ($($_.Exception.Response.StatusCode.value__)). Set CF_ACCOUNT_ID first for account-owned tokens." -ForegroundColor Red }
     }
 } finally {
     [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
