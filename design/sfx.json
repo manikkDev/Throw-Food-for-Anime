@@ -1,0 +1,14 @@
+{
+ "name": "TODO",
+ "roles": [
+  {
+   "name": "TODO",
+   "query": "TODO",
+   "kind": "SoundEffect",
+   "min_len": 0.1,
+   "max_len": 5.0,
+   "volume": 0.5
+  }
+ ],
+ "note": "roblox-sfx. One role per thing the game needs a sound FOR."
+}

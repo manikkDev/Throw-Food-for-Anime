@@ -1,0 +1,10 @@
+{
+ "assets": [
+  {
+   "name": "TODO",
+   "prompt": "TODO: a shaded 3D toy render of ...",
+   "tris": 6000
+  }
+ ],
+ "note": "roblox-3d-model. Colour: PAINT it (paint_texture.py), never project it."
+}

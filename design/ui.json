@@ -1,0 +1,9 @@
+{
+ "screens": [
+  {
+   "name": "TODO",
+   "elements": []
+  }
+ ],
+ "note": "roblox-ui spec. One tree emits the mockup, the .model.json and the Luau."
+}

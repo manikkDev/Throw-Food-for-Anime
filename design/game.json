@@ -1,0 +1,63 @@
+{
+ "title": "Throw Food for Anime",
+ "slug": "ThrowFoodForAnime",
+ "pitch": "TODO: one sentence. What the player does, and what is at stake.",
+ "core_loop": [
+  "TODO: step 1",
+  "TODO: step 2",
+  "TODO: step 3"
+ ],
+ "win_condition": "TODO",
+ "lose_condition": "TODO",
+ "players": {
+  "min": 1,
+  "max": 4
+ },
+ "session_minutes": 8,
+ "out_of_scope": [
+  "progression",
+  "shop",
+  "datastore",
+  "anything that is not the one core loop"
+ ],
+ "stages": {
+  "map": {
+   "spec": "design/map.json",
+   "status": "todo"
+  },
+  "meshes": {
+   "spec": "design/meshes.json",
+   "status": "todo"
+  },
+  "ui": {
+   "spec": "design/ui.json",
+   "status": "todo"
+  },
+  "animation": {
+   "spec": "design/animations.json",
+   "status": "skip"
+  },
+  "vfx": {
+   "spec": "design/vfx.json",
+   "status": "skip"
+  },
+  "sfx": {
+   "spec": "design/sfx.json",
+   "status": "todo"
+  }
+ },
+ "systems": [
+  {
+   "name": "TODOService",
+   "side": "server",
+   "owns": "TODO: the one piece of state this service is authoritative for"
+  }
+ ],
+ "config": {
+  "TODOTunable": 0
+ },
+ "publish": {
+  "universe_id": 10776373502,
+  "place_id": 106586376894468
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "rig": "R15",
+ "clips": [
+  {
+   "name": "TODO",
+   "reference": "TODO"
+  }
+ ],
+ "note": "roblox-animation. Match a reference by ANGLE and fraction-of-reach, not distance."
+}

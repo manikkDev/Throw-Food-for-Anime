@@ -1,0 +1,35 @@
+Packages/
+ServerPackages/
+DevPackages/
+*.rbxlx.lock
+sourcemap.json
+
+# --- added by setup (2026-11-13) ---
+# Built / saved places and Studio artefacts (large binaries; the source of truth is src/ + design/)
+*.rbxl
+*.rbxlx
+*.rbxm.bak
+build/
+work/
+build-runs/*/frames/
+# Blender autosaves
+*.blend1
+*.blend@
+# Python / tooling caches
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+# Secrets: keys live in user environment variables, NEVER in the repo
+.env
+.env.*
+*.pem
+# Personal Claude Code settings
+.claude/settings.local.json
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
