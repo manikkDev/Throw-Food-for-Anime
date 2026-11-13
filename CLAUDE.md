@@ -49,7 +49,8 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
    Never commit `*.rbxl`, `Packages/`, `work/`, or anything secret (see `.gitignore`).
 8. **Snapshot every approved section** (rollback point for code AND place, matched):
    gates green -> `git commit` -> `git tag section-<N>` -> `save_place` with
-   notes `"Section <N> approved (git section-<N>)"`. Push only when the user says.
+   notes `"Section <N> approved (git section-<N>)"`. Push only when the user says, and push the tag explicitly (`git push origin main section-<N>`;
+   `--follow-tags` skips these lightweight tags).
    Roll back: `git checkout section-<N>` + Creator Hub > place > Version History > restore that version.
    Baseline: tag `setup-baseline` = place version 6.
 
