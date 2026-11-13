@@ -335,15 +335,20 @@ Run these and look at the outputs. Use the 4.5 Blender (`$BLENDER`) for every he
    with ONLY `P11 Empty space`. `plan.py minimal --prove -o <TOOLKIT>/map-work/smoke/plan.png`.
 5. **UI**: `python scripts/ui_build.py examples/coin_hud.json --out <TOOLKIT>/ui-icons/smoke`, then
    `verify_ui.py examples/coin_hud.json` -> 0 failures.
-6. **VFX first run** (once per machine, ~30-60 min CPU; run in the background, from FILES, not
-   stdin): in `~/.claude/skills/roblox-vfx/sim/tex`: `make_textures.py`, `make_magic_tex.py`,
-   `make_painted.py`; in `tex/lib`: `build_library.py` then `check_library.py`; in `sim/mesh` with
-   **`$BLENDER` (4.5)**: `-b -P make_meshes.py`, `make_props.py`, `make_dragon.py`; then
-   `tex/make_prop_tex.py`. `build_library.py` cannot resume: a reboot mid-build means a full
-   rerun (~45 min with all cores). The SyphoDev texture pack has the same folders as
-   `sim/textures/lib/` but NO `catalog.json`, so `find_tex.py` cannot search it; it is a visual
-   reference / emergency fallback only. Then `python sim/serve.py` and confirm the three
-   example effects load.
+6. **VFX first run** (once per machine). In `~/.claude/skills/roblox-vfx/sim/tex` run
+   `make_textures.py`, `make_magic_tex.py`, `make_painted.py` (~10-20 min, from FILES not stdin).
+   **Texture library: if the user has the SyphoDev VFX Texture Pack, do NOT run
+   `build_library.py`** (45+ min of all cores, cannot resume after a reboot). The pack is that
+   generator's own output minus `catalog.json`. Install and index it in under a minute:
+   `python <TOOLKIT>\bootstrap\index_texture_pack.py "<TOOLKIT>\inputs\syphodev-vfx-texture-pack"`
+   (Appendix C; it refuses nothing, reports unknown files, moves any old library aside). Proven
+   2026-11-14: 2,431/2,431 files known to the generator, all structural catalog fields identical
+   to native renders. Without the pack, run `tex/lib/build_library.py` in the background.
+   Then `tex/lib/check_library.py` (0 defects expected) and `find_tex.py slash glow`.
+   Meshes (seconds each) with **`$BLENDER` (4.5)** in `sim/mesh`: `-b -P make_meshes.py`,
+   `make_props.py`, `make_dragon.py`; then `tex/make_prop_tex.py` (expect 50 meshes, 16 skins).
+   Then `python sim/serve.py` -> http://127.0.0.1:8765/ : the three examples (Crimson Detonation,
+   Eclipse Rend, Riptide Lance) must play with no console errors.
 7. **VFX harvest library** starts EMPTY by design. Later, the user takes free Creator Store VFX
    packs into their own inventory and you harvest them with `roblox-vfx`. Check each pack's terms.
 
@@ -698,4 +703,180 @@ try {
     Remove-Variable plain -ErrorAction SilentlyContinue
 }
 Write-Host "Now fully quit and reopen the Claude app so it sees the new value." -ForegroundColor Cyan
+```
+
+## Appendix C: `index_texture_pack.py` (write to `<TOOLKIT>\bootstrap\index_texture_pack.py`)
+
+```python
+#!/usr/bin/env python3
+"""Install a pre-built VFX texture pack as the roblox-vfx texture library, and build its
+catalog.json WITHOUT re-rendering (minutes instead of ~45+ minutes of CPU).
+
+    python index_texture_pack.py "<pack folder>"          # install + index
+    python index_texture_pack.py "<pack folder>" --dry-run
+
+The SyphoDev VFX Texture Pack is the output of roblox-vfx's own generator
+(sim/tex/lib/build_library.py): same folders, same file names, but no catalog.json, so
+find_tex.py cannot search it. Every catalog field is recoverable from the PNGs:
+  file/kind/category/family/style/index/grid  <- the path and file name
+  size, coverage, thumb, last, moving         <- the alpha channel (same formulas as the builder)
+  loop (flipbooks), tile (beams)              <- one tiny call of the family's own definition
+Tags and ids use the builder's own TAGS table, so the result matches a native build.
+
+Safety: the pack is COPIED (the original is untouched). Any existing library is moved to
+lib.replaced-<time> next to it, never deleted. Pack files the installed generator does not
+know are reported and skipped (a version mismatch you should look at).
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import shutil
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+from PIL import Image
+
+SKILL_LIB_SRC = Path.home() / ".claude" / "skills" / "roblox-vfx" / "sim" / "tex" / "lib"
+sys.path.insert(0, str(SKILL_LIB_SRC))
+import build_library as BL  # noqa: E402  (the skill's own builder: jobs(), TAGS)
+import texcore as C  # noqa: E402  (C.LIB = sim/textures/lib)
+
+SPRITE = re.compile(r"^sprites/(?P<cat>[^/]+)/(?P<fam>.+)_(?P<st>[a-z]+)_(?P<i>\d\d)\.png$")
+FLIP = re.compile(r"^flipbooks/(?P<cat>[^/]+)/(?P<fam>.+)_(?P<st>[a-z]+)_(?P<i>\d\d)_(?P<g>\d)x\d\.png$")
+BEAM = re.compile(r"^beams/(?P<fam>.+)_(?P<st>[a-z]+)_(?P<i>\d\d)\.png$")
+
+
+def alpha(path: Path) -> np.ndarray:
+    im = Image.open(path).convert("RGBA")
+    return np.asarray(im, dtype=np.float32)[..., 3] / 255.0
+
+
+def known_files() -> set[str]:
+    out = set()
+    for kind, cat, fam, st, i, g in BL.jobs():
+        if kind == "sprite":
+            out.add(f"sprites/{cat}/{fam}_{st}_{i:02d}.png")
+        elif kind == "flip":
+            out.add(f"flipbooks/{cat}/{fam}_{st}_{i:02d}_{g}x{g}.png")
+        else:
+            out.add(f"beams/{fam}_{st}_{i:02d}.png")
+    return out
+
+
+_loop_cache: dict[tuple[str, int], bool] = {}
+_tile_cache: dict[tuple[str, int], bool] = {}
+
+
+def flip_loops(fam: str, i: int) -> bool:
+    import flips as F
+    key = (fam, i)
+    if key not in _loop_cache:
+        rng = np.random.default_rng(BL.seed_of("flip", "x", fam, i))
+        m = 32
+        x, y = C.grid(m)
+        try:
+            frame = getattr(F, fam)(rng)
+            _loop_cache[key] = any(bool(frame(t, x, y, m).get("loop", False)) for t in (0.0, 0.5))
+        except Exception:  # noqa: BLE001
+            _loop_cache[key] = False
+    return _loop_cache[key]
+
+
+def beam_tiles(fam: str, i: int) -> bool:
+    import beams as B
+    key = (fam, i)
+    if key not in _tile_cache:
+        rng = np.random.default_rng(BL.seed_of("beam", "beams", fam, i))
+        try:
+            x, y = B.strip_grid(64, 16)
+            _tile_cache[key] = bool(getattr(B, fam)(rng, x, y).get("tile", True))
+        except Exception:  # noqa: BLE001
+            _tile_cache[key] = True
+    return _tile_cache[key]
+
+
+def thumb(mask: np.ndarray) -> str:
+    return "".join("1" if v else "0" for v in mask.ravel())
+
+
+def entry(rel: str, path: Path) -> dict | None:
+    a = alpha(path)
+    if m := SPRITE.match(rel):
+        n = a.shape[0]
+        return {"file": rel, "kind": "sprite", "category": m["cat"], "family": m["fam"], "style": m["st"],
+                "size": [n, n], "coverage": round(float((a > 0.5).mean()), 4),
+                "thumb": thumb(a[:: max(1, n // 16), :: max(1, n // 16)] > 0.3)}
+    if m := FLIP.match(rel):
+        g = int(m["g"])
+        size = a.shape[0]
+        n = size // g
+        per = [float((a[(k // g) * n:(k // g + 1) * n, (k % g) * n:(k % g + 1) * n] > 0.5).mean()) for k in range(g * g)]
+        loop = flip_loops(m["fam"], int(m["i"]))
+        return {"file": rel, "kind": "flip", "category": m["cat"], "family": m["fam"], "style": m["st"],
+                "grid": g, "frames": g * g, "loop": loop, "size": [size, size], "coverage": round(max(per), 4),
+                "last": round(per[-1], 4), "moving": bool(float(np.std(per)) > 1e-4 or loop),
+                "thumb": thumb(a[::64, ::64] > 0.3)}
+    if m := BEAM.match(rel):
+        h, w = a.shape
+        return {"file": rel, "kind": "beam", "category": "beams", "family": m["fam"], "style": m["st"],
+                "size": [w, h], "tile": beam_tiles(m["fam"], int(m["i"])),
+                "coverage": round(float((a > 0.5).mean()), 4), "thumb": thumb(a[::32, ::64] > 0.3)}
+    return None
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("pack")
+    ap.add_argument("--dry-run", action="store_true")
+    a = ap.parse_args()
+    pack = Path(a.pack)
+    files = sorted(p.relative_to(pack).as_posix() for p in pack.rglob("*.png") if not p.relative_to(pack).as_posix().startswith("_sheets/"))
+    known = known_files()
+    unknown = [f for f in files if f not in known]
+    usable = [f for f in files if f in known]
+    print(f"pack: {len(files)} textures | known to this skill version: {len(usable)} | unknown: {len(unknown)}")
+    for f in unknown[:10]:
+        print("  unknown (skipped):", f)
+    print(f"generator families not in the pack: {len(known - set(files))} (pruned duplicates are expected)")
+    if a.dry_run:
+        return 0
+
+    lib = Path(C.LIB)
+    t0 = time.time()
+    if lib.exists():
+        aside = lib.with_name(f"lib.replaced-{time.strftime('%Y%m%d-%H%M%S')}")
+        lib.rename(aside)
+        print(f"existing library moved aside to {aside}")
+    lib.mkdir(parents=True)
+    for rel in usable:
+        dst = lib / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(pack / rel, dst)
+    if (pack / "_sheets").is_dir():
+        shutil.copytree(pack / "_sheets", lib / "_sheets")
+
+    out = []
+    for k, rel in enumerate(usable, 1):
+        e = entry(rel, lib / rel)
+        if e is None:
+            continue
+        e["tags"] = (BL.TAGS.get(e["category"], "") + " " + e["family"].replace("_", " ") + " " + e["style"]).split()
+        e["id"] = "sim:lib/" + e["file"][:-4]
+        out.append(e)
+        if k % 500 == 0:
+            print(f"  indexed {k}/{len(usable)}", flush=True)
+    cat = {"note": "Generated VFX texture library (installed from a pre-built pack, indexed by "
+                   "index_texture_pack.py). id = the Texture value to use in the sim (Studio: upload the png).",
+           "textures": sorted(out, key=lambda e: e["file"])}
+    (lib / "catalog.json").write_text(json.dumps(cat, indent=0))
+    print(f"done: {len(out)} textures installed and indexed in {time.time() - t0:.0f}s -> {lib / 'catalog.json'}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
 ```
