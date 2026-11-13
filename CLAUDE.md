@@ -30,7 +30,8 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 
 1. **Disk is the source of truth for code.** Edit `src/`, sync with `rojo serve`. Never edit scripts
    in Studio and never write script source over MCP. MCP is for geometry, inspection, playtests.
-2. **Gates green before Studio.** Run `check.py` after every code change; do not hand broken code to Rojo.
+2. **Gates green before Studio.** A project hook (`.claude/hooks/luau_gate.py`) runs `check.py`
+   after every `.luau` edit and reports failures back; fix them before moving on, never bypass it.
 3. **Exactly one Studio MCP, one Rojo connection, one Studio window with the place.** Two of any of
    these duplicates modules or deadlocks. Never `open_application` Roblox Studio with computer-use
    when it is already running (it launches a second Studio).
@@ -39,11 +40,18 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
    `python -c "import os;print(bool(os.environ.get('ROBLOX_API_KEY')))"`. Never print, echo, or
    pass a key on a command line. To set or rotate one, the user runs
    `D:\Roblox Studio Games\_RobloxAI\bootstrap\set-secret.ps1` themselves.
-5. **Never press Ctrl+S in Studio** (it publishes). Publishing is section 6 and needs the user's go-ahead.
+5. **Saving is not publishing.** `mcp__Roblox_Studio__save_place` saves a new place VERSION to
+   Roblox (Team Create) and never publishes. Publishing (players see it) is section 6 and needs
+   the user's go-ahead. Do not save after every edit: each save adds a version.
 6. **No AI slop.** Real meshes, not stand-ins; VFX judged frame by frame in the sim; animations judged
    on rendered frames; every generated asset must be wired into the game (an unused asset is a failed stage).
 7. **Git:** commit at the end of each approved section; push only when the user says so.
    Never commit `*.rbxl`, `Packages/`, `work/`, or anything secret (see `.gitignore`).
+8. **Snapshot every approved section** (rollback point for code AND place, matched):
+   gates green -> `git commit` -> `git tag section-<N>` -> `save_place` with
+   notes `"Section <N> approved (git section-<N>)"`. Push only when the user says.
+   Roll back: `git checkout section-<N>` + Creator Hub > place > Version History > restore that version.
+   Baseline: tag `setup-baseline` = place version 6.
 
 ## Known traps on this machine
 
@@ -54,3 +62,5 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   (`luau --code ...`, `--dm Server` reaches the running playtest server).
 - After reinstalling the skills, re-apply local fixes:
   `python "D:\Roblox Studio Games\_RobloxAI\bootstrap\patch_skills.py"`.
+- After improving a skill (a correction written back into it), version it in the toolkit repo:
+  `python "D:\Roblox Studio Games\_RobloxAI\bootstrap\sync_skills.py" export`, then commit there.

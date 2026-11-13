@@ -226,6 +226,10 @@ CHECKS (real calls, not just handshakes):
 
 ## Phase F: Install the skills and agents, then patch
 
+**If the user has a private toolkit repo** (recommended; see "Toolkit repo" below), clone it to
+`<TOOLKIT>` first and run `python <TOOLKIT>\bootstrap\sync_skills.py restore` instead of
+`install.ps1`: that restores the skills AS IMPROVED on the old machine. Then patch/check as below.
+
 ```powershell
 powershell -ExecutionPolicy Bypass -File "<TOOLKIT>\inputs\roblox-ai-skills\install.ps1"
 python "<TOOLKIT>\bootstrap\patch_skills.py"
@@ -374,8 +378,22 @@ From the game folder (which now holds only this file):
 6. Write the game's `CLAUDE.md` (toolchain table, ids, hard rules: disk is truth, gates before
    Studio, one MCP/Rojo/Studio, secrets, no Ctrl+S, no slop, git cadence, known traps). Copy
    this runbook to `docs\ROBLOX_AI_SETUP.md`.
-7. `git init -b main`, `git remote add origin <url>`, first commit (end the message with the
+7. **Auto-gate hook:** write `.claude/hooks/luau_gate.py` (Appendix D) and
+   `.claude/settings.json`:
+   ```json
+   {"hooks": {"PostToolUse": [{"matcher": "Edit|Write|MultiEdit", "hooks": [
+     {"type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/luau_gate.py\"", "timeout": 300}]}]}}
+   ```
+   Test it by piping a JSON payload BUILT WITH PYTHON (`json.dumps`; hand-escaped Windows paths
+   produce invalid JSON and the hook silently ignores it): a broken `.luau` -> exit 2 with the
+   gate error; fixed file / a `.md` -> exit 0. It takes effect in new sessions.
+8. `git init -b main`, `git remote add origin <url>`, first commit (end the message with the
    attribution lines your harness requires). **Ask before `git push -u origin main`.**
+9. **Baseline snapshot:** `git tag setup-baseline`, then `mcp__Roblox_Studio__save_place` with
+   notes `"Setup complete - baseline (git setup-baseline)"`. save_place on a Roblox/Team Create
+   place saves a new place VERSION and never publishes. Record the version number in CLAUDE.md,
+   with the rule: every approved section = gates green, commit, `git tag section-<N>`,
+   save_place `"Section <N> approved (git section-<N>)"`.
 
 CHECK: gates green; `git status` clean; remote set; (after the yes) `git ls-remote origin` shows main.
 
@@ -395,6 +413,20 @@ CHECK: gates green; `git status` clean; remote set; (after the yes) `git ls-remo
 6. Stop the server when done (or leave it for the user).
 
 CHECK: structure present and the live edit round-tripped.
+
+---
+
+## Toolkit repo (once per user, then reused)
+
+`<TOOLKIT>` is itself a PRIVATE git repo (the SyphoDev licence allows modification for own use,
+not resale; keep it private). It versions only small hand-made files: `bootstrap/`, `README.md`,
+and `skills/` + `agents/` snapshots made by `sync_skills.py export` (generated VFX
+textures/meshes excluded). Its `.gitignore` excludes `inputs/ tools/ backups/ rigs/` and all work
+folders. **In .gitignore a `#` comment must be on its own line**: a trailing comment silently
+breaks the pattern (we staged 1.2 GB of Blender that way). Verify with
+`git ls-files | cut -d/ -f1 | sort | uniq -c` before the first commit (expect ~300 files, ~3 MB).
+The remote is a private repo the USER creates on github.com (empty, no README); ask before pushing.
+After any skill improvement: `sync_skills.py export`, commit, push (with the user's OK).
 
 ---
 
@@ -874,6 +906,169 @@ def main() -> int:
            "textures": sorted(out, key=lambda e: e["file"])}
     (lib / "catalog.json").write_text(json.dumps(cat, indent=0))
     print(f"done: {len(out)} textures installed and indexed in {time.time() - t0:.0f}s -> {lib / 'catalog.json'}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+
+## Appendix D: `luau_gate.py` (write to `<game>\.claude\hooks\luau_gate.py`)
+
+```python
+#!/usr/bin/env python3
+"""PostToolUse hook: after Claude edits a Luau file, run the four roblox-code gates.
+
+Reads the hook payload (JSON) on stdin. Only reacts to Edit/Write/MultiEdit on *.luau/*.lua
+files inside this project. Exit 0 = gates green (silent). Exit 2 = a gate failed: the failure
+text goes to stderr, which Claude Code feeds back to the model so it fixes the code before
+anything reaches Studio. Never blocks on its own errors (exits 0 if the checker is missing).
+"""
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = Path.home() / ".claude" / "skills" / "roblox-code" / "scripts" / "check.py"
+
+
+def main() -> int:
+    try:
+        payload = json.load(sys.stdin)
+    except Exception:  # noqa: BLE001
+        return 0
+    path = (payload.get("tool_input") or {}).get("file_path") or ""
+    if not path.lower().endswith((".luau", ".lua")):
+        return 0
+    try:
+        Path(path).resolve().relative_to(ROOT)
+    except ValueError:
+        return 0  # a Luau file outside this game (e.g. a skill's script): not ours to gate
+    if not CHECK.exists():
+        return 0
+    env = dict(os.environ, NO_COLOR="1", PYTHONIOENCODING="utf-8")
+    r = subprocess.run([sys.executable, str(CHECK)], cwd=ROOT, capture_output=True, text=True,
+                       encoding="utf-8", errors="replace", timeout=300, env=env)
+    if r.returncode == 0:
+        return 0
+    import re
+    out = re.sub(r"\x1b\[[0-9;]*m", "", r.stdout + r.stderr).strip()
+    sys.stderr.write(
+        "roblox-code gates FAILED after editing " + os.path.basename(path)
+        + ". Fix this before continuing (do not hand broken code to Rojo/Studio):\n"
+        + out[-3500:] + "\n")
+    return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+
+## Appendix E: `sync_skills.py` (write to `<TOOLKIT>\bootstrap\sync_skills.py`)
+
+```python
+#!/usr/bin/env python3
+"""Keep a versioned copy of YOUR improved Roblox skills + agents in this toolkit repo.
+
+    python sync_skills.py export     # ~/.claude -> <toolkit>/skills, <toolkit>/agents  (then git commit)
+    python sync_skills.py restore    # <toolkit> -> ~/.claude (new PC / broken install)
+    python sync_skills.py status     # what differs, without copying
+
+The skills improve every time a correction is written back into them; without this they only
+live in ~/.claude on one PC. Generated, re-creatable data is NOT copied (VFX textures/meshes:
+rebuild with index_texture_pack.py + the mesh scripts, see ROBLOX_AI_SETUP.md).
+restore moves any existing skill folder to <toolkit>/backups/skills-<time>/ first; never deletes.
+LOCAL.md files are included (paths only, never secrets) so a restore on the same layout just works.
+"""
+from __future__ import annotations
+
+import filecmp
+import shutil
+import sys
+import time
+from pathlib import Path
+
+TOOLKIT = Path(__file__).resolve().parents[1]
+CLAUDE = Path.home() / ".claude"
+SKILLS = ["create-roblox-game", "roblox-3d-model", "roblox-animation", "roblox-build-orchestrator",
+          "roblox-code", "roblox-map", "roblox-sfx", "roblox-skills-setup", "roblox-texture-gen",
+          "roblox-ui", "roblox-vfx"]
+# generated or cache data, relative to a skill folder (re-creatable, large)
+EXCLUDE_DIRS = {"roblox-vfx": ["sim/textures", "sim/meshes"]}
+EXCLUDE_NAMES = {"__pycache__", ".cache", "node_modules"}
+EXCLUDE_SUFFIX = {".pyc"}
+
+
+def wanted(skill: str, rel: Path) -> bool:
+    if any(p in EXCLUDE_NAMES for p in rel.parts) or rel.suffix in EXCLUDE_SUFFIX:
+        return False
+    return not any(rel.as_posix() == d or rel.as_posix().startswith(d + "/") for d in EXCLUDE_DIRS.get(skill, []))
+
+
+def files(root: Path, skill: str) -> dict[str, Path]:
+    if not root.is_dir():
+        return {}
+    return {p.relative_to(root).as_posix(): p for p in root.rglob("*")
+            if p.is_file() and wanted(skill, p.relative_to(root))}
+
+
+def pairs():
+    for s in SKILLS:
+        yield s, CLAUDE / "skills" / s, TOOLKIT / "skills" / s
+    yield "agents", CLAUDE / "agents", TOOLKIT / "agents"
+
+
+def diff(src: Path, dst: Path, name: str):
+    a = files(src, name)
+    b = files(dst, name)
+    if name == "agents":
+        a = {k: v for k, v in a.items() if k.startswith("roblox-")}
+        b = {k: v for k, v in b.items() if k.startswith("roblox-")}
+    changed = [k for k in a if k in b and not filecmp.cmp(a[k], b[k], shallow=False)]
+    return a, b, sorted(set(a) - set(b)), changed, sorted(set(b) - set(a))
+
+
+def copy(src: Path, dst: Path, name: str, prune: bool) -> int:
+    a, b, new, changed, gone = diff(src, dst, name)
+    for k in new + changed:
+        (dst / k).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(a[k], dst / k)
+    if prune:
+        for k in gone:
+            (dst / k).unlink()
+    return len(new) + len(changed) + (len(gone) if prune else 0)
+
+
+def main() -> int:
+    cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
+    if cmd == "status":
+        for name, live, repo in pairs():
+            _, _, new, changed, gone = diff(live, repo, name)
+            if new or changed or gone:
+                print(f"{name}: {len(changed)} changed, {len(new)} only in ~/.claude, {len(gone)} only in repo")
+                for k in (changed + new)[:8]:
+                    print("    ", k)
+        print("status done")
+    elif cmd == "export":
+        n = sum(copy(live, repo, name, prune=True) for name, live, repo in pairs())
+        print(f"exported {n} file changes into {TOOLKIT}  (now: git add -A && git commit)")
+    elif cmd == "restore":
+        stamp = time.strftime("%Y%m%d-%H%M%S")
+        for name, live, repo in pairs():
+            if name != "agents" and live.exists():
+                bk = TOOLKIT / "backups" / f"skills-{stamp}" / name
+                bk.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copytree(live, bk)
+            n = copy(repo, live, name, prune=False)
+            print(f"restored {name}: {n} files")
+        print("Now re-run patch_skills.py --check, and rebuild VFX textures/meshes if this is a new PC.")
+    else:
+        print(__doc__)
+        return 1
     return 0
 
 
