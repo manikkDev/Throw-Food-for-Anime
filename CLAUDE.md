@@ -52,7 +52,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
    notes `"Section <N> approved (git section-<N>)"`. Push only when the user says, and push the tag explicitly (`git push origin main section-<N>`;
    `--follow-tags` skips these lightweight tags).
    Roll back: `git checkout section-<N>` + Creator Hub > place > Version History > restore that version.
-   Baseline: tag `setup-baseline` = place version 6.
+   Baseline: tag `setup-baseline` = place version 6. Tag `section-1` = place version 34.
 
 ## Known traps on this machine
 
