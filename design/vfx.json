@@ -1,9 +1,172 @@
 {
+ "note": "roblox-vfx. The harvest library is empty on this machine, so effects are authored in the skill's simulator with the installed texture pack and judged frame by frame; harvest a free pack first where one fits. Every effect is called from VfxController by name.",
+ "budget": {
+  "max_particles_per_effect": 220,
+  "auras_live_at_once": 24,
+  "low_detail_mode": "auras become a single ring"
+ },
  "effects": [
   {
-   "name": "TODO",
-   "from": "a recipe harvested into your own roblox-vfx library"
+   "name": "Reveal_Common",
+   "from": "authored in the roblox-vfx sim from the texture library: vertical beam + ground ring + burst, one definition parameterised by rarity colour and scale",
+   "why": "Common catch reveal: beam and burst in the rarity colour, scaled to the rarity",
+   "loop": false
+  },
+  {
+   "name": "Reveal_Uncommon",
+   "from": "authored in the roblox-vfx sim from the texture library: vertical beam + ground ring + burst, one definition parameterised by rarity colour and scale",
+   "why": "Uncommon catch reveal: beam and burst in the rarity colour, scaled to the rarity",
+   "loop": false
+  },
+  {
+   "name": "Reveal_Rare",
+   "from": "authored in the roblox-vfx sim from the texture library: vertical beam + ground ring + burst, one definition parameterised by rarity colour and scale",
+   "why": "Rare catch reveal: beam and burst in the rarity colour, scaled to the rarity",
+   "loop": false
+  },
+  {
+   "name": "Reveal_Epic",
+   "from": "authored in the roblox-vfx sim from the texture library: vertical beam + ground ring + burst, one definition parameterised by rarity colour and scale",
+   "why": "Epic catch reveal: beam and burst in the rarity colour, scaled to the rarity",
+   "loop": false
+  },
+  {
+   "name": "Reveal_Legendary",
+   "from": "authored in the roblox-vfx sim from the texture library: vertical beam + ground ring + burst, one definition parameterised by rarity colour and scale",
+   "why": "Legendary catch reveal: beam and burst in the rarity colour, scaled to the rarity",
+   "loop": false
+  },
+  {
+   "name": "Reveal_Mythic",
+   "from": "authored in the roblox-vfx sim from the texture library: vertical beam + ground ring + burst, one definition parameterised by rarity colour and scale",
+   "why": "Mythic catch reveal: beam and burst in the rarity colour, scaled to the rarity",
+   "loop": false
+  },
+  {
+   "name": "Reveal_Secret",
+   "from": "authored in the roblox-vfx sim from the texture library: vertical beam + ground ring + burst, one definition parameterised by rarity colour and scale",
+   "why": "Secret catch reveal: beam and burst in the rarity colour, scaled to the rarity",
+   "loop": false
+  },
+  {
+   "name": "Aura_Golden",
+   "from": "authored in the sim: looping body aura attached to HumanoidRootPart, judged on a moving rig",
+   "why": "Golden mutation loop",
+   "loop": true
+  },
+  {
+   "name": "Aura_Flame",
+   "from": "authored in the sim: looping body aura attached to HumanoidRootPart, judged on a moving rig",
+   "why": "Flame mutation loop",
+   "loop": true
+  },
+  {
+   "name": "Aura_Lightning",
+   "from": "authored in the sim: looping body aura attached to HumanoidRootPart, judged on a moving rig",
+   "why": "Lightning mutation loop",
+   "loop": true
+  },
+  {
+   "name": "Aura_Galaxy",
+   "from": "authored in the sim: looping body aura attached to HumanoidRootPart, judged on a moving rig",
+   "why": "Galaxy mutation loop",
+   "loop": true
+  },
+  {
+   "name": "Aura_Titan",
+   "from": "authored in the sim: looping body aura attached to HumanoidRootPart, judged on a moving rig",
+   "why": "ground shimmer under Titan-size characters",
+   "loop": true
+  },
+  {
+   "name": "ThrowTrail_Basic",
+   "from": "authored in the sim: Trail + ribbon particles on the food",
+   "why": "food tiers 1-4 in flight",
+   "loop": false
+  },
+  {
+   "name": "ThrowTrail_Hot",
+   "from": "authored in the sim: Trail + ribbon particles on the food",
+   "why": "food tiers 5-8 in flight",
+   "loop": false
+  },
+  {
+   "name": "ThrowTrail_Epic",
+   "from": "authored in the sim: Trail + ribbon particles on the food",
+   "why": "food tiers 9-12 in flight",
+   "loop": false
+  },
+  {
+   "name": "Land_Impact",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "food hits the ground",
+   "loop": false
+  },
+  {
+   "name": "PerfectThrow_Flash",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "perfect-release feedback",
+   "loop": false
+  },
+  {
+   "name": "LuckyThrow_Charge",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "lucky throw armed on the hand",
+   "loop": false
+  },
+  {
+   "name": "DashHome_Trail",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "character dashes back to the plot",
+   "loop": false
+  },
+  {
+   "name": "Train_Hit",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "every training rep",
+   "loop": false
+  },
+  {
+   "name": "PowerUp_Burst",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "new power rank",
+   "loop": false
+  },
+  {
+   "name": "Coin_Pop",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "income tick and sell",
+   "loop": false
+  },
+  {
+   "name": "Slot_Unlock",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "plot slot bought",
+   "loop": false
+  },
+  {
+   "name": "Rebirth_Nova",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "rebirth",
+   "loop": false
+  },
+  {
+   "name": "Summon_Portal",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "summon scroll opening",
+   "loop": false
+  },
+  {
+   "name": "ServerLuck_Sky",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "server luck active, visible to all six players",
+   "loop": true
+  },
+  {
+   "name": "Zone_Unlock",
+   "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
+   "why": "first throw into a new zone",
+   "loop": false
   }
- ],
- "note": "roblox-vfx. Harvest effects, never generate them from scratch."
+ ]
 }

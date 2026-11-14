@@ -1,10 +1,837 @@
 {
+ "note": "Three routes, never stand-in parts. Characters are BAKED rigs, not generated meshes. Props: free CC0 first, generated only where research/03 found nothing. Every row ends in assets/meshes/manifest.json with measured bounds and tri counts.",
+ "budgets": {
+  "character_accessories_max": 6,
+  "character_layered_items_max": 1,
+  "rigs_animated_at_once": 40,
+  "rigs_visible_at_once": 90
+ },
  "assets": [
   {
-   "name": "TODO",
-   "prompt": "TODO: a shaded 3D toy render of ...",
-   "tris": 6000
+   "name": "Char_sleepy_student",
+   "entity": "Sleepy Student",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (messy bed hair, loose school blazer, half-closed eyes)"
+  },
+  {
+   "name": "Char_class_rep",
+   "entity": "Class Rep",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (neat bob, glasses, armband, tidy uniform)"
+  },
+  {
+   "name": "Char_track_rookie",
+   "entity": "Track Rookie",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (sweatband, tracksuit jacket, sneakers)"
+  },
+  {
+   "name": "Char_lunch_rush_kid",
+   "entity": "Lunch Rush Kid",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (bread in mouth, open blazer, satchel)"
+  },
+  {
+   "name": "Char_kendo_captain",
+   "entity": "Kendo Captain",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (ponytail, hakama, bamboo sword on the back)"
+  },
+  {
+   "name": "Char_rooftop_rebel",
+   "entity": "Rooftop Rebel",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (slicked pompadour, long coat on shoulders, bandage on nose)"
+  },
+  {
+   "name": "Char_idol_transfer",
+   "entity": "Idol Transfer",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (pink twin-tails, frilled stage dress, star hairpin)"
+  },
+  {
+   "name": "Char_council_president",
+   "entity": "Council President",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (white long coat uniform, silver hair, gold braid, cape)"
+  },
+  {
+   "name": "Char_goldfish_scooper",
+   "entity": "Goldfish Scooper",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (short yukata, paper scoop, goldfish bag)"
+  },
+  {
+   "name": "Char_lantern_kid",
+   "entity": "Lantern Kid",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (happi coat, paper lantern, bowl cut)"
+  },
+  {
+   "name": "Char_mask_vendor",
+   "entity": "Mask Vendor",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (festival masks on the belt and head, apron)"
+  },
+  {
+   "name": "Char_taiko_drummer",
+   "entity": "Taiko Drummer",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (headband, sleeveless happi, drum sticks on the back)"
+  },
+  {
+   "name": "Char_yukata_dancer",
+   "entity": "Yukata Dancer",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (flower yukata, hair bun with pins, fan)"
+  },
+  {
+   "name": "Char_ramen_master",
+   "entity": "Ramen Master",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (chef headband, towel on the neck, noodle ladle)"
+  },
+  {
+   "name": "Char_firework_artisan",
+   "entity": "Firework Artisan",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (goggles, scorched coat, rocket tubes on the back)"
+  },
+  {
+   "name": "Char_fox_mask_wanderer",
+   "entity": "Fox Mask Wanderer",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (white fox mask, long dark haori, bells, lone blue flame)"
+  },
+  {
+   "name": "Char_rookie_ninja",
+   "entity": "Rookie Ninja",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (grey scarf, simple wraps, practice kunai)"
+  },
+  {
+   "name": "Char_scroll_runner",
+   "entity": "Scroll Runner",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (big scroll on the back, messenger cap)"
+  },
+  {
+   "name": "Char_smoke_trickster",
+   "entity": "Smoke Trickster",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (purple hood, grin mask, smoke pouch)"
+  },
+  {
+   "name": "Char_kunai_twin",
+   "entity": "Kunai Twin",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (twin buns, crossed belts of kunai)"
+  },
+  {
+   "name": "Char_toad_tamer",
+   "entity": "Toad Tamer",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (straw hat, small toad on the shoulder, travel cloak)"
+  },
+  {
+   "name": "Char_shadow_scout",
+   "entity": "Shadow Scout",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (black fitted gear, face wrap, short blade on the back)"
+  },
+  {
+   "name": "Char_moonlit_kunoichi",
+   "entity": "Moonlit Kunoichi",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (long silver ponytail, indigo outfit, crescent hairpin)"
+  },
+  {
+   "name": "Char_village_grandmaster",
+   "entity": "Village Grandmaster",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (wide hat, long white robe, tall staff, calm aura)"
+  },
+  {
+   "name": "Char_gate_guard",
+   "entity": "Gate Guard",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (ashigaru helmet, spear on the back, plain armour)"
+  },
+  {
+   "name": "Char_tea_server",
+   "entity": "Tea Server",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (kimono, tray, tied sleeves)"
+  },
+  {
+   "name": "Char_wandering_ronin",
+   "entity": "Wandering Ronin",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (straw hat, worn haori, one sword at the hip)"
+  },
+  {
+   "name": "Char_shrine_maiden",
+   "entity": "Shrine Maiden",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (red and white robes, long black hair, paper wand)"
+  },
+  {
+   "name": "Char_twin_blade_duelist",
+   "entity": "Twin-Blade Duelist",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (tied topknot, two swords crossed on the back)"
+  },
+  {
+   "name": "Char_crimson_oni_general",
+   "entity": "Crimson Oni General",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (red armour, horned mask, great club)"
+  },
+  {
+   "name": "Char_ember_blade_master",
+   "entity": "Ember Blade Master",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (flame-pattern coat, glowing sword, scarred eye)"
+  },
+  {
+   "name": "Char_shogun_of_storms",
+   "entity": "Shogun of Storms",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (dark lacquer armour, crescent helm, storm cloak)"
+  },
+  {
+   "name": "Char_sidekick_trainee",
+   "entity": "Sidekick Trainee",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (domino mask, gym uniform, towel cape)"
+  },
+  {
+   "name": "Char_news_runner",
+   "entity": "News Runner",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (press cap, camera, messenger bag)"
+  },
+  {
+   "name": "Char_dash_kid",
+   "entity": "Dash Kid",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (visor, racing suit, leg boosters)"
+  },
+  {
+   "name": "Char_gadget_girl",
+   "entity": "Gadget Girl",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (goggles on the head, tool belt, mech glove)"
+  },
+  {
+   "name": "Char_frost_guardian",
+   "entity": "Frost Guardian",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (ice-blue hair, high collar coat, frost gauntlet)"
+  },
+  {
+   "name": "Char_captain_comet",
+   "entity": "Captain Comet",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (star emblem suit, long scarf, boots)"
+  },
+  {
+   "name": "Char_thunder_ace",
+   "entity": "Thunder Ace",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (spiky yellow-black hair, crackling jacket, bolt earrings)"
+  },
+  {
+   "name": "Char_the_number_one",
+   "entity": "The Number One",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (white and gold hero suit, huge cape, radiant halo)"
+  },
+  {
+   "name": "Char_lantern_spirit",
+   "entity": "Lantern Spirit",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (pale robes, paper lantern head-piece, soft glow)"
+  },
+  {
+   "name": "Char_paper_charm_kid",
+   "entity": "Paper Charm Kid",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (charm tag on the forehead, oversized sleeves)"
+  },
+  {
+   "name": "Char_river_guardian",
+   "entity": "River Guardian",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (teal hair, scale shoulder guard, water gourd)"
+  },
+  {
+   "name": "Char_cloud_monk",
+   "entity": "Cloud Monk",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (shaved head, prayer beads, cloud sash)"
+  },
+  {
+   "name": "Char_nine_tail_trickster",
+   "entity": "Nine-Tail Trickster",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (fox ears, many tails, mischievous grin)"
+  },
+  {
+   "name": "Char_soul_ferryman",
+   "entity": "Soul Ferryman",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (black robes, hooded, long scythe, blue wisps)"
+  },
+  {
+   "name": "Char_moon_princess",
+   "entity": "Moon Princess",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (floor-length silver hair, layered robes, moon crown)"
+  },
+  {
+   "name": "Char_dragon_emperor",
+   "entity": "Dragon Emperor",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (horned crown, jade and gold armour, dragon cloak)"
+  },
+  {
+   "name": "Char_starlight_idol",
+   "entity": "Starlight Idol",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (galaxy-print stage outfit, star wand)"
+  },
+  {
+   "name": "Char_clockwork_butler",
+   "entity": "Clockwork Butler",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (tailcoat, brass monocle, gear back-piece)"
+  },
+  {
+   "name": "Char_phantom_thief",
+   "entity": "Phantom Thief",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (top hat, white mask, cape, rose)"
+  },
+  {
+   "name": "Char_demon_lord_heir",
+   "entity": "Demon Lord Heir",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (curled horns, dark royal coat, bat wings)"
+  },
+  {
+   "name": "Char_angel_commander",
+   "entity": "Angel Commander",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (white wings, halo, gold spear)"
+  },
+  {
+   "name": "Char_void_empress",
+   "entity": "Void Empress",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (black star gown, floating crown, void wings)"
+  },
+  {
+   "name": "Char_lucky_cat_mascot",
+   "entity": "Lucky Cat Mascot",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (lucky-cat hood, bell collar, coin)"
+  },
+  {
+   "name": "Char_sakura_shogun",
+   "entity": "Sakura Shogun",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: a baked R15 rig (pink petal armour, blossom katana, petal cape)"
+  },
+  {
+   "name": "Food_onigiri",
+   "entity": "Food: Onigiri",
+   "route": "CC0 import (Quaternius Sushi Restaurant Kit / Ultimate Food Pack / Kenney Food Kit)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_dango",
+   "entity": "Food: Dango",
+   "route": "CC0 import (Quaternius Sushi Restaurant Kit / Ultimate Food Pack / Kenney Food Kit)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_sushi",
+   "entity": "Food: Sushi",
+   "route": "CC0 import (Quaternius Sushi Restaurant Kit / Ultimate Food Pack / Kenney Food Kit)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_spicy_bun",
+   "entity": "Food: Spicy Bun",
+   "route": "CC0 import (Quaternius Sushi Restaurant Kit / Ultimate Food Pack / Kenney Food Kit)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_gyoza",
+   "entity": "Food: Gyoza",
+   "route": "CC0 import (Quaternius Sushi Restaurant Kit / Ultimate Food Pack / Kenney Food Kit)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_ice_cream",
+   "entity": "Food: Ice Cream",
+   "route": "CC0 import (Quaternius Sushi Restaurant Kit / Ultimate Food Pack / Kenney Food Kit)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_takoyaki",
+   "entity": "Food: Takoyaki",
+   "route": "roblox-3d-model (no CC0 model found: research/03)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_ramen",
+   "entity": "Food: Ramen",
+   "route": "CC0 import (Quaternius Sushi Restaurant Kit / Ultimate Food Pack / Kenney Food Kit)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_curry",
+   "entity": "Food: Curry",
+   "route": "roblox-3d-model (no CC0 model found: research/03)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_tempura",
+   "entity": "Food: Tempura",
+   "route": "roblox-3d-model (no CC0 model found: research/03)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_festival_cake",
+   "entity": "Food: Festival Cake",
+   "route": "CC0 import (Quaternius Sushi Restaurant Kit / Ultimate Food Pack / Kenney Food Kit)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Food_dragon_feast",
+   "entity": "Food: Dragon Feast",
+   "route": "roblox-3d-model (no CC0 model found: research/03)",
+   "tris": 1500,
+   "why": "held in the hand, thrown, shown in the Food Shop viewport"
+  },
+  {
+   "name": "Equip_wooden_dummy",
+   "entity": "Training: Wooden Dummy",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "the thing the player visibly trains on; each tier must look stronger"
+  },
+  {
+   "name": "Equip_sandbag",
+   "entity": "Training: Sandbag",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "the thing the player visibly trains on; each tier must look stronger"
+  },
+  {
+   "name": "Equip_iron_dummy",
+   "entity": "Training: Iron Dummy",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "the thing the player visibly trains on; each tier must look stronger"
+  },
+  {
+   "name": "Equip_stone_pillar",
+   "entity": "Training: Stone Pillar",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "the thing the player visibly trains on; each tier must look stronger"
+  },
+  {
+   "name": "Equip_waterfall",
+   "entity": "Training: Waterfall",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "the thing the player visibly trains on; each tier must look stronger"
+  },
+  {
+   "name": "Equip_gravity_dojo",
+   "entity": "Training: Gravity Dojo",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "the thing the player visibly trains on; each tier must look stronger"
+  },
+  {
+   "name": "Equip_dragon_shrine",
+   "entity": "Training: Dragon Shrine",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "the thing the player visibly trains on; each tier must look stronger"
+  },
+  {
+   "name": "Equip_star_forge",
+   "entity": "Training: Star Forge",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "the thing the player visibly trains on; each tier must look stronger"
+  },
+  {
+   "name": "Plot_Fence",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 1500,
+   "why": "marks the plot edge"
+  },
+  {
+   "name": "Plot_Pedestal",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 1500,
+   "why": "each character stands on one; shows rarity colour"
+  },
+  {
+   "name": "Plot_ThrowPad",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 1500,
+   "why": "where the player stands to throw"
+  },
+  {
+   "name": "Plot_SlotSign",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 1500,
+   "why": "the buy-a-slot board"
+  },
+  {
+   "name": "Plot_NameArch",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 1500,
+   "why": "owner name and income over the gate"
+  },
+  {
+   "name": "Hub_SellBooth",
+   "entity": "Plot and hub kit",
+   "route": "CC0 pack import first, Kiln otherwise",
+   "tris": 5000,
+   "why": "sell point"
+  },
+  {
+   "name": "Hub_FoodCart",
+   "entity": "Plot and hub kit",
+   "route": "CC0 pack import first, Kiln otherwise",
+   "tris": 5000,
+   "why": "food shop point"
+  },
+  {
+   "name": "Hub_SummonShrine",
+   "entity": "Plot and hub kit",
+   "route": "CC0 pack import first, Kiln otherwise",
+   "tris": 5000,
+   "why": "where summon scrolls open"
+  },
+  {
+   "name": "Hub_LeaderboardFrame",
+   "entity": "Plot and hub kit",
+   "route": "CC0 pack import first, Kiln otherwise",
+   "tris": 5000,
+   "why": "holds the three boards"
+  },
+  {
+   "name": "Hub_DailyChest",
+   "entity": "Plot and hub kit",
+   "route": "CC0 pack import first, Kiln otherwise",
+   "tris": 5000,
+   "why": "daily reward point"
+  },
+  {
+   "name": "Lane_ZoneGate",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 3000,
+   "why": "arch between zones showing the power needed"
+  },
+  {
+   "name": "Coin_Yen",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 300,
+   "why": "coin pop and HUD icon source"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_CherryTree",
+   "entity": "Zone: Sakura Schoolyard",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_SchoolGate",
+   "entity": "Zone: Sakura Schoolyard",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_Bench",
+   "entity": "Zone: Sakura Schoolyard",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_TrackHurdle",
+   "entity": "Zone: Sakura Schoolyard",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_ClockTower",
+   "entity": "Zone: Sakura Schoolyard",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_festival_street_FoodStall",
+   "entity": "Zone: Festival Street",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_festival_street_LanternString",
+   "entity": "Zone: Festival Street",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_festival_street_DrumTower",
+   "entity": "Zone: Festival Street",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_festival_street_ToriiSmall",
+   "entity": "Zone: Festival Street",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_festival_street_PaperLamp",
+   "entity": "Zone: Festival Street",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_ninja_village_BambooCluster",
+   "entity": "Zone: Ninja Village",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_ninja_village_RopeBridge",
+   "entity": "Zone: Ninja Village",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_ninja_village_HiddenGate",
+   "entity": "Zone: Ninja Village",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_ninja_village_WatchPost",
+   "entity": "Zone: Ninja Village",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_ninja_village_TrainingLog",
+   "entity": "Zone: Ninja Village",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_samurai_castle_CastleKeep",
+   "entity": "Zone: Samurai Castle",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_samurai_castle_StoneWall",
+   "entity": "Zone: Samurai Castle",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_samurai_castle_RedBridge",
+   "entity": "Zone: Samurai Castle",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_samurai_castle_PineTree",
+   "entity": "Zone: Samurai Castle",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_samurai_castle_WarBanner",
+   "entity": "Zone: Samurai Castle",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_hero_city_NeonTower",
+   "entity": "Zone: Hero City",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_hero_city_Billboard",
+   "entity": "Zone: Hero City",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_hero_city_RooftopPad",
+   "entity": "Zone: Hero City",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_hero_city_StreetLamp",
+   "entity": "Zone: Hero City",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_hero_city_HeroStatue",
+   "entity": "Zone: Hero City",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_spirit_realm_FloatingIsland",
+   "entity": "Zone: Spirit Realm",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_spirit_realm_GreatTorii",
+   "entity": "Zone: Spirit Realm",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_spirit_realm_SpiritLantern",
+   "entity": "Zone: Spirit Realm",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_spirit_realm_CrystalTree",
+   "entity": "Zone: Spirit Realm",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_spirit_realm_CloudBank",
+   "entity": "Zone: Spirit Realm",
+   "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
+   "tris": 4000,
+   "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   }
- ],
- "note": "roblox-3d-model. Colour: PAINT it (paint_texture.py), never project it."
+ ]
 }

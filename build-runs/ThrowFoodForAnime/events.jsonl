@@ -1,0 +1,6 @@
+{"kind": "run-start", "mode": "fanout", "ts": "2026-11-14T13:10:50+05:30"}
+{"kind": "start", "stage": "market-research", "ts": "2026-11-14T13:10:50+05:30"}
+{"kind": "intervention", "stage": "market-research", "note": "User art decision: source characters as ready-made whole avatars (Load Character style: clone an existing avatar/outfit) instead of per-item assembly; and pre-authorised creating food/animation/VFX/models with the skills where no free asset exists.", "ts": "2026-11-14T13:25:19+05:30"}
+{"kind": "end", "stage": "market-research", "status": "ok", "ts": "2026-11-14T13:33:12+05:30"}
+{"kind": "start", "stage": "design-spec", "ts": "2026-11-14T13:33:12+05:30"}
+{"kind": "end", "stage": "design-spec", "status": "ok", "ts": "2026-11-14T13:38:30+05:30"}

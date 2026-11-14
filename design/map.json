@@ -1,5 +1,137 @@
 {
- "name": "TODO",
- "theme": "TODO",
- "note": "roblox-map spec. Build from a REFERENCE IMAGE, never from imagination."
+ "name": "FestivalLane",
+ "theme": "bright stylised anime world; one key colour per zone",
+ "note": "roblox-map spec seed. Section 2 emits the BLOCKOUT from these numbers; section 3 expands this into the full roblox-map spec and runs the prover. Build from a reference image per zone, never from imagination.",
+ "units": "studs",
+ "axis": "lanes run along +Z from the plot row; plots are spaced along X",
+ "hub": {
+  "size": [
+   420,
+   90
+  ],
+  "z": [
+   -110,
+   -20
+  ],
+  "contains": [
+   "SpawnLocation x6 (one per plot gate)",
+   "Hub_FoodCart",
+   "Hub_SellBooth",
+   "Hub_SummonShrine",
+   "Hub_DailyChest",
+   "Hub_LeaderboardFrame x3"
+  ]
+ },
+ "plot": {
+  "count": 6,
+  "size": [
+   56,
+   48
+  ],
+  "pitch_x": 68,
+  "z": [
+   -20,
+   28
+  ],
+  "contains": [
+   "Plot_NameArch",
+   "Plot_Fence",
+   "Plot_ThrowPad at the lane edge",
+   "dojo gear pad",
+   "Plot_SlotSign",
+   "pedestal grid 6 x 4 = 24 (MaxSlots)"
+  ]
+ },
+ "lane": {
+  "count": 6,
+  "width": 40,
+  "start_z": 40,
+  "landing_strip_width": 28
+ },
+ "zones": [
+  {
+   "id": "sakura_schoolyard",
+   "name": "Sakura Schoolyard",
+   "z_from": 40,
+   "z_to": 260,
+   "power_req": 0,
+   "scenery": "school gate, cherry trees, running track",
+   "gate": "Lane_ZoneGate at z_from"
+  },
+  {
+   "id": "festival_street",
+   "name": "Festival Street",
+   "z_from": 260,
+   "z_to": 480,
+   "power_req": 200,
+   "scenery": "night-market stalls, lanterns, drum tower",
+   "gate": "Lane_ZoneGate at z_from"
+  },
+  {
+   "id": "ninja_village",
+   "name": "Ninja Village",
+   "z_from": 480,
+   "z_to": 700,
+   "power_req": 3000,
+   "scenery": "bamboo forest, rope bridges, hidden gate",
+   "gate": "Lane_ZoneGate at z_from"
+  },
+  {
+   "id": "samurai_castle",
+   "name": "Samurai Castle",
+   "z_from": 700,
+   "z_to": 920,
+   "power_req": 70000,
+   "scenery": "stone walls, castle keep, red bridges",
+   "gate": "Lane_ZoneGate at z_from"
+  },
+  {
+   "id": "hero_city",
+   "name": "Hero City",
+   "z_from": 920,
+   "z_to": 1140,
+   "power_req": 2000000,
+   "scenery": "neon skyline, billboards, rooftop pads",
+   "gate": "Lane_ZoneGate at z_from"
+  },
+  {
+   "id": "spirit_realm",
+   "name": "Spirit Realm",
+   "z_from": 1140,
+   "z_to": 1360,
+   "power_req": 36000000,
+   "scenery": "floating islands, torii gates, glowing river",
+   "gate": "Lane_ZoneGate at z_from"
+  }
+ ],
+ "prove": [
+  "every plot gate, throw pad, dojo pad, slot sign and hub point is walkable from that plot's spawn",
+  "no player can leave the world or fall under it",
+  "every pedestal is inside its plot fence and not interpenetrating",
+  "each landing strip is flat and free of props (the food and hero must be visible)",
+  "lanes are walkable end to end",
+  "nothing sits at exactly y = 0"
+ ],
+ "streaming": {
+  "enabled": true,
+  "persistent": [
+   "plot row",
+   "hub",
+   "lane ground and gates"
+  ],
+  "streamed": [
+   "zone props"
+  ]
+ },
+ "delivers": [
+  "Zone_sakura_schoolyard",
+  "Zone_festival_street",
+  "Zone_ninja_village",
+  "Zone_samurai_castle",
+  "Zone_hero_city",
+  "Zone_spirit_realm",
+  "Hub",
+  "PlotRow",
+  "Lane"
+ ]
 }

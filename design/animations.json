@@ -1,10 +1,112 @@
 {
  "rig": "R15",
+ "fps": 30,
+ "priority": {
+  "Idle clips": "Core (so default walk and run still show on the legs)",
+  "Throw": "Action",
+  "Train clips": "Action",
+  "Celebrate": "Action",
+  "Eat": "Action",
+  "RevealLand": "Action"
+ },
  "clips": [
   {
-   "name": "TODO",
-   "reference": "TODO"
+   "name": "Throw",
+   "reference": "baseball-style overhand throw: step, wind-up behind the head, release at full reach, follow-through; 0.9 s, release beat at 0.55 s",
+   "_intent": "the core verb; wind-up and release must read at a glance",
+   "used_by": "player"
+  },
+  {
+   "name": "TrainStrike",
+   "reference": "martial-arts straight punch combo on a makiwara post: left, right, 1.0 s loop, strike beats at 0.3 and 0.7 s",
+   "_intent": "reps on dummy, sandbag and iron dummy",
+   "used_by": "player"
+  },
+  {
+   "name": "TrainPush",
+   "reference": "palm-heel push against a heavy pillar, knees bent, 1.0 s loop, strike beat at 0.5 s",
+   "_intent": "reps on the stone pillar",
+   "used_by": "player"
+  },
+  {
+   "name": "TrainMeditate",
+   "reference": "seated lotus with a breathing pulse and a fist-clench on the beat, 1.0 s loop",
+   "_intent": "reps at waterfall, gravity dojo and shrines",
+   "used_by": "player"
+  },
+  {
+   "name": "Celebrate",
+   "reference": "fist pump jump, 1.2 s, lands back in idle",
+   "_intent": "player reaction to a Rare or better catch",
+   "used_by": "player"
+  },
+  {
+   "name": "IdleCool",
+   "reference": "arms crossed, weight on one leg, slow head turn, 3 s loop",
+   "_intent": "arms-crossed stance",
+   "used_by": "characters"
+  },
+  {
+   "name": "IdleCheer",
+   "reference": "idol wave with a small bounce, 2 s loop",
+   "_intent": "bouncy wave",
+   "used_by": "characters"
+  },
+  {
+   "name": "IdleBlade",
+   "reference": "one hand resting on the hilt at the hip, the other relaxed; swords are carried edge up at the waist, polearms head up; 3 s loop",
+   "_intent": "hand on sword, weapon carried the way that class is carried",
+   "used_by": "characters"
+  },
+  {
+   "name": "IdleNinja",
+   "reference": "low ready stance, one hand in a two-finger sign at the chest, 3 s loop",
+   "_intent": "low ready crouch with hand sign",
+   "used_by": "characters"
+  },
+  {
+   "name": "IdlePower",
+   "reference": "feet wide, fists clenched at the sides, shoulders rise and fall, 2 s loop",
+   "_intent": "clenched-fist power stance used by aura characters",
+   "used_by": "characters"
+  },
+  {
+   "name": "IdleShy",
+   "reference": "hands behind the back, toe tap and sway, 3 s loop",
+   "_intent": "hands behind back, small sway",
+   "used_by": "characters"
+  },
+  {
+   "name": "IdleFloat",
+   "reference": "legs relaxed off the ground, arms slightly out, slow vertical drift authored on the root, 4 s loop",
+   "_intent": "hover with slow drift",
+   "used_by": "characters"
+  },
+  {
+   "name": "Eat",
+   "reference": "crouch, pick up, two bites, thumbs up, 1.6 s",
+   "_intent": "the lured character eats the food: sells the fantasy of the title",
+   "used_by": "characters"
+  },
+  {
+   "name": "RevealLand",
+   "reference": "three-point hero landing rising into a pose, 1.0 s",
+   "_intent": "hero landing pose at the reveal",
+   "used_by": "characters"
   }
  ],
- "note": "roblox-animation. Match a reference by ANGLE and fraction-of-reach, not distance."
+ "roblox_owned": {
+  "walk_run_jump": "default R15 Animate ids read from a playtest character",
+  "dash_home": "default run",
+  "emotes_for_variety": [
+   3360689775,
+   5915779043,
+   3360692915,
+   3576686446,
+   3576968026,
+   3360686498,
+   3576823880
+  ]
+ },
+ "note": "roblox-animation. Match a reference by ANGLE and fraction-of-reach, not distance. Search how the pose is really done before authoring and judge the contact sheet against _intent. Clips must be uploaded by the place owner to play in a live server."
 }

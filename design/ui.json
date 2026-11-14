@@ -1,9 +1,279 @@
 {
+ "note": "roblox-ui spec seed: the screen and element inventory. Section 3 turns each screen into a resolved tree (mockup PNG + .model.json + Luau from one tree) and runs verify_ui.py.",
+ "theme": "MangaPop",
+ "resolution": [
+  1280,
+  720
+ ],
+ "min_touch_px": 56,
+ "fonts": {
+  "display": "LuckiestGuy",
+  "body": "FredokaOne",
+  "impact": "Bangers"
+ },
+ "palette": {
+  "panel": "1B1F4B",
+  "panelLine": "FFFFFF",
+  "ink": "0D0F2B",
+  "header_from": "FF5A5F",
+  "header_to": "FFC93C",
+  "confirm": "34D17A",
+  "buy": "FFC93C",
+  "info": "38BDF8",
+  "premium": "FF4FA3",
+  "danger": "F04438",
+  "rarity": {
+   "Common": "B8C0CC",
+   "Uncommon": "4ADE80",
+   "Rare": "38BDF8",
+   "Epic": "A855F7",
+   "Legendary": "FACC15",
+   "Mythic": "FB3B6B",
+   "Secret": "111111"
+  }
+ },
  "screens": [
   {
-   "name": "TODO",
-   "elements": []
+   "name": "HUD",
+   "elements": [
+    "YenCounter",
+    "PowerCounter",
+    "LuckChip",
+    "FoodChip",
+    "BtnShop",
+    "BtnSquad",
+    "BtnIndex",
+    "BtnStore",
+    "BtnRebirth",
+    "BtnGift",
+    "BtnSettings",
+    "IncomePerSecond"
+   ]
+  },
+  {
+   "name": "ThrowMeter",
+   "elements": [
+    "ChargeBar",
+    "ZoneMarks",
+    "PerfectWindow",
+    "ThrowButton",
+    "LuckyThrowToggle",
+    "ZonePreviewLabel"
+   ]
+  },
+  {
+   "name": "FoodShop",
+   "elements": [
+    "FoodCard x12 (viewport, name, flavour icon, power, luck, price/EQUIP/EQUIPPED)",
+    "FlavourFilter",
+    "CloseButton"
+   ]
+  },
+  {
+   "name": "Squad",
+   "elements": [
+    "PlotList",
+    "BenchList",
+    "HeroRow (thumb, name, tags, yen/s, PICK UP, PLACE, SELL)",
+    "EquipBest",
+    "FusePanel",
+    "SlotCount",
+    "AutoSellToggles"
+   ]
+  },
+  {
+   "name": "HeroIndex",
+   "elements": [
+    "ZoneTabs",
+    "HeroTile (silhouette or portrait, rarity colour, craves icon, chance at current luck)",
+    "ZoneProgress",
+    "TotalProgress",
+    "ZoneRewardClaim"
+   ]
+  },
+  {
+   "name": "Store",
+   "elements": [
+    "PassCards",
+    "ProductCards",
+    "SummonBanner",
+    "OddsButton",
+    "StarterPackBanner",
+    "GiftTarget",
+    "CloseButton"
+   ]
+  },
+  {
+   "name": "OfflineEarnings",
+   "elements": [
+    "AwayTime",
+    "EarnedAmount",
+    "ClaimButton",
+    "DoubleButton"
+   ]
+  },
+  {
+   "name": "Reveal",
+   "elements": [
+    "RarityBanner",
+    "HeroName",
+    "Tags (size, mutation)",
+    "YenPerSecond",
+    "OneInN",
+    "NewStamp",
+    "NewBestStamp",
+    "SkipHint"
+   ]
+  },
+  {
+   "name": "Rebirth",
+   "elements": [
+    "Requirements",
+    "Rewards",
+    "KeepsAndResets",
+    "ConfirmButton"
+   ]
+  },
+  {
+   "name": "DailyRewards",
+   "elements": [
+    "DayTile x7",
+    "ClaimButton",
+    "StreakLabel"
+   ]
+  },
+  {
+   "name": "PlaytimeGifts",
+   "elements": [
+    "GiftTile x6",
+    "Timer"
+   ]
+  },
+  {
+   "name": "Codes",
+   "elements": [
+    "CodeBox",
+    "RedeemButton",
+    "ResultLabel"
+   ]
+  },
+  {
+   "name": "Settings",
+   "elements": [
+    "MusicSlider",
+    "SfxSlider",
+    "FastReveal",
+    "LowDetail",
+    "AutoSellCommon",
+    "AutoSellUncommon",
+    "HideOtherPlots"
+   ]
+  },
+  {
+   "name": "TrainingBar",
+   "elements": [
+    "RankName",
+    "ProgressBar",
+    "PowerPerRep",
+    "StopButton",
+    "UpgradePrompt"
+   ]
+  },
+  {
+   "name": "Nameplate",
+   "elements": [
+    "Name",
+    "Tags",
+    "YenPerSecond",
+    "Stars"
+   ]
+  },
+  {
+   "name": "Leaderboards",
+   "elements": [
+    "BoardYen",
+    "BoardCaught",
+    "BoardRarest",
+    "Row x10"
+   ]
+  },
+  {
+   "name": "Toasts",
+   "elements": [
+    "ToastRow"
+   ]
+  },
+  {
+   "name": "Announcement",
+   "elements": [
+    "Banner",
+    "PlayerName",
+    "HeroName",
+    "OneInN"
+   ]
+  },
+  {
+   "name": "TutorialHint",
+   "elements": [
+    "ObjectiveLine",
+    "Arrow"
+   ]
+  },
+  {
+   "name": "ServerLuckBar",
+   "elements": [
+    "Multiplier",
+    "TimeLeft",
+    "BoostButton"
+   ]
+  },
+  {
+   "name": "SummonOdds",
+   "elements": [
+    "OddsRow x6 (portrait, percent, income)",
+    "Total",
+    "BuyButtons"
+   ]
+  },
+  {
+   "name": "SlotSign",
+   "elements": [
+    "FromTo",
+    "Price",
+    "BuyPrompt"
+   ]
   }
  ],
- "note": "roblox-ui spec. One tree emits the mockup, the .model.json and the Luau."
+ "icons": [
+  "FoodIcon_onigiri",
+  "FoodIcon_dango",
+  "FoodIcon_sushi",
+  "FoodIcon_spicy_bun",
+  "FoodIcon_gyoza",
+  "FoodIcon_ice_cream",
+  "FoodIcon_takoyaki",
+  "FoodIcon_ramen",
+  "FoodIcon_curry",
+  "FoodIcon_tempura",
+  "FoodIcon_festival_cake",
+  "FoodIcon_dragon_feast",
+  "IconYen",
+  "IconPower",
+  "IconLuck",
+  "IconSquad",
+  "IconIndex",
+  "IconShop",
+  "IconStore",
+  "IconRebirth",
+  "IconGift",
+  "IconSettings",
+  "IconCodes",
+  "IconLuckyThrow",
+  "IconFlavorSavory",
+  "IconFlavorSweet",
+  "IconFlavorSpicy",
+  "IconFlavorSeafood",
+  "IconStar",
+  "IconLock"
+ ]
 }

@@ -1,24 +1,34 @@
 {
  "title": "Throw Food for Anime",
  "slug": "ThrowFoodForAnime",
- "pitch": "TODO: one sentence. What the player does, and what is at stake.",
+ "pitch": "Train your power, hurl food down a lane of anime worlds, and whoever it lures joins your squad and earns for you: the further you throw, the rarer the hero.",
  "core_loop": [
-  "TODO: step 1",
-  "TODO: step 2",
-  "TODO: step 3"
+  "Train on your dojo gear to raise Power",
+  "Pick a food (power, luck and flavour) and charge a throw",
+  "The food lands in a zone and lures one character, rolled by rarity, mutation and size",
+  "The character joins your plot and earns Yen every second",
+  "Spend Yen on better food, dojo gear and plot slots",
+  "Rebirth for permanent income and luck, then go again"
  ],
- "win_condition": "TODO",
- "lose_condition": "TODO",
+ "win_condition": "No end state: the goals are filling the Hero Index, climbing the three leaderboards and stacking rebirths.",
+ "lose_condition": "None. Nothing is ever taken from the player; a bad throw only costs the seconds it took.",
  "players": {
   "min": 1,
-  "max": 4
+  "max": 6
  },
- "session_minutes": 8,
+ "session_minutes": 20,
  "out_of_scope": [
-  "progression",
-  "shop",
-  "datastore",
-  "anything that is not the one core loop"
+  "player-to-player trading",
+  "stealing from other plots or any PvP",
+  "more than one place or any teleport",
+  "a second soft currency (gems)",
+  "pets or followers that walk with the player",
+  "guilds or teams",
+  "voice or story cutscenes",
+  "character combat or abilities",
+  "rewarded video ads at launch",
+  "zones 7 to 10 (data-only updates after launch)",
+  "any recognisable copyrighted character, name, logo or music"
  ],
  "stages": {
   "map": {
@@ -35,11 +45,11 @@
   },
   "animation": {
    "spec": "design/animations.json",
-   "status": "skip"
+   "status": "todo"
   },
   "vfx": {
    "spec": "design/vfx.json",
-   "status": "skip"
+   "status": "todo"
   },
   "sfx": {
    "spec": "design/sfx.json",
@@ -48,13 +58,3169 @@
  },
  "systems": [
   {
-   "name": "TODOService",
+   "name": "DataService",
    "side": "server",
-   "owns": "TODO: the one piece of state this service is authoritative for"
+   "owns": "each player's saved profile (session-locked DataStore record, schema version, autosave, release on leave)"
+  },
+  {
+   "name": "EconomyService",
+   "side": "server",
+   "owns": "Yen balance, the per-second income tick, lifetime-earned total, offline earnings on join"
+  },
+  {
+   "name": "TrainingService",
+   "side": "server",
+   "owns": "Power, the active training session, dojo equipment tier"
+  },
+  {
+   "name": "ThrowService",
+   "side": "server",
+   "owns": "throw validation and cooldown, the zone a throw lands in, the rarity/mutation/size roll and its result"
+  },
+  {
+   "name": "SquadService",
+   "side": "server",
+   "owns": "every owned character instance: plot slot or bench, stars, sell, place, pick up, equip best, fuse"
+  },
+  {
+   "name": "PlotService",
+   "side": "server",
+   "owns": "which plot belongs to which player, slot count, and the compact plot state replicated to all clients"
+  },
+  {
+   "name": "FoodService",
+   "side": "server",
+   "owns": "foods owned and the equipped food"
+  },
+  {
+   "name": "LuckService",
+   "side": "server",
+   "owns": "the luck multiplier for a throw: food, depth, perfect, server luck timer, friends, VIP, index, rebirth, lucky throws"
+  },
+  {
+   "name": "IndexService",
+   "side": "server",
+   "owns": "which characters and variants a player has discovered, and zone-completion rewards"
+  },
+  {
+   "name": "RebirthService",
+   "side": "server",
+   "owns": "rebirth tier and the reset it performs"
+  },
+  {
+   "name": "RewardsService",
+   "side": "server",
+   "owns": "daily streak, playtime gifts, codes redeemed, group reward"
+  },
+  {
+   "name": "StoreService",
+   "side": "server",
+   "owns": "ProcessReceipt, pass ownership, product grants, gifting, the paid-random-item policy check"
+  },
+  {
+   "name": "LeaderboardService",
+   "side": "server",
+   "owns": "the three global ordered boards and their cached top lists"
+  },
+  {
+   "name": "EventService",
+   "side": "server",
+   "owns": "Festival Hour timer, server-wide announcements, admin event commands"
+  },
+  {
+   "name": "TutorialService",
+   "side": "server",
+   "owns": "the onboarding step each player has reached"
+  },
+  {
+   "name": "TelemetryService",
+   "side": "server",
+   "owns": "funnel, economy and custom analytics events"
+  },
+  {
+   "name": "StateController",
+   "side": "client",
+   "owns": "the client copy of the player's state and change signals; nothing else reads remotes for state"
+  },
+  {
+   "name": "ThrowController",
+   "side": "client",
+   "owns": "charge input, the throw request, and the flight, landing and reveal sequence for a result"
+  },
+  {
+   "name": "SquadRenderController",
+   "side": "client",
+   "owns": "every character rig in the world: build from templates, place, animate, aura, nameplate, distance culling"
+  },
+  {
+   "name": "TrainingController",
+   "side": "client",
+   "owns": "training input, rep animation and feedback"
+  },
+  {
+   "name": "CameraController",
+   "side": "client",
+   "owns": "the throw follow-camera and its return"
+  },
+  {
+   "name": "UIController",
+   "side": "client",
+   "owns": "which screen is open, open/close transitions, the modal stack; one sub-controller per screen"
+  },
+  {
+   "name": "VfxController",
+   "side": "client",
+   "owns": "playing effects from the VFX kit; every call isolated so a missing effect cannot break gameplay"
+  },
+  {
+   "name": "AudioController",
+   "side": "client",
+   "owns": "sound bank playback, music state, volume settings"
+  },
+  {
+   "name": "TutorialController",
+   "side": "client",
+   "owns": "the objective hint line and guide arrow"
   }
  ],
  "config": {
-  "TODOTunable": 0
+  "Server": {
+   "MaxPlayers": 6,
+   "PlotCount": 6,
+   "IdleKickMinutes": 20,
+   "IncomeTickSeconds": 1,
+   "AutosaveSeconds": 120
+  },
+  "Throw": {
+   "CycleSeconds": 5,
+   "ServerCooldownSeconds": 2.2,
+   "ChargeSeconds": 1.1,
+   "MinCharge": 0.2,
+   "PerfectWindow": 0.08,
+   "PerfectLuckBonus": 0.1,
+   "DepthLuckBonus": 0.25,
+   "FlightSecondsMin": 1.1,
+   "FlightSecondsMax": 2.2,
+   "LuckyThrowLuck": 25,
+   "CravingWeightMult": 3
+  },
+  "Training": {
+   "StartPower": 10,
+   "RepSeconds": 1.0,
+   "Equipment": [
+    {
+     "Name": "Wooden Dummy",
+     "Cost": 0,
+     "PowerPerRep": 1
+    },
+    {
+     "Name": "Sandbag",
+     "Cost": 600,
+     "PowerPerRep": 3
+    },
+    {
+     "Name": "Iron Dummy",
+     "Cost": 20000,
+     "PowerPerRep": 10
+    },
+    {
+     "Name": "Stone Pillar",
+     "Cost": 600000,
+     "PowerPerRep": 36
+    },
+    {
+     "Name": "Waterfall",
+     "Cost": 20000000,
+     "PowerPerRep": 140
+    },
+    {
+     "Name": "Gravity Dojo",
+     "Cost": 700000000,
+     "PowerPerRep": 560
+    },
+    {
+     "Name": "Dragon Shrine",
+     "Cost": 28000000000,
+     "PowerPerRep": 2400
+    },
+    {
+     "Name": "Star Forge",
+     "Cost": 300000000000,
+     "PowerPerRep": 11000
+    }
+   ],
+   "Ranks": [
+    {
+     "Name": "Rookie",
+     "Power": 0
+    },
+    {
+     "Name": "Trainee",
+     "Power": 200
+    },
+    {
+     "Name": "Fighter",
+     "Power": 3000
+    },
+    {
+     "Name": "Elite",
+     "Power": 70000
+    },
+    {
+     "Name": "Champion",
+     "Power": 2000000
+    },
+    {
+     "Name": "Hero",
+     "Power": 36000000
+    },
+    {
+     "Name": "Legend",
+     "Power": 120000000
+    },
+    {
+     "Name": "Mythic",
+     "Power": 600000000
+    },
+    {
+     "Name": "Godly",
+     "Power": 3000000000
+    }
+   ],
+   "StyleByTier": [
+    "TrainStrike",
+    "TrainStrike",
+    "TrainStrike",
+    "TrainPush",
+    "TrainMeditate",
+    "TrainMeditate",
+    "TrainMeditate",
+    "TrainMeditate"
+   ]
+  },
+  "Flavors": [
+   "Savory",
+   "Sweet",
+   "Spicy",
+   "Seafood"
+  ],
+  "Foods": [
+   {
+    "Id": "onigiri",
+    "Name": "Onigiri",
+    "Tier": 1,
+    "Flavor": "Savory",
+    "Cost": 0,
+    "PowerMult": 1.0,
+    "Luck": 1.0
+   },
+   {
+    "Id": "dango",
+    "Name": "Dango",
+    "Tier": 2,
+    "Flavor": "Sweet",
+    "Cost": 250,
+    "PowerMult": 1.15,
+    "Luck": 1.1
+   },
+   {
+    "Id": "sushi",
+    "Name": "Sushi",
+    "Tier": 3,
+    "Flavor": "Seafood",
+    "Cost": 3000,
+    "PowerMult": 1.3,
+    "Luck": 1.25
+   },
+   {
+    "Id": "spicy_bun",
+    "Name": "Spicy Bun",
+    "Tier": 4,
+    "Flavor": "Spicy",
+    "Cost": 40000,
+    "PowerMult": 1.5,
+    "Luck": 1.45
+   },
+   {
+    "Id": "gyoza",
+    "Name": "Gyoza",
+    "Tier": 5,
+    "Flavor": "Savory",
+    "Cost": 550000,
+    "PowerMult": 1.75,
+    "Luck": 1.7
+   },
+   {
+    "Id": "ice_cream",
+    "Name": "Ice Cream",
+    "Tier": 6,
+    "Flavor": "Sweet",
+    "Cost": 8000000,
+    "PowerMult": 2.0,
+    "Luck": 2.0
+   },
+   {
+    "Id": "takoyaki",
+    "Name": "Takoyaki",
+    "Tier": 7,
+    "Flavor": "Seafood",
+    "Cost": 120000000,
+    "PowerMult": 2.3,
+    "Luck": 2.35
+   },
+   {
+    "Id": "ramen",
+    "Name": "Ramen",
+    "Tier": 8,
+    "Flavor": "Savory",
+    "Cost": 1800000000,
+    "PowerMult": 2.65,
+    "Luck": 2.75
+   },
+   {
+    "Id": "curry",
+    "Name": "Curry",
+    "Tier": 9,
+    "Flavor": "Spicy",
+    "Cost": 28000000000,
+    "PowerMult": 3.0,
+    "Luck": 3.2
+   },
+   {
+    "Id": "tempura",
+    "Name": "Tempura",
+    "Tier": 10,
+    "Flavor": "Seafood",
+    "Cost": 450000000000,
+    "PowerMult": 3.5,
+    "Luck": 3.8
+   },
+   {
+    "Id": "festival_cake",
+    "Name": "Festival Cake",
+    "Tier": 11,
+    "Flavor": "Sweet",
+    "Cost": 7500000000000,
+    "PowerMult": 4.0,
+    "Luck": 4.5
+   },
+   {
+    "Id": "dragon_feast",
+    "Name": "Dragon Feast",
+    "Tier": 12,
+    "Flavor": "Spicy",
+    "Cost": 130000000000000,
+    "PowerMult": 5.0,
+    "Luck": 5.5
+   }
+  ],
+  "Zones": [
+   {
+    "Id": "sakura_schoolyard",
+    "Name": "Sakura Schoolyard",
+    "Index": 1,
+    "PowerReq": 0,
+    "BaseIncome": 1,
+    "LengthStuds": 220,
+    "Slots": {
+     "Common": 3,
+     "Uncommon": 2,
+     "Rare": 1,
+     "Epic": 1,
+     "Legendary": 1
+    },
+    "Scenery": "school gate, cherry trees, running track"
+   },
+   {
+    "Id": "festival_street",
+    "Name": "Festival Street",
+    "Index": 2,
+    "PowerReq": 200,
+    "BaseIncome": 8,
+    "LengthStuds": 220,
+    "Slots": {
+     "Common": 3,
+     "Uncommon": 2,
+     "Rare": 1,
+     "Epic": 1,
+     "Legendary": 1
+    },
+    "Scenery": "night-market stalls, lanterns, drum tower"
+   },
+   {
+    "Id": "ninja_village",
+    "Name": "Ninja Village",
+    "Index": 3,
+    "PowerReq": 3000,
+    "BaseIncome": 60,
+    "LengthStuds": 220,
+    "Slots": {
+     "Common": 3,
+     "Uncommon": 2,
+     "Rare": 1,
+     "Epic": 1,
+     "Legendary": 1
+    },
+    "Scenery": "bamboo forest, rope bridges, hidden gate"
+   },
+   {
+    "Id": "samurai_castle",
+    "Name": "Samurai Castle",
+    "Index": 4,
+    "PowerReq": 70000,
+    "BaseIncome": 480,
+    "LengthStuds": 220,
+    "Slots": {
+     "Common": 2,
+     "Uncommon": 2,
+     "Rare": 1,
+     "Epic": 1,
+     "Legendary": 1,
+     "Mythic": 1
+    },
+    "Scenery": "stone walls, castle keep, red bridges"
+   },
+   {
+    "Id": "hero_city",
+    "Name": "Hero City",
+    "Index": 5,
+    "PowerReq": 2000000,
+    "BaseIncome": 4000,
+    "LengthStuds": 220,
+    "Slots": {
+     "Common": 2,
+     "Uncommon": 2,
+     "Rare": 1,
+     "Epic": 1,
+     "Legendary": 1,
+     "Mythic": 1
+    },
+    "Scenery": "neon skyline, billboards, rooftop pads"
+   },
+   {
+    "Id": "spirit_realm",
+    "Name": "Spirit Realm",
+    "Index": 6,
+    "PowerReq": 36000000,
+    "BaseIncome": 34000,
+    "LengthStuds": 220,
+    "Slots": {
+     "Common": 2,
+     "Uncommon": 2,
+     "Rare": 1,
+     "Epic": 1,
+     "Legendary": 1,
+     "Mythic": 1
+    },
+    "Scenery": "floating islands, torii gates, glowing river"
+   }
+  ],
+  "Rarities": {
+   "Common": {
+    "Weight": 100,
+    "LuckScale": 0,
+    "IncomeMult": 1,
+    "Order": 1,
+    "Color": "B8C0CC",
+    "RevealSeconds": 0.8,
+    "Announce": false
+   },
+   "Uncommon": {
+    "Weight": 35,
+    "LuckScale": 0.5,
+    "IncomeMult": 2.5,
+    "Order": 2,
+    "Color": "4ADE80",
+    "RevealSeconds": 1.0,
+    "Announce": false
+   },
+   "Rare": {
+    "Weight": 10,
+    "LuckScale": 1,
+    "IncomeMult": 7,
+    "Order": 3,
+    "Color": "38BDF8",
+    "RevealSeconds": 1.4,
+    "Announce": false
+   },
+   "Epic": {
+    "Weight": 2.5,
+    "LuckScale": 1,
+    "IncomeMult": 25,
+    "Order": 4,
+    "Color": "A855F7",
+    "RevealSeconds": 2.0,
+    "Announce": false
+   },
+   "Legendary": {
+    "Weight": 0.5,
+    "LuckScale": 1,
+    "IncomeMult": 120,
+    "Order": 5,
+    "Color": "FACC15",
+    "RevealSeconds": 2.8,
+    "Announce": true
+   },
+   "Mythic": {
+    "Weight": 0.05,
+    "LuckScale": 1,
+    "IncomeMult": 900,
+    "Order": 6,
+    "Color": "FB3B6B",
+    "RevealSeconds": 3.6,
+    "Announce": true
+   },
+   "Secret": {
+    "Weight": 0.005,
+    "LuckScale": 1,
+    "IncomeMult": 10000,
+    "Order": 7,
+    "Color": "111111",
+    "RevealSeconds": 4.5,
+    "Announce": true
+   }
+  },
+  "Mutations": [
+   {
+    "Name": "Galaxy",
+    "Chance": 0.001,
+    "IncomeMult": 20,
+    "LuckScale": 0.25,
+    "Order": 1
+   },
+   {
+    "Name": "Lightning",
+    "Chance": 0.006,
+    "IncomeMult": 8,
+    "LuckScale": 0.25,
+    "Order": 2
+   },
+   {
+    "Name": "Flame",
+    "Chance": 0.02,
+    "IncomeMult": 4,
+    "LuckScale": 0.25,
+    "Order": 3
+   },
+   {
+    "Name": "Golden",
+    "Chance": 0.06,
+    "IncomeMult": 2,
+    "LuckScale": 0.25,
+    "Order": 4
+   }
+  ],
+  "Sizes": [
+   {
+    "Name": "Titan",
+    "Chance": 0.003,
+    "IncomeMult": 6,
+    "Scale": 2.2
+   },
+   {
+    "Name": "Huge",
+    "Chance": 0.02,
+    "IncomeMult": 3,
+    "Scale": 1.6
+   },
+   {
+    "Name": "Big",
+    "Chance": 0.08,
+    "IncomeMult": 1.5,
+    "Scale": 1.25
+   }
+  ],
+  "Plot": {
+   "StartSlots": 8,
+   "MaxSlots": 24,
+   "SlotBaseCost": 1500,
+   "SlotCostGrowth": 3.6,
+   "SellSeconds": 30,
+   "BenchSlots": 30,
+   "StarIncomeMult": 1.5,
+   "MaxStars": 3,
+   "FuseCount": 3
+  },
+  "Luck": {
+   "ServerSteps": [
+    1,
+    2,
+    4,
+    8
+   ],
+   "ServerStepMinutes": 15,
+   "FriendBonusEach": 0.1,
+   "FriendBonusMax": 0.3,
+   "VipBonus": 0.15,
+   "IndexZoneBonus": 0.02,
+   "DailyStreakBonusMax": 0.1
+  },
+  "Offline": {
+   "CapHours": 8,
+   "Rate": 0.5,
+   "MinSecondsAway": 120
+  },
+  "Rebirth": {
+   "Tiers": [
+    {
+     "Tier": 1,
+     "PowerReq": 120000000,
+     "YenCost": 500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 2,
+     "PowerReq": 600000000,
+     "YenCost": 3500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 3,
+     "PowerReq": 3000000000,
+     "YenCost": 24500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 4,
+     "PowerReq": 15000000000,
+     "YenCost": 171500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 5,
+     "PowerReq": 75000000000,
+     "YenCost": 1200500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 6,
+     "PowerReq": 375000000000,
+     "YenCost": 8403500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 7,
+     "PowerReq": 1875000000000,
+     "YenCost": 58824500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 8,
+     "PowerReq": 9375000000000,
+     "YenCost": 411771500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 9,
+     "PowerReq": 46875000000000,
+     "YenCost": 2882400500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    },
+    {
+     "Tier": 10,
+     "PowerReq": 234375000000000,
+     "YenCost": 20176803500000000000,
+     "IncomeBonus": 0.5,
+     "LuckBonus": 0.1
+    }
+   ],
+   "Keeps": [
+    "Index",
+    "Passes",
+    "PremiumCharacters",
+    "LuckyThrows",
+    "Settings",
+    "Stats"
+   ],
+   "Resets": [
+    "Yen",
+    "Power",
+    "Foods",
+    "Equipment",
+    "PlotSlots",
+    "ThrownCharacters"
+   ]
+  },
+  "Rewards": {
+   "DailyYenMinutes": [
+    5,
+    10,
+    15,
+    20,
+    30,
+    45,
+    60
+   ],
+   "DailyLuckyThrowsOnDay": {
+    "3": 1,
+    "5": 2,
+    "7": 5
+   },
+   "PlaytimeMinutes": [
+    3,
+    8,
+    15,
+    25,
+    40,
+    60
+   ],
+   "GroupRewardLuckyThrows": 3,
+   "IndexZoneYenMinutes": 30,
+   "PlaytimeFirstGiftRarity": "Rare",
+   "StarterPackLuckyThrows": 5,
+   "StarterPackDoubleYenMinutes": 30
+  },
+  "Events": {
+   "FestivalHourEveryMinutes": 30,
+   "FestivalHourMinutes": 3,
+   "FestivalMutationMult": 2
+  },
+  "Characters": [
+   {
+    "Id": "sleepy_student",
+    "Name": "Sleepy Student",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Common",
+    "Craves": "Savory",
+    "Idle": "IdleShy",
+    "Look": "messy bed hair, loose school blazer, half-closed eyes"
+   },
+   {
+    "Id": "class_rep",
+    "Name": "Class Rep",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Common",
+    "Craves": "Sweet",
+    "Idle": "IdleCool",
+    "Look": "neat bob, glasses, armband, tidy uniform"
+   },
+   {
+    "Id": "track_rookie",
+    "Name": "Track Rookie",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Common",
+    "Craves": "Savory",
+    "Idle": "IdleCheer",
+    "Look": "sweatband, tracksuit jacket, sneakers"
+   },
+   {
+    "Id": "lunch_rush_kid",
+    "Name": "Lunch Rush Kid",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Uncommon",
+    "Craves": "Savory",
+    "Idle": "IdleCheer",
+    "Look": "bread in mouth, open blazer, satchel"
+   },
+   {
+    "Id": "kendo_captain",
+    "Name": "Kendo Captain",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Uncommon",
+    "Craves": "Spicy",
+    "Idle": "IdleBlade",
+    "Look": "ponytail, hakama, bamboo sword on the back"
+   },
+   {
+    "Id": "rooftop_rebel",
+    "Name": "Rooftop Rebel",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Rare",
+    "Craves": "Spicy",
+    "Idle": "IdleCool",
+    "Look": "slicked pompadour, long coat on shoulders, bandage on nose"
+   },
+   {
+    "Id": "idol_transfer",
+    "Name": "Idol Transfer",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Epic",
+    "Craves": "Sweet",
+    "Idle": "IdleCheer",
+    "Look": "pink twin-tails, frilled stage dress, star hairpin"
+   },
+   {
+    "Id": "council_president",
+    "Name": "Council President",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Legendary",
+    "Craves": "Seafood",
+    "Idle": "IdlePower",
+    "Look": "white long coat uniform, silver hair, gold braid, cape"
+   },
+   {
+    "Id": "goldfish_scooper",
+    "Name": "Goldfish Scooper",
+    "Zone": "festival_street",
+    "Rarity": "Common",
+    "Craves": "Seafood",
+    "Idle": "IdleCheer",
+    "Look": "short yukata, paper scoop, goldfish bag"
+   },
+   {
+    "Id": "lantern_kid",
+    "Name": "Lantern Kid",
+    "Zone": "festival_street",
+    "Rarity": "Common",
+    "Craves": "Sweet",
+    "Idle": "IdleShy",
+    "Look": "happi coat, paper lantern, bowl cut"
+   },
+   {
+    "Id": "mask_vendor",
+    "Name": "Mask Vendor",
+    "Zone": "festival_street",
+    "Rarity": "Common",
+    "Craves": "Savory",
+    "Idle": "IdleCool",
+    "Look": "festival masks on the belt and head, apron"
+   },
+   {
+    "Id": "taiko_drummer",
+    "Name": "Taiko Drummer",
+    "Zone": "festival_street",
+    "Rarity": "Uncommon",
+    "Craves": "Spicy",
+    "Idle": "IdlePower",
+    "Look": "headband, sleeveless happi, drum sticks on the back"
+   },
+   {
+    "Id": "yukata_dancer",
+    "Name": "Yukata Dancer",
+    "Zone": "festival_street",
+    "Rarity": "Uncommon",
+    "Craves": "Sweet",
+    "Idle": "IdleCheer",
+    "Look": "flower yukata, hair bun with pins, fan"
+   },
+   {
+    "Id": "ramen_master",
+    "Name": "Ramen Master",
+    "Zone": "festival_street",
+    "Rarity": "Rare",
+    "Craves": "Savory",
+    "Idle": "IdleCool",
+    "Look": "chef headband, towel on the neck, noodle ladle"
+   },
+   {
+    "Id": "firework_artisan",
+    "Name": "Firework Artisan",
+    "Zone": "festival_street",
+    "Rarity": "Epic",
+    "Craves": "Spicy",
+    "Idle": "IdlePower",
+    "Look": "goggles, scorched coat, rocket tubes on the back"
+   },
+   {
+    "Id": "fox_mask_wanderer",
+    "Name": "Fox Mask Wanderer",
+    "Zone": "festival_street",
+    "Rarity": "Legendary",
+    "Craves": "Seafood",
+    "Idle": "IdleFloat",
+    "Look": "white fox mask, long dark haori, bells, lone blue flame"
+   },
+   {
+    "Id": "rookie_ninja",
+    "Name": "Rookie Ninja",
+    "Zone": "ninja_village",
+    "Rarity": "Common",
+    "Craves": "Savory",
+    "Idle": "IdleNinja",
+    "Look": "grey scarf, simple wraps, practice kunai"
+   },
+   {
+    "Id": "scroll_runner",
+    "Name": "Scroll Runner",
+    "Zone": "ninja_village",
+    "Rarity": "Common",
+    "Craves": "Sweet",
+    "Idle": "IdleCheer",
+    "Look": "big scroll on the back, messenger cap"
+   },
+   {
+    "Id": "smoke_trickster",
+    "Name": "Smoke Trickster",
+    "Zone": "ninja_village",
+    "Rarity": "Common",
+    "Craves": "Spicy",
+    "Idle": "IdleNinja",
+    "Look": "purple hood, grin mask, smoke pouch"
+   },
+   {
+    "Id": "kunai_twin",
+    "Name": "Kunai Twin",
+    "Zone": "ninja_village",
+    "Rarity": "Uncommon",
+    "Craves": "Seafood",
+    "Idle": "IdleNinja",
+    "Look": "twin buns, crossed belts of kunai"
+   },
+   {
+    "Id": "toad_tamer",
+    "Name": "Toad Tamer",
+    "Zone": "ninja_village",
+    "Rarity": "Uncommon",
+    "Craves": "Sweet",
+    "Idle": "IdleCheer",
+    "Look": "straw hat, small toad on the shoulder, travel cloak"
+   },
+   {
+    "Id": "shadow_scout",
+    "Name": "Shadow Scout",
+    "Zone": "ninja_village",
+    "Rarity": "Rare",
+    "Craves": "Spicy",
+    "Idle": "IdleNinja",
+    "Look": "black fitted gear, face wrap, short blade on the back"
+   },
+   {
+    "Id": "moonlit_kunoichi",
+    "Name": "Moonlit Kunoichi",
+    "Zone": "ninja_village",
+    "Rarity": "Epic",
+    "Craves": "Sweet",
+    "Idle": "IdleBlade",
+    "Look": "long silver ponytail, indigo outfit, crescent hairpin"
+   },
+   {
+    "Id": "village_grandmaster",
+    "Name": "Village Grandmaster",
+    "Zone": "ninja_village",
+    "Rarity": "Legendary",
+    "Craves": "Savory",
+    "Idle": "IdlePower",
+    "Look": "wide hat, long white robe, tall staff, calm aura"
+   },
+   {
+    "Id": "gate_guard",
+    "Name": "Gate Guard",
+    "Zone": "samurai_castle",
+    "Rarity": "Common",
+    "Craves": "Savory",
+    "Idle": "IdleCool",
+    "Look": "ashigaru helmet, spear on the back, plain armour"
+   },
+   {
+    "Id": "tea_server",
+    "Name": "Tea Server",
+    "Zone": "samurai_castle",
+    "Rarity": "Common",
+    "Craves": "Sweet",
+    "Idle": "IdleShy",
+    "Look": "kimono, tray, tied sleeves"
+   },
+   {
+    "Id": "wandering_ronin",
+    "Name": "Wandering Ronin",
+    "Zone": "samurai_castle",
+    "Rarity": "Uncommon",
+    "Craves": "Seafood",
+    "Idle": "IdleBlade",
+    "Look": "straw hat, worn haori, one sword at the hip"
+   },
+   {
+    "Id": "shrine_maiden",
+    "Name": "Shrine Maiden",
+    "Zone": "samurai_castle",
+    "Rarity": "Uncommon",
+    "Craves": "Sweet",
+    "Idle": "IdleShy",
+    "Look": "red and white robes, long black hair, paper wand"
+   },
+   {
+    "Id": "twin_blade_duelist",
+    "Name": "Twin-Blade Duelist",
+    "Zone": "samurai_castle",
+    "Rarity": "Rare",
+    "Craves": "Spicy",
+    "Idle": "IdleBlade",
+    "Look": "tied topknot, two swords crossed on the back"
+   },
+   {
+    "Id": "crimson_oni_general",
+    "Name": "Crimson Oni General",
+    "Zone": "samurai_castle",
+    "Rarity": "Epic",
+    "Craves": "Spicy",
+    "Idle": "IdlePower",
+    "Look": "red armour, horned mask, great club"
+   },
+   {
+    "Id": "ember_blade_master",
+    "Name": "Ember Blade Master",
+    "Zone": "samurai_castle",
+    "Rarity": "Legendary",
+    "Craves": "Savory",
+    "Idle": "IdleBlade",
+    "Look": "flame-pattern coat, glowing sword, scarred eye"
+   },
+   {
+    "Id": "shogun_of_storms",
+    "Name": "Shogun of Storms",
+    "Zone": "samurai_castle",
+    "Rarity": "Mythic",
+    "Craves": "Seafood",
+    "Idle": "IdlePower",
+    "Look": "dark lacquer armour, crescent helm, storm cloak"
+   },
+   {
+    "Id": "sidekick_trainee",
+    "Name": "Sidekick Trainee",
+    "Zone": "hero_city",
+    "Rarity": "Common",
+    "Craves": "Sweet",
+    "Idle": "IdleCheer",
+    "Look": "domino mask, gym uniform, towel cape"
+   },
+   {
+    "Id": "news_runner",
+    "Name": "News Runner",
+    "Zone": "hero_city",
+    "Rarity": "Common",
+    "Craves": "Savory",
+    "Idle": "IdleCheer",
+    "Look": "press cap, camera, messenger bag"
+   },
+   {
+    "Id": "dash_kid",
+    "Name": "Dash Kid",
+    "Zone": "hero_city",
+    "Rarity": "Uncommon",
+    "Craves": "Spicy",
+    "Idle": "IdleCheer",
+    "Look": "visor, racing suit, leg boosters"
+   },
+   {
+    "Id": "gadget_girl",
+    "Name": "Gadget Girl",
+    "Zone": "hero_city",
+    "Rarity": "Uncommon",
+    "Craves": "Sweet",
+    "Idle": "IdleCool",
+    "Look": "goggles on the head, tool belt, mech glove"
+   },
+   {
+    "Id": "frost_guardian",
+    "Name": "Frost Guardian",
+    "Zone": "hero_city",
+    "Rarity": "Rare",
+    "Craves": "Seafood",
+    "Idle": "IdleCool",
+    "Look": "ice-blue hair, high collar coat, frost gauntlet"
+   },
+   {
+    "Id": "captain_comet",
+    "Name": "Captain Comet",
+    "Zone": "hero_city",
+    "Rarity": "Epic",
+    "Craves": "Savory",
+    "Idle": "IdlePower",
+    "Look": "star emblem suit, long scarf, boots"
+   },
+   {
+    "Id": "thunder_ace",
+    "Name": "Thunder Ace",
+    "Zone": "hero_city",
+    "Rarity": "Legendary",
+    "Craves": "Spicy",
+    "Idle": "IdlePower",
+    "Look": "spiky yellow-black hair, crackling jacket, bolt earrings"
+   },
+   {
+    "Id": "the_number_one",
+    "Name": "The Number One",
+    "Zone": "hero_city",
+    "Rarity": "Mythic",
+    "Craves": "Savory",
+    "Idle": "IdlePower",
+    "Look": "white and gold hero suit, huge cape, radiant halo"
+   },
+   {
+    "Id": "lantern_spirit",
+    "Name": "Lantern Spirit",
+    "Zone": "spirit_realm",
+    "Rarity": "Common",
+    "Craves": "Sweet",
+    "Idle": "IdleFloat",
+    "Look": "pale robes, paper lantern head-piece, soft glow"
+   },
+   {
+    "Id": "paper_charm_kid",
+    "Name": "Paper Charm Kid",
+    "Zone": "spirit_realm",
+    "Rarity": "Common",
+    "Craves": "Savory",
+    "Idle": "IdleShy",
+    "Look": "charm tag on the forehead, oversized sleeves"
+   },
+   {
+    "Id": "river_guardian",
+    "Name": "River Guardian",
+    "Zone": "spirit_realm",
+    "Rarity": "Uncommon",
+    "Craves": "Seafood",
+    "Idle": "IdleCool",
+    "Look": "teal hair, scale shoulder guard, water gourd"
+   },
+   {
+    "Id": "cloud_monk",
+    "Name": "Cloud Monk",
+    "Zone": "spirit_realm",
+    "Rarity": "Uncommon",
+    "Craves": "Savory",
+    "Idle": "IdleFloat",
+    "Look": "shaved head, prayer beads, cloud sash"
+   },
+   {
+    "Id": "nine_tail_trickster",
+    "Name": "Nine-Tail Trickster",
+    "Zone": "spirit_realm",
+    "Rarity": "Rare",
+    "Craves": "Sweet",
+    "Idle": "IdleCheer",
+    "Look": "fox ears, many tails, mischievous grin"
+   },
+   {
+    "Id": "soul_ferryman",
+    "Name": "Soul Ferryman",
+    "Zone": "spirit_realm",
+    "Rarity": "Epic",
+    "Craves": "Seafood",
+    "Idle": "IdleBlade",
+    "Look": "black robes, hooded, long scythe, blue wisps"
+   },
+   {
+    "Id": "moon_princess",
+    "Name": "Moon Princess",
+    "Zone": "spirit_realm",
+    "Rarity": "Legendary",
+    "Craves": "Sweet",
+    "Idle": "IdleFloat",
+    "Look": "floor-length silver hair, layered robes, moon crown"
+   },
+   {
+    "Id": "dragon_emperor",
+    "Name": "Dragon Emperor",
+    "Zone": "spirit_realm",
+    "Rarity": "Mythic",
+    "Craves": "Spicy",
+    "Idle": "IdlePower",
+    "Look": "horned crown, jade and gold armour, dragon cloak"
+   }
+  ],
+  "PremiumCharacters": [
+   {
+    "Id": "starlight_idol",
+    "Name": "Starlight Idol",
+    "Source": "Summon",
+    "Idle": "IdleCheer",
+    "Look": "galaxy-print stage outfit, star wand",
+    "BestIncomeMult": 1.1,
+    "OddsPercent": 40
+   },
+   {
+    "Id": "clockwork_butler",
+    "Name": "Clockwork Butler",
+    "Source": "Summon",
+    "Idle": "IdleCool",
+    "Look": "tailcoat, brass monocle, gear back-piece",
+    "BestIncomeMult": 1.75,
+    "OddsPercent": 27
+   },
+   {
+    "Id": "phantom_thief",
+    "Name": "Phantom Thief",
+    "Source": "Summon",
+    "Idle": "IdleCool",
+    "Look": "top hat, white mask, cape, rose",
+    "BestIncomeMult": 2.5,
+    "OddsPercent": 18
+   },
+   {
+    "Id": "demon_lord_heir",
+    "Name": "Demon Lord Heir",
+    "Source": "Summon",
+    "Idle": "IdlePower",
+    "Look": "curled horns, dark royal coat, bat wings",
+    "BestIncomeMult": 3.5,
+    "OddsPercent": 10
+   },
+   {
+    "Id": "angel_commander",
+    "Name": "Angel Commander",
+    "Source": "Summon",
+    "Idle": "IdleFloat",
+    "Look": "white wings, halo, gold spear",
+    "BestIncomeMult": 5.5,
+    "OddsPercent": 4
+   },
+   {
+    "Id": "void_empress",
+    "Name": "Void Empress",
+    "Source": "Summon",
+    "Idle": "IdleFloat",
+    "Look": "black star gown, floating crown, void wings",
+    "BestIncomeMult": 12.0,
+    "OddsPercent": 1
+   },
+   {
+    "Id": "lucky_cat_mascot",
+    "Name": "Lucky Cat Mascot",
+    "Source": "StarterPack",
+    "Idle": "IdleCheer",
+    "Look": "lucky-cat hood, bell collar, coin",
+    "BestIncomeMult": 1.5,
+    "OddsPercent": 0
+   },
+   {
+    "Id": "sakura_shogun",
+    "Name": "Sakura Shogun",
+    "Source": "Limited",
+    "Idle": "IdleBlade",
+    "Look": "pink petal armour, blossom katana, petal cape",
+    "BestIncomeMult": 3.0,
+    "OddsPercent": 0
+   }
+  ],
+  "Monetization": {
+   "Passes": [
+    {
+     "Key": "DoubleYen",
+     "Robux": 99,
+     "Kind": "pass",
+     "ProductId": 0
+    },
+    {
+     "Key": "DoubleTraining",
+     "Robux": 149,
+     "Kind": "pass",
+     "ProductId": 0
+    },
+    {
+     "Key": "Vip",
+     "Robux": 249,
+     "Kind": "pass",
+     "ProductId": 0
+    },
+    {
+     "Key": "AutoThrow",
+     "Robux": 199,
+     "Kind": "pass",
+     "ProductId": 0
+    },
+    {
+     "Key": "LuckyAura",
+     "Robux": 299,
+     "Kind": "pass",
+     "ProductId": 0,
+     "Luck": 1.5
+    },
+    {
+     "Key": "BigBench",
+     "Robux": 79,
+     "Kind": "pass",
+     "ProductId": 0,
+     "BenchSlots": 60
+    }
+   ],
+   "Products": [
+    {
+     "Key": "LuckyThrow1",
+     "Robux": 9,
+     "Kind": "lucky",
+     "ProductId": 0,
+     "Amount": 1
+    },
+    {
+     "Key": "LuckyThrow5",
+     "Robux": 39,
+     "Kind": "lucky",
+     "ProductId": 0,
+     "Amount": 5
+    },
+    {
+     "Key": "LuckyThrow25",
+     "Robux": 149,
+     "Kind": "lucky",
+     "ProductId": 0,
+     "Amount": 25
+    },
+    {
+     "Key": "ServerLuck",
+     "Robux": 29,
+     "Kind": "serverluck",
+     "ProductId": 0
+    },
+    {
+     "Key": "YenPack15m",
+     "Robux": 29,
+     "Kind": "yen",
+     "ProductId": 0,
+     "Minutes": 15
+    },
+    {
+     "Key": "YenPack2h",
+     "Robux": 99,
+     "Kind": "yen",
+     "ProductId": 0,
+     "Minutes": 120
+    },
+    {
+     "Key": "YenPack12h",
+     "Robux": 299,
+     "Kind": "yen",
+     "ProductId": 0,
+     "Minutes": 720
+    },
+    {
+     "Key": "Train5m",
+     "Robux": 39,
+     "Kind": "train",
+     "ProductId": 0,
+     "Minutes": 5
+    },
+    {
+     "Key": "Train30m",
+     "Robux": 149,
+     "Kind": "train",
+     "ProductId": 0,
+     "Minutes": 30
+    },
+    {
+     "Key": "OfflineDouble",
+     "Robux": 39,
+     "Kind": "offline2x",
+     "ProductId": 0
+    },
+    {
+     "Key": "SummonScroll1",
+     "Robux": 79,
+     "Kind": "summon",
+     "ProductId": 0,
+     "Amount": 1
+    },
+    {
+     "Key": "SummonScroll3",
+     "Robux": 199,
+     "Kind": "summon",
+     "ProductId": 0,
+     "Amount": 3
+    },
+    {
+     "Key": "SummonScroll10",
+     "Robux": 599,
+     "Kind": "summon",
+     "ProductId": 0,
+     "Amount": 10
+    },
+    {
+     "Key": "StarterPack",
+     "Robux": 49,
+     "Kind": "starter",
+     "ProductId": 0
+    },
+    {
+     "Key": "SakuraShogun",
+     "Robux": 399,
+     "Kind": "character",
+     "ProductId": 0
+    },
+    {
+     "Key": "GiftDoubleYen",
+     "Robux": 99,
+     "Kind": "gift",
+     "ProductId": 0
+    },
+    {
+     "Key": "GiftDoubleTraining",
+     "Robux": 149,
+     "Kind": "gift",
+     "ProductId": 0
+    }
+   ]
+  },
+  "Pacing": {
+   "ZONE 2": [
+    1.5,
+    4
+   ],
+   "ZONE 3": [
+    10,
+    20
+   ],
+   "ZONE 4": [
+    40,
+    75
+   ],
+   "ZONE 5": [
+    130,
+    220
+   ],
+   "ZONE 6": [
+    380,
+    560
+   ],
+   "REBIRTH 1": [
+    700,
+    1000
+   ]
+  },
+  "Sim": {
+   "TrainShare": 0.25,
+   "SaveCapShare": 0.25
+  }
+ },
+ "asset_plan": [
+  {
+   "entity": "Sleepy Student",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_sleepy_student",
+     "why": "the collectible itself: a baked R15 rig (messy bed hair, loose school blazer, half-closed eyes)"
+    }
+   ]
+  },
+  {
+   "entity": "Class Rep",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_class_rep",
+     "why": "the collectible itself: a baked R15 rig (neat bob, glasses, armband, tidy uniform)"
+    }
+   ]
+  },
+  {
+   "entity": "Track Rookie",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_track_rookie",
+     "why": "the collectible itself: a baked R15 rig (sweatband, tracksuit jacket, sneakers)"
+    }
+   ]
+  },
+  {
+   "entity": "Lunch Rush Kid",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_lunch_rush_kid",
+     "why": "the collectible itself: a baked R15 rig (bread in mouth, open blazer, satchel)"
+    }
+   ]
+  },
+  {
+   "entity": "Kendo Captain",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_kendo_captain",
+     "why": "the collectible itself: a baked R15 rig (ponytail, hakama, bamboo sword on the back)"
+    }
+   ]
+  },
+  {
+   "entity": "Rooftop Rebel",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_rooftop_rebel",
+     "why": "the collectible itself: a baked R15 rig (slicked pompadour, long coat on shoulders, bandage on nose)"
+    }
+   ]
+  },
+  {
+   "entity": "Idol Transfer",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_idol_transfer",
+     "why": "the collectible itself: a baked R15 rig (pink twin-tails, frilled stage dress, star hairpin)"
+    }
+   ]
+  },
+  {
+   "entity": "Council President",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_council_president",
+     "why": "the collectible itself: a baked R15 rig (white long coat uniform, silver hair, gold braid, cape)"
+    }
+   ]
+  },
+  {
+   "entity": "Goldfish Scooper",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_goldfish_scooper",
+     "why": "the collectible itself: a baked R15 rig (short yukata, paper scoop, goldfish bag)"
+    }
+   ]
+  },
+  {
+   "entity": "Lantern Kid",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_lantern_kid",
+     "why": "the collectible itself: a baked R15 rig (happi coat, paper lantern, bowl cut)"
+    }
+   ]
+  },
+  {
+   "entity": "Mask Vendor",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_mask_vendor",
+     "why": "the collectible itself: a baked R15 rig (festival masks on the belt and head, apron)"
+    }
+   ]
+  },
+  {
+   "entity": "Taiko Drummer",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_taiko_drummer",
+     "why": "the collectible itself: a baked R15 rig (headband, sleeveless happi, drum sticks on the back)"
+    }
+   ]
+  },
+  {
+   "entity": "Yukata Dancer",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_yukata_dancer",
+     "why": "the collectible itself: a baked R15 rig (flower yukata, hair bun with pins, fan)"
+    }
+   ]
+  },
+  {
+   "entity": "Ramen Master",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_ramen_master",
+     "why": "the collectible itself: a baked R15 rig (chef headband, towel on the neck, noodle ladle)"
+    }
+   ]
+  },
+  {
+   "entity": "Firework Artisan",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_firework_artisan",
+     "why": "the collectible itself: a baked R15 rig (goggles, scorched coat, rocket tubes on the back)"
+    }
+   ]
+  },
+  {
+   "entity": "Fox Mask Wanderer",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_fox_mask_wanderer",
+     "why": "the collectible itself: a baked R15 rig (white fox mask, long dark haori, bells, lone blue flame)"
+    }
+   ]
+  },
+  {
+   "entity": "Rookie Ninja",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_rookie_ninja",
+     "why": "the collectible itself: a baked R15 rig (grey scarf, simple wraps, practice kunai)"
+    }
+   ]
+  },
+  {
+   "entity": "Scroll Runner",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_scroll_runner",
+     "why": "the collectible itself: a baked R15 rig (big scroll on the back, messenger cap)"
+    }
+   ]
+  },
+  {
+   "entity": "Smoke Trickster",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_smoke_trickster",
+     "why": "the collectible itself: a baked R15 rig (purple hood, grin mask, smoke pouch)"
+    }
+   ]
+  },
+  {
+   "entity": "Kunai Twin",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_kunai_twin",
+     "why": "the collectible itself: a baked R15 rig (twin buns, crossed belts of kunai)"
+    }
+   ]
+  },
+  {
+   "entity": "Toad Tamer",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_toad_tamer",
+     "why": "the collectible itself: a baked R15 rig (straw hat, small toad on the shoulder, travel cloak)"
+    }
+   ]
+  },
+  {
+   "entity": "Shadow Scout",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_shadow_scout",
+     "why": "the collectible itself: a baked R15 rig (black fitted gear, face wrap, short blade on the back)"
+    }
+   ]
+  },
+  {
+   "entity": "Moonlit Kunoichi",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_moonlit_kunoichi",
+     "why": "the collectible itself: a baked R15 rig (long silver ponytail, indigo outfit, crescent hairpin)"
+    }
+   ]
+  },
+  {
+   "entity": "Village Grandmaster",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_village_grandmaster",
+     "why": "the collectible itself: a baked R15 rig (wide hat, long white robe, tall staff, calm aura)"
+    }
+   ]
+  },
+  {
+   "entity": "Gate Guard",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_gate_guard",
+     "why": "the collectible itself: a baked R15 rig (ashigaru helmet, spear on the back, plain armour)"
+    }
+   ]
+  },
+  {
+   "entity": "Tea Server",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_tea_server",
+     "why": "the collectible itself: a baked R15 rig (kimono, tray, tied sleeves)"
+    }
+   ]
+  },
+  {
+   "entity": "Wandering Ronin",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_wandering_ronin",
+     "why": "the collectible itself: a baked R15 rig (straw hat, worn haori, one sword at the hip)"
+    }
+   ]
+  },
+  {
+   "entity": "Shrine Maiden",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_shrine_maiden",
+     "why": "the collectible itself: a baked R15 rig (red and white robes, long black hair, paper wand)"
+    }
+   ]
+  },
+  {
+   "entity": "Twin-Blade Duelist",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_twin_blade_duelist",
+     "why": "the collectible itself: a baked R15 rig (tied topknot, two swords crossed on the back)"
+    }
+   ]
+  },
+  {
+   "entity": "Crimson Oni General",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_crimson_oni_general",
+     "why": "the collectible itself: a baked R15 rig (red armour, horned mask, great club)"
+    }
+   ]
+  },
+  {
+   "entity": "Ember Blade Master",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_ember_blade_master",
+     "why": "the collectible itself: a baked R15 rig (flame-pattern coat, glowing sword, scarred eye)"
+    }
+   ]
+  },
+  {
+   "entity": "Shogun of Storms",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_shogun_of_storms",
+     "why": "the collectible itself: a baked R15 rig (dark lacquer armour, crescent helm, storm cloak)"
+    }
+   ]
+  },
+  {
+   "entity": "Sidekick Trainee",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_sidekick_trainee",
+     "why": "the collectible itself: a baked R15 rig (domino mask, gym uniform, towel cape)"
+    }
+   ]
+  },
+  {
+   "entity": "News Runner",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_news_runner",
+     "why": "the collectible itself: a baked R15 rig (press cap, camera, messenger bag)"
+    }
+   ]
+  },
+  {
+   "entity": "Dash Kid",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_dash_kid",
+     "why": "the collectible itself: a baked R15 rig (visor, racing suit, leg boosters)"
+    }
+   ]
+  },
+  {
+   "entity": "Gadget Girl",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_gadget_girl",
+     "why": "the collectible itself: a baked R15 rig (goggles on the head, tool belt, mech glove)"
+    }
+   ]
+  },
+  {
+   "entity": "Frost Guardian",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_frost_guardian",
+     "why": "the collectible itself: a baked R15 rig (ice-blue hair, high collar coat, frost gauntlet)"
+    }
+   ]
+  },
+  {
+   "entity": "Captain Comet",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_captain_comet",
+     "why": "the collectible itself: a baked R15 rig (star emblem suit, long scarf, boots)"
+    }
+   ]
+  },
+  {
+   "entity": "Thunder Ace",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_thunder_ace",
+     "why": "the collectible itself: a baked R15 rig (spiky yellow-black hair, crackling jacket, bolt earrings)"
+    }
+   ]
+  },
+  {
+   "entity": "The Number One",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_the_number_one",
+     "why": "the collectible itself: a baked R15 rig (white and gold hero suit, huge cape, radiant halo)"
+    }
+   ]
+  },
+  {
+   "entity": "Lantern Spirit",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_lantern_spirit",
+     "why": "the collectible itself: a baked R15 rig (pale robes, paper lantern head-piece, soft glow)"
+    }
+   ]
+  },
+  {
+   "entity": "Paper Charm Kid",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_paper_charm_kid",
+     "why": "the collectible itself: a baked R15 rig (charm tag on the forehead, oversized sleeves)"
+    }
+   ]
+  },
+  {
+   "entity": "River Guardian",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_river_guardian",
+     "why": "the collectible itself: a baked R15 rig (teal hair, scale shoulder guard, water gourd)"
+    }
+   ]
+  },
+  {
+   "entity": "Cloud Monk",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_cloud_monk",
+     "why": "the collectible itself: a baked R15 rig (shaved head, prayer beads, cloud sash)"
+    }
+   ]
+  },
+  {
+   "entity": "Nine-Tail Trickster",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_nine_tail_trickster",
+     "why": "the collectible itself: a baked R15 rig (fox ears, many tails, mischievous grin)"
+    }
+   ]
+  },
+  {
+   "entity": "Soul Ferryman",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_soul_ferryman",
+     "why": "the collectible itself: a baked R15 rig (black robes, hooded, long scythe, blue wisps)"
+    }
+   ]
+  },
+  {
+   "entity": "Moon Princess",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_moon_princess",
+     "why": "the collectible itself: a baked R15 rig (floor-length silver hair, layered robes, moon crown)"
+    }
+   ]
+  },
+  {
+   "entity": "Dragon Emperor",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_dragon_emperor",
+     "why": "the collectible itself: a baked R15 rig (horned crown, jade and gold armour, dragon cloak)"
+    }
+   ]
+  },
+  {
+   "entity": "Starlight Idol",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_starlight_idol",
+     "why": "the collectible itself: a baked R15 rig (galaxy-print stage outfit, star wand)"
+    }
+   ]
+  },
+  {
+   "entity": "Clockwork Butler",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_clockwork_butler",
+     "why": "the collectible itself: a baked R15 rig (tailcoat, brass monocle, gear back-piece)"
+    }
+   ]
+  },
+  {
+   "entity": "Phantom Thief",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_phantom_thief",
+     "why": "the collectible itself: a baked R15 rig (top hat, white mask, cape, rose)"
+    }
+   ]
+  },
+  {
+   "entity": "Demon Lord Heir",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_demon_lord_heir",
+     "why": "the collectible itself: a baked R15 rig (curled horns, dark royal coat, bat wings)"
+    }
+   ]
+  },
+  {
+   "entity": "Angel Commander",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_angel_commander",
+     "why": "the collectible itself: a baked R15 rig (white wings, halo, gold spear)"
+    }
+   ]
+  },
+  {
+   "entity": "Void Empress",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_void_empress",
+     "why": "the collectible itself: a baked R15 rig (black star gown, floating crown, void wings)"
+    }
+   ]
+  },
+  {
+   "entity": "Lucky Cat Mascot",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_lucky_cat_mascot",
+     "why": "the collectible itself: a baked R15 rig (lucky-cat hood, bell collar, coin)"
+    }
+   ]
+  },
+  {
+   "entity": "Sakura Shogun",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_sakura_shogun",
+     "why": "the collectible itself: a baked R15 rig (pink petal armour, blossom katana, petal cape)"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Onigiri",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_onigiri",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_onigiri",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Dango",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_dango",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_dango",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Sushi",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_sushi",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_sushi",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Spicy Bun",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_spicy_bun",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_spicy_bun",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Gyoza",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_gyoza",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_gyoza",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Ice Cream",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_ice_cream",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_ice_cream",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Takoyaki",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_takoyaki",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_takoyaki",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Ramen",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_ramen",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_ramen",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Curry",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_curry",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_curry",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Tempura",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_tempura",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_tempura",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Festival Cake",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_festival_cake",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_festival_cake",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Food: Dragon Feast",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Food_dragon_feast",
+     "why": "held in the hand, thrown, shown in the Food Shop viewport"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodIcon_dragon_feast",
+     "why": "shop card and HUD equipped-food chip"
+    }
+   ]
+  },
+  {
+   "entity": "Training: Wooden Dummy",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Equip_wooden_dummy",
+     "why": "the thing the player visibly trains on; each tier must look stronger"
+    }
+   ]
+  },
+  {
+   "entity": "Training: Sandbag",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Equip_sandbag",
+     "why": "the thing the player visibly trains on; each tier must look stronger"
+    }
+   ]
+  },
+  {
+   "entity": "Training: Iron Dummy",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Equip_iron_dummy",
+     "why": "the thing the player visibly trains on; each tier must look stronger"
+    }
+   ]
+  },
+  {
+   "entity": "Training: Stone Pillar",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Equip_stone_pillar",
+     "why": "the thing the player visibly trains on; each tier must look stronger"
+    }
+   ]
+  },
+  {
+   "entity": "Training: Waterfall",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Equip_waterfall",
+     "why": "the thing the player visibly trains on; each tier must look stronger"
+    }
+   ]
+  },
+  {
+   "entity": "Training: Gravity Dojo",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Equip_gravity_dojo",
+     "why": "the thing the player visibly trains on; each tier must look stronger"
+    }
+   ]
+  },
+  {
+   "entity": "Training: Dragon Shrine",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Equip_dragon_shrine",
+     "why": "the thing the player visibly trains on; each tier must look stronger"
+    }
+   ]
+  },
+  {
+   "entity": "Training: Star Forge",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Equip_star_forge",
+     "why": "the thing the player visibly trains on; each tier must look stronger"
+    }
+   ]
+  },
+  {
+   "entity": "Plot and hub kit",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Plot_Fence",
+     "why": "marks the plot edge"
+    },
+    {
+     "stage": "meshes",
+     "name": "Plot_Pedestal",
+     "why": "each character stands on one; shows rarity colour"
+    },
+    {
+     "stage": "meshes",
+     "name": "Plot_ThrowPad",
+     "why": "where the player stands to throw"
+    },
+    {
+     "stage": "meshes",
+     "name": "Plot_SlotSign",
+     "why": "the buy-a-slot board"
+    },
+    {
+     "stage": "meshes",
+     "name": "Plot_NameArch",
+     "why": "owner name and income over the gate"
+    },
+    {
+     "stage": "meshes",
+     "name": "Hub_SellBooth",
+     "why": "sell point"
+    },
+    {
+     "stage": "meshes",
+     "name": "Hub_FoodCart",
+     "why": "food shop point"
+    },
+    {
+     "stage": "meshes",
+     "name": "Hub_SummonShrine",
+     "why": "where summon scrolls open"
+    },
+    {
+     "stage": "meshes",
+     "name": "Hub_LeaderboardFrame",
+     "why": "holds the three boards"
+    },
+    {
+     "stage": "meshes",
+     "name": "Hub_DailyChest",
+     "why": "daily reward point"
+    },
+    {
+     "stage": "meshes",
+     "name": "Lane_ZoneGate",
+     "why": "arch between zones showing the power needed"
+    },
+    {
+     "stage": "meshes",
+     "name": "Coin_Yen",
+     "why": "coin pop and HUD icon source"
+    }
+   ]
+  },
+  {
+   "entity": "Zone: Sakura Schoolyard",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_CherryTree",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_SchoolGate",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_Bench",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_TrackHurdle",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_ClockTower",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "map",
+     "name": "Zone_sakura_schoolyard",
+     "why": "the landing band and its gate in the proven layout"
+    },
+    {
+     "stage": "sfx",
+     "name": "amb_sakura_schoolyard",
+     "why": "the follow-cam flies here; silence reads as unfinished"
+    }
+   ]
+  },
+  {
+   "entity": "Zone: Festival Street",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Prop_festival_street_FoodStall",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_festival_street_LanternString",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_festival_street_DrumTower",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_festival_street_ToriiSmall",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_festival_street_PaperLamp",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "map",
+     "name": "Zone_festival_street",
+     "why": "the landing band and its gate in the proven layout"
+    },
+    {
+     "stage": "sfx",
+     "name": "amb_festival_street",
+     "why": "the follow-cam flies here; silence reads as unfinished"
+    }
+   ]
+  },
+  {
+   "entity": "Zone: Ninja Village",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_BambooCluster",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_RopeBridge",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_HiddenGate",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_WatchPost",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_TrainingLog",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "map",
+     "name": "Zone_ninja_village",
+     "why": "the landing band and its gate in the proven layout"
+    },
+    {
+     "stage": "sfx",
+     "name": "amb_ninja_village",
+     "why": "the follow-cam flies here; silence reads as unfinished"
+    }
+   ]
+  },
+  {
+   "entity": "Zone: Samurai Castle",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_CastleKeep",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_StoneWall",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_RedBridge",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_PineTree",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_WarBanner",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "map",
+     "name": "Zone_samurai_castle",
+     "why": "the landing band and its gate in the proven layout"
+    },
+    {
+     "stage": "sfx",
+     "name": "amb_samurai_castle",
+     "why": "the follow-cam flies here; silence reads as unfinished"
+    }
+   ]
+  },
+  {
+   "entity": "Zone: Hero City",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_NeonTower",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_Billboard",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_RooftopPad",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_StreetLamp",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_HeroStatue",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "map",
+     "name": "Zone_hero_city",
+     "why": "the landing band and its gate in the proven layout"
+    },
+    {
+     "stage": "sfx",
+     "name": "amb_hero_city",
+     "why": "the follow-cam flies here; silence reads as unfinished"
+    }
+   ]
+  },
+  {
+   "entity": "Zone: Spirit Realm",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Prop_spirit_realm_FloatingIsland",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_spirit_realm_GreatTorii",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_spirit_realm_SpiritLantern",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_spirit_realm_CrystalTree",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_spirit_realm_CloudBank",
+     "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+    },
+    {
+     "stage": "map",
+     "name": "Zone_spirit_realm",
+     "why": "the landing band and its gate in the proven layout"
+    },
+    {
+     "stage": "sfx",
+     "name": "amb_spirit_realm",
+     "why": "the follow-cam flies here; silence reads as unfinished"
+    }
+   ]
+  },
+  {
+   "entity": "Animation set",
+   "needs": [
+    {
+     "stage": "animation",
+     "name": "Throw",
+     "why": "the core verb; wind-up and release must read at a glance"
+    },
+    {
+     "stage": "animation",
+     "name": "TrainStrike",
+     "why": "reps on dummy, sandbag and iron dummy"
+    },
+    {
+     "stage": "animation",
+     "name": "TrainPush",
+     "why": "reps on the stone pillar"
+    },
+    {
+     "stage": "animation",
+     "name": "TrainMeditate",
+     "why": "reps at waterfall, gravity dojo and shrines"
+    },
+    {
+     "stage": "animation",
+     "name": "Celebrate",
+     "why": "player reaction to a Rare or better catch"
+    },
+    {
+     "stage": "animation",
+     "name": "IdleCool",
+     "why": "arms-crossed stance"
+    },
+    {
+     "stage": "animation",
+     "name": "IdleCheer",
+     "why": "bouncy wave"
+    },
+    {
+     "stage": "animation",
+     "name": "IdleBlade",
+     "why": "hand on sword, weapon carried the way that class is carried"
+    },
+    {
+     "stage": "animation",
+     "name": "IdleNinja",
+     "why": "low ready crouch with hand sign"
+    },
+    {
+     "stage": "animation",
+     "name": "IdlePower",
+     "why": "clenched-fist power stance used by aura characters"
+    },
+    {
+     "stage": "animation",
+     "name": "IdleShy",
+     "why": "hands behind back, small sway"
+    },
+    {
+     "stage": "animation",
+     "name": "IdleFloat",
+     "why": "hover with slow drift"
+    },
+    {
+     "stage": "animation",
+     "name": "Eat",
+     "why": "the lured character eats the food: sells the fantasy of the title"
+    },
+    {
+     "stage": "animation",
+     "name": "RevealLand",
+     "why": "hero landing pose at the reveal"
+    }
+   ]
+  },
+  {
+   "entity": "VFX set",
+   "needs": [
+    {
+     "stage": "vfx",
+     "name": "Reveal_Common",
+     "why": "Common catch reveal: beam and burst in the rarity colour, scaled to the rarity"
+    },
+    {
+     "stage": "vfx",
+     "name": "Reveal_Uncommon",
+     "why": "Uncommon catch reveal: beam and burst in the rarity colour, scaled to the rarity"
+    },
+    {
+     "stage": "vfx",
+     "name": "Reveal_Rare",
+     "why": "Rare catch reveal: beam and burst in the rarity colour, scaled to the rarity"
+    },
+    {
+     "stage": "vfx",
+     "name": "Reveal_Epic",
+     "why": "Epic catch reveal: beam and burst in the rarity colour, scaled to the rarity"
+    },
+    {
+     "stage": "vfx",
+     "name": "Reveal_Legendary",
+     "why": "Legendary catch reveal: beam and burst in the rarity colour, scaled to the rarity"
+    },
+    {
+     "stage": "vfx",
+     "name": "Reveal_Mythic",
+     "why": "Mythic catch reveal: beam and burst in the rarity colour, scaled to the rarity"
+    },
+    {
+     "stage": "vfx",
+     "name": "Reveal_Secret",
+     "why": "Secret catch reveal: beam and burst in the rarity colour, scaled to the rarity"
+    },
+    {
+     "stage": "vfx",
+     "name": "Aura_Golden",
+     "why": "Golden mutation loop"
+    },
+    {
+     "stage": "vfx",
+     "name": "Aura_Flame",
+     "why": "Flame mutation loop"
+    },
+    {
+     "stage": "vfx",
+     "name": "Aura_Lightning",
+     "why": "Lightning mutation loop"
+    },
+    {
+     "stage": "vfx",
+     "name": "Aura_Galaxy",
+     "why": "Galaxy mutation loop"
+    },
+    {
+     "stage": "vfx",
+     "name": "Aura_Titan",
+     "why": "ground shimmer under Titan-size characters"
+    },
+    {
+     "stage": "vfx",
+     "name": "ThrowTrail_Basic",
+     "why": "food tiers 1-4 in flight"
+    },
+    {
+     "stage": "vfx",
+     "name": "ThrowTrail_Hot",
+     "why": "food tiers 5-8 in flight"
+    },
+    {
+     "stage": "vfx",
+     "name": "ThrowTrail_Epic",
+     "why": "food tiers 9-12 in flight"
+    },
+    {
+     "stage": "vfx",
+     "name": "Land_Impact",
+     "why": "food hits the ground"
+    },
+    {
+     "stage": "vfx",
+     "name": "PerfectThrow_Flash",
+     "why": "perfect-release feedback"
+    },
+    {
+     "stage": "vfx",
+     "name": "LuckyThrow_Charge",
+     "why": "lucky throw armed on the hand"
+    },
+    {
+     "stage": "vfx",
+     "name": "DashHome_Trail",
+     "why": "character dashes back to the plot"
+    },
+    {
+     "stage": "vfx",
+     "name": "Train_Hit",
+     "why": "every training rep"
+    },
+    {
+     "stage": "vfx",
+     "name": "PowerUp_Burst",
+     "why": "new power rank"
+    },
+    {
+     "stage": "vfx",
+     "name": "Coin_Pop",
+     "why": "income tick and sell"
+    },
+    {
+     "stage": "vfx",
+     "name": "Slot_Unlock",
+     "why": "plot slot bought"
+    },
+    {
+     "stage": "vfx",
+     "name": "Rebirth_Nova",
+     "why": "rebirth"
+    },
+    {
+     "stage": "vfx",
+     "name": "Summon_Portal",
+     "why": "summon scroll opening"
+    },
+    {
+     "stage": "vfx",
+     "name": "ServerLuck_Sky",
+     "why": "server luck active, visible to all six players"
+    },
+    {
+     "stage": "vfx",
+     "name": "Zone_Unlock",
+     "why": "first throw into a new zone"
+    }
+   ]
+  },
+  {
+   "entity": "Sound set",
+   "needs": [
+    {
+     "stage": "sfx",
+     "name": "ui_click",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "ui_open",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "ui_close",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "ui_error",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "buy_success",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "coin_tick",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "throw_charge",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "throw_whoosh",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "perfect_ding",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "food_land",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "reveal_drumroll",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "reveal_common",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "reveal_rare",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "reveal_epic",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "reveal_legendary",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "reveal_mythic",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "index_new",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "train_hit",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "power_up",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "slot_unlock",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "rebirth",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "summon_open",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "daily_claim",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "server_luck",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "eat_munch",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "dash_whoosh",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "music_home",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    },
+    {
+     "stage": "sfx",
+     "name": "music_festival_hour",
+     "why": "named moment in the loop; an unfilled role is a silent moment"
+    }
+   ]
+  },
+  {
+   "entity": "Screens",
+   "needs": [
+    {
+     "stage": "ui",
+     "name": "HUD",
+     "why": "yen, power, luck, equipped food, five nav buttons"
+    },
+    {
+     "stage": "ui",
+     "name": "ThrowMeter",
+     "why": "charge bar with zone marks and the perfect window"
+    },
+    {
+     "stage": "ui",
+     "name": "FoodShop",
+     "why": "buy and equip food"
+    },
+    {
+     "stage": "ui",
+     "name": "Squad",
+     "why": "characters on the plot and on the bench"
+    },
+    {
+     "stage": "ui",
+     "name": "HeroIndex",
+     "why": "collection by zone with cravings"
+    },
+    {
+     "stage": "ui",
+     "name": "Store",
+     "why": "passes, products, summon odds"
+    },
+    {
+     "stage": "ui",
+     "name": "OfflineEarnings",
+     "why": "welcome-back claim"
+    },
+    {
+     "stage": "ui",
+     "name": "Reveal",
+     "why": "catch reveal card"
+    },
+    {
+     "stage": "ui",
+     "name": "Rebirth",
+     "why": "requirements and rewards"
+    },
+    {
+     "stage": "ui",
+     "name": "DailyRewards",
+     "why": "7-day streak"
+    },
+    {
+     "stage": "ui",
+     "name": "PlaytimeGifts",
+     "why": "timed gifts"
+    },
+    {
+     "stage": "ui",
+     "name": "Codes",
+     "why": "code entry"
+    },
+    {
+     "stage": "ui",
+     "name": "Settings",
+     "why": "audio, auto-sell, low-detail"
+    },
+    {
+     "stage": "ui",
+     "name": "TrainingBar",
+     "why": "rank progress and stop button"
+    },
+    {
+     "stage": "ui",
+     "name": "Nameplate",
+     "why": "billboard over each character"
+    },
+    {
+     "stage": "ui",
+     "name": "Leaderboards",
+     "why": "three world boards"
+    },
+    {
+     "stage": "ui",
+     "name": "Toasts",
+     "why": "short notices"
+    },
+    {
+     "stage": "ui",
+     "name": "Announcement",
+     "why": "server-wide rare catch banner"
+    },
+    {
+     "stage": "ui",
+     "name": "TutorialHint",
+     "why": "objective line and arrow"
+    },
+    {
+     "stage": "ui",
+     "name": "ServerLuckBar",
+     "why": "active luck and time left"
+    },
+    {
+     "stage": "ui",
+     "name": "SummonOdds",
+     "why": "disclosed odds before purchase"
+    },
+    {
+     "stage": "ui",
+     "name": "SlotSign",
+     "why": "plot slot price board"
+    }
+   ]
+  },
+  {
+   "entity": "Icons",
+   "needs": [
+    {
+     "stage": "ui",
+     "name": "IconYen",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconPower",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconLuck",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconSquad",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconIndex",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconShop",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconStore",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconRebirth",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconGift",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconSettings",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconCodes",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconLuckyThrow",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconFlavorSavory",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconFlavorSweet",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconFlavorSpicy",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconFlavorSeafood",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconStar",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    },
+    {
+     "stage": "ui",
+     "name": "IconLock",
+     "why": "used on the HUD or a card; a text-only button reads as unfinished to this audience"
+    }
+   ]
+  },
+  {
+   "entity": "World layout",
+   "needs": [
+    {
+     "stage": "map",
+     "name": "Hub",
+     "why": "spawn, shops, boards"
+    },
+    {
+     "stage": "map",
+     "name": "PlotRow",
+     "why": "six plots, each at the head of its lane"
+    },
+    {
+     "stage": "map",
+     "name": "Lane",
+     "why": "six parallel lanes through every zone band"
+    }
+   ]
+  }
+ ],
+ "plan": {
+  "overview": "Throw Food for Anime. Throw-and-collect idle tycoon (Roblox genre: Simulation / Tycoon). Mobile first, also PC, tablet and gamepad. Ages 9 to 16. Six players per server, R15 avatars, one place.",
+  "pitch_and_usp": "Hurl food down a lane of anime worlds; whoever it lures joins your squad and earns for you. Why this over the animal game it shares a genre with: (1) the collectibles are full R15 anime-style heroes with idle poses, auras and size variants, not block animals; (2) every catch is a staged reveal (beam colour climbs through the rarities before the hero lands); (3) Cravings: each hero craves a flavour, so food is a choice and not a straight ladder; (4) the charge bar is a zone selector with a perfect window, so the throw has a skill beat; (5) fusion turns duplicates into stars instead of clutter. Everything else (map, art, UI, names, numbers) is our own.",
+  "core_concept": "0 min: spawn on your plot, a guide arrow puts you on the throw pad, first throw lands in Sakura Schoolyard and a hero joins the plot and starts earning. 5 min: plot half full, Dango bought, Sandbag bought, first Rare seen, Festival Street unlocked. 30 min: three zones open, first Epic or a Golden mutation, first extra slot, a craving hunt under way for a missing index entry. Tomorrow: offline Yen to claim, day-2 streak reward, Samurai Castle and the first Mythic chance, rebirth visible as the long goal.",
+  "player_experience": "Fast, loud and generous. A throw resolves in about five seconds and always gives something. The first win is the first catch inside 40 seconds of joining; the first surprise is a rarity beam that keeps climbing. The feeling to protect is 'one more throw'; the feeling to avoid is a modal that stops the next throw (catches never block: they auto-place, auto-swap or go to the bench). Reveals are short for commons (0.8 s), long only for the rare ones, and any tap skips them; a Fast Reveal setting shortens all of them. The Hero Index shows the real chance of each hero at the player's current luck.",
+  "audience": "Casual collectors first (kids who play Steal a Brainrot, Grow a Garden and the throw-food game), anime fans second, leaderboard chasers third. Short sessions on phones, many per day; friends in the same server compare plots.",
+  "market": "Looked at on 2026-11-14 (design/research/00, 01, 02). Throw Food For Animals: created 2026-09-18, 215M visits and 426K concurrent at the pull, 94 percent likes, 5-player servers, only two passes and about fifty products; almost all of its store is relative ('N percent of your best animal', 'N minutes of your income'), luck sold per throw and per server. Does well: instant loop, readable goals, relative pricing. Does badly: block art, food is a straight ladder, nothing to do with duplicates, no rebirth or codes; its players complain that luck is opaque, that cutscenes cannot be skipped, that a free player runs out of content in five to six hours, and that each update is more pay-to-win. Each of those is a design target here: odds are shown, every reveal is skippable, rebirth extends the ladder, and nothing sold is unobtainable by play except cosmetics-grade premium heroes. Anime entries in the genre are small (World3 Throw an Anime Coin: 1.1M visits, 2K peak), so the anime throw angle is open. Big anime games on the platform are combat games, which shows the audience exists. Risk read: recognisable anime IP is removed on DMCA notice and not reopened, and the free 'anime character' models on the Creator Store are mostly re-uploads of copyrighted characters from deleted accounts, so the roster is original.",
+  "mechanics": "Movement: stock R15, no combat. Throw: stand on the throw pad, hold to charge, release; charge picks the zone (marks on the bar), the top 8 percent is a perfect release (+10 percent luck). Landing zone = furthest zone whose PowerReq <= Power x food PowerMult x charge. Roll: rarity by zone table weights scaled by luck, then mutation, then size; a craved flavour triples that hero's weight. Catch: reveal, hero dashes home, auto-places (free slot, else swaps out the weakest if better, else bench, else auto-sell). Income: every hero on a slot pays base x rarity x mutation x size x stars each second, times pass, rebirth and event multipliers. Training: hold-free auto reps on the plot's dojo gear, Power per rep by gear tier. Economy sinks: food, gear, slots, rebirth. Squad: place, pick up, sell, equip best, fuse three identical into +1 star. Luck: food, depth into the zone, perfect, server luck, friends, VIP, index, rebirth, lucky throws. Meta: Hero Index, rebirth, daily streak, playtime gifts, codes, leaderboards, Festival Hour, server-wide rare-catch banners. Full formulas: design/plan/01-game-design.md.",
+  "progression": "Short (minutes): next food, next gear, fill the plot, next zone gate. Medium (hours): Samurai Castle, Hero City, Spirit Realm, first Legendary, first Mythic, complete a zone index, max slots. Long (days and weeks): rebirth tiers 1 to 10 (each +50 percent income and +10 percent luck), golden and titan variants in the index, leaderboard rank, new zones from updates. Measured pacing for a no-boost player (tools/balance_sim.py): zone 2 at 2 min, zone 3 at 14 min, zone 4 at 51 min, zone 5 at 2 h 44, zone 6 at 7 h 18, first rebirth ready at 15 h.",
+  "content": "48 throw-caught heroes (6 zones x 8) plus 8 premium heroes (6 in the summon scroll, 1 starter pack, 1 limited). 7 rarities (Secret reserved for events). 4 mutations, 3 sizes, 3 star levels. 12 foods in 4 flavours (8 from CC0 packs, 4 built with the 3D skill). 8 dojo gear tiers. 6 zones. 1 hub with food cart, sell booth, summon shrine, daily chest and three leaderboards. 6 plots. No enemies. The full roster with looks is config.Characters.",
+  "world": "One straight world. Hub and a row of six plots at the start; each plot faces its own 40-stud lane; the six lanes run in parallel through six zone bands of 220 studs each, with an arch between bands showing the Power needed. Sakura Schoolyard (start, PowerReq 0), Festival Street (200), Ninja Village (3K), Samurai Castle (70K), Hero City (2M), Spirit Realm (36M). Players can walk the lanes and other plots; nothing there can hurt or be taken. Later zones are appended to the far end by data.",
+  "story": "One line, never in the way: the Anime Worlds are hungry, and the best cook-thrower in town can recruit anyone. No dialogue beyond tutorial hints and NPC shop greetings.",
+  "ui_ux": "Style 'Manga Pop': deep indigo panels with a thick white keyline and offset comic shadow, coral-to-yellow header ribbons with halftone dots, chunky rounded type with dark stroke, rarity colours everywhere. Screens: HUD, ThrowMeter, FoodShop, Squad, HeroIndex, Store, OfflineEarnings, Reveal, Rebirth, DailyRewards, PlaytimeGifts, Codes, Settings, TrainingBar, Nameplate, Leaderboards, Toasts, Announcement, TutorialHint, ServerLuckBar, SummonOdds, SlotSign. Common action cost: throw = one hold and release, 0 menus; equip food = 2 taps; sell a hero = 2 taps; equip best = 2 taps. Touch targets at least 56 px at 720p, safe-area aware, every panel opens with a 0.18 s scale-and-fade and closes on outside tap. Detail: design/plan/05-ui-ux.md.",
+  "tutorial": "Beat by beat, all skippable by simply doing it: (1) 0:00 camera on your plot, hint 'Step on the pad' with a ground arrow; (2) 0:08 hint 'Hold to throw', bar pulses; (3) 0:15 first throw, guaranteed Uncommon, reveal plays, hero dashes home; (4) 0:30 'Throw again' until three heroes; (5) 1:10 'Buy Dango' arrow to the food cart, shop opens with Dango highlighted; (6) 1:40 'Train to throw further' arrow to the dojo gear, ten reps; (7) 2:10 gate arch for Festival Street pulses with the Power needed; (8) on first zone-2 landing, Zone_Unlock effect and the hint line retires. Each step is logged to the onboarding funnel.",
+  "art_direction": "Bright stylised anime world, not blocky: smooth low-poly props with flat colour and soft gradient textures, saturated key colour per zone, Future lighting with warm sun, bloom and a little colour grading. Characters are standard R15 rigs dressed as whole looks, anime hair and faces, one signature accessory, never more than six accessories. Every hero must be readable at 60 studs by silhouette and rarity colour of its pedestal. Mutations are auras, not recolours. Props are real meshes (free packs first, built with the 3D skill where no free asset fits); no stand-in boxes. No copyrighted character, logo or pattern.",
+  "audio": "Music: one upbeat festival loop at home (music_home), a faster variant during Festival Hour. Ambience per zone under the follow-cam. SFX roles: UI click/open/close/error, buy, coin tick, throw charge and whoosh, perfect ding, food land, reveal drumroll, five reveal stings rising with rarity, index new, train hit, power up, slot unlock, rebirth, summon open, daily claim, server luck, munch, dash. All from the Creator Store audio library by id, length measured in Studio.",
+  "technical_architecture": "Rojo project, Knit for lifecycle only, every remote declared in Net.luau, all tunables generated from this file into src/shared/Config (gen_config.py), all rules as pure Core modules with Lune specs: Throw, Roll, Luck, Income, Training, Costs, Rebirth, Fusion, Index, Offline, Rewards, Receipt, Format, Schema. Server services and client controllers are listed in systems. The server never spawns character rigs: it replicates a compact plot state and each client builds rigs from baked templates in ReplicatedStorage.Assets. Roblox services used: DataStoreService (profiles, ordered boards), MemoryStoreService (not at launch), MarketplaceService, PolicyService, AnalyticsService, MessagingService (global announcements), TextChatService, ContentProvider, TweenService, CollectionService. StreamingEnabled on. Detail: design/plan/02-architecture.md.",
+  "data_saving": "One profile per player, session-locked, autosave every 120 s, save on leave and BindToClose. Persisted: schema version, Yen, lifetime Yen, Power, rebirth tier, foods owned and equipped, gear tier, slot count, every owned hero (id, mutation, size, stars, slot or bench), index, lucky throws, passes cache, receipts already granted (last 100 ids), daily streak and last claim day, playtime gifts claimed today, codes redeemed, tutorial step, settings, stats for boards, last-seen timestamp for offline earnings. If load fails: the player is kicked with a retry message rather than given a blank profile. If a save fails: retried with backoff, and purchases are only acknowledged to Roblox after the grant is in a saved profile. Schema migrations are pure functions with specs.",
+  "security": "The client sends intents only. Throw: server checks the player is on their own pad, cooldown, charge in [0.2, 1], food is owned; the server alone computes landing zone and the roll. Buy: server checks price against Config and balance. Squad moves: server checks ownership and slot bounds. Training: server counts reps on its own clock, the client cannot report Power. Store: grants only inside ProcessReceipt with idempotent receipt ids. Rate limits per remote. No remote takes a number the server could compute itself.",
+  "multiplayer": "Six players per server, one plot each, assigned on join and freed on leave (the leaver's heroes vanish from the world; their data is already saved). Everything a player owns is theirs alone: no shared state except server luck, Festival Hour and banners. Server luck bought by one player helps all six, which is the social reason to stay in a server.",
+  "monetisation": "Things a player would happily buy because they speed up what they are already doing. Passes: 2x Yen (99), 2x Training (149), VIP (249: +15 percent luck, +2 slots, tag), Auto Throw (199), Lucky Aura (299: 1.5x luck), Big Bench (79). Products: lucky throws (9, 39, 149), server luck step (29, stacks 2x 4x 8x), Yen packs priced in minutes of your own income (29, 99, 299), training skips (39, 149), 2x offline claim (39), summon scrolls with disclosed odds (79, 199, 599), starter pack (49, once), one limited hero (399), gift versions of the two 2x passes. Summon scrolls are paid random items: odds shown before purchase, PolicyService checked, and where restricted the scroll is hidden and the same heroes are offered at fixed prices. Product ids are minted in section 5.",
+  "economy": "Yen. Enters: hero income per second, offline earnings (50 percent rate, 8 hour cap), selling heroes (30 s of their income), daily and playtime rewards, index rewards, codes, Yen packs. Leaves: foods, dojo gear, plot slots, rebirth. Power. Enters: training reps, training skips. Leaves: reset on rebirth. Lucky throws. Enter: daily streak, group reward, codes, store. Leave: one per armed throw. All prices and curves are in config and were tuned with tools/balance_sim.py against config.Pacing.",
+  "retention": "Tomorrow: offline Yen waiting, the next streak day (lucky throws on days 3, 5 and 7), a zone gate left half-trained. This week: index completion per zone, rebirth, Festival Hour every 30 minutes, a weekly content drop (one zone of eight heroes is a data edit plus eight looks), codes on update days, limited heroes. Every session ends with something about to unlock.",
+  "social": "Three global leaderboards in the hub (most Yen earned, most heroes caught, rarest catch). Server-wide banner when anyone catches Legendary or better. Friend bonus: +10 percent luck per friend in the server, up to 30. Server luck is shared. Gifting of the two 2x passes. Group reward chest. Trading and stealing are out of scope."
  },
  "publish": {
   "universe_id": 10776373502,
