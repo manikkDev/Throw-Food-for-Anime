@@ -8,396 +8,277 @@
  },
  "assets": [
   {
-   "name": "Char_sleepy_student",
-   "entity": "Sleepy Student",
+   "name": "Char_cursed_vessel",
+   "entity": "Cursed Vessel",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (messy bed hair, loose school blazer, half-closed eyes)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Yuji"
   },
   {
-   "name": "Char_class_rep",
-   "entity": "Class Rep",
+   "name": "Char_emerald_hero",
+   "entity": "Emerald Hero",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (neat bob, glasses, armband, tidy uniform)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Deku"
   },
   {
-   "name": "Char_track_rookie",
-   "entity": "Track Rookie",
+   "name": "Char_midfield_genius",
+   "entity": "Midfield Genius",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (sweatband, tracksuit jacket, sneakers)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Sae Itoshi"
   },
   {
-   "name": "Char_lunch_rush_kid",
-   "entity": "Lunch Rush Kid",
+   "name": "Char_notebook_mastermind",
+   "entity": "Notebook Mastermind",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (bread in mouth, open blazer, satchel)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Light Yagami"
   },
   {
-   "name": "Char_kendo_captain",
-   "entity": "Kendo Captain",
+   "name": "Char_sorcerer_hunter",
+   "entity": "Sorcerer Hunter",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (ponytail, hakama, bamboo sword on the back)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Toji Fushiguro"
   },
   {
-   "name": "Char_rooftop_rebel",
-   "entity": "Rooftop Rebel",
+   "name": "Char_straw_hat_rookie",
+   "entity": "Straw Hat Rookie",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (slicked pompadour, long coat on shoulders, bandage on nose)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Luffy"
   },
   {
-   "name": "Char_idol_transfer",
-   "entity": "Idol Transfer",
+   "name": "Char_black_leg_cook",
+   "entity": "Black Leg Cook",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (pink twin-tails, frilled stage dress, star hairpin)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Sanji"
   },
   {
-   "name": "Char_council_president",
-   "entity": "Council President",
+   "name": "Char_three_sword_hunter",
+   "entity": "Three-Sword Hunter",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (white long coat uniform, silver hair, gold braid, cape)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Zoro"
   },
   {
-   "name": "Char_goldfish_scooper",
-   "entity": "Goldfish Scooper",
+   "name": "Char_heart_surgeon",
+   "entity": "Heart Surgeon",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (short yukata, paper scoop, goldfish bag)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Trafalgar Law"
   },
   {
-   "name": "Char_lantern_kid",
-   "entity": "Lantern Kid",
+   "name": "Char_red_haired_emperor",
+   "entity": "Red-Haired Emperor",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (happi coat, paper lantern, bowl cut)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Shanks"
   },
   {
-   "name": "Char_mask_vendor",
-   "entity": "Mask Vendor",
+   "name": "Char_fox_ninja",
+   "entity": "Fox Ninja",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (festival masks on the belt and head, apron)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Naruto Uzumaki"
   },
   {
-   "name": "Char_taiko_drummer",
-   "entity": "Taiko Drummer",
+   "name": "Char_lightning_avenger",
+   "entity": "Lightning Avenger",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (headband, sleeveless happi, drum sticks on the back)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Sasuke Uchiha"
   },
   {
-   "name": "Char_yukata_dancer",
-   "entity": "Yukata Dancer",
+   "name": "Char_copy_ninja",
+   "entity": "Copy Ninja",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (flower yukata, hair bun with pins, fan)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Kakashi Hatake"
   },
   {
-   "name": "Char_ramen_master",
-   "entity": "Ramen Master",
+   "name": "Char_crow_illusionist",
+   "entity": "Crow Illusionist",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (chef headband, towel on the neck, noodle ladle)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Itachi Uchiha"
   },
   {
-   "name": "Char_firework_artisan",
-   "entity": "Firework Artisan",
+   "name": "Char_ghost_of_the_clan",
+   "entity": "Ghost of the Clan",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (goggles, scorched coat, rocket tubes on the back)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Madara Uchiha"
   },
   {
-   "name": "Char_fox_mask_wanderer",
-   "entity": "Fox Mask Wanderer",
+   "name": "Char_sun_breather",
+   "entity": "Sun Breather",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (white fox mask, long dark haori, bells, lone blue flame)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Tanjiro"
   },
   {
-   "name": "Char_rookie_ninja",
-   "entity": "Rookie Ninja",
+   "name": "Char_bamboo_demon_girl",
+   "entity": "Bamboo Demon Girl",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (grey scarf, simple wraps, practice kunai)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Nezuko"
   },
   {
-   "name": "Char_scroll_runner",
-   "entity": "Scroll Runner",
+   "name": "Char_substitute_reaper",
+   "entity": "Substitute Reaper",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (big scroll on the back, messenger cap)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Ichigo Kurosaki"
   },
   {
-   "name": "Char_smoke_trickster",
-   "entity": "Smoke Trickster",
+   "name": "Char_six_eyed_moon",
+   "entity": "Six-Eyed Moon",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (purple hood, grin mask, smoke pouch)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Kokushibo"
   },
   {
-   "name": "Char_kunai_twin",
-   "entity": "Kunai Twin",
+   "name": "Char_demon_progenitor",
+   "entity": "Demon Progenitor",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (twin buns, crossed belts of kunai)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Muzan"
   },
   {
-   "name": "Char_toad_tamer",
-   "entity": "Toad Tamer",
+   "name": "Char_hero_hunter",
+   "entity": "Hero Hunter",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (straw hat, small toad on the shoulder, travel cloak)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Garou"
   },
   {
-   "name": "Char_shadow_scout",
-   "entity": "Shadow Scout",
+   "name": "Char_anti_magic_knight",
+   "entity": "Anti-Magic Knight",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (black fitted gear, face wrap, short blade on the back)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Asta"
   },
   {
-   "name": "Char_moonlit_kunoichi",
-   "entity": "Moonlit Kunoichi",
+   "name": "Char_ice_general",
+   "entity": "Ice General",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (long silver ponytail, indigo outfit, crescent hairpin)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Esdeath"
   },
   {
-   "name": "Char_village_grandmaster",
-   "entity": "Village Grandmaster",
+   "name": "Char_string_king",
+   "entity": "Heavenly String King",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (wide hat, long white robe, tall staff, calm aura)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Doflamingo"
   },
   {
-   "name": "Char_gate_guard",
-   "entity": "Gate Guard",
+   "name": "Char_bald_cape_hero",
+   "entity": "Bald Cape Hero",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (ashigaru helmet, spear on the back, plain armour)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Saitama"
   },
   {
-   "name": "Char_tea_server",
-   "entity": "Tea Server",
+   "name": "Char_first_emperor",
+   "entity": "First Emperor",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (kimono, tray, tied sleeves)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Qin Shi Huang"
   },
   {
-   "name": "Char_wandering_ronin",
-   "entity": "Wandering Ronin",
+   "name": "Char_proud_prince",
+   "entity": "Proud Prince",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (straw hat, worn haori, one sword at the hip)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Vegeta"
   },
   {
-   "name": "Char_shrine_maiden",
-   "entity": "Shrine Maiden",
+   "name": "Char_beast_emperor",
+   "entity": "Beast Emperor",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (red and white robes, long black hair, paper wand)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Kaido"
   },
   {
-   "name": "Char_twin_blade_duelist",
-   "entity": "Twin-Blade Duelist",
+   "name": "Char_instinct_warrior",
+   "entity": "Instinct Warrior",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (tied topknot, two swords crossed on the back)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Goku"
   },
   {
-   "name": "Char_crimson_oni_general",
-   "entity": "Crimson Oni General",
+   "name": "Char_curse_king",
+   "entity": "Curse King",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (red armour, horned mask, great club)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Sukuna"
   },
   {
-   "name": "Char_ember_blade_master",
-   "entity": "Ember Blade Master",
+   "name": "Char_sun_god_captain",
+   "entity": "Sun God Captain",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (flame-pattern coat, glowing sword, scarred eye)"
-  },
-  {
-   "name": "Char_shogun_of_storms",
-   "entity": "Shogun of Storms",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (dark lacquer armour, crescent helm, storm cloak)"
-  },
-  {
-   "name": "Char_sidekick_trainee",
-   "entity": "Sidekick Trainee",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (domino mask, gym uniform, towel cape)"
-  },
-  {
-   "name": "Char_news_runner",
-   "entity": "News Runner",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (press cap, camera, messenger bag)"
-  },
-  {
-   "name": "Char_dash_kid",
-   "entity": "Dash Kid",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (visor, racing suit, leg boosters)"
-  },
-  {
-   "name": "Char_gadget_girl",
-   "entity": "Gadget Girl",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (goggles on the head, tool belt, mech glove)"
-  },
-  {
-   "name": "Char_frost_guardian",
-   "entity": "Frost Guardian",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (ice-blue hair, high collar coat, frost gauntlet)"
-  },
-  {
-   "name": "Char_captain_comet",
-   "entity": "Captain Comet",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (star emblem suit, long scarf, boots)"
-  },
-  {
-   "name": "Char_thunder_ace",
-   "entity": "Thunder Ace",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (spiky yellow-black hair, crackling jacket, bolt earrings)"
-  },
-  {
-   "name": "Char_the_number_one",
-   "entity": "The Number One",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (white and gold hero suit, huge cape, radiant halo)"
-  },
-  {
-   "name": "Char_lantern_spirit",
-   "entity": "Lantern Spirit",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (pale robes, paper lantern head-piece, soft glow)"
-  },
-  {
-   "name": "Char_paper_charm_kid",
-   "entity": "Paper Charm Kid",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (charm tag on the forehead, oversized sleeves)"
-  },
-  {
-   "name": "Char_river_guardian",
-   "entity": "River Guardian",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (teal hair, scale shoulder guard, water gourd)"
-  },
-  {
-   "name": "Char_cloud_monk",
-   "entity": "Cloud Monk",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (shaved head, prayer beads, cloud sash)"
-  },
-  {
-   "name": "Char_nine_tail_trickster",
-   "entity": "Nine-Tail Trickster",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (fox ears, many tails, mischievous grin)"
-  },
-  {
-   "name": "Char_soul_ferryman",
-   "entity": "Soul Ferryman",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (black robes, hooded, long scythe, blue wisps)"
-  },
-  {
-   "name": "Char_moon_princess",
-   "entity": "Moon Princess",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (floor-length silver hair, layered robes, moon crown)"
-  },
-  {
-   "name": "Char_dragon_emperor",
-   "entity": "Dragon Emperor",
-   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
-   "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (horned crown, jade and gold armour, dragon cloak)"
+   "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Luffy Wano"
   },
   {
    "name": "Char_starlight_idol",
    "entity": "Starlight Idol",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (galaxy-print stage outfit, star wand)"
+   "why": "the collectible itself: baked R15 rig (avatar still to be imported: galaxy-print stage outfit, star wand)"
   },
   {
    "name": "Char_clockwork_butler",
    "entity": "Clockwork Butler",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (tailcoat, brass monocle, gear back-piece)"
+   "why": "the collectible itself: baked R15 rig (avatar still to be imported: tailcoat, brass monocle, gear back-piece)"
   },
   {
    "name": "Char_phantom_thief",
    "entity": "Phantom Thief",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (top hat, white mask, cape, rose)"
+   "why": "the collectible itself: baked R15 rig (avatar still to be imported: top hat, white mask, cape, rose)"
   },
   {
    "name": "Char_demon_lord_heir",
    "entity": "Demon Lord Heir",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (curled horns, dark royal coat, bat wings)"
+   "why": "the collectible itself: baked R15 rig (avatar still to be imported: curled horns, dark royal coat, bat wings)"
   },
   {
    "name": "Char_angel_commander",
    "entity": "Angel Commander",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (white wings, halo, gold spear)"
+   "why": "the collectible itself: baked R15 rig (avatar still to be imported: white wings, halo, gold spear)"
   },
   {
    "name": "Char_void_empress",
    "entity": "Void Empress",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (black star gown, floating crown, void wings)"
+   "why": "the collectible itself: baked R15 rig (avatar still to be imported: black star gown, floating crown, void wings)"
   },
   {
    "name": "Char_lucky_cat_mascot",
    "entity": "Lucky Cat Mascot",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (lucky-cat hood, bell collar, coin)"
+   "why": "the collectible itself: baked R15 rig (avatar still to be imported: lucky-cat hood, bell collar, coin)"
   },
   {
    "name": "Char_sakura_shogun",
    "entity": "Sakura Shogun",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: a baked R15 rig (pink petal armour, blossom katana, petal cape)"
+   "why": "the collectible itself: baked R15 rig (avatar still to be imported: pink petal armour, blossom katana, petal cape)"
   },
   {
    "name": "Food_onigiri",
@@ -659,36 +540,36 @@
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_festival_street_FoodStall",
-   "entity": "Zone: Festival Street",
+   "name": "Prop_pirate_harbor_PirateShip",
+   "entity": "Zone: Pirate Harbor",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_festival_street_LanternString",
-   "entity": "Zone: Festival Street",
+   "name": "Prop_pirate_harbor_Dock",
+   "entity": "Zone: Pirate Harbor",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_festival_street_DrumTower",
-   "entity": "Zone: Festival Street",
+   "name": "Prop_pirate_harbor_BarrelStack",
+   "entity": "Zone: Pirate Harbor",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_festival_street_ToriiSmall",
-   "entity": "Zone: Festival Street",
+   "name": "Prop_pirate_harbor_Lighthouse",
+   "entity": "Zone: Pirate Harbor",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_festival_street_PaperLamp",
-   "entity": "Zone: Festival Street",
+   "name": "Prop_pirate_harbor_PalmTree",
+   "entity": "Zone: Pirate Harbor",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
@@ -799,36 +680,36 @@
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_spirit_realm_FloatingIsland",
-   "entity": "Zone: Spirit Realm",
+   "name": "Prop_realm_of_legends_FloatingIsland",
+   "entity": "Zone: Realm of Legends",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_spirit_realm_GreatTorii",
-   "entity": "Zone: Spirit Realm",
+   "name": "Prop_realm_of_legends_GreatTorii",
+   "entity": "Zone: Realm of Legends",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_spirit_realm_SpiritLantern",
-   "entity": "Zone: Spirit Realm",
+   "name": "Prop_realm_of_legends_SpiritLantern",
+   "entity": "Zone: Realm of Legends",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_spirit_realm_CrystalTree",
-   "entity": "Zone: Spirit Realm",
+   "name": "Prop_realm_of_legends_CrystalTree",
+   "entity": "Zone: Realm of Legends",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
   },
   {
-   "name": "Prop_spirit_realm_CloudBank",
-   "entity": "Zone: Spirit Realm",
+   "name": "Prop_realm_of_legends_CloudBank",
+   "entity": "Zone: Realm of Legends",
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"

@@ -59,12 +59,12 @@
    "gate": "Lane_ZoneGate at z_from"
   },
   {
-   "id": "festival_street",
-   "name": "Festival Street",
+   "id": "pirate_harbor",
+   "name": "Pirate Harbor",
    "z_from": 260,
    "z_to": 480,
    "power_req": 200,
-   "scenery": "night-market stalls, lanterns, drum tower",
+   "scenery": "docks, a moored ship, barrels, lighthouse",
    "gate": "Lane_ZoneGate at z_from"
   },
   {
@@ -95,12 +95,12 @@
    "gate": "Lane_ZoneGate at z_from"
   },
   {
-   "id": "spirit_realm",
-   "name": "Spirit Realm",
+   "id": "realm_of_legends",
+   "name": "Realm of Legends",
    "z_from": 1140,
    "z_to": 1360,
-   "power_req": 36000000,
-   "scenery": "floating islands, torii gates, glowing river",
+   "power_req": 40000000,
+   "scenery": "floating islands, great torii, glowing river",
    "gate": "Lane_ZoneGate at z_from"
   }
  ],
@@ -125,11 +125,11 @@
  },
  "delivers": [
   "Zone_sakura_schoolyard",
-  "Zone_festival_street",
+  "Zone_pirate_harbor",
   "Zone_ninja_village",
   "Zone_samurai_castle",
   "Zone_hero_city",
-  "Zone_spirit_realm",
+  "Zone_realm_of_legends",
   "Hub",
   "PlotRow",
   "Lane"

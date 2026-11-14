@@ -54,6 +54,21 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
    Roll back: `git checkout section-<N>` + Creator Hub > place > Version History > restore that version.
    Baseline: tag `setup-baseline` = place version 6. Tag `section-1` = place version 34.
 
+## Where the game's pieces live (since section 2)
+
+- Code: `src/` (16 server services, 6 client controllers, 12 pure Core modules with specs in `tests/`).
+  `src/shared/Config/GameConfig.luau` is GENERATED from `design/game.json`: edit the JSON, then
+  `python ~/.claude/skills/create-roblox-game/scripts/gen_config.py --dir .`. Pacing gate:
+  `python tools/balance_sim.py --check`. Server-only tunables (promo codes) live in `server_config`
+  in the same JSON: `python tools/gen_server_config.py` writes `src/server/Config/ServerConfig.luau`.
+  Never put a code in `config` (it is sent to every client). Every gate at once: `python tools/gate.py`.
+- Hero templates: `ReplicatedStorage.Assets.Characters.Char_<id>` (in the place, not in Rojo).
+  Rebuilt from `ServerStorage.CharacterSources.R15_Final` by `tools/studio/bake_characters.luau`.
+  The user's R6 imports are archived in `ServerStorage.CharacterSources.R6_Originals`: never delete.
+  Roster map: `design/characters/roster.json`; rules and traps: `design/characters/README.md`.
+- The map is a code-built placeholder (`src/server/World/Blockout.luau`) until section 3.
+- Studio sessions use their own stores (`Profiles_Dev`, `LB_*_Dev`); test commands are the TEST menu.
+
 ## Known traps on this machine
 
 - Studio MCP drops every 5-15 min and its "Enable Studio as MCP server" toggle can turn off after a
@@ -61,6 +76,13 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - `execute_luau` drops all output if the script yields: split the call or use `task.delay`.
 - Direct Studio calls without the client: `python ~/.claude/skills/create-roblox-game/scripts/studio_mcp.py`
   (`luau --code ...`, `--dm Server` reaches the running playtest server).
+- `screen_capture` returns a blank dark frame (or a black world behind live GUI) whenever the Studio
+  window is minimised. Restore the window (Win32 ShowWindow on the running process), never
+  `open_application`.
+- During Play, `execute_luau` cannot see the game's Knit services or controllers (its `require` is a
+  separate copy). Read state through instances and GUI text, fire remotes from the Client datamodel,
+  and hook remotes to log what the server answered.
+- The Luau gate hook auto-runs the formatter on format-only failures and reports only failing lines.
 - After reinstalling the skills, re-apply local fixes:
   `python "D:\Roblox Studio Games\_RobloxAI\bootstrap\patch_skills.py"`.
 - After improving a skill (a correction written back into it), version it in the toolkit repo:

@@ -31,16 +31,19 @@ does) instead of picking each item. Proven in Studio the same day (research/04).
 5. Thumbnails for the UI are rendered from the rigs themselves (ViewportFrame at runtime for
    Squad and Index; no separate portrait art to drift).
 
-**The IP rule, and why it is not optional.** The user's first brief was to use well-known anime
-characters with changed names and unchanged looks. The plan does not do that, on evidence:
+**Roster decision (owner, 2026-11-14).** After section 1 the owner imported 31 avatars of
+well-known characters and chose them as the launch roster, with changed display names. The
+build follows that decision; the R15 rebuild, the head rule and the traps are in
+`design/characters/README.md`, the id-to-avatar map is `design/characters/roster.json`, and the
+rigs are in `Workspace.Characters_R15`. What follows is the risk as it was stated, kept on record:
 Roblox removes content on a rights holder's notice and generally does not reopen a removed game
 (research/02 D); the free models of named characters we found were uploaded by an account Roblox
 has already deleted (research/04); a look is judged by how it looks, so a new name protects
 nothing. A game we expect to earn from cannot rest on assets that can be pulled in one notice.
-So every hero is a **trope**, not a person: a ninja, a ronin, an idol, a caped hero, a fox-masked
-wanderer. Each needs to be instantly readable as its type and must not combine the signature
-marks of one existing character (specific hair + scar + outfit + weapon sets). This keeps the
-anime appeal and removes the one risk that can end the game.
+Mitigations that are in the build: display names are our own titles ("Fox Ninja", "Curse King"),
+no series name, logo, music or official art appears in any text, icon, thumbnail or store
+listing, and every hero is one data row plus one rig, so any of them can be swapped out in
+minutes if a notice ever arrives. The eight premium heroes are original designs.
 
 **Variants.** Mutation = aura effect + a soft colour grade on the nameplate, never a recolour of
 the avatar items. Size = `Model:ScaleTo`. Stars = star pips on the nameplate.

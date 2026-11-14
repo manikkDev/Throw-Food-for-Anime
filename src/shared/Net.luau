@@ -17,7 +17,62 @@ local FOLDER_NAME = "ThrowFoodForAnimeNet"
 local CLIENT_WAIT_TIMEOUT = 10
 
 -- Every remote in the game is declared here. A name not on this list is a bug.
-export type EventName = "Ping" -- replace: one entry per remote, each commented
+-- Client -> server remotes are REQUESTS: the server validates and may ignore.
+export type EventName =
+	-- client -> server: "my controllers are up, send me my state". Sent once.
+	"ClientReady"
+	-- client -> server: (charge: number 0..1, useLuckyThrow: boolean). The
+	-- server decides the zone, the roll and the grant; nothing else is trusted.
+	| "ThrowRequest"
+	-- client -> server: (on: boolean) start or stop training on the dojo pad.
+	| "TrainSet"
+	-- client -> server: (kind: "food" | "gear" | "slot", id: string?) spend Yen.
+	| "ShopBuy"
+	-- client -> server: (foodId: string) equip a food already owned.
+	| "FoodEquip"
+	-- client -> server: (action: "place" | "bench" | "sell" | "equipBest" |
+	-- "fuse", uid: string?, slot: number?) manage owned heroes.
+	| "SquadAction"
+	-- client -> server: (action: "claimZone" | "rebirth", zoneId: string?).
+	| "ProgressAction"
+	-- client -> server: (kind: "daily" | "gift" | "code" | "offline", arg).
+	| "RewardClaim"
+	-- client -> server: (key: string, value) one setting; also tutorial step.
+	| "SettingSet"
+	-- client -> server: (targetUserId: number, passKey: string) who the next
+	-- gift purchase is for. The grant itself only ever happens in ProcessReceipt.
+	| "StoreGiftTarget"
+	-- client -> server: (command: string, arg) owner-only event controls, and
+	-- Studio-only test grants. Refused for everyone else.
+	| "AdminCommand"
+	-- server -> ONE client: the whole view of that player's saved state.
+	-- Sent on join and whenever something other than Yen/Power changes.
+	| "StateSnapshot"
+	-- server -> ONE client: (yen, power, serverNow) once a second, so the
+	-- counters move without resending the whole state.
+	| "StateTick"
+	-- server -> ONE client: every plot in the server, on join.
+	| "PlotsSnapshot"
+	-- server -> ALL clients: (plotIndex, plotState | nil) one plot changed or
+	-- was freed. Clients build hero rigs from this; the server spawns none.
+	| "PlotUpdate"
+	-- server -> the THROWER: the full result of a throw (zone, landing point,
+	-- hero, odds, placement). Separate from ThrowSeen because only the thrower
+	-- gets the camera, the odds and the placement.
+	| "ThrowResult"
+	-- server -> everyone ELSE: a lighter "food flew, hero appeared" for others.
+	| "ThrowSeen"
+	-- server -> ONE client: heroes granted outside a throw (store, gifts), so
+	-- the client can play a reveal for each.
+	| "HeroGranted"
+	-- server -> ONE client: (text: string, kind: string) a short notice.
+	| "Toast"
+	-- server -> ALL clients: a rare-catch banner or an event message.
+	| "Announce"
+	-- server -> ALL clients: server luck and Festival Hour state.
+	| "EnvUpdate"
+	-- server -> ALL clients: the three leaderboards' cached top lists.
+	| "Leaderboards"
 
 local Net = {}
 

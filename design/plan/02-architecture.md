@@ -127,3 +127,33 @@ Every gameplay service prints why it refused an intent when `workspace:GetAttrib
 is set (one lookup when off). Owner-only admin remotes are compiled out for non-owners by a
 server check on `UserId`. A `Dev` server module (Studio only) can grant yen, power and heroes so
 the pre-handover matrix can reach rebirth without playing fifteen hours.
+
+## 10. As built in section 2 (where the code differs from the plan above)
+
+- **Core modules** are fewer and broader than section 2's table: `Throw`, `Luck`, `Roll`, `Income`,
+  `Progress` (training, costs, offline pay, rebirth), `Squad` (auto-place, equip best, fusion),
+  `Collection` (index, daily and playtime rewards, codes, receipts), `Schema`, `Session` (the save
+  lock), `World` (layout), `Lookup` (id maps), `Format`. Specs: `tests/*.spec.luau`, 84 tests.
+  Core modules never require each other: callers pass `Lookup.of(Config)` in, so the same file
+  runs under Lune and in Roblox.
+- **No vendored ProfileStore.** DataService has its own session lock (`Core/Session`): one record
+  `{ data, lock = { job, t } }`, taken on load, refreshed on every save, cleared on leave, honoured
+  for 600 s. Nothing was downloaded into the project.
+- **Replication** is whole snapshots, not path patches: `StateSnapshot` (coalesced, about every
+  0.15 s when dirty) plus `StateTick(yen, power)` once a second; `PlotsSnapshot` / `PlotUpdate`
+  carry whole plot states.
+- **Remotes** are fewer and take an action word: `ThrowRequest`, `TrainSet`, `ShopBuy`,
+  `FoodEquip`, `SquadAction`, `ProgressAction`, `RewardClaim`, `SettingSet`, `StoreGiftTarget`,
+  `AdminCommand`, `ClientReady` (client to server); `StateSnapshot`, `StateTick`, `PlotsSnapshot`,
+  `PlotUpdate`, `ThrowResult`, `ThrowSeen`, `HeroGranted`, `Toast`, `Announce`, `EnvUpdate`,
+  `Leaderboards` (server to client). Every one is documented in `src/shared/Net.luau`.
+- **World prompts** (train, gear, slot, equip best, food cart, daily, gift, index, rebirth) are
+  ProximityPrompts handled on the server by `InteractService`: no remote to forge.
+- **The map** is built by `src/server/World/Blockout.luau` at server start when `Workspace.Map`
+  does not exist. Section 3's authored map must keep the anchor names listed at the top of that file.
+- **UI** is a test HUD built in code (`HudController`, `MenuController`, `Ui/Make`). Section 3
+  replaces the instances and keeps the controller methods and the remotes.
+- **Services**: `ShopService` (foods, gear, slots), `ProgressService` (index rewards, rebirth),
+  `EventService` (server luck, Festival Hour, banners), `InteractService`, `AdminService` replace
+  the planned Food/Luck/Index/Rebirth/Tutorial services; luck sources and the tutorial step live in
+  `StateService`.

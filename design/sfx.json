@@ -11,8 +11,8 @@
    "looped": true
   },
   {
-   "name": "amb_festival_street",
-   "query": "festival crowd ambience",
+   "name": "amb_pirate_harbor",
+   "query": "harbor waves seagulls ambience",
    "kind": "Music",
    "min_len": 15,
    "max_len": 300,
@@ -47,7 +47,7 @@
    "looped": true
   },
   {
-   "name": "amb_spirit_realm",
+   "name": "amb_realm_of_legends",
    "query": "mystic shrine ambience",
    "kind": "Music",
    "min_len": 15,

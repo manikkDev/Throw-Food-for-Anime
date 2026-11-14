@@ -107,12 +107,12 @@ Hour, set server luck, broadcast, grant lucky throws to everyone present.
 
 | Milestone | Target | Simulated floor player |
 |---|---|---|
-| Festival Street | 1.5 to 4 min | 2 min |
+| Pirate Harbor | 1.5 to 4 min | 2 min |
 | Ninja Village | 10 to 20 min | 14 min |
 | Samurai Castle | 40 to 75 min | 51 min |
 | Hero City | 2 h 10 to 3 h 40 | 2 h 44 |
-| Spirit Realm | 6 h 20 to 9 h 20 | 7 h 18 |
-| First rebirth | 11 h 40 to 16 h 40 | 15 h 11 |
+| Realm of Legends | 6 h 20 to 9 h 20 | 6 h 53 |
+| First rebirth | 11 h 40 to 16 h 40 | 14 h 23 |
 
 The reference game's free players report finishing all content in five to six hours. Ours takes
 about that long to reach the last launch zone, and rebirth then restarts the curve ten times.

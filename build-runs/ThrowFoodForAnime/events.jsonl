@@ -4,3 +4,6 @@
 {"kind": "end", "stage": "market-research", "status": "ok", "ts": "2026-11-14T13:33:12+05:30"}
 {"kind": "start", "stage": "design-spec", "ts": "2026-11-14T13:33:12+05:30"}
 {"kind": "end", "stage": "design-spec", "status": "ok", "ts": "2026-11-14T13:38:30+05:30"}
+{"kind": "intervention", "stage": null, "note": "User placed 31 named anime character avatars (R6, Load Character plugin) in Workspace by hand and asked for an R6-vs-R15 check with uniform height and correct accessories. This overrules the original-trope roster rule recorded in section 1 (plan/03 section 1, out_of_scope).", "ts": "2026-11-14T16:02:12+05:30"}
+{"kind": "start", "stage": "code", "ts": "2026-11-14T16:38:28+05:30"}
+{"kind": "end", "stage": "code", "status": "ok", "ts": "2026-11-14T17:56:37+05:30"}

@@ -11,6 +11,6 @@ Knit.AddControllers(script.Controllers)
 Knit.Start()
 	:andThen(function()
 		-- BUILD STAMP - see the note in the server boot.
-		print("[Throw Food for Anime] Client started - BUILD scaffold-1")
+		print("[Throw Food for Anime] Client started - BUILD s2-05")
 	end)
 	:catch(warn)

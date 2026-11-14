@@ -28,7 +28,7 @@
   "character combat or abilities",
   "rewarded video ads at launch",
   "zones 7 to 10 (data-only updates after launch)",
-  "any recognisable copyrighted character, name, logo or music"
+  "copyrighted names, logos or music in any text, icon, thumbnail or store listing"
  ],
  "stages": {
   "map": {
@@ -60,62 +60,62 @@
   {
    "name": "DataService",
    "side": "server",
-   "owns": "each player's saved profile (session-locked DataStore record, schema version, autosave, release on leave)"
+   "owns": "each player's saved profile: one DataStore record with a session lock, autosave, release on leave, kick on load failure"
   },
   {
-   "name": "EconomyService",
+   "name": "StateService",
    "side": "server",
-   "owns": "Yen balance, the per-second income tick, lifetime-earned total, offline earnings on join"
-  },
-  {
-   "name": "TrainingService",
-   "side": "server",
-   "owns": "Power, the active training session, dojo equipment tier"
-  },
-  {
-   "name": "ThrowService",
-   "side": "server",
-   "owns": "throw validation and cooldown, the zone a throw lands in, the rarity/mutation/size roll and its result"
-  },
-  {
-   "name": "SquadService",
-   "side": "server",
-   "owns": "every owned character instance: plot slot or bench, stars, sell, place, pick up, equip best, fuse"
+   "owns": "what each client is told about its own state (coalesced snapshots, the per-second Yen/Power tick), settings, tutorial step, income multipliers and luck sources"
   },
   {
    "name": "PlotService",
    "side": "server",
-   "owns": "which plot belongs to which player, slot count, and the compact plot state replicated to all clients"
+   "owns": "which plot belongs to which player and the compact plot state every client renders heroes from; builds the placeholder map when the place has none"
   },
   {
-   "name": "FoodService",
+   "name": "SquadService",
    "side": "server",
-   "owns": "foods owned and the equipped food"
+   "owns": "every owned hero: the single grant path, auto-place, bench limit, place, bench, sell, equip best, fuse"
   },
   {
-   "name": "LuckService",
+   "name": "EconomyService",
    "side": "server",
-   "owns": "the luck multiplier for a throw: food, depth, perfect, server luck timer, friends, VIP, index, rebirth, lucky throws"
+   "owns": "Yen: the income tick, every source and sink, lifetime total, offline earnings"
   },
   {
-   "name": "IndexService",
+   "name": "ShopService",
    "side": "server",
-   "owns": "which characters and variants a player has discovered, and zone-completion rewards"
+   "owns": "what is bought with Yen: foods (and the equipped food), dojo gear tier, plot slots"
   },
   {
-   "name": "RebirthService",
+   "name": "ThrowService",
    "side": "server",
-   "owns": "rebirth tier and the reset it performs"
+   "owns": "throw validation and cooldown, landing zone, luck, the rarity/mutation/size roll and the result sent to clients"
+  },
+  {
+   "name": "TrainingService",
+   "side": "server",
+   "owns": "Power and the active training session, counted on the server clock"
+  },
+  {
+   "name": "EventService",
+   "side": "server",
+   "owns": "server luck step and timer, Festival Hour, banners for rare catches and events"
+  },
+  {
+   "name": "ProgressService",
+   "side": "server",
+   "owns": "Hero Index zone rewards and rebirth"
   },
   {
    "name": "RewardsService",
    "side": "server",
-   "owns": "daily streak, playtime gifts, codes redeemed, group reward"
+   "owns": "daily streak, playtime gifts, codes, the offline claim"
   },
   {
    "name": "StoreService",
    "side": "server",
-   "owns": "ProcessReceipt, pass ownership, product grants, gifting, the paid-random-item policy check"
+   "owns": "ProcessReceipt with idempotent receipts, pass ownership, product grants, gifting, the paid-random-item policy flag"
   },
   {
    "name": "LeaderboardService",
@@ -123,76 +123,88 @@
    "owns": "the three global ordered boards and their cached top lists"
   },
   {
-   "name": "EventService",
+   "name": "InteractService",
    "side": "server",
-   "owns": "Festival Hour timer, server-wide announcements, admin event commands"
+   "owns": "dispatch of every ProximityPrompt in the world, with the plot-ownership check"
   },
   {
-   "name": "TutorialService",
+   "name": "AdminService",
    "side": "server",
-   "owns": "the onboarding step each player has reached"
+   "owns": "owner event commands and Studio-only test grants"
   },
   {
    "name": "TelemetryService",
    "side": "server",
-   "owns": "funnel, economy and custom analytics events"
+   "owns": "funnel, economy and custom analytics events, sampled and failure-proof"
   },
   {
    "name": "StateController",
    "side": "client",
-   "owns": "the client copy of the player's state and change signals; nothing else reads remotes for state"
+   "owns": "the client copy of state, plots, environment and boards; the only listener of state remotes"
+  },
+  {
+   "name": "HeroController",
+   "side": "client",
+   "owns": "every hero rig in the world: build from baked templates, place, dash in, nameplate, idle, and the draw/animation budget"
   },
   {
    "name": "ThrowController",
    "side": "client",
-   "owns": "charge input, the throw request, and the flight, landing and reveal sequence for a result"
+   "owns": "charge input and zone marks, the throw request, the flight follow-camera, landing and reveal sequence, skip, Auto Throw"
   },
   {
-   "name": "SquadRenderController",
+   "name": "HudController",
    "side": "client",
-   "owns": "every character rig in the world: build from templates, place, animate, aura, nameplate, distance culling"
+   "owns": "readouts, objective line, toasts, reveal card, banners, event timers (test HUD until section 3)"
   },
   {
-   "name": "TrainingController",
+   "name": "MenuController",
    "side": "client",
-   "owns": "training input, rep animation and feedback"
-  },
-  {
-   "name": "CameraController",
-   "side": "client",
-   "owns": "the throw follow-camera and its return"
-  },
-  {
-   "name": "UIController",
-   "side": "client",
-   "owns": "which screen is open, open/close transitions, the modal stack; one sub-controller per screen"
-  },
-  {
-   "name": "VfxController",
-   "side": "client",
-   "owns": "playing effects from the VFX kit; every call isolated so a missing effect cannot break gameplay"
-  },
-  {
-   "name": "AudioController",
-   "side": "client",
-   "owns": "sound bank playback, music state, volume settings"
+   "owns": "menu buttons and the panel that reaches every feature (test UI until section 3)"
   },
   {
    "name": "TutorialController",
    "side": "client",
-   "owns": "the objective hint line and guide arrow"
+   "owns": "which onboarding step the player is on and what the objective line says"
+  },
+  {
+   "name": "VfxController",
+   "side": "client",
+   "owns": "playing effects from the VFX kit, each call isolated (section 4)"
+  },
+  {
+   "name": "AudioController",
+   "side": "client",
+   "owns": "sound bank playback, music state, volume settings (section 4)"
   }
  ],
+ "server_config": {
+  "Codes": {
+   "WELCOME": {
+    "LuckyThrows": 3
+   },
+   "RELEASE": {
+    "YenMinutes": 20
+   }
+  }
+ },
  "config": {
   "Server": {
    "MaxPlayers": 6,
    "PlotCount": 6,
    "IdleKickMinutes": 20,
    "IncomeTickSeconds": 1,
-   "AutosaveSeconds": 120
+   "AutosaveSeconds": 120,
+   "AdminUserIds": [
+    3540923881
+   ],
+   "ReceiptHistory": 100,
+   "ProfileStore": "Profiles_v1",
+   "ProfileStoreStudio": "Profiles_Dev",
+   "LeaderboardSeconds": 60
   },
   "Throw": {
-   "CycleSeconds": 5,
+   "CycleSeconds": 3.5,
    "ServerCooldownSeconds": 2.2,
    "ChargeSeconds": 1.1,
    "MinCharge": 0.2,
@@ -201,8 +213,12 @@
    "DepthLuckBonus": 0.25,
    "FlightSecondsMin": 1.1,
    "FlightSecondsMax": 2.2,
-   "LuckyThrowLuck": 25,
-   "CravingWeightMult": 3
+   "LuckyThrowLuck": 12,
+   "CravingWeightMult": 3,
+   "RevealSkipSeconds": 0.35,
+   "FirstThrowRarity": "Uncommon",
+   "DashSeconds": 1,
+   "LandPauseSeconds": 0.25
   },
   "Training": {
    "StartPower": 10,
@@ -272,7 +288,7 @@
     },
     {
      "Name": "Hero",
-     "Power": 36000000
+     "Power": 40000000
     },
     {
      "Name": "Legend",
@@ -423,8 +439,8 @@
     "BaseIncome": 1,
     "LengthStuds": 220,
     "Slots": {
-     "Common": 3,
-     "Uncommon": 2,
+     "Common": 1,
+     "Uncommon": 1,
      "Rare": 1,
      "Epic": 1,
      "Legendary": 1
@@ -432,20 +448,20 @@
     "Scenery": "school gate, cherry trees, running track"
    },
    {
-    "Id": "festival_street",
-    "Name": "Festival Street",
+    "Id": "pirate_harbor",
+    "Name": "Pirate Harbor",
     "Index": 2,
     "PowerReq": 200,
     "BaseIncome": 8,
     "LengthStuds": 220,
     "Slots": {
-     "Common": 3,
-     "Uncommon": 2,
+     "Common": 1,
+     "Uncommon": 1,
      "Rare": 1,
      "Epic": 1,
      "Legendary": 1
     },
-    "Scenery": "night-market stalls, lanterns, drum tower"
+    "Scenery": "docks, a moored ship, barrels, lighthouse"
    },
    {
     "Id": "ninja_village",
@@ -455,8 +471,8 @@
     "BaseIncome": 60,
     "LengthStuds": 220,
     "Slots": {
-     "Common": 3,
-     "Uncommon": 2,
+     "Common": 1,
+     "Uncommon": 1,
      "Rare": 1,
      "Epic": 1,
      "Legendary": 1
@@ -471,12 +487,11 @@
     "BaseIncome": 480,
     "LengthStuds": 220,
     "Slots": {
-     "Common": 2,
-     "Uncommon": 2,
+     "Common": 1,
+     "Uncommon": 1,
      "Rare": 1,
      "Epic": 1,
-     "Legendary": 1,
-     "Mythic": 1
+     "Legendary": 1
     },
     "Scenery": "stone walls, castle keep, red bridges"
    },
@@ -488,31 +503,30 @@
     "BaseIncome": 4000,
     "LengthStuds": 220,
     "Slots": {
-     "Common": 2,
-     "Uncommon": 2,
+     "Common": 1,
+     "Uncommon": 1,
      "Rare": 1,
      "Epic": 1,
-     "Legendary": 1,
-     "Mythic": 1
+     "Legendary": 1
     },
     "Scenery": "neon skyline, billboards, rooftop pads"
    },
    {
-    "Id": "spirit_realm",
-    "Name": "Spirit Realm",
+    "Id": "realm_of_legends",
+    "Name": "Realm of Legends",
     "Index": 6,
-    "PowerReq": 36000000,
+    "PowerReq": 40000000,
     "BaseIncome": 34000,
     "LengthStuds": 220,
     "Slots": {
-     "Common": 2,
-     "Uncommon": 2,
+     "Common": 1,
+     "Uncommon": 1,
      "Rare": 1,
      "Epic": 1,
      "Legendary": 1,
      "Mythic": 1
     },
-    "Scenery": "floating islands, torii gates, glowing river"
+    "Scenery": "floating islands, great torii, glowing river"
    }
   ],
   "Rarities": {
@@ -639,7 +653,8 @@
    "BenchSlots": 30,
    "StarIncomeMult": 1.5,
    "MaxStars": 3,
-   "FuseCount": 3
+   "FuseCount": 3,
+   "VipBonusSlots": 2
   },
   "Luck": {
    "ServerSteps": [
@@ -786,436 +801,252 @@
   },
   "Characters": [
    {
-    "Id": "sleepy_student",
-    "Name": "Sleepy Student",
+    "Id": "cursed_vessel",
+    "Name": "Cursed Vessel",
     "Zone": "sakura_schoolyard",
     "Rarity": "Common",
     "Craves": "Savory",
-    "Idle": "IdleShy",
-    "Look": "messy bed hair, loose school blazer, half-closed eyes"
+    "Idle": "IdleCool"
    },
    {
-    "Id": "class_rep",
-    "Name": "Class Rep",
+    "Id": "emerald_hero",
+    "Name": "Emerald Hero",
     "Zone": "sakura_schoolyard",
-    "Rarity": "Common",
+    "Rarity": "Uncommon",
     "Craves": "Sweet",
-    "Idle": "IdleCool",
-    "Look": "neat bob, glasses, armband, tidy uniform"
+    "Idle": "IdlePower"
    },
    {
-    "Id": "track_rookie",
-    "Name": "Track Rookie",
-    "Zone": "sakura_schoolyard",
-    "Rarity": "Common",
-    "Craves": "Savory",
-    "Idle": "IdleCheer",
-    "Look": "sweatband, tracksuit jacket, sneakers"
-   },
-   {
-    "Id": "lunch_rush_kid",
-    "Name": "Lunch Rush Kid",
-    "Zone": "sakura_schoolyard",
-    "Rarity": "Uncommon",
-    "Craves": "Savory",
-    "Idle": "IdleCheer",
-    "Look": "bread in mouth, open blazer, satchel"
-   },
-   {
-    "Id": "kendo_captain",
-    "Name": "Kendo Captain",
-    "Zone": "sakura_schoolyard",
-    "Rarity": "Uncommon",
-    "Craves": "Spicy",
-    "Idle": "IdleBlade",
-    "Look": "ponytail, hakama, bamboo sword on the back"
-   },
-   {
-    "Id": "rooftop_rebel",
-    "Name": "Rooftop Rebel",
+    "Id": "midfield_genius",
+    "Name": "Midfield Genius",
     "Zone": "sakura_schoolyard",
     "Rarity": "Rare",
-    "Craves": "Spicy",
-    "Idle": "IdleCool",
-    "Look": "slicked pompadour, long coat on shoulders, bandage on nose"
+    "Craves": "Seafood",
+    "Idle": "IdleCool"
    },
    {
-    "Id": "idol_transfer",
-    "Name": "Idol Transfer",
+    "Id": "notebook_mastermind",
+    "Name": "Notebook Mastermind",
     "Zone": "sakura_schoolyard",
     "Rarity": "Epic",
     "Craves": "Sweet",
-    "Idle": "IdleCheer",
-    "Look": "pink twin-tails, frilled stage dress, star hairpin"
+    "Idle": "IdleCool"
    },
    {
-    "Id": "council_president",
-    "Name": "Council President",
+    "Id": "sorcerer_hunter",
+    "Name": "Sorcerer Hunter",
     "Zone": "sakura_schoolyard",
     "Rarity": "Legendary",
-    "Craves": "Seafood",
-    "Idle": "IdlePower",
-    "Look": "white long coat uniform, silver hair, gold braid, cape"
+    "Craves": "Spicy",
+    "Idle": "IdleBlade"
    },
    {
-    "Id": "goldfish_scooper",
-    "Name": "Goldfish Scooper",
-    "Zone": "festival_street",
-    "Rarity": "Common",
-    "Craves": "Seafood",
-    "Idle": "IdleCheer",
-    "Look": "short yukata, paper scoop, goldfish bag"
-   },
-   {
-    "Id": "lantern_kid",
-    "Name": "Lantern Kid",
-    "Zone": "festival_street",
-    "Rarity": "Common",
-    "Craves": "Sweet",
-    "Idle": "IdleShy",
-    "Look": "happi coat, paper lantern, bowl cut"
-   },
-   {
-    "Id": "mask_vendor",
-    "Name": "Mask Vendor",
-    "Zone": "festival_street",
+    "Id": "straw_hat_rookie",
+    "Name": "Straw Hat Rookie",
+    "Zone": "pirate_harbor",
     "Rarity": "Common",
     "Craves": "Savory",
-    "Idle": "IdleCool",
-    "Look": "festival masks on the belt and head, apron"
+    "Idle": "IdleCheer"
    },
    {
-    "Id": "taiko_drummer",
-    "Name": "Taiko Drummer",
-    "Zone": "festival_street",
+    "Id": "black_leg_cook",
+    "Name": "Black Leg Cook",
+    "Zone": "pirate_harbor",
     "Rarity": "Uncommon",
-    "Craves": "Spicy",
-    "Idle": "IdlePower",
-    "Look": "headband, sleeveless happi, drum sticks on the back"
+    "Craves": "Seafood",
+    "Idle": "IdleCool"
    },
    {
-    "Id": "yukata_dancer",
-    "Name": "Yukata Dancer",
-    "Zone": "festival_street",
-    "Rarity": "Uncommon",
-    "Craves": "Sweet",
-    "Idle": "IdleCheer",
-    "Look": "flower yukata, hair bun with pins, fan"
-   },
-   {
-    "Id": "ramen_master",
-    "Name": "Ramen Master",
-    "Zone": "festival_street",
+    "Id": "three_sword_hunter",
+    "Name": "Three-Sword Hunter",
+    "Zone": "pirate_harbor",
     "Rarity": "Rare",
     "Craves": "Savory",
-    "Idle": "IdleCool",
-    "Look": "chef headband, towel on the neck, noodle ladle"
+    "Idle": "IdleBlade"
    },
    {
-    "Id": "firework_artisan",
-    "Name": "Firework Artisan",
-    "Zone": "festival_street",
+    "Id": "heart_surgeon",
+    "Name": "Heart Surgeon",
+    "Zone": "pirate_harbor",
     "Rarity": "Epic",
-    "Craves": "Spicy",
-    "Idle": "IdlePower",
-    "Look": "goggles, scorched coat, rocket tubes on the back"
-   },
-   {
-    "Id": "fox_mask_wanderer",
-    "Name": "Fox Mask Wanderer",
-    "Zone": "festival_street",
-    "Rarity": "Legendary",
     "Craves": "Seafood",
-    "Idle": "IdleFloat",
-    "Look": "white fox mask, long dark haori, bells, lone blue flame"
+    "Idle": "IdleBlade"
    },
    {
-    "Id": "rookie_ninja",
-    "Name": "Rookie Ninja",
+    "Id": "red_haired_emperor",
+    "Name": "Red-Haired Emperor",
+    "Zone": "pirate_harbor",
+    "Rarity": "Legendary",
+    "Craves": "Spicy",
+    "Idle": "IdleCool"
+   },
+   {
+    "Id": "fox_ninja",
+    "Name": "Fox Ninja",
     "Zone": "ninja_village",
     "Rarity": "Common",
     "Craves": "Savory",
-    "Idle": "IdleNinja",
-    "Look": "grey scarf, simple wraps, practice kunai"
+    "Idle": "IdleCheer"
    },
    {
-    "Id": "scroll_runner",
-    "Name": "Scroll Runner",
+    "Id": "lightning_avenger",
+    "Name": "Lightning Avenger",
     "Zone": "ninja_village",
-    "Rarity": "Common",
-    "Craves": "Sweet",
-    "Idle": "IdleCheer",
-    "Look": "big scroll on the back, messenger cap"
-   },
-   {
-    "Id": "smoke_trickster",
-    "Name": "Smoke Trickster",
-    "Zone": "ninja_village",
-    "Rarity": "Common",
+    "Rarity": "Uncommon",
     "Craves": "Spicy",
-    "Idle": "IdleNinja",
-    "Look": "purple hood, grin mask, smoke pouch"
+    "Idle": "IdleCool"
    },
    {
-    "Id": "kunai_twin",
-    "Name": "Kunai Twin",
-    "Zone": "ninja_village",
-    "Rarity": "Uncommon",
-    "Craves": "Seafood",
-    "Idle": "IdleNinja",
-    "Look": "twin buns, crossed belts of kunai"
-   },
-   {
-    "Id": "toad_tamer",
-    "Name": "Toad Tamer",
-    "Zone": "ninja_village",
-    "Rarity": "Uncommon",
-    "Craves": "Sweet",
-    "Idle": "IdleCheer",
-    "Look": "straw hat, small toad on the shoulder, travel cloak"
-   },
-   {
-    "Id": "shadow_scout",
-    "Name": "Shadow Scout",
+    "Id": "copy_ninja",
+    "Name": "Copy Ninja",
     "Zone": "ninja_village",
     "Rarity": "Rare",
-    "Craves": "Spicy",
-    "Idle": "IdleNinja",
-    "Look": "black fitted gear, face wrap, short blade on the back"
+    "Craves": "Seafood",
+    "Idle": "IdleNinja"
    },
    {
-    "Id": "moonlit_kunoichi",
-    "Name": "Moonlit Kunoichi",
+    "Id": "crow_illusionist",
+    "Name": "Crow Illusionist",
     "Zone": "ninja_village",
     "Rarity": "Epic",
     "Craves": "Sweet",
-    "Idle": "IdleBlade",
-    "Look": "long silver ponytail, indigo outfit, crescent hairpin"
+    "Idle": "IdleNinja"
    },
    {
-    "Id": "village_grandmaster",
-    "Name": "Village Grandmaster",
+    "Id": "ghost_of_the_clan",
+    "Name": "Ghost of the Clan",
     "Zone": "ninja_village",
     "Rarity": "Legendary",
-    "Craves": "Savory",
-    "Idle": "IdlePower",
-    "Look": "wide hat, long white robe, tall staff, calm aura"
+    "Craves": "Spicy",
+    "Idle": "IdlePower"
    },
    {
-    "Id": "gate_guard",
-    "Name": "Gate Guard",
+    "Id": "sun_breather",
+    "Name": "Sun Breather",
     "Zone": "samurai_castle",
     "Rarity": "Common",
     "Craves": "Savory",
-    "Idle": "IdleCool",
-    "Look": "ashigaru helmet, spear on the back, plain armour"
+    "Idle": "IdleBlade"
    },
    {
-    "Id": "tea_server",
-    "Name": "Tea Server",
-    "Zone": "samurai_castle",
-    "Rarity": "Common",
-    "Craves": "Sweet",
-    "Idle": "IdleShy",
-    "Look": "kimono, tray, tied sleeves"
-   },
-   {
-    "Id": "wandering_ronin",
-    "Name": "Wandering Ronin",
-    "Zone": "samurai_castle",
-    "Rarity": "Uncommon",
-    "Craves": "Seafood",
-    "Idle": "IdleBlade",
-    "Look": "straw hat, worn haori, one sword at the hip"
-   },
-   {
-    "Id": "shrine_maiden",
-    "Name": "Shrine Maiden",
+    "Id": "bamboo_demon_girl",
+    "Name": "Bamboo Demon Girl",
     "Zone": "samurai_castle",
     "Rarity": "Uncommon",
     "Craves": "Sweet",
-    "Idle": "IdleShy",
-    "Look": "red and white robes, long black hair, paper wand"
+    "Idle": "IdleShy"
    },
    {
-    "Id": "twin_blade_duelist",
-    "Name": "Twin-Blade Duelist",
+    "Id": "substitute_reaper",
+    "Name": "Substitute Reaper",
     "Zone": "samurai_castle",
     "Rarity": "Rare",
     "Craves": "Spicy",
-    "Idle": "IdleBlade",
-    "Look": "tied topknot, two swords crossed on the back"
+    "Idle": "IdleBlade"
    },
    {
-    "Id": "crimson_oni_general",
-    "Name": "Crimson Oni General",
+    "Id": "six_eyed_moon",
+    "Name": "Six-Eyed Moon",
     "Zone": "samurai_castle",
     "Rarity": "Epic",
-    "Craves": "Spicy",
-    "Idle": "IdlePower",
-    "Look": "red armour, horned mask, great club"
+    "Craves": "Seafood",
+    "Idle": "IdleBlade"
    },
    {
-    "Id": "ember_blade_master",
-    "Name": "Ember Blade Master",
+    "Id": "demon_progenitor",
+    "Name": "Demon Progenitor",
     "Zone": "samurai_castle",
     "Rarity": "Legendary",
-    "Craves": "Savory",
-    "Idle": "IdleBlade",
-    "Look": "flame-pattern coat, glowing sword, scarred eye"
-   },
-   {
-    "Id": "shogun_of_storms",
-    "Name": "Shogun of Storms",
-    "Zone": "samurai_castle",
-    "Rarity": "Mythic",
-    "Craves": "Seafood",
-    "Idle": "IdlePower",
-    "Look": "dark lacquer armour, crescent helm, storm cloak"
-   },
-   {
-    "Id": "sidekick_trainee",
-    "Name": "Sidekick Trainee",
-    "Zone": "hero_city",
-    "Rarity": "Common",
     "Craves": "Sweet",
-    "Idle": "IdleCheer",
-    "Look": "domino mask, gym uniform, towel cape"
+    "Idle": "IdleCool"
    },
    {
-    "Id": "news_runner",
-    "Name": "News Runner",
+    "Id": "hero_hunter",
+    "Name": "Hero Hunter",
     "Zone": "hero_city",
     "Rarity": "Common",
     "Craves": "Savory",
-    "Idle": "IdleCheer",
-    "Look": "press cap, camera, messenger bag"
+    "Idle": "IdleNinja"
    },
    {
-    "Id": "dash_kid",
-    "Name": "Dash Kid",
+    "Id": "anti_magic_knight",
+    "Name": "Anti-Magic Knight",
     "Zone": "hero_city",
     "Rarity": "Uncommon",
     "Craves": "Spicy",
-    "Idle": "IdleCheer",
-    "Look": "visor, racing suit, leg boosters"
+    "Idle": "IdlePower"
    },
    {
-    "Id": "gadget_girl",
-    "Name": "Gadget Girl",
-    "Zone": "hero_city",
-    "Rarity": "Uncommon",
-    "Craves": "Sweet",
-    "Idle": "IdleCool",
-    "Look": "goggles on the head, tool belt, mech glove"
-   },
-   {
-    "Id": "frost_guardian",
-    "Name": "Frost Guardian",
+    "Id": "ice_general",
+    "Name": "Ice General",
     "Zone": "hero_city",
     "Rarity": "Rare",
-    "Craves": "Seafood",
-    "Idle": "IdleCool",
-    "Look": "ice-blue hair, high collar coat, frost gauntlet"
+    "Craves": "Sweet",
+    "Idle": "IdleCool"
    },
    {
-    "Id": "captain_comet",
-    "Name": "Captain Comet",
+    "Id": "string_king",
+    "Name": "Heavenly String King",
     "Zone": "hero_city",
     "Rarity": "Epic",
-    "Craves": "Savory",
-    "Idle": "IdlePower",
-    "Look": "star emblem suit, long scarf, boots"
+    "Craves": "Seafood",
+    "Idle": "IdleCool"
    },
    {
-    "Id": "thunder_ace",
-    "Name": "Thunder Ace",
+    "Id": "bald_cape_hero",
+    "Name": "Bald Cape Hero",
     "Zone": "hero_city",
     "Rarity": "Legendary",
-    "Craves": "Spicy",
-    "Idle": "IdlePower",
-    "Look": "spiky yellow-black hair, crackling jacket, bolt earrings"
+    "Craves": "Savory",
+    "Idle": "IdleShy"
    },
    {
-    "Id": "the_number_one",
-    "Name": "The Number One",
-    "Zone": "hero_city",
+    "Id": "first_emperor",
+    "Name": "First Emperor",
+    "Zone": "realm_of_legends",
+    "Rarity": "Common",
+    "Craves": "Sweet",
+    "Idle": "IdlePower"
+   },
+   {
+    "Id": "proud_prince",
+    "Name": "Proud Prince",
+    "Zone": "realm_of_legends",
+    "Rarity": "Uncommon",
+    "Craves": "Spicy",
+    "Idle": "IdleCool"
+   },
+   {
+    "Id": "beast_emperor",
+    "Name": "Beast Emperor",
+    "Zone": "realm_of_legends",
+    "Rarity": "Rare",
+    "Craves": "Seafood",
+    "Idle": "IdlePower"
+   },
+   {
+    "Id": "instinct_warrior",
+    "Name": "Instinct Warrior",
+    "Zone": "realm_of_legends",
+    "Rarity": "Epic",
+    "Craves": "Savory",
+    "Idle": "IdlePower"
+   },
+   {
+    "Id": "curse_king",
+    "Name": "Curse King",
+    "Zone": "realm_of_legends",
+    "Rarity": "Legendary",
+    "Craves": "Spicy",
+    "Idle": "IdleCool"
+   },
+   {
+    "Id": "sun_god_captain",
+    "Name": "Sun God Captain",
+    "Zone": "realm_of_legends",
     "Rarity": "Mythic",
     "Craves": "Savory",
-    "Idle": "IdlePower",
-    "Look": "white and gold hero suit, huge cape, radiant halo"
-   },
-   {
-    "Id": "lantern_spirit",
-    "Name": "Lantern Spirit",
-    "Zone": "spirit_realm",
-    "Rarity": "Common",
-    "Craves": "Sweet",
-    "Idle": "IdleFloat",
-    "Look": "pale robes, paper lantern head-piece, soft glow"
-   },
-   {
-    "Id": "paper_charm_kid",
-    "Name": "Paper Charm Kid",
-    "Zone": "spirit_realm",
-    "Rarity": "Common",
-    "Craves": "Savory",
-    "Idle": "IdleShy",
-    "Look": "charm tag on the forehead, oversized sleeves"
-   },
-   {
-    "Id": "river_guardian",
-    "Name": "River Guardian",
-    "Zone": "spirit_realm",
-    "Rarity": "Uncommon",
-    "Craves": "Seafood",
-    "Idle": "IdleCool",
-    "Look": "teal hair, scale shoulder guard, water gourd"
-   },
-   {
-    "Id": "cloud_monk",
-    "Name": "Cloud Monk",
-    "Zone": "spirit_realm",
-    "Rarity": "Uncommon",
-    "Craves": "Savory",
-    "Idle": "IdleFloat",
-    "Look": "shaved head, prayer beads, cloud sash"
-   },
-   {
-    "Id": "nine_tail_trickster",
-    "Name": "Nine-Tail Trickster",
-    "Zone": "spirit_realm",
-    "Rarity": "Rare",
-    "Craves": "Sweet",
-    "Idle": "IdleCheer",
-    "Look": "fox ears, many tails, mischievous grin"
-   },
-   {
-    "Id": "soul_ferryman",
-    "Name": "Soul Ferryman",
-    "Zone": "spirit_realm",
-    "Rarity": "Epic",
-    "Craves": "Seafood",
-    "Idle": "IdleBlade",
-    "Look": "black robes, hooded, long scythe, blue wisps"
-   },
-   {
-    "Id": "moon_princess",
-    "Name": "Moon Princess",
-    "Zone": "spirit_realm",
-    "Rarity": "Legendary",
-    "Craves": "Sweet",
-    "Idle": "IdleFloat",
-    "Look": "floor-length silver hair, layered robes, moon crown"
-   },
-   {
-    "Id": "dragon_emperor",
-    "Name": "Dragon Emperor",
-    "Zone": "spirit_realm",
-    "Rarity": "Mythic",
-    "Craves": "Spicy",
-    "Idle": "IdlePower",
-    "Look": "horned crown, jade and gold armour, dragon cloak"
+    "Idle": "IdleCheer"
    }
   ],
   "PremiumCharacters": [
@@ -1427,25 +1258,29 @@
      "Key": "StarterPack",
      "Robux": 49,
      "Kind": "starter",
-     "ProductId": 0
+     "ProductId": 0,
+     "Hero": "lucky_cat_mascot"
     },
     {
      "Key": "SakuraShogun",
      "Robux": 399,
      "Kind": "character",
-     "ProductId": 0
+     "ProductId": 0,
+     "Hero": "sakura_shogun"
     },
     {
      "Key": "GiftDoubleYen",
      "Robux": 99,
      "Kind": "gift",
-     "ProductId": 0
+     "ProductId": 0,
+     "Pass": "DoubleYen"
     },
     {
      "Key": "GiftDoubleTraining",
      "Robux": 149,
      "Kind": "gift",
-     "ProductId": 0
+     "ProductId": 0,
+     "Pass": "DoubleTraining"
     }
    ]
   },
@@ -1478,486 +1313,342 @@
   "Sim": {
    "TrainShare": 0.25,
    "SaveCapShare": 0.25
+  },
+  "World": {
+   "GroundY": 0,
+   "LaneStartZ": 40,
+   "LaneWidth": 40,
+   "LandingJitterX": 9,
+   "PlotPitch": 68,
+   "PlotWidth": 56,
+   "PlotBackZ": -20,
+   "PlotFrontZ": 28,
+   "PedestalColumns": 7,
+   "PedestalRows": 4,
+   "PedestalSpacing": 7,
+   "PedestalCenterZ": -3,
+   "ThrowPadZ": 21,
+   "ThrowPadRadius": 5,
+   "DojoPadX": -21,
+   "DojoPadZ": 20,
+   "DojoPadRadius": 6,
+   "SlotSignX": 21,
+   "SlotSignZ": 20,
+   "HubDepth": 90,
+   "InteractRange": 14,
+   "PedestalTop": 1,
+   "HeroViewDistance": 260,
+   "HeroAnimateDistance": 120
   }
  },
  "asset_plan": [
   {
-   "entity": "Sleepy Student",
+   "entity": "Cursed Vessel",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_sleepy_student",
-     "why": "the collectible itself: a baked R15 rig (messy bed hair, loose school blazer, half-closed eyes)"
+     "name": "Char_cursed_vessel",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Yuji"
     }
    ]
   },
   {
-   "entity": "Class Rep",
+   "entity": "Emerald Hero",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_class_rep",
-     "why": "the collectible itself: a baked R15 rig (neat bob, glasses, armband, tidy uniform)"
+     "name": "Char_emerald_hero",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Deku"
     }
    ]
   },
   {
-   "entity": "Track Rookie",
+   "entity": "Midfield Genius",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_track_rookie",
-     "why": "the collectible itself: a baked R15 rig (sweatband, tracksuit jacket, sneakers)"
+     "name": "Char_midfield_genius",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Sae Itoshi"
     }
    ]
   },
   {
-   "entity": "Lunch Rush Kid",
+   "entity": "Notebook Mastermind",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_lunch_rush_kid",
-     "why": "the collectible itself: a baked R15 rig (bread in mouth, open blazer, satchel)"
+     "name": "Char_notebook_mastermind",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Light Yagami"
     }
    ]
   },
   {
-   "entity": "Kendo Captain",
+   "entity": "Sorcerer Hunter",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_kendo_captain",
-     "why": "the collectible itself: a baked R15 rig (ponytail, hakama, bamboo sword on the back)"
+     "name": "Char_sorcerer_hunter",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Toji Fushiguro"
     }
    ]
   },
   {
-   "entity": "Rooftop Rebel",
+   "entity": "Straw Hat Rookie",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_rooftop_rebel",
-     "why": "the collectible itself: a baked R15 rig (slicked pompadour, long coat on shoulders, bandage on nose)"
+     "name": "Char_straw_hat_rookie",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Luffy"
     }
    ]
   },
   {
-   "entity": "Idol Transfer",
+   "entity": "Black Leg Cook",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_idol_transfer",
-     "why": "the collectible itself: a baked R15 rig (pink twin-tails, frilled stage dress, star hairpin)"
+     "name": "Char_black_leg_cook",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Sanji"
     }
    ]
   },
   {
-   "entity": "Council President",
+   "entity": "Three-Sword Hunter",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_council_president",
-     "why": "the collectible itself: a baked R15 rig (white long coat uniform, silver hair, gold braid, cape)"
+     "name": "Char_three_sword_hunter",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Zoro"
     }
    ]
   },
   {
-   "entity": "Goldfish Scooper",
+   "entity": "Heart Surgeon",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_goldfish_scooper",
-     "why": "the collectible itself: a baked R15 rig (short yukata, paper scoop, goldfish bag)"
+     "name": "Char_heart_surgeon",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Trafalgar Law"
     }
    ]
   },
   {
-   "entity": "Lantern Kid",
+   "entity": "Red-Haired Emperor",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_lantern_kid",
-     "why": "the collectible itself: a baked R15 rig (happi coat, paper lantern, bowl cut)"
+     "name": "Char_red_haired_emperor",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Shanks"
     }
    ]
   },
   {
-   "entity": "Mask Vendor",
+   "entity": "Fox Ninja",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_mask_vendor",
-     "why": "the collectible itself: a baked R15 rig (festival masks on the belt and head, apron)"
+     "name": "Char_fox_ninja",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Naruto Uzumaki"
     }
    ]
   },
   {
-   "entity": "Taiko Drummer",
+   "entity": "Lightning Avenger",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_taiko_drummer",
-     "why": "the collectible itself: a baked R15 rig (headband, sleeveless happi, drum sticks on the back)"
+     "name": "Char_lightning_avenger",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Sasuke Uchiha"
     }
    ]
   },
   {
-   "entity": "Yukata Dancer",
+   "entity": "Copy Ninja",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_yukata_dancer",
-     "why": "the collectible itself: a baked R15 rig (flower yukata, hair bun with pins, fan)"
+     "name": "Char_copy_ninja",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Kakashi Hatake"
     }
    ]
   },
   {
-   "entity": "Ramen Master",
+   "entity": "Crow Illusionist",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_ramen_master",
-     "why": "the collectible itself: a baked R15 rig (chef headband, towel on the neck, noodle ladle)"
+     "name": "Char_crow_illusionist",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Itachi Uchiha"
     }
    ]
   },
   {
-   "entity": "Firework Artisan",
+   "entity": "Ghost of the Clan",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_firework_artisan",
-     "why": "the collectible itself: a baked R15 rig (goggles, scorched coat, rocket tubes on the back)"
+     "name": "Char_ghost_of_the_clan",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Madara Uchiha"
     }
    ]
   },
   {
-   "entity": "Fox Mask Wanderer",
+   "entity": "Sun Breather",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_fox_mask_wanderer",
-     "why": "the collectible itself: a baked R15 rig (white fox mask, long dark haori, bells, lone blue flame)"
+     "name": "Char_sun_breather",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Tanjiro"
     }
    ]
   },
   {
-   "entity": "Rookie Ninja",
+   "entity": "Bamboo Demon Girl",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_rookie_ninja",
-     "why": "the collectible itself: a baked R15 rig (grey scarf, simple wraps, practice kunai)"
+     "name": "Char_bamboo_demon_girl",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Nezuko"
     }
    ]
   },
   {
-   "entity": "Scroll Runner",
+   "entity": "Substitute Reaper",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_scroll_runner",
-     "why": "the collectible itself: a baked R15 rig (big scroll on the back, messenger cap)"
+     "name": "Char_substitute_reaper",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Ichigo Kurosaki"
     }
    ]
   },
   {
-   "entity": "Smoke Trickster",
+   "entity": "Six-Eyed Moon",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_smoke_trickster",
-     "why": "the collectible itself: a baked R15 rig (purple hood, grin mask, smoke pouch)"
+     "name": "Char_six_eyed_moon",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Kokushibo"
     }
    ]
   },
   {
-   "entity": "Kunai Twin",
+   "entity": "Demon Progenitor",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_kunai_twin",
-     "why": "the collectible itself: a baked R15 rig (twin buns, crossed belts of kunai)"
+     "name": "Char_demon_progenitor",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Muzan"
     }
    ]
   },
   {
-   "entity": "Toad Tamer",
+   "entity": "Hero Hunter",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_toad_tamer",
-     "why": "the collectible itself: a baked R15 rig (straw hat, small toad on the shoulder, travel cloak)"
+     "name": "Char_hero_hunter",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Garou"
     }
    ]
   },
   {
-   "entity": "Shadow Scout",
+   "entity": "Anti-Magic Knight",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_shadow_scout",
-     "why": "the collectible itself: a baked R15 rig (black fitted gear, face wrap, short blade on the back)"
+     "name": "Char_anti_magic_knight",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Asta"
     }
    ]
   },
   {
-   "entity": "Moonlit Kunoichi",
+   "entity": "Ice General",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_moonlit_kunoichi",
-     "why": "the collectible itself: a baked R15 rig (long silver ponytail, indigo outfit, crescent hairpin)"
+     "name": "Char_ice_general",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Esdeath"
     }
    ]
   },
   {
-   "entity": "Village Grandmaster",
+   "entity": "Heavenly String King",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_village_grandmaster",
-     "why": "the collectible itself: a baked R15 rig (wide hat, long white robe, tall staff, calm aura)"
+     "name": "Char_string_king",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Doflamingo"
     }
    ]
   },
   {
-   "entity": "Gate Guard",
+   "entity": "Bald Cape Hero",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_gate_guard",
-     "why": "the collectible itself: a baked R15 rig (ashigaru helmet, spear on the back, plain armour)"
+     "name": "Char_bald_cape_hero",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Saitama"
     }
    ]
   },
   {
-   "entity": "Tea Server",
+   "entity": "First Emperor",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_tea_server",
-     "why": "the collectible itself: a baked R15 rig (kimono, tray, tied sleeves)"
+     "name": "Char_first_emperor",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Qin Shi Huang"
     }
    ]
   },
   {
-   "entity": "Wandering Ronin",
+   "entity": "Proud Prince",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_wandering_ronin",
-     "why": "the collectible itself: a baked R15 rig (straw hat, worn haori, one sword at the hip)"
+     "name": "Char_proud_prince",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Vegeta"
     }
    ]
   },
   {
-   "entity": "Shrine Maiden",
+   "entity": "Beast Emperor",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_shrine_maiden",
-     "why": "the collectible itself: a baked R15 rig (red and white robes, long black hair, paper wand)"
+     "name": "Char_beast_emperor",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Kaido"
     }
    ]
   },
   {
-   "entity": "Twin-Blade Duelist",
+   "entity": "Instinct Warrior",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_twin_blade_duelist",
-     "why": "the collectible itself: a baked R15 rig (tied topknot, two swords crossed on the back)"
+     "name": "Char_instinct_warrior",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Goku"
     }
    ]
   },
   {
-   "entity": "Crimson Oni General",
+   "entity": "Curse King",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_crimson_oni_general",
-     "why": "the collectible itself: a baked R15 rig (red armour, horned mask, great club)"
+     "name": "Char_curse_king",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Sukuna"
     }
    ]
   },
   {
-   "entity": "Ember Blade Master",
+   "entity": "Sun God Captain",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Char_ember_blade_master",
-     "why": "the collectible itself: a baked R15 rig (flame-pattern coat, glowing sword, scarred eye)"
-    }
-   ]
-  },
-  {
-   "entity": "Shogun of Storms",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_shogun_of_storms",
-     "why": "the collectible itself: a baked R15 rig (dark lacquer armour, crescent helm, storm cloak)"
-    }
-   ]
-  },
-  {
-   "entity": "Sidekick Trainee",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_sidekick_trainee",
-     "why": "the collectible itself: a baked R15 rig (domino mask, gym uniform, towel cape)"
-    }
-   ]
-  },
-  {
-   "entity": "News Runner",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_news_runner",
-     "why": "the collectible itself: a baked R15 rig (press cap, camera, messenger bag)"
-    }
-   ]
-  },
-  {
-   "entity": "Dash Kid",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_dash_kid",
-     "why": "the collectible itself: a baked R15 rig (visor, racing suit, leg boosters)"
-    }
-   ]
-  },
-  {
-   "entity": "Gadget Girl",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_gadget_girl",
-     "why": "the collectible itself: a baked R15 rig (goggles on the head, tool belt, mech glove)"
-    }
-   ]
-  },
-  {
-   "entity": "Frost Guardian",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_frost_guardian",
-     "why": "the collectible itself: a baked R15 rig (ice-blue hair, high collar coat, frost gauntlet)"
-    }
-   ]
-  },
-  {
-   "entity": "Captain Comet",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_captain_comet",
-     "why": "the collectible itself: a baked R15 rig (star emblem suit, long scarf, boots)"
-    }
-   ]
-  },
-  {
-   "entity": "Thunder Ace",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_thunder_ace",
-     "why": "the collectible itself: a baked R15 rig (spiky yellow-black hair, crackling jacket, bolt earrings)"
-    }
-   ]
-  },
-  {
-   "entity": "The Number One",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_the_number_one",
-     "why": "the collectible itself: a baked R15 rig (white and gold hero suit, huge cape, radiant halo)"
-    }
-   ]
-  },
-  {
-   "entity": "Lantern Spirit",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_lantern_spirit",
-     "why": "the collectible itself: a baked R15 rig (pale robes, paper lantern head-piece, soft glow)"
-    }
-   ]
-  },
-  {
-   "entity": "Paper Charm Kid",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_paper_charm_kid",
-     "why": "the collectible itself: a baked R15 rig (charm tag on the forehead, oversized sleeves)"
-    }
-   ]
-  },
-  {
-   "entity": "River Guardian",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_river_guardian",
-     "why": "the collectible itself: a baked R15 rig (teal hair, scale shoulder guard, water gourd)"
-    }
-   ]
-  },
-  {
-   "entity": "Cloud Monk",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_cloud_monk",
-     "why": "the collectible itself: a baked R15 rig (shaved head, prayer beads, cloud sash)"
-    }
-   ]
-  },
-  {
-   "entity": "Nine-Tail Trickster",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_nine_tail_trickster",
-     "why": "the collectible itself: a baked R15 rig (fox ears, many tails, mischievous grin)"
-    }
-   ]
-  },
-  {
-   "entity": "Soul Ferryman",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_soul_ferryman",
-     "why": "the collectible itself: a baked R15 rig (black robes, hooded, long scythe, blue wisps)"
-    }
-   ]
-  },
-  {
-   "entity": "Moon Princess",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_moon_princess",
-     "why": "the collectible itself: a baked R15 rig (floor-length silver hair, layered robes, moon crown)"
-    }
-   ]
-  },
-  {
-   "entity": "Dragon Emperor",
-   "needs": [
-    {
-     "stage": "meshes",
-     "name": "Char_dragon_emperor",
-     "why": "the collectible itself: a baked R15 rig (horned crown, jade and gold armour, dragon cloak)"
+     "name": "Char_sun_god_captain",
+     "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Luffy Wano"
     }
    ]
   },
@@ -1967,7 +1658,7 @@
     {
      "stage": "meshes",
      "name": "Char_starlight_idol",
-     "why": "the collectible itself: a baked R15 rig (galaxy-print stage outfit, star wand)"
+     "why": "the collectible itself: baked R15 rig (avatar still to be imported: galaxy-print stage outfit, star wand)"
     }
    ]
   },
@@ -1977,7 +1668,7 @@
     {
      "stage": "meshes",
      "name": "Char_clockwork_butler",
-     "why": "the collectible itself: a baked R15 rig (tailcoat, brass monocle, gear back-piece)"
+     "why": "the collectible itself: baked R15 rig (avatar still to be imported: tailcoat, brass monocle, gear back-piece)"
     }
    ]
   },
@@ -1987,7 +1678,7 @@
     {
      "stage": "meshes",
      "name": "Char_phantom_thief",
-     "why": "the collectible itself: a baked R15 rig (top hat, white mask, cape, rose)"
+     "why": "the collectible itself: baked R15 rig (avatar still to be imported: top hat, white mask, cape, rose)"
     }
    ]
   },
@@ -1997,7 +1688,7 @@
     {
      "stage": "meshes",
      "name": "Char_demon_lord_heir",
-     "why": "the collectible itself: a baked R15 rig (curled horns, dark royal coat, bat wings)"
+     "why": "the collectible itself: baked R15 rig (avatar still to be imported: curled horns, dark royal coat, bat wings)"
     }
    ]
   },
@@ -2007,7 +1698,7 @@
     {
      "stage": "meshes",
      "name": "Char_angel_commander",
-     "why": "the collectible itself: a baked R15 rig (white wings, halo, gold spear)"
+     "why": "the collectible itself: baked R15 rig (avatar still to be imported: white wings, halo, gold spear)"
     }
    ]
   },
@@ -2017,7 +1708,7 @@
     {
      "stage": "meshes",
      "name": "Char_void_empress",
-     "why": "the collectible itself: a baked R15 rig (black star gown, floating crown, void wings)"
+     "why": "the collectible itself: baked R15 rig (avatar still to be imported: black star gown, floating crown, void wings)"
     }
    ]
   },
@@ -2027,7 +1718,7 @@
     {
      "stage": "meshes",
      "name": "Char_lucky_cat_mascot",
-     "why": "the collectible itself: a baked R15 rig (lucky-cat hood, bell collar, coin)"
+     "why": "the collectible itself: baked R15 rig (avatar still to be imported: lucky-cat hood, bell collar, coin)"
     }
    ]
   },
@@ -2037,7 +1728,7 @@
     {
      "stage": "meshes",
      "name": "Char_sakura_shogun",
-     "why": "the collectible itself: a baked R15 rig (pink petal armour, blossom katana, petal cape)"
+     "why": "the collectible itself: baked R15 rig (avatar still to be imported: pink petal armour, blossom katana, petal cape)"
     }
    ]
   },
@@ -2407,41 +2098,41 @@
    ]
   },
   {
-   "entity": "Zone: Festival Street",
+   "entity": "Zone: Pirate Harbor",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Prop_festival_street_FoodStall",
+     "name": "Prop_pirate_harbor_PirateShip",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "meshes",
-     "name": "Prop_festival_street_LanternString",
+     "name": "Prop_pirate_harbor_Dock",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "meshes",
-     "name": "Prop_festival_street_DrumTower",
+     "name": "Prop_pirate_harbor_BarrelStack",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "meshes",
-     "name": "Prop_festival_street_ToriiSmall",
+     "name": "Prop_pirate_harbor_Lighthouse",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "meshes",
-     "name": "Prop_festival_street_PaperLamp",
+     "name": "Prop_pirate_harbor_PalmTree",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "map",
-     "name": "Zone_festival_street",
+     "name": "Zone_pirate_harbor",
      "why": "the landing band and its gate in the proven layout"
     },
     {
      "stage": "sfx",
-     "name": "amb_festival_street",
+     "name": "amb_pirate_harbor",
      "why": "the follow-cam flies here; silence reads as unfinished"
     }
    ]
@@ -2567,41 +2258,41 @@
    ]
   },
   {
-   "entity": "Zone: Spirit Realm",
+   "entity": "Zone: Realm of Legends",
    "needs": [
     {
      "stage": "meshes",
-     "name": "Prop_spirit_realm_FloatingIsland",
+     "name": "Prop_realm_of_legends_FloatingIsland",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "meshes",
-     "name": "Prop_spirit_realm_GreatTorii",
+     "name": "Prop_realm_of_legends_GreatTorii",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "meshes",
-     "name": "Prop_spirit_realm_SpiritLantern",
+     "name": "Prop_realm_of_legends_SpiritLantern",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "meshes",
-     "name": "Prop_spirit_realm_CrystalTree",
+     "name": "Prop_realm_of_legends_CrystalTree",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "meshes",
-     "name": "Prop_spirit_realm_CloudBank",
+     "name": "Prop_realm_of_legends_CloudBank",
      "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
     },
     {
      "stage": "map",
-     "name": "Zone_spirit_realm",
+     "name": "Zone_realm_of_legends",
      "why": "the landing band and its gate in the proven layout"
     },
     {
      "stage": "sfx",
-     "name": "amb_spirit_realm",
+     "name": "amb_realm_of_legends",
      "why": "the follow-cam flies here; silence reads as unfinished"
     }
    ]
@@ -3199,21 +2890,21 @@
  ],
  "plan": {
   "overview": "Throw Food for Anime. Throw-and-collect idle tycoon (Roblox genre: Simulation / Tycoon). Mobile first, also PC, tablet and gamepad. Ages 9 to 16. Six players per server, R15 avatars, one place.",
-  "pitch_and_usp": "Hurl food down a lane of anime worlds; whoever it lures joins your squad and earns for you. Why this over the animal game it shares a genre with: (1) the collectibles are full R15 anime-style heroes with idle poses, auras and size variants, not block animals; (2) every catch is a staged reveal (beam colour climbs through the rarities before the hero lands); (3) Cravings: each hero craves a flavour, so food is a choice and not a straight ladder; (4) the charge bar is a zone selector with a perfect window, so the throw has a skill beat; (5) fusion turns duplicates into stars instead of clutter. Everything else (map, art, UI, names, numbers) is our own.",
-  "core_concept": "0 min: spawn on your plot, a guide arrow puts you on the throw pad, first throw lands in Sakura Schoolyard and a hero joins the plot and starts earning. 5 min: plot half full, Dango bought, Sandbag bought, first Rare seen, Festival Street unlocked. 30 min: three zones open, first Epic or a Golden mutation, first extra slot, a craving hunt under way for a missing index entry. Tomorrow: offline Yen to claim, day-2 streak reward, Samurai Castle and the first Mythic chance, rebirth visible as the long goal.",
+  "pitch_and_usp": "Hurl food down a lane of anime worlds; whoever it lures joins your squad and earns for you. Why this over the animal game it shares a genre with: (1) the collectibles are full R15 anime heroes with idle poses, auras and size variants, not block animals; (2) every catch is a staged reveal (beam colour climbs through the rarities before the hero lands); (3) Cravings: each hero craves a flavour, so food is a choice and not a straight ladder; (4) the charge bar is a zone selector with a perfect window, so the throw has a skill beat; (5) fusion turns duplicates into stars instead of clutter. Everything else (map, art, UI, names, numbers) is our own.",
+  "core_concept": "0 min: spawn on your plot, a guide arrow puts you on the throw pad, first throw lands in Sakura Schoolyard and a hero joins the plot and starts earning. 5 min: plot half full, Dango bought, Sandbag bought, first Rare seen, Pirate Harbor unlocked. 30 min: three zones open, first Epic or a Golden mutation, first extra slot, a craving hunt under way for a missing index entry. Tomorrow: offline Yen to claim, day-2 streak reward, Samurai Castle and the first Mythic chance, rebirth visible as the long goal.",
   "player_experience": "Fast, loud and generous. A throw resolves in about five seconds and always gives something. The first win is the first catch inside 40 seconds of joining; the first surprise is a rarity beam that keeps climbing. The feeling to protect is 'one more throw'; the feeling to avoid is a modal that stops the next throw (catches never block: they auto-place, auto-swap or go to the bench). Reveals are short for commons (0.8 s), long only for the rare ones, and any tap skips them; a Fast Reveal setting shortens all of them. The Hero Index shows the real chance of each hero at the player's current luck.",
   "audience": "Casual collectors first (kids who play Steal a Brainrot, Grow a Garden and the throw-food game), anime fans second, leaderboard chasers third. Short sessions on phones, many per day; friends in the same server compare plots.",
-  "market": "Looked at on 2026-11-14 (design/research/00, 01, 02). Throw Food For Animals: created 2026-09-18, 215M visits and 426K concurrent at the pull, 94 percent likes, 5-player servers, only two passes and about fifty products; almost all of its store is relative ('N percent of your best animal', 'N minutes of your income'), luck sold per throw and per server. Does well: instant loop, readable goals, relative pricing. Does badly: block art, food is a straight ladder, nothing to do with duplicates, no rebirth or codes; its players complain that luck is opaque, that cutscenes cannot be skipped, that a free player runs out of content in five to six hours, and that each update is more pay-to-win. Each of those is a design target here: odds are shown, every reveal is skippable, rebirth extends the ladder, and nothing sold is unobtainable by play except cosmetics-grade premium heroes. Anime entries in the genre are small (World3 Throw an Anime Coin: 1.1M visits, 2K peak), so the anime throw angle is open. Big anime games on the platform are combat games, which shows the audience exists. Risk read: recognisable anime IP is removed on DMCA notice and not reopened, and the free 'anime character' models on the Creator Store are mostly re-uploads of copyrighted characters from deleted accounts, so the roster is original.",
+  "market": "Looked at on 2026-11-14 (design/research/00, 01, 02). Throw Food For Animals: created 2026-09-18, 215M visits and 426K concurrent at the pull, 94 percent likes, 5-player servers, only two passes and about fifty products; almost all of its store is relative ('N percent of your best animal', 'N minutes of your income'), luck sold per throw and per server. Does well: instant loop, readable goals, relative pricing. Does badly: block art, food is a straight ladder, nothing to do with duplicates, no rebirth or codes; its players complain that luck is opaque, that cutscenes cannot be skipped, that a free player runs out of content in five to six hours, and that each update is more pay-to-win. Each of those is a design target here: odds are shown, every reveal is skippable, rebirth extends the ladder, and nothing sold is unobtainable by play except cosmetics-grade premium heroes. Anime entries in the genre are small (World3 Throw an Anime Coin: 1.1M visits, 2K peak), so the anime throw angle is open. Big anime games on the platform are combat games, which shows the audience exists. Risk read: recognisable anime IP is removed on DMCA notice and not reopened, and the free 'anime character' models on the Creator Store are mostly re-uploads of copyrighted characters from deleted accounts, The owner chose on 2026-11-14 to launch with 31 imported avatars of well-known characters under changed display names, accepting that risk; no series name, logo or music is used anywhere.",
   "mechanics": "Movement: stock R15, no combat. Throw: stand on the throw pad, hold to charge, release; charge picks the zone (marks on the bar), the top 8 percent is a perfect release (+10 percent luck). Landing zone = furthest zone whose PowerReq <= Power x food PowerMult x charge. Roll: rarity by zone table weights scaled by luck, then mutation, then size; a craved flavour triples that hero's weight. Catch: reveal, hero dashes home, auto-places (free slot, else swaps out the weakest if better, else bench, else auto-sell). Income: every hero on a slot pays base x rarity x mutation x size x stars each second, times pass, rebirth and event multipliers. Training: hold-free auto reps on the plot's dojo gear, Power per rep by gear tier. Economy sinks: food, gear, slots, rebirth. Squad: place, pick up, sell, equip best, fuse three identical into +1 star. Luck: food, depth into the zone, perfect, server luck, friends, VIP, index, rebirth, lucky throws. Meta: Hero Index, rebirth, daily streak, playtime gifts, codes, leaderboards, Festival Hour, server-wide rare-catch banners. Full formulas: design/plan/01-game-design.md.",
-  "progression": "Short (minutes): next food, next gear, fill the plot, next zone gate. Medium (hours): Samurai Castle, Hero City, Spirit Realm, first Legendary, first Mythic, complete a zone index, max slots. Long (days and weeks): rebirth tiers 1 to 10 (each +50 percent income and +10 percent luck), golden and titan variants in the index, leaderboard rank, new zones from updates. Measured pacing for a no-boost player (tools/balance_sim.py): zone 2 at 2 min, zone 3 at 14 min, zone 4 at 51 min, zone 5 at 2 h 44, zone 6 at 7 h 18, first rebirth ready at 15 h.",
-  "content": "48 throw-caught heroes (6 zones x 8) plus 8 premium heroes (6 in the summon scroll, 1 starter pack, 1 limited). 7 rarities (Secret reserved for events). 4 mutations, 3 sizes, 3 star levels. 12 foods in 4 flavours (8 from CC0 packs, 4 built with the 3D skill). 8 dojo gear tiers. 6 zones. 1 hub with food cart, sell booth, summon shrine, daily chest and three leaderboards. 6 plots. No enemies. The full roster with looks is config.Characters.",
-  "world": "One straight world. Hub and a row of six plots at the start; each plot faces its own 40-stud lane; the six lanes run in parallel through six zone bands of 220 studs each, with an arch between bands showing the Power needed. Sakura Schoolyard (start, PowerReq 0), Festival Street (200), Ninja Village (3K), Samurai Castle (70K), Hero City (2M), Spirit Realm (36M). Players can walk the lanes and other plots; nothing there can hurt or be taken. Later zones are appended to the far end by data.",
+  "progression": "Short (minutes): next food, next gear, fill the plot, next zone gate. Medium (hours): Samurai Castle, Hero City, Realm of Legends, first Legendary, first Mythic, complete a zone index, max slots. Long (days and weeks): rebirth tiers 1 to 10 (each +50 percent income and +10 percent luck), golden and titan variants in the index, leaderboard rank, new zones from updates. Measured pacing for a no-boost player (tools/balance_sim.py, 3.5 s throw cycle as measured in play): zone 2 at 2 min, zone 3 at 14 min, zone 4 at 44 min, zone 5 at 2 h 30, zone 6 at about 6 h 40, first rebirth ready at about 13 h. Lucky throws and paid boosts are outside the simulation and shorten all of these.",
+  "content": "31 throw-caught heroes at launch (5 per zone, one per rarity, plus a Mythic in the last zone; more are added by importing avatars) plus 8 premium heroes (6 in the summon scroll, 1 starter pack, 1 limited). 7 rarities (Secret reserved for events). 4 mutations, 3 sizes, 3 star levels. 12 foods in 4 flavours (8 from CC0 packs, 4 built with the 3D skill). 8 dojo gear tiers. 6 zones. 1 hub with food cart, sell booth, summon shrine, daily chest and three leaderboards. 6 plots. No enemies. The roster is config.Characters; the avatar each one is built from is design/characters/roster.json.",
+  "world": "One straight world. Hub and a row of six plots at the start; each plot faces its own 40-stud lane; the six lanes run in parallel through six zone bands of 220 studs each, with an arch between bands showing the Power needed. Sakura Schoolyard (start, PowerReq 0), Pirate Harbor (200), Ninja Village (3K), Samurai Castle (70K), Hero City (2M), Realm of Legends (40M). Players can walk the lanes and other plots; nothing there can hurt or be taken. Later zones are appended to the far end by data.",
   "story": "One line, never in the way: the Anime Worlds are hungry, and the best cook-thrower in town can recruit anyone. No dialogue beyond tutorial hints and NPC shop greetings.",
   "ui_ux": "Style 'Manga Pop': deep indigo panels with a thick white keyline and offset comic shadow, coral-to-yellow header ribbons with halftone dots, chunky rounded type with dark stroke, rarity colours everywhere. Screens: HUD, ThrowMeter, FoodShop, Squad, HeroIndex, Store, OfflineEarnings, Reveal, Rebirth, DailyRewards, PlaytimeGifts, Codes, Settings, TrainingBar, Nameplate, Leaderboards, Toasts, Announcement, TutorialHint, ServerLuckBar, SummonOdds, SlotSign. Common action cost: throw = one hold and release, 0 menus; equip food = 2 taps; sell a hero = 2 taps; equip best = 2 taps. Touch targets at least 56 px at 720p, safe-area aware, every panel opens with a 0.18 s scale-and-fade and closes on outside tap. Detail: design/plan/05-ui-ux.md.",
-  "tutorial": "Beat by beat, all skippable by simply doing it: (1) 0:00 camera on your plot, hint 'Step on the pad' with a ground arrow; (2) 0:08 hint 'Hold to throw', bar pulses; (3) 0:15 first throw, guaranteed Uncommon, reveal plays, hero dashes home; (4) 0:30 'Throw again' until three heroes; (5) 1:10 'Buy Dango' arrow to the food cart, shop opens with Dango highlighted; (6) 1:40 'Train to throw further' arrow to the dojo gear, ten reps; (7) 2:10 gate arch for Festival Street pulses with the Power needed; (8) on first zone-2 landing, Zone_Unlock effect and the hint line retires. Each step is logged to the onboarding funnel.",
-  "art_direction": "Bright stylised anime world, not blocky: smooth low-poly props with flat colour and soft gradient textures, saturated key colour per zone, Future lighting with warm sun, bloom and a little colour grading. Characters are standard R15 rigs dressed as whole looks, anime hair and faces, one signature accessory, never more than six accessories. Every hero must be readable at 60 studs by silhouette and rarity colour of its pedestal. Mutations are auras, not recolours. Props are real meshes (free packs first, built with the 3D skill where no free asset fits); no stand-in boxes. No copyrighted character, logo or pattern.",
+  "tutorial": "Beat by beat, all skippable by simply doing it: (1) 0:00 camera on your plot, hint 'Step on the pad' with a ground arrow; (2) 0:08 hint 'Hold to throw', bar pulses; (3) 0:15 first throw, guaranteed Uncommon, reveal plays, hero dashes home; (4) 0:30 'Throw again' until three heroes; (5) 1:10 'Buy Dango' arrow to the food cart, shop opens with Dango highlighted; (6) 1:40 'Train to throw further' arrow to the dojo gear, ten reps; (7) 2:10 gate arch for Pirate Harbor pulses with the Power needed; (8) on first zone-2 landing, Zone_Unlock effect and the hint line retires. Each step is logged to the onboarding funnel.",
+  "art_direction": "Bright stylised anime world, not blocky: smooth low-poly props with flat colour and soft gradient textures, saturated key colour per zone, Future lighting with warm sun, bloom and a little colour grading. Characters are R15 rigs rebuilt from the imported avatars on one classic body (BodyTypeScale 0), with the rig head hidden under any face cover (design/characters/README.md). Every hero must be readable at 60 studs by silhouette and rarity colour of its pedestal. Mutations are auras, not recolours. Props are real meshes (free packs first, built with the 3D skill where no free asset fits); no stand-in boxes. No series logo or name appears in any text or image.",
   "audio": "Music: one upbeat festival loop at home (music_home), a faster variant during Festival Hour. Ambience per zone under the follow-cam. SFX roles: UI click/open/close/error, buy, coin tick, throw charge and whoosh, perfect ding, food land, reveal drumroll, five reveal stings rising with rarity, index new, train hit, power up, slot unlock, rebirth, summon open, daily claim, server luck, munch, dash. All from the Creator Store audio library by id, length measured in Studio.",
-  "technical_architecture": "Rojo project, Knit for lifecycle only, every remote declared in Net.luau, all tunables generated from this file into src/shared/Config (gen_config.py), all rules as pure Core modules with Lune specs: Throw, Roll, Luck, Income, Training, Costs, Rebirth, Fusion, Index, Offline, Rewards, Receipt, Format, Schema. Server services and client controllers are listed in systems. The server never spawns character rigs: it replicates a compact plot state and each client builds rigs from baked templates in ReplicatedStorage.Assets. Roblox services used: DataStoreService (profiles, ordered boards), MemoryStoreService (not at launch), MarketplaceService, PolicyService, AnalyticsService, MessagingService (global announcements), TextChatService, ContentProvider, TweenService, CollectionService. StreamingEnabled on. Detail: design/plan/02-architecture.md.",
+  "technical_architecture": "Rojo project, Knit for lifecycle only, every remote declared in Net.luau, all tunables generated from this file into src/shared/Config (gen_config.py), all rules as pure Core modules with Lune specs: Throw, Roll, Luck, Income, Progress (training, costs, offline pay, rebirth), Squad (auto-place, equip best, fusion), Collection (index, daily and playtime rewards, codes, receipts), Schema, Session (the save lock), World (layout), Lookup, Format. Server services and client controllers are listed in systems. The server never spawns character rigs: it replicates a compact plot state and each client builds rigs from baked templates in ReplicatedStorage.Assets. Roblox services used: DataStoreService (profiles, ordered boards), MemoryStoreService (not at launch), MarketplaceService, PolicyService, AnalyticsService, MessagingService (global announcements), TextChatService, ContentProvider, TweenService, CollectionService. StreamingEnabled on. Detail: design/plan/02-architecture.md.",
   "data_saving": "One profile per player, session-locked, autosave every 120 s, save on leave and BindToClose. Persisted: schema version, Yen, lifetime Yen, Power, rebirth tier, foods owned and equipped, gear tier, slot count, every owned hero (id, mutation, size, stars, slot or bench), index, lucky throws, passes cache, receipts already granted (last 100 ids), daily streak and last claim day, playtime gifts claimed today, codes redeemed, tutorial step, settings, stats for boards, last-seen timestamp for offline earnings. If load fails: the player is kicked with a retry message rather than given a blank profile. If a save fails: retried with backoff, and purchases are only acknowledged to Roblox after the grant is in a saved profile. Schema migrations are pure functions with specs.",
   "security": "The client sends intents only. Throw: server checks the player is on their own pad, cooldown, charge in [0.2, 1], food is owned; the server alone computes landing zone and the roll. Buy: server checks price against Config and balance. Squad moves: server checks ownership and slot bounds. Training: server counts reps on its own clock, the client cannot report Power. Store: grants only inside ProcessReceipt with idempotent receipt ids. Rate limits per remote. No remote takes a number the server could compute itself.",
   "multiplayer": "Six players per server, one plot each, assigned on join and freed on leave (the leaver's heroes vanish from the world; their data is already saved). Everything a player owns is theirs alone: no shared state except server luck, Festival Hour and banners. Server luck bought by one player helps all six, which is the social reason to stay in a server.",

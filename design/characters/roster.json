@@ -1,0 +1,188 @@
+[
+ {
+  "Id": "cursed_vessel",
+  "Name": "Cursed Vessel",
+  "Source": "Yuji",
+  "Rig": "Workspace.Characters_R15/Yuji (R15)"
+ },
+ {
+  "Id": "emerald_hero",
+  "Name": "Emerald Hero",
+  "Source": "Deku",
+  "Rig": "Workspace.Characters_R15/Deku (R15)"
+ },
+ {
+  "Id": "midfield_genius",
+  "Name": "Midfield Genius",
+  "Source": "Sae Itoshi",
+  "Rig": "Workspace.Characters_R15/Sae Itoshi (R15)"
+ },
+ {
+  "Id": "notebook_mastermind",
+  "Name": "Notebook Mastermind",
+  "Source": "Light Yagami",
+  "Rig": "Workspace.Characters_R15/Light Yagami (R15)"
+ },
+ {
+  "Id": "sorcerer_hunter",
+  "Name": "Sorcerer Hunter",
+  "Source": "Toji Fushiguro",
+  "Rig": "Workspace.Characters_R15/Toji Fushiguro (R15)"
+ },
+ {
+  "Id": "straw_hat_rookie",
+  "Name": "Straw Hat Rookie",
+  "Source": "Luffy",
+  "Rig": "Workspace.Characters_R15/Luffy (R15)"
+ },
+ {
+  "Id": "black_leg_cook",
+  "Name": "Black Leg Cook",
+  "Source": "Sanji",
+  "Rig": "Workspace.Characters_R15/Sanji (R15)"
+ },
+ {
+  "Id": "three_sword_hunter",
+  "Name": "Three-Sword Hunter",
+  "Source": "Zoro",
+  "Rig": "Workspace.Characters_R15/Zoro (R15)"
+ },
+ {
+  "Id": "heart_surgeon",
+  "Name": "Heart Surgeon",
+  "Source": "Trafalgar Law",
+  "Rig": "Workspace.Characters_R15/Trafalgar Law (R15)"
+ },
+ {
+  "Id": "red_haired_emperor",
+  "Name": "Red-Haired Emperor",
+  "Source": "Shanks",
+  "Rig": "Workspace.Characters_R15/Shanks (R15)"
+ },
+ {
+  "Id": "fox_ninja",
+  "Name": "Fox Ninja",
+  "Source": "Naruto Uzumaki",
+  "Rig": "Workspace.Characters_R15/Naruto Uzumaki (R15)"
+ },
+ {
+  "Id": "lightning_avenger",
+  "Name": "Lightning Avenger",
+  "Source": "Sasuke Uchiha",
+  "Rig": "Workspace.Characters_R15/Sasuke Uchiha (R15)"
+ },
+ {
+  "Id": "copy_ninja",
+  "Name": "Copy Ninja",
+  "Source": "Kakashi Hatake",
+  "Rig": "Workspace.Characters_R15/Kakashi Hatake (R15)"
+ },
+ {
+  "Id": "crow_illusionist",
+  "Name": "Crow Illusionist",
+  "Source": "Itachi Uchiha",
+  "Rig": "Workspace.Characters_R15/Itachi Uchiha (R15)"
+ },
+ {
+  "Id": "ghost_of_the_clan",
+  "Name": "Ghost of the Clan",
+  "Source": "Madara Uchiha",
+  "Rig": "Workspace.Characters_R15/Madara Uchiha (R15)"
+ },
+ {
+  "Id": "sun_breather",
+  "Name": "Sun Breather",
+  "Source": "Tanjiro",
+  "Rig": "Workspace.Characters_R15/Tanjiro (R15)"
+ },
+ {
+  "Id": "bamboo_demon_girl",
+  "Name": "Bamboo Demon Girl",
+  "Source": "Nezuko",
+  "Rig": "Workspace.Characters_R15/Nezuko (R15)"
+ },
+ {
+  "Id": "substitute_reaper",
+  "Name": "Substitute Reaper",
+  "Source": "Ichigo Kurosaki",
+  "Rig": "Workspace.Characters_R15/Ichigo Kurosaki (R15)"
+ },
+ {
+  "Id": "six_eyed_moon",
+  "Name": "Six-Eyed Moon",
+  "Source": "Kokushibo",
+  "Rig": "Workspace.Characters_R15/Kokushibo (R15)"
+ },
+ {
+  "Id": "demon_progenitor",
+  "Name": "Demon Progenitor",
+  "Source": "Muzan",
+  "Rig": "Workspace.Characters_R15/Muzan (R15)"
+ },
+ {
+  "Id": "hero_hunter",
+  "Name": "Hero Hunter",
+  "Source": "Garou",
+  "Rig": "Workspace.Characters_R15/Garou (R15)"
+ },
+ {
+  "Id": "anti_magic_knight",
+  "Name": "Anti-Magic Knight",
+  "Source": "Asta",
+  "Rig": "Workspace.Characters_R15/Asta (R15)"
+ },
+ {
+  "Id": "ice_general",
+  "Name": "Ice General",
+  "Source": "Esdeath",
+  "Rig": "Workspace.Characters_R15/Esdeath (R15)"
+ },
+ {
+  "Id": "string_king",
+  "Name": "Heavenly String King",
+  "Source": "Doflamingo",
+  "Rig": "Workspace.Characters_R15/Doflamingo (R15)"
+ },
+ {
+  "Id": "bald_cape_hero",
+  "Name": "Bald Cape Hero",
+  "Source": "Saitama",
+  "Rig": "Workspace.Characters_R15/Saitama (R15)"
+ },
+ {
+  "Id": "first_emperor",
+  "Name": "First Emperor",
+  "Source": "Qin Shi Huang",
+  "Rig": "Workspace.Characters_R15/Qin Shi Huang (R15)"
+ },
+ {
+  "Id": "proud_prince",
+  "Name": "Proud Prince",
+  "Source": "Vegeta",
+  "Rig": "Workspace.Characters_R15/Vegeta (R15)"
+ },
+ {
+  "Id": "beast_emperor",
+  "Name": "Beast Emperor",
+  "Source": "Kaido",
+  "Rig": "Workspace.Characters_R15/Kaido (R15)"
+ },
+ {
+  "Id": "instinct_warrior",
+  "Name": "Instinct Warrior",
+  "Source": "Goku",
+  "Rig": "Workspace.Characters_R15/Goku (R15)"
+ },
+ {
+  "Id": "curse_king",
+  "Name": "Curse King",
+  "Source": "Sukuna",
+  "Rig": "Workspace.Characters_R15/Sukuna (R15)"
+ },
+ {
+  "Id": "sun_god_captain",
+  "Name": "Sun God Captain",
+  "Source": "Luffy Wano",
+  "Rig": "Workspace.Characters_R15/Luffy Wano (R15)"
+ }
+]

@@ -7,11 +7,11 @@ props in 03. Blockout in section 2, full build in section 3.
 
 ```
             z = 1360  ............ end wall (later zones append here)
- Spirit Realm      |  |  |  |  |  |      6 parallel lanes, 40 wide,
+ Realm of Legends  |  |  |  |  |  |      6 parallel lanes, 40 wide,
  Hero City         |  |  |  |  |  |      each zone band 220 long,
  Samurai Castle    |  |  |  |  |  |      a Lane_ZoneGate arch at every band start
  Ninja Village     |  |  |  |  |  |      showing the Power needed
- Festival Street   |  |  |  |  |  |
+ Pirate Harbor     |  |  |  |  |  |
  Sakura Schoolyard |  |  |  |  |  |
             z = 40   -------------------
  plots            [1][2][3][4][5][6]     56 x 48 each, pitch 68, throw pad on the lane edge
@@ -34,11 +34,11 @@ Camera when throwing looks down the lane from behind the pad.
 | Zone | Key colour | Landmarks | Mood |
 |---|---|---|---|
 | Sakura Schoolyard | pink | school gate, clock tower, cherry trees, track | sunny morning |
-| Festival Street | orange | stalls, lantern strings, drum tower | dusk lanterns |
+| Pirate Harbor | orange | docks, moored ship, barrels, lighthouse | sunset sea |
 | Ninja Village | green | bamboo, rope bridge, hidden gate | misty |
 | Samurai Castle | red | keep, stone walls, red bridge, banners | golden hour |
 | Hero City | cyan | neon towers, billboards, rooftop pad | night neon |
-| Spirit Realm | violet | floating islands, great torii, glowing river | dream glow |
+| Realm of Legends | violet | floating islands, great torii, glowing river | dream glow |
 
 Each band has a clear 28-stud landing strip down every lane (no props: the food and the hero
 must be seen) and scenery between and beside the lanes. Lighting is global (Future, bloom,

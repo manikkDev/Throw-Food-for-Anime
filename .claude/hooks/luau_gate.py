@@ -38,11 +38,30 @@ def main() -> int:
     if r.returncode == 0:
         return 0
     import re
-    out = re.sub(r"\x1b\[[0-9;]*m", "", r.stdout + r.stderr).strip()
+
+    def clean(proc) -> str:
+        return re.sub(r"\x1b\[[0-9;]*m", "", proc.stdout + proc.stderr).strip()
+
+    out = clean(r)
+    # FORMAT-ONLY failure: let stylua rewrite the file and re-run. Measured on this project
+    # (2026-11-14): most failures were a signature one column too long, each costing a full
+    # round trip and ~900 tokens of diff for something the formatter fixes by itself. A real
+    # failure (build, test, lint) still stops the edit below.
+    failed = re.findall(r"^\s*FAIL\s+(\S+)", out, flags=re.M)
+    if failed and all(name == "stylua" for name in failed):
+        subprocess.run([sys.executable, str(CHECK), "--fix"], cwd=ROOT, capture_output=True,
+                       text=True, encoding="utf-8", errors="replace", timeout=300, env=env)
+        r = subprocess.run([sys.executable, str(CHECK)], cwd=ROOT, capture_output=True, text=True,
+                           encoding="utf-8", errors="replace", timeout=300, env=env)
+        if r.returncode == 0:
+            return 0
+        out = clean(r)
+    # Report what FAILED, not the hundred tests that passed.
+    lines = [ln for ln in out.splitlines() if not re.match(r"^\s*PASS\s+\S+\.spec\.luau ::", ln)]
     sys.stderr.write(
         "roblox-code gates FAILED after editing " + os.path.basename(path)
         + ". Fix this before continuing (do not hand broken code to Rojo/Studio):\n"
-        + out[-3500:] + "\n")
+        + "\n".join(lines)[-3500:] + "\n")
     return 2
 
 
