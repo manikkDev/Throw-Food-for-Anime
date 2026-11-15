@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Write assets/meshes/manifest.json: one entry per model the game ships, measured.
+
+    python tools/merge_manifest.py            merge the workers' manifests + measure the hero rigs
+    python tools/merge_manifest.py --no-studio   merge only (keep the hero rows already on disk)
+
+Sources:
+  * assets/meshes/manifest_*.json  the model workers' measured rows (tris, bounds, colour parts)
+  * assets/meshes/ids.json         the Roblox asset id of each uploaded model
+  * Studio (EDIT mode)             the baked hero templates ReplicatedStorage.Assets.Characters:
+                                   parts, accessories, layered items, extents, the avatar asset
+                                   ids each one uses (so a moderated item can be found and swapped)
+
+The contract's asset plan is reconciled against this file by name at the stage gate, so a model
+that was planned and never built shows up as a failure there, not as a surprise in a playtest.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+MESHES = ROOT / "assets" / "meshes"
+OUT = MESHES / "manifest.json"
+HELPER = Path.home() / ".claude" / "skills" / "create-roblox-game" / "scripts" / "studio_mcp.py"
+
+PROBE = r'''
+local folder = game:GetService("ReplicatedStorage").Assets.Characters
+local rows = {}
+for _, rig in folder:GetChildren() do
+	local parts, accessories, layered, ids = 0, 0, 0, {}
+	for _, d in rig:GetDescendants() do
+		if d:IsA("BasePart") then
+			parts += 1
+			if d:IsA("MeshPart") and d.MeshId ~= "" then
+				ids[string.match(d.MeshId, "%d+") or d.MeshId] = true
+			end
+		elseif d:IsA("Accessory") then
+			accessories += 1
+		elseif d:IsA("WrapLayer") then
+			layered += 1
+		elseif d:IsA("SpecialMesh") and d.MeshId ~= "" then
+			ids[string.match(d.MeshId, "%d+") or d.MeshId] = true
+		elseif (d:IsA("Shirt") or d:IsA("Pants")) then
+			local t = d:IsA("Shirt") and d.ShirtTemplate or d.PantsTemplate
+			ids[string.match(t, "%d+") or t] = true
+		end
+	end
+	local size = rig:GetExtentsSize()
+	local list = {}
+	for id in ids do
+		table.insert(list, id)
+	end
+	table.sort(list)
+	table.insert(rows, {
+		name = rig.Name, parts = parts, accessories = accessories, layered = layered,
+		bounds_studs = { math.round(size.X * 100) / 100, math.round(size.Y * 100) / 100, math.round(size.Z * 100) / 100 },
+		head_hidden = rig:GetAttribute("HeadHidden") == true, instances = #rig:GetDescendants(), asset_ids = list,
+	})
+end
+return game:GetService("HttpService"):JSONEncode(rows)
+'''
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--no-studio", action="store_true")
+    a = ap.parse_args()
+
+    old = json.loads(OUT.read_text(encoding="utf-8"))["assets"] if OUT.exists() else {}
+    ids = json.loads((MESHES / "ids.json").read_text(encoding="utf-8")) if (MESHES / "ids.json").exists() else {}
+    assets: dict[str, dict] = {}
+
+    for manifest in sorted(MESHES.glob("manifest_*.json")):
+        data = json.loads(manifest.read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            data = data.get("assets") or data.get("models") or data.get("entries") or list(data.values())
+        for row in data:
+            if not (isinstance(row, dict) and row.get("name")):
+                continue
+            entry = {
+                "kind": "model", "route": "kiln", "path": row.get("path"), "source": row.get("source"),
+                "tris": row.get("tris"), "bounds_studs": row.get("bounds_studs"),
+                "colour_parts": row.get("colour_parts") or row.get("colours") or row.get("parts"),
+                "assetId": (ids.get(row["name"]) or {}).get("assetId"),
+                "installed": "ReplicatedStorage.Assets." + (
+                    "Foods" if row["name"].startswith("Food_") else "Gear" if row["name"].startswith("Equip_") else "Kit"),
+            }
+            assets[row["name"]] = {k: v for k, v in entry.items() if v is not None}
+
+    heroes = {k: v for k, v in old.items() if v.get("kind") == "hero"}
+    if not a.no_studio:
+        done = subprocess.run([sys.executable, str(HELPER), "luau", "--dm", "Edit", "--code", PROBE],
+                              capture_output=True, text=True, encoding="utf-8", errors="replace")
+        text = done.stdout.strip()
+        start = text.find("[")
+        if done.returncode != 0 or start < 0:
+            print("FAIL could not measure the hero templates in Studio:", (text + done.stderr)[:300])
+            return 1
+        heroes = {}
+        for row in json.loads(text[start:]):
+            name = row.pop("name")
+            heroes[name] = {"kind": "hero", "route": "baked R15 rig (tools/studio/bake_characters.luau)",
+                            "installed": "ReplicatedStorage.Assets.Characters", **row}
+    assets.update(heroes)
+
+    OUT.write_text(json.dumps({"note": "GENERATED by tools/merge_manifest.py. Every number is measured.",
+                               "assets": dict(sorted(assets.items()))}, indent=1), encoding="utf-8", newline="\n")
+    kinds: dict[str, int] = {}
+    for row in assets.values():
+        kinds[row["kind"]] = kinds.get(row["kind"], 0) + 1
+    missing = [n for n, r in assets.items() if r["kind"] == "model" and not r.get("assetId")]
+    print(f"wrote {OUT.relative_to(ROOT)}: {kinds}; models without an asset id: {len(missing)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

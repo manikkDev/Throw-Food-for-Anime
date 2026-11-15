@@ -35,9 +35,18 @@ function Roll.heroWeights(
 ): { HeroWeight }
 	local rows: { HeroWeight } = {}
 	local total = 0
+	-- Heroes of one rarity SHARE that rarity's weight. So a zone's rarity odds
+	-- (and with them the whole economy) do not depend on how many heroes it
+	-- has: a hero added later makes its neighbours rarer, never the zone richer.
+	local sharing: { [string]: number } = {}
+	for _, character in zoneCharacters do
+		sharing[character.Rarity] = (sharing[character.Rarity] or 0) + 1
+	end
 	for _, character in zoneCharacters do
 		local rarity = cfg.Rarities[character.Rarity]
-		local weight = rarity.Weight * (1 + (math.max(1, luck) - 1) * rarity.LuckScale)
+		local weight = rarity.Weight
+			* (1 + (math.max(1, luck) - 1) * rarity.LuckScale)
+			/ sharing[character.Rarity]
 		if flavor ~= nil and character.Craves == flavor then
 			weight *= cfg.Throw.CravingWeightMult
 		end

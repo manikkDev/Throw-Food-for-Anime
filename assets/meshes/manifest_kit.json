@@ -1,0 +1,2092 @@
+{
+ "note": "Plot/hub kit meshes. GLBs are Roblox frame (studs, +Y up, front -Z, on y=0, centred x/z). One mesh per colour, named Label_RRGGBB; set MeshPart.Color from the hex if Import 3D arrives grey. Not uploaded: no modelId / meshId / textureId exist yet (no textures at all: colour is per-part). Set CollisionFidelity deliberately on import (mesh collision defaults on). SurfaceGui: put it on the Face_* MeshPart, Face=Front.",
+ "assets": [
+  {
+   "name": "Plot_Pedestal",
+   "path": "assets/meshes/kit/Plot_Pedestal.glb",
+   "source": "assets/meshes/src/kit/Plot_Pedestal.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 852,
+   "tri_budget": 1500,
+   "bounds_studs": [
+    5,
+    1,
+    5
+   ],
+   "bounds_min_max": {
+    "min": [
+     -2.5,
+     0,
+     -2.5
+    ],
+    "max": [
+     2.5,
+     1,
+     2.5
+    ]
+   },
+   "target_studs": [
+    5,
+    1,
+    5
+   ],
+   "deviation_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Accent_FF00FF",
+     "hex": "#FF00FF",
+     "srgb_read_back": "#FF00FF",
+     "match": true,
+     "tris": 284,
+     "bounds_min": [
+      -1.9,
+      0.6,
+      -1.9
+     ],
+     "bounds_max": [
+      1.9,
+      1.0,
+      1.9
+     ]
+    },
+    {
+     "mesh": "BaseLip_6B7686",
+     "hex": "#6B7686",
+     "srgb_read_back": "#6B7686",
+     "match": true,
+     "tris": 284,
+     "bounds_min": [
+      -2.5,
+      0.0,
+      -2.5
+     ],
+     "bounds_max": [
+      2.5,
+      0.42,
+      2.5
+     ]
+    },
+    {
+     "mesh": "Rim_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 284,
+     "bounds_min": [
+      -2.32,
+      0.2,
+      -2.32
+     ],
+     "bounds_max": [
+      2.32,
+      0.86,
+      2.32
+     ]
+    }
+   ],
+   "accent_part": "Accent_FF00FF",
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "3 colours (stone lip, white rim, #FF00FF top). Accent top stands 0.14 proud of the white rim, inset 0.42 all round so a fat white keyline shows. After first render: base lip thickened 0.34 -> 0.42 (was under the 0.4 rule), plan corners 3 -> 5 segments (faceted)."
+  },
+  {
+   "name": "Plot_Fence",
+   "path": "assets/meshes/kit/Plot_Fence.glb",
+   "source": "assets/meshes/src/kit/Plot_Fence.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 1008,
+   "tri_budget": 1500,
+   "bounds_studs": [
+    8,
+    3,
+    0.8
+   ],
+   "bounds_min_max": {
+    "min": [
+     -4,
+     0,
+     -0.4
+    ],
+    "max": [
+     4,
+     3,
+     0.4
+    ]
+   },
+   "target_studs": [
+    8,
+    3,
+    0.8
+   ],
+   "deviation_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Cap_FFD23F",
+     "hex": "#FFD23F",
+     "srgb_read_back": "#FFD23F",
+     "match": true,
+     "tris": 424,
+     "bounds_min": [
+      -3.95,
+      2.38,
+      -0.4
+     ],
+     "bounds_max": [
+      3.95,
+      3.0,
+      0.4
+     ]
+    },
+    {
+     "mesh": "Foot_8A5A2B",
+     "hex": "#8A5A2B",
+     "srgb_read_back": "#8A5A2B",
+     "match": true,
+     "tris": 280,
+     "bounds_min": [
+      -4.0,
+      0.0,
+      -0.4
+     ],
+     "bounds_max": [
+      4.0,
+      0.6,
+      0.4
+     ]
+    },
+    {
+     "mesh": "Post_B5793F",
+     "hex": "#B5793F",
+     "srgb_read_back": "#B5793F",
+     "match": true,
+     "tris": 184,
+     "bounds_min": [
+      -3.88,
+      0.4,
+      -0.35
+     ],
+     "bounds_max": [
+      3.88,
+      2.6,
+      0.35
+     ]
+    },
+    {
+     "mesh": "Rail_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 120,
+     "bounds_min": [
+      -3.17,
+      0.85,
+      -0.23
+     ],
+     "bounds_max": [
+      3.17,
+      2.34,
+      0.23
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Tiles along X: foot outer faces at exactly x = -4.000 / +4.000 (measured), so sections 8 studs apart touch, no gap. Rails end buried 0.15 inside the posts (no coplanar end faces at the join). Adjacent sections read as a doubled post at the join, by design. After first build: posts 0.66 -> 0.86 wide (read thin), 1664 -> 1008 tris."
+  },
+  {
+   "name": "Plot_ThrowPad",
+   "path": "assets/meshes/kit/Plot_ThrowPad.glb",
+   "source": "assets/meshes/src/kit/Plot_ThrowPad.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 972,
+   "tri_budget": 1500,
+   "bounds_studs": [
+    10,
+    0.6,
+    10
+   ],
+   "bounds_min_max": {
+    "min": [
+     -5,
+     0,
+     -5
+    ],
+    "max": [
+     5,
+     0.6,
+     5
+    ]
+   },
+   "target_studs": [
+    10,
+    0.6,
+    10
+   ],
+   "deviation_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Arrow_FF5A36",
+     "hex": "#FF5A36",
+     "srgb_read_back": "#FF5A36",
+     "match": true,
+     "tris": 216,
+     "bounds_min": [
+      -1.78,
+      0.2,
+      -3.453
+     ],
+     "bounds_max": [
+      1.746,
+      0.6,
+      3.002
+     ]
+    },
+    {
+     "mesh": "BaseLip_6B7686",
+     "hex": "#6B7686",
+     "srgb_read_back": "#6B7686",
+     "match": true,
+     "tris": 252,
+     "bounds_min": [
+      -5.0,
+      0.0,
+      -5.0
+     ],
+     "bounds_max": [
+      5.0,
+      0.4,
+      5.0
+     ]
+    },
+    {
+     "mesh": "Pad_FFD23F",
+     "hex": "#FFD23F",
+     "srgb_read_back": "#FFD23F",
+     "match": true,
+     "tris": 252,
+     "bounds_min": [
+      -3.9,
+      0.0,
+      -3.9
+     ],
+     "bounds_max": [
+      3.9,
+      0.52,
+      3.9
+     ]
+    },
+    {
+     "mesh": "Ring_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 252,
+     "bounds_min": [
+      -4.6,
+      0.0,
+      -4.6
+     ],
+     "bounds_max": [
+      4.6,
+      0.46,
+      4.6
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Arrow + two chevrons in Arrow_FF5A36, pointing +Z (down the lane), proven by vertex profile: arrowhead widest 3.53 at z 1.07..1.71, tip 0.37 wide at z 2.36..3.00, chevrons on -Z side. Disc tops stepped 0.40/0.46/0.52/0.60 so no colour shares a plane. After first build: 1644 tris -> 972 (disc segments 10 -> 8, single-step bevel)."
+  },
+  {
+   "name": "Plot_SlotSign",
+   "path": "assets/meshes/kit/Plot_SlotSign.glb",
+   "source": "assets/meshes/src/kit/Plot_SlotSign.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 776,
+   "tri_budget": 1500,
+   "bounds_studs": [
+    4.6,
+    6.022,
+    1.05
+   ],
+   "bounds_min_max": {
+    "min": [
+     -2.3,
+     0,
+     -0.55
+    ],
+    "max": [
+     2.3,
+     6.022,
+     0.5
+    ]
+   },
+   "target_studs": [
+    5,
+    6,
+    1
+   ],
+   "deviation_pct": [
+    -8.0,
+    0.4,
+    5.0
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Board_B5793F",
+     "hex": "#B5793F",
+     "srgb_read_back": "#B5793F",
+     "match": true,
+     "tris": 116,
+     "bounds_min": [
+      -2.3,
+      1.9,
+      -0.4
+     ],
+     "bounds_max": [
+      2.3,
+      5.1,
+      0.2
+     ]
+    },
+    {
+     "mesh": "Face_FFF6E0",
+     "hex": "#FFF6E0",
+     "srgb_read_back": "#FFF6E0",
+     "match": true,
+     "tris": 12,
+     "bounds_min": [
+      -1.95,
+      2.25,
+      -0.52
+     ],
+     "bounds_max": [
+      1.95,
+      4.75,
+      -0.12
+     ]
+    },
+    {
+     "mesh": "Post_8A5A2B",
+     "hex": "#8A5A2B",
+     "srgb_read_back": "#8A5A2B",
+     "match": true,
+     "tris": 464,
+     "bounds_min": [
+      -2.3,
+      0.0,
+      -0.4
+     ],
+     "bounds_max": [
+      2.3,
+      5.0,
+      0.5
+     ]
+    },
+    {
+     "mesh": "Roof_E0453C",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 44,
+     "bounds_min": [
+      -2.244,
+      5.04,
+      -0.55
+     ],
+     "bounds_max": [
+      2.252,
+      6.022,
+      0.45
+     ]
+    },
+    {
+     "mesh": "Roof_E0453C.001",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 140,
+     "bounds_min": [
+      -0.3,
+      5.55,
+      -0.35
+     ],
+     "bounds_max": [
+      0.3,
+      6.0,
+      0.25
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": {
+    "mesh": "Face_FFF6E0",
+    "surfacegui_face": "Front (-Z)",
+    "face_size_studs_xy": [
+     3.9,
+     2.5
+    ],
+    "face_plane_z": -0.52,
+    "model_min_z": -0.55
+   },
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "SurfaceGui on Face_FFF6E0 (plain box, front is one quad). Two Roof_E0453C meshes (extruded roof + lofted knob do not join in the converter; colour both). After first render: posts poked through the roof at the eaves (post top 5.4 vs roof underside 5.33) -> posts shortened to 5.0. Width 4.6 is the board; the bevelled roof prism shrinks inward."
+  },
+  {
+   "name": "Plot_NameArch",
+   "path": "assets/meshes/kit/Plot_NameArch.glb",
+   "source": "assets/meshes/src/kit/Plot_NameArch.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 1468,
+   "tri_budget": 1500,
+   "bounds_studs": [
+    16.64,
+    11,
+    2.3
+   ],
+   "bounds_min_max": {
+    "min": [
+     -8.32,
+     0,
+     -1.15
+    ],
+    "max": [
+     8.32,
+     11,
+     1.15
+    ]
+   },
+   "target_studs": [
+    16,
+    11,
+    2.5
+   ],
+   "deviation_pct": [
+    4.0,
+    0.0,
+    -8.0
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Base_6B7686",
+     "hex": "#6B7686",
+     "srgb_read_back": "#6B7686",
+     "match": true,
+     "tris": 184,
+     "bounds_min": [
+      -7.45,
+      0.0,
+      -1.15
+     ],
+     "bounds_max": [
+      7.45,
+      1.1,
+      1.15
+     ]
+    },
+    {
+     "mesh": "Face_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 12,
+     "bounds_min": [
+      -5.0,
+      8.295,
+      -0.56
+     ],
+     "bounds_max": [
+      5.0,
+      9.945,
+      -0.16
+     ]
+    },
+    {
+     "mesh": "Ink_0D0F2B",
+     "hex": "#0D0F2B",
+     "srgb_read_back": "#0D0F2B",
+     "match": true,
+     "tris": 360,
+     "bounds_min": [
+      -8.1,
+      5.25,
+      -0.4
+     ],
+     "bounds_max": [
+      8.1,
+      7.7,
+      0.4
+     ]
+    },
+    {
+     "mesh": "Ink_0D0F2B.001",
+     "hex": "#0D0F2B",
+     "srgb_read_back": "#0D0F2B",
+     "match": true,
+     "tris": 152,
+     "bounds_min": [
+      -8.0,
+      10.27,
+      -1.1
+     ],
+     "bounds_max": [
+      8.0,
+      11.0,
+      1.1
+     ]
+    },
+    {
+     "mesh": "Lantern_FFD23F",
+     "hex": "#FFD23F",
+     "srgb_read_back": "#FFD23F",
+     "match": true,
+     "tris": 280,
+     "bounds_min": [
+      -8.32,
+      5.5,
+      -0.62
+     ],
+     "bounds_max": [
+      8.32,
+      7.1,
+      0.62
+     ]
+    },
+    {
+     "mesh": "Red_E0453C",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 480,
+     "bounds_min": [
+      -7.5,
+      0.8,
+      -0.85
+     ],
+     "bounds_max": [
+      7.5,
+      10.45,
+      0.85
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": {
+    "mesh": "Face_FFFFFF",
+    "surfacegui_face": "Front (-Z)",
+    "face_size_studs_xy": [
+     10.0,
+     1.65
+    ],
+    "face_plane_z": -0.56,
+    "model_min_z": -1.15
+   },
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Opening 10.9 wide x 8.0 high (pillar inner faces +-5.45, board bottom y 8.0). SurfaceGui on Face_FFFFFF. Two Ink_0D0F2B meshes (extruded kasagi + lofted parts do not join; colour both). Width 16.64 is the lanterns hung off the outer sides (+4%). After first render: name board read too faint (ink frame showing 0.27) -> red frame 2.4 tall, face 10 x 1.65. Then 1916 -> under 1500 tris (lantern/base tessellation cut)."
+  },
+  {
+   "name": "Hub_SellBooth",
+   "path": "assets/meshes/kit/Hub_SellBooth.glb",
+   "source": "assets/meshes/src/kit/Hub_SellBooth.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 2100,
+   "tri_budget": 5000,
+   "bounds_studs": [
+    12,
+    9.9,
+    8.094
+   ],
+   "bounds_min_max": {
+    "min": [
+     -6,
+     0,
+     -4.089
+    ],
+    "max": [
+     6,
+     9.9,
+     4.005
+    ]
+   },
+   "target_studs": [
+    12,
+    10,
+    8
+   ],
+   "deviation_pct": [
+    0.0,
+    -1.0,
+    1.2
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Base_8A5A2B",
+     "hex": "#8A5A2B",
+     "srgb_read_back": "#8A5A2B",
+     "match": true,
+     "tris": 92,
+     "bounds_min": [
+      -6.0,
+      0.0,
+      -4.0
+     ],
+     "bounds_max": [
+      6.0,
+      0.5,
+      4.0
+     ]
+    },
+    {
+     "mesh": "Gold_FFC21A",
+     "hex": "#FFC21A",
+     "srgb_read_back": "#FFC21A",
+     "match": true,
+     "tris": 524,
+     "bounds_min": [
+      -4.05,
+      3.85,
+      -3.55
+     ],
+     "bounds_max": [
+      3.75,
+      9.9,
+      -1.85
+     ]
+    },
+    {
+     "mesh": "Red_E0453C",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 424,
+     "bounds_min": [
+      -6.0,
+      1.8,
+      -4.089
+     ],
+     "bounds_max": [
+      5.0,
+      9.0,
+      4.005
+     ]
+    },
+    {
+     "mesh": "Red_E0453C.001",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 152,
+     "bounds_min": [
+      -5.95,
+      6.378,
+      -4.05
+     ],
+     "bounds_max": [
+      4.45,
+      7.078,
+      -3.65
+     ]
+    },
+    {
+     "mesh": "White_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 332,
+     "bounds_min": [
+      -5.6,
+      3.4,
+      -4.089
+     ],
+     "bounds_max": [
+      6.0,
+      8.988,
+      4.005
+     ]
+    },
+    {
+     "mesh": "White_FFFFFF.001",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 152,
+     "bounds_min": [
+      -4.45,
+      6.378,
+      -4.05
+     ],
+     "bounds_max": [
+      5.95,
+      7.078,
+      -3.65
+     ]
+    },
+    {
+     "mesh": "Wood_B5793F",
+     "hex": "#B5793F",
+     "srgb_read_back": "#B5793F",
+     "match": true,
+     "tris": 424,
+     "bounds_min": [
+      -5.65,
+      0.0,
+      -3.65
+     ],
+     "bounds_max": [
+      5.65,
+      8.53,
+      3.65
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Awning: 8 stripes 1.5 wide alternating Red/White, sloping 10.8 deg down to the front, scalloped valance under the front edge. Coin sign (gold disc, red square) stands on the awning front. Red and White each arrive as TWO meshes (extruded scallops do not join the lofted stripes; colour both). Depth 8.09 (+1%)."
+  },
+  {
+   "name": "Hub_FoodCart",
+   "path": "assets/meshes/kit/Hub_FoodCart.glb",
+   "source": "assets/meshes/src/kit/Hub_FoodCart.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 3456,
+   "tri_budget": 5000,
+   "bounds_studs": [
+    12,
+    9.85,
+    7.83
+   ],
+   "bounds_min_max": {
+    "min": [
+     -6,
+     0,
+     -3.433
+    ],
+    "max": [
+     6,
+     9.85,
+     4.397
+    ]
+   },
+   "target_studs": [
+    12,
+    10,
+    7
+   ],
+   "deviation_pct": [
+    0.0,
+    -1.5,
+    11.9
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Blue_2F7DE1",
+     "hex": "#2F7DE1",
+     "srgb_read_back": "#2F7DE1",
+     "match": true,
+     "tris": 756,
+     "bounds_min": [
+      -5.8,
+      2.7,
+      -2.997
+     ],
+     "bounds_max": [
+      4.35,
+      9.412,
+      4.397
+     ]
+    },
+    {
+     "mesh": "Dark_8A5A2B",
+     "hex": "#8A5A2B",
+     "srgb_read_back": "#8A5A2B",
+     "match": true,
+     "tris": 736,
+     "bounds_min": [
+      -6.0,
+      0.0,
+      -3.193
+     ],
+     "bounds_max": [
+      6.0,
+      9.85,
+      4.3
+     ]
+    },
+    {
+     "mesh": "Red_E0453C",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 600,
+     "bounds_min": [
+      -5.75,
+      1.2,
+      -3.433
+     ],
+     "bounds_max": [
+      5.92,
+      7.15,
+      1.2
+     ]
+    },
+    {
+     "mesh": "White_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 1032,
+     "bounds_min": [
+      -5.0,
+      4.5,
+      -2.997
+     ],
+     "bounds_max": [
+      5.8,
+      9.412,
+      4.397
+     ]
+    },
+    {
+     "mesh": "Wood_B5793F",
+     "hex": "#B5793F",
+     "srgb_read_back": "#B5793F",
+     "match": true,
+     "tris": 332,
+     "bounds_min": [
+      -4.6,
+      1.65,
+      -1.55
+     ],
+     "bounds_max": [
+      4.6,
+      8.35,
+      2.9
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Gable awning (ridge along X), 8 Blue/White stripes per slope, dark-wood ridge, 4 noren flaps, red lantern on the model's +X front corner, wheels with red hubs on the sides, 3 red bowls with white noodles on the counter. Pre-build fix: posts would have poked through the roof (top 9.0 vs underside ~8.2) and noren/lantern tops sat above the front eave (7.46); all lowered. A blue bar in the 3/4 render was checked with a back view: it is the back slope's end stripe seen edge-on, not a defect. Depth 7.83 (+12%) is wheel hubs + back shafts."
+  },
+  {
+   "name": "Hub_SummonShrine",
+   "path": "assets/meshes/kit/Hub_SummonShrine.glb",
+   "source": "assets/meshes/src/kit/Hub_SummonShrine.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 4220,
+   "tri_budget": 5000,
+   "bounds_studs": [
+    14,
+    13.95,
+    12.3
+   ],
+   "bounds_min_max": {
+    "min": [
+     -7,
+     0,
+     -6.15
+    ],
+    "max": [
+     7,
+     13.95,
+     6.15
+    ]
+   },
+   "target_studs": [
+    14,
+    14,
+    12
+   ],
+   "deviation_pct": [
+    0.0,
+    -0.4,
+    2.5
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Gold_FFC21A",
+     "hex": "#FFC21A",
+     "srgb_read_back": "#FFC21A",
+     "match": true,
+     "tris": 1604,
+     "bounds_min": [
+      -6.6,
+      0.9,
+      -6.025
+     ],
+     "bounds_max": [
+      6.6,
+      13.2,
+      6.025
+     ]
+    },
+    {
+     "mesh": "Gold_FFC21A.001",
+     "hex": "#FFC21A",
+     "srgb_read_back": "#FFC21A",
+     "match": true,
+     "tris": 304,
+     "bounds_min": [
+      -6.775,
+      9.508,
+      -6.15
+     ],
+     "bounds_max": [
+      6.775,
+      12.8,
+      6.15
+     ]
+    },
+    {
+     "mesh": "Pink_FF8FC0",
+     "hex": "#FF8FC0",
+     "srgb_read_back": "#FF8FC0",
+     "match": true,
+     "tris": 1124,
+     "bounds_min": [
+      -6.55,
+      2.69,
+      -5.48
+     ],
+     "bounds_max": [
+      6.55,
+      13.95,
+      0.862
+     ]
+    },
+    {
+     "mesh": "Red_E0453C",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 608,
+     "bounds_min": [
+      -5.15,
+      1.3,
+      -4.15
+     ],
+     "bounds_max": [
+      5.15,
+      9.5,
+      4.15
+     ]
+    },
+    {
+     "mesh": "Red_E0453C.001",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 152,
+     "bounds_min": [
+      -6.5,
+      9.658,
+      -6.0
+     ],
+     "bounds_max": [
+      6.5,
+      12.65,
+      6.0
+     ]
+    },
+    {
+     "mesh": "Stone_6B7686",
+     "hex": "#6B7686",
+     "srgb_read_back": "#6B7686",
+     "match": true,
+     "tris": 92,
+     "bounds_min": [
+      -7.0,
+      0.0,
+      -6.0
+     ],
+     "bounds_max": [
+      7.0,
+      0.8,
+      6.0
+     ]
+    },
+    {
+     "mesh": "White_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 336,
+     "bounds_min": [
+      -6.1,
+      0.3,
+      -5.9
+     ],
+     "bounds_max": [
+      6.1,
+      7.0,
+      5.1
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Richest object (4220 tris, 5 colours, ~45 parts): 2-tier platform with gold trim band and front step, 4 red pillars with gold rings/capitals/brackets, red tie beams, curved red roof with gold gable caps, gold eave trim and ridge, pink ridge orbs, 2 pink lanterns, 2 pink banners, altar with a standing scroll between gold rollers, pink halo ring and a pink jewel. Pink_FF8FC0 also emissive in the GLB (set Neon in Studio for glow). After render: gold brackets poked through the roof surface -> 1.0 -> 0.75 tall; altar barely read -> scroll 2.6 x 3.2, halo r 2.35, jewel added; step top and front were coplanar with the gold trim top (y 1.3) and the stone tier front (z -6) -> step lowered and set back. Two Gold and two Red meshes (extruded roof/gables vs lofted parts)."
+  },
+  {
+   "name": "Hub_LeaderboardFrame",
+   "path": "assets/meshes/kit/Hub_LeaderboardFrame.glb",
+   "source": "assets/meshes/src/kit/Hub_LeaderboardFrame.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 964,
+   "tri_budget": 5000,
+   "bounds_studs": [
+    12,
+    16.25,
+    1.6
+   ],
+   "bounds_min_max": {
+    "min": [
+     -6,
+     0,
+     -0.85
+    ],
+    "max": [
+     6,
+     16.25,
+     0.75
+    ]
+   },
+   "target_studs": [
+    12,
+    16,
+    1.5
+   ],
+   "deviation_pct": [
+    0.0,
+    1.6,
+    6.7
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Base_8A5A2B",
+     "hex": "#8A5A2B",
+     "srgb_read_back": "#8A5A2B",
+     "match": true,
+     "tris": 92,
+     "bounds_min": [
+      -6.0,
+      0.0,
+      -0.75
+     ],
+     "bounds_max": [
+      6.0,
+      0.9,
+      0.75
+     ]
+    },
+    {
+     "mesh": "Crest_E0453C",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 492,
+     "bounds_min": [
+      -5.85,
+      0.7,
+      -0.75
+     ],
+     "bounds_max": [
+      5.85,
+      15.95,
+      0.35
+     ]
+    },
+    {
+     "mesh": "Face_0D0F2B",
+     "hex": "#0D0F2B",
+     "srgb_read_back": "#0D0F2B",
+     "match": true,
+     "tris": 12,
+     "bounds_min": [
+      -5.0,
+      1.2,
+      -0.7
+     ],
+     "bounds_max": [
+      5.0,
+      14.2,
+      -0.3
+     ]
+    },
+    {
+     "mesh": "Frame_FFC21A",
+     "hex": "#FFC21A",
+     "srgb_read_back": "#FFC21A",
+     "match": true,
+     "tris": 312,
+     "bounds_min": [
+      -6.0,
+      0.6,
+      -0.6
+     ],
+     "bounds_max": [
+      6.0,
+      16.25,
+      0.6
+     ]
+    },
+    {
+     "mesh": "Star_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 56,
+     "bounds_min": [
+      -0.713,
+      14.493,
+      -0.85
+     ],
+     "bounds_max": [
+      0.713,
+      15.85,
+      -0.35
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": {
+    "mesh": "Face_0D0F2B",
+    "surfacegui_face": "Front (-Z)",
+    "face_size_studs_xy": [
+     10.0,
+     13.0
+    ],
+    "face_plane_z": -0.7,
+    "model_min_z": -0.85
+   },
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Face_0D0F2B is exactly 10 x 13 (measured), front at z -0.7, frontmost thing on the board except the 4 corner studs, which sit outside the face rectangle. Crest's lower edge is behind the face plane, so nothing covers the face. Pre-build fix: crest was going to overlap the face top by 1.05; moved up and shrunk."
+  },
+  {
+   "name": "Hub_DailyChest",
+   "path": "assets/meshes/kit/Hub_DailyChest.glb",
+   "source": "assets/meshes/src/kit/Hub_DailyChest.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 896,
+   "tri_budget": 5000,
+   "bounds_studs": [
+    6,
+    5.101,
+    4.55
+   ],
+   "bounds_min_max": {
+    "min": [
+     -3,
+     0,
+     -2.28
+    ],
+    "max": [
+     3,
+     5.101,
+     2.27
+    ]
+   },
+   "target_studs": [
+    6,
+    5,
+    4.5
+   ],
+   "deviation_pct": [
+    0.0,
+    2.0,
+    1.1
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Base_8A5A2B",
+     "hex": "#8A5A2B",
+     "srgb_read_back": "#8A5A2B",
+     "match": true,
+     "tris": 92,
+     "bounds_min": [
+      -3.0,
+      0.0,
+      -2.25
+     ],
+     "bounds_max": [
+      3.0,
+      0.5,
+      2.25
+     ]
+    },
+    {
+     "mesh": "Glow_FFF27A",
+     "hex": "#FFF27A",
+     "srgb_read_back": "#FFF27A",
+     "match": true,
+     "tris": 60,
+     "bounds_min": [
+      -2.55,
+      2.6,
+      -1.85
+     ],
+     "bounds_max": [
+      2.55,
+      3.55,
+      1.75
+     ]
+    },
+    {
+     "mesh": "Gold_FFC21A",
+     "hex": "#FFC21A",
+     "srgb_read_back": "#FFC21A",
+     "match": true,
+     "tris": 124,
+     "bounds_min": [
+      -2.175,
+      2.776,
+      -2.015
+     ],
+     "bounds_max": [
+      2.175,
+      5.101,
+      2.27
+     ]
+    },
+    {
+     "mesh": "Gold_FFC21A.001",
+     "hex": "#FFC21A",
+     "srgb_read_back": "#FFC21A",
+     "match": true,
+     "tris": 260,
+     "bounds_min": [
+      -2.175,
+      0.4,
+      -2.2
+     ],
+     "bounds_max": [
+      2.175,
+      2.98,
+      2.12
+     ]
+    },
+    {
+     "mesh": "Keyhole_0D0F2B",
+     "hex": "#0D0F2B",
+     "srgb_read_back": "#0D0F2B",
+     "match": true,
+     "tris": 140,
+     "bounds_min": [
+      -0.21,
+      1.5,
+      -2.28
+     ],
+     "bounds_max": [
+      0.21,
+      2.2,
+      -1.88
+     ]
+    },
+    {
+     "mesh": "Wood_B5793F",
+     "hex": "#B5793F",
+     "srgb_read_back": "#B5793F",
+     "match": true,
+     "tris": 92,
+     "bounds_min": [
+      -2.8,
+      0.3,
+      -2.05
+     ],
+     "bounds_max": [
+      2.8,
+      2.9,
+      2.05
+     ]
+    },
+    {
+     "mesh": "Wood_B5793F.001",
+     "hex": "#B5793F",
+     "srgb_read_back": "#B5793F",
+     "match": true,
+     "tris": 128,
+     "bounds_min": [
+      -2.85,
+      2.947,
+      -1.844
+     ],
+     "bounds_max": [
+      2.85,
+      5.001,
+      2.17
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 4,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Lid hinged at the back edge and opened 16 degrees; Glow_FFF27A slab fills the gap (material also emissive in the GLB; in Studio set Material Neon on that part if you want it to glow). Two Gold and two Wood meshes (extruded lid/straps vs lofted parts do not join). Fixed after checker: body strap tops were coplanar with the body top (2.9) -> 2.98. Remaining checker hits are gold-vs-gold (same colour, invisible)."
+  },
+  {
+   "name": "Hub_GiftBox",
+   "path": "assets/meshes/kit/Hub_GiftBox.glb",
+   "source": "assets/meshes/src/kit/Hub_GiftBox.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 2416,
+   "tri_budget": 5000,
+   "bounds_studs": [
+    5.06,
+    5.297,
+    5.06
+   ],
+   "bounds_min_max": {
+    "min": [
+     -2.53,
+     0,
+     -2.53
+    ],
+    "max": [
+     2.53,
+     5.297,
+     2.53
+    ]
+   },
+   "target_studs": [
+    5,
+    5,
+    5
+   ],
+   "deviation_pct": [
+    1.2,
+    5.9,
+    1.2
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Box_FF8FC0",
+     "hex": "#FF8FC0",
+     "srgb_read_back": "#FF8FC0",
+     "match": true,
+     "tris": 92,
+     "bounds_min": [
+      -2.25,
+      0.3,
+      -2.25
+     ],
+     "bounds_max": [
+      2.25,
+      3.5,
+      2.25
+     ]
+    },
+    {
+     "mesh": "Dots_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 1472,
+     "bounds_min": [
+      -2.31,
+      0.79,
+      -2.31
+     ],
+     "bounds_max": [
+      2.31,
+      2.91,
+      2.31
+     ]
+    },
+    {
+     "mesh": "Lip_E05597",
+     "hex": "#E05597",
+     "srgb_read_back": "#E05597",
+     "match": true,
+     "tris": 184,
+     "bounds_min": [
+      -2.45,
+      0.0,
+      -2.45
+     ],
+     "bounds_max": [
+      2.45,
+      4.2,
+      2.45
+     ]
+    },
+    {
+     "mesh": "Ribbon_FFD23F",
+     "hex": "#FFD23F",
+     "srgb_read_back": "#FFD23F",
+     "match": true,
+     "tris": 668,
+     "bounds_min": [
+      -2.53,
+      0.4,
+      -2.53
+     ],
+     "bounds_max": [
+      2.53,
+      5.297,
+      2.53
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "4 colours (lip/lid dark pink, box pink, ribbon yellow, dots white). Height 5.3 (+6%) is the bow. Duplicate node names (Kiln warn) fixed by unique dot names."
+  },
+  {
+   "name": "Hub_IndexBoard",
+   "path": "assets/meshes/kit/Hub_IndexBoard.glb",
+   "source": "assets/meshes/src/kit/Hub_IndexBoard.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 1316,
+   "tri_budget": 5000,
+   "bounds_studs": [
+    10.3,
+    9.65,
+    1.55
+   ],
+   "bounds_min_max": {
+    "min": [
+     -5.15,
+     0,
+     -0.8
+    ],
+    "max": [
+     5.15,
+     9.65,
+     0.75
+    ]
+   },
+   "target_studs": [
+    10,
+    9,
+    1.5
+   ],
+   "deviation_pct": [
+    3.0,
+    7.2,
+    3.3
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Cover_3B6FE0",
+     "hex": "#3B6FE0",
+     "srgb_read_back": "#3B6FE0",
+     "match": true,
+     "tris": 376,
+     "bounds_min": [
+      -5.0,
+      2.75,
+      -0.2
+     ],
+     "bounds_max": [
+      5.0,
+      9.65,
+      0.6
+     ]
+    },
+    {
+     "mesh": "Face_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 12,
+     "bounds_min": [
+      -4.2,
+      3.9,
+      -0.4
+     ],
+     "bounds_max": [
+      4.2,
+      8.5,
+      0.1
+     ]
+    },
+    {
+     "mesh": "Gold_FFC21A",
+     "hex": "#FFC21A",
+     "srgb_read_back": "#FFC21A",
+     "match": true,
+     "tris": 560,
+     "bounds_min": [
+      -5.15,
+      2.85,
+      -0.25
+     ],
+     "bounds_max": [
+      5.15,
+      9.65,
+      0.6
+     ]
+    },
+    {
+     "mesh": "Ribbon_E0453C",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 92,
+     "bounds_min": [
+      2.65,
+      2.05,
+      -0.8
+     ],
+     "bounds_max": [
+      3.35,
+      3.65,
+      -0.4
+     ]
+    },
+    {
+     "mesh": "Stand_8A5A2B",
+     "hex": "#8A5A2B",
+     "srgb_read_back": "#8A5A2B",
+     "match": true,
+     "tris": 276,
+     "bounds_min": [
+      -4.5,
+      0.0,
+      -0.75
+     ],
+     "bounds_max": [
+      4.5,
+      3.6,
+      0.75
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": {
+    "mesh": "Face_FFFFFF",
+    "surfacegui_face": "Front (-Z)",
+    "face_size_studs_xy": [
+     8.4,
+     4.6
+    ],
+    "face_plane_z": -0.4,
+    "model_min_z": -0.8
+   },
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "SurfaceGui on Face_FFFFFF (8.4 x 4.6). After sheet: blue cover barely showed (did not read as a book) -> cover 10 x 6.4 with a fat border, spine nubs 6.9 tall. Fixed 3 coplanar pairs found by the checker: cover underside on the ledge underside plane (y 3.0), corner-cap bevels on the cover bevels. Pre-build fix: bookmark ribbon would have covered the face bottom; moved down. Height 9.65 (+7%) is the gold corner caps."
+  },
+  {
+   "name": "Lane_ZoneGate",
+   "path": "assets/meshes/kit/Lane_ZoneGate.glb",
+   "source": "assets/meshes/src/kit/Lane_ZoneGate.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 5788,
+   "tri_budget": 6000,
+   "bounds_studs": [
+    61.441,
+    32.285,
+    8.43
+   ],
+   "bounds_min_max": {
+    "min": [
+     -30.721,
+     0,
+     -4.43
+    ],
+    "max": [
+     30.721,
+     32.285,
+     4
+    ]
+   },
+   "target_studs": [
+    60,
+    32,
+    8
+   ],
+   "deviation_pct": [
+    2.4,
+    0.9,
+    5.4
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Accent_FF00FF",
+     "hex": "#FF00FF",
+     "srgb_read_back": "#FF00FF",
+     "match": true,
+     "tris": 1052,
+     "bounds_min": [
+      -29.95,
+      2.494,
+      -3.75
+     ],
+     "bounds_max": [
+      29.95,
+      29.2,
+      2.847
+     ]
+    },
+    {
+     "mesh": "Face_FFF6E0",
+     "hex": "#FFF6E0",
+     "srgb_read_back": "#FFF6E0",
+     "match": true,
+     "tris": 12,
+     "bounds_min": [
+      -11.0,
+      23.95,
+      -1.7
+     ],
+     "bounds_max": [
+      11.0,
+      28.45,
+      -1.3
+     ]
+    },
+    {
+     "mesh": "Gold_FFC21A",
+     "hex": "#FFC21A",
+     "srgb_read_back": "#FFC21A",
+     "match": true,
+     "tris": 832,
+     "bounds_min": [
+      -30.721,
+      4.613,
+      -2.7
+     ],
+     "bounds_max": [
+      30.721,
+      32.285,
+      2.1
+     ]
+    },
+    {
+     "mesh": "Ink_0D0F2B",
+     "hex": "#0D0F2B",
+     "srgb_read_back": "#0D0F2B",
+     "match": true,
+     "tris": 784,
+     "bounds_min": [
+      -30.0,
+      0.0,
+      -4.43
+     ],
+     "bounds_max": [
+      30.0,
+      31.828,
+      4.0
+     ]
+    },
+    {
+     "mesh": "Red_E0453C",
+     "hex": "#E0453C",
+     "srgb_read_back": "#E0453C",
+     "match": true,
+     "tris": 604,
+     "bounds_min": [
+      -29.0,
+      2.3,
+      -2.598
+     ],
+     "bounds_max": [
+      29.0,
+      30.341,
+      2.598
+     ]
+    },
+    {
+     "mesh": "Rope_F4D58A",
+     "hex": "#F4D58A",
+     "srgb_read_back": "#F4D58A",
+     "match": true,
+     "tris": 1252,
+     "bounds_min": [
+      -23.051,
+      20.221,
+      -1.949
+     ],
+     "bounds_max": [
+      23.051,
+      23.179,
+      0.854
+     ]
+    },
+    {
+     "mesh": "White_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 1252,
+     "bounds_min": [
+      -30.516,
+      2.5,
+      -4.213
+     ],
+     "bounds_max": [
+      30.516,
+      22.355,
+      -1.4
+     ]
+    }
+   ],
+   "accent_part": "Accent_FF00FF",
+   "surfacegui": {
+    "mesh": "Face_FFF6E0",
+    "surfacegui_face": "Front (-Z)",
+    "face_size_studs_xy": [
+     22.0,
+     4.5
+    ],
+    "face_plane_z": -1.7,
+    "model_min_z": -4.43
+   },
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "v2 (60 x 32 x 8) replaces the 40-wide gate. MEASURED opening (opening.mjs, from vertices): clear width below y=20 = 44.593 (limited by the Accent foot bands), clear height inside |x|<22 = 20.221 (limited by the rope's lowest point). Exactly 7 meshes, one per colour: Ink_0D0F2B, Red_E0453C, Accent_FF00FF (pillar bands, banner frame, lantern bodies, fox bibs), Gold_FFC21A, White_FFFFFF, Face_FFF6E0 (22 x 4.5, one box, front plane z=-1.7), Rope_F4D58A. 7 colours: over the bible's 3-5, deliberately, because the brief lists rope, paper, gold tips, foxes, accent and face as distinct elements. Pillars lean in 2.33 deg and taper r 2.6 -> 2.2. After render: beams read flat and thin -> kasagi 1.6 x 4.0 with lift 1.9 (exp 2.4), stack lowered behind the banner; pillars fattened; rope r ~1.0-1.4; shide/tufts moved IN FRONT of the rope so nothing drops below y 20; lanterns moved outboard of the fatter pillars. Width 61.44 (+2.4%) = fox tail tips; depth 8.43 (+5%) = shide in front. Over budget once (6688, rope 2272 tris) -> rope profile 18 -> 12 pts, 26 -> 18 stations."
+  },
+  {
+   "name": "Coin_Yen",
+   "path": "assets/meshes/kit/Coin_Yen.glb",
+   "source": "assets/meshes/src/kit/Coin_Yen.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 296,
+   "tri_budget": 300,
+   "bounds_studs": [
+    1.6,
+    1.6,
+    0.3
+   ],
+   "bounds_min_max": {
+    "min": [
+     -0.8,
+     0,
+     -0.15
+    ],
+    "max": [
+     0.8,
+     1.6,
+     0.15
+    ]
+   },
+   "target_studs": [
+    1.6,
+    1.6,
+    0.3
+   ],
+   "deviation_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Face_F5A623",
+     "hex": "#F5A623",
+     "srgb_read_back": "#F5A623",
+     "match": true,
+     "tris": 120,
+     "bounds_min": [
+      -0.64,
+      0.16,
+      -0.1
+     ],
+     "bounds_max": [
+      0.64,
+      1.44,
+      0.1
+     ]
+    },
+    {
+     "mesh": "Rim_FFD23F",
+     "hex": "#FFD23F",
+     "srgb_read_back": "#FFD23F",
+     "match": true,
+     "tris": 176,
+     "bounds_min": [
+      -0.8,
+      0.0,
+      -0.15
+     ],
+     "bounds_max": [
+      0.8,
+      1.6,
+      0.15
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 0,
+    "pieces_thinner_than_0_4": 3
+   },
+   "verified": true,
+   "notes": "2 colours only (rim gold, face deeper gold) - a pickup, not a prop. 0.3 thick by the bible's own size, so its pieces are under the 0.4 rule by design. After first build: 472 -> 296 tris (16 segments, no bevels); collar hole 0.02 smaller than the face hole so the hole walls do not share a plane."
+  },
+  {
+   "name": "Plot_ThrowStage",
+   "path": "assets/meshes/kit/Plot_ThrowStage.glb",
+   "source": "assets/meshes/src/kit/Plot_ThrowStage.kiln.js",
+   "tier": 3,
+   "route": "Kiln v0.8.0 -> kiln_to_roblox.mjs (T3 hard-surface)",
+   "tris": 2870,
+   "tri_budget": 3000,
+   "bounds_studs": [
+    18,
+    6.55,
+    20
+   ],
+   "bounds_min_max": {
+    "min": [
+     -9,
+     0,
+     -10
+    ],
+    "max": [
+     9,
+     6.55,
+     10
+    ]
+   },
+   "target_studs": [
+    20,
+    3,
+    20
+   ],
+   "deviation_pct": [
+    -10.0,
+    118.3,
+    0.0
+   ],
+   "front": "-Z",
+   "colour_parts": [
+    {
+     "mesh": "Arrow_FF5A36",
+     "hex": "#FF5A36",
+     "srgb_read_back": "#FF5A36",
+     "match": true,
+     "tris": 718,
+     "bounds_min": [
+      -5.953,
+      0.4,
+      -4.953
+     ],
+     "bounds_max": [
+      5.953,
+      6.2,
+      6.953
+     ]
+    },
+    {
+     "mesh": "BaseLip_6B7686",
+     "hex": "#6B7686",
+     "srgb_read_back": "#6B7686",
+     "match": true,
+     "tris": 252,
+     "bounds_min": [
+      -9.0,
+      0.0,
+      -8.0
+     ],
+     "bounds_max": [
+      9.0,
+      0.5,
+      10.0
+     ]
+    },
+    {
+     "mesh": "Pad_FFD23F",
+     "hex": "#FFD23F",
+     "srgb_read_back": "#FFD23F",
+     "match": true,
+     "tris": 596,
+     "bounds_min": [
+      -6.6,
+      0.4,
+      -5.6
+     ],
+     "bounds_max": [
+      6.6,
+      6.55,
+      7.6
+     ]
+    },
+    {
+     "mesh": "Post_8A5A2B",
+     "hex": "#8A5A2B",
+     "srgb_read_back": "#8A5A2B",
+     "match": true,
+     "tris": 240,
+     "bounds_min": [
+      -5.753,
+      2.9,
+      -4.753
+     ],
+     "bounds_max": [
+      5.753,
+      5.2,
+      6.753
+     ]
+    },
+    {
+     "mesh": "Rim_FFFFFF",
+     "hex": "#FFFFFF",
+     "srgb_read_back": "#FFFFFF",
+     "match": true,
+     "tris": 1064,
+     "bounds_min": [
+      -8.8,
+      0.0,
+      -10.0
+     ],
+     "bounds_max": [
+      8.8,
+      5.845,
+      9.8
+     ]
+    }
+   ],
+   "accent_part": null,
+   "surfacegui": null,
+   "gate": {
+    "size_within_15pct": true,
+    "tris_within_budget": true,
+    "colours_read_back_exact": true,
+    "coplanar_overlaps_between_colours": 5,
+    "pieces_thinner_than_0_4": 0
+   },
+   "verified": true,
+   "notes": "Deck MEASURED at y = 3.000: deck.mjs samples the y=3 plane every 0.05 studs: 87,732 covered samples, 0 covered by two colours (Rim 83.66, Pad 106.41, Arrow 29.26 sq studs). The yellow disc is extruded with the arrow/chevrons as holes so tops are flush with no coplanar overlap; the bbox checker's 5 'coplanar' hits on this model are its blind spot for holes (top) and buried bottoms at y 0.4. Bounds 18 x 6.55 x 20: height 6.55 is the four lantern posts the same entry asks for (the platform itself is 3.0); width 18 (-10%). Drum centred at z +1.0 so the three steps (rises 0.75, treads 0.8, 9 wide) fit inside z -10. Arrow points +Z (same outline as Plot_ThrowPad, scaled 1.6). One mesh per colour (5): BaseLip_6B7686, Rim_FFFFFF, Pad_FFD23F, Arrow_FF5A36 (arrow, chevrons, lanterns, flags), Post_8A5A2B. Over budget once (3606) -> 2870 by cutting segments. After render: bunting cord was 0.346 thick -> r 0.25."
+  }
+ ]
+}

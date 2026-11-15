@@ -1,0 +1,507 @@
+{
+ "Coin_Yen": {
+  "assetId": 95062826270450,
+  "file": "assets/meshes/kit/Coin_Yen.glb",
+  "sha1": "2036cc442e88dadf994380f83f3a46d61a249122"
+ },
+ "Equip_dragon_shrine": {
+  "assetId": 101794365652173,
+  "file": "assets/meshes/gear/Equip_dragon_shrine.glb",
+  "sha1": "19fe777a92087e9af97d8ee470b9e49d05dd9b77"
+ },
+ "Equip_gravity_dojo": {
+  "assetId": 131897584954663,
+  "file": "assets/meshes/gear/Equip_gravity_dojo.glb",
+  "sha1": "0eff6c5e15d5612143bbe2cf5b164660fc62becb"
+ },
+ "Equip_iron_dummy": {
+  "assetId": 137551008964095,
+  "file": "assets/meshes/gear/Equip_iron_dummy.glb",
+  "sha1": "a9a9bd30c378b7ed59dbb6ad8e7006deb6b95c97"
+ },
+ "Equip_sandbag": {
+  "assetId": 115636480743025,
+  "file": "assets/meshes/gear/Equip_sandbag.glb",
+  "sha1": "16e3edf4fdbdceeb6e161abacd67beac987b2a58"
+ },
+ "Equip_star_forge": {
+  "assetId": 125587359301788,
+  "file": "assets/meshes/gear/Equip_star_forge.glb",
+  "sha1": "ade861f342b037eb740a9a9b8eee0d495e1fecc6"
+ },
+ "Equip_stone_pillar": {
+  "assetId": 139025535207223,
+  "file": "assets/meshes/gear/Equip_stone_pillar.glb",
+  "sha1": "a91402dd70aa8d30fd73a8b657c513ce592e60ca"
+ },
+ "Equip_waterfall": {
+  "assetId": 106565281938654,
+  "file": "assets/meshes/gear/Equip_waterfall.glb",
+  "sha1": "9e74749f8076bb452653b46eab610fdc6df487b1"
+ },
+ "Equip_wooden_dummy": {
+  "assetId": 128877320163916,
+  "file": "assets/meshes/gear/Equip_wooden_dummy.glb",
+  "sha1": "d578f908aed4f8ec38c1bb7ae39b1d336bf5b4d1"
+ },
+ "Food_curry": {
+  "assetId": 107150729618535,
+  "file": "assets/meshes/foods/Food_curry.glb",
+  "sha1": "2ab18d71b8b149ed89e8212e4bea50a958c6d9c7"
+ },
+ "Food_dango": {
+  "assetId": 86143276172504,
+  "file": "assets/meshes/foods/Food_dango.glb",
+  "sha1": "a5b02195bb054be51997c90c54a2315511f3e881"
+ },
+ "Food_dragon_feast": {
+  "assetId": 122773811688139,
+  "file": "assets/meshes/foods/Food_dragon_feast.glb",
+  "sha1": "f7ce362a950fbe4d8461d5a70223d95f378421ac"
+ },
+ "Food_festival_cake": {
+  "assetId": 102707475534417,
+  "file": "assets/meshes/foods/Food_festival_cake.glb",
+  "sha1": "f2e90ec31e59aadd6c685941df754de0e28d5d6e"
+ },
+ "Food_gyoza": {
+  "assetId": 126589930961005,
+  "file": "assets/meshes/foods/Food_gyoza.glb",
+  "sha1": "62aa158687207597b23cbf1b4e94eb70daba7940"
+ },
+ "Food_ice_cream": {
+  "assetId": 74015877450918,
+  "file": "assets/meshes/foods/Food_ice_cream.glb",
+  "sha1": "94b9e25f4a76021f1ee9539b0037d846175f70de"
+ },
+ "Food_onigiri": {
+  "assetId": 89267757372812,
+  "file": "assets/meshes/foods/Food_onigiri.glb",
+  "sha1": "b241c10ac09f68bd82e07164d5cd95b98bedce22"
+ },
+ "Food_ramen": {
+  "assetId": 116734123659437,
+  "file": "assets/meshes/foods/Food_ramen.glb",
+  "sha1": "c4f8a241e2ab6fb697bccfc47533367a008f5552"
+ },
+ "Food_spicy_bun": {
+  "assetId": 103175936241051,
+  "file": "assets/meshes/foods/Food_spicy_bun.glb",
+  "sha1": "3c0cfc906501181c94548f2fb28ceea8bba84902"
+ },
+ "Food_sushi": {
+  "assetId": 114110067359258,
+  "file": "assets/meshes/foods/Food_sushi.glb",
+  "sha1": "ea848141a15daa449deb11ec4a506d681d39c486"
+ },
+ "Food_takoyaki": {
+  "assetId": 112640160228540,
+  "file": "assets/meshes/foods/Food_takoyaki.glb",
+  "sha1": "9c79e651b71b93a600d20a729f8471021cb08ff0"
+ },
+ "Food_tempura": {
+  "assetId": 122134036987152,
+  "file": "assets/meshes/foods/Food_tempura.glb",
+  "sha1": "4b9eb7f85d878ca91f0faf5712e565ba4c3c3f76"
+ },
+ "Hub_DailyChest": {
+  "assetId": 89484045872710,
+  "file": "assets/meshes/kit/Hub_DailyChest.glb",
+  "sha1": "4db8c1c94f4b13acbd8a05a04be0041ab29bbe9c"
+ },
+ "Hub_FoodCart": {
+  "assetId": 84884009798902,
+  "file": "assets/meshes/kit/Hub_FoodCart.glb",
+  "sha1": "cd9053a75281e87e797f266627ef04d88927359b"
+ },
+ "Hub_GiftBox": {
+  "assetId": 100102454649022,
+  "file": "assets/meshes/kit/Hub_GiftBox.glb",
+  "sha1": "58981c97033103faa3b2a669b785c696bb038b20"
+ },
+ "Hub_IndexBoard": {
+  "assetId": 91567434768933,
+  "file": "assets/meshes/kit/Hub_IndexBoard.glb",
+  "sha1": "aa7f546c07bb9107484681f5406152cd67010cbe"
+ },
+ "Hub_LeaderboardFrame": {
+  "assetId": 85118862587455,
+  "file": "assets/meshes/kit/Hub_LeaderboardFrame.glb",
+  "sha1": "1d88da3fe18c6033b8c3d8e8947d65074765b699"
+ },
+ "Hub_SellBooth": {
+  "assetId": 108557472271606,
+  "file": "assets/meshes/kit/Hub_SellBooth.glb",
+  "sha1": "6d5528e64b42525c2ef1e9349518cb0145e4fbc8"
+ },
+ "Hub_SummonShrine": {
+  "assetId": 129715432827657,
+  "file": "assets/meshes/kit/Hub_SummonShrine.glb",
+  "sha1": "ae6ddd0a807234a32f36a5d1b0f4ff53c123da7e"
+ },
+ "Lane_ZoneGate": {
+  "assetId": 89604519424308,
+  "file": "assets/meshes/kit/Lane_ZoneGate.glb",
+  "sha1": "1590a8fa7ac2820a2a9aee936ce983da2336673a"
+ },
+ "Plot_Fence": {
+  "assetId": 99837496142456,
+  "file": "assets/meshes/kit/Plot_Fence.glb",
+  "sha1": "9a31b9ab6ae093c7e5a93e376df56c2c195d9e2b"
+ },
+ "Plot_NameArch": {
+  "assetId": 86138121414204,
+  "file": "assets/meshes/kit/Plot_NameArch.glb",
+  "sha1": "2d8b9070a03517bfc29ba7ff82cf9452c7c14299"
+ },
+ "Plot_Pedestal": {
+  "assetId": 129616616492102,
+  "file": "assets/meshes/kit/Plot_Pedestal.glb",
+  "sha1": "af137d03ac9ae2ef39a4d9e4777e1423f77c3614"
+ },
+ "Plot_SlotSign": {
+  "assetId": 75256978116959,
+  "file": "assets/meshes/kit/Plot_SlotSign.glb",
+  "sha1": "caf63927ef23c7871e0a534376c281109e9bbd7b"
+ },
+ "Plot_ThrowPad": {
+  "assetId": 90325830566243,
+  "file": "assets/meshes/kit/Plot_ThrowPad.glb",
+  "sha1": "2571bcace2834c9dc6216f0f23e421c9cbf9c7dc"
+ },
+ "Plot_ThrowStage": {
+  "assetId": 120172147297307,
+  "file": "assets/meshes/kit/Plot_ThrowStage.glb",
+  "sha1": "002f190a9bb3b88d924b54a564fb4137d74b8884"
+ },
+ "Prop_hero_city_ArcadeMachine": {
+  "assetId": 126962932718380,
+  "file": "assets/meshes/zones/Prop_hero_city_ArcadeMachine.glb",
+  "sha1": "424351306f63fe587999a29776f281fa355f0797"
+ },
+ "Prop_hero_city_Billboard": {
+  "assetId": 109849180174040,
+  "file": "assets/meshes/zones/Prop_hero_city_Billboard.glb",
+  "sha1": "eb4df3c10005c0e257095f0b6925506ba6731b5a"
+ },
+ "Prop_hero_city_HeroStatue": {
+  "assetId": 74555768965028,
+  "file": "assets/meshes/zones/Prop_hero_city_HeroStatue.glb",
+  "sha1": "2cfb3693766c243aede9238633e16d62c8c0be59"
+ },
+ "Prop_hero_city_MechaStatue": {
+  "assetId": 91939728290093,
+  "file": "assets/meshes/zones/Prop_hero_city_MechaStatue.glb",
+  "sha1": "5c745e5dcce24008ad24f7ac1d33ed772910995c"
+ },
+ "Prop_hero_city_NeonSign": {
+  "assetId": 76618654799234,
+  "file": "assets/meshes/zones/Prop_hero_city_NeonSign.glb",
+  "sha1": "30b760e212e2421de714d1a9959641de112d73d3"
+ },
+ "Prop_hero_city_NeonTower": {
+  "assetId": 92561354960407,
+  "file": "assets/meshes/zones/Prop_hero_city_NeonTower.glb",
+  "sha1": "2b70d7d7ed03d74605a5db41f3e1678e1225243c"
+ },
+ "Prop_hero_city_RooftopPad": {
+  "assetId": 108959567037555,
+  "file": "assets/meshes/zones/Prop_hero_city_RooftopPad.glb",
+  "sha1": "437b138287cf6bb06e4e7ed9c37aa92978633e35"
+ },
+ "Prop_hero_city_Shop": {
+  "assetId": 94709192249737,
+  "file": "assets/meshes/zones/Prop_hero_city_Shop.glb",
+  "sha1": "659addcdf136c3d7f9c6d8d8078fd39a56ada683"
+ },
+ "Prop_hero_city_StreetLamp": {
+  "assetId": 137487943631038,
+  "file": "assets/meshes/zones/Prop_hero_city_StreetLamp.glb",
+  "sha1": "a7a30d377213fc0031da93780d3fb53a2671c4a5"
+ },
+ "Prop_hero_city_SubwayEntrance": {
+  "assetId": 92749608194262,
+  "file": "assets/meshes/zones/Prop_hero_city_SubwayEntrance.glb",
+  "sha1": "9079874c99a6e3171ac1dd6c8e9b2bf1438e1d6b"
+ },
+ "Prop_ninja_village_BambooCluster": {
+  "assetId": 84628917052399,
+  "file": "assets/meshes/zones/Prop_ninja_village_BambooCluster.glb",
+  "sha1": "46264a3e4adcc7162643f95adf4253edd39f95e0"
+ },
+ "Prop_ninja_village_FoxStatue": {
+  "assetId": 111304722704519,
+  "file": "assets/meshes/zones/Prop_ninja_village_FoxStatue.glb",
+  "sha1": "90de58ce56160e82377291a92289a1d1eb4fde13"
+ },
+ "Prop_ninja_village_GiantShuriken": {
+  "assetId": 92228375385276,
+  "file": "assets/meshes/zones/Prop_ninja_village_GiantShuriken.glb",
+  "sha1": "06b7175e97394e9ffac8592585dbd6723ae10f59"
+ },
+ "Prop_ninja_village_HiddenGate": {
+  "assetId": 135309964824832,
+  "file": "assets/meshes/zones/Prop_ninja_village_HiddenGate.glb",
+  "sha1": "ff7ede4d3e70aa9fdd214db70d61302f822a4b37"
+ },
+ "Prop_ninja_village_NinjaHouse": {
+  "assetId": 108992228224861,
+  "file": "assets/meshes/zones/Prop_ninja_village_NinjaHouse.glb",
+  "sha1": "37c89c7a601164244220a3d0add69305d4e061e4"
+ },
+ "Prop_ninja_village_RopeBridge": {
+  "assetId": 110067242836386,
+  "file": "assets/meshes/zones/Prop_ninja_village_RopeBridge.glb",
+  "sha1": "40fb08c77cd5965959309dcd88e9c651da0017f6"
+ },
+ "Prop_ninja_village_ScrollStand": {
+  "assetId": 106774579024631,
+  "file": "assets/meshes/zones/Prop_ninja_village_ScrollStand.glb",
+  "sha1": "384bed9207a4910badf51765885ad8c1650d9e81"
+ },
+ "Prop_ninja_village_TrainingLog": {
+  "assetId": 104980442702840,
+  "file": "assets/meshes/zones/Prop_ninja_village_TrainingLog.glb",
+  "sha1": "f1aa336a851c5cb91363face4f043c9b1e6ea551"
+ },
+ "Prop_ninja_village_TreeHouse": {
+  "assetId": 79890938462747,
+  "file": "assets/meshes/zones/Prop_ninja_village_TreeHouse.glb",
+  "sha1": "d4e1c29b52d868053403240589a3ee7bd51815c3"
+ },
+ "Prop_ninja_village_WatchPost": {
+  "assetId": 88476540191292,
+  "file": "assets/meshes/zones/Prop_ninja_village_WatchPost.glb",
+  "sha1": "16004c8e25b9a6d65082e36a741fe1787d8fccc5"
+ },
+ "Prop_pirate_harbor_BarrelStack": {
+  "assetId": 138432252616161,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_BarrelStack.glb",
+  "sha1": "09aea24e20b12daa4deb067c2d8cb8f502a7d3c5"
+ },
+ "Prop_pirate_harbor_Cannon": {
+  "assetId": 98681085421954,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_Cannon.glb",
+  "sha1": "e357b44e16c2b437f0ea26ee0ee4b4a8e476db0c"
+ },
+ "Prop_pirate_harbor_Dock": {
+  "assetId": 105783362967387,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_Dock.glb",
+  "sha1": "bdb6a5ff535b28e41ad8bb26c76f491ab435fc6f"
+ },
+ "Prop_pirate_harbor_FishStall": {
+  "assetId": 106778226906030,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_FishStall.glb",
+  "sha1": "29262edcb356b9151d88cbb38e668007f58dd293"
+ },
+ "Prop_pirate_harbor_GiantAnchor": {
+  "assetId": 111956241685780,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_GiantAnchor.glb",
+  "sha1": "e129aefb9c8d0a716742b7b2399714f807e7afd5"
+ },
+ "Prop_pirate_harbor_Lighthouse": {
+  "assetId": 88670367788172,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_Lighthouse.glb",
+  "sha1": "41ff1a40155d3f0fd63efb3f3bfe67cf1b4485fc"
+ },
+ "Prop_pirate_harbor_PalmTree": {
+  "assetId": 115239033408466,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_PalmTree.glb",
+  "sha1": "e060a40a0f9d5450cbc892751c4f2f83d578705f"
+ },
+ "Prop_pirate_harbor_PirateShip": {
+  "assetId": 131317450257503,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_PirateShip.glb",
+  "sha1": "01456dc5ffb7974031e21f0dda3a4d94b4004dbc"
+ },
+ "Prop_pirate_harbor_SkullRock": {
+  "assetId": 117743069186600,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_SkullRock.glb",
+  "sha1": "ba755e445142661d4f8beee2a2eb4f50e37f76d4"
+ },
+ "Prop_pirate_harbor_TreasurePile": {
+  "assetId": 140554855026114,
+  "file": "assets/meshes/zones/Prop_pirate_harbor_TreasurePile.glb",
+  "sha1": "ed3b22f4f09b258ba001a0ef236409811bc816ee"
+ },
+ "Prop_realm_of_legends_CloudBank": {
+  "assetId": 78755221438422,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_CloudBank.glb",
+  "sha1": "40f05212f8d35a6aedea74a4906e7a07182d9b15"
+ },
+ "Prop_realm_of_legends_CrystalTree": {
+  "assetId": 103766844592584,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_CrystalTree.glb",
+  "sha1": "d635b3ac36e4c41c219f9a3b7059fced86b4c22f"
+ },
+ "Prop_realm_of_legends_DragonStatue": {
+  "assetId": 111690994995542,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_DragonStatue.glb",
+  "sha1": "d6a799729d04e20b3d2398a145d4d53c8100e781"
+ },
+ "Prop_realm_of_legends_FloatingIsland": {
+  "assetId": 97842689692703,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_FloatingIsland.glb",
+  "sha1": "16afc2620e4fc50c3484ae633b913cf2a0b8b1f5"
+ },
+ "Prop_realm_of_legends_FloatingShrine": {
+  "assetId": 134467071854520,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_FloatingShrine.glb",
+  "sha1": "1d055eaf7d5cf417bee881fef74b27ab1d4376bf"
+ },
+ "Prop_realm_of_legends_GiantSword": {
+  "assetId": 74944857603748,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_GiantSword.glb",
+  "sha1": "9ac6d91865548a98020caa14ea608db972cb75e9"
+ },
+ "Prop_realm_of_legends_GreatTorii": {
+  "assetId": 119440867620487,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_GreatTorii.glb",
+  "sha1": "d8d9286e46310a1d862d82f1a0aa4e1ebbaa9385"
+ },
+ "Prop_realm_of_legends_SpiritGate": {
+  "assetId": 75413327409171,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_SpiritGate.glb",
+  "sha1": "488c328ac28ac2e2582ffcccebdebccf52098f7a"
+ },
+ "Prop_realm_of_legends_SpiritLantern": {
+  "assetId": 84310591856565,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_SpiritLantern.glb",
+  "sha1": "85873866ba4562fcad4db1cd8489ed0e54decc48"
+ },
+ "Prop_realm_of_legends_StarAltar": {
+  "assetId": 135913477065726,
+  "file": "assets/meshes/zones/Prop_realm_of_legends_StarAltar.glb",
+  "sha1": "7224cdc80a1f8f30b8bdba8dd8a738185f03a14d"
+ },
+ "Prop_sakura_schoolyard_BasketballHoop": {
+  "assetId": 92807459079192,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_BasketballHoop.glb",
+  "sha1": "360ca47b2ace6d143118432a9e4321b37b8dcb5a"
+ },
+ "Prop_sakura_schoolyard_Bench": {
+  "assetId": 116737076389512,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_Bench.glb",
+  "sha1": "99e790d7fb8b34d0f16720fb5fd418d86f6ec8c8"
+ },
+ "Prop_sakura_schoolyard_BikeRack": {
+  "assetId": 91631918393183,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_BikeRack.glb",
+  "sha1": "712f6274b855cc3d393aea2bc10d41deab160b60"
+ },
+ "Prop_sakura_schoolyard_CherryTree": {
+  "assetId": 120688005343832,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_CherryTree.glb",
+  "sha1": "561f4bbacae090ed5442614139f4e4f88ec2a423"
+ },
+ "Prop_sakura_schoolyard_ClockTower": {
+  "assetId": 91291482082522,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_ClockTower.glb",
+  "sha1": "db2bba3c2cca70bdf005ca4af9db0edde16b9d2c"
+ },
+ "Prop_sakura_schoolyard_SakuraArch": {
+  "assetId": 71158766503115,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_SakuraArch.glb",
+  "sha1": "77f7438f7dc39396b1c1dc71ccf4dc3cf9be3556"
+ },
+ "Prop_sakura_schoolyard_SchoolBuilding": {
+  "assetId": 71754648654781,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_SchoolBuilding.glb",
+  "sha1": "def3f3992490ce7c84ffc48bf623732eaf884e22"
+ },
+ "Prop_sakura_schoolyard_SchoolGate": {
+  "assetId": 92920057526342,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_SchoolGate.glb",
+  "sha1": "359176e658ec5a8e4541b98a6ed1a6cbf7436f9b"
+ },
+ "Prop_sakura_schoolyard_TrackHurdle": {
+  "assetId": 87749815938449,
+  "file": "assets/meshes/zones/Prop_sakura_schoolyard_TrackHurdle.glb",
+  "sha1": "7d3a0bec2e6a96609e35abc4448617852911e3c7"
+ },
+ "Prop_samurai_castle_ArmorStand": {
+  "assetId": 108701699301066,
+  "file": "assets/meshes/zones/Prop_samurai_castle_ArmorStand.glb",
+  "sha1": "9f7d837807cce593c20f3d0a2692d4bb366fcc70"
+ },
+ "Prop_samurai_castle_CastleKeep": {
+  "assetId": 97556222353559,
+  "file": "assets/meshes/zones/Prop_samurai_castle_CastleKeep.glb",
+  "sha1": "5e5091087e0926bcedd491ec16951e6ccc9b8d54"
+ },
+ "Prop_samurai_castle_KatanaMonument": {
+  "assetId": 134168788052027,
+  "file": "assets/meshes/zones/Prop_samurai_castle_KatanaMonument.glb",
+  "sha1": "6b2480da27c20e1f0fb31a25e88c3c96ede23fad"
+ },
+ "Prop_samurai_castle_Pagoda": {
+  "assetId": 125661566793640,
+  "file": "assets/meshes/zones/Prop_samurai_castle_Pagoda.glb",
+  "sha1": "dfcf8e99f3d67331cc9e244085182058af05a94b"
+ },
+ "Prop_samurai_castle_PineTree": {
+  "assetId": 139337193065260,
+  "file": "assets/meshes/zones/Prop_samurai_castle_PineTree.glb",
+  "sha1": "967b775fe68c0754f31e1454972e94ef9d7951fd"
+ },
+ "Prop_samurai_castle_RedBridge": {
+  "assetId": 104956915809213,
+  "file": "assets/meshes/zones/Prop_samurai_castle_RedBridge.glb",
+  "sha1": "3828914e6b0f17bbb0c14e557bd6075774c48220"
+ },
+ "Prop_samurai_castle_StoneWall": {
+  "assetId": 132116419085595,
+  "file": "assets/meshes/zones/Prop_samurai_castle_StoneWall.glb",
+  "sha1": "48727551577eac22410e0b29e6de5b783b6b136b"
+ },
+ "Prop_samurai_castle_TaikoDrum": {
+  "assetId": 138846862133707,
+  "file": "assets/meshes/zones/Prop_samurai_castle_TaikoDrum.glb",
+  "sha1": "c039db6aae453e44909654de1c1dda8984cf1ff5"
+ },
+ "Prop_samurai_castle_ToriiRow": {
+  "assetId": 119959616228026,
+  "file": "assets/meshes/zones/Prop_samurai_castle_ToriiRow.glb",
+  "sha1": "99bd7bb2eeb9eeb6d7d2ccb58f995cdb8999a592"
+ },
+ "Prop_samurai_castle_WarBanner": {
+  "assetId": 102223806428646,
+  "file": "assets/meshes/zones/Prop_samurai_castle_WarBanner.glb",
+  "sha1": "4aa073990677cd133e7e53c6c0d02f42b3d40e45"
+ },
+ "Prop_shared_DangoStatue": {
+  "assetId": 113538982705472,
+  "file": "assets/meshes/zones/Prop_shared_DangoStatue.glb",
+  "sha1": "76c8d0150682a134d731bc00d759aec05efbcef9"
+ },
+ "Prop_shared_Daruma": {
+  "assetId": 108565209605998,
+  "file": "assets/meshes/zones/Prop_shared_Daruma.glb",
+  "sha1": "89be91c095d8006b30c3a15b98424470dc12cc8e"
+ },
+ "Prop_shared_KoiFlagPole": {
+  "assetId": 117624046536700,
+  "file": "assets/meshes/zones/Prop_shared_KoiFlagPole.glb",
+  "sha1": "0c9a99bc0083e87c3a11307f904af575087f3598"
+ },
+ "Prop_shared_LanternString": {
+  "assetId": 131952740100110,
+  "file": "assets/meshes/zones/Prop_shared_LanternString.glb",
+  "sha1": "1bf7eecaf6d4ffdedc2444e3db63ec9886de4d73"
+ },
+ "Prop_shared_LuckyCat": {
+  "assetId": 113904442807737,
+  "file": "assets/meshes/zones/Prop_shared_LuckyCat.glb",
+  "sha1": "95214aee6631ca3d0a01188855715514ad1715cb"
+ },
+ "Prop_shared_RamenStand": {
+  "assetId": 83641036242103,
+  "file": "assets/meshes/zones/Prop_shared_RamenStand.glb",
+  "sha1": "8b8a9d1d77c9e3b3dbeb65f36f52a8e7dbf907a4"
+ },
+ "Prop_shared_VendingMachine": {
+  "assetId": 70953605232364,
+  "file": "assets/meshes/zones/Prop_shared_VendingMachine.glb",
+  "sha1": "187859bf8ddcecc2ece0d03788819f05ee65d79e"
+ }
+}

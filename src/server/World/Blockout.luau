@@ -124,7 +124,7 @@ local function buildPlot(cfg: any, folder: Instance, index: number)
 	spawn.Transparency = 1
 	spawn.CanCollide = false
 	spawn.Size = Vector3.new(6, 1, 6)
-	spawn.Position = Vector3.new(x0, y + 0.9, w.ThrowPadZ - 9)
+	spawn.Position = Vector3.new(x0, y + 0.9, w.PlotFrontZ - 16)
 	spawn.Parent = plot
 
 	local padX, padZ = World.throwPad(w, index, count)
@@ -177,6 +177,20 @@ local function buildPlot(cfg: any, folder: Instance, index: number)
 	)
 	label(board, "Title", "Empty plot", 5.5, 26)
 	prompt(board, "equipBest", "Equip best", index, Enum.KeyCode.E)
+
+	-- the reserved training yard: an invisible anchor kept empty for future mini games
+	local yardX, yardZ, yardW, yardD = World.yard(w, index, count)
+	local yard = part(
+		plot,
+		"Yard",
+		Vector3.new(yardW, 0.2, yardD),
+		Vector3.new(yardX, y + 0.5, yardZ),
+		Color3.fromRGB(240, 200, 120)
+	)
+	yard.Transparency = 1
+	yard.CanCollide = false
+	yard.CanQuery = false
+	yard:SetAttribute("Reserved", "minigames")
 
 	local pedestals = Instance.new("Folder")
 	pedestals.Name = "Pedestals"

@@ -61,7 +61,7 @@ server shutdown, phone-size run.
 
 | # | What | When | Why I cannot do it |
 |---|---|---|---|
-| 1 | DONE 2026-11-14: roster is the 31 imported avatars, R15 | - | - |
+| 1 | DONE 2026-11-14: roster is the imported avatars, R15 (31, then 12 more in section 3 = 43) | - | - |
 | 2 | Avatars for the 8 premium heroes (summon scroll, starter pack, limited): import them like the 31, or say "build them" and they are assembled from catalogue items | before section 3 | they are sold for Robux, so they have to exist and look right |
 | 3 | Add scopes to the Open Cloud key: universe-places write, developer-product and game-pass write, (asset write exists) | before section 5 | keys are yours; you run `set-secret.ps1` |
 | 4 | Game Settings > Security > "Enable Studio Access to API Services" ON | start of section 2 | DataStore tests in Studio; a settings toggle I should not flip for you |

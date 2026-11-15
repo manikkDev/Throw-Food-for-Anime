@@ -1,0 +1,399 @@
+{
+ "name": "TrainingBar",
+ "theme": "theme.json",
+ "resolution": [
+  1280,
+  720
+ ],
+ "kind": "hud",
+ "ignoreGuiInset": true,
+ "children": [
+  {
+   "type": "button",
+   "name": "UpgradePrompt",
+   "size": [
+    0,
+    300,
+    0,
+    34
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconTrain",
+     "name": "Icon",
+     "size": [
+      0,
+      20,
+      0,
+      20
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      250,
+      0,
+      21
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.619,
+     "textStroke": 2,
+     "name": "UpgradeText",
+     "samples": [
+      "NEW GEAR: Dragon Shrine 28B",
+      "NEW GEAR: Sandbag 600"
+     ],
+     "font": "display",
+     "maxText": 13
+    }
+   ],
+   "layout": {
+    "type": "list",
+    "dir": "x",
+    "gap": 6,
+    "align": "center"
+   },
+   "sizeClass": "S",
+   "depth": 3,
+   "corner": 14,
+   "pos": [
+    0.5,
+    0,
+    1,
+    -102
+   ],
+   "anchor": [
+    0.5,
+    1
+   ],
+   "visible": false,
+   "overhang": true,
+   "colour": "#48D687",
+   "paintable": true,
+   "gloss": true,
+   "stops": [
+    [
+     0.0,
+     "#48D687"
+    ],
+    [
+     0.4,
+     "#48D687"
+    ],
+    [
+     0.41000000000000003,
+     "#41C17A"
+    ],
+    [
+     1.0,
+     "#3BAF6F"
+    ]
+   ],
+   "attrs": {
+    "PressLip": 3
+   }
+  },
+  {
+   "type": "panel",
+   "name": "TrainingPanel",
+   "colour": "panel",
+   "size": [
+    0,
+    440,
+    0,
+    86
+   ],
+   "children": [
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      200,
+      0,
+      21
+     ],
+     "textColour": "power",
+     "align": "left",
+     "textScale": 0.7619,
+     "textStroke": 2,
+     "name": "RankName",
+     "samples": [
+      "CHAMPION",
+      "ROOKIE"
+     ],
+     "font": "display",
+     "pos": [
+      0,
+      8,
+      0,
+      0
+     ],
+     "maxText": 16
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      200,
+      0,
+      19
+     ],
+     "textColour": "soft",
+     "align": "right",
+     "textScale": 0.7647,
+     "textStroke": 2,
+     "name": "GearName",
+     "samples": [
+      "on Gravity Dojo",
+      "on Wooden Dummy"
+     ],
+     "pos": [
+      1,
+      -8,
+      0,
+      2
+     ],
+     "anchor": [
+      1,
+      0
+     ],
+     "maxText": 13
+    },
+    {
+     "type": "frame",
+     "name": "ProgressBar",
+     "colour": [
+      "#0B0D29",
+      "#12153A"
+     ],
+     "size": [
+      0,
+      404,
+      0,
+      22
+     ],
+     "corner": 11,
+     "children": [
+      {
+       "type": "frame",
+       "name": "Fill",
+       "colour": [
+        "#38BDF8",
+        "#30A3D5"
+       ],
+       "paint": "#38BDF8",
+       "children": [],
+       "size": [
+        0.58,
+        -6,
+        1,
+        -6
+       ],
+       "pos": [
+        0,
+        3,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0,
+        0.5
+       ],
+       "outline": false,
+       "corner": 8,
+       "overhang": true
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        388,
+        0,
+        22
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.5932,
+       "textStroke": 2,
+       "name": "ProgressText",
+       "samples": [
+        "999.99Qi / 999.99Qi -> LEGEND",
+        "9.01K / 70K -> ELITE"
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "overhang": true,
+       "z": 2
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      22
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    },
+    {
+     "type": "icon",
+     "icon": "IconPower",
+     "name": "PowerIcon",
+     "size": [
+      0,
+      16,
+      0,
+      16
+     ],
+     "pos": [
+      0,
+      8,
+      0,
+      51
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      220,
+      0,
+      17
+     ],
+     "textColour": "power",
+     "align": "left",
+     "textScale": 0.7647,
+     "textStroke": 2,
+     "name": "PowerPerRep",
+     "samples": [
+      "+11.00K power per rep",
+      "+560 power per rep"
+     ],
+     "pos": [
+      0,
+      28,
+      0,
+      49
+     ],
+     "maxText": 13
+    },
+    {
+     "type": "button",
+     "name": "StopButton",
+     "size": [
+      0,
+      98,
+      0,
+      34
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconClose",
+       "name": "Icon",
+       "size": [
+        0,
+        20,
+        0,
+        20
+       ]
+      },
+      {
+       "type": "label",
+       "text": "STOP",
+       "size": [
+        0,
+        48,
+        0,
+        21
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.7143,
+       "textStroke": 2,
+       "name": "Label",
+       "font": "display",
+       "maxText": 15
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 6,
+      "align": "center"
+     },
+     "sizeClass": "S",
+     "depth": 3,
+     "corner": 14,
+     "pos": [
+      1,
+      -8,
+      1,
+      0
+     ],
+     "anchor": [
+      1,
+      1
+     ],
+     "selfFace": true,
+     "colour": "#F2574C",
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#F2574C"
+      ],
+      [
+       0.4,
+       "#F2574C"
+      ],
+      [
+       0.41000000000000003,
+       "#DA4E44"
+      ],
+      [
+       1.0,
+       "#C6473E"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3
+     }
+    }
+   ],
+   "comic": 0,
+   "pos": [
+    0.5,
+    0,
+    1,
+    -16
+   ],
+   "anchor": [
+    0.5,
+    1
+   ],
+   "keyline": "#FFFFFF",
+   "depth": 0
+  }
+ ],
+ "enabled": false
+}

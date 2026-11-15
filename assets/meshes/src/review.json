@@ -1,0 +1,220 @@
+{
+ "Equip_wooden_dummy": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (arm 0.6, post 0.84)",
+   "no_zfight": "pass (target rings stepped 0.04 apart)"
+  },
+  "notes": "After look: arm 0.5 -> 0.6 thick, knobs r 0.36 -> 0.42 (fat posts rule)."
+ },
+ "Food_onigiri": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (puffy pillow edges)",
+   "colours_3_to_5": "pass (3)",
+   "min_thickness": "pass (nori proud 0.08, filling 0.48 wide)",
+   "no_zfight": "pass"
+  },
+  "notes": "After look: Z was 13.6% over (1.136) -> faces pulled in to 1.026; nori crease 50 -> 30 (blotchy shading on flat face). Salmon filling dot added for a third colour."
+ },
+ "Food_dango": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (4)",
+   "min_thickness": "pass (stick 0.18 dia)",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "Passed first look."
+ },
+ "Food_sushi": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (4)",
+   "min_thickness": "pass (fat stripes 0.14 wide)",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "Passed first look. Kiln QA warn: duplicate node names (Mesh_Fat) - cosmetic, joined by colour on convert."
+ },
+ "Food_spicy_bun": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (3)",
+   "min_thickness": "pass (pleats 0.13-0.18 dia, stem 0.13)",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "Passed first look."
+ },
+ "Food_gyoza": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (3)",
+   "min_thickness": "pass (chive flecks 0.16)",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "After look: crimp knobs r 0.13 -> 0.16 so the crimped edge reads."
+ },
+ "Food_ice_cream": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "After build: 1700 tris over 1500 budget -> scoop/lump segments cut to 1302."
+ },
+ "Food_takoyaki": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (pick 0.14 dia, flakes 0.15)",
+   "no_zfight": "pass (sauce cap is a second sphere intersecting the ball: clean intersection line, no coplanar faces)",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "Passed first look."
+ },
+ "Food_ramen": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (noodles 0.15, swirl 0.12 dia)",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "After build: height 1.11 (-26%) -> bowl deepened to 1.48; 1860 tris -> 1310; rim torus replaced by a tube ring (torus carried UVs so the converter could not join it, giving two White MeshParts)."
+ },
+ "Food_curry": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "Passed first look. Pickle pile is small at thumbnail size but visible."
+ },
+ "Food_tempura": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (3)",
+   "min_thickness": "pass",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "Passed first look."
+ },
+ "Food_festival_cake": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (4)",
+   "min_thickness": "pass (drips 0.24 wide)",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "After build: 3960 tris -> 1392 (segments cut, drips 25 -> 8, berries 14 -> 10, green leaves removed: 5 -> 4 colours). Y 2.4 is +9.1% (accepted, under 15%)."
+ },
+ "Food_dragon_feast": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (horn tips 0.12 dia)",
+   "no_zfight": "pass",
+   "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+  },
+  "notes": "After build: 1880 -> 1456 tris. Flame parts carry emissive 0.4 in the GLB (Studio ignores it; colour is from the hex)."
+ },
+ "Equip_sandbag": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (legs 0.6, rope 0.4)",
+   "no_zfight": "pass",
+   "ladder": "pass (gear_ladder.png reads left to right)"
+  },
+  "notes": "Passed first look."
+ },
+ "Equip_iron_dummy": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (spikes taper to a point by design; base 0.4)",
+   "no_zfight": "pass",
+   "ladder": "pass (gear_ladder.png reads left to right)"
+  },
+  "notes": "Passed first look. Reads more robot than dummy; accepted."
+ },
+ "Equip_stone_pillar": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (cracks 0.34, tags 0.22 deep paper)",
+   "no_zfight": "pass",
+   "ladder": "pass (gear_ladder.png reads left to right)"
+  },
+  "notes": "After look: paper tags floated 0.5 off the column and read as plain stacked boxes -> moved onto the column surface, rounded and tilted alternately. Width 4.62 is -7.6% (accepted)."
+ },
+ "Equip_waterfall": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (foam streaks 0.4)",
+   "no_zfight": "pass",
+   "ladder": "pass (gear_ladder.png reads left to right)"
+  },
+  "notes": "Passed first look. Boulder pillars read slightly as a stack of equal rocks; accepted. Height 10.21 is -7.2%."
+ },
+ "Equip_gravity_dojo": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (rings 0.4-0.44 tube)",
+   "no_zfight": "pass (rings pass through pylons: clean intersections, no coplanar faces)",
+   "ladder": "pass (gear_ladder.png reads left to right)"
+  },
+  "notes": "Passed first look. The three tilted rings read a little like a spring; accepted."
+ },
+ "Equip_dragon_shrine": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (horns 0.14 at tip, a detail)",
+   "no_zfight": "pass",
+   "ladder": "pass (gear_ladder.png reads left to right)"
+  },
+  "notes": "After look: flame bowls read as small red cones with the yellow core hidden -> flames scaled 1.5x and cores moved forward."
+ },
+ "Equip_star_forge": {
+  "verified": true,
+  "gates": {
+   "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+   "colours_3_to_5": "pass (5)",
+   "min_thickness": "pass (ring tubes 0.44-0.52)",
+   "no_zfight": "pass",
+   "ladder": "pass (gear_ladder.png reads left to right)"
+  },
+  "notes": "Passed first look; reads as the top tier."
+ }
+}

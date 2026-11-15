@@ -1,0 +1,1132 @@
+{
+ "name": "ThrowMeter",
+ "theme": "theme.json",
+ "resolution": [
+  1280,
+  720
+ ],
+ "kind": "hud",
+ "ignoreGuiInset": true,
+ "children": [
+  {
+   "type": "frame",
+   "name": "ThrowButton",
+   "transparent": true,
+   "cls": "TextButton",
+   "size": [
+    0,
+    1280,
+    0,
+    480
+   ],
+   "children": [],
+   "pos": [
+    0,
+    0,
+    0,
+    240
+   ],
+   "overhang": true,
+   "z": -1
+  },
+  {
+   "type": "label",
+   "text": "<unbound>",
+   "size": [
+    0,
+    380,
+    0,
+    36
+   ],
+   "textColour": "onDark",
+   "align": "center",
+   "textScale": 0.6667,
+   "textStroke": 3,
+   "name": "ZonePreviewLabel",
+   "samples": [
+    "Lands in: Realm of Legends",
+    "Lands in: Pirate Harbor"
+   ],
+   "pos": [
+    0,
+    632,
+    0,
+    82
+   ]
+  },
+  {
+   "type": "frame",
+   "name": "MeterBar",
+   "colour": [
+    "#34D17A",
+    "#F04438"
+   ],
+   "stops": [
+    [
+     0,
+     "#34D17A"
+    ],
+    [
+     0.45,
+     "#FFC93C"
+    ],
+    [
+     1,
+     "#F04438"
+    ]
+   ],
+   "size": [
+    0,
+    64,
+    0,
+    380
+   ],
+   "corner": 30,
+   "pos": [
+    0,
+    790,
+    0,
+    128
+   ],
+   "children": [
+    {
+     "type": "frame",
+     "name": "Segment1",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.1,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Segment2",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.2,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Segment3",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.3,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Segment4",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.4,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Segment5",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Segment6",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.6,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Segment7",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.7,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Segment8",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.8,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Segment9",
+     "colour": [
+      "#0D0F2B",
+      "#0D0F2B"
+     ],
+     "alpha": 0.6,
+     "outline": false,
+     "size": [
+      1,
+      -10,
+      0,
+      3
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.9,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 1,
+     "overhang": true,
+     "z": 1,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "Sheen",
+     "colour": [
+      "#FFFFFF",
+      "#FFFFFF"
+     ],
+     "alpha": 0.55,
+     "outline": false,
+     "size": [
+      0,
+      12,
+      1,
+      -40
+     ],
+     "pos": [
+      0,
+      10,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ],
+     "corner": 6,
+     "overhang": true,
+     "z": 2,
+     "children": []
+    },
+    {
+     "type": "frame",
+     "name": "PerfectBand",
+     "colour": [
+      "#FFFFFF",
+      "#FFF3B0"
+     ],
+     "alpha": 0.25,
+     "outline": false,
+     "size": [
+      1,
+      0,
+      0.08,
+      0
+     ],
+     "corner": 30,
+     "overhang": true,
+     "z": 4,
+     "children": [
+      {
+       "type": "label",
+       "text": "PERFECT",
+       "size": [
+        0,
+        104,
+        0,
+        24
+       ],
+       "textColour": "buy",
+       "align": "right",
+       "textScale": 0.75,
+       "textStroke": 3,
+       "name": "PerfectLabel",
+       "font": "display",
+       "pos": [
+        0,
+        -8,
+        0.5,
+        0
+       ],
+       "anchor": [
+        1,
+        0.5
+       ],
+       "overhang": true
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "name": "ZoneBands",
+     "transparent": true,
+     "size": [
+      1,
+      0,
+      1,
+      0
+     ],
+     "children": [
+      {
+       "type": "frame",
+       "name": "ZoneMarkSample1",
+       "colour": [
+        "#FF8FC7",
+        "#DB7BAB"
+       ],
+       "paint": "#FF8FC7",
+       "children": [
+        {
+         "type": "label",
+         "text": "Sakura Schoolyard",
+         "size": [
+          0,
+          176,
+          0,
+          22
+         ],
+         "textColour": "onDark",
+         "align": "right",
+         "textScale": 0.7273,
+         "textStroke": 3,
+         "name": "ZoneMarkName",
+         "pos": [
+          0,
+          -8,
+          0.5,
+          0
+         ],
+         "anchor": [
+          1,
+          0.5
+         ],
+         "overhang": true
+        }
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.84,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "corner": 3,
+       "overhang": true,
+       "size": [
+        0,
+        84,
+        0,
+        6
+       ],
+       "visible": false,
+       "attrs": {
+        "Sample": true
+       }
+      },
+      {
+       "type": "frame",
+       "name": "ZoneMarkSample2",
+       "colour": [
+        "#3FA9F5",
+        "#3691D3"
+       ],
+       "paint": "#3FA9F5",
+       "children": [
+        {
+         "type": "label",
+         "text": "Pirate Harbor",
+         "size": [
+          0,
+          176,
+          0,
+          22
+         ],
+         "textColour": "onDark",
+         "align": "right",
+         "textScale": 0.7273,
+         "textStroke": 3,
+         "name": "ZoneMarkName",
+         "pos": [
+          0,
+          -8,
+          0.5,
+          0
+         ],
+         "anchor": [
+          1,
+          0.5
+         ],
+         "overhang": true
+        }
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.6599999999999999,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "corner": 3,
+       "overhang": true,
+       "size": [
+        0,
+        84,
+        0,
+        6
+       ],
+       "visible": false,
+       "attrs": {
+        "Sample": true
+       }
+      },
+      {
+       "type": "frame",
+       "name": "ZoneMarkSample3",
+       "colour": [
+        "#5BD16E",
+        "#4EB45F"
+       ],
+       "paint": "#5BD16E",
+       "children": [
+        {
+         "type": "label",
+         "text": "Ninja Village",
+         "size": [
+          0,
+          176,
+          0,
+          22
+         ],
+         "textColour": "onDark",
+         "align": "right",
+         "textScale": 0.7273,
+         "textStroke": 3,
+         "name": "ZoneMarkName",
+         "pos": [
+          0,
+          -8,
+          0.5,
+          0
+         ],
+         "anchor": [
+          1,
+          0.5
+         ],
+         "overhang": true
+        }
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.48,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "corner": 3,
+       "overhang": true,
+       "size": [
+        0,
+        84,
+        0,
+        6
+       ],
+       "visible": false,
+       "attrs": {
+        "Sample": true
+       }
+      },
+      {
+       "type": "frame",
+       "name": "ZoneMarkSample4",
+       "colour": [
+        "#F25555",
+        "#D04949"
+       ],
+       "paint": "#F25555",
+       "children": [
+        {
+         "type": "label",
+         "text": "Samurai Castle",
+         "size": [
+          0,
+          176,
+          0,
+          22
+         ],
+         "textColour": "onDark",
+         "align": "right",
+         "textScale": 0.7273,
+         "textStroke": 3,
+         "name": "ZoneMarkName",
+         "pos": [
+          0,
+          -8,
+          0.5,
+          0
+         ],
+         "anchor": [
+          1,
+          0.5
+         ],
+         "overhang": true
+        }
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.30000000000000004,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "corner": 3,
+       "overhang": true,
+       "size": [
+        0,
+        84,
+        0,
+        6
+       ],
+       "visible": false,
+       "attrs": {
+        "Sample": true
+       }
+      }
+     ],
+     "overhang": true,
+     "z": 3
+    },
+    {
+     "type": "panel",
+     "name": "MeterMarker",
+     "colour": "onDark",
+     "size": [
+      0,
+      96,
+      0,
+      28
+     ],
+     "corner": 14,
+     "depth": 0,
+     "pos": [
+      0.5,
+      0,
+      0.38,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "overhang": true,
+     "z": 6,
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        96,
+        0,
+        50
+       ],
+       "textColour": "buy",
+       "align": "left",
+       "textScale": 0.84,
+       "textStroke": 4,
+       "name": "BonusLabel",
+       "samples": [
+        "+12",
+        "+20"
+       ],
+       "font": "display",
+       "pos": [
+        1,
+        10,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0,
+        0.5
+       ],
+       "overhang": true
+      }
+     ],
+     "stroke": 2
+    }
+   ]
+  },
+  {
+   "type": "icon",
+   "icon": "FoodIcon_onigiri",
+   "name": "FoodIcon",
+   "size": [
+    0,
+    56,
+    0,
+    56
+   ],
+   "pos": [
+    0,
+    866,
+    0,
+    452
+   ]
+  },
+  {
+   "type": "label",
+   "text": "TAP TO THROW!",
+   "size": [
+    0,
+    420,
+    0,
+    44
+   ],
+   "textColour": "onDark",
+   "align": "center",
+   "textScale": 0.7727,
+   "textStroke": 3,
+   "name": "TapLabel",
+   "font": "display",
+   "pos": [
+    0.5,
+    0,
+    0,
+    572
+   ],
+   "anchor": [
+    0.5,
+    0
+   ],
+   "maxText": 34
+  },
+  {
+   "type": "button",
+   "name": "ThrowButtonFace",
+   "size": [
+    0,
+    175,
+    0,
+    56
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconThrow",
+     "name": "Icon",
+     "size": [
+      0,
+      34,
+      0,
+      34
+     ]
+    },
+    {
+     "type": "label",
+     "text": "THROW",
+     "size": [
+      0,
+      91,
+      0,
+      35
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.6857,
+     "textStroke": 2,
+     "name": "Label",
+     "font": "display",
+     "maxText": 24
+    }
+   ],
+   "layout": {
+    "type": "list",
+    "dir": "x",
+    "gap": 10,
+    "align": "center"
+   },
+   "sizeClass": "L",
+   "depth": 5,
+   "corner": 24,
+   "pos": [
+    0.5,
+    0,
+    1,
+    -18
+   ],
+   "anchor": [
+    0.5,
+    1
+   ],
+   "z": 3,
+   "colour": "#FF6A6F",
+   "paintable": true,
+   "gloss": true,
+   "stops": [
+    [
+     0.0,
+     "#FF6A6F"
+    ],
+    [
+     0.4,
+     "#FF6A6F"
+    ],
+    [
+     0.41000000000000003,
+     "#E65F64"
+    ],
+    [
+     1.0,
+     "#D1575B"
+    ]
+   ],
+   "attrs": {
+    "PressLip": 5
+   }
+  },
+  {
+   "type": "button",
+   "name": "LuckyThrowToggle",
+   "size": [
+    0,
+    124,
+    0,
+    56
+   ],
+   "sizeClass": "L",
+   "depth": 5,
+   "corner": 24,
+   "layout": {
+    "type": "list",
+    "dir": "y",
+    "gap": 1,
+    "align": "center"
+   },
+   "children": [
+    {
+     "type": "label",
+     "text": "LUCKY",
+     "size": [
+      0,
+      84,
+      0,
+      16
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.875,
+     "textStroke": 1,
+     "name": "Title",
+     "font": "display",
+     "maxText": 14
+    },
+    {
+     "type": "frame",
+     "name": "PriceRow",
+     "transparent": true,
+     "size": [
+      0,
+      79,
+      0,
+      18
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconLuckyThrow",
+       "name": "Icon",
+       "size": [
+        0,
+        16,
+        0,
+        16
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        59,
+        0,
+        18
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 1.0556,
+       "textStroke": 1,
+       "name": "LuckyCount",
+       "samples": [
+        "x999",
+        "x3"
+       ],
+       "font": "display",
+       "maxText": 19
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 4,
+      "align": "center"
+     }
+    }
+   ],
+   "pos": [
+    0.5,
+    -92,
+    1,
+    -24
+   ],
+   "anchor": [
+    1,
+    1
+   ],
+   "z": 3,
+   "colour": "#B166F8",
+   "paintable": true,
+   "gloss": true,
+   "stops": [
+    [
+     0.0,
+     "#B166F8"
+    ],
+    [
+     0.4,
+     "#B166F8"
+    ],
+    [
+     0.41000000000000003,
+     "#9F5CDF"
+    ],
+    [
+     1.0,
+     "#9154CB"
+    ]
+   ],
+   "attrs": {
+    "PressLip": 5
+   },
+   "selfFace": true
+  },
+  {
+   "type": "button",
+   "name": "AutoToggle",
+   "size": [
+    0,
+    124,
+    0,
+    56
+   ],
+   "sizeClass": "L",
+   "depth": 5,
+   "corner": 24,
+   "layout": {
+    "type": "list",
+    "dir": "y",
+    "gap": 1,
+    "align": "center"
+   },
+   "children": [
+    {
+     "type": "label",
+     "text": "AUTO",
+     "size": [
+      0,
+      84,
+      0,
+      16
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.875,
+     "textStroke": 1,
+     "name": "Title",
+     "font": "display",
+     "maxText": 14
+    },
+    {
+     "type": "frame",
+     "name": "PriceRow",
+     "transparent": true,
+     "size": [
+      0,
+      66,
+      0,
+      18
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconAuto",
+       "name": "Icon",
+       "size": [
+        0,
+        16,
+        0,
+        16
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        46,
+        0,
+        18
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 1.0556,
+       "textStroke": 1,
+       "name": "AutoState",
+       "samples": [
+        "OFF",
+        "ON"
+       ],
+       "font": "display",
+       "maxText": 19
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 4,
+      "align": "center"
+     }
+    }
+   ],
+   "pos": [
+    0.5,
+    92,
+    1,
+    -24
+   ],
+   "anchor": [
+    0,
+    1
+   ],
+   "z": 3,
+   "colour": "#7A7EA3",
+   "paintable": true,
+   "gloss": true,
+   "stops": [
+    [
+     0.0,
+     "#7A7EA3"
+    ],
+    [
+     0.4,
+     "#7A7EA3"
+    ],
+    [
+     0.41000000000000003,
+     "#6E7193"
+    ],
+    [
+     1.0,
+     "#646786"
+    ]
+   ],
+   "attrs": {
+    "PressLip": 5
+   },
+   "selfFace": true
+  }
+ ],
+ "enabled": false
+}

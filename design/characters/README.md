@@ -77,3 +77,59 @@ the joints from the RigAttachment pairs. The Workspace sets were then archived:
 - Section 3: write `assets/meshes/manifest.json` entries for the 31 rigs, and source avatars for the 8 premium heroes (they render as neon placeholders until then).
 - Not yet tested: real animations in a running game on these rigs; phone performance with many.
 - Sleeve accessories (Ichigo) do not bend at the elbow: give those characters gentle-elbow idles.
+
+## Batch 2: 12 more heroes (2026-11-14, section 3)
+
+Guts, Sung Jinwoo, Killua, Eren Yeager, Obito Uchiha, Eren Titan, Lelouch, Cid Kagenou, Joseph
+Joestar, Diavolo, Dio Brando, Jotaro Joestar. Roster is now 43 (7 per zone, plus the Mythic).
+
+- This time the plugin imported them as **R15 with the wearer's own body scales**: shoulder height
+  ran from 3.68 (Joseph) to 5.01 (Lelouch) studs, BodyTypeScale from 0 to 1. Every one carried a
+  HumanoidDescription, so the rebuild is: clone it, set Height/Width/Depth/Head = 1 and
+  BodyTypeScale/ProportionScale = 0, `CreateHumanoidModelFromDescription`. Result: all 12 at
+  shoulder 4.00, root 3.00, every accessory welded, feet on y = 0.
+- The tool is `tools/studio/build_r15.luau` (edit its LIST, run it with `studio_mcp.py luau --file`;
+  it yields, so the report is read back from the `TFABuild` attribute). It also copies across
+  anything the description did not bring and re-welds any accessory more than 0.05 studs off its
+  attachment.
+- Head rule as code (same two rules as batch 1): hide the head when a FaceCenter accessory is at
+  least 1.15 in X, Y and Z, OR when the head is still the default mesh 123480233606534 (its printed
+  face shows as the forehead dots). Hidden: Guts, Killua, Obito, Lelouch, Cid, Joseph, Diavolo, Dio,
+  Jotaro. Kept (the custom head IS the face): Sung Jinwoo, Eren Yeager, Eren Titan. Checked in four
+  close-up pictures: `final/batch2_*.jpg`, one face each, no dots.
+- Jotaro's saved outfit carries one item the import did not show (his stand figure on the shoulder,
+  8 accessories against 7). Kept, like Kakashi's and Light Yagami's extras in batch 1.
+- Three rigs have one layered-clothing item (Sung Jinwoo's coat, Cid, Jotaro); the bake keeps their
+  WrapTargets.
+- Archive: the finished rigs are in `ServerStorage.CharacterSources.R15_Final` (43); the owner's 12
+  imports are in `ServerStorage.CharacterSources.Originals_Batch2` (never delete).
+- Bake: `python tools/studio/run_bake.py` fills the roster line from `roster.json` and runs the
+  bake; it fails unless every hero comes out with 15 motors. 43 templates, checked in Play: all 12
+  new ones load and play an idle (12 of 12 animated).
+- Adding heroes no longer moves the economy: heroes of one rarity SHARE that rarity's weight
+  (`Core/Roll.heroWeights`, two specs), so a zone's rarity odds are the same with 5 heroes or 50.
+
+### To add the next batch
+1. Import the avatars into Workspace (any rig type). 2. Put their names in `build_r15.luau` LIST and
+run it. 3. Look at close-ups; apply the head rule. 4. Add rows to `design/game.json`
+`config.Characters` (zone, rarity, craving, idle), `roster.json`, `meshes.json` and `asset_plan`;
+update each zone's `Slots`; `gen_config.py`. 5. Move rigs to `R15_Final`, originals to an
+`Originals_Batch<N>` folder. 6. `run_bake.py`, then `python tools/gate.py`.
+
+## Batch 3: 16 more avatars (2026-11-14, section 3)
+
+Tengen Uzui, Aizen Sosuke, Ken Kaneki, Frieren, Lawliet, Denji, Power, Naoya Zenin, Makima, Megumi
+Fushiguro, Marin Kitagawa, Ayanokoji, Subaru Natsuki, Mahoraga, Zenitsu Agatsuma, Yoriichi Tsugikuni.
+Same route as batch 2 (`tools/studio/build_r15.luau`, all had a HumanoidDescription). Shoulder 4.00
+on 12; four keep a body package and sit within 0.15 of it (Frieren 4.08, Megumi 4.03, Makima 3.85,
+Marin 3.99). Head hidden on 12 (cover or default head), kept on 4 with custom heads (Aizen, Makima,
+Mahoraga, Yoriichi). Checked in close-ups: `final/batch3_*.jpg`.
+
+- 8 became lane heroes (51 lane heroes, 8 or 9 per zone, two Mythics in the last zone).
+- 8 became the PREMIUM set: the ids stay (`starlight_idol` ... `sakura_shogun`, because products and
+  saved profiles refer to them) and the display names changed: Cosplay Star, Sweet-Tooth Detective,
+  One-Eyed Ghoul, Control Devil, Elf Archmage, Illusion Overlord, Blood Fiend (starter pack), First
+  Sun Swordsman (limited). `roster.json` maps each id to its avatar and marks them `Premium`.
+- Archive: `ServerStorage.CharacterSources.Originals_Batch3` (16, never delete); `R15_Final` holds 59.
+- Sizes on the plot were cut to Big 1.2 / Huge 1.4 / Titan 1.7 (`config.Sizes`): at 2.2 a Titan was
+  8.8 studs wide on pedestals 7 studs apart and stood on its neighbours.

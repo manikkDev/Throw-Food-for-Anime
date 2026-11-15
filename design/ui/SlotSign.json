@@ -1,0 +1,169 @@
+{
+ "name": "SlotSign",
+ "theme": "theme.json",
+ "resolution": [
+  600,
+  300
+ ],
+ "kind": "world",
+ "rootClass": "SurfaceGui",
+ "children": [
+  {
+   "type": "panel",
+   "name": "Sign",
+   "colour": "panel",
+   "size": [
+    0,
+    580,
+    0,
+    280
+   ],
+   "children": [
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      540,
+      0,
+      60
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.7667,
+     "textStroke": 3,
+     "name": "FromTo",
+     "samples": [
+      "SLOT 23 -> 24",
+      "SLOT 8 -> 9"
+     ],
+     "font": "display",
+     "pos": [
+      0.5,
+      0,
+      0,
+      20
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    },
+    {
+     "type": "frame",
+     "name": "PriceRow",
+     "transparent": true,
+     "size": [
+      0,
+      540,
+      0,
+      70
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconYen",
+       "name": "Icon",
+       "size": [
+        0,
+        60,
+        0,
+        60
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        300,
+        0,
+        64
+       ],
+       "textColour": "yen",
+       "align": "center",
+       "textScale": 0.8125,
+       "textStroke": 3,
+       "name": "Price",
+       "samples": [
+        "999.99Qi",
+        "1.5K"
+       ],
+       "font": "display"
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 14,
+      "align": "center"
+     },
+     "pos": [
+      0.5,
+      0,
+      0,
+      96
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      540,
+      0,
+      40
+     ],
+     "textColour": "soft",
+     "align": "center",
+     "textScale": 0.7,
+     "textStroke": 3,
+     "name": "BuyPrompt",
+     "samples": [
+      "Walk in to buy this slot",
+      "Not enough yen"
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      192
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ],
+   "comic": 8,
+   "pos": [
+    0.5,
+    -4,
+    0.5,
+    -4
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "centre": false,
+   "keyline": "#FFFFFF"
+  }
+ ],
+ "rootProps": {
+  "SizingMode": "FixedSize",
+  "CanvasSize": {
+   "Vector2": [
+    600,
+    300
+   ]
+  },
+  "Face": "Front",
+  "LightInfluence": 0,
+  "AlwaysOnTop": false
+ }
+}

@@ -1,0 +1,1248 @@
+{
+ "name": "DailyRewards",
+ "theme": "theme.json",
+ "resolution": [
+  1280,
+  720
+ ],
+ "kind": "page",
+ "ignoreGuiInset": true,
+ "children": [
+  {
+   "type": "frame",
+   "name": "Scrim",
+   "colour": [
+    "#0D0F2B",
+    "#0D0F2B"
+   ],
+   "alpha": 0.55,
+   "outline": false,
+   "z": -2,
+   "size": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "children": []
+  },
+  {
+   "type": "panel",
+   "name": "Window",
+   "colour": "panel",
+   "size": [
+    0,
+    768,
+    0,
+    362
+   ],
+   "children": [
+    {
+     "type": "panel",
+     "name": "Header",
+     "colour": [
+      "#FFC93C",
+      "#FF5A5F"
+     ],
+     "size": [
+      0,
+      380,
+      0,
+      70
+     ],
+     "rotation": -2,
+     "keyline": "#FFFFFF",
+     "comic": 6,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.28,
+      "tile": 34
+     },
+     "children": [
+      {
+       "type": "label",
+       "text": "DAILY REWARDS",
+       "size": [
+        0,
+        340,
+        0,
+        56
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.6964,
+       "textStroke": 3,
+       "name": "Title",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      -36
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 3,
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "BodyArt",
+     "colour": [
+      "#2E3488",
+      "#161944"
+     ],
+     "outline": false,
+     "size": [
+      1,
+      -16,
+      1,
+      -16
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 16,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.07,
+      "tile": 28
+     },
+     "overhang": true,
+     "z": -1,
+     "children": []
+    },
+    {
+     "type": "button",
+     "name": "CloseButton",
+     "colour": "danger",
+     "size": [
+      0,
+      56,
+      0,
+      56
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconClose",
+       "name": "Icon",
+       "size": [
+        0,
+        30,
+        0,
+        30
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      1,
+      14,
+      0,
+      -18
+     ],
+     "anchor": [
+      1,
+      0
+     ],
+     "z": 4,
+     "overhang": true,
+     "closes": true,
+     "sizeClass": "L"
+    },
+    {
+     "type": "frame",
+     "name": "Body",
+     "transparent": true,
+     "size": [
+      0,
+      720,
+      0,
+      256
+     ],
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        500,
+        0,
+        21
+       ],
+       "textColour": "buy",
+       "align": "center",
+       "textScale": 0.7619,
+       "textStroke": 2,
+       "name": "StreakLabel",
+       "samples": [
+        "5 DAY STREAK!  +10% LUCK",
+        "1 DAY STREAK!"
+       ],
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "maxText": 16
+      },
+      {
+       "type": "frame",
+       "name": "DayStrip",
+       "transparent": true,
+       "size": [
+        0,
+        720,
+        0,
+        132
+       ],
+       "children": [
+        {
+         "type": "panel",
+         "name": "DayCell1",
+         "paintable": true,
+         "depth": 4,
+         "corner": 14,
+         "colour": "#5C628F",
+         "size": [
+          0,
+          96,
+          0,
+          132
+         ],
+         "children": [
+          {
+           "type": "label",
+           "text": "DAY 1",
+           "size": [
+            0,
+            84,
+            0,
+            19
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7368,
+           "textStroke": 2,
+           "name": "DayLabel",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            6
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 14
+          },
+          {
+           "type": "icon",
+           "icon": "IconYenBig",
+           "name": "Icon",
+           "size": [
+            0,
+            48,
+            0,
+            48
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            30
+           ],
+           "anchor": [
+            0.5,
+            0
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            84,
+            0,
+            34
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.3824,
+           "textStroke": 2,
+           "name": "RewardText",
+           "samples": [
+            "5 min yen",
+            "60 min yen +5 Lucky"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            88
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "ClaimedTick",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            1,
+            8,
+            0,
+            -8
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "visible": false
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "DayCell2",
+         "paintable": true,
+         "depth": 4,
+         "corner": 14,
+         "colour": "#5C628F",
+         "size": [
+          0,
+          96,
+          0,
+          132
+         ],
+         "children": [
+          {
+           "type": "label",
+           "text": "DAY 2",
+           "size": [
+            0,
+            84,
+            0,
+            19
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7368,
+           "textStroke": 2,
+           "name": "DayLabel",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            6
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 14
+          },
+          {
+           "type": "icon",
+           "icon": "IconYenBig",
+           "name": "Icon",
+           "size": [
+            0,
+            48,
+            0,
+            48
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            30
+           ],
+           "anchor": [
+            0.5,
+            0
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            84,
+            0,
+            34
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.3824,
+           "textStroke": 2,
+           "name": "RewardText",
+           "samples": [
+            "10 min yen",
+            "60 min yen +5 Lucky"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            88
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "ClaimedTick",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            1,
+            8,
+            0,
+            -8
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "visible": false
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "DayCell3",
+         "paintable": true,
+         "depth": 4,
+         "corner": 14,
+         "colour": "#5C628F",
+         "size": [
+          0,
+          96,
+          0,
+          132
+         ],
+         "children": [
+          {
+           "type": "label",
+           "text": "DAY 3",
+           "size": [
+            0,
+            84,
+            0,
+            19
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7368,
+           "textStroke": 2,
+           "name": "DayLabel",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            6
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 14
+          },
+          {
+           "type": "icon",
+           "icon": "IconLuckyThrowBig",
+           "name": "Icon",
+           "size": [
+            0,
+            48,
+            0,
+            48
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            30
+           ],
+           "anchor": [
+            0.5,
+            0
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            84,
+            0,
+            34
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.3824,
+           "textStroke": 2,
+           "name": "RewardText",
+           "samples": [
+            "15 min yen +1 Lucky",
+            "60 min yen +5 Lucky"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            88
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "ClaimedTick",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            1,
+            8,
+            0,
+            -8
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "visible": false
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "DayCell4",
+         "paintable": true,
+         "depth": 4,
+         "corner": 14,
+         "colour": "#5C628F",
+         "size": [
+          0,
+          96,
+          0,
+          132
+         ],
+         "children": [
+          {
+           "type": "label",
+           "text": "DAY 4",
+           "size": [
+            0,
+            84,
+            0,
+            19
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7368,
+           "textStroke": 2,
+           "name": "DayLabel",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            6
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 14
+          },
+          {
+           "type": "icon",
+           "icon": "IconYenBig",
+           "name": "Icon",
+           "size": [
+            0,
+            48,
+            0,
+            48
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            30
+           ],
+           "anchor": [
+            0.5,
+            0
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            84,
+            0,
+            34
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.3824,
+           "textStroke": 2,
+           "name": "RewardText",
+           "samples": [
+            "20 min yen",
+            "60 min yen +5 Lucky"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            88
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "ClaimedTick",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            1,
+            8,
+            0,
+            -8
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "visible": false
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "DayCell5",
+         "paintable": true,
+         "depth": 4,
+         "corner": 14,
+         "colour": "buy",
+         "keyline": "#FFFFFF",
+         "size": [
+          0,
+          96,
+          0,
+          132
+         ],
+         "children": [
+          {
+           "type": "label",
+           "text": "DAY 5",
+           "size": [
+            0,
+            84,
+            0,
+            19
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7368,
+           "textStroke": 2,
+           "name": "DayLabel",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            6
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 14
+          },
+          {
+           "type": "icon",
+           "icon": "IconLuckyThrowBig",
+           "name": "Icon",
+           "size": [
+            0,
+            48,
+            0,
+            48
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            30
+           ],
+           "anchor": [
+            0.5,
+            0
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            84,
+            0,
+            34
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.3824,
+           "textStroke": 2,
+           "name": "RewardText",
+           "samples": [
+            "30 min yen +2 Lucky",
+            "60 min yen +5 Lucky"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            88
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "ClaimedTick",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            1,
+            8,
+            0,
+            -8
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "visible": false,
+           "mockHide": true
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "DayCell6",
+         "paintable": true,
+         "depth": 4,
+         "corner": 14,
+         "colour": "panelHi",
+         "size": [
+          0,
+          96,
+          0,
+          132
+         ],
+         "children": [
+          {
+           "type": "label",
+           "text": "DAY 6",
+           "size": [
+            0,
+            84,
+            0,
+            19
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7368,
+           "textStroke": 2,
+           "name": "DayLabel",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            6
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 14
+          },
+          {
+           "type": "icon",
+           "icon": "IconYenBig",
+           "name": "Icon",
+           "size": [
+            0,
+            48,
+            0,
+            48
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            30
+           ],
+           "anchor": [
+            0.5,
+            0
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            84,
+            0,
+            34
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.3824,
+           "textStroke": 2,
+           "name": "RewardText",
+           "samples": [
+            "45 min yen",
+            "60 min yen +5 Lucky"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            88
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "ClaimedTick",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            1,
+            8,
+            0,
+            -8
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "visible": false,
+           "mockHide": true
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "DayCell7",
+         "paintable": true,
+         "depth": 4,
+         "corner": 14,
+         "colour": "panelHi",
+         "size": [
+          0,
+          96,
+          0,
+          132
+         ],
+         "children": [
+          {
+           "type": "label",
+           "text": "DAY 7",
+           "size": [
+            0,
+            84,
+            0,
+            19
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7368,
+           "textStroke": 2,
+           "name": "DayLabel",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            6
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 14
+          },
+          {
+           "type": "icon",
+           "icon": "IconLuckyThrowBig",
+           "name": "Icon",
+           "size": [
+            0,
+            48,
+            0,
+            48
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            30
+           ],
+           "anchor": [
+            0.5,
+            0
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            84,
+            0,
+            34
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.3824,
+           "textStroke": 2,
+           "name": "RewardText",
+           "samples": [
+            "60 min yen +5 Lucky",
+            "60 min yen +5 Lucky"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            88
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "ClaimedTick",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            1,
+            8,
+            0,
+            -8
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "visible": false,
+           "mockHide": true
+          }
+         ]
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 8,
+        "align": "center"
+       },
+       "pos": [
+        0.5,
+        0,
+        0,
+        30
+       ],
+       "anchor": [
+        0.5,
+        0
+       ]
+      },
+      {
+       "type": "button",
+       "name": "ClaimButton",
+       "size": [
+        0,
+        279,
+        0,
+        56
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconGift",
+         "name": "Icon",
+         "size": [
+          0,
+          34,
+          0,
+          34
+         ]
+        },
+        {
+         "type": "label",
+         "text": "<unbound>",
+         "size": [
+          0,
+          195,
+          0,
+          35
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.6857,
+         "textStroke": 2,
+         "name": "ClaimText",
+         "samples": [
+          "CLAIM DAY 5",
+          "TOMORROW"
+         ],
+         "font": "display",
+         "maxText": 24
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "center"
+       },
+       "sizeClass": "L",
+       "depth": 5,
+       "corner": 24,
+       "pos": [
+        0.5,
+        0,
+        0,
+        176
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "selfFace": true,
+       "colour": "#48D687",
+       "paintable": true,
+       "gloss": true,
+       "stops": [
+        [
+         0.0,
+         "#48D687"
+        ],
+        [
+         0.4,
+         "#48D687"
+        ],
+        [
+         0.41000000000000003,
+         "#41C17A"
+        ],
+        [
+         1.0,
+         "#3BAF6F"
+        ]
+       ],
+       "attrs": {
+        "PressLip": 5
+       }
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        400,
+        0,
+        17
+       ],
+       "textColour": "soft",
+       "align": "center",
+       "textScale": 0.7647,
+       "textStroke": 2,
+       "name": "NextIn",
+       "samples": [
+        "Next reward in 23:59:59",
+        "Ready now!"
+       ],
+       "pos": [
+        0.5,
+        0,
+        0,
+        240
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "maxText": 13
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      84
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ],
+   "comic": 10,
+   "modal": true,
+   "corner": 22,
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "keyline": "#FFFFFF"
+  }
+ ]
+}

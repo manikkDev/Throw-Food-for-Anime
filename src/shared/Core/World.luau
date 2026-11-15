@@ -6,9 +6,11 @@
 -- along X; every plot faces its own lane, which runs along +Z.
 --
 --   z = PlotBackZ ...... hub side
---       pedestal grid   (heroes face +Z, toward the lane)
---   z = ThrowPadZ ...... throw pad, dojo pad, slot sign
+--       pedestal grid   (back half; heroes face +Z, toward the lane)
+--       slot sign       (beside the pedestals)
+--       front yard      (spawn, dojo pad on -X, reserved training yard on +X)
 --   z = PlotFrontZ ..... plot edge
+--   z = ThrowPadZ ...... throw stage, out in front of the plot
 --   z = LaneStartZ ..... first zone band begins
 
 local World = {}
@@ -63,6 +65,15 @@ end
 --- World (x, z) of the slot sign.
 function World.slotSign(world: any, plotIndex: number, count: number): (number, number)
 	return World.plotX(world, plotIndex, count) + world.SlotSignX, world.SlotSignZ
+end
+
+--- The reserved training yard (kept empty for future mini games): centre
+--- (x, z) and its size (width along X, depth along Z).
+function World.yard(world: any, plotIndex: number, count: number): (number, number, number, number)
+	return World.plotX(world, plotIndex, count) + world.YardX,
+		world.YardZ,
+		world.YardWidth,
+		world.YardDepth
 end
 
 --- World X of a landing: the plot's lane centre plus jitter in [-1, 1].

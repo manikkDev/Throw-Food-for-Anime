@@ -1,15 +1,20 @@
 --!strict
--- HudController - the always-on readouts: Yen, income, Power, luck, food, the
--- objective line, toasts, the catch reveal card, banners and event timers.
+-- HudController - the always-on readouts: Yen, income, Power and rank, luck,
+-- the equipped food, the slim objective line, the notice card, the
+-- server-luck bar, the announcement banner and toasts.
 --
--- SECTION 2 TEST HUD. Built in code from Ui/Make so the loop is playable now;
--- section 3 replaces the instances with the roblox-ui screens from
--- design/ui.json. The METHODS here (Toast, Reveal, HideReveal, Flash,
--- SetObjective) are the contract the rest of the client uses and stay.
+-- The instances are the authored HUD screen (src/ui, reached through
+-- Ui/Screens). The METHODS here (Toast, Notice, SetObjective, SetMode, Flash,
+-- Banner, Reveal, HideReveal, HoldIncome, CurrentLuck) are the contract the
+-- rest of the client uses.
+--
+-- The HUD has three modes. "normal": everything. "throw" (standing on the
+-- throw pad): the button columns and every notice step aside, the stats and
+-- the hint line stay. "cinematic" (a throw sequence is playing): the whole
+-- HUD is off, and toasts that arrive wait until it is back, so nothing ever
+-- appears over the lane.
 
-local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local TweenService = game:GetService("TweenService")
 
 local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
@@ -18,22 +23,49 @@ local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Luck = require(ReplicatedStorage.Shared.Core.Luck)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
-local Make = require(script.Parent.Parent.Ui.Make)
+local RevealUi = require(script.Parent.Parent.Ui.RevealUi)
+local Screens = require(script.Parent.Parent.Ui.Screens)
+local Theme = require(script.Parent.Parent.Ui.Theme)
 
 local MAPS = Lookup.of(Config)
-local player = Players.LocalPlayer
 
-local TOAST_COLORS: { [string]: Color3 } = { good = Make.GOOD, bad = Make.BAD, info = Make.INFO }
+local TOAST_SECONDS = 3.2
+local TOAST_MAX = 3 -- on screen at once; an older one makes room
+local ANNOUNCE_SECONDS = 5
+local NOTICE_SECONDS = 12 -- a notice nobody answers steps aside by itself
+local TOAST_LOOK: { [string]: { color: Color3, icon: string } } = {
+	good = { color = Theme.TOAST.good, icon = "IconTick" },
+	bad = { color = Theme.TOAST.bad, icon = "IconClose" },
+	info = { color = Theme.TOAST.info, icon = "IconInfo" },
+}
+-- headline over an announcement that is not a catch
+local ANNOUNCE_HEADS: { [string]: string } = {
+	luck = "SERVER LUCK",
+	festival = "FESTIVAL HOUR",
+	rebirth = "REBIRTH",
+	say = "ANNOUNCEMENT",
+}
 
 local HudController = Knit.CreateController({
 	Name = "HudController",
+	_state = nil :: any,
+	_hud = nil :: ScreenGui?,
+	_mode = "normal",
+	_parts = {} :: { [string]: GuiObject | boolean },
+	_pendingToasts = {} :: { { text: string, kind: string? } },
+	_notice = nil :: string?,
+	_noticePage = nil :: string?,
+	_noticeSeen = {} :: { [string]: boolean },
+	_noticeStamp = 0,
+	_envActive = false,
 	_labels = {} :: { [string]: TextLabel },
-	_toasts = nil :: Frame?,
-	_reveal = nil :: Frame?,
-	_banner = nil :: TextLabel?,
-	_objective = nil :: TextLabel?,
-	_envLabel = nil :: TextLabel?,
-	_flash = nil :: TextLabel?,
+	_toastHolder = nil :: GuiObject?,
+	_toastsLive = {} :: { GuiObject },
+	_toastsSpare = {} :: { GuiObject },
+	_toastCount = 0,
+	_objective = "",
+	_announceId = 0,
+	_announcing = false,
 	_envAt = 0,
 	_holdIncome = false,
 })
@@ -41,7 +73,7 @@ local HudController = Knit.CreateController({
 --- The luck multiplier the player would throw with right now (equipped food,
 --- no depth, not perfect), and its breakdown lines.
 function HudController:CurrentLuck(): (number, { Luck.Line })
-	local state = self._state.State
+	local state = if self._state then self._state.State else nil
 	if not state or not state.luck then
 		return 1, {}
 	end
@@ -55,20 +87,53 @@ function HudController:CurrentLuck(): (number, { Luck.Line })
 	return Luck.total(Config, sources), Luck.breakdown(Config, sources)
 end
 
+function HudController:_retire(toast: GuiObject)
+	local at = table.find(self._toastsLive, toast)
+	if at then
+		table.remove(self._toastsLive, at)
+		toast.Visible = false
+		table.insert(self._toastsSpare, toast)
+	end
+end
+
 --- A short notice. kind: "good" | "bad" | "info".
 function HudController:Toast(text: string, kind: string?)
-	local holder = self._toasts
+	local holder = self._toastHolder
 	if not holder then
 		return
 	end
-	local toast = Make.label(holder, text, {
-		Size = UDim2.new(1, 0, 0, 34),
-		BackgroundTransparency = 0.15,
-		BackgroundColor3 = TOAST_COLORS[kind or "info"] or Make.INFO,
-	})
-	Make.corner(toast, 8)
-	task.delay(3.2, function()
-		toast:Destroy()
+	if self._mode == "cinematic" then
+		-- nothing over the lane during a throw: it is shown when the HUD is back
+		table.insert(self._pendingToasts, { text = text, kind = kind })
+		while #self._pendingToasts > TOAST_MAX do
+			table.remove(self._pendingToasts, 1)
+		end
+		return
+	end
+	while #self._toastsLive >= TOAST_MAX do
+		self:_retire(self._toastsLive[1])
+	end
+	local toast = table.remove(self._toastsSpare)
+	if not toast then
+		toast = Screens.template("ToastTemplate")
+		toast.Name = "Toast"
+		toast.Parent = holder
+	end
+	local look = TOAST_LOOK[kind or "info"] or TOAST_LOOK.info
+	self._toastCount += 1
+	local stamp = self._toastCount
+	toast:SetAttribute("Stamp", stamp)
+	toast.LayoutOrder = stamp
+	Screens.tint(toast, look.color)
+	Screens.setIcon(Screens.image(toast, "Icon"), look.icon)
+	Screens.label(toast, "Text").Text = text
+	toast.Visible = true
+	table.insert(self._toastsLive, toast)
+	task.delay(TOAST_SECONDS, function()
+		-- the same instance may already be showing a newer toast
+		if toast:GetAttribute("Stamp") == stamp then
+			self:_retire(toast)
+		end
 	end)
 end
 
@@ -81,243 +146,348 @@ function HudController:HoldIncome(hold: boolean)
 	end
 end
 
+-- Show or hide a top-level piece of the HUD by name. Looked up once, and
+-- quietly: a piece the tree does not carry is simply skipped.
+function HudController:_setVisible(name: string, visible: boolean)
+	local hud = self._hud
+	if not hud then
+		return
+	end
+	local part = self._parts[name]
+	if part == nil then
+		local found = hud:FindFirstChild(name, true)
+		-- a piece that sits in a `<Name>Cell` is shown and hidden by the cell
+		-- (the cell also carries its shadow)
+		local cell = found and found.Parent
+		if cell and cell:IsA("GuiObject") and cell.Name == name .. "Cell" then
+			found = cell
+		end
+		part = if found and found:IsA("GuiObject") then found else false
+		self._parts[name] = part
+	end
+	if typeof(part) == "Instance" and part.Visible ~= visible then
+		part.Visible = visible
+	end
+end
+
+-- who is on screen, given the mode and what there is to say
+function HudController:_layout()
+	local open = self._mode == "normal"
+	self:_setVisible("LeftColumn", open)
+	self:_setVisible("BtnSettings", open)
+	self:_setVisible("RightColumn", open)
+	self:_setVisible("FoodChip", open)
+	-- a notice never sits under a page: it steps aside while one is open and
+	-- comes back, if it is still true, when the page closes
+	self:_setVisible("NoticeCard", open and self._notice ~= nil and not Screens.isOpen())
+	self:_setVisible("Announcement", open and self._announcing)
+	self:_setVisible("ServerLuckBar", open and self._envActive)
+	-- the hint belongs to the normal HUD: not in throw mode, not in a sequence
+	self:_setVisible("TutorialHint", open and self._objective ~= "" and not self._announcing)
+end
+
+-- a notice nobody answers steps aside by itself, NOTICE_SECONDS after it was
+-- last put on screen
+function HudController:_armNotice()
+	local id = self._notice
+	if not id then
+		return
+	end
+	self._noticeStamp += 1
+	local stamp = self._noticeStamp
+	task.delay(NOTICE_SECONDS, function()
+		if self._noticeStamp == stamp and self._notice == id then
+			self:_closeNotice()
+		end
+	end)
+end
+
+--- "normal" | "throw" | "cinematic" (see the top of this file).
+function HudController:SetMode(mode: string)
+	if mode == self._mode then
+		return
+	end
+	local was = self._mode
+	self._mode = mode
+	local hud = self._hud
+	if not hud then
+		return
+	end
+	hud.Enabled = mode ~= "cinematic"
+	self:_layout()
+	if was == "cinematic" then
+		local pending = self._pendingToasts
+		self._pendingToasts = {}
+		for _, toast in pending do
+			self:Toast(toast.text, toast.kind)
+		end
+	end
+end
+
+--- The mode the HUD is in now.
+function HudController:Mode(): string
+	return self._mode
+end
+
+function HudController:_closeNotice()
+	self._notice = nil
+	self._noticePage = nil
+	self:_layout()
+end
+
+--- A compact card: an icon, a title, one line, and (with `page`) one button
+--- that opens that page. Each `id` is shown once per session.
+function HudController:Notice(
+	id: string,
+	spec: {
+		icon: string?,
+		title: string,
+		body: string,
+		button: string?,
+		buttonIcon: string?,
+		page: string?,
+	}
+)
+	local hud = self._hud
+	if not hud or self._noticeSeen[id] then
+		return
+	end
+	if self._mode ~= "normal" then
+		return -- it is raised again when the HUD is back
+	end
+	self._noticeSeen[id] = true
+	self._notice = id
+	self._noticePage = spec.page
+	local card = Screens.frame(hud, "NoticeCard")
+	Screens.label(card, "NoticeTitle").Text = spec.title
+	Screens.label(card, "NoticeBody").Text = spec.body
+	Screens.label(card, "NoticeButtonText").Text = spec.button or "OPEN"
+	local button = Screens.button(card, "NoticeButton")
+	local buttonCell = button.Parent
+	if buttonCell and buttonCell:IsA("GuiObject") and buttonCell.Name == "NoticeButtonCell" then
+		buttonCell.Visible = spec.page ~= nil
+	else
+		button.Visible = spec.page ~= nil
+	end
+	Screens.setIcon(Screens.image(button, "Icon"), spec.buttonIcon or "IconArrow")
+	Screens.setIcon(Screens.image(card, "NoticeIcon"), spec.icon or "IconInfo")
+	self:_layout()
+	self:_armNotice()
+end
+
+--- Take a notice down because it is no longer true (the food was bought).
+function HudController:ClearNotice(id: string)
+	if self._notice == id then
+		self:_closeNotice()
+	end
+end
+
 --- The line at the top that says what to do next. "" hides it.
 function HudController:SetObjective(text: string)
-	local label = self._objective
+	if text == self._objective then
+		return
+	end
+	self._objective = text
+	local label = self._labels.ObjectiveLine
 	if label then
 		label.Text = text
-		label.Visible = text ~= ""
 	end
+	self:_layout()
 end
 
---- "PERFECT!" / "LUCKY THROW!" at the moment the food lands.
-function HudController:Flash(perfect: boolean, lucky: boolean)
-	local label = self._flash
-	if not label or not (perfect or lucky) then
+--- One big line that fades by itself ("RANK UP!  FIGHTER").
+function HudController:Banner(text: string)
+	local label = self._labels.FlashText
+	if not label then
 		return
 	end
-	label.Text = if lucky then "LUCKY THROW!" elseif perfect then "PERFECT!" else ""
-	label.TextTransparency = 0
-	label.TextStrokeTransparency = 0
+	label.Text = text
 	label.Visible = true
-	local tween = TweenService:Create(
-		label,
-		TweenInfo.new(0.9),
-		{ TextTransparency = 1, TextStrokeTransparency = 1 }
-	)
-	tween:Play()
+	Screens.fadeText(label, 0, 1, 1.4)
 end
 
---- Show the catch card for a throw result (or a granted hero).
-function HudController:Reveal(result: any)
-	local card = self._reveal
-	if not card then
-		return
+--- "PERFECT!" / "LUCKY THROW!".
+function HudController:Flash(perfect: boolean, lucky: boolean)
+	if perfect or lucky then
+		self:Banner(if lucky then "LUCKY THROW!" else "PERFECT!")
 	end
-	local character = MAPS.character[result.id] or MAPS.premium[result.id]
-	local rarity = result.rarity or "Premium"
-	local rarityRow = Config.Rarities[rarity]
-	local color = if rarityRow
-		then Color3.fromHex(rarityRow.Color)
-		else Color3.fromRGB(255, 79, 163)
-	local tags = {}
-	if result.size then
-		table.insert(tags, result.size:upper())
-	end
-	if result.mut then
-		table.insert(tags, result.mut:upper())
-	end
-	table.insert(tags, if character then character.Name else result.id)
-	local stamps = {}
-	if result.isNew then
-		table.insert(stamps, "NEW!")
-	end
-	if result.isBest then
-		table.insert(stamps, "NEW BEST!")
-	end
-	if result.flavorMatch then
-		table.insert(stamps, "CRAVING!")
-	end
-	local where = if result.action == "sold"
-		then `sold for {Format.short(result.soldYen or 0)} yen`
-		elseif result.action == "bench" then "sent to your bench"
-		else "joins your plot"
+end
 
-	self._labels.RevealRarity.Text = rarity:upper()
-	self._labels.RevealRarity.TextColor3 = color
-	self._labels.RevealName.Text = table.concat(tags, " ")
-	self._labels.RevealIncome.Text = `{Format.short(result.income or 0)} yen/s  -  {where}`
-	self._labels.RevealOdds.Text = if result.oneInN then Format.oneIn(result.oneInN) else ""
-	self._labels.RevealStamps.Text = table.concat(stamps, "  ")
-	card.Visible = true
+--- Show a hero the player was GIVEN (store, gift): the final beat of the
+--- reveal, without the throw. A thrown catch is Fx/ThrowSequence's.
+function HudController:Reveal(result: any)
+	RevealUi.enable(true)
+	RevealUi.final(result)
 end
 
 function HudController:HideReveal()
-	if self._reveal then
-		self._reveal.Visible = false
-	end
+	RevealUi.enable(false)
 end
 
-function HudController:_build()
-	local gui = Make.screen("DevHud", 10)
-
-	-- stats, bottom-left
-	local stats = Make.frame(gui, {
-		Name = "Stats",
-		AnchorPoint = Vector2.new(0, 1),
-		Position = UDim2.new(0, 16, 1, -16),
-		Size = UDim2.fromOffset(300, 196),
-		BackgroundTransparency = 0.25,
-	})
-	Make.corner(stats, 12)
-	Make.list(stats, Enum.FillDirection.Vertical, 2)
-	local rows = {
-		{ "YenCounter", Color3.fromRGB(140, 255, 150) },
-		{ "IncomePerSecond", Color3.fromRGB(190, 255, 190) },
-		{ "PowerCounter", Color3.fromRGB(120, 190, 255) },
-		{ "LuckChip", Color3.fromRGB(150, 255, 120) },
-		{ "FoodChip", Color3.fromRGB(255, 220, 150) },
-		{ "TrainingBar", Color3.fromRGB(255, 255, 255) },
-	}
-	for i, row in rows do
-		self._labels[row[1]] = Make.label(stats, "", {
-			Name = row[1],
-			Size = UDim2.new(1, -12, 0, 30),
-			TextColor3 = row[2],
-			TextXAlignment = Enum.TextXAlignment.Left,
-			LayoutOrder = i,
-		})
+-- A banner for everyone: a rare catch, server luck, a festival, a rebirth.
+function HudController:_announce(payload: any)
+	local labels = self._labels
+	local text = tostring(payload.text)
+	local player, hero, odds = "", text, ""
+	if payload.kind == "catch" then
+		-- "<name> caught <tags and hero>  (1 in N)"
+		local who, what, chance = text:match("^(.-) caught (.-)%s+%((.-)%)$")
+		if who and what and chance then
+			player, hero, odds = who .. " caught", what, chance
+		end
+	else
+		player = ANNOUNCE_HEADS[payload.kind] or ""
 	end
+	labels.AnnouncePlayer.Text = player
+	labels.AnnounceHero.Text = hero
+	labels.AnnounceOdds.Text = odds
+	labels.AnnounceRarity.Text = if payload.rarity then tostring(payload.rarity):upper() else ""
+	local color = if payload.rarity then Theme.rarity(payload.rarity) else Theme.BUY
+	labels.AnnounceRarity.TextColor3 = color
+	labels.AnnounceOdds.TextColor3 = color
 
-	-- objective, events and banner, top-centre
-	self._objective = Make.label(gui, "", {
-		Name = "TutorialHint",
-		AnchorPoint = Vector2.new(0.5, 0),
-		Position = UDim2.new(0.5, 0, 0, 8),
-		Size = UDim2.new(0.6, 0, 0, 40),
-		Visible = false,
-	})
-	self._envLabel = Make.label(gui, "", {
-		Name = "ServerLuckBar",
-		AnchorPoint = Vector2.new(0.5, 0),
-		Position = UDim2.new(0.5, 0, 0, 52),
-		Size = UDim2.new(0.5, 0, 0, 26),
-		TextColor3 = Color3.fromRGB(150, 255, 120),
-	})
-	self._banner = Make.label(gui, "", {
-		Name = "Announcement",
-		AnchorPoint = Vector2.new(0.5, 0),
-		Position = UDim2.new(0.5, 0, 0, 84),
-		Size = UDim2.new(0.8, 0, 0, 44),
-		Visible = false,
-	})
-	self._flash = Make.label(gui, "", {
-		Name = "Flash",
-		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.fromScale(0.5, 0.3),
-		Size = UDim2.new(0.5, 0, 0, 70),
-		TextColor3 = Make.BUY,
-		Visible = false,
-	})
+	self._announceId += 1
+	local id = self._announceId
+	self._announcing = true
+	self:_layout()
+	task.delay(ANNOUNCE_SECONDS, function()
+		if self._announceId == id then
+			self._announcing = false
+			self:_layout()
+		end
+	end)
+end
 
-	-- toasts, top-right under the Roblox buttons
-	local toasts = Make.frame(gui, {
-		Name = "Toasts",
-		AnchorPoint = Vector2.new(1, 0),
-		Position = UDim2.new(1, -16, 0, 140),
-		Size = UDim2.fromOffset(340, 300),
-		BackgroundTransparency = 1,
-	})
-	Make.list(toasts, Enum.FillDirection.Vertical, 6)
-	self._toasts = toasts
+function HudController:_bind()
+	local hud = Screens.get("HUD")
+	self._hud = hud
+	RevealUi.bind()
 
-	-- reveal card, lower centre
-	local card = Make.frame(gui, {
-		Name = "Reveal",
-		AnchorPoint = Vector2.new(0.5, 0),
-		Position = UDim2.new(0.5, 0, 0, 134),
-		Size = UDim2.fromOffset(560, 210),
-		BackgroundTransparency = 0.2,
-		Visible = false,
-	})
-	Make.corner(card, 16)
-	Make.stroke(card, 4, Color3.new(1, 1, 1))
-	local lines = {
-		{ "RevealRarity", 0, 44 },
-		{ "RevealName", 46, 50 },
-		{ "RevealIncome", 100, 30 },
-		{ "RevealOdds", 132, 30 },
-		{ "RevealStamps", 164, 28 },
-	}
-	for _, line in lines do
-		self._labels[line[1]] = Make.label(card, "", {
-			Name = line[1],
-			Position = UDim2.fromOffset(10, line[2] + 4),
-			Size = UDim2.new(1, -20, 0, line[3]),
-		})
+	local labels = self._labels
+	for _, name in
+		{
+			"YenAmount",
+			"IncomePerSecond",
+			"PowerAmount",
+			"RankName",
+			"LuckAmount",
+			"FoodName",
+			"FoodFlavor",
+			"ObjectiveLine",
+			"Multiplier",
+			"TimeLeft",
+			"FlashText",
+		}
+	do
+		labels[name] = Screens.label(hud, name)
 	end
-	self._labels.RevealStamps.TextColor3 = Make.BUY
-	Make.label(card, "tap to skip", {
-		Name = "SkipHint",
-		AnchorPoint = Vector2.new(1, 1),
-		Position = UDim2.new(1, -8, 1, -2),
-		Size = UDim2.fromOffset(110, 16),
-		TextTransparency = 0.4,
-	})
-	self._reveal = card
+	local banner = Screens.frame(hud, "Announcement")
+	labels.AnnouncePlayer = Screens.label(banner, "PlayerName")
+	labels.AnnounceHero = Screens.label(banner, "HeroName")
+	labels.AnnounceRarity = Screens.label(banner, "RarityText")
+	labels.AnnounceOdds = Screens.label(banner, "OneInN")
 
-	gui.Parent = player:WaitForChild("PlayerGui")
+	-- nothing shows its mockup placeholder: empty until there is real data
+	for _, label in labels do
+		label.Text = ""
+	end
+	labels.FlashText.Visible = false
+
+	-- the notice card: one button that opens a page, and a close
+	local card = Screens.frame(hud, "NoticeCard")
+	for _, name in { "NoticeTitle", "NoticeBody", "NoticeButtonText" } do
+		Screens.label(card, name).Text = ""
+	end
+	Screens.button(card, "NoticeButton").Activated:Connect(function()
+		local page = self._noticePage
+		self:_closeNotice()
+		if page then
+			Screens.open(page)
+		end
+	end)
+	Screens.button(card, "NoticeClose").Activated:Connect(function()
+		self:_closeNotice()
+	end)
+
+	-- live toasts are clones of ToastTemplate; the tree's own ToastSample rows
+	-- are mockup data and Screens has already destroyed them
+	self._toastHolder = Screens.frame(hud, "Toasts")
+
+	Screens.button(hud, "BoostButton").Activated:Connect(function()
+		Knit.GetController("MenuController"):Prompt(MAPS.product.ServerLuck, false)
+	end)
+	self:_layout()
 end
 
 function HudController:_refresh()
 	local state = self._state.State
-	if not state then
+	local hud = self._hud
+	if not state or not hud then
 		return
 	end
 	local labels = self._labels
 	local rank = Progress.rank(Config, state.power)
 	local luck = self:CurrentLuck()
 	local food = MAPS.food[state.food]
-	labels.YenCounter.Text = `{Format.short(state.yen)} yen`
+	labels.YenAmount.Text = Format.short(state.yen)
 	if not self._holdIncome then
-		labels.IncomePerSecond.Text = `+{Format.short(state.income or 0)} yen/s`
+		labels.IncomePerSecond.Text = `+{Format.short(state.income or 0)}/s`
 	end
-	labels.PowerCounter.Text = `{Format.short(state.power)} PWR  [{rank.name}]`
-	labels.LuckChip.Text = `Luck {Format.mult(luck)}`
-	labels.FoodChip.Text = if food then `{food.Name} ({food.Flavor})` else ""
-	if state.training then
-		local gear = Config.Training.Equipment[state.gear]
-		local toNext = if rank.nextPower then ` -> {Format.short(rank.nextPower)}` else ""
-		labels.TrainingBar.Text = `TRAINING on {gear.Name}{toNext}`
-	else
-		labels.TrainingBar.Text = if state.mock then "(Studio: saving is OFF)" else ""
+	labels.PowerAmount.Text = Format.short(state.power)
+	labels.RankName.Text = rank.name:upper()
+	labels.LuckAmount.Text = Format.mult(luck)
+	labels.FoodName.Text = if food then food.Name else ""
+	labels.FoodFlavor.Text = if food then food.Flavor:upper() else ""
+	if food and hud:GetAttribute("FoodShown") ~= food.Id then
+		hud:SetAttribute("FoodShown", food.Id)
+		local chip = Screens.button(hud, "FoodChip")
+		Screens.setIcon(Screens.image(chip, "Icon"), "Food_" .. food.Id)
+		Screens.setIcon(Screens.image(chip, "FlavorIcon"), "IconFlavor" .. food.Flavor)
 	end
 end
 
+-- The bar under the objective: server luck while it is raised, the Festival
+-- Hour while it runs. With both active it alternates every few seconds.
 function HudController:_refreshEnv()
 	local env = self._state.Env
-	local label = self._envLabel
-	if not env or not label then
+	local hud = self._hud
+	if not env or not hud then
 		return
 	end
 	local now = env.unixNow + (os.clock() - self._envAt)
-	local parts = {}
-	if env.luck > 1 then
-		local left = math.max(0, env.luckUntil - now)
-		table.insert(parts, `SERVER LUCK {Format.mult(env.luck)}  {Format.duration(left)}`)
+	local luckOn = env.luck > 1
+	local festivalOn = env.festival == true
+	if self._envActive ~= (luckOn or festivalOn) then
+		self._envActive = luckOn or festivalOn
+		self:_layout()
 	end
-	if env.festival then
-		local left = math.max(0, env.festivalEnds - now)
-		table.insert(parts, `FESTIVAL HOUR  {Format.duration(left)}`)
-	else
-		table.insert(parts, `Festival in {Format.duration(math.max(0, env.festivalNext - now))}`)
+	local labels = self._labels
+	if festivalOn and (not luckOn or math.floor(now / 4) % 2 == 1) then
+		labels.Multiplier.Text = "FESTIVAL!"
+		labels.TimeLeft.Text = Screens.clock(env.festivalEnds - now)
+	elseif luckOn then
+		labels.Multiplier.Text = `SERVER {Format.mult(env.luck)}`
+		labels.TimeLeft.Text = Screens.clock(env.luckUntil - now)
 	end
-	label.Text = table.concat(parts, "    ")
+end
+
+function HudController:KnitInit()
+	self._state = Knit.GetController("StateController")
 end
 
 function HudController:KnitStart()
-	self._state = Knit.GetController("StateController")
-	self:_build()
+	self:_bind()
+
+	Screens.Opened:Connect(function()
+		self:_layout()
+	end)
+	Screens.Closed:Connect(function()
+		-- a notice that waited under the page gets its full time again
+		if not Screens.isOpen() then
+			self:_armNotice()
+		end
+		self:_layout()
+	end)
 
 	self._state:Observe(function()
 		self:_refresh()
@@ -346,20 +516,9 @@ function HudController:KnitStart()
 	local announce = Net.client("Announce")
 	if announce then
 		announce.OnClientEvent:Connect(function(payload: any)
-			local banner = self._banner
-			if not banner or typeof(payload) ~= "table" then
-				return
+			if typeof(payload) == "table" then
+				self:_announce(payload)
 			end
-			local row = if payload.rarity then Config.Rarities[payload.rarity] else nil
-			banner.TextColor3 = if row then Color3.fromHex(row.Color) else Make.BUY
-			banner.Text = tostring(payload.text)
-			banner.Visible = true
-			local shown = banner.Text
-			task.delay(5, function()
-				if banner.Text == shown then
-					banner.Visible = false
-				end
-			end)
 		end)
 	end
 	local granted = Net.client("HeroGranted")
@@ -374,6 +533,10 @@ function HudController:KnitStart()
 			end
 			running = true
 			while #queue > 0 do
+				-- never over a throw sequence: wait for it to finish
+				while self._mode == "cinematic" do
+					task.wait(0.2)
+				end
 				local nextUp = table.remove(queue, 1)
 				self:Reveal(nextUp)
 				task.wait(1.6)

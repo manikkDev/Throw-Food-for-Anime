@@ -1,0 +1,59 @@
+{
+ "_comment": "Manga Pop (design/plan/05-ui-ux.md). Read by tools/ui/mangapop.py through the roblox-ui builder. outline = ink, used for buttons and all text strokes; panels add a white keyline and an ink comic shadow per element (keyline/comic keys).",
+ "font": "FredokaOne",
+ "stroke": 4,
+ "textStroke": 3,
+ "corner": 16,
+ "shadowOffset": 6,
+ "outline": "#0D0F2B",
+ "backdrop": [
+  "#8ED1FC",
+  "#9BDB7A"
+ ],
+ "palette": {
+  "panel": "#1B1F4B",
+  "panelHi": "#2B3175",
+  "panelDeep": "#12153A",
+  "cream": "#FFF4DC",
+  "ink": "#0D0F2B",
+  "onDark": "#FFFFFF",
+  "soft": "#C9CDF5",
+  "yen": "#DDF25A",
+  "power": "#5CC8FF",
+  "luck": "#5BE37D",
+  "gold": "#FFC93C",
+  "powerInk": "#1D6FD1",
+  "luckInk": "#15803D",
+  "premiumInk": "#C0267A",
+  "confirm": "#34D17A",
+  "buy": "#FFC93C",
+  "info": "#38BDF8",
+  "premium": "#FF4FA3",
+  "danger": "#F04438",
+  "grey": "#6B7099",
+  "slate": "#4A5078",
+  "softRed": "#FF8A8A",
+  "violet": "#A855F7",
+  "coral": "#FF5A5F",
+  "header_from": "#FF5A5F",
+  "header_to": "#FFC93C"
+ },
+ "highlight": false,
+ "motion": {
+  "hover": {
+   "scale": 1.06,
+   "rotate": 0,
+   "time": 0.1,
+   "style": "Back"
+  },
+  "press": {
+   "scale": 0.94,
+   "time": 0.08
+  },
+  "open": {
+   "style": "pop",
+   "from": 0.85,
+   "time": 0.18
+  }
+ }
+}

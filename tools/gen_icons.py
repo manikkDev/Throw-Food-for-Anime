@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+"""Emit `src/shared/Config/Icons.luau` from the uploaded icon id maps.
+
+    python tools/gen_icons.py            write the file
+    python tools/gen_icons.py --check    exit 1 if it has drifted
+
+Sources (written by the roblox-ui skill's upload_icons.py, one per folder):
+    assets/ui/ids_icons.json        system glyphs   IconYen, IconShop, ...
+    assets/ui/ids_food_icons.json   food renders    Food_onigiri, ...
+    assets/ui/ids_patterns.json     panel patterns  pattern_dots, ...
+    assets/ui/ids_icons_big.json    the large glossy family, own keys (IconShopBig, ...): 40 px and up.
+                                    Under 30 px a slot uses the flat glyph under the base key (UI v3 rule:
+                                    size decides style). ids_icons_v2.json is the retired v2 map, not read.
+
+The UI trees carry no image ids: every icon slot is an ImageLabel with an `IconKey` attribute and
+every patterned panel a `PatternName`. The client fills them from this table when it mounts a
+screen. WHY: ids only exist after an upload, an image can be re-uploaded (new id) without the
+screen files changing, and a key with no id leaves a blank slot instead of an error.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / "src" / "shared" / "Config" / "Icons.luau"
+MAPS = ["ids_icons.json", "ids_food_icons.json", "ids_patterns.json", "ids_icons_big.json"]
+
+BANNER = """--!strict
+-- GENERATED FILE - DO NOT EDIT BY HAND.
+-- Source: assets/ui/ids_*.json (uploaded image ids)
+-- Regenerate: python tools/gen_icons.py
+-- IconKey / PatternName -> image. A key that is missing here leaves its slot blank.
+"""
+
+
+def render() -> str:
+    rows: dict[str, int] = {}
+    for name in MAPS:
+        path = ROOT / "assets" / "ui" / name
+        if not path.exists():
+            continue
+        for key, value in json.loads(path.read_text(encoding="utf-8")).items():
+            if isinstance(value, int) and not key.startswith("_"):
+                rows[key] = value
+    lines = [BANNER, "local Icons: { [string]: string } = {"]
+    for key in sorted(rows):
+        lines.append(f'\t{key} = "rbxassetid://{rows[key]}",')
+    lines += ["}", "", "return Icons", ""]
+    return "\n".join(lines)
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--check", action="store_true")
+    a = ap.parse_args()
+    text = render()
+    if a.check:
+        if not OUT.exists() or OUT.read_text(encoding="utf-8") != text:
+            print(f"FAIL {OUT} has drifted from assets/ui/ids_*.json; run tools/gen_icons.py")
+            return 1
+        print(f"ok   Icons matches the uploaded ids ({text.count('rbxassetid')} images)")
+        return 0
+    OUT.write_text(text, encoding="utf-8", newline="\n")
+    print(f"wrote {OUT} ({text.count('rbxassetid')} images)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

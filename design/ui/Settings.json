@@ -1,0 +1,1517 @@
+{
+ "name": "Settings",
+ "theme": "theme.json",
+ "resolution": [
+  1280,
+  720
+ ],
+ "kind": "page",
+ "ignoreGuiInset": true,
+ "children": [
+  {
+   "type": "frame",
+   "name": "Scrim",
+   "colour": [
+    "#0D0F2B",
+    "#0D0F2B"
+   ],
+   "alpha": 0.55,
+   "outline": false,
+   "z": -2,
+   "size": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "children": []
+  },
+  {
+   "type": "panel",
+   "name": "Window",
+   "colour": "panel",
+   "size": [
+    0,
+    648,
+    0,
+    462
+   ],
+   "children": [
+    {
+     "type": "panel",
+     "name": "Header",
+     "colour": [
+      "#FFC93C",
+      "#FF5A5F"
+     ],
+     "size": [
+      0,
+      300,
+      0,
+      70
+     ],
+     "rotation": -2,
+     "keyline": "#FFFFFF",
+     "comic": 6,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.28,
+      "tile": 34
+     },
+     "children": [
+      {
+       "type": "label",
+       "text": "SETTINGS",
+       "size": [
+        0,
+        260,
+        0,
+        56
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.6964,
+       "textStroke": 3,
+       "name": "Title",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      -36
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 3,
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "BodyArt",
+     "colour": [
+      "#2E3488",
+      "#161944"
+     ],
+     "outline": false,
+     "size": [
+      1,
+      -16,
+      1,
+      -16
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 16,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.07,
+      "tile": 28
+     },
+     "overhang": true,
+     "z": -1,
+     "children": []
+    },
+    {
+     "type": "button",
+     "name": "CloseButton",
+     "colour": "danger",
+     "size": [
+      0,
+      56,
+      0,
+      56
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconClose",
+       "name": "Icon",
+       "size": [
+        0,
+        30,
+        0,
+        30
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      1,
+      14,
+      0,
+      -18
+     ],
+     "anchor": [
+      1,
+      0
+     ],
+     "z": 4,
+     "overhang": true,
+     "closes": true,
+     "sizeClass": "L"
+    },
+    {
+     "type": "frame",
+     "name": "Body",
+     "transparent": true,
+     "size": [
+      0,
+      600,
+      0,
+      356
+     ],
+     "children": [
+      {
+       "type": "frame",
+       "name": "Rows",
+       "transparent": true,
+       "size": [
+        0,
+        600,
+        0,
+        356
+       ],
+       "children": [
+        {
+         "type": "panel",
+         "name": "MusicRow",
+         "colour": "panelHi",
+         "size": [
+          0,
+          600,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconMusic",
+           "name": "Icon",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            0,
+            12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "Music",
+           "size": [
+            0,
+            230,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "RowLabel",
+           "pos": [
+            0,
+            44,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "frame",
+           "name": "MusicSlider",
+           "colour": [
+            "#0B0D29",
+            "#12153A"
+           ],
+           "size": [
+            0,
+            200,
+            0,
+            14
+           ],
+           "corner": 7,
+           "children": [
+            {
+             "type": "frame",
+             "name": "Fill",
+             "colour": [
+              "#34D17A",
+              "#2DB469"
+             ],
+             "paint": "#34D17A",
+             "children": [],
+             "size": [
+              0.7,
+              -6,
+              1,
+              -6
+             ],
+             "pos": [
+              0,
+              3,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0,
+              0.5
+             ],
+             "outline": false,
+             "corner": 4,
+             "overhang": true
+            },
+            {
+             "type": "button",
+             "name": "MusicKnob",
+             "size": [
+              0,
+              34,
+              0,
+              34
+             ],
+             "children": [
+              {
+               "type": "icon",
+               "icon": "IconMusic",
+               "name": "Icon",
+               "size": [
+                0,
+                20,
+                0,
+                20
+               ]
+              }
+             ],
+             "layout": {
+              "type": "list",
+              "dir": "x",
+              "gap": 0,
+              "align": "center"
+             },
+             "sizeClass": "S",
+             "depth": 3,
+             "corner": 14,
+             "pos": [
+              0.7,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "overhang": true,
+             "z": 3,
+             "centre": false,
+             "colour": "#FFFFFF",
+             "paintable": true,
+             "gloss": true,
+             "stops": [
+              [
+               0.0,
+               "#FFFFFF"
+              ],
+              [
+               0.4,
+               "#FFFFFF"
+              ],
+              [
+               0.41000000000000003,
+               "#E6E6E6"
+              ],
+              [
+               1.0,
+               "#D1D1D1"
+              ]
+             ],
+             "attrs": {
+              "PressLip": 3
+             }
+            }
+           ],
+           "pos": [
+            1,
+            -76,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            52,
+            0,
+            17
+           ],
+           "textColour": "onDark",
+           "align": "right",
+           "textScale": 0.7647,
+           "textStroke": 2,
+           "name": "MusicValue",
+           "samples": [
+            "70%",
+            "100%"
+           ],
+           "font": "display",
+           "pos": [
+            1,
+            -12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ],
+           "maxText": 13
+          }
+         ],
+         "depth": 3,
+         "corner": 14
+        },
+        {
+         "type": "panel",
+         "name": "SfxRow",
+         "colour": "panelHi",
+         "size": [
+          0,
+          600,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconSfx",
+           "name": "Icon",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            0,
+            12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "Sound effects",
+           "size": [
+            0,
+            230,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "RowLabel",
+           "pos": [
+            0,
+            44,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "frame",
+           "name": "SfxSlider",
+           "colour": [
+            "#0B0D29",
+            "#12153A"
+           ],
+           "size": [
+            0,
+            200,
+            0,
+            14
+           ],
+           "corner": 7,
+           "children": [
+            {
+             "type": "frame",
+             "name": "Fill",
+             "colour": [
+              "#34D17A",
+              "#2DB469"
+             ],
+             "paint": "#34D17A",
+             "children": [],
+             "size": [
+              1.0,
+              -6,
+              1,
+              -6
+             ],
+             "pos": [
+              0,
+              3,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0,
+              0.5
+             ],
+             "outline": false,
+             "corner": 4,
+             "overhang": true
+            },
+            {
+             "type": "button",
+             "name": "SfxKnob",
+             "size": [
+              0,
+              34,
+              0,
+              34
+             ],
+             "children": [
+              {
+               "type": "icon",
+               "icon": "IconSfx",
+               "name": "Icon",
+               "size": [
+                0,
+                20,
+                0,
+                20
+               ]
+              }
+             ],
+             "layout": {
+              "type": "list",
+              "dir": "x",
+              "gap": 0,
+              "align": "center"
+             },
+             "sizeClass": "S",
+             "depth": 3,
+             "corner": 14,
+             "pos": [
+              1.0,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "overhang": true,
+             "z": 3,
+             "centre": false,
+             "colour": "#FFFFFF",
+             "paintable": true,
+             "gloss": true,
+             "stops": [
+              [
+               0.0,
+               "#FFFFFF"
+              ],
+              [
+               0.4,
+               "#FFFFFF"
+              ],
+              [
+               0.41000000000000003,
+               "#E6E6E6"
+              ],
+              [
+               1.0,
+               "#D1D1D1"
+              ]
+             ],
+             "attrs": {
+              "PressLip": 3
+             }
+            }
+           ],
+           "pos": [
+            1,
+            -76,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            52,
+            0,
+            17
+           ],
+           "textColour": "onDark",
+           "align": "right",
+           "textScale": 0.7647,
+           "textStroke": 2,
+           "name": "SfxValue",
+           "samples": [
+            "100%",
+            "100%"
+           ],
+           "font": "display",
+           "pos": [
+            1,
+            -12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ],
+           "maxText": 13
+          }
+         ],
+         "depth": 3,
+         "corner": 14
+        },
+        {
+         "type": "panel",
+         "name": "FastRevealRow",
+         "colour": "panelHi",
+         "size": [
+          0,
+          600,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconFast",
+           "name": "Icon",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            0,
+            12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "Fast reveal",
+           "size": [
+            0,
+            230,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "RowLabel",
+           "pos": [
+            0,
+            44,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "button",
+           "name": "FastReveal",
+           "size": [
+            0,
+            87,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              37,
+              0,
+              21
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "FastRevealState",
+             "samples": [
+              "ON",
+              "OFF"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "pos": [
+            1,
+            -12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ],
+           "selfFace": true,
+           "colour": "#48D687",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#48D687"
+            ],
+            [
+             0.4,
+             "#48D687"
+            ],
+            [
+             0.41000000000000003,
+             "#41C17A"
+            ],
+            [
+             1.0,
+             "#3BAF6F"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           }
+          }
+         ],
+         "depth": 3,
+         "corner": 14
+        },
+        {
+         "type": "panel",
+         "name": "LowDetailRow",
+         "colour": "panelHi",
+         "size": [
+          0,
+          600,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconLowDetail",
+           "name": "Icon",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            0,
+            12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "Low detail",
+           "size": [
+            0,
+            230,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "RowLabel",
+           "pos": [
+            0,
+            44,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "button",
+           "name": "LowDetail",
+           "size": [
+            0,
+            87,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconClose",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              37,
+              0,
+              21
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "LowDetailState",
+             "samples": [
+              "OFF",
+              "ON"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "pos": [
+            1,
+            -12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ],
+           "selfFace": true,
+           "colour": "#5C6286",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#5C6286"
+            ],
+            [
+             0.4,
+             "#5C6286"
+            ],
+            [
+             0.41000000000000003,
+             "#535879"
+            ],
+            [
+             1.0,
+             "#4B506E"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           }
+          }
+         ],
+         "depth": 3,
+         "corner": 14
+        },
+        {
+         "type": "panel",
+         "name": "HideOthersRow",
+         "colour": "panelHi",
+         "size": [
+          0,
+          600,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconHide",
+           "name": "Icon",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            0,
+            12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "Hide other plots",
+           "size": [
+            0,
+            230,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "RowLabel",
+           "pos": [
+            0,
+            44,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "button",
+           "name": "HideOtherPlots",
+           "size": [
+            0,
+            87,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconClose",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              37,
+              0,
+              21
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "HideOtherPlotsState",
+             "samples": [
+              "OFF",
+              "ON"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "pos": [
+            1,
+            -12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ],
+           "selfFace": true,
+           "colour": "#5C6286",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#5C6286"
+            ],
+            [
+             0.4,
+             "#5C6286"
+            ],
+            [
+             0.41000000000000003,
+             "#535879"
+            ],
+            [
+             1.0,
+             "#4B506E"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           }
+          }
+         ],
+         "depth": 3,
+         "corner": 14
+        },
+        {
+         "type": "panel",
+         "name": "AutoSellRow",
+         "colour": "panelHi",
+         "size": [
+          0,
+          600,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconSell",
+           "name": "Icon",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            0,
+            12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "Auto-sell when full",
+           "size": [
+            0,
+            230,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "RowLabel",
+           "pos": [
+            0,
+            44,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "button",
+           "name": "AutoSellCommon",
+           "size": [
+            0,
+            119,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "COMMON",
+             "size": [
+              0,
+              69,
+              0,
+              21
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "Label",
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "pos": [
+            1,
+            -161,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ],
+           "selfFace": true,
+           "colour": "#48D687",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#48D687"
+            ],
+            [
+             0.4,
+             "#48D687"
+            ],
+            [
+             0.41000000000000003,
+             "#41C17A"
+            ],
+            [
+             1.0,
+             "#3BAF6F"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           }
+          },
+          {
+           "type": "button",
+           "name": "AutoSellUncommon",
+           "size": [
+            0,
+            141,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconClose",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "UNCOMMON",
+             "size": [
+              0,
+              91,
+              0,
+              21
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "Label",
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "pos": [
+            1,
+            -12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ],
+           "selfFace": true,
+           "colour": "#5C6286",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#5C6286"
+            ],
+            [
+             0.4,
+             "#5C6286"
+            ],
+            [
+             0.41000000000000003,
+             "#535879"
+            ],
+            [
+             1.0,
+             "#4B506E"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           }
+          }
+         ],
+         "depth": 3,
+         "corner": 14
+        },
+        {
+         "type": "panel",
+         "name": "CodesRow",
+         "colour": "panelHi",
+         "size": [
+          0,
+          600,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconCodes",
+           "name": "Icon",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            0,
+            12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "Redeem a code",
+           "size": [
+            0,
+            230,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "RowLabel",
+           "pos": [
+            0,
+            44,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "button",
+           "name": "CodesButton",
+           "size": [
+            0,
+            108,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconCodes",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "CODES",
+             "size": [
+              0,
+              58,
+              0,
+              21
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "Label",
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "opens": "Codes",
+           "pos": [
+            1,
+            -12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            1,
+            0.5
+           ],
+           "colour": "#4CC4F9",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#4CC4F9"
+            ],
+            [
+             0.4,
+             "#4CC4F9"
+            ],
+            [
+             0.41000000000000003,
+             "#44B0E0"
+            ],
+            [
+             1.0,
+             "#3EA1CC"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           }
+          }
+         ],
+         "depth": 3,
+         "corner": 14
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "y",
+        "gap": 8,
+        "align": "start"
+       },
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      84
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ],
+   "comic": 10,
+   "modal": true,
+   "corner": 22,
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "keyline": "#FFFFFF"
+  }
+ ]
+}

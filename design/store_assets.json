@@ -1,0 +1,440 @@
+{
+ "_what": "Tags for the Creator Store templates (ReplicatedStorage.Assets.Kit.Prop_store_<Name>). The map generator builds its prop pools from this file, never from hard-coded names: kind says what the piece is, zones where it may appear ('all' = every zone, 'hub', 'plot', or a config.Zones id). Sizes and part counts are in assets/meshes/manifest-store.json. A name tagged here but missing from the manifest is skipped. Kinds: house, shop, shrine, temple, castle, tower, gatehouse, bridge, torii, wall, platform (buildings); tree, bush, rock, waterfall (nature); lantern, statue, stall, flag, fence, small, setpiece (street); sky.",
+ "assets": {
+  "Prop_store_StoneLantern": {
+   "kind": "lantern",
+   "zones": [
+    "all"
+   ]
+  },
+  "Prop_store_StoneLanternWide": {
+   "kind": "lantern",
+   "zones": [
+    "all"
+   ]
+  },
+  "Prop_store_ZenLantern": {
+   "kind": "lantern",
+   "zones": [
+    "all"
+   ]
+  },
+  "Prop_store_LampPost": {
+   "kind": "lantern",
+   "zones": [
+    "ninja_village",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_LionA": {
+   "kind": "statue",
+   "zones": [
+    "hub",
+    "samurai_castle",
+    "ninja_village"
+   ]
+  },
+  "Prop_store_LionB": {
+   "kind": "statue",
+   "zones": [
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_GongA": {
+   "kind": "setpiece",
+   "zones": [
+    "samurai_castle",
+    "ninja_village"
+   ]
+  },
+  "Prop_store_GongB": {
+   "kind": "setpiece",
+   "zones": [
+    "hub",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_MarketTent": {
+   "kind": "stall",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_ProduceTable": {
+   "kind": "stall",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_RamenShop": {
+   "kind": "stall",
+   "zones": [
+    "hub"
+   ]
+  },
+  "Prop_store_RamenCart": {
+   "kind": "stall",
+   "zones": [
+    "hub",
+    "sakura_schoolyard"
+   ]
+  },
+  "Prop_store_Brazier": {
+   "kind": "small",
+   "zones": [
+    "samurai_castle",
+    "ninja_village",
+    "realm_of_legends"
+   ]
+  },
+  "Prop_store_Bonsai": {
+   "kind": "small",
+   "zones": [
+    "all"
+   ]
+  },
+  "Prop_store_Bell": {
+   "kind": "small",
+   "zones": [
+    "ninja_village",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_TrainingPole": {
+   "kind": "small",
+   "zones": [
+    "ninja_village",
+    "plot"
+   ]
+  },
+  "Prop_store_Barrel": {
+   "kind": "small",
+   "zones": [
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_Crate": {
+   "kind": "small",
+   "zones": [
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_FlagA": {
+   "kind": "flag",
+   "zones": [
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_FlagB": {
+   "kind": "flag",
+   "zones": [
+    "samurai_castle",
+    "ninja_village"
+   ]
+  },
+  "Prop_store_FlagC": {
+   "kind": "flag",
+   "zones": [
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_BambooFence": {
+   "kind": "fence",
+   "zones": [
+    "ninja_village",
+    "sakura_schoolyard"
+   ]
+  },
+  "Prop_store_TowerBig": {
+   "kind": "tower",
+   "zones": [
+    "samurai_castle",
+    "hub",
+    "ninja_village"
+   ]
+  },
+  "Prop_store_TowerSlim": {
+   "kind": "tower",
+   "zones": [
+    "samurai_castle",
+    "hub",
+    "ninja_village"
+   ]
+  },
+  "Prop_store_CastleGate": {
+   "kind": "gatehouse",
+   "zones": [
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_BridgeCover": {
+   "kind": "bridge",
+   "zones": [
+    "samurai_castle",
+    "ninja_village"
+   ]
+  },
+  "Prop_store_IslandTall": {
+   "kind": "sky",
+   "zones": [
+    "realm_of_legends",
+    "hub"
+   ]
+  },
+  "Prop_store_IslandShort": {
+   "kind": "sky",
+   "zones": [
+    "realm_of_legends",
+    "hub"
+   ]
+  },
+  "Prop_store_Portal": {
+   "kind": "setpiece",
+   "zones": [
+    "realm_of_legends"
+   ]
+  },
+  "Prop_store_BigTree": {
+   "kind": "tree",
+   "zones": [
+    "sakura_schoolyard",
+    "hero_city"
+   ]
+  },
+  "Prop_store_SmallTree": {
+   "kind": "tree",
+   "zones": [
+    "sakura_schoolyard",
+    "ninja_village",
+    "hero_city"
+   ]
+  },
+  "Prop_store_PalmTree": {
+   "kind": "tree",
+   "zones": [
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_BigCherry": {
+   "kind": "tree",
+   "zones": [
+    "hub"
+   ]
+  },
+  "Prop_store_Bush": {
+   "kind": "bush",
+   "zones": [
+    "all"
+   ]
+  },
+  "Prop_store_FlatRock": {
+   "kind": "rock",
+   "zones": [
+    "all"
+   ]
+  },
+  "Prop_store_TallRock": {
+   "kind": "rock",
+   "zones": [
+    "all"
+   ]
+  },
+  "Prop_store_Castle": {
+   "kind": "castle",
+   "zones": [
+    "hub",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_CastleKeepSmall": {
+   "kind": "castle",
+   "zones": [
+    "samurai_castle",
+    "ninja_village"
+   ]
+  },
+  "Prop_store_PagodaTemple": {
+   "kind": "temple",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "ninja_village",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_PagodaDark": {
+   "kind": "temple",
+   "zones": [
+    "ninja_village",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_ShrineA": {
+   "kind": "shrine",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "ninja_village",
+    "samurai_castle",
+    "realm_of_legends"
+   ]
+  },
+  "Prop_store_ShrineB": {
+   "kind": "shrine",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "ninja_village",
+    "samurai_castle",
+    "realm_of_legends"
+   ]
+  },
+  "Prop_store_HouseA": {
+   "kind": "house",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_HouseB": {
+   "kind": "house",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_HouseC": {
+   "kind": "house",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_HouseD": {
+   "kind": "house",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_HouseG": {
+   "kind": "house",
+   "zones": [
+    "ninja_village",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_HouseH": {
+   "kind": "house",
+   "zones": [
+    "ninja_village",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_HallA": {
+   "kind": "shop",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_HallB": {
+   "kind": "shop",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_HallC": {
+   "kind": "shop",
+   "zones": [
+    "ninja_village",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_StageA": {
+   "kind": "platform",
+   "zones": [
+    "hub",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_TowerDark": {
+   "kind": "tower",
+   "zones": [
+    "ninja_village",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_TowerSlimDark": {
+   "kind": "tower",
+   "zones": [
+    "ninja_village",
+    "pirate_harbor"
+   ]
+  },
+  "Prop_store_FarmHouseA": {
+   "kind": "house",
+   "zones": [
+    "ninja_village"
+   ]
+  },
+  "Prop_store_FarmHouseB": {
+   "kind": "house",
+   "zones": [
+    "ninja_village"
+   ]
+  },
+  "Prop_store_FarmHouseC": {
+   "kind": "house",
+   "zones": [
+    "ninja_village"
+   ]
+  },
+  "Prop_store_WaterfallCliff": {
+   "kind": "waterfall",
+   "zones": [
+    "hub",
+    "ninja_village",
+    "realm_of_legends",
+    "sakura_schoolyard"
+   ]
+  },
+  "Prop_store_WaterfallSheet": {
+   "kind": "waterfall",
+   "zones": [
+    "hub",
+    "ninja_village",
+    "realm_of_legends",
+    "samurai_castle"
+   ]
+  },
+  "Prop_store_SakuraFluffy": {
+   "kind": "tree",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "samurai_castle",
+    "realm_of_legends"
+   ]
+  },
+  "Prop_store_SakuraPink": {
+   "kind": "tree",
+   "zones": [
+    "hub",
+    "sakura_schoolyard",
+    "samurai_castle"
+   ]
+  }
+ }
+}

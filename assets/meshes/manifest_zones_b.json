@@ -1,0 +1,736 @@
+[
+ {
+  "name": "Prop_samurai_castle_PineTree",
+  "path": "assets/meshes/zones/Prop_samurai_castle_PineTree.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_PineTree.kiln.js",
+  "tris": 3040,
+  "bounds_studs": [
+   9.788,
+   16.828,
+   10.041
+  ],
+  "target_studs": [
+   10,
+   17,
+   10
+  ],
+  "deviation_pct": [
+   -2.1,
+   -1.0,
+   0.4
+  ],
+  "bounds_min_studs": [
+   -4.894,
+   0,
+   -5.021
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "Bark_8A5A2B",
+   "ZoneRed_E0453C",
+   "LeafDark_46B82C",
+   "LeafLight_5BD43A"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 128,
+   "Bark_8A5A2B": 248,
+   "ZoneRed_E0453C": 120,
+   "LeafDark_46B82C": 1530,
+   "LeafLight_5BD43A": 1014
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on 3/4 render. Changes after looking: tris 4272->3040 (sphere lobes 8x6->7x5, revolve bevelSegments 2), height 15.9->16.8, lower pad widened 9.2->9.8/10.0. Red trim = rope band on trunk. Base lip #6B7686 octagon."
+ },
+ {
+  "name": "Prop_realm_of_legends_CrystalTree",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_CrystalTree.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_CrystalTree.kiln.js",
+  "tris": 942,
+  "bounds_studs": [
+   9.843,
+   17.022,
+   9.232
+  ],
+  "target_studs": [
+   10,
+   16,
+   10
+  ],
+  "deviation_pct": [
+   -1.6,
+   6.4,
+   -7.7
+  ],
+  "bounds_min_studs": [
+   -4.922,
+   0,
+   -4.616
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "Trunk_FFFFFF",
+   "Gold_FFC83D",
+   "ZoneViolet_A66BFF",
+   "CrystalLight_D9C2FF"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 128,
+   "Trunk_FFFFFF": 298,
+   "Gold_FFC83D": 72,
+   "ZoneViolet_A66BFF": 380,
+   "CrystalLight_D9C2FF": 64
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on 3/4 render, first build. Violet #A66BFF crown + foot shards, lilac spikes, gold fork collar, white trunk, #6B7686 base lip. Height 17.02 is +6.4% over 16."
+ },
+ {
+  "name": "Prop_samurai_castle_CastleKeep",
+  "path": "assets/meshes/zones/Prop_samurai_castle_CastleKeep.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_CastleKeep.kiln.js",
+  "tris": 2358,
+  "bounds_studs": [
+   36,
+   43.164,
+   30
+  ],
+  "target_studs": [
+   36,
+   44,
+   30
+  ],
+  "deviation_pct": [
+   0.0,
+   -1.9,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -18,
+   0,
+   -15
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "PlasterWhite_FFFFFF",
+   "ZoneRed_E0453C",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 1452,
+   "StoneLight_9AA4B2": 48,
+   "PlasterWhite_FFFFFF": 160,
+   "ZoneRed_E0453C": 346,
+   "Gold_FFC83D": 352
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Landmark. Gate pass on batch1 sheet. Changed after looking: shachihoko fish read as thin horns, widened the fish body (still stylised; reads as a gold ridge ornament pair). Roofs = 4-segment flared revolve (hip roof with concave flare). Red key colour = all roofs + gate lintel."
+ },
+ {
+  "name": "Prop_hero_city_NeonTower",
+  "path": "assets/meshes/zones/Prop_hero_city_NeonTower.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_NeonTower.kiln.js",
+  "tris": 2514,
+  "bounds_studs": [
+   16,
+   48,
+   16.4
+  ],
+  "target_studs": [
+   16,
+   48,
+   16
+  ],
+  "deviation_pct": [
+   0.0,
+   0.0,
+   2.5
+  ],
+  "bounds_min_studs": [
+   -8,
+   0,
+   -8.2
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "GlassInk_0D0F2B",
+   "ZoneCyan_35C9F0",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 146,
+   "StoneLight_9AA4B2": 1500,
+   "GlassInk_0D0F2B": 184,
+   "ZoneCyan_35C9F0": 560,
+   "Gold_FFC83D": 124
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Landmark. Gate pass on batch1 sheet, first build. Three setbacks, ink glass, stone piers, cyan band per setback + cyan corner strips, gold antenna tip. Depth 16.4 (+2.5%) from the 45-degree corner strips."
+ },
+ {
+  "name": "Prop_realm_of_legends_FloatingIsland",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_FloatingIsland.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_FloatingIsland.kiln.js",
+  "tris": 1654,
+  "bounds_studs": [
+   27.791,
+   16.364,
+   27.175
+  ],
+  "target_studs": [
+   28,
+   16,
+   28
+  ],
+  "deviation_pct": [
+   -0.7,
+   2.3,
+   -2.9
+  ],
+  "bounds_min_studs": [
+   -13.896,
+   0,
+   -13.587
+  ],
+  "colour_parts": [
+   "Grass_5BD43A",
+   "StoneLight_9AA4B2",
+   "StoneDark_6B7686",
+   "Water_38BDF8",
+   "ZoneViolet_A66BFF"
+  ],
+  "tris_per_part": {
+   "Grass_5BD43A": 400,
+   "StoneLight_9AA4B2": 694,
+   "StoneDark_6B7686": 168,
+   "Water_38BDF8": 328,
+   "ZoneViolet_A66BFF": 64
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Landmark. Rock tip at y=0, map must float it. Changed after looking: width measured 25.05 (-10.5%, FAIL) and height 17.66 (+10.4%, FAIL) on first build; scaled lobes 1.12 across Roblox x and shortened the top crystal -> 27.79 x 16.36. Waterfall on the front (-Z) face."
+ },
+ {
+  "name": "Prop_realm_of_legends_GreatTorii",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_GreatTorii.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_GreatTorii.kiln.js",
+  "tris": 1424,
+  "bounds_studs": [
+   34.5,
+   28.3,
+   6
+  ],
+  "target_studs": [
+   34,
+   28,
+   6
+  ],
+  "deviation_pct": [
+   1.5,
+   1.1,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -17.25,
+   0,
+   -3
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "ZoneViolet_A66BFF",
+   "Gold_FFC83D",
+   "Ink_0D0F2B"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 88,
+   "ZoneViolet_A66BFF": 408,
+   "Gold_FFC83D": 612,
+   "Ink_0D0F2B": 316
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch2 sheet after one fix: gold collars floated off the leaning pillars (lean offset computed wrong, 0.62 vs measured 0.134) and kasagi end caps were slivers; re-placed collars, foot rings and end caps. Violet pillars/beams, ink kasagi, gold plaque/rings/caps, #6B7686 plinths. Span 34.5 (+1.5%)."
+ },
+ {
+  "name": "Prop_samurai_castle_RedBridge",
+  "path": "assets/meshes/zones/Prop_samurai_castle_RedBridge.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_RedBridge.kiln.js",
+  "tris": 3636,
+  "bounds_studs": [
+   10.06,
+   7.45,
+   26
+  ],
+  "target_studs": [
+   10,
+   7,
+   26
+  ],
+  "deviation_pct": [
+   0.6,
+   6.4,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -5.03,
+   0,
+   -13
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "Wood_B5793F",
+   "ZoneRed_E0453C",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 88,
+   "Wood_B5793F": 260,
+   "ZoneRed_E0453C": 2808,
+   "Gold_FFC83D": 480
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch2 sheet. Changed: first build 5084 tris (OVER 4000 budget); arch bands 16->10 samples, rail bands unbevelled -> 3636. Span runs along Roblox z (walk from front to back). Arch deck: walkable collision needs mesh/Hull-ish fidelity, not Box."
+ },
+ {
+  "name": "Prop_samurai_castle_StoneWall",
+  "path": "assets/meshes/zones/Prop_samurai_castle_StoneWall.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_StoneWall.kiln.js",
+  "tris": 2534,
+  "bounds_studs": [
+   24,
+   9.475,
+   5
+  ],
+  "target_studs": [
+   24,
+   9,
+   5
+  ],
+  "deviation_pct": [
+   0.0,
+   5.3,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -12,
+   0,
+   -2.5
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "PlasterWhite_FFFFFF",
+   "ZoneRed_E0453C"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 1312,
+   "StoneLight_9AA4B2": 1090,
+   "PlasterWhite_FFFFFF": 44,
+   "ZoneRed_E0453C": 88
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch2 sheet. Changed: red trim band was hidden under the cap overhang from above; ridge cap made red and band lowered. Same battered stone courses as the CastleKeep base."
+ },
+ {
+  "name": "Prop_samurai_castle_WarBanner",
+  "path": "assets/meshes/zones/Prop_samurai_castle_WarBanner.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_WarBanner.kiln.js",
+  "tris": 934,
+  "bounds_studs": [
+   3,
+   13.3,
+   1.5
+  ],
+  "target_studs": [
+   3,
+   13,
+   1.5
+  ],
+  "deviation_pct": [
+   0.0,
+   2.3,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -1.5,
+   0,
+   -0.75
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "Wood_8A5A2B",
+   "ZoneRed_E0453C",
+   "CrestWhite_FFFFFF",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 100,
+   "Wood_8A5A2B": 78,
+   "ZoneRed_E0453C": 44,
+   "CrestWhite_FFFFFF": 344,
+   "Gold_FFC83D": 368
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch2 sheet. Changed: width measured 3.3 (+10.0%, at the limit); shortened crossbar and base -> 3.0. Banner cloth 0.45 thick (>=0.4)."
+ },
+ {
+  "name": "Prop_hero_city_Billboard",
+  "path": "assets/meshes/zones/Prop_hero_city_Billboard.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_Billboard.kiln.js",
+  "tris": 1132,
+  "bounds_studs": [
+   18,
+   14.3,
+   3.212
+  ],
+  "target_studs": [
+   18,
+   14,
+   3
+  ],
+  "deviation_pct": [
+   0.0,
+   2.1,
+   7.1
+  ],
+  "bounds_min_studs": [
+   -9,
+   0,
+   -1.606
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "Ink_0D0F2B",
+   "FaceWhite_FFFFFF",
+   "ZoneCyan_35C9F0",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 824,
+   "Ink_0D0F2B": 44,
+   "FaceWhite_FFFFFF": 44,
+   "ZoneCyan_35C9F0": 88,
+   "Gold_FFC83D": 132
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch3 sheet + front view (billboard_front.png): blank white face toward -Z, inside an ink frame; cyan light bars top and bottom; gold lamp heads. FaceWhite is a separate part so the game can put a SurfaceGui/Decal on it."
+ },
+ {
+  "name": "Prop_hero_city_RooftopPad",
+  "path": "assets/meshes/zones/Prop_hero_city_RooftopPad.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_RooftopPad.kiln.js",
+  "tris": 972,
+  "bounds_studs": [
+   16,
+   5.4,
+   16
+  ],
+  "target_studs": [
+   16,
+   5,
+   16
+  ],
+  "deviation_pct": [
+   0.0,
+   8.0,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -8,
+   0,
+   -8
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "Ink_0D0F2B",
+   "ZoneCyan_35C9F0",
+   "MarkWhite_FFFFFF"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 184,
+   "StoneLight_9AA4B2": 100,
+   "Ink_0D0F2B": 204,
+   "ZoneCyan_35C9F0": 416,
+   "MarkWhite_FFFFFF": 68
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch3 sheet, first build. White H uprights run front-to-back so it reads as H from -Z. Height 5.4 (+8%) from the AC hatch."
+ },
+ {
+  "name": "Prop_hero_city_StreetLamp",
+  "path": "assets/meshes/zones/Prop_hero_city_StreetLamp.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_StreetLamp.kiln.js",
+  "tris": 720,
+  "bounds_studs": [
+   2.5,
+   12.9,
+   2.5
+  ],
+  "target_studs": [
+   2.5,
+   12,
+   2.5
+  ],
+  "deviation_pct": [
+   0.0,
+   7.5,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -1.25,
+   0,
+   -1.25
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "Ink_0D0F2B",
+   "ZoneCyan_35C9F0",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 68,
+   "Ink_0D0F2B": 464,
+   "ZoneCyan_35C9F0": 76,
+   "Gold_FFC83D": 112
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch3 sheet, first build. ZoneCyan part = lantern core + pole band, intended for Neon/PointLight. Height 12.9 (+7.5%)."
+ },
+ {
+  "name": "Prop_hero_city_HeroStatue",
+  "path": "assets/meshes/zones/Prop_hero_city_HeroStatue.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_HeroStatue.kiln.js",
+  "tris": 1424,
+  "bounds_studs": [
+   8,
+   16.31,
+   8
+  ],
+  "target_studs": [
+   8,
+   16,
+   8
+  ],
+  "deviation_pct": [
+   0.0,
+   1.9,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -4,
+   0,
+   -4
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "Bronze_CD7F32",
+   "ZoneCyan_35C9F0"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 88,
+   "StoneLight_9AA4B2": 92,
+   "Bronze_CD7F32": 1156,
+   "ZoneCyan_35C9F0": 88
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch3 sheet, first build (blocky toy figure, raised right fist, cape). Bronze #CD7F32 is outside the bible palette list (kit asks for bronze); cyan plaque + chest emblem are the zone trim."
+ },
+ {
+  "name": "Prop_realm_of_legends_SpiritLantern",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_SpiritLantern.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_SpiritLantern.kiln.js",
+  "tris": 852,
+  "bounds_studs": [
+   3,
+   7.24,
+   3
+  ],
+  "target_studs": [
+   3,
+   7,
+   3
+  ],
+  "deviation_pct": [
+   0.0,
+   3.4,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -1.5,
+   0,
+   -1.5
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "ZoneViolet_A66BFF",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 68,
+   "StoneLight_9AA4B2": 444,
+   "ZoneViolet_A66BFF": 208,
+   "Gold_FFC83D": 132
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch4 sheet. Changed: width measured 3.44 (+14.7%, FAIL) from hex roof corners; corner radius 1.72->1.5 -> 3.00. Height 7.24 (+3.4%)."
+ },
+ {
+  "name": "Prop_realm_of_legends_CloudBank",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_CloudBank.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_CloudBank.kiln.js",
+  "tris": 1434,
+  "bounds_studs": [
+   26.49,
+   8,
+   15.774
+  ],
+  "target_studs": [
+   26,
+   8,
+   16
+  ],
+  "deviation_pct": [
+   1.9,
+   0.0,
+   -1.4
+  ],
+  "bounds_min_studs": [
+   -13.245,
+   0,
+   -7.887
+  ],
+  "colour_parts": [
+   "ZoneViolet_A66BFF",
+   "CloudLilac_D9C2FF",
+   "CloudWhite_FFFFFF"
+  ],
+  "tris_per_part": {
+   "ZoneViolet_A66BFF": 324,
+   "CloudLilac_D9C2FF": 428,
+   "CloudWhite_FFFFFF": 682
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on batch4 sheet. Changed: length measured 29.56 (+13.7%, FAIL); pulled end lobes in -> 26.49. Six white flat-bottomed lobes, four lilac lower puffs, violet base lip."
+ }
+]

@@ -1,0 +1,28 @@
+{
+  "Food_curry": 113210740339936,
+  "Food_dango": 102838079412563,
+  "Food_dragon_feast": 89171129947009,
+  "Food_festival_cake": 119044786881005,
+  "Food_gyoza": 90996283989359,
+  "Food_ice_cream": 122793718938775,
+  "Food_onigiri": 107454974265005,
+  "Food_ramen": 72281404305928,
+  "Food_spicy_bun": 80238932916174,
+  "Food_sushi": 133181824767195,
+  "Food_takoyaki": 78773572739984,
+  "Food_tempura": 83257866825513,
+  "_hashes": {
+    "Food_curry": "4f64f541253715aa",
+    "Food_dango": "9f37cc659aab8f65",
+    "Food_dragon_feast": "965d0e35c09ee348",
+    "Food_festival_cake": "00de891050df0938",
+    "Food_gyoza": "688c0404a40e03a7",
+    "Food_ice_cream": "0db74f2b479f3f65",
+    "Food_onigiri": "2a6e3cb5018c1425",
+    "Food_ramen": "f580804bbca2e7de",
+    "Food_spicy_bun": "b03b3137499e15a5",
+    "Food_sushi": "f50744e7addfa17c",
+    "Food_takoyaki": "2f2337047d4feece",
+    "Food_tempura": "e0b7950f69913961"
+  }
+}

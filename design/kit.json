@@ -1,0 +1,860 @@
+{
+ "note": "Art bible and size table for every model the world needs. Mesh workers build TO these sizes (within 10%, report the measured size); the map places BY these sizes. Sizes are [x, y, z] studs, the model standing on y = 0, centred on x and z, its front facing -Z. One Roblox character is 5.5 tall and 4 wide.",
+ "style": {
+  "name": "Toy-block anime festival",
+  "why": "The owner played the greybox and called it plain. The genre's hit games are bright, chunky and readable from far away. This is our own version of that: a toy diorama, not realism.",
+  "shape": [
+   "big simple volumes with bevelled edges (0.15 to 0.3 stud chamfers), never razor-sharp boxes",
+   "exaggerated, friendly proportions: fat posts, oversized roofs, thick rims, rounded tree crowns built from a few chunky lobes",
+   "nothing thinner than 0.4 studs; it must read from 80 studs away and on a phone",
+   "a darker base lip and a lighter top band on most objects, so they sit on the ground and catch the eye",
+   "every model is one closed, clean piece of geometry per colour: no stacks of visible primitive boxes, no z-fighting faces"
+  ],
+  "colour": [
+   "saturated flat colours, 3 to 5 per object, no textures; each colour becomes one MeshPart",
+   "the zone's key colour appears on every prop of that zone as trim",
+   "white keyline accents and warm yellow highlights tie the whole world to the UI (plan/05)",
+   "wood #B5793F and #8A5A2B, stone #9AA4B2 and #6B7686, grass #5BD43A and #46B82C, sand #F4D58A, water #38BDF8, ink #0D0F2B"
+  ],
+  "zone_key_colours": {
+   "sakura_schoolyard": "#FF8FC0",
+   "pirate_harbor": "#FF9A3D",
+   "ninja_village": "#3FBF6A",
+   "samurai_castle": "#E0453C",
+   "hero_city": "#35C9F0",
+   "realm_of_legends": "#A66BFF"
+  },
+  "accent_convention": "Lane_ZoneGate and Plot_Pedestal carry ONE colour that the game recolours at build time (the zone colour, the rarity colour). Author that colour as exactly #FF00FF so the builder can find the part; nothing else may use #FF00FF."
+ },
+ "budgets_tris": {
+  "food": 1500,
+  "plot_kit": 1500,
+  "hub_kit": 5000,
+  "gate": 6000,
+  "gear": 4000,
+  "zone_prop": 4000,
+  "coin": 300
+ },
+ "kit": {
+  "Plot_Pedestal": {
+   "size": [
+    5,
+    1,
+    5
+   ],
+   "look": "low round-cornered plinth, thick white rim, the top face is the #FF00FF accent (recoloured to the hero's rarity); a hero stands on it"
+  },
+  "Plot_Fence": {
+   "size": [
+    8,
+    3,
+    0.8
+   ],
+   "look": "one fence section: two fat posts with rounded caps and two chunky rails; tiles end to end"
+  },
+  "Plot_ThrowPad": {
+   "size": [
+    10,
+    0.6,
+    10
+   ],
+   "look": "round launch pad: yellow disc, white ring, a bold arrow pointing down the lane (+Z)"
+  },
+  "Plot_SlotSign": {
+   "size": [
+    5,
+    6,
+    1
+   ],
+   "look": "wooden signboard on two posts with a blank flat face (text is a SurfaceGui), small roof on top"
+  },
+  "Plot_NameArch": {
+   "size": [
+    16,
+    11,
+    2.5
+   ],
+   "look": "walk-through festival gate, opening at least 10 wide and 8 high, a wide blank name board across the top, paper lanterns on both posts"
+  },
+  "Hub_SellBooth": {
+   "size": [
+    12,
+    10,
+    8
+   ],
+   "look": "market stall with a red and white striped awning, a counter, a coin sign"
+  },
+  "Hub_FoodCart": {
+   "size": [
+    12,
+    10,
+    7
+   ],
+   "look": "yatai street-food cart: wheels, counter with bowls, blue and white striped awning, a lantern"
+  },
+  "Hub_SummonShrine": {
+   "size": [
+    14,
+    14,
+    12
+   ],
+   "look": "small shrine with a curved roof on four pillars and a glowing scroll altar in the middle; the premium summon spot, so the richest object in the hub (gold trim, pink accents)"
+  },
+  "Hub_LeaderboardFrame": {
+   "size": [
+    12,
+    16,
+    1.5
+   ],
+   "look": "standing board: thick frame, blank flat face 10 wide by 13 high (SurfaceGui), a crest on top"
+  },
+  "Hub_DailyChest": {
+   "size": [
+    6,
+    5,
+    4.5
+   ],
+   "look": "fat treasure chest, lid slightly open with a yellow glow slab inside, big lock plate"
+  },
+  "Hub_GiftBox": {
+   "size": [
+    5,
+    5,
+    5
+   ],
+   "look": "big gift box, pink with a yellow ribbon and bow"
+  },
+  "Hub_IndexBoard": {
+   "size": [
+    10,
+    9,
+    1.5
+   ],
+   "look": "open giant book on a stand (the hero index), blue cover, blank pages face"
+  },
+  "Lane_ZoneGate": {
+   "size": [
+    60,
+    32,
+    8
+   ],
+   "look": "GRAND anime shrine gate spanning the whole lane corridor (the owner called the first gate small and lame): two massive pillars on carved stone plinths, an opening at least 44 wide and 20 high, two stacked curved roof beams with upturned gold-tipped ends, a thick twisted shimenawa rope with paper tassels hanging under the lower beam, a big blank banner board in the middle for the zone name (one clean quad facing -Z, about 22 x 4.5), a hanging paper lantern on each side, guardian fox statues on the plinths. Trim, pillar bands and lantern glow in the #FF00FF accent. This is the first thing a player sees when they throw: make it the richest piece in the kit. Budget 6000 triangles."
+  },
+  "Coin_Yen": {
+   "size": [
+    1.6,
+    1.6,
+    0.3
+   ],
+   "look": "thick gold coin with a square hole and a raised rim"
+  },
+  "Plot_ThrowStage": {
+   "size": [
+    20,
+    3,
+    20
+   ],
+   "look": "raised round throwing stage, 3 studs high with three wide steps up from the -Z side (the base side), a thick white rim, a yellow launch disc on top with a bold arrow pointing +Z down the lane, four short corner posts with lantern caps, festival bunting between the two rear posts. The top standing surface is flat and at exactly y = 3. Budget 3000 triangles."
+  }
+ },
+ "gear": {
+  "note": "Eight training tiers on a pad 12 studs across. Each tier must be visibly bigger, brighter and more impressive than the one before; a kid must want the next one at a glance.",
+  "Equip_wooden_dummy": {
+   "size": [
+    3,
+    6,
+    3
+   ],
+   "look": "wooden training dummy: post, cross arm, round head with a painted target"
+  },
+  "Equip_sandbag": {
+   "size": [
+    4,
+    8,
+    4
+   ],
+   "look": "heavy red sandbag hanging from a wooden frame"
+  },
+  "Equip_iron_dummy": {
+   "size": [
+    4,
+    7,
+    4
+   ],
+   "look": "armoured iron dummy with a helmet and spiked shoulders, steel grey with blue trim"
+  },
+  "Equip_stone_pillar": {
+   "size": [
+    5,
+    9,
+    5
+   ],
+   "look": "cracked stone pillar wrapped in a thick rope with paper tags"
+  },
+  "Equip_waterfall": {
+   "size": [
+    9,
+    11,
+    7
+   ],
+   "look": "rock arch with a flat blue waterfall sheet and a splash pool; you train under it"
+  },
+  "Equip_gravity_dojo": {
+   "size": [
+    9,
+    10,
+    9
+   ],
+   "look": "sci-fi gravity chamber: round platform, three curved pylons, purple energy rings"
+  },
+  "Equip_dragon_shrine": {
+   "size": [
+    9,
+    13,
+    9
+   ],
+   "look": "red and gold shrine with a coiled dragon on the roof and two flame bowls"
+  },
+  "Equip_star_forge": {
+   "size": [
+    9,
+    14,
+    9
+   ],
+   "look": "cosmic forge: floating star core held by golden rings over a dark anvil base, cyan glow slabs"
+  }
+ },
+ "foods": {
+  "note": "Held in one hand and thrown; shown large in the shop. Longest side as given. Chunky and instantly recognisable in silhouette. The grip point is the centre.",
+  "Food_onigiri": {
+   "size": [
+    1.8,
+    1.7,
+    1.0
+   ],
+   "look": "rice ball triangle with a nori strip"
+  },
+  "Food_dango": {
+   "size": [
+    0.8,
+    2.4,
+    0.8
+   ],
+   "look": "three dumplings on a stick: pink, white, green"
+  },
+  "Food_sushi": {
+   "size": [
+    2.0,
+    1.0,
+    1.0
+   ],
+   "look": "nigiri: rice block, salmon slab, nori band"
+  },
+  "Food_spicy_bun": {
+   "size": [
+    1.8,
+    1.5,
+    1.8
+   ],
+   "look": "steamed bun with a pleated top and a red chilli mark"
+  },
+  "Food_gyoza": {
+   "size": [
+    2.0,
+    1.0,
+    1.2
+   ],
+   "look": "crescent dumpling with a crimped edge, toasted bottom"
+  },
+  "Food_ice_cream": {
+   "size": [
+    1.3,
+    2.6,
+    1.3
+   ],
+   "look": "two-scoop cone, pink and mint, a wafer"
+  },
+  "Food_takoyaki": {
+   "size": [
+    2.4,
+    1.2,
+    1.2
+   ],
+   "look": "three octopus balls in a paper boat with sauce and a pick"
+  },
+  "Food_ramen": {
+   "size": [
+    2.2,
+    1.5,
+    2.2
+   ],
+   "look": "bowl of ramen: noodles, egg half, naruto swirl, chopsticks"
+  },
+  "Food_curry": {
+   "size": [
+    2.4,
+    1.0,
+    1.8
+   ],
+   "look": "oval plate, rice on one side, brown curry on the other, a red pickle"
+  },
+  "Food_tempura": {
+   "size": [
+    2.2,
+    1.2,
+    1.0
+   ],
+   "look": "golden fried shrimp with a red tail"
+  },
+  "Food_festival_cake": {
+   "size": [
+    2.2,
+    2.2,
+    2.2
+   ],
+   "look": "three-tier festival cake, pink icing, strawberries, a star topper"
+  },
+  "Food_dragon_feast": {
+   "size": [
+    2.8,
+    2.0,
+    2.2
+   ],
+   "look": "golden platter with a roast, flames in red and yellow, a tiny dragon horn garnish: the best food in the game"
+  }
+ },
+ "zone_props": {
+  "note": "Scenery between and beside the lanes. Five per zone; the tall landmark of each zone must be visible from the plots.",
+  "Prop_sakura_schoolyard_CherryTree": {
+   "size": [
+    11,
+    14,
+    11
+   ],
+   "look": "cherry tree: brown trunk, pink crown of four or five chunky lobes"
+  },
+  "Prop_sakura_schoolyard_SchoolGate": {
+   "size": [
+    26,
+    12,
+    4
+   ],
+   "look": "school gate: two brick pillars, sliding gate, a name plate"
+  },
+  "Prop_sakura_schoolyard_Bench": {
+   "size": [
+    6,
+    3,
+    2.5
+   ],
+   "look": "park bench"
+  },
+  "Prop_sakura_schoolyard_TrackHurdle": {
+   "size": [
+    5,
+    3.5,
+    1.5
+   ],
+   "look": "running-track hurdle, red and white"
+  },
+  "Prop_sakura_schoolyard_ClockTower": {
+   "size": [
+    12,
+    34,
+    12
+   ],
+   "look": "school clock tower with a big clock face and a pink roof: the zone landmark"
+  },
+  "Prop_pirate_harbor_PirateShip": {
+   "size": [
+    20,
+    30,
+    44
+   ],
+   "look": "chunky pirate ship: hull, two masts, orange striped sails, a flag: the zone landmark"
+  },
+  "Prop_pirate_harbor_Dock": {
+   "size": [
+    14,
+    3,
+    24
+   ],
+   "look": "wooden pier on fat posts"
+  },
+  "Prop_pirate_harbor_BarrelStack": {
+   "size": [
+    6,
+    6,
+    6
+   ],
+   "look": "three barrels and a crate"
+  },
+  "Prop_pirate_harbor_Lighthouse": {
+   "size": [
+    12,
+    40,
+    12
+   ],
+   "look": "red and white striped lighthouse with a yellow lamp room"
+  },
+  "Prop_pirate_harbor_PalmTree": {
+   "size": [
+    9,
+    15,
+    9
+   ],
+   "look": "palm tree with a curved trunk and five fat fronds, coconuts"
+  },
+  "Prop_ninja_village_BambooCluster": {
+   "size": [
+    8,
+    20,
+    8
+   ],
+   "look": "five thick bamboo stalks with leaf tufts"
+  },
+  "Prop_ninja_village_RopeBridge": {
+   "size": [
+    8,
+    6,
+    26
+   ],
+   "look": "plank bridge with rope rails between two posts"
+  },
+  "Prop_ninja_village_HiddenGate": {
+   "size": [
+    22,
+    16,
+    5
+   ],
+   "look": "wooden village gate with a leaf-green roof and a swirl emblem"
+  },
+  "Prop_ninja_village_WatchPost": {
+   "size": [
+    9,
+    22,
+    9
+   ],
+   "look": "watch tower on four legs with a hut on top: the zone landmark"
+  },
+  "Prop_ninja_village_TrainingLog": {
+   "size": [
+    3,
+    7,
+    3
+   ],
+   "look": "upright training log with target rings and stuck throwing stars"
+  },
+  "Prop_samurai_castle_CastleKeep": {
+   "size": [
+    36,
+    44,
+    30
+   ],
+   "look": "three-tier castle keep: white walls, red curved roofs, gold fish ornaments: the zone landmark"
+  },
+  "Prop_samurai_castle_StoneWall": {
+   "size": [
+    24,
+    9,
+    5
+   ],
+   "look": "sloped stone wall section with a tiled cap"
+  },
+  "Prop_samurai_castle_RedBridge": {
+   "size": [
+    10,
+    7,
+    26
+   ],
+   "look": "arched red bridge with railings"
+  },
+  "Prop_samurai_castle_PineTree": {
+   "size": [
+    10,
+    17,
+    10
+   ],
+   "look": "pine with three flat cloud-shaped layers"
+  },
+  "Prop_samurai_castle_WarBanner": {
+   "size": [
+    3,
+    13,
+    1.5
+   ],
+   "look": "tall narrow banner on a pole, red with a white crest"
+  },
+  "Prop_hero_city_NeonTower": {
+   "size": [
+    16,
+    48,
+    16
+   ],
+   "look": "skyscraper with cyan neon bands and a rooftop antenna: the zone landmark"
+  },
+  "Prop_hero_city_Billboard": {
+   "size": [
+    18,
+    14,
+    3
+   ],
+   "look": "rooftop billboard on a frame with a blank face and light bars"
+  },
+  "Prop_hero_city_RooftopPad": {
+   "size": [
+    16,
+    5,
+    16
+   ],
+   "look": "low building top with a hero landing pad marked H"
+  },
+  "Prop_hero_city_StreetLamp": {
+   "size": [
+    2.5,
+    12,
+    2.5
+   ],
+   "look": "street lamp with a cyan light"
+  },
+  "Prop_hero_city_HeroStatue": {
+   "size": [
+    8,
+    16,
+    8
+   ],
+   "look": "caped hero statue on a plinth, bronze with a cyan plaque"
+  },
+  "Prop_realm_of_legends_FloatingIsland": {
+   "size": [
+    28,
+    16,
+    28
+   ],
+   "look": "floating rock island: grass top, tapering rock underside, a small waterfall slab: the zone landmark"
+  },
+  "Prop_realm_of_legends_GreatTorii": {
+   "size": [
+    34,
+    28,
+    6
+   ],
+   "look": "giant torii, violet and gold"
+  },
+  "Prop_realm_of_legends_SpiritLantern": {
+   "size": [
+    3,
+    7,
+    3
+   ],
+   "look": "stone lantern with a violet flame slab"
+  },
+  "Prop_realm_of_legends_CrystalTree": {
+   "size": [
+    10,
+    16,
+    10
+   ],
+   "look": "tree with a white trunk and faceted violet crystal crown"
+  },
+  "Prop_realm_of_legends_CloudBank": {
+   "size": [
+    26,
+    8,
+    16
+   ],
+   "look": "flat-bottomed puffy cloud made of five or six rounded lobes"
+  }
+ },
+ "zone_props_v2": {
+  "note": "Second set, added after the owner played the first map and called the surroundings sparse and generic. These are the anime-flavoured SET PIECES: things a kid recognises from anime towns, placed densely along the lane walls. Same style rules as everything else. Each zone's key colour as trim.",
+  "Prop_shared_RamenStand": {
+   "size": [
+    10,
+    9,
+    7
+   ],
+   "look": "street ramen stall: noren curtain, stools, a giant ramen bowl sign on the roof, steam puff"
+  },
+  "Prop_shared_VendingMachine": {
+   "size": [
+    3,
+    6.5,
+    2.5
+   ],
+   "look": "Japanese drink vending machine, bright blue, rows of cans behind glass, glowing front"
+  },
+  "Prop_shared_LuckyCat": {
+   "size": [
+    8,
+    11,
+    7
+   ],
+   "look": "giant maneki-neko lucky cat statue, white with red collar and gold bell, one paw raised, gold coin"
+  },
+  "Prop_shared_KoiFlagPole": {
+   "size": [
+    6,
+    18,
+    2
+   ],
+   "look": "tall pole flying three koinobori carp streamers (red, blue, pink) and a spinning pinwheel top"
+  },
+  "Prop_shared_LanternString": {
+   "size": [
+    16,
+    7,
+    1.5
+   ],
+   "look": "two posts with a sagging string of seven round paper festival lanterns, red and white"
+  },
+  "Prop_shared_Daruma": {
+   "size": [
+    6,
+    6.5,
+    6
+   ],
+   "look": "big red daruma doll with gold brows and one painted eye"
+  },
+  "Prop_shared_DangoStatue": {
+   "size": [
+    5,
+    13,
+    5
+   ],
+   "look": "giant three-ball dango skewer monument (pink, white, green) on a stone plinth"
+  },
+  "Prop_sakura_schoolyard_SchoolBuilding": {
+   "size": [
+    44,
+    24,
+    18
+   ],
+   "look": "three-storey anime high school: cream walls, rows of blue windows, central clock gable, pink trim, flat roof with a fence"
+  },
+  "Prop_sakura_schoolyard_BasketballHoop": {
+   "size": [
+    5,
+    11,
+    4
+   ],
+   "look": "street basketball hoop with backboard and net"
+  },
+  "Prop_sakura_schoolyard_SakuraArch": {
+   "size": [
+    18,
+    13,
+    6
+   ],
+   "look": "wooden arch overgrown with chunky cherry-blossom lobes, petals piled at the feet"
+  },
+  "Prop_sakura_schoolyard_BikeRack": {
+   "size": [
+    9,
+    3.5,
+    3
+   ],
+   "look": "bike rack holding three colourful school bicycles"
+  },
+  "Prop_pirate_harbor_GiantAnchor": {
+   "size": [
+    9,
+    12,
+    3
+   ],
+   "look": "huge ship anchor stuck in the ground with a coil of rope, orange trim"
+  },
+  "Prop_pirate_harbor_TreasurePile": {
+   "size": [
+    9,
+    6,
+    9
+   ],
+   "look": "open treasure chest on a heap of gold coins with a crown and gems"
+  },
+  "Prop_pirate_harbor_Cannon": {
+   "size": [
+    6,
+    4,
+    9
+   ],
+   "look": "ship cannon on a wooden carriage with a stack of cannonballs"
+  },
+  "Prop_pirate_harbor_FishStall": {
+   "size": [
+    12,
+    9,
+    8
+   ],
+   "look": "fish market stall, orange awning, crates of colourful fish, hanging octopus"
+  },
+  "Prop_pirate_harbor_SkullRock": {
+   "size": [
+    26,
+    20,
+    22
+   ],
+   "look": "friendly cartoon skull-shaped rock island with a pirate flag on top and a cave mouth"
+  },
+  "Prop_ninja_village_NinjaHouse": {
+   "size": [
+    18,
+    14,
+    16
+   ],
+   "look": "round-walled village house with a domed green roof, round windows, a swirl sign"
+  },
+  "Prop_ninja_village_GiantShuriken": {
+   "size": [
+    10,
+    11,
+    2.5
+   ],
+   "look": "giant four-point shuriken monument stuck in a stone base"
+  },
+  "Prop_ninja_village_FoxStatue": {
+   "size": [
+    7,
+    10,
+    8
+   ],
+   "look": "seated fox guardian statue with a red bib and many tails fanned behind"
+  },
+  "Prop_ninja_village_ScrollStand": {
+   "size": [
+    6,
+    8,
+    3
+   ],
+   "look": "giant open ninja scroll on a wooden stand with bold brush marks"
+  },
+  "Prop_ninja_village_TreeHouse": {
+   "size": [
+    14,
+    22,
+    14
+   ],
+   "look": "lookout hut built round a fat tree trunk with a rope ladder and leaf canopy"
+  },
+  "Prop_samurai_castle_Pagoda": {
+   "size": [
+    16,
+    34,
+    16
+   ],
+   "look": "five-tier pagoda, red pillars, dark curved roofs, gold spire"
+  },
+  "Prop_samurai_castle_KatanaMonument": {
+   "size": [
+    6,
+    20,
+    6
+   ],
+   "look": "giant katana plunged into a rock, red wrap on the hilt, gold guard"
+  },
+  "Prop_samurai_castle_TaikoDrum": {
+   "size": [
+    8,
+    7,
+    8
+   ],
+   "look": "big festival taiko drum on a stand with two sticks, red body, tomoe mark"
+  },
+  "Prop_samurai_castle_ArmorStand": {
+   "size": [
+    5,
+    8,
+    4
+   ],
+   "look": "samurai armour on a display stand: horned helmet, red lacquer plates"
+  },
+  "Prop_samurai_castle_ToriiRow": {
+   "size": [
+    10,
+    10,
+    22
+   ],
+   "look": "tunnel of five red torii gates in a row over a stone path"
+  },
+  "Prop_hero_city_MechaStatue": {
+   "size": [
+    16,
+    30,
+    10
+   ],
+   "look": "giant hero robot statue in a heroic pose: white, blue and red armour, V crest, glowing cyan chest"
+  },
+  "Prop_hero_city_ArcadeMachine": {
+   "size": [
+    3,
+    6.5,
+    3
+   ],
+   "look": "arcade cabinet with a glowing screen, joystick and neon side art"
+  },
+  "Prop_hero_city_NeonSign": {
+   "size": [
+    12,
+    9,
+    2
+   ],
+   "look": "big neon ramen-bowl sign on a pole with chopsticks and steam, cyan and pink tubes"
+  },
+  "Prop_hero_city_SubwayEntrance": {
+   "size": [
+    12,
+    7,
+    10
+   ],
+   "look": "subway stairwell entrance with a canopy, a round metro sign and railings"
+  },
+  "Prop_hero_city_Shop": {
+   "size": [
+    18,
+    16,
+    12
+   ],
+   "look": "two-storey anime convenience store: glass front, striped awning, rooftop billboard frame"
+  },
+  "Prop_realm_of_legends_DragonStatue": {
+   "size": [
+    20,
+    24,
+    14
+   ],
+   "look": "coiled eastern dragon statue rising from a cloud base, violet scales, gold horns and whiskers, pearl in claw"
+  },
+  "Prop_realm_of_legends_SpiritGate": {
+   "size": [
+    16,
+    18,
+    4
+   ],
+   "look": "giant ring-shaped portal gate on a stepped base with a flat glowing violet disc inside"
+  },
+  "Prop_realm_of_legends_FloatingShrine": {
+   "size": [
+    18,
+    16,
+    18
+   ],
+   "look": "small shrine on a floating rock with hanging vines and two stone lanterns (lowest point is the rock tip)"
+  },
+  "Prop_realm_of_legends_StarAltar": {
+   "size": [
+    10,
+    8,
+    10
+   ],
+   "look": "round altar with a floating gold star above it, ringed by four crystal pillars"
+  },
+  "Prop_realm_of_legends_GiantSword": {
+   "size": [
+    8,
+    26,
+    4
+   ],
+   "look": "legendary greatsword standing in a crystal mound, violet gem in the guard, gold edge"
+  }
+ }
+}

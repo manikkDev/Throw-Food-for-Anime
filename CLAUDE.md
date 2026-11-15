@@ -57,7 +57,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 
 ## Where the game's pieces live (since section 2)
 
-- Code: `src/` (16 server services, 6 client controllers, 12 pure Core modules with specs in `tests/`).
+- Code: `src/` (16 server services, 7 client controllers + `src/client/Ui/` (Screens, Pages), 12 pure Core modules with specs in `tests/`).
   `src/shared/Config/GameConfig.luau` is GENERATED from `design/game.json`: edit the JSON, then
   `python ~/.claude/skills/create-roblox-game/scripts/gen_config.py --dir .`. Pacing gate:
   `python tools/balance_sim.py --check`. Server-only tunables (promo codes) live in `server_config`
@@ -65,9 +65,26 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   Never put a code in `config` (it is sent to every client). Every gate at once: `python tools/gate.py`.
 - Hero templates: `ReplicatedStorage.Assets.Characters.Char_<id>` (in the place, not in Rojo).
   Rebuilt from `ServerStorage.CharacterSources.R15_Final` by `tools/studio/bake_characters.luau`.
-  The user's R6 imports are archived in `ServerStorage.CharacterSources.R6_Originals`: never delete.
+  The user's imports are archived in `ServerStorage.CharacterSources.R6_Originals` (31) and
+  `.Originals_Batch2` (12) and `.Originals_Batch3` (16): never delete. New avatars: `tools/studio/build_r15.luau` rebuilds them to
+  the standard rig, `python tools/studio/run_bake.py` bakes the whole roster (59 heroes today: 51 lane + 8 premium).
   Roster map: `design/characters/roster.json`; rules and traps: `design/characters/README.md`.
-- The map is a code-built placeholder (`src/server/World/Blockout.luau`) until section 3.
+- The map is `Workspace.Map` in the place (terrain + about 13,300 parts: bases 84 x 72 on a 108 pitch, styled lanes, a store-asset town on the wall terraces and behind the hub; generator = `gen_map.py` + `gen_lane_style.py` + `gen_town.py`, textures `tools/map/make_textures.py` -> `assets/map/ids_textures.json`). Source: `design/map.json` + `tools/map/`
+  (generator, emitter, `RUN.md`); build it with `python tools/map/build_in_studio.py`. `Blockout.luau` only
+  builds a grey fallback when the place has no `Workspace.Map`.
+- Creator Store models (free, the owner's request): cleaned sources in `ServerStorage.StoreAssets` (61, never delete; buildings assembled by `tools/studio/assemble_store_buildings.luau`; tags `design/store_assets.json` feed the map generator's pools) ->
+  `python tools/studio/install_store_assets.py` -> `ReplicatedStorage.Assets.Kit.Prop_store_<Name>` and
+  `assets/meshes/manifest-store.json`. Take a new one in through a quarantine folder: strip every script, GUI, sound,
+  constraint and effect, count its parts (reject thousands), look at it, then add it to `StoreAssets`.
+- Models: `design/kit.json` (art bible + sizes) -> Kiln sources `assets/meshes/src/` -> `tools/publish_meshes.py`
+  (upload) -> `tools/studio/install_models.py` (templates in `ReplicatedStorage.Assets.{Kit,Gear,Foods}`) ->
+  `tools/merge_manifest.py`. Parts are coloured from the hex at the end of their name.
+- UI v3: one button system (`tools/ui/mp3.py`, screens `tools/ui/screens_v3.py`), checked by `tools/ui/fit_gate.py`; client side
+  `Screens.setButtonState` and `Theme.BUTTON`. Icons: base key = flat glyph under 30 px, `...Big` key = glossy at 40 px and up.
+  A UI change is only done when it has been looked at IN THE GAME (the mockups do not have Roblox's font metrics).
+- UI: specs `design/ui/` -> `python tools/ui/build_ui.py` -> `src/ui/*.model.json` (`ReplicatedStorage.Ui`) and
+  `design/ui/BINDINGS.md`; icon ids: `python tools/gen_icons.py` -> `src/shared/Config/Icons.luau` (GENERATED).
+  Dead-label gate: `python ~/.claude/skills/roblox-ui/scripts/verify_labels.py --ui src/ui --client src/client`.
 - Studio sessions use their own stores (`Profiles_Dev`, `LB_*_Dev`); test commands are the TEST menu.
 
 ## Known traps on this machine
@@ -83,6 +100,15 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - During Play, `execute_luau` cannot see the game's Knit services or controllers (its `require` is a
   separate copy). Read state through instances and GUI text, fire remotes from the Client datamodel,
   and hook remotes to log what the server answered.
+- Studio renders at about 15 fps whenever its window is not in front: a frame-rate reading is only valid with
+  Studio focused (measured: 15 fps with the whole world hidden, 60 fps a minute later in front).
+- A locked or sleeping screen stops Studio rendering: `screen_capture` times out and a RenderStepped probe never returns.
+  Check `Get-Process LogonUI`; building the map still works.
+- A UIStroke under a TextLabel must be `Contextual` to outline the letters; `Border` draws a box round the label.
+- Roblox's importer delivers an uploaded glTF model turned half a turn about Y (front authored at -Z arrives at +Z).
+  `tools/studio/install_models.py` turns every template back and puts its pivot at the base centre; a GUI adorned to a
+  kit `Face_<hex>` MeshPart goes on `NormalId.Back`, a GUI on a plain anchor Part in front of a model on `Front`.
+- `user_mouse_input` / `character_navigation` need the exact instance path: get it from a probe, never guess.
 - The Luau gate hook auto-runs the formatter on format-only failures and reports only failing lines.
 - After reinstalling the skills, re-apply local fixes:
   `python "D:\Roblox Studio Games\_RobloxAI\bootstrap\patch_skills.py"`.

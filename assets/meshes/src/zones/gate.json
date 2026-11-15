@@ -1,0 +1,182 @@
+{
+ "Prop_sakura_schoolyard_CherryTree": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (grass mound)",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass"
+  },
+  "notes": "Changed after look: trunk thickened (r 1.0->1.25, root flare 1.8), third branch, lobes flattened 0.85->0.78 and overlapped so the crown reads as one mass, light-pink caps flattened. Key colour IS the crown."
+ },
+ "Prop_pirate_harbor_PalmTree": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (sand mound)",
+   "min_0.4": "pass (frond thickness 0.52)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass"
+  },
+  "notes": "Changed after look: first build 10.13 wide (+12.5%), lean 2.4->1.2 and frond reach rebalanced; fronds widened. Orange key = rope band at trunk base (small; reads at mid range only)."
+ },
+ "Prop_sakura_schoolyard_SchoolGate": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate pillar bases)",
+   "min_0.4": "pass",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass"
+  },
+  "notes": "Changed after look: spindly gate with diagonal brace (read as a broken ladder) replaced by a framed panel: thicker bars, mid rail, end stiles. Plate glyphs are slate blocks (no text)."
+ },
+ "Prop_sakura_schoolyard_ClockTower": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass",
+   "min_0.4": "pass",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (landmark)"
+  },
+  "notes": "Defect fixed: first build 17.8 wide because Euler XYZ yaws before pitching, so side clock discs faced Z and stuck out; discs now pre-rotated. Tris 4166->3954 (ring segments 16->12). Roof raised 4.2->6.6 after look (read as a flat lid). Clock on all four sides. Height now 38.0 (+12%, inside the 15% allowance) because of the taller roof."
+ },
+ "Prop_pirate_harbor_PirateShip": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (dark hull under light deck)",
+   "min_0.4": "pass",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (landmark)"
+  },
+  "notes": "Bow at -Z. Flat keel at y=0 (sits on a water plane, not in it). Hull and deck are both wood browns; the orange stripe and gunwale carry the contrast."
+ },
+ "Prop_ninja_village_WatchPost": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate footings)",
+   "min_0.4": "pass",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (landmark)"
+  },
+  "notes": "Defect fixed: Kiln rejected the program with no message; error was Manifold 'Not manifold' from four equal-length balcony rails whose corner faces coincided. Rails now differ in length; prelude falls back to incremental union. Depth +12% is the front ladder."
+ },
+ "Prop_pirate_harbor_Lighthouse": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass",
+   "min_0.4": "pass",
+   "no_zfight": "pass (red bands 0.18 proud)",
+   "thumbnail_read": "pass"
+  },
+  "notes": "Red #F04848 is not in the bible palette (brief asked red and white)."
+ },
+ "Prop_sakura_schoolyard_Bench": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (3)",
+   "darker_base_lip": "pass (slate foot lips)",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass"
+  },
+  "notes": "No change after look."
+ },
+ "Prop_sakura_schoolyard_TrackHurdle": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (slate feet)",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass"
+  },
+  "notes": "Red blocks stand 0.05 proud of the white board (no coplanar faces). Red #F04848 not in bible palette. No change after look."
+ },
+ "Prop_pirate_harbor_Dock": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (slate post collars)",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass"
+  },
+  "notes": "Deck top at y 2.45, posts to 3.0. Plank gaps 0.15 show dark stringers. Life ring on the -X outside of the front post is small. No change after look."
+ },
+ "Prop_pirate_harbor_BarrelStack": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "colours_3_to_5": "pass (3)",
+   "darker_base_lip": "pass (dark crate bottom band)",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass"
+  },
+  "notes": "Orange hoops on all three barrels + orange stripe on crate front. No change after look."
+ },
+ "Prop_ninja_village_BambooCluster": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (slate base)"
+  },
+  "notes": "Changed after look: 4420 tris (over 4000 budget) -> node rings as plain 4-point bands, wider node spacing, one side tuft -> 3748. Leaves are the key green; stalks #5BD43A, so the greens are close in hue."
+ },
+ "Prop_ninja_village_RopeBridge": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate footings)"
+  },
+  "notes": "Changed after look: 4204 tris -> rope tubes 6-sided, 5 hangers per side -> 3092. Deck sags 1.9 -> 1.05 at mid-span. Rope tubes are 0.44-0.48 thick (above the 0.4 floor)."
+ },
+ "Prop_ninja_village_HiddenGate": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate footings)"
+  },
+  "notes": "Swirl is an ink tube (0.44 thick) on a light plaque in a green frame. No change after look."
+ },
+ "Prop_ninja_village_TrainingLog": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (stars weak)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (dark root flare)"
+  },
+  "notes": "Changed after look: 3.485 wide (+16%) because the throwing stars stuck out; stars smaller and deeper -> 3.086. Weak point: the stars read as dark wedges, not clearly as shuriken; star tips are thinner than 0.4 in-plane (0.4 thick)."
+ }
+}

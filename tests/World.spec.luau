@@ -41,15 +41,50 @@ return {
 		end
 	end,
 
-	["the pads and the sign are inside the plot and clear of the pedestals"] = function()
+	["the dojo pad and the sign are inside the plot; the throw stage is out in front"] = function()
 		local padX, padZ = World.throwPad(W, 1, COUNT)
 		local dojoX, dojoZ = World.dojoPad(W, 1, COUNT)
 		local x0 = World.plotX(W, 1, COUNT)
-		assert(padX == x0 and padZ < W.PlotFrontZ and padZ > W.PlotBackZ)
+		-- the throw stage stands out in FRONT of the base, a walk away from the
+		-- pedestals, and before the first zone begins
+		assert(padX == x0)
+		assert(padZ - W.ThrowPadRadius > W.PlotFrontZ + 20, "the throw stage is too close to the base")
+		assert(padZ + W.ThrowPadRadius < W.LaneStartZ, "the throw stage reaches into the first zone")
 		assert(math.abs(dojoX - x0) <= W.PlotWidth / 2 and dojoZ < W.PlotFrontZ)
 		-- the two pads must not overlap: a player training must not count as "on the throw pad"
 		local gap = World.distance(padX, padZ, dojoX, dojoZ)
 		assert(gap > W.ThrowPadRadius + W.DojoPadRadius + 8, `pads are only {gap} studs apart`)
+	end,
+
+	["pedestals fill the back half, the front half is an open yard"] = function()
+		local mid = (W.PlotBackZ + W.PlotFrontZ) / 2
+		for slot = 1, World.pedestalCount(W) do
+			local _, z = World.pedestalOffset(W, slot)
+			assert(z + 2.5 < mid + 1, `slot {slot} (z = {z}) reaches into the front yard`)
+		end
+		local _, dojoZ = World.dojoPad(W, 1, COUNT)
+		assert(dojoZ > mid, "the dojo pad is not in the front yard")
+	end,
+
+	["the training yard is inside the plot, clear of the spawn, dojo pad and sign"] = function()
+		local x0 = World.plotX(W, 1, COUNT)
+		local yx, yz, yw, yd = World.yard(W, 1, COUNT)
+		local mid = (W.PlotBackZ + W.PlotFrontZ) / 2
+		assert(math.abs(yx - x0) + yw / 2 <= W.PlotWidth / 2 - 2, "the yard pokes out of the plot side")
+		assert(yz - yd / 2 >= mid and yz + yd / 2 <= W.PlotFrontZ - 2, "the yard is not in the front half")
+		assert(yw >= 24 and yd >= 20, "the yard is too small for a mini game")
+		-- the spawn (6 x 6 at plot centre, PlotFrontZ - 16) stays outside the yard
+		assert(math.abs(yx - x0) - yw / 2 > 3, "the spawn stands in the yard")
+		local dojoX = World.dojoPad(W, 1, COUNT)
+		assert(math.abs(dojoX - yx) > yw / 2 + W.DojoPadRadius, "the dojo pad is in the yard")
+		local signX, signZ = World.slotSign(W, 1, COUNT)
+		local inX = math.abs(signX - yx) < yw / 2 + 2
+		local inZ = math.abs(signZ - yz) < yd / 2 + 2
+		assert(not (inX and inZ), "the slot sign is in the yard")
+	end,
+
+	["neighbouring bases have a garden gap between them"] = function()
+		assert(W.PlotPitch - W.PlotWidth >= 20, `only {W.PlotPitch - W.PlotWidth} studs between bases`)
 	end,
 
 	["a landing stays inside its own lane"] = function()

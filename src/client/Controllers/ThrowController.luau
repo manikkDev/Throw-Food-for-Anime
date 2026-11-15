@@ -1,14 +1,20 @@
 --!strict
--- ThrowController - the core verb on the client: charge, release, watch.
+-- ThrowController - the core verb on the client: stand on the pad, tap, watch.
 --
 -- The client only sends (charge, useLuckyThrow). Everything it then shows
--- (flight, landing, reveal) is a replay of a result the server has ALREADY
--- decided and granted, so skipping, lagging or leaving loses nothing.
+-- (wind-up, flight, landing, reveal: Fx/ThrowSequence) is a replay of a result
+-- the server has ALREADY decided and granted, so skipping, lagging or leaving
+-- loses nothing.
 --
--- The charge bar swings 0 -> 1 -> 0. Marks on it show the smallest charge that
--- reaches each unlocked zone, so releasing early is how a player farms an
--- earlier zone on purpose; the top slice is the perfect window (+luck).
+-- THROW MODE. While the player stands on their own pad (and no page is open)
+-- the camera settles behind the shoulder looking down the lane, the HUD steps
+-- aside, and the meter's marker slides up and down by itself, one sweep every
+-- Throw.ChargeSeconds. ONE tap (the THROW button, Space, T, gamepad X or R2)
+-- throws with the charge the marker shows at that instant. Bands on the meter
+-- mark the height that reaches each zone, so tapping low is how a player farms
+-- an earlier zone on purpose; the top slice is the perfect band (+luck).
 
+local ContextActionService = game:GetService("ContextActionService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
@@ -17,10 +23,14 @@ local UserInputService = game:GetService("UserInputService")
 local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
+local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local World = require(ReplicatedStorage.Shared.Core.World)
-local Make = require(script.Parent.Parent.Ui.Make)
+local Particles = require(script.Parent.Parent.Fx.Particles)
+local ThrowSequence = require(script.Parent.Parent.Fx.ThrowSequence)
+local Screens = require(script.Parent.Parent.Ui.Screens)
+local Theme = require(script.Parent.Parent.Ui.Theme)
 
 local MAPS = Lookup.of(Config)
 local T = Config.Throw
@@ -28,25 +38,38 @@ local W = Config.World
 local COUNT = Config.Server.PlotCount
 local player = Players.LocalPlayer
 
-local FLAVOR_COLORS: { [string]: Color3 } = {
-	Savory = Color3.fromRGB(240, 200, 120),
-	Sweet = Color3.fromRGB(255, 150, 200),
-	Spicy = Color3.fromRGB(255, 90, 60),
-	Seafood = Color3.fromRGB(110, 200, 255),
+local TAP_ACTION = "ThrowTap"
+local TAP_KEYS = {
+	Enum.KeyCode.Space,
+	Enum.KeyCode.T,
+	Enum.KeyCode.ButtonX,
+	Enum.KeyCode.ButtonR2,
 }
+-- how long the meter stays up after the tap, into the wind-up, so the
+-- player sees where the marker stopped and the "PERFECT!"
+local METER_LINGER = 0.4
 
 local ThrowController = Knit.CreateController({
 	Name = "ThrowController",
 	_busy = false,
-	_charging = false,
-	_chargeStart = 0,
 	_useLucky = false,
 	_auto = false,
-	_skip = false,
+	_autoThrown = false,
 	_onPad = false,
 	_sentAt = 0,
 	_playing = false,
+	_playStart = 0,
+	_abort = false,
+	_taps = 0,
+	_tapAt = 0,
 	_lastZone = nil :: number?,
+	_mode = "normal",
+	_sweepStart = 0,
+	_frozen = nil :: number?,
+	_bonusText = "",
+	_zoneText = "",
+	_zoneBands = {} :: { [number]: GuiObject },
+	_zoneColors = {} :: { [number]: Color3 },
 })
 
 local function rootPart(): BasePart?
@@ -55,122 +78,174 @@ local function rootPart(): BasePart?
 	return if root and root:IsA("BasePart") then root else nil
 end
 
-function ThrowController:_charge(): number
-	local phase = (os.clock() - self._chargeStart) / T.ChargeSeconds
-	local wave = 1 - math.abs((phase % 2) - 1) -- 0 -> 1 -> 0
-	return T.MinCharge + (1 - T.MinCharge) * wave
+-- Throw mode's camera: close behind and just above the right shoulder,
+-- looking straight down the lane and a touch downward. That puts the
+-- character, from the knees up, in the left-centre third of the screen with
+-- its head just under the middle, and leaves the gate and the corridor the
+-- rest (the meter sits to the right of the character). Taken from where the
+-- character really stands (the pad is a raised stage), never from a pad
+-- height. Facing down the lane (+Z) the right shoulder is on -X.
+local SHOULDER_EYE = Vector3.new(-2.6, 4.4, -8.5) -- from the root: right, up, behind
+local SHOULDER_AIM = Vector3.new(0, -3.4, 40) -- from the eye: down the lane
+local function shoulderCamera(root: BasePart): CFrame
+	local eye = root.Position + SHOULDER_EYE
+	return CFrame.lookAt(eye, eye + SHOULDER_AIM)
+end
+
+-- where the marker is: 0 (bottom of the meter) .. 1 (top), 0 -> 1 -> 0
+function ThrowController:_value(): number
+	local frozen = self._frozen
+	if frozen then
+		return frozen
+	end
+	local phase = (os.clock() - self._sweepStart) / T.ChargeSeconds
+	return 1 - math.abs((phase % 2) - 1)
+end
+
+-- the charge a marker height stands for: never below MinCharge
+local function chargeOf(value: number): number
+	return math.clamp(T.MinCharge + (1 - T.MinCharge) * value, T.MinCharge, 1)
 end
 
 function ThrowController:_canThrow(): boolean
 	-- never ask before the server cooldown has passed: a refused throw gets
 	-- no answer, and the pad would then sit locked waiting for one
-	return self._onPad
+	return self._mode == "throw"
 		and not self._busy
 		and self._state.State ~= nil
 		and os.clock() - self._sentAt >= T.ServerCooldownSeconds + 0.1
 end
 
-function ThrowController:_begin()
-	if self._charging or not self:_canThrow() then
-		return
-	end
-	self._charging = true
-	self._chargeStart = os.clock()
-end
-
-function ThrowController:_send(charge: number)
+function ThrowController:_send(value: number, auto: boolean)
+	local charge = chargeOf(value)
 	self._busy = true
+	self._frozen = value
+	self._autoThrown = auto
 	self._sentAt = os.clock()
 	self._request:FireServer(charge, self._useLucky)
+	if self._tapLabel then
+		self._tapLabel.Text = if Throw.isPerfect(T, charge) then "PERFECT!" else "NICE THROW!"
+	end
 	-- a refused throw sends nothing back: free the pad again
 	task.delay(2.5, function()
 		if self._busy and os.clock() - self._sentAt >= 2.4 and not self._playing then
 			self._busy = false
+			self:_rearm()
 		end
 	end)
 end
 
-function ThrowController:_release()
-	if not self._charging then
-		return
+-- the marker slides again
+function ThrowController:_rearm()
+	self._frozen = nil
+	self._sweepStart = os.clock()
+	if self._tapLabel then
+		self._tapLabel.Text = "TAP TO THROW!"
 	end
-	self._charging = false
-	self:_send(self:_charge())
+end
+
+-- One press of the throw input: a throw on the pad, a skip during the
+-- sequence (the first jumps to the final beat, the second ends it).
+function ThrowController:_tap()
+	local now = os.clock()
+	if self._playing then
+		if now - self._playStart > T.RevealSkipSeconds and now - self._tapAt > 0.2 then
+			self._tapAt = now
+			self._taps += 1
+		end
+	elseif self:_canThrow() then
+		self._tapAt = now
+		self:_send(self:_value(), false)
+	end
 end
 
 -- ------------------------------------------------------------------- ui --
+-- The ThrowMeter screen (src/ui): a vertical meter with a band per reachable
+-- zone and the perfect band on top, the marker and the bonus it is worth, the
+-- Lucky Throw toggle and (with the pass) AUTO.
 
-function ThrowController:_buildUi()
-	local gui = Make.screen("ThrowUi", 20)
-	local root = Make.frame(gui, {
-		Name = "Root",
-		BackgroundTransparency = 1,
-		AnchorPoint = Vector2.new(0.5, 1),
-		Position = UDim2.new(0.5, 0, 1, -24),
-		Size = UDim2.fromOffset(520, 190),
-		Visible = false,
-	})
-	self._zoneLabel = Make.label(root, "", {
-		Name = "ZonePreviewLabel",
-		Size = UDim2.new(1, 0, 0, 30),
-		Position = UDim2.fromOffset(0, 0),
-	})
-	local bar = Make.frame(root, {
-		Name = "ChargeBar",
-		Size = UDim2.new(1, 0, 0, 34),
-		Position = UDim2.fromOffset(0, 40),
-		BackgroundColor3 = Make.INK,
-	})
-	Make.corner(bar, 10)
-	Make.stroke(bar, 3, Color3.new(1, 1, 1))
-	local perfect = Make.frame(bar, {
-		Name = "PerfectWindow",
-		AnchorPoint = Vector2.new(1, 0),
-		Position = UDim2.fromScale(1, 0),
-		Size = UDim2.fromScale(T.PerfectWindow / (1 - T.MinCharge), 1),
-		BackgroundColor3 = Make.BUY,
-		BackgroundTransparency = 0.35,
-	})
-	Make.corner(perfect, 10)
-	self._fill = Make.frame(bar, {
-		Name = "Fill",
-		Size = UDim2.fromScale(0, 1),
-		BackgroundColor3 = Make.GOOD,
-	})
-	Make.corner(self._fill, 10)
-	self._marks = Make.frame(bar, {
-		Name = "ZoneMarks",
-		Size = UDim2.fromScale(1, 1),
-		BackgroundTransparency = 1,
-	})
-	self._throwButton = Make.button(root, "HOLD TO THROW", Make.GOOD, {
-		Name = "ThrowButton",
-		Size = UDim2.fromOffset(260, 84),
-		Position = UDim2.new(0.5, -130, 0, 96),
-	})
-	self._luckyButton = Make.button(root, "LUCKY x0", Make.INFO, {
-		Name = "LuckyThrowToggle",
-		Size = UDim2.fromOffset(118, 56),
-		Position = UDim2.fromOffset(0, 110),
-	})
-	self._autoButton = Make.button(root, "AUTO OFF", Make.PANEL, {
-		Name = "AutoToggle",
-		Size = UDim2.fromOffset(118, 56),
-		Position = UDim2.new(1, -118, 0, 110),
-		Visible = false,
-	})
-	gui.Parent = player:WaitForChild("PlayerGui")
-	self._root = root
+-- the wrapper that holds a toggle in its layout, or the toggle itself
+local function cellOf(gui: Instance, name: string): GuiObject
+	local cell = gui:FindFirstChild(name .. "Cell", true)
+	if cell and cell:IsA("GuiObject") then
+		return cell
+	end
+	return Screens.button(gui, name)
+end
 
-	self._throwButton.MouseButton1Down:Connect(function()
-		self:_begin()
+function ThrowController:_bindUi()
+	local gui = Screens.get("ThrowMeter")
+	gui.Enabled = false
+	self._gui = gui
+	local bar = Screens.frame(gui, "MeterBar")
+	self._marker = Screens.frame(bar, "MeterMarker")
+	self._bonusLabel = Screens.label(self._marker, "BonusLabel")
+	self._bands = Screens.frame(gui, "ZoneBands")
+	self._zoneLabel = Screens.label(gui, "ZonePreviewLabel")
+	self._tapLabel = Screens.label(gui, "TapLabel")
+	self._foodIcon = Screens.image(gui, "FoodIcon")
+	self._luckyCell = cellOf(gui, "LuckyThrowToggle")
+	self._luckyButton = Screens.button(gui, "LuckyThrowToggle")
+	self._luckyCount = Screens.label(gui, "LuckyCount")
+	self._autoCell = cellOf(gui, "AutoToggle")
+	self._autoButton = Screens.button(gui, "AutoToggle")
+	self._autoState = Screens.label(gui, "AutoState")
+	self._autoState.Text = ""
+	self._bonusLabel.Text = ""
+	self._zoneLabel.Text = ""
+	self._luckyCount.Text = ""
+	self._tapLabel.Text = "TAP TO THROW!"
+	self._luckyCell.Visible = false
+	self._autoCell.Visible = false
+
+	-- the perfect band is the top slice of the meter, as tall as the config says
+	local band = Screens.frame(gui, "PerfectBand")
+	band.Size =
+		UDim2.new(band.Size.X.Scale, band.Size.X.Offset, T.PerfectWindow / (1 - T.MinCharge), 0)
+
+	-- a zone's key colour is the one its tab carries in the Hero Index
+	local index = Screens.get("HeroIndex")
+	for zone in Config.Zones do
+		local tab = index:FindFirstChild("ZoneTab" .. zone, true)
+		local fill = tab and tab:FindFirstChild("Fill", true)
+		self._zoneColors[zone] = if fill and fill:IsA("GuiObject")
+			then fill.BackgroundColor3
+			else Theme.WHITE
+	end
+
+	-- The tap is read on the way DOWN: the charge is the marker at that
+	-- instant. ThrowButton is the big invisible tap area, ThrowButtonFace the
+	-- button the player sees; both throw.
+	local tapArea = Screens.button(gui, "ThrowButton")
+	tapArea.MouseButton1Down:Connect(function()
+		self:_tap()
 	end)
-	self._throwButton.MouseButton1Up:Connect(function()
-		self:_release()
+	Screens.button(gui, "ThrowButtonFace").MouseButton1Down:Connect(function()
+		self:_tap()
 	end)
-	self._throwButton.MouseLeave:Connect(function()
-		self:_release()
-	end)
+	-- The tap area reaches the real screen edges (the canvas is 16:9 and
+	-- centred, a window can be wider). On a phone its left 40% is left to
+	-- the thumbstick, or the player could never walk off the pad.
+	local authoredWidth = tapArea.Size.X.Offset
+	local function layoutTapArea(extra: number)
+		local full = authoredWidth + extra
+		local keep = if UserInputService.TouchEnabled then full * 0.4 else 0
+		tapArea.Position =
+			UDim2.new(0, keep - extra / 2, tapArea.Position.Y.Scale, tapArea.Position.Y.Offset)
+		tapArea.Size = UDim2.new(0, full - keep, tapArea.Size.Y.Scale, tapArea.Size.Y.Offset)
+	end
+	layoutTapArea(Screens.extraWidth())
+	Screens.Fitted:Connect(layoutTapArea)
+
+	-- "TAP TO THROW!" belongs under the meter, clear of the character on the
+	-- left: centre it on the meter instead of on the screen
+	local tapLabel = self._tapLabel
+	tapLabel.Position = UDim2.new(
+		bar.Position.X.Scale,
+		bar.Position.X.Offset + (0.5 - bar.AnchorPoint.X) * bar.Size.X.Offset,
+		tapLabel.Position.Y.Scale,
+		tapLabel.Position.Y.Offset
+	)
 	self._luckyButton.Activated:Connect(function()
 		self._useLucky = not self._useLucky
 		self:_refreshUi()
@@ -181,10 +256,11 @@ function ThrowController:_buildUi()
 	end)
 end
 
--- zone marks and labels depend on power and food, so they follow the state
+-- the toggles, the food and the zone bands follow the state (power and food
+-- move the bands)
 function ThrowController:_refreshUi()
 	local state = self._state.State
-	if not state or not self._root then
+	if not state or not self._gui then
 		return
 	end
 	local food = MAPS.food[state.food]
@@ -192,58 +268,122 @@ function ThrowController:_refreshUi()
 	if throws <= 0 then
 		self._useLucky = false
 	end
-	self._luckyButton.Text = `LUCKY x{throws}`
-	self._luckyButton.BackgroundColor3 = if self._useLucky then Make.BUY else Make.INFO
-	self._luckyButton.Visible = throws > 0
-	self._autoButton.Visible = state.passes ~= nil and state.passes.AutoThrow == true
-	self._autoButton.Text = if self._auto then "AUTO ON" else "AUTO OFF"
-	self._autoButton.BackgroundColor3 = if self._auto then Make.GOOD else Make.PANEL
+	self._luckyCount.Text = `x{throws}`
+	Screens.setButtonState(self._luckyButton, if self._useLucky then "gold" else "shipped")
+	self._luckyCell.Visible = throws > 0
+	self._autoCell.Visible = state.passes ~= nil and state.passes.AutoThrow == true
+	Screens.setButtonState(self._autoButton, if self._auto then "afford" else "shipped")
+	self._autoState.Text = if self._auto then "ON" else "OFF"
+	if self._gui:GetAttribute("FoodShown") ~= state.food then
+		self._gui:SetAttribute("FoodShown", state.food)
+		Screens.setIcon(self._foodIcon, "Food_" .. state.food)
+	end
 
-	self._marks:ClearAllChildren()
+	-- one band per zone, made the first time the zone is reachable and then
+	-- only moved: its height is the smallest marker value that reaches it
 	for index, zone in Config.Zones do
 		local need = Throw.chargeForZone(T, Config.Zones, state.power, food.PowerMult, index)
+		local band = self._zoneBands[index]
 		if need and index > 1 then
-			local at = (need - T.MinCharge) / (1 - T.MinCharge)
-			local mark = Make.frame(self._marks, {
-				Name = "Mark" .. index,
-				AnchorPoint = Vector2.new(0.5, 0),
-				Position = UDim2.fromScale(at, 0),
-				Size = UDim2.new(0, 4, 1, 0),
-				BackgroundColor3 = Color3.new(1, 1, 1),
-			})
-			Make.label(mark, tostring(index), {
-				Size = UDim2.fromOffset(26, 22),
-				Position = UDim2.fromOffset(-11, -24),
-			})
-			mark:SetAttribute("Zone", zone.Id)
+			if not band then
+				band = Screens.template("ZoneMarkTemplate")
+				band.Name = "ZoneBand" .. index
+				Screens.tint(band, self._zoneColors[index] or Theme.WHITE)
+				Screens.label(band, "ZoneMarkName").Text = zone.Name
+				band.Parent = self._bands
+				self._zoneBands[index] = band
+			end
+			local height = (need - T.MinCharge) / (1 - T.MinCharge)
+			band.Position = UDim2.new(band.Position.X.Scale, band.Position.X.Offset, 1 - height, 0)
+			band.Visible = true
+		elseif band then
+			band.Visible = false
 		end
 	end
 end
 
-function ThrowController:_tickUi()
-	local root = self._root
-	if not root then
-		return
-	end
-	root.Visible = self._onPad and not self._busy
+-- every frame the meter is up: the marker, what it is worth, where it lands
+function ThrowController:_tickMeter()
 	local state = self._state.State
-	if not root.Visible or not state then
+	if not state then
 		return
 	end
-	local charge = if self._charging then self:_charge() else T.MinCharge
-	local shown = (charge - T.MinCharge) / (1 - T.MinCharge)
-	self._fill.Size = UDim2.fromScale(shown, 1)
-	self._fill.BackgroundColor3 = if Throw.isPerfect(T, charge) then Make.BUY else Make.GOOD
+	local value = self:_value()
+	self._marker.Position = UDim2.fromScale(0.5, 1 - value)
 	local food = MAPS.food[state.food]
-	local full = if self._charging then charge else 1
-	local eff = Throw.effectivePower(state.power, food.PowerMult, full)
+	local charge = chargeOf(value)
+	local base = Throw.effectivePower(state.power, food.PowerMult, T.MinCharge)
+	local eff = Throw.effectivePower(state.power, food.PowerMult, charge)
+	local bonus = `+{Format.short(math.floor(eff - base))} POWER`
+	if bonus ~= self._bonusText then
+		self._bonusText = bonus
+		self._bonusLabel.Text = bonus
+	end
 	local zone = Config.Zones[Throw.zoneIndex(Config.Zones, eff)]
-	self._zoneLabel.Text = if self._charging
-		then `Lands in: {zone.Name}`
-		else `Hold to charge, release near the top  (best: {zone.Name})`
+	local lands = `Lands in: {zone.Name}`
+	if lands ~= self._zoneText then
+		self._zoneText = lands
+		self._zoneLabel.Text = lands
+	end
+end
+
+-- ----------------------------------------------------------------- mode --
+
+function ThrowController:_setMode(mode: string)
+	local was = self._mode
+	if mode == was then
+		return
+	end
+	self._mode = mode
+	self._hud:SetMode(mode)
+	self._heroes:SetPlatesHidden(mode == "cinematic")
+	local camera = workspace.CurrentCamera
+	if mode == "normal" then
+		ContextActionService:UnbindAction(TAP_ACTION)
+		camera.CameraType = Enum.CameraType.Custom
+		return
+	end
+	if was == "normal" then
+		-- Space would jump off the pad: while throwing, it throws
+		ContextActionService:BindActionAtPriority(
+			TAP_ACTION,
+			function(_, inputState: Enum.UserInputState)
+				if inputState == Enum.UserInputState.Begin then
+					self:_tap()
+				end
+				return Enum.ContextActionResult.Sink
+			end,
+			false,
+			Enum.ContextActionPriority.High.Value,
+			table.unpack(TAP_KEYS)
+		)
+	end
+	if mode == "throw" then
+		camera.CameraType = Enum.CameraType.Scriptable
+		local root = rootPart()
+		if was == "cinematic" and root then
+			-- back from a sequence, under its white flash: cut, do not travel
+			camera.CFrame = shoulderCamera(root)
+		end
+		if was == "normal" then
+			self:_rearm()
+		end
+	end
 end
 
 -- -------------------------------------------------------------- sequence --
+
+-- The food's real model, if the place has it (ReplicatedStorage.Assets.Foods).
+local function foodTemplate(foodId: string): Model?
+	local assets = ReplicatedStorage:FindFirstChild("Assets")
+	local foods = assets and assets:FindFirstChild("Foods")
+	local found = foods and foods:FindFirstChild("Food_" .. foodId)
+	return if found and found:IsA("Model") then found else nil
+end
+
+-- Thrown food is drawn bigger than it is in the hand: it has to read from the
+-- far end of a lane on a phone.
+local FLIGHT_SCALE = 1.7
 
 local function makeFood(foodId: string): Part
 	local food = MAPS.food[foodId]
@@ -256,130 +396,148 @@ local function makeFood(foodId: string): Part
 	ball.CanQuery = false
 	ball.CanTouch = false
 	ball.Material = Enum.Material.Neon
-	ball.Color = if food then FLAVOR_COLORS[food.Flavor] else Color3.new(1, 1, 1)
+	ball.Color = if food then Theme.FLAVOR[food.Flavor] else Color3.new(1, 1, 1)
 	local trail = Instance.new("Trail")
 	local a0, a1 = Instance.new("Attachment"), Instance.new("Attachment")
-	a0.Position = Vector3.new(0, 0.7, 0)
-	a1.Position = Vector3.new(0, -0.7, 0)
+	a0.Position = Vector3.new(0, 0.9, 0)
+	a1.Position = Vector3.new(0, -0.9, 0)
 	a0.Parent = ball
 	a1.Parent = ball
 	trail.Attachment0 = a0
 	trail.Attachment1 = a1
-	trail.Lifetime = 0.4
-	trail.Color = ColorSequence.new(ball.Color)
-	trail.Transparency = NumberSequence.new(0.2, 1)
+	trail.Lifetime = 0.55
+	trail.LightEmission = 0.6
+	trail.Color = ColorSequence.new(Color3.new(1, 1, 1), ball.Color)
+	trail.Transparency = NumberSequence.new(0.1, 1)
 	trail.Parent = ball
+	local template = foodTemplate(foodId)
+	if template then
+		-- the ball stays as the invisible carrier (the flight code moves it and
+		-- the trail hangs off it); the model rides on it
+		ball.Transparency = 1
+		local model = template:Clone()
+		model:ScaleTo(FLIGHT_SCALE)
+		model:PivotTo(ball.CFrame)
+		for _, piece in model:GetDescendants() do
+			if piece:IsA("BasePart") then
+				piece.Anchored = false
+				piece.CanCollide = false
+				piece.CanQuery = false
+				piece.CanTouch = false
+				piece.Massless = true
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = ball
+				weld.Part1 = piece
+				weld.Parent = piece
+			end
+		end
+		model.Parent = ball
+		-- tumble in flight
+		local spin = RunService.RenderStepped:Connect(function()
+			local t = os.clock()
+			ball.CFrame = CFrame.new(ball.Position) * CFrame.Angles(t * 5, t * 3, 0)
+		end)
+		ball.Destroying:Once(function()
+			spin:Disconnect()
+		end)
+	end
 	ball.Parent = workspace
 	return ball
 end
 
-local function arcPoint(from: Vector3, to: Vector3, t: number): Vector3
-	local height = math.clamp((to - from).Magnitude * 0.14, 14, 70)
-	return from:Lerp(to, t) + Vector3.new(0, height * 4 * t * (1 - t), 0)
-end
-
--- waits `seconds`, ending early when the player skips; returns true if skipped
-function ThrowController:_hold(seconds: number): boolean
-	local deadline = os.clock() + seconds
-	while os.clock() < deadline do
-		if self._skip then
-			return true
-		end
-		RunService.RenderStepped:Wait()
-	end
-	return false
-end
-
 function ThrowController:_play(result: any)
+	local state = self._state.State
 	self._playing = true
 	self._busy = true
-	self._skip = false
+	self._abort = false
+	self._taps = 0
+	self._playStart = os.clock()
+	self:_setMode("cinematic")
 	self._hud:HoldIncome(true)
-	local camera = workspace.CurrentCamera
-	local root = rootPart()
-	local from = if root
-		then root.Position + Vector3.new(0, 2.5, 3)
-		else Vector3.new(result.x, 4, W.ThrowPadZ)
-	local target = Vector3.new(result.x, W.GroundY + 1, result.z)
-	local state = self._state.State
-	local ball = makeFood(if state then state.food else "")
-	local hero: Model? = nil
 
+	local fast = self._autoThrown or (state ~= nil and state.settings.fastReveal == true)
+	local early = false
 	local ok, err = pcall(function()
-		task.spawn(function()
-			pcall(function()
-				player:RequestStreamAroundAsync(target, 4)
-			end)
-		end)
-		camera.CameraType = Enum.CameraType.Scriptable
-		-- flight: the camera chases the food down the lane
-		local t0 = os.clock()
-		while true do
-			local t = math.clamp((os.clock() - t0) / result.flight, 0, 1)
-			local position = arcPoint(from, target, t)
-			ball.Position = position
-			local behind = position + Vector3.new(0, 7, -16)
-			camera.CFrame = CFrame.lookAt(behind, position + Vector3.new(0, 0, 10))
-			if t >= 1 or self._skip then
-				break
-			end
-			RunService.RenderStepped:Wait()
-		end
-		ball.Position = target
-		self._hud:Flash(result.perfect, result.lucky)
-		local skipped = self._skip or self:_hold(T.LandPauseSeconds)
-
-		-- reveal: the hero appears where the food landed, facing the camera
-		local model, scale = self._heroes:Build(result.id, result.mut, result.size)
-		hero = model
-		model:PivotTo(CFrame.new(result.x, W.GroundY + 0.2, result.z))
-		model.Parent = workspace
-		self._heroes:Animate(model)
-		local eye = target + Vector3.new(5 * scale, 4 * scale + 2, -(11 * scale + 4))
-		camera.CFrame = CFrame.lookAt(eye, target + Vector3.new(0, 3 * scale, 0))
-		self._hud:Reveal(result)
-		if not skipped then
-			skipped = self:_hold(result.reveal)
-		end
-		if skipped and result.uid then
-			self._heroes:ArriveNow(result.uid)
-		end
+		early = ThrowSequence.play({
+			result = result,
+			foodId = if state then state.food else "",
+			plot = if state and state.plot then state.plot else 1,
+			fast = fast,
+			sentAt = self._sentAt,
+			taps = function(): number
+				return self._taps
+			end,
+			aborted = function(): boolean
+				return self._abort
+			end,
+			makeFood = makeFood,
+			build = function(id: string, mut: string?, size: string?): (Model, number)
+				return self._heroes:Build(id, mut, size)
+			end,
+			animate = function(model: Model): any
+				return self._heroes:Animate(model)
+			end,
+		})
 	end)
 	if not ok then
 		warn(`[ThrowController] throw sequence failed inert: {err}`)
 	end
-	-- always give the camera and the pad back, whatever happened above
-	self._hud:HideReveal()
-	self._hud:HoldIncome(false)
-	ball:Destroy()
-	if hero then
-		hero:Destroy()
+	-- it ended before the server's arrival time (skipped, or the fast
+	-- version): the hero comes to the plot now instead of standing unseen
+	if (early or not ok) and result.uid then
+		self._heroes:ArriveNow(result.uid)
 	end
-	camera.CameraType = Enum.CameraType.Custom
+	self._hud:HoldIncome(false)
 	self._playing = false
 	self._busy = false
 	self._lastZone = result.zone
+	self:_rearm()
+	self:_setMode(self:_wantedMode())
 end
 
--- another player's throw: the food flies and a label pops, no camera
+-- Where another player's throw starts: over their own character if it is
+-- there (their pad is a raised stage), else over their pad.
+function ThrowController:_throwerPosition(plot: number): Vector3
+	local plotState = self._state.Plots[plot]
+	local owner = if plotState and plotState.owner
+		then Players:GetPlayerByUserId(plotState.owner)
+		else nil
+	local character = owner and owner.Character
+	local root = character and character:FindFirstChild("HumanoidRootPart")
+	if root and root:IsA("BasePart") then
+		return root.Position + Vector3.new(0, 2.5, 3)
+	end
+	local x, z = World.throwPad(W, plot, COUNT)
+	return Vector3.new(x, W.GroundY + 8, z + 3)
+end
+
+-- another player's throw: only the food flying and a small burst, no camera
 function ThrowController:_watch(seen: any)
-	local x, z = World.throwPad(W, seen.plot, COUNT)
-	local from = Vector3.new(x, W.GroundY + 5, z + 3)
-	local target = Vector3.new(seen.x, W.GroundY + 1, seen.z)
+	local from = self:_throwerPosition(seen.plot)
+	local target = Vector3.new(seen.x, W.GroundY + 2, seen.z)
 	local ball = makeFood(seen.food)
 	task.spawn(function()
 		local t0 = os.clock()
 		while ball.Parent do
 			local t = math.clamp((os.clock() - t0) / seen.flight, 0, 1)
-			ball.Position = arcPoint(from, target, t)
+			ball.Position = ThrowSequence.arcPoint(from, target, t)
 			if t >= 1 then
 				break
 			end
 			RunService.RenderStepped:Wait()
 		end
+		Particles.dust(Vector3.new(seen.x, W.GroundY + 0.15, seen.z), 0.7)
 		task.wait(seen.reveal + T.LandPauseSeconds)
+		Particles.burst(target + Vector3.new(0, 2, 0), Theme.rarity(seen.rarity), 24)
 		ball:Destroy()
 	end)
+end
+
+function ThrowController:_wantedMode(): string
+	if self._playing then
+		return "cinematic"
+	end
+	return if self._onPad and not Screens.isOpen() then "throw" else "normal"
 end
 
 function ThrowController:KnitStart()
@@ -394,13 +552,13 @@ function ThrowController:KnitStart()
 		return
 	end
 	self._request = request
-	self:_buildUi()
+	self:_bindUi()
 
 	result.OnClientEvent:Connect(function(payload: any)
 		-- a new result while the last one is still on screen (Auto Throw, or a
-		-- fast hand): cut the old sequence short, never run two cameras at once
+		-- fast hand): end the old sequence, never run two cameras at once
 		while self._playing do
-			self._skip = true
+			self._abort = true
 			task.wait()
 		end
 		self:_play(payload)
@@ -417,39 +575,37 @@ function ThrowController:KnitStart()
 		self:_refreshUi()
 	end)
 	self._state.Ticked:Connect(function()
-		-- power moves the zone marks while training
-		if self._onPad and not self._charging then
+		-- power moves the zone bands while training
+		if self._mode == "throw" then
 			self:_refreshUi()
 		end
 	end)
 
+	-- during the sequence any click, touch or gamepad A is a skip press (the
+	-- throw keys reach _tap through the bound action)
 	UserInputService.InputBegan:Connect(function(input: InputObject, processed: boolean)
-		if self._playing then
-			-- any press after a short grace skips the flight and the reveal
-			local pressed = input.UserInputType == Enum.UserInputType.MouseButton1
-				or input.UserInputType == Enum.UserInputType.Touch
-				or input.KeyCode == Enum.KeyCode.Space
-				or input.KeyCode == Enum.KeyCode.ButtonA
-			if pressed and os.clock() - self._sentAt > T.RevealSkipSeconds then
-				self._skip = true
-			end
+		-- A throw key that reached here UNPROCESSED was not taken by the bound
+		-- action (input injected by a test tool can bypass ContextActionService):
+		-- it still throws. One the action took arrives processed, and so does
+		-- a key typed into a text box, so neither is counted twice or by mistake.
+		if not processed and self._mode ~= "normal" and table.find(TAP_KEYS, input.KeyCode) then
+			self:_tap()
 			return
 		end
-		if processed then
+		if not self._playing then
 			return
 		end
-		if input.KeyCode == Enum.KeyCode.T or input.KeyCode == Enum.KeyCode.ButtonX then
-			self:_begin()
-		end
-	end)
-	UserInputService.InputEnded:Connect(function(input: InputObject)
-		if input.KeyCode == Enum.KeyCode.T or input.KeyCode == Enum.KeyCode.ButtonX then
-			self:_release()
+		if
+			input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch
+			or input.KeyCode == Enum.KeyCode.ButtonA
+		then
+			self:_tap()
 		end
 	end)
 
 	local lastAuto = 0
-	RunService.RenderStepped:Connect(function()
+	RunService.RenderStepped:Connect(function(dt: number)
 		local state = self._state.State
 		local root = rootPart()
 		if state and state.plot and root then
@@ -459,17 +615,37 @@ function ThrowController:KnitStart()
 		else
 			self._onPad = false
 		end
-		if not self._onPad and self._charging then
-			self._charging = false
+		local mode = self:_wantedMode()
+		if mode ~= self._mode then
+			self:_setMode(mode)
 		end
-		self:_tickUi()
-		-- Auto Throw pass: rethrow just below the perfect window, so throwing
-		-- by hand is still worth a little more
+
+		-- the meter: up in throw mode, and for a moment into the wind-up
+		local gui = self._gui
+		local lingering = self._playing
+			and not self._autoThrown
+			and os.clock() - self._playStart < METER_LINGER
+		local shown = mode == "throw" or lingering
+		if gui.Enabled ~= shown then
+			gui.Enabled = shown
+		end
+		if mode ~= "throw" then
+			return
+		end
+		self:_tickMeter()
+		if root then
+			-- ease in behind the shoulder, and follow small steps on the pad
+			local camera = workspace.CurrentCamera
+			camera.CFrame = camera.CFrame:Lerp(shoulderCamera(root), 1 - math.exp(-7 * dt))
+		end
+		-- Auto Throw pass: tap just under the perfect band, so throwing by hand
+		-- is still worth a little more
 		local now = os.clock()
-		if self._auto and self:_canThrow() and not self._charging and now - lastAuto > 0.6 then
+		if self._auto and self:_canThrow() and now - lastAuto > 0.6 then
 			if state and state.passes and state.passes.AutoThrow then
 				lastAuto = now
-				self:_send(1 - T.PerfectWindow - 0.01)
+				local charge = 1 - T.PerfectWindow - 0.01
+				self:_send((charge - T.MinCharge) / (1 - T.MinCharge), true)
 			end
 		end
 	end)

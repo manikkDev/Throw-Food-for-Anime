@@ -1,0 +1,66 @@
+{
+ "name": "ZoneMarkTemplate",
+ "theme": "theme.json",
+ "resolution": [
+  108,
+  30
+ ],
+ "kind": "world",
+ "children": [
+  {
+   "type": "frame",
+   "name": "ZoneMarkTemplate",
+   "colour": [
+    "#3FA9F5",
+    "#3691D3"
+   ],
+   "paint": "#3FA9F5",
+   "children": [
+    {
+     "type": "label",
+     "text": "Pirate Harbor",
+     "size": [
+      0,
+      176,
+      0,
+      22
+     ],
+     "textColour": "onDark",
+     "align": "right",
+     "textScale": 0.7273,
+     "textStroke": 3,
+     "name": "ZoneMarkName",
+     "pos": [
+      0,
+      -8,
+      0.5,
+      0
+     ],
+     "anchor": [
+      1,
+      0.5
+     ],
+     "overhang": true
+    }
+   ],
+   "pos": [
+    0,
+    12,
+    0,
+    12
+   ],
+   "anchor": [
+    0,
+    0
+   ],
+   "corner": 3,
+   "overhang": true,
+   "size": [
+    0,
+    84,
+    0,
+    6
+   ]
+  }
+ ]
+}

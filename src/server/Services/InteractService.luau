@@ -22,8 +22,6 @@ function InteractService:KnitStart()
 	local shop = Knit.GetService("ShopService")
 	local squad = Knit.GetService("SquadService")
 	local training = Knit.GetService("TrainingService")
-	local rewards = Knit.GetService("RewardsService")
-	local progress = Knit.GetService("ProgressService")
 
 	local actions: { [string]: (Player) -> () } = {
 		train = function(player: Player)
@@ -38,21 +36,11 @@ function InteractService:KnitStart()
 		equipBest = function(player: Player)
 			squad:EquipBest(player)
 		end,
-		food = function(player: Player)
-			shop:BuyNextFood(player)
-		end,
-		daily = function(player: Player)
-			rewards:ClaimDaily(player)
-		end,
-		gift = function(player: Player)
-			rewards:ClaimNextGift(player)
-		end,
-		index = function(player: Player)
-			progress:ClaimAllZones(player)
-		end,
-		rebirth = function(player: Player)
-			progress:Rebirth(player)
-		end,
+		-- The hub stations (food cart, daily chest, gift box, index board,
+		-- summon shrine, sell booth) carry the actions food / daily / gift /
+		-- index / summon / squad. They are NOT here on purpose: each one opens
+		-- its screen on the client (MenuController), and the screen's buttons
+		-- fire the usual remotes. Walking up to a cart must never spend Yen.
 	}
 
 	ProximityPromptService.PromptTriggered:Connect(function(prompt: ProximityPrompt, player: Player)

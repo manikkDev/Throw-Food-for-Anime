@@ -1,0 +1,2349 @@
+{
+ "name": "HUD",
+ "theme": "theme.json",
+ "resolution": [
+  1280,
+  720
+ ],
+ "kind": "hud",
+ "ignoreGuiInset": true,
+ "children": [
+  {
+   "type": "frame",
+   "name": "BtnSettings",
+   "transparent": true,
+   "cls": "TextButton",
+   "size": [
+    0,
+    56,
+    0,
+    56
+   ],
+   "children": [
+    {
+     "type": "panel",
+     "name": "GearFace",
+     "colour": "grey",
+     "size": [
+      0,
+      44,
+      0,
+      44
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconSettings",
+       "name": "Icon",
+       "size": [
+        0,
+        28,
+        0,
+        28
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "corner": 22,
+     "depth": 3,
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "type": "panel",
+     "name": "Badge",
+     "colour": "danger",
+     "size": [
+      0,
+      22,
+      0,
+      22
+     ],
+     "selfFace": true,
+     "paintable": true,
+     "depth": 0,
+     "children": [
+      {
+       "type": "label",
+       "text": "!",
+       "size": [
+        0,
+        16,
+        0,
+        18
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.7222,
+       "textStroke": 3,
+       "name": "BadgeText",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "maxText": 13
+      }
+     ],
+     "pos": [
+      1,
+      6,
+      0,
+      -6
+     ],
+     "anchor": [
+      1,
+      0
+     ],
+     "overhang": true,
+     "z": 4,
+     "corner": 11,
+     "visible": false,
+     "stroke": 2
+    }
+   ],
+   "pos": [
+    1,
+    -20,
+    0,
+    12
+   ],
+   "attrs": {
+    "OpensPage": "Settings"
+   },
+   "anchor": [
+    1,
+    0
+   ]
+  },
+  {
+   "type": "frame",
+   "name": "LeftColumn",
+   "transparent": true,
+   "size": [
+    0,
+    76,
+    0,
+    244
+   ],
+   "children": [
+    {
+     "type": "frame",
+     "name": "BtnShopCell",
+     "transparent": true,
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "children": [
+      {
+       "type": "button",
+       "name": "BtnShop",
+       "colour": "buy",
+       "size": [
+        0,
+        72,
+        0,
+        72
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconShopBig",
+         "name": "Icon",
+         "size": [
+          0,
+          40,
+          0,
+          40
+         ],
+         "pos": [
+          0.5,
+          0,
+          0,
+          1
+         ],
+         "anchor": [
+          0.5,
+          0
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "Badge",
+         "colour": "danger",
+         "size": [
+          0,
+          22,
+          0,
+          22
+         ],
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "children": [
+          {
+           "type": "label",
+           "text": "!",
+           "size": [
+            0,
+            16,
+            0,
+            18
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7222,
+           "textStroke": 3,
+           "name": "BadgeText",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 13
+          }
+         ],
+         "pos": [
+          1,
+          6,
+          0,
+          -6
+         ],
+         "anchor": [
+          1,
+          0
+         ],
+         "overhang": true,
+         "z": 4,
+         "corner": 11,
+         "visible": false,
+         "stroke": 2
+        },
+        {
+         "type": "label",
+         "text": "SHOP",
+         "size": [
+          0,
+          68,
+          0,
+          20
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.75,
+         "textStroke": 3,
+         "name": "Caption",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          1,
+          -3
+         ],
+         "anchor": [
+          0.5,
+          1
+         ],
+         "z": 4,
+         "maxText": 15,
+         "overhang": true
+        }
+       ],
+       "opens": "FoodShop",
+       "corner": 18,
+       "sizeClass": "HUD",
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "depth": 3
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "name": "BtnSquadCell",
+     "transparent": true,
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "children": [
+      {
+       "type": "button",
+       "name": "BtnSquad",
+       "colour": "info",
+       "size": [
+        0,
+        72,
+        0,
+        72
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconSquadBig",
+         "name": "Icon",
+         "size": [
+          0,
+          40,
+          0,
+          40
+         ],
+         "pos": [
+          0.5,
+          0,
+          0,
+          1
+         ],
+         "anchor": [
+          0.5,
+          0
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "Badge",
+         "colour": "danger",
+         "size": [
+          0,
+          22,
+          0,
+          22
+         ],
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "children": [
+          {
+           "type": "label",
+           "text": "!",
+           "size": [
+            0,
+            16,
+            0,
+            18
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7222,
+           "textStroke": 3,
+           "name": "BadgeText",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 13
+          }
+         ],
+         "pos": [
+          1,
+          6,
+          0,
+          -6
+         ],
+         "anchor": [
+          1,
+          0
+         ],
+         "overhang": true,
+         "z": 4,
+         "corner": 11,
+         "visible": false,
+         "stroke": 2
+        },
+        {
+         "type": "label",
+         "text": "SQUAD",
+         "size": [
+          0,
+          68,
+          0,
+          20
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.75,
+         "textStroke": 3,
+         "name": "Caption",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          1,
+          -3
+         ],
+         "anchor": [
+          0.5,
+          1
+         ],
+         "z": 4,
+         "maxText": 15,
+         "overhang": true
+        }
+       ],
+       "opens": "Squad",
+       "corner": 18,
+       "sizeClass": "HUD",
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "depth": 3
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "name": "BtnIndexCell",
+     "transparent": true,
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "children": [
+      {
+       "type": "button",
+       "name": "BtnIndex",
+       "colour": "violet",
+       "size": [
+        0,
+        72,
+        0,
+        72
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconIndexBig",
+         "name": "Icon",
+         "size": [
+          0,
+          40,
+          0,
+          40
+         ],
+         "pos": [
+          0.5,
+          0,
+          0,
+          1
+         ],
+         "anchor": [
+          0.5,
+          0
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "Badge",
+         "colour": "danger",
+         "size": [
+          0,
+          22,
+          0,
+          22
+         ],
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "children": [
+          {
+           "type": "label",
+           "text": "!",
+           "size": [
+            0,
+            16,
+            0,
+            18
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7222,
+           "textStroke": 3,
+           "name": "BadgeText",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 13
+          }
+         ],
+         "pos": [
+          1,
+          6,
+          0,
+          -6
+         ],
+         "anchor": [
+          1,
+          0
+         ],
+         "overhang": true,
+         "z": 4,
+         "corner": 11,
+         "visible": false,
+         "stroke": 2
+        },
+        {
+         "type": "label",
+         "text": "INDEX",
+         "size": [
+          0,
+          68,
+          0,
+          20
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.75,
+         "textStroke": 3,
+         "name": "Caption",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          1,
+          -3
+         ],
+         "anchor": [
+          0.5,
+          1
+         ],
+         "z": 4,
+         "maxText": 15,
+         "overhang": true
+        }
+       ],
+       "opens": "HeroIndex",
+       "corner": 18,
+       "sizeClass": "HUD",
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "depth": 3
+      }
+     ]
+    }
+   ],
+   "layout": {
+    "type": "list",
+    "dir": "y",
+    "gap": 14,
+    "align": "start"
+   },
+   "pos": [
+    0,
+    20,
+    0,
+    96
+   ]
+  },
+  {
+   "type": "frame",
+   "name": "RightColumn",
+   "transparent": true,
+   "size": [
+    0,
+    76,
+    0,
+    244
+   ],
+   "children": [
+    {
+     "type": "frame",
+     "name": "BtnStoreCell",
+     "transparent": true,
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "children": [
+      {
+       "type": "button",
+       "name": "BtnStore",
+       "colour": "premium",
+       "size": [
+        0,
+        72,
+        0,
+        72
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconStoreBig",
+         "name": "Icon",
+         "size": [
+          0,
+          40,
+          0,
+          40
+         ],
+         "pos": [
+          0.5,
+          0,
+          0,
+          1
+         ],
+         "anchor": [
+          0.5,
+          0
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "Badge",
+         "colour": "danger",
+         "size": [
+          0,
+          22,
+          0,
+          22
+         ],
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "children": [
+          {
+           "type": "label",
+           "text": "!",
+           "size": [
+            0,
+            16,
+            0,
+            18
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7222,
+           "textStroke": 3,
+           "name": "BadgeText",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 13
+          }
+         ],
+         "pos": [
+          1,
+          6,
+          0,
+          -6
+         ],
+         "anchor": [
+          1,
+          0
+         ],
+         "overhang": true,
+         "z": 4,
+         "corner": 11,
+         "visible": false,
+         "stroke": 2
+        },
+        {
+         "type": "label",
+         "text": "STORE",
+         "size": [
+          0,
+          68,
+          0,
+          20
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.75,
+         "textStroke": 3,
+         "name": "Caption",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          1,
+          -3
+         ],
+         "anchor": [
+          0.5,
+          1
+         ],
+         "z": 4,
+         "maxText": 15,
+         "overhang": true
+        }
+       ],
+       "opens": "Store",
+       "corner": 18,
+       "sizeClass": "HUD",
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "depth": 3
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "name": "BtnGiftCell",
+     "transparent": true,
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "children": [
+      {
+       "type": "button",
+       "name": "BtnGift",
+       "colour": "confirm",
+       "size": [
+        0,
+        72,
+        0,
+        72
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconGiftBig",
+         "name": "Icon",
+         "size": [
+          0,
+          40,
+          0,
+          40
+         ],
+         "pos": [
+          0.5,
+          0,
+          0,
+          1
+         ],
+         "anchor": [
+          0.5,
+          0
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "Badge",
+         "colour": "danger",
+         "size": [
+          0,
+          22,
+          0,
+          22
+         ],
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "children": [
+          {
+           "type": "label",
+           "text": "!",
+           "size": [
+            0,
+            16,
+            0,
+            18
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7222,
+           "textStroke": 3,
+           "name": "BadgeText",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 13
+          }
+         ],
+         "pos": [
+          1,
+          6,
+          0,
+          -6
+         ],
+         "anchor": [
+          1,
+          0
+         ],
+         "overhang": true,
+         "z": 4,
+         "corner": 11,
+         "visible": false,
+         "stroke": 2
+        },
+        {
+         "type": "label",
+         "text": "GIFTS",
+         "size": [
+          0,
+          68,
+          0,
+          20
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.75,
+         "textStroke": 3,
+         "name": "Caption",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          1,
+          -3
+         ],
+         "anchor": [
+          0.5,
+          1
+         ],
+         "z": 4,
+         "maxText": 15,
+         "overhang": true
+        },
+        {
+         "type": "panel",
+         "name": "GiftTimerBadge",
+         "colour": "panelDeep",
+         "size": [
+          0,
+          66,
+          0,
+          20
+         ],
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "children": [
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            60,
+            0,
+            18
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.8333,
+           "textStroke": 2,
+           "name": "GiftTimer",
+           "samples": [
+            "12:59",
+            "READY!"
+           ],
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 15
+          }
+         ],
+         "pos": [
+          0.5,
+          0,
+          1,
+          -3
+         ],
+         "anchor": [
+          0.5,
+          1
+         ],
+         "overhang": true,
+         "z": 6,
+         "visible": false,
+         "stroke": 2
+        }
+       ],
+       "opens": "PlaytimeGifts",
+       "corner": 18,
+       "sizeClass": "HUD",
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "depth": 3
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "name": "BtnRebirthCell",
+     "transparent": true,
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "children": [
+      {
+       "type": "button",
+       "name": "BtnRebirth",
+       "colour": "buy",
+       "size": [
+        0,
+        72,
+        0,
+        72
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconRebirthBig",
+         "name": "Icon",
+         "size": [
+          0,
+          40,
+          0,
+          40
+         ],
+         "pos": [
+          0.5,
+          0,
+          0,
+          1
+         ],
+         "anchor": [
+          0.5,
+          0
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "Badge",
+         "colour": "danger",
+         "size": [
+          0,
+          22,
+          0,
+          22
+         ],
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "children": [
+          {
+           "type": "label",
+           "text": "!",
+           "size": [
+            0,
+            16,
+            0,
+            18
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7222,
+           "textStroke": 3,
+           "name": "BadgeText",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 13
+          }
+         ],
+         "pos": [
+          1,
+          6,
+          0,
+          -6
+         ],
+         "anchor": [
+          1,
+          0
+         ],
+         "overhang": true,
+         "z": 4,
+         "corner": 11,
+         "visible": false,
+         "stroke": 2
+        },
+        {
+         "type": "label",
+         "text": "REBIRTH",
+         "size": [
+          0,
+          68,
+          0,
+          20
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.75,
+         "textStroke": 3,
+         "name": "Caption",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          1,
+          -3
+         ],
+         "anchor": [
+          0.5,
+          1
+         ],
+         "z": 4,
+         "maxText": 15,
+         "overhang": true
+        }
+       ],
+       "opens": "Rebirth",
+       "corner": 18,
+       "sizeClass": "HUD",
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "depth": 3
+      }
+     ]
+    }
+   ],
+   "layout": {
+    "type": "list",
+    "dir": "y",
+    "gap": 14,
+    "align": "start"
+   },
+   "pos": [
+    1,
+    -20,
+    0,
+    224
+   ],
+   "anchor": [
+    1,
+    0
+   ]
+  },
+  {
+   "type": "frame",
+   "name": "FoodChip",
+   "transparent": true,
+   "cls": "TextButton",
+   "size": [
+    0,
+    250,
+    0,
+    52
+   ],
+   "pos": [
+    0,
+    20,
+    0,
+    390
+   ],
+   "attrs": {
+    "OpensPage": "FoodShop"
+   },
+   "children": [
+    {
+     "type": "frame",
+     "name": "FoodRing",
+     "colour": [
+      "#2B3175",
+      "#1B1F4B"
+     ],
+     "corner": 26,
+     "size": [
+      0,
+      52,
+      0,
+      52
+     ],
+     "pos": [
+      0,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "FoodIcon_onigiri",
+       "name": "Icon",
+       "size": [
+        0,
+        38,
+        0,
+        38
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      180,
+      0,
+      23
+     ],
+     "textColour": "onDark",
+     "align": "left",
+     "textScale": 0.7391,
+     "textStroke": 3,
+     "name": "FoodName",
+     "samples": [
+      "Festival Cake",
+      "Onigiri"
+     ],
+     "pos": [
+      0,
+      62,
+      0,
+      2
+     ],
+     "maxText": 17
+    },
+    {
+     "type": "frame",
+     "name": "FlavorRow",
+     "transparent": true,
+     "size": [
+      0,
+      170,
+      0,
+      18
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconFlavorSweet",
+       "name": "FlavorIcon",
+       "size": [
+        0,
+        14,
+        0,
+        14
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        118,
+        0,
+        18
+       ],
+       "textColour": "soft",
+       "align": "left",
+       "textScale": 0.7222,
+       "textStroke": 2,
+       "name": "FoodFlavor",
+       "samples": [
+        "SEAFOOD",
+        "SWEET"
+       ],
+       "font": "display",
+       "maxText": 13
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 8,
+      "align": "start"
+     },
+     "pos": [
+      0,
+      62,
+      0,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "type": "frame",
+   "name": "PowerCounter",
+   "transparent": true,
+   "size": [
+    0,
+    320,
+    0,
+    60
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconPower",
+     "name": "Icon",
+     "size": [
+      0,
+      52,
+      0,
+      52
+     ],
+     "pos": [
+      0,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      250,
+      0,
+      38
+     ],
+     "textColour": "power",
+     "align": "left",
+     "textScale": 0.8947,
+     "textStroke": 3,
+     "name": "PowerAmount",
+     "samples": [
+      "999.99Qi",
+      "3.97K"
+     ],
+     "font": "display",
+     "pos": [
+      0,
+      62,
+      0,
+      0
+     ],
+     "maxText": 34
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      220,
+      0,
+      20
+     ],
+     "textColour": "soft",
+     "align": "left",
+     "textScale": 0.75,
+     "textStroke": 2,
+     "name": "RankName",
+     "samples": [
+      "CHAMPION",
+      "FIGHTER"
+     ],
+     "font": "display",
+     "maxText": 15,
+     "pos": [
+      0,
+      62,
+      0,
+      39
+     ]
+    }
+   ],
+   "pos": [
+    0,
+    20,
+    0,
+    456
+   ]
+  },
+  {
+   "type": "frame",
+   "name": "YenCounter",
+   "transparent": true,
+   "size": [
+    0,
+    320,
+    0,
+    60
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconYen",
+     "name": "Icon",
+     "size": [
+      0,
+      52,
+      0,
+      52
+     ],
+     "pos": [
+      0,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      250,
+      0,
+      38
+     ],
+     "textColour": "yen",
+     "align": "left",
+     "textScale": 0.8947,
+     "textStroke": 3,
+     "name": "YenAmount",
+     "samples": [
+      "999.99Qi",
+      "26.1B"
+     ],
+     "font": "display",
+     "pos": [
+      0,
+      62,
+      0,
+      0
+     ],
+     "maxText": 34
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      220,
+      0,
+      20
+     ],
+     "textColour": "soft",
+     "align": "left",
+     "textScale": 0.75,
+     "textStroke": 2,
+     "name": "IncomePerSecond",
+     "samples": [
+      "+999.99Qi/s",
+      "+4.55M/s"
+     ],
+     "maxText": 15,
+     "pos": [
+      0,
+      62,
+      0,
+      39
+     ]
+    }
+   ],
+   "pos": [
+    0,
+    20,
+    0,
+    526
+   ]
+  },
+  {
+   "type": "frame",
+   "name": "LuckChip",
+   "transparent": true,
+   "size": [
+    0,
+    320,
+    0,
+    60
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconLuck",
+     "name": "Icon",
+     "size": [
+      0,
+      52,
+      0,
+      52
+     ],
+     "pos": [
+      0,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      250,
+      0,
+      38
+     ],
+     "textColour": "luck",
+     "align": "left",
+     "textScale": 0.8947,
+     "textStroke": 3,
+     "name": "LuckAmount",
+     "samples": [
+      "x999.9",
+      "x1.01"
+     ],
+     "font": "display",
+     "pos": [
+      0,
+      62,
+      0,
+      11
+     ],
+     "maxText": 34
+    }
+   ],
+   "pos": [
+    0,
+    20,
+    0,
+    596
+   ]
+  },
+  {
+   "type": "frame",
+   "name": "TutorialHint",
+   "colour": [
+    "#262B66",
+    "#1B1F4B"
+   ],
+   "keyline": "#FFFFFF",
+   "alpha": 0.2,
+   "corner": 18,
+   "size": [
+    0,
+    467,
+    0,
+    36
+   ],
+   "pos": [
+    0.5,
+    0,
+    0,
+    14
+   ],
+   "anchor": [
+    0.5,
+    0
+   ],
+   "autoX": 768,
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconArrow",
+     "name": "Arrow",
+     "size": [
+      0,
+      22,
+      0,
+      22
+     ],
+     "pos": [
+      0,
+      10,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      411,
+      0,
+      24
+     ],
+     "textColour": "onDark",
+     "align": "left",
+     "textScale": 0.6667,
+     "textStroke": 2,
+     "name": "ObjectiveLine",
+     "samples": [
+      "Reach Realm of Legends: train to 40M power",
+      "Hold THROW and release near the top!"
+     ],
+     "pos": [
+      0,
+      40,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ],
+     "maxText": 16,
+     "autoX": true
+    }
+   ]
+  },
+  {
+   "type": "panel",
+   "name": "NoticeCard",
+   "colour": "panel",
+   "size": [
+    0,
+    340,
+    0,
+    104
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "FoodIcon_dango",
+     "name": "NoticeIcon",
+     "size": [
+      0,
+      52,
+      0,
+      52
+     ],
+     "pos": [
+      0,
+      10,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      138,
+      0,
+      20
+     ],
+     "textColour": "gold",
+     "align": "left",
+     "textScale": 0.7,
+     "textStroke": 2,
+     "name": "NoticeTitle",
+     "samples": [
+      "NEW FOOD UNLOCKED!",
+      "NEW GEAR!"
+     ],
+     "font": "display",
+     "pos": [
+      0,
+      70,
+      0,
+      10
+     ],
+     "maxText": 14
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      138,
+      0,
+      38
+     ],
+     "textColour": "onDark",
+     "align": "left",
+     "textScale": 0.3684,
+     "textStroke": 2,
+     "name": "NoticeBody",
+     "samples": [
+      "Dango, 250 yen",
+      "Iron Dummy, 20K yen"
+     ],
+     "wrap": true,
+     "pos": [
+      0,
+      70,
+      0,
+      34
+     ],
+     "maxText": 14
+    },
+    {
+     "type": "button",
+     "name": "NoticeButton",
+     "size": [
+      0,
+      98,
+      0,
+      34
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconShop",
+       "name": "Icon",
+       "size": [
+        0,
+        20,
+        0,
+        20
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        48,
+        0,
+        21
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.7143,
+       "textStroke": 2,
+       "name": "NoticeButtonText",
+       "samples": [
+        "SHOP",
+        "BUY"
+       ],
+       "font": "display",
+       "maxText": 15
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 6,
+      "align": "center"
+     },
+     "sizeClass": "S",
+     "depth": 3,
+     "corner": 14,
+     "pos": [
+      1,
+      -12,
+      1,
+      -12
+     ],
+     "anchor": [
+      1,
+      1
+     ],
+     "selfFace": true,
+     "colour": "#48D687",
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#48D687"
+      ],
+      [
+       0.4,
+       "#48D687"
+      ],
+      [
+       0.41000000000000003,
+       "#41C17A"
+      ],
+      [
+       1.0,
+       "#3BAF6F"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3
+     }
+    },
+    {
+     "type": "frame",
+     "name": "NoticeClose",
+     "transparent": true,
+     "cls": "TextButton",
+     "size": [
+      0,
+      56,
+      0,
+      56
+     ],
+     "children": [
+      {
+       "type": "panel",
+       "name": "CloseFace",
+       "colour": "danger",
+       "size": [
+        0,
+        30,
+        0,
+        30
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconClose",
+         "name": "Icon",
+         "size": [
+          0,
+          14,
+          0,
+          14
+         ],
+         "pos": [
+          0.5,
+          0,
+          0.5,
+          0
+         ],
+         "anchor": [
+          0.5,
+          0.5
+         ]
+        }
+       ],
+       "corner": 14,
+       "depth": 0,
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "stroke": 2
+      }
+     ],
+     "pos": [
+      1,
+      22,
+      0,
+      -22
+     ],
+     "anchor": [
+      1,
+      0
+     ],
+     "overhang": true,
+     "z": 5
+    }
+   ],
+   "comic": 4,
+   "pos": [
+    0.5,
+    0,
+    0,
+    106
+   ],
+   "anchor": [
+    0.5,
+    0
+   ],
+   "visible": false,
+   "z": 5,
+   "keyline": "#FFFFFF"
+  },
+  {
+   "type": "panel",
+   "name": "ServerLuckBar",
+   "colour": "panel",
+   "size": [
+    0,
+    250,
+    0,
+    40
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconLuck",
+     "name": "Icon",
+     "size": [
+      0,
+      24,
+      0,
+      24
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      80,
+      0,
+      28
+     ],
+     "textColour": "luck",
+     "align": "center",
+     "textScale": 0.6429,
+     "textStroke": 2,
+     "name": "Multiplier",
+     "samples": [
+      "x8 LUCK",
+      "x2 FEST"
+     ],
+     "font": "display"
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      56,
+      0,
+      26
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.6154,
+     "textStroke": 2,
+     "name": "TimeLeft",
+     "samples": [
+      "14:59",
+      "2:59"
+     ]
+    },
+    {
+     "type": "button",
+     "name": "BoostButton",
+     "size": [
+      0,
+      34,
+      0,
+      34
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconRobux",
+       "name": "Icon",
+       "size": [
+        0,
+        20,
+        0,
+        20
+       ]
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 0,
+      "align": "center"
+     },
+     "sizeClass": "S",
+     "depth": 3,
+     "corner": 14,
+     "selfFace": true,
+     "colour": "#FF61AC",
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#FF61AC"
+      ],
+      [
+       0.4,
+       "#FF61AC"
+      ],
+      [
+       0.41000000000000003,
+       "#E6579B"
+      ],
+      [
+       1.0,
+       "#D1508D"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3
+     }
+    }
+   ],
+   "comic": 3,
+   "corner": 20,
+   "padding": 4,
+   "layout": {
+    "type": "list",
+    "dir": "x",
+    "gap": 8,
+    "align": "center"
+   },
+   "pos": [
+    0.5,
+    0,
+    0,
+    58
+   ],
+   "keyline": "#FFFFFF",
+   "anchor": [
+    0.5,
+    0
+   ]
+  },
+  {
+   "type": "panel",
+   "name": "Announcement",
+   "colour": [
+    "#FFC93C",
+    "#FF5A5F"
+   ],
+   "size": [
+    0,
+    672,
+    0,
+    44
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconStar",
+     "name": "Icon",
+     "size": [
+      0,
+      26,
+      0,
+      26
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      212,
+      0,
+      22
+     ],
+     "textColour": "onDark",
+     "align": "left",
+     "textScale": 0.6364,
+     "textStroke": 2,
+     "name": "PlayerName",
+     "samples": [
+      "xX_SuperLongName_Xx",
+      "Builderman"
+     ]
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      176,
+      0,
+      28
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.6786,
+     "textStroke": 3,
+     "name": "HeroName",
+     "samples": [
+      "Heavenly String King",
+      "Copy Ninja"
+     ],
+     "font": "display"
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      88,
+      0,
+      22
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.6364,
+     "textStroke": 2,
+     "name": "RarityText",
+     "samples": [
+      "LEGENDARY",
+      "SECRET"
+     ],
+     "font": "display"
+    },
+    {
+     "type": "label",
+     "text": "<unbound>",
+     "size": [
+      0,
+      126,
+      0,
+      22
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.6364,
+     "textStroke": 2,
+     "name": "OneInN",
+     "samples": [
+      "1 in 48,400,000",
+      "1 in 250"
+     ]
+    }
+   ],
+   "keyline": "#FFFFFF",
+   "comic": 3,
+   "corner": 10,
+   "rotation": -1,
+   "padding": 4,
+   "layout": {
+    "type": "list",
+    "dir": "x",
+    "gap": 8,
+    "align": "center"
+   },
+   "pattern": {
+    "name": "dots",
+    "colour": "#FFFFFF",
+    "opacity": 0.22,
+    "tile": 26
+   },
+   "pos": [
+    0.5,
+    0,
+    0,
+    206
+   ],
+   "anchor": [
+    0.5,
+    0
+   ],
+   "visible": false,
+   "z": 6
+  },
+  {
+   "type": "label",
+   "text": "<unbound>",
+   "size": [
+    0,
+    400,
+    0,
+    56
+   ],
+   "textColour": "buy",
+   "align": "center",
+   "textScale": 0.7857,
+   "textStroke": 4,
+   "name": "FlashText",
+   "samples": [
+    "LUCKY THROW!",
+    "PERFECT!"
+   ],
+   "font": "display",
+   "pos": [
+    0.5,
+    0,
+    0,
+    260
+   ],
+   "anchor": [
+    0.5,
+    0
+   ],
+   "visible": false
+  },
+  {
+   "type": "frame",
+   "name": "Toasts",
+   "transparent": true,
+   "size": [
+    0,
+    380,
+    0,
+    72
+   ],
+   "children": [
+    {
+     "type": "panel",
+     "name": "ToastSample1",
+     "colour": "panel",
+     "paintable": true,
+     "keyline": "#FFFFFF",
+     "depth": 3,
+     "corner": 16,
+     "size": [
+      0,
+      380,
+      0,
+      32
+     ],
+     "padding": 4,
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 8,
+      "align": "start"
+     },
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconYen",
+       "name": "Icon",
+       "size": [
+        0,
+        22,
+        0,
+        22
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        330,
+        0,
+        22
+       ],
+       "textColour": "onDark",
+       "align": "left",
+       "textScale": 0.6364,
+       "textStroke": 2,
+       "name": "Text",
+       "samples": [
+        "Not enough yen for Festival Cake!"
+       ],
+       "maxText": 14
+      }
+     ],
+     "visible": false,
+     "attrs": {
+      "Sample": true
+     }
+    },
+    {
+     "type": "panel",
+     "name": "ToastSample2",
+     "colour": "#1F6E4A",
+     "paintable": true,
+     "keyline": "#FFFFFF",
+     "depth": 3,
+     "corner": 16,
+     "size": [
+      0,
+      380,
+      0,
+      32
+     ],
+     "padding": 4,
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 8,
+      "align": "start"
+     },
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconGift",
+       "name": "Icon",
+       "size": [
+        0,
+        22,
+        0,
+        22
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        330,
+        0,
+        22
+       ],
+       "textColour": "onDark",
+       "align": "left",
+       "textScale": 0.6364,
+       "textStroke": 2,
+       "name": "Text",
+       "samples": [
+        "Gift 3 is ready to claim!"
+       ],
+       "maxText": 14
+      }
+     ],
+     "visible": false,
+     "attrs": {
+      "Sample": true
+     }
+    }
+   ],
+   "layout": {
+    "type": "list",
+    "dir": "y",
+    "gap": 8,
+    "align": "end"
+   },
+   "pos": [
+    0.5,
+    0,
+    0,
+    452
+   ],
+   "anchor": [
+    0.5,
+    0
+   ]
+  }
+ ]
+}

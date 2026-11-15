@@ -1,0 +1,454 @@
+{
+ "className": "Frame",
+ "properties": {
+  "Size": {
+   "UDim2": [
+    [
+     0,
+     96
+    ],
+    [
+     0,
+     132
+    ]
+   ]
+  },
+  "Position": {
+   "UDim2": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  "AnchorPoint": {
+   "Vector2": [
+    0,
+    0
+   ]
+  },
+  "ZIndex": 0,
+  "BackgroundTransparency": 1
+ },
+ "children": [
+  {
+   "className": "Frame",
+   "name": "Shadow",
+   "properties": {
+    "Size": {
+     "UDim2": [
+      [
+       1,
+       -8
+      ],
+      [
+       1,
+       -12
+      ]
+     ]
+    },
+    "Position": {
+     "UDim2": [
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       8
+      ]
+     ]
+    },
+    "ZIndex": 0,
+    "BackgroundColor3": {
+     "Color3": [
+      0.0941,
+      0.1725,
+      0.302
+     ]
+    }
+   },
+   "children": [
+    {
+     "className": "UICorner",
+     "name": "Corner",
+     "properties": {
+      "CornerRadius": {
+       "UDim": [
+        0,
+        14
+       ]
+      }
+     }
+    },
+    {
+     "className": "UIStroke",
+     "name": "Stroke",
+     "properties": {
+      "Thickness": 4,
+      "ApplyStrokeMode": "Border",
+      "Color": {
+       "Color3": [
+        0.051,
+        0.0588,
+        0.1686
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "className": "Frame",
+   "name": "Face",
+   "properties": {
+    "Size": {
+     "UDim2": [
+      [
+       1,
+       -8
+      ],
+      [
+       1,
+       -12
+      ]
+     ]
+    },
+    "Position": {
+     "UDim2": [
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    },
+    "ZIndex": 1,
+    "BackgroundColor3": {
+     "Color3": [
+      0.1686,
+      0.1922,
+      0.4588
+     ]
+    }
+   },
+   "children": [
+    {
+     "className": "UICorner",
+     "name": "Corner",
+     "properties": {
+      "CornerRadius": {
+       "UDim": [
+        0,
+        14
+       ]
+      }
+     }
+    },
+    {
+     "className": "UIGradient",
+     "name": "Gradient",
+     "properties": {
+      "Rotation": -90,
+      "Color": {
+       "ColorSequence": {
+        "keypoints": [
+         {
+          "time": 0,
+          "color": [
+           0.8588,
+           0.8588,
+           0.8588
+          ]
+         },
+         {
+          "time": 1,
+          "color": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         }
+        ]
+       }
+      }
+     }
+    },
+    {
+     "className": "UIStroke",
+     "name": "Stroke",
+     "properties": {
+      "Thickness": 4,
+      "ApplyStrokeMode": "Border",
+      "Color": {
+       "Color3": [
+        0.051,
+        0.0588,
+        0.1686
+       ]
+      }
+     }
+    },
+    {
+     "className": "TextLabel",
+     "name": "DayLabel",
+     "properties": {
+      "Size": {
+       "UDim2": [
+        [
+         0,
+         84
+        ],
+        [
+         0,
+         19
+        ]
+       ]
+      },
+      "Position": {
+       "UDim2": [
+        [
+         0.5,
+         0
+        ],
+        [
+         0,
+         6
+        ]
+       ]
+      },
+      "AnchorPoint": {
+       "Vector2": [
+        0.5,
+        0
+       ]
+      },
+      "ZIndex": 0,
+      "BackgroundTransparency": 1,
+      "Text": "DAY 7",
+      "TextScaled": true,
+      "FontFace": {
+       "Font": {
+        "family": "rbxasset://fonts/families/LuckiestGuy.json",
+        "weight": "Regular",
+        "style": "Normal"
+       }
+      },
+      "TextColor3": {
+       "Color3": [
+        1.0,
+        1.0,
+        1.0
+       ]
+      },
+      "TextXAlignment": "Center"
+     },
+     "children": [
+      {
+       "className": "UIStroke",
+       "name": "Stroke",
+       "properties": {
+        "Thickness": 2,
+        "ApplyStrokeMode": "Contextual",
+        "Color": {
+         "Color3": [
+          0.051,
+          0.0588,
+          0.1686
+         ]
+        },
+        "LineJoinMode": "Bevel"
+       }
+      },
+      {
+       "className": "UITextSizeConstraint",
+       "name": "SizeCap",
+       "properties": {
+        "MaxTextSize": 14,
+        "MinTextSize": 9
+       }
+      }
+     ]
+    },
+    {
+     "className": "ImageLabel",
+     "name": "Icon",
+     "properties": {
+      "Size": {
+       "UDim2": [
+        [
+         0,
+         48
+        ],
+        [
+         0,
+         48
+        ]
+       ]
+      },
+      "Position": {
+       "UDim2": [
+        [
+         0.5,
+         0
+        ],
+        [
+         0,
+         30
+        ]
+       ]
+      },
+      "AnchorPoint": {
+       "Vector2": [
+        0.5,
+        0
+       ]
+      },
+      "ZIndex": 0,
+      "BackgroundTransparency": 1,
+      "ScaleType": "Fit"
+     },
+     "attributes": {
+      "PendingIcon": "IconLuckyThrowBig",
+      "IconName": "IconLuckyThrowBig",
+      "IconKey": "IconLuckyThrowBig"
+     }
+    },
+    {
+     "className": "TextLabel",
+     "name": "RewardText",
+     "properties": {
+      "Size": {
+       "UDim2": [
+        [
+         0,
+         84
+        ],
+        [
+         0,
+         34
+        ]
+       ]
+      },
+      "Position": {
+       "UDim2": [
+        [
+         0.5,
+         0
+        ],
+        [
+         0,
+         88
+        ]
+       ]
+      },
+      "AnchorPoint": {
+       "Vector2": [
+        0.5,
+        0
+       ]
+      },
+      "ZIndex": 0,
+      "BackgroundTransparency": 1,
+      "Text": "<unbound>",
+      "TextScaled": true,
+      "FontFace": {
+       "Font": {
+        "family": "rbxasset://fonts/families/LuckiestGuy.json",
+        "weight": "Regular",
+        "style": "Normal"
+       }
+      },
+      "TextColor3": {
+       "Color3": [
+        1.0,
+        1.0,
+        1.0
+       ]
+      },
+      "TextXAlignment": "Center",
+      "TextWrapped": true
+     },
+     "children": [
+      {
+       "className": "UIStroke",
+       "name": "Stroke",
+       "properties": {
+        "Thickness": 2,
+        "ApplyStrokeMode": "Contextual",
+        "Color": {
+         "Color3": [
+          0.051,
+          0.0588,
+          0.1686
+         ]
+        },
+        "LineJoinMode": "Bevel"
+       }
+      },
+      {
+       "className": "UITextSizeConstraint",
+       "name": "SizeCap",
+       "properties": {
+        "MaxTextSize": 13,
+        "MinTextSize": 9
+       }
+      }
+     ]
+    },
+    {
+     "className": "ImageLabel",
+     "name": "ClaimedTick",
+     "properties": {
+      "Size": {
+       "UDim2": [
+        [
+         0,
+         22
+        ],
+        [
+         0,
+         22
+        ]
+       ]
+      },
+      "Position": {
+       "UDim2": [
+        [
+         1,
+         8
+        ],
+        [
+         0,
+         -8
+        ]
+       ]
+      },
+      "AnchorPoint": {
+       "Vector2": [
+        1,
+        0
+       ]
+      },
+      "ZIndex": 4,
+      "Visible": false,
+      "BackgroundTransparency": 1,
+      "ScaleType": "Fit"
+     },
+     "attributes": {
+      "PendingIcon": "IconTick",
+      "IconName": "IconTick",
+      "IconKey": "IconTick"
+     }
+    }
+   ]
+  }
+ ]
+}

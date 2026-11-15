@@ -1,0 +1,182 @@
+{
+ "className": "Frame",
+ "properties": {
+  "Size": {
+   "UDim2": [
+    [
+     0,
+     84
+    ],
+    [
+     0,
+     6
+    ]
+   ]
+  },
+  "Position": {
+   "UDim2": [
+    [
+     0.5,
+     0
+    ],
+    [
+     0.5,
+     0
+    ]
+   ]
+  },
+  "AnchorPoint": {
+   "Vector2": [
+    0.5,
+    0.5
+   ]
+  },
+  "ZIndex": 0,
+  "BackgroundColor3": {
+   "Color3": [
+    0.2471,
+    0.6627,
+    0.9608
+   ]
+  }
+ },
+ "children": [
+  {
+   "className": "UICorner",
+   "name": "Corner",
+   "properties": {
+    "CornerRadius": {
+     "UDim": [
+      0,
+      3
+     ]
+    }
+   }
+  },
+  {
+   "className": "UIGradient",
+   "name": "Gradient",
+   "properties": {
+    "Rotation": -90,
+    "Color": {
+     "ColorSequence": {
+      "keypoints": [
+       {
+        "time": 0,
+        "color": [
+         0.8588,
+         0.8588,
+         0.8588
+        ]
+       },
+       {
+        "time": 1,
+        "color": [
+         1.0,
+         1.0,
+         1.0
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "className": "UIStroke",
+   "name": "Stroke",
+   "properties": {
+    "Thickness": 4,
+    "ApplyStrokeMode": "Border",
+    "Color": {
+     "Color3": [
+      0.051,
+      0.0588,
+      0.1686
+     ]
+    }
+   }
+  },
+  {
+   "className": "TextLabel",
+   "name": "ZoneMarkName",
+   "properties": {
+    "Size": {
+     "UDim2": [
+      [
+       0,
+       176
+      ],
+      [
+       0,
+       22
+      ]
+     ]
+    },
+    "Position": {
+     "UDim2": [
+      [
+       0,
+       -8
+      ],
+      [
+       0.5,
+       0
+      ]
+     ]
+    },
+    "AnchorPoint": {
+     "Vector2": [
+      1,
+      0.5
+     ]
+    },
+    "ZIndex": 0,
+    "BackgroundTransparency": 1,
+    "Text": "Pirate Harbor",
+    "TextScaled": true,
+    "FontFace": {
+     "Font": {
+      "family": "rbxasset://fonts/families/FredokaOne.json",
+      "weight": "Regular",
+      "style": "Normal"
+     }
+    },
+    "TextColor3": {
+     "Color3": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "TextXAlignment": "Right"
+   },
+   "children": [
+    {
+     "className": "UIStroke",
+     "name": "Stroke",
+     "properties": {
+      "Thickness": 3,
+      "ApplyStrokeMode": "Contextual",
+      "Color": {
+       "Color3": [
+        0.051,
+        0.0588,
+        0.1686
+       ]
+      },
+      "LineJoinMode": "Bevel"
+     }
+    },
+    {
+     "className": "UITextSizeConstraint",
+     "name": "SizeCap",
+     "properties": {
+      "MaxTextSize": 16,
+      "MinTextSize": 9
+     }
+    }
+   ]
+  }
+ ]
+}

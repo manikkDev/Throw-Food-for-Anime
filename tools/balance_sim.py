@@ -50,9 +50,11 @@ def roll_character(cfg: dict, zone_index: int, luck: float, rng: random.Random) 
     zone = cfg["Zones"][zone_index]
     rar = cfg["Rarities"]
     names, weights = [], []
-    for rarity, count in zone["Slots"].items():
+    # Heroes of one rarity share that rarity's weight (Core/Roll.heroWeights), so
+    # the count in Slots does not enter: only which rarities the zone has.
+    for rarity in zone["Slots"]:
         r = rar[rarity]
-        w = r["Weight"] * (1 + (luck - 1) * r["LuckScale"]) * count
+        w = r["Weight"] * (1 + (luck - 1) * r["LuckScale"])
         names.append(rarity)
         weights.append(w)
     rarity = rng.choices(names, weights)[0]

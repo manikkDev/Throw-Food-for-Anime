@@ -34,14 +34,14 @@ it lures joins your plot and earns Yen; further throws reach rarer heroes.
 5. **Five differences from the reference, each answering a complaint about it:** hold-to-charge
    zone select with a perfect window, cravings, fusion, rebirth, honest odds with skippable
    reveals.
-6. **Six players, six zones, 31 + 8 heroes, 12 foods at launch;** more heroes by import, later zones are data.
+6. **Six players, six zones, 43 + 8 heroes, 12 foods at launch;** more heroes by import, later zones are data.
 7. **Numbers were tuned with a simulator,** and its targets are part of the contract.
 8. **Free assets first** (CC0 packs, catalogue items, Creator Store audio); the 3D, animation and
    VFX skills build what is missing.
 
 ## Counts
 
-31 lane heroes + 8 premium (premium avatars not imported yet), 6 zones, 7 rarities, 4 mutations, 3 sizes, 12 foods, 8 dojo gear
+43 lane heroes + 8 premium (premium avatars not imported yet), 6 zones, 7 rarities, 4 mutations, 3 sizes, 12 foods, 8 dojo gear
 tiers, 10 rebirth tiers, 6 passes, 17 products, 22 screens, 30 icons, 14 animation clips,
 27 effects, 34 sound roles, 62 non-character meshes, 16 server services, 9 client controllers,
 14 Core modules.

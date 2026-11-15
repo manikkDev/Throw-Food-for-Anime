@@ -8,6 +8,9 @@
       },
       "Shared": {
         "$path": "src/shared"
+      },
+      "Ui": {
+        "$path": "src/ui"
       }
     },
     "ServerScriptService": {

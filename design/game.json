@@ -33,15 +33,16 @@
  "stages": {
   "map": {
    "spec": "design/map.json",
-   "status": "todo"
+   "status": "done"
   },
   "meshes": {
    "spec": "design/meshes.json",
-   "status": "todo"
+   "status": "done",
+   "note": "101 world models and 59 hero rigs built, uploaded, installed and measured (assets/meshes/manifest.json)."
   },
   "ui": {
    "spec": "design/ui.json",
-   "status": "todo"
+   "status": "done"
   },
   "animation": {
    "spec": "design/animations.json",
@@ -204,21 +205,21 @@
    "LeaderboardSeconds": 60
   },
   "Throw": {
-   "CycleSeconds": 3.5,
+   "CycleSeconds": 7.0,
    "ServerCooldownSeconds": 2.2,
    "ChargeSeconds": 1.1,
    "MinCharge": 0.2,
    "PerfectWindow": 0.08,
    "PerfectLuckBonus": 0.1,
    "DepthLuckBonus": 0.25,
-   "FlightSecondsMin": 1.1,
-   "FlightSecondsMax": 2.2,
+   "FlightSecondsMin": 2.4,
+   "FlightSecondsMax": 4.4,
    "LuckyThrowLuck": 12,
    "CravingWeightMult": 3,
    "RevealSkipSeconds": 0.35,
    "FirstThrowRarity": "Uncommon",
    "DashSeconds": 1,
-   "LandPauseSeconds": 0.25
+   "LandPauseSeconds": 0.9
   },
   "Training": {
    "StartPower": 10,
@@ -437,13 +438,13 @@
     "Index": 1,
     "PowerReq": 0,
     "BaseIncome": 1,
-    "LengthStuds": 220,
+    "LengthStuds": 360,
     "Slots": {
      "Common": 1,
-     "Uncommon": 1,
-     "Rare": 1,
-     "Epic": 1,
-     "Legendary": 1
+     "Uncommon": 2,
+     "Rare": 2,
+     "Epic": 2,
+     "Legendary": 2
     },
     "Scenery": "school gate, cherry trees, running track"
    },
@@ -453,13 +454,13 @@
     "Index": 2,
     "PowerReq": 200,
     "BaseIncome": 8,
-    "LengthStuds": 220,
+    "LengthStuds": 360,
     "Slots": {
      "Common": 1,
-     "Uncommon": 1,
-     "Rare": 1,
+     "Uncommon": 2,
+     "Rare": 2,
      "Epic": 1,
-     "Legendary": 1
+     "Legendary": 2
     },
     "Scenery": "docks, a moored ship, barrels, lighthouse"
    },
@@ -469,12 +470,12 @@
     "Index": 3,
     "PowerReq": 3000,
     "BaseIncome": 60,
-    "LengthStuds": 220,
+    "LengthStuds": 360,
     "Slots": {
      "Common": 1,
-     "Uncommon": 1,
-     "Rare": 1,
-     "Epic": 1,
+     "Uncommon": 2,
+     "Rare": 2,
+     "Epic": 2,
      "Legendary": 1
     },
     "Scenery": "bamboo forest, rope bridges, hidden gate"
@@ -485,13 +486,13 @@
     "Index": 4,
     "PowerReq": 70000,
     "BaseIncome": 480,
-    "LengthStuds": 220,
+    "LengthStuds": 360,
     "Slots": {
      "Common": 1,
-     "Uncommon": 1,
-     "Rare": 1,
-     "Epic": 1,
-     "Legendary": 1
+     "Uncommon": 2,
+     "Rare": 2,
+     "Epic": 2,
+     "Legendary": 2
     },
     "Scenery": "stone walls, castle keep, red bridges"
    },
@@ -501,12 +502,12 @@
     "Index": 5,
     "PowerReq": 2000000,
     "BaseIncome": 4000,
-    "LengthStuds": 220,
+    "LengthStuds": 360,
     "Slots": {
-     "Common": 1,
+     "Common": 2,
      "Uncommon": 1,
-     "Rare": 1,
-     "Epic": 1,
+     "Rare": 2,
+     "Epic": 2,
      "Legendary": 1
     },
     "Scenery": "neon skyline, billboards, rooftop pads"
@@ -517,14 +518,14 @@
     "Index": 6,
     "PowerReq": 40000000,
     "BaseIncome": 34000,
-    "LengthStuds": 220,
+    "LengthStuds": 360,
     "Slots": {
      "Common": 1,
      "Uncommon": 1,
      "Rare": 1,
-     "Epic": 1,
-     "Legendary": 1,
-     "Mythic": 1
+     "Epic": 2,
+     "Legendary": 2,
+     "Mythic": 2
     },
     "Scenery": "floating islands, great torii, glowing river"
    }
@@ -536,7 +537,7 @@
     "IncomeMult": 1,
     "Order": 1,
     "Color": "B8C0CC",
-    "RevealSeconds": 0.8,
+    "RevealSeconds": 4.6,
     "Announce": false
    },
    "Uncommon": {
@@ -545,7 +546,7 @@
     "IncomeMult": 2.5,
     "Order": 2,
     "Color": "4ADE80",
-    "RevealSeconds": 1.0,
+    "RevealSeconds": 5.0,
     "Announce": false
    },
    "Rare": {
@@ -554,7 +555,7 @@
     "IncomeMult": 7,
     "Order": 3,
     "Color": "38BDF8",
-    "RevealSeconds": 1.4,
+    "RevealSeconds": 5.6,
     "Announce": false
    },
    "Epic": {
@@ -563,7 +564,7 @@
     "IncomeMult": 25,
     "Order": 4,
     "Color": "A855F7",
-    "RevealSeconds": 2.0,
+    "RevealSeconds": 6.4,
     "Announce": false
    },
    "Legendary": {
@@ -572,7 +573,7 @@
     "IncomeMult": 120,
     "Order": 5,
     "Color": "FACC15",
-    "RevealSeconds": 2.8,
+    "RevealSeconds": 7.4,
     "Announce": true
    },
    "Mythic": {
@@ -581,7 +582,7 @@
     "IncomeMult": 900,
     "Order": 6,
     "Color": "FB3B6B",
-    "RevealSeconds": 3.6,
+    "RevealSeconds": 8.4,
     "Announce": true
    },
    "Secret": {
@@ -590,7 +591,7 @@
     "IncomeMult": 10000,
     "Order": 7,
     "Color": "111111",
-    "RevealSeconds": 4.5,
+    "RevealSeconds": 9.4,
     "Announce": true
    }
   },
@@ -629,19 +630,19 @@
     "Name": "Titan",
     "Chance": 0.003,
     "IncomeMult": 6,
-    "Scale": 2.2
+    "Scale": 1.7
    },
    {
     "Name": "Huge",
     "Chance": 0.02,
     "IncomeMult": 3,
-    "Scale": 1.6
+    "Scale": 1.4
    },
    {
     "Name": "Big",
     "Chance": 0.08,
     "IncomeMult": 1.5,
-    "Scale": 1.25
+    "Scale": 1.2
    }
   ],
   "Plot": {
@@ -817,11 +818,27 @@
     "Idle": "IdlePower"
    },
    {
+    "Id": "freedom_seeker",
+    "Name": "Freedom Seeker",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Uncommon",
+    "Craves": "Savory",
+    "Idle": "IdlePower"
+   },
+   {
     "Id": "midfield_genius",
     "Name": "Midfield Genius",
     "Zone": "sakura_schoolyard",
     "Rarity": "Rare",
     "Craves": "Seafood",
+    "Idle": "IdleCool"
+   },
+   {
+    "Id": "shadow_summoner",
+    "Name": "Shadow Summoner",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Rare",
+    "Craves": "Savory",
     "Idle": "IdleCool"
    },
    {
@@ -833,12 +850,28 @@
     "Idle": "IdleCool"
    },
    {
+    "Id": "rebel_emperor",
+    "Name": "Rebel Emperor",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Epic",
+    "Craves": "Seafood",
+    "Idle": "IdleCool"
+   },
+   {
     "Id": "sorcerer_hunter",
     "Name": "Sorcerer Hunter",
     "Zone": "sakura_schoolyard",
     "Rarity": "Legendary",
     "Craves": "Spicy",
     "Idle": "IdleBlade"
+   },
+   {
+    "Id": "classroom_mastermind",
+    "Name": "Classroom Mastermind",
+    "Zone": "sakura_schoolyard",
+    "Rarity": "Legendary",
+    "Craves": "Sweet",
+    "Idle": "IdleCool"
    },
    {
     "Id": "straw_hat_rookie",
@@ -857,12 +890,28 @@
     "Idle": "IdleCool"
    },
    {
+    "Id": "chainsaw_kid",
+    "Name": "Chainsaw Kid",
+    "Zone": "pirate_harbor",
+    "Rarity": "Uncommon",
+    "Craves": "Spicy",
+    "Idle": "IdlePower"
+   },
+   {
     "Id": "three_sword_hunter",
     "Name": "Three-Sword Hunter",
     "Zone": "pirate_harbor",
     "Rarity": "Rare",
     "Craves": "Savory",
     "Idle": "IdleBlade"
+   },
+   {
+    "Id": "ripple_trickster",
+    "Name": "Ripple Trickster",
+    "Zone": "pirate_harbor",
+    "Rarity": "Rare",
+    "Craves": "Sweet",
+    "Idle": "IdleCheer"
    },
    {
     "Id": "heart_surgeon",
@@ -878,6 +927,14 @@
     "Zone": "pirate_harbor",
     "Rarity": "Legendary",
     "Craves": "Spicy",
+    "Idle": "IdleCool"
+   },
+   {
+    "Id": "star_delinquent",
+    "Name": "Star Delinquent",
+    "Zone": "pirate_harbor",
+    "Rarity": "Legendary",
+    "Craves": "Seafood",
     "Idle": "IdleCool"
    },
    {
@@ -897,8 +954,24 @@
     "Idle": "IdleCool"
    },
    {
+    "Id": "lightning_assassin",
+    "Name": "Lightning Assassin",
+    "Zone": "ninja_village",
+    "Rarity": "Uncommon",
+    "Craves": "Sweet",
+    "Idle": "IdleNinja"
+   },
+   {
     "Id": "copy_ninja",
     "Name": "Copy Ninja",
+    "Zone": "ninja_village",
+    "Rarity": "Rare",
+    "Craves": "Seafood",
+    "Idle": "IdleNinja"
+   },
+   {
+    "Id": "speed_heir",
+    "Name": "Speed Heir",
     "Zone": "ninja_village",
     "Rarity": "Rare",
     "Craves": "Seafood",
@@ -910,6 +983,14 @@
     "Zone": "ninja_village",
     "Rarity": "Epic",
     "Craves": "Sweet",
+    "Idle": "IdleNinja"
+   },
+   {
+    "Id": "masked_phantom",
+    "Name": "Masked Phantom",
+    "Zone": "ninja_village",
+    "Rarity": "Epic",
+    "Craves": "Savory",
     "Idle": "IdleNinja"
    },
    {
@@ -937,11 +1018,27 @@
     "Idle": "IdleShy"
    },
    {
+    "Id": "thunder_sleeper",
+    "Name": "Thunder Sleeper",
+    "Zone": "samurai_castle",
+    "Rarity": "Uncommon",
+    "Craves": "Sweet",
+    "Idle": "IdleShy"
+   },
+   {
     "Id": "substitute_reaper",
     "Name": "Substitute Reaper",
     "Zone": "samurai_castle",
     "Rarity": "Rare",
     "Craves": "Spicy",
+    "Idle": "IdleBlade"
+   },
+   {
+    "Id": "shadow_mastermind",
+    "Name": "Shadow Mastermind",
+    "Zone": "samurai_castle",
+    "Rarity": "Rare",
+    "Craves": "Savory",
     "Idle": "IdleBlade"
    },
    {
@@ -953,6 +1050,14 @@
     "Idle": "IdleBlade"
    },
    {
+    "Id": "flashy_shinobi",
+    "Name": "Flashy Shinobi",
+    "Zone": "samurai_castle",
+    "Rarity": "Epic",
+    "Craves": "Spicy",
+    "Idle": "IdleBlade"
+   },
+   {
     "Id": "demon_progenitor",
     "Name": "Demon Progenitor",
     "Zone": "samurai_castle",
@@ -961,12 +1066,28 @@
     "Idle": "IdleCool"
    },
    {
+    "Id": "black_swordsman",
+    "Name": "Black Swordsman",
+    "Zone": "samurai_castle",
+    "Rarity": "Legendary",
+    "Craves": "Spicy",
+    "Idle": "IdleBlade"
+   },
+   {
     "Id": "hero_hunter",
     "Name": "Hero Hunter",
     "Zone": "hero_city",
     "Rarity": "Common",
     "Craves": "Savory",
     "Idle": "IdleNinja"
+   },
+   {
+    "Id": "return_runner",
+    "Name": "Return Runner",
+    "Zone": "hero_city",
+    "Rarity": "Common",
+    "Craves": "Sweet",
+    "Idle": "IdleCheer"
    },
    {
     "Id": "anti_magic_knight",
@@ -985,12 +1106,28 @@
     "Idle": "IdleCool"
    },
    {
+    "Id": "crimson_boss",
+    "Name": "Crimson Boss",
+    "Zone": "hero_city",
+    "Rarity": "Rare",
+    "Craves": "Spicy",
+    "Idle": "IdleCool"
+   },
+   {
     "Id": "string_king",
     "Name": "Heavenly String King",
     "Zone": "hero_city",
     "Rarity": "Epic",
     "Craves": "Seafood",
     "Idle": "IdleCool"
+   },
+   {
+    "Id": "shadow_monarch",
+    "Name": "Shadow Monarch",
+    "Zone": "hero_city",
+    "Rarity": "Epic",
+    "Craves": "Sweet",
+    "Idle": "IdlePower"
    },
    {
     "Id": "bald_cape_hero",
@@ -1033,11 +1170,27 @@
     "Idle": "IdlePower"
    },
    {
+    "Id": "attack_giant",
+    "Name": "Attack Giant",
+    "Zone": "realm_of_legends",
+    "Rarity": "Epic",
+    "Craves": "Seafood",
+    "Idle": "IdlePower"
+   },
+   {
     "Id": "curse_king",
     "Name": "Curse King",
     "Zone": "realm_of_legends",
     "Rarity": "Legendary",
     "Craves": "Spicy",
+    "Idle": "IdleCool"
+   },
+   {
+    "Id": "golden_vampire",
+    "Name": "Golden Vampire",
+    "Zone": "realm_of_legends",
+    "Rarity": "Legendary",
+    "Craves": "Sweet",
     "Idle": "IdleCool"
    },
    {
@@ -1047,78 +1200,86 @@
     "Rarity": "Mythic",
     "Craves": "Savory",
     "Idle": "IdleCheer"
+   },
+   {
+    "Id": "wheel_guardian",
+    "Name": "Wheel Guardian",
+    "Zone": "realm_of_legends",
+    "Rarity": "Mythic",
+    "Craves": "Spicy",
+    "Idle": "IdlePower"
    }
   ],
   "PremiumCharacters": [
    {
     "Id": "starlight_idol",
-    "Name": "Starlight Idol",
+    "Name": "Cosplay Star",
     "Source": "Summon",
     "Idle": "IdleCheer",
-    "Look": "galaxy-print stage outfit, star wand",
+    "Look": "imported avatar: Marin Kitagawa",
     "BestIncomeMult": 1.1,
     "OddsPercent": 40
    },
    {
     "Id": "clockwork_butler",
-    "Name": "Clockwork Butler",
+    "Name": "Sweet-Tooth Detective",
     "Source": "Summon",
     "Idle": "IdleCool",
-    "Look": "tailcoat, brass monocle, gear back-piece",
+    "Look": "imported avatar: Lawliet",
     "BestIncomeMult": 1.75,
     "OddsPercent": 27
    },
    {
     "Id": "phantom_thief",
-    "Name": "Phantom Thief",
+    "Name": "One-Eyed Ghoul",
     "Source": "Summon",
     "Idle": "IdleCool",
-    "Look": "top hat, white mask, cape, rose",
+    "Look": "imported avatar: Ken Kaneki",
     "BestIncomeMult": 2.5,
     "OddsPercent": 18
    },
    {
     "Id": "demon_lord_heir",
-    "Name": "Demon Lord Heir",
+    "Name": "Control Devil",
     "Source": "Summon",
-    "Idle": "IdlePower",
-    "Look": "curled horns, dark royal coat, bat wings",
+    "Idle": "IdleCool",
+    "Look": "imported avatar: Makima",
     "BestIncomeMult": 3.5,
     "OddsPercent": 10
    },
    {
     "Id": "angel_commander",
-    "Name": "Angel Commander",
+    "Name": "Elf Archmage",
     "Source": "Summon",
     "Idle": "IdleFloat",
-    "Look": "white wings, halo, gold spear",
+    "Look": "imported avatar: Frieren",
     "BestIncomeMult": 5.5,
     "OddsPercent": 4
    },
    {
     "Id": "void_empress",
-    "Name": "Void Empress",
+    "Name": "Illusion Overlord",
     "Source": "Summon",
-    "Idle": "IdleFloat",
-    "Look": "black star gown, floating crown, void wings",
+    "Idle": "IdlePower",
+    "Look": "imported avatar: Aizen Sosuke",
     "BestIncomeMult": 12.0,
     "OddsPercent": 1
    },
    {
     "Id": "lucky_cat_mascot",
-    "Name": "Lucky Cat Mascot",
+    "Name": "Blood Fiend",
     "Source": "StarterPack",
     "Idle": "IdleCheer",
-    "Look": "lucky-cat hood, bell collar, coin",
+    "Look": "imported avatar: Power",
     "BestIncomeMult": 1.5,
     "OddsPercent": 0
    },
    {
     "Id": "sakura_shogun",
-    "Name": "Sakura Shogun",
+    "Name": "First Sun Swordsman",
     "Source": "Limited",
     "Idle": "IdleBlade",
-    "Look": "pink petal armour, blossom katana, petal cape",
+    "Look": "imported avatar: Yoriichi Tsugikuni",
     "BestIncomeMult": 3.0,
     "OddsPercent": 0
    }
@@ -1316,25 +1477,29 @@
   },
   "World": {
    "GroundY": 0,
-   "LaneStartZ": 40,
-   "LaneWidth": 40,
-   "LandingJitterX": 9,
-   "PlotPitch": 68,
-   "PlotWidth": 56,
-   "PlotBackZ": -20,
+   "LaneStartZ": 96,
+   "LaneWidth": 56,
+   "LandingJitterX": 18,
+   "PlotPitch": 108,
+   "PlotWidth": 84,
+   "PlotBackZ": -44,
    "PlotFrontZ": 28,
    "PedestalColumns": 7,
    "PedestalRows": 4,
-   "PedestalSpacing": 7,
-   "PedestalCenterZ": -3,
-   "ThrowPadZ": 21,
-   "ThrowPadRadius": 5,
-   "DojoPadX": -21,
-   "DojoPadZ": 20,
+   "PedestalSpacing": 8,
+   "PedestalCenterZ": -26,
+   "ThrowPadZ": 70,
+   "ThrowPadRadius": 7,
+   "DojoPadX": -26,
+   "DojoPadZ": 12,
    "DojoPadRadius": 6,
-   "SlotSignX": 21,
-   "SlotSignZ": 20,
-   "HubDepth": 90,
+   "SlotSignX": 32,
+   "SlotSignZ": -6,
+   "YardX": 24,
+   "YardZ": 12,
+   "YardWidth": 28,
+   "YardDepth": 24,
+   "HubDepth": 110,
    "InteractRange": 14,
    "PedestalTop": 1,
    "HeroViewDistance": 260,
@@ -1653,82 +1818,282 @@
    ]
   },
   {
-   "entity": "Starlight Idol",
+   "entity": "Shadow Summoner",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_shadow_summoner",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Megumi Fushiguro"
+    }
+   ]
+  },
+  {
+   "entity": "Classroom Mastermind",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_classroom_mastermind",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Ayanokoji"
+    }
+   ]
+  },
+  {
+   "entity": "Chainsaw Kid",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_chainsaw_kid",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Denji"
+    }
+   ]
+  },
+  {
+   "entity": "Speed Heir",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_speed_heir",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Naoya Zenin"
+    }
+   ]
+  },
+  {
+   "entity": "Thunder Sleeper",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_thunder_sleeper",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Zenitsu Agatsuma"
+    }
+   ]
+  },
+  {
+   "entity": "Flashy Shinobi",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_flashy_shinobi",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Tengen Uzui"
+    }
+   ]
+  },
+  {
+   "entity": "Return Runner",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_return_runner",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Subaru Natsuki"
+    }
+   ]
+  },
+  {
+   "entity": "Wheel Guardian",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_wheel_guardian",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Mahoraga"
+    }
+   ]
+  },
+  {
+   "entity": "Freedom Seeker",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_freedom_seeker",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Eren Yeager"
+    }
+   ]
+  },
+  {
+   "entity": "Rebel Emperor",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_rebel_emperor",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Lelouch"
+    }
+   ]
+  },
+  {
+   "entity": "Ripple Trickster",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_ripple_trickster",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Joseph Joestar"
+    }
+   ]
+  },
+  {
+   "entity": "Star Delinquent",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_star_delinquent",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Jotaro Joestar"
+    }
+   ]
+  },
+  {
+   "entity": "Lightning Assassin",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_lightning_assassin",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Killua"
+    }
+   ]
+  },
+  {
+   "entity": "Masked Phantom",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_masked_phantom",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Obito Uchiha"
+    }
+   ]
+  },
+  {
+   "entity": "Shadow Mastermind",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_shadow_mastermind",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Cid Kagenou"
+    }
+   ]
+  },
+  {
+   "entity": "Black Swordsman",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_black_swordsman",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Guts"
+    }
+   ]
+  },
+  {
+   "entity": "Crimson Boss",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_crimson_boss",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Diavolo"
+    }
+   ]
+  },
+  {
+   "entity": "Shadow Monarch",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_shadow_monarch",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Sung Jinwoo"
+    }
+   ]
+  },
+  {
+   "entity": "Attack Giant",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_attack_giant",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Eren Titan"
+    }
+   ]
+  },
+  {
+   "entity": "Golden Vampire",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Char_golden_vampire",
+     "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Dio Brando"
+    }
+   ]
+  },
+  {
+   "entity": "Cosplay Star",
    "needs": [
     {
      "stage": "meshes",
      "name": "Char_starlight_idol",
-     "why": "the collectible itself: baked R15 rig (avatar still to be imported: galaxy-print stage outfit, star wand)"
+     "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Marin Kitagawa"
     }
    ]
   },
   {
-   "entity": "Clockwork Butler",
+   "entity": "Sweet-Tooth Detective",
    "needs": [
     {
      "stage": "meshes",
      "name": "Char_clockwork_butler",
-     "why": "the collectible itself: baked R15 rig (avatar still to be imported: tailcoat, brass monocle, gear back-piece)"
+     "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Lawliet"
     }
    ]
   },
   {
-   "entity": "Phantom Thief",
+   "entity": "One-Eyed Ghoul",
    "needs": [
     {
      "stage": "meshes",
      "name": "Char_phantom_thief",
-     "why": "the collectible itself: baked R15 rig (avatar still to be imported: top hat, white mask, cape, rose)"
+     "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Ken Kaneki"
     }
    ]
   },
   {
-   "entity": "Demon Lord Heir",
+   "entity": "Control Devil",
    "needs": [
     {
      "stage": "meshes",
      "name": "Char_demon_lord_heir",
-     "why": "the collectible itself: baked R15 rig (avatar still to be imported: curled horns, dark royal coat, bat wings)"
+     "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Makima"
     }
    ]
   },
   {
-   "entity": "Angel Commander",
+   "entity": "Elf Archmage",
    "needs": [
     {
      "stage": "meshes",
      "name": "Char_angel_commander",
-     "why": "the collectible itself: baked R15 rig (avatar still to be imported: white wings, halo, gold spear)"
+     "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Frieren"
     }
    ]
   },
   {
-   "entity": "Void Empress",
+   "entity": "Illusion Overlord",
    "needs": [
     {
      "stage": "meshes",
      "name": "Char_void_empress",
-     "why": "the collectible itself: baked R15 rig (avatar still to be imported: black star gown, floating crown, void wings)"
+     "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Aizen Sosuke"
     }
    ]
   },
   {
-   "entity": "Lucky Cat Mascot",
+   "entity": "Blood Fiend",
    "needs": [
     {
      "stage": "meshes",
      "name": "Char_lucky_cat_mascot",
-     "why": "the collectible itself: baked R15 rig (avatar still to be imported: lucky-cat hood, bell collar, coin)"
+     "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Power"
     }
    ]
   },
   {
-   "entity": "Sakura Shogun",
+   "entity": "First Sun Swordsman",
    "needs": [
     {
      "stage": "meshes",
      "name": "Char_sakura_shogun",
-     "why": "the collectible itself: baked R15 rig (avatar still to be imported: pink petal armour, blossom katana, petal cape)"
+     "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Yoriichi Tsugikuni"
     }
    ]
   },
@@ -1742,7 +2107,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_onigiri",
+     "name": "Food_onigiri",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1757,7 +2122,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_dango",
+     "name": "Food_dango",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1772,7 +2137,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_sushi",
+     "name": "Food_sushi",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1787,7 +2152,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_spicy_bun",
+     "name": "Food_spicy_bun",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1802,7 +2167,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_gyoza",
+     "name": "Food_gyoza",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1817,7 +2182,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_ice_cream",
+     "name": "Food_ice_cream",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1832,7 +2197,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_takoyaki",
+     "name": "Food_takoyaki",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1847,7 +2212,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_ramen",
+     "name": "Food_ramen",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1862,7 +2227,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_curry",
+     "name": "Food_curry",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1877,7 +2242,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_tempura",
+     "name": "Food_tempura",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1892,7 +2257,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_festival_cake",
+     "name": "Food_festival_cake",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -1907,7 +2272,7 @@
     },
     {
      "stage": "ui",
-     "name": "FoodIcon_dragon_feast",
+     "name": "Food_dragon_feast",
      "why": "shop card and HUD equipped-food chip"
     }
    ]
@@ -2054,6 +2419,21 @@
      "stage": "meshes",
      "name": "Coin_Yen",
      "why": "coin pop and HUD icon source"
+    },
+    {
+     "stage": "meshes",
+     "name": "Hub_GiftBox",
+     "why": "the playtime-gift anchor in the hub: players walk to it to claim timed gifts"
+    },
+    {
+     "stage": "meshes",
+     "name": "Hub_IndexBoard",
+     "why": "the hero index anchor in the hub: opens the collection screen"
+    },
+    {
+     "stage": "meshes",
+     "name": "Plot_ThrowStage",
+     "why": "the raised stage the player throws from, out in front of the base at the mouth of the lane"
     }
    ]
   },
@@ -2094,6 +2474,26 @@
      "stage": "sfx",
      "name": "amb_sakura_schoolyard",
      "why": "the follow-cam flies here; silence reads as unfinished"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_SchoolBuilding",
+     "why": "set piece along the lane walls: three-storey anime high school: cream walls, rows of blue windows, central clock gable, pi"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_BasketballHoop",
+     "why": "set piece along the lane walls: street basketball hoop with backboard and net"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_SakuraArch",
+     "why": "set piece along the lane walls: wooden arch overgrown with chunky cherry-blossom lobes, petals piled at the feet"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_sakura_schoolyard_BikeRack",
+     "why": "set piece along the lane walls: bike rack holding three colourful school bicycles"
     }
    ]
   },
@@ -2134,6 +2534,31 @@
      "stage": "sfx",
      "name": "amb_pirate_harbor",
      "why": "the follow-cam flies here; silence reads as unfinished"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_pirate_harbor_GiantAnchor",
+     "why": "set piece along the lane walls: huge ship anchor stuck in the ground with a coil of rope, orange trim"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_pirate_harbor_TreasurePile",
+     "why": "set piece along the lane walls: open treasure chest on a heap of gold coins with a crown and gems"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_pirate_harbor_Cannon",
+     "why": "set piece along the lane walls: ship cannon on a wooden carriage with a stack of cannonballs"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_pirate_harbor_FishStall",
+     "why": "set piece along the lane walls: fish market stall, orange awning, crates of colourful fish, hanging octopus"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_pirate_harbor_SkullRock",
+     "why": "set piece along the lane walls: friendly cartoon skull-shaped rock island with a pirate flag on top and a cave mouth"
     }
    ]
   },
@@ -2174,6 +2599,31 @@
      "stage": "sfx",
      "name": "amb_ninja_village",
      "why": "the follow-cam flies here; silence reads as unfinished"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_NinjaHouse",
+     "why": "set piece along the lane walls: round-walled village house with a domed green roof, round windows, a swirl sign"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_GiantShuriken",
+     "why": "set piece along the lane walls: giant four-point shuriken monument stuck in a stone base"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_FoxStatue",
+     "why": "set piece along the lane walls: seated fox guardian statue with a red bib and many tails fanned behind"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_ScrollStand",
+     "why": "set piece along the lane walls: giant open ninja scroll on a wooden stand with bold brush marks"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_ninja_village_TreeHouse",
+     "why": "set piece along the lane walls: lookout hut built round a fat tree trunk with a rope ladder and leaf canopy"
     }
    ]
   },
@@ -2214,6 +2664,31 @@
      "stage": "sfx",
      "name": "amb_samurai_castle",
      "why": "the follow-cam flies here; silence reads as unfinished"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_Pagoda",
+     "why": "set piece along the lane walls: five-tier pagoda, red pillars, dark curved roofs, gold spire"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_KatanaMonument",
+     "why": "set piece along the lane walls: giant katana plunged into a rock, red wrap on the hilt, gold guard"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_TaikoDrum",
+     "why": "set piece along the lane walls: big festival taiko drum on a stand with two sticks, red body, tomoe mark"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_ArmorStand",
+     "why": "set piece along the lane walls: samurai armour on a display stand: horned helmet, red lacquer plates"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_samurai_castle_ToriiRow",
+     "why": "set piece along the lane walls: tunnel of five red torii gates in a row over a stone path"
     }
    ]
   },
@@ -2254,6 +2729,31 @@
      "stage": "sfx",
      "name": "amb_hero_city",
      "why": "the follow-cam flies here; silence reads as unfinished"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_MechaStatue",
+     "why": "set piece along the lane walls: giant hero robot statue in a heroic pose: white, blue and red armour, V crest, glowing cya"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_ArcadeMachine",
+     "why": "set piece along the lane walls: arcade cabinet with a glowing screen, joystick and neon side art"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_NeonSign",
+     "why": "set piece along the lane walls: big neon ramen-bowl sign on a pole with chopsticks and steam, cyan and pink tubes"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_SubwayEntrance",
+     "why": "set piece along the lane walls: subway stairwell entrance with a canopy, a round metro sign and railings"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_hero_city_Shop",
+     "why": "set piece along the lane walls: two-storey anime convenience store: glass front, striped awning, rooftop billboard frame"
     }
    ]
   },
@@ -2294,6 +2794,31 @@
      "stage": "sfx",
      "name": "amb_realm_of_legends",
      "why": "the follow-cam flies here; silence reads as unfinished"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_realm_of_legends_DragonStatue",
+     "why": "set piece along the lane walls: coiled eastern dragon statue rising from a cloud base, violet scales, gold horns and whisk"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_realm_of_legends_SpiritGate",
+     "why": "set piece along the lane walls: giant ring-shaped portal gate on a stepped base with a flat glowing violet disc inside"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_realm_of_legends_FloatingShrine",
+     "why": "set piece along the lane walls: small shrine on a floating rock with hanging vines and two stone lanterns (lowest point is"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_realm_of_legends_StarAltar",
+     "why": "set piece along the lane walls: round altar with a floating gold star above it, ringed by four crystal pillars"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_realm_of_legends_GiantSword",
+     "why": "set piece along the lane walls: legendary greatsword standing in a crystal mound, violet gem in the guard, gold edge"
     }
    ]
   },
@@ -2737,7 +3262,7 @@
     },
     {
      "stage": "ui",
-     "name": "Leaderboards",
+     "name": "Leaderboard",
      "why": "three world boards"
     },
     {
@@ -2886,6 +3411,46 @@
      "why": "six parallel lanes through every zone band"
     }
    ]
+  },
+  {
+   "entity": "Festival set pieces",
+   "needs": [
+    {
+     "stage": "meshes",
+     "name": "Prop_shared_RamenStand",
+     "why": "set piece along the lane walls: street ramen stall: noren curtain, stools, a giant ramen bowl sign on the roof, steam puff"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_shared_VendingMachine",
+     "why": "set piece along the lane walls: Japanese drink vending machine, bright blue, rows of cans behind glass, glowing front"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_shared_LuckyCat",
+     "why": "set piece along the lane walls: giant maneki-neko lucky cat statue, white with red collar and gold bell, one paw raised, g"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_shared_KoiFlagPole",
+     "why": "set piece along the lane walls: tall pole flying three koinobori carp streamers (red, blue, pink) and a spinning pinwheel "
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_shared_LanternString",
+     "why": "set piece along the lane walls: two posts with a sagging string of seven round paper festival lanterns, red and white"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_shared_Daruma",
+     "why": "set piece along the lane walls: big red daruma doll with gold brows and one painted eye"
+    },
+    {
+     "stage": "meshes",
+     "name": "Prop_shared_DangoStatue",
+     "why": "set piece along the lane walls: giant three-ball dango skewer monument (pink, white, green) on a stone plinth"
+    }
+   ]
   }
  ],
  "plan": {
@@ -2897,7 +3462,7 @@
   "market": "Looked at on 2026-11-14 (design/research/00, 01, 02). Throw Food For Animals: created 2026-09-18, 215M visits and 426K concurrent at the pull, 94 percent likes, 5-player servers, only two passes and about fifty products; almost all of its store is relative ('N percent of your best animal', 'N minutes of your income'), luck sold per throw and per server. Does well: instant loop, readable goals, relative pricing. Does badly: block art, food is a straight ladder, nothing to do with duplicates, no rebirth or codes; its players complain that luck is opaque, that cutscenes cannot be skipped, that a free player runs out of content in five to six hours, and that each update is more pay-to-win. Each of those is a design target here: odds are shown, every reveal is skippable, rebirth extends the ladder, and nothing sold is unobtainable by play except cosmetics-grade premium heroes. Anime entries in the genre are small (World3 Throw an Anime Coin: 1.1M visits, 2K peak), so the anime throw angle is open. Big anime games on the platform are combat games, which shows the audience exists. Risk read: recognisable anime IP is removed on DMCA notice and not reopened, and the free 'anime character' models on the Creator Store are mostly re-uploads of copyrighted characters from deleted accounts, The owner chose on 2026-11-14 to launch with 31 imported avatars of well-known characters under changed display names, accepting that risk; no series name, logo or music is used anywhere.",
   "mechanics": "Movement: stock R15, no combat. Throw: stand on the throw pad, hold to charge, release; charge picks the zone (marks on the bar), the top 8 percent is a perfect release (+10 percent luck). Landing zone = furthest zone whose PowerReq <= Power x food PowerMult x charge. Roll: rarity by zone table weights scaled by luck, then mutation, then size; a craved flavour triples that hero's weight. Catch: reveal, hero dashes home, auto-places (free slot, else swaps out the weakest if better, else bench, else auto-sell). Income: every hero on a slot pays base x rarity x mutation x size x stars each second, times pass, rebirth and event multipliers. Training: hold-free auto reps on the plot's dojo gear, Power per rep by gear tier. Economy sinks: food, gear, slots, rebirth. Squad: place, pick up, sell, equip best, fuse three identical into +1 star. Luck: food, depth into the zone, perfect, server luck, friends, VIP, index, rebirth, lucky throws. Meta: Hero Index, rebirth, daily streak, playtime gifts, codes, leaderboards, Festival Hour, server-wide rare-catch banners. Full formulas: design/plan/01-game-design.md.",
   "progression": "Short (minutes): next food, next gear, fill the plot, next zone gate. Medium (hours): Samurai Castle, Hero City, Realm of Legends, first Legendary, first Mythic, complete a zone index, max slots. Long (days and weeks): rebirth tiers 1 to 10 (each +50 percent income and +10 percent luck), golden and titan variants in the index, leaderboard rank, new zones from updates. Measured pacing for a no-boost player (tools/balance_sim.py, 3.5 s throw cycle as measured in play): zone 2 at 2 min, zone 3 at 14 min, zone 4 at 44 min, zone 5 at 2 h 30, zone 6 at about 6 h 40, first rebirth ready at about 13 h. Lucky throws and paid boosts are outside the simulation and shorten all of these.",
-  "content": "31 throw-caught heroes at launch (5 per zone, one per rarity, plus a Mythic in the last zone; more are added by importing avatars) plus 8 premium heroes (6 in the summon scroll, 1 starter pack, 1 limited). 7 rarities (Secret reserved for events). 4 mutations, 3 sizes, 3 star levels. 12 foods in 4 flavours (8 from CC0 packs, 4 built with the 3D skill). 8 dojo gear tiers. 6 zones. 1 hub with food cart, sell booth, summon shrine, daily chest and three leaderboards. 6 plots. No enemies. The roster is config.Characters; the avatar each one is built from is design/characters/roster.json.",
+  "content": "51 throw-caught heroes at launch (8 or 9 per zone, every rarity from Common to Legendary in every zone, two Mythics in the last zone; more are added by importing avatars) plus 8 premium heroes (6 in the summon scroll, 1 starter pack, 1 limited). 7 rarities (Secret reserved for events). 4 mutations, 3 sizes, 3 star levels. 12 foods in 4 flavours (8 from CC0 packs, 4 built with the 3D skill). 8 dojo gear tiers. 6 zones. 1 hub with food cart, sell booth, summon shrine, daily chest and three leaderboards. 6 plots. No enemies. The roster is config.Characters; the avatar each one is built from is design/characters/roster.json.",
   "world": "One straight world. Hub and a row of six plots at the start; each plot faces its own 40-stud lane; the six lanes run in parallel through six zone bands of 220 studs each, with an arch between bands showing the Power needed. Sakura Schoolyard (start, PowerReq 0), Pirate Harbor (200), Ninja Village (3K), Samurai Castle (70K), Hero City (2M), Realm of Legends (40M). Players can walk the lanes and other plots; nothing there can hurt or be taken. Later zones are appended to the far end by data.",
   "story": "One line, never in the way: the Anime Worlds are hungry, and the best cook-thrower in town can recruit anyone. No dialogue beyond tutorial hints and NPC shop greetings.",
   "ui_ux": "Style 'Manga Pop': deep indigo panels with a thick white keyline and offset comic shadow, coral-to-yellow header ribbons with halftone dots, chunky rounded type with dark stroke, rarity colours everywhere. Screens: HUD, ThrowMeter, FoodShop, Squad, HeroIndex, Store, OfflineEarnings, Reveal, Rebirth, DailyRewards, PlaytimeGifts, Codes, Settings, TrainingBar, Nameplate, Leaderboards, Toasts, Announcement, TutorialHint, ServerLuckBar, SummonOdds, SlotSign. Common action cost: throw = one hold and release, 0 menus; equip food = 2 taps; sell a hero = 2 taps; equip best = 2 taps. Touch targets at least 56 px at 720p, safe-area aware, every panel opens with a 0.18 s scale-and-fade and closes on outside tap. Detail: design/plan/05-ui-ux.md.",

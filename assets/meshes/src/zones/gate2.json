@@ -1,0 +1,254 @@
+{
+ "Prop_sakura_schoolyard_SchoolBuilding": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate plinth)"
+  },
+  "notes": "Budget 6000. 3 storeys, 36 front/back + 12 side windows, clock gable with pink pediment, entrance canopy, roof fence. No change after look."
+ },
+ "Prop_pirate_harbor_SkullRock": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (sand island)"
+  },
+  "notes": "Budget 6000. Faceted stone skull, ink sockets/nose/cave mouth, white teeth, pirate flag with orange band. No change after look."
+ },
+ "Prop_ninja_village_NinjaHouse": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate base)"
+  },
+  "notes": "Domed green roof with rooftop water tank, round ink windows in dark rings, round swirl sign over the door. No change after look."
+ },
+ "Prop_ninja_village_TreeHouse": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (root flare)"
+  },
+  "notes": "Width/depth -10%/-11% (canopy kept compact). Green = rail and hut roof. No change after look."
+ },
+ "Prop_shared_LuckyCat": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (red cushion)"
+  },
+  "notes": "Shared trim: yellow (bell, koban, tassel band) + white body. Raised paw is the cat's right (+X). Depth +11%. Changed after the group sheet: slanted eye bars read as an angry scowl -> tilted the other way (friendly)."
+ },
+ "Prop_shared_RamenStand": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (dark cart base)"
+  },
+  "notes": "Shared trim: yellow (noodles, wheel hubs, cart band) + white (noren marks, bowl rim, egg, steam). Changed after look: height +17% -> roof/bowl lowered 0.7, posts and chopsticks shortened -> +4%."
+ },
+ "Prop_pirate_harbor_FishStall": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (dark kick board)"
+  },
+  "notes": "Changed after look: awning hid the fish crates from the 3/4 view -> front edge raised 6.4 -> 7.4 so crates show; then 4056 tris -> two fish per crate. Octopus + blue fish hang on white lines."
+ },
+ "Prop_ninja_village_FoxStatue": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate plinth)"
+  },
+  "notes": "Changed after look: width +21% (tail fan) -> fan +-62 -> +-46 deg, tails shorter -> -2%. Five tails, green tips."
+ },
+ "Prop_ninja_village_GiantShuriken": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (slate block + rubble)"
+  },
+  "notes": "Width -11% (point spread). White keyline star proud of both faces, green ribbon ring round the hub. No change after look."
+ },
+ "Prop_pirate_harbor_GiantAnchor": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (stone rubble)"
+  },
+  "notes": "Ink iron anchor, orange stock caps/bands/fluke studs, sand rope helix + ground coil. No change after look."
+ },
+ "Prop_shared_VendingMachine": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate foot)"
+  },
+  "notes": "Shared trim: white window + top band, yellow cans/buttons. 'Glowing' is white albedo only (no emissive in a flat-colour mesh): set Material=Neon on the White part in Studio if a glow is wanted. Depth +14% (cans stand proud). No change after look."
+ },
+ "Prop_shared_KoiFlagPole": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (red foot block)"
+  },
+  "notes": "Changed after look: width +23% -> carp streamers shortened (4.9/4.4/3.9 -> 3.9/3.5/3.1) -> +7%. Carp eyes are white only (no ink pupil: would be a 6th colour)."
+ },
+ "Prop_shared_LanternString": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate feet)"
+  },
+  "notes": "Seven lanterns alternating red/white, yellow caps and finials. No change after look."
+ },
+ "Prop_shared_Daruma": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (ink foot ring)"
+  },
+  "notes": "One eye painted (solid ink), the other blank (ink ring, white centre). Reads a little owl-like at distance. No change after look."
+ },
+ "Prop_shared_DangoStatue": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate plinth)"
+  },
+  "notes": "Pink/white/green balls on a yellow skewer, yellow plinth band. No change after look."
+ },
+ "Prop_sakura_schoolyard_BasketballHoop": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate weighted base)"
+  },
+  "notes": "Pink backing frame + pink target square, red rim, white net (radial wall 0.4). No change after look."
+ },
+ "Prop_sakura_schoolyard_SakuraArch": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (slate footings)"
+  },
+  "notes": "Height +9% (top blossom). 9 lobes on the arch, 4 on the posts, 5 petal piles. No change after look."
+ },
+ "Prop_sakura_schoolyard_BikeRack": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate base bar)"
+  },
+  "notes": "Changed after look: height -16% and frames too thin to show colour -> taller bikes, frame tubes 0.4 -> 0.54, seats in bike colour, loops pulled in (width 10.3 -> 9.3). 3982 tris (budget 4000)."
+ },
+ "Prop_pirate_harbor_TreasurePile": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (dark chest base band)"
+  },
+  "notes": "Changed after look: height +38% -> lid laid back 100 -> 128 deg, chest lowered; then found the faceted heap lobe dipped 1.65 below y=0 and grounding lifted everything -> flat-bottomed revolved mound -> height -8%."
+ },
+ "Prop_pirate_harbor_Cannon": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (4)",
+   "darker_base_lip": "pass (dark carriage)"
+  },
+  "notes": "Muzzle at -Z, barrel pitched up 8 deg, orange muzzle ring + 2 bands, cannonball pyramid at -X. Width +11%. No change after look."
+ },
+ "Prop_ninja_village_ScrollStand": {
+  "verified": true,
+  "gate": {
+   "bevelled": "pass",
+   "min_0.4": "pass (guarded)",
+   "no_zfight": "pass",
+   "thumbnail_read": "pass (set piece)",
+   "colours_3_to_5": "pass (5)",
+   "darker_base_lip": "pass (slate feet)"
+  },
+  "notes": "Brush marks: enso ring + three strokes (abstract, reads as calligraphy at distance, no real kanji). No change after look."
+ }
+}

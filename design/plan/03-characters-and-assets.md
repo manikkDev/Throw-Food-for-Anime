@@ -35,7 +35,8 @@ does) instead of picking each item. Proven in Studio the same day (research/04).
 well-known characters and chose them as the launch roster, with changed display names. The
 build follows that decision; the R15 rebuild, the head rule and the traps are in
 `design/characters/README.md`, the id-to-avatar map is `design/characters/roster.json`, and the
-rigs are in `Workspace.Characters_R15`. What follows is the risk as it was stated, kept on record:
+rigs are in `ServerStorage.CharacterSources.R15_Final`. A second batch of 12 followed at the start
+of section 3 (43 heroes; every zone has 7). What follows is the risk as it was stated, kept on record:
 Roblox removes content on a rights holder's notice and generally does not reopen a removed game
 (research/02 D); the free models of named characters we found were uploaded by an account Roblox
 has already deleted (research/04); a look is judged by how it looks, so a new name protects

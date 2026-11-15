@@ -1,0 +1,752 @@
+[
+ {
+  "name": "Prop_hero_city_MechaStatue",
+  "path": "assets/meshes/zones/Prop_hero_city_MechaStatue.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_MechaStatue.kiln.js",
+  "tris": 1892,
+  "bounds_studs": [
+   16.864,
+   30,
+   10
+  ],
+  "target_studs": [
+   16,
+   30,
+   10
+  ],
+  "deviation_pct": [
+   5.4,
+   0.0,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -8.432,
+   0,
+   -5
+  ],
+  "colour_parts": [
+   "ArmourBlue_2F5BD8",
+   "ArmourWhite_FFFFFF",
+   "ZoneRedArmour_E0453C",
+   "ZoneCyan_35C9F0",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "ArmourBlue_2F5BD8": 440,
+   "ArmourWhite_FFFFFF": 590,
+   "ZoneRedArmour_E0453C": 540,
+   "ZoneCyan_35C9F0": 112,
+   "Gold_FFC83D": 210
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch1 sheet, first build. Right fist to the sky, left arm behind a red kite shield; gold V crest; cyan chest core, visor and plinth stripe (ZoneCyan, for Neon). Blue plinth lip is the darker base. Blue #2F5BD8 is outside the bible palette (kit asks for blue armour)."
+ },
+ {
+  "name": "Prop_samurai_castle_Pagoda",
+  "path": "assets/meshes/zones/Prop_samurai_castle_Pagoda.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_Pagoda.kiln.js",
+  "tris": 3054,
+  "bounds_studs": [
+   15.653,
+   34.05,
+   16.226
+  ],
+  "target_studs": [
+   16,
+   34,
+   16
+  ],
+  "deviation_pct": [
+   -2.2,
+   0.1,
+   1.4
+  ],
+  "bounds_min_studs": [
+   -7.826,
+   0,
+   -8.113
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "PlasterWhite_FFFFFF",
+   "ZoneRed_E0453C",
+   "RoofInk_0D0F2B",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 140,
+   "PlasterWhite_FFFFFF": 220,
+   "ZoneRed_E0453C": 1394,
+   "RoofInk_0D0F2B": 240,
+   "Gold_FFC83D": 1060
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch1 sheet, first build. Five tiers, ink #0D0F2B flared roofs (same construction as CastleKeep), red pillars/rails/doors, gold bells at every eave corner and gold sorin spire."
+ },
+ {
+  "name": "Prop_realm_of_legends_SpiritGate",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_SpiritGate.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_SpiritGate.kiln.js",
+  "tris": 1608,
+  "bounds_studs": [
+   16,
+   18.95,
+   4
+  ],
+  "target_studs": [
+   16,
+   18,
+   4
+  ],
+  "deviation_pct": [
+   0.0,
+   5.3,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -8,
+   0,
+   -2
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "Gold_FFC83D",
+   "ZoneViolet_A66BFF",
+   "GlowLilac_D9C2FF"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 44,
+   "StoneLight_9AA4B2": 746,
+   "Gold_FFC83D": 450,
+   "ZoneViolet_A66BFF": 288,
+   "GlowLilac_D9C2FF": 80
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch1 sheet, first build. Ring is a revolved chamfered section; ZoneViolet disc (+ step runes) and GlowLilac core are separate parts for Neon. Height 18.95 (+5.3%)."
+ },
+ {
+  "name": "Prop_realm_of_legends_DragonStatue",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_DragonStatue.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_DragonStatue.kiln.js",
+  "tris": 3144,
+  "bounds_studs": [
+   22.7,
+   24.072,
+   14.266
+  ],
+  "target_studs": [
+   20,
+   24,
+   14
+  ],
+  "deviation_pct": [
+   13.5,
+   0.3,
+   1.9
+  ],
+  "bounds_min_studs": [
+   -11.35,
+   0,
+   -7.133
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "CloudWhite_FFFFFF",
+   "ZoneViolet_A66BFF",
+   "FinLilac_D9C2FF",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 294,
+   "CloudWhite_FFFFFF": 946,
+   "ZoneViolet_A66BFF": 1336,
+   "FinLilac_D9C2FF": 144,
+   "Gold_FFC83D": 424
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch2 re-check. Changed after v2_batch1: body read thin and head small; body radius 1.45->1.9, head group scaled 1.3x, fins denser/bigger. Body is a capped octagonal sweep (sweepProfile + mergeVertices) unioned with the head. Width 22.7 (+13.5%, inside the 15% band)."
+ },
+ {
+  "name": "Prop_samurai_castle_KatanaMonument",
+  "path": "assets/meshes/zones/Prop_samurai_castle_KatanaMonument.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_KatanaMonument.kiln.js",
+  "tris": 1256,
+  "bounds_studs": [
+   5.471,
+   20.05,
+   5.451
+  ],
+  "target_studs": [
+   6,
+   20,
+   6
+  ],
+  "deviation_pct": [
+   -8.8,
+   0.3,
+   -9.2
+  ],
+  "bounds_min_studs": [
+   -2.736,
+   0,
+   -2.725
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "BladeWhite_FFFFFF",
+   "ZoneRed_E0453C",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 128,
+   "StoneLight_9AA4B2": 272,
+   "BladeWhite_FFFFFF": 494,
+   "ZoneRed_E0453C": 216,
+   "Gold_FFC83D": 146
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch2 re-check. Changed after v2_batch1: blade narrow for a giant katana; width 1.1->1.5, thickness 0.45->0.55, habaki widened. Red shimenawa rope + white paper streamers round the rock. Width 5.47 (-8.8%)."
+ },
+ {
+  "name": "Prop_samurai_castle_ToriiRow",
+  "path": "assets/meshes/zones/Prop_samurai_castle_ToriiRow.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_ToriiRow.kiln.js",
+  "tris": 3524,
+  "bounds_studs": [
+   10.15,
+   10.6,
+   22
+  ],
+  "target_studs": [
+   10,
+   10,
+   22
+  ],
+  "deviation_pct": [
+   1.5,
+   6.0,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -5.075,
+   0,
+   -11
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "ZoneRed_E0453C",
+   "Ink_0D0F2B",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 484,
+   "StoneLight_9AA4B2": 264,
+   "ZoneRed_E0453C": 1524,
+   "Ink_0D0F2B": 1120,
+   "Gold_FFC83D": 132
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch2 sheet, first build. Five identical torii 4.4 apart along Roblox z, gold plaque and tip caps on the front gate only. Walk-through: pillars 7 apart."
+ },
+ {
+  "name": "Prop_realm_of_legends_FloatingShrine",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_FloatingShrine.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_FloatingShrine.kiln.js",
+  "tris": 3136,
+  "bounds_studs": [
+   17.399,
+   16.142,
+   17.594
+  ],
+  "target_studs": [
+   18,
+   16,
+   18
+  ],
+  "deviation_pct": [
+   -3.3,
+   0.9,
+   -2.3
+  ],
+  "bounds_min_studs": [
+   -8.7,
+   0,
+   -8.797
+  ],
+  "colour_parts": [
+   "Grass_5BD43A",
+   "StoneLight_9AA4B2",
+   "StoneDark_6B7686",
+   "Wood_B5793F",
+   "ZoneViolet_A66BFF"
+  ],
+  "tris_per_part": {
+   "Grass_5BD43A": 1398,
+   "StoneLight_9AA4B2": 834,
+   "StoneDark_6B7686": 192,
+   "Wood_B5793F": 240,
+   "ZoneViolet_A66BFF": 472
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch2 sheet, first build. Rock tip at y=0 (map lifts it). Vines are grass-colour sweeps merged into the Grass mesh; violet roof, chigi, lantern flames and rock crystals are the zone trim."
+ },
+ {
+  "name": "Prop_hero_city_Shop",
+  "path": "assets/meshes/zones/Prop_hero_city_Shop.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_Shop.kiln.js",
+  "tris": 1826,
+  "bounds_studs": [
+   18,
+   15.6,
+   12.65
+  ],
+  "target_studs": [
+   18,
+   16,
+   12
+  ],
+  "deviation_pct": [
+   0.0,
+   -2.5,
+   5.4
+  ],
+  "bounds_min_studs": [
+   -9,
+   0,
+   -6.325
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "WallWhite_FFFFFF",
+   "ZoneCyan_35C9F0",
+   "GlassInk_0D0F2B",
+   "SignGold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 226,
+   "WallWhite_FFFFFF": 688,
+   "ZoneCyan_35C9F0": 516,
+   "GlassInk_0D0F2B": 308,
+   "SignGold_FFC83D": 88
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch2 sheet, first build. Cyan/white striped awning, gold sign + gold rooftop billboard face (both blank, decal-ready), cyan vending machine. Depth 12.65 (+5.4%)."
+ },
+ {
+  "name": "Prop_realm_of_legends_GiantSword",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_GiantSword.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_GiantSword.kiln.js",
+  "tris": 816,
+  "bounds_studs": [
+   7.94,
+   25.986,
+   4
+  ],
+  "target_studs": [
+   8,
+   26,
+   4
+  ],
+  "deviation_pct": [
+   -0.7,
+   -0.1,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -3.97,
+   0,
+   -2
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "BladeSteel_9AA4B2",
+   "Gold_FFC83D",
+   "ZoneViolet_A66BFF",
+   "CrystalLilac_D9C2FF"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 248,
+   "BladeSteel_9AA4B2": 128,
+   "Gold_FFC83D": 376,
+   "ZoneViolet_A66BFF": 40,
+   "CrystalLilac_D9C2FF": 24
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch2 sheet, first build. Gold blade outline behind a thicker steel core gives the gold edge; violet gem in guard and pommel."
+ },
+ {
+  "name": "Prop_realm_of_legends_StarAltar",
+  "path": "assets/meshes/zones/Prop_realm_of_legends_StarAltar.glb",
+  "source": "assets/meshes/src/zones/Prop_realm_of_legends_StarAltar.kiln.js",
+  "tris": 1544,
+  "bounds_studs": [
+   9.659,
+   7.738,
+   9.659
+  ],
+  "target_studs": [
+   10,
+   8,
+   10
+  ],
+  "deviation_pct": [
+   -3.4,
+   -3.3,
+   -3.4
+  ],
+  "bounds_min_studs": [
+   -4.83,
+   0,
+   -4.83
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "ZoneViolet_A66BFF",
+   "CrystalLilac_D9C2FF",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 504,
+   "StoneLight_9AA4B2": 500,
+   "ZoneViolet_A66BFF": 136,
+   "CrystalLilac_D9C2FF": 32,
+   "Gold_FFC83D": 372
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch2 sheet, first build. The star floats (unconnected) inside the Gold mesh; anchor the part. 9.66 x 7.74 x 9.66."
+ },
+ {
+  "name": "Prop_samurai_castle_TaikoDrum",
+  "path": "assets/meshes/zones/Prop_samurai_castle_TaikoDrum.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_TaikoDrum.kiln.js",
+  "tris": 2422,
+  "bounds_studs": [
+   7.034,
+   7.49,
+   7.6
+  ],
+  "target_studs": [
+   8,
+   7,
+   8
+  ],
+  "deviation_pct": [
+   -12.1,
+   7.0,
+   -5.0
+  ],
+  "bounds_min_studs": [
+   -3.517,
+   0,
+   -3.8
+  ],
+  "colour_parts": [
+   "Wood_8A5A2B",
+   "ZoneRed_E0453C",
+   "Ink_0D0F2B",
+   "HeadWhite_FFFFFF",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "Wood_8A5A2B": 850,
+   "ZoneRed_E0453C": 258,
+   "Ink_0D0F2B": 450,
+   "HeadWhite_FFFFFF": 144,
+   "Gold_FFC83D": 720
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch3 sheet, first build. Ink mitsudomoe on the front head, gold tacks and carry rings, crossed bachi on top; dark wood stand is the base. Width 7.03 (-12.1%, inside 15%)."
+ },
+ {
+  "name": "Prop_samurai_castle_ArmorStand",
+  "path": "assets/meshes/zones/Prop_samurai_castle_ArmorStand.glb",
+  "source": "assets/meshes/src/zones/Prop_samurai_castle_ArmorStand.kiln.js",
+  "tris": 1236,
+  "bounds_studs": [
+   4.827,
+   8.209,
+   3.7
+  ],
+  "target_studs": [
+   5,
+   8,
+   4
+  ],
+  "deviation_pct": [
+   -3.5,
+   2.6,
+   -7.5
+  ],
+  "bounds_min_studs": [
+   -2.414,
+   0,
+   -1.85
+  ],
+  "colour_parts": [
+   "Wood_8A5A2B",
+   "ZoneRed_E0453C",
+   "Ink_0D0F2B",
+   "Gold_FFC83D",
+   "LaceWhite_FFFFFF"
+  ],
+  "tris_per_part": {
+   "Wood_8A5A2B": 44,
+   "ZoneRed_E0453C": 368,
+   "Ink_0D0F2B": 124,
+   "Gold_FFC83D": 388,
+   "LaceWhite_FFFFFF": 312
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch3 sheet, first build. Red lacquer skirt/do/sode with white lace lines, ink kabuto + mask, gold kuwagata horns, dark wood armour box base."
+ },
+ {
+  "name": "Prop_hero_city_ArcadeMachine",
+  "path": "assets/meshes/zones/Prop_hero_city_ArcadeMachine.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_ArcadeMachine.kiln.js",
+  "tris": 688,
+  "bounds_studs": [
+   3,
+   6.4,
+   3
+  ],
+  "target_studs": [
+   3,
+   6.5,
+   3
+  ],
+  "deviation_pct": [
+   0.0,
+   -1.5,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -1.5,
+   0,
+   -1.5
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "CabinetInk_0D0F2B",
+   "ZoneCyan_35C9F0",
+   "Gold_FFC83D",
+   "StickRed_E0453C"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 44,
+   "CabinetInk_0D0F2B": 140,
+   "ZoneCyan_35C9F0": 208,
+   "Gold_FFC83D": 216,
+   "StickRed_E0453C": 80
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch3 sheet, first build. ZoneCyan = screen + lightning side art (Neon candidate). StickRed is #E0453C (same hex as samurai zone red, different label, only colour of its hex in this model)."
+ },
+ {
+  "name": "Prop_hero_city_NeonSign",
+  "path": "assets/meshes/zones/Prop_hero_city_NeonSign.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_NeonSign.kiln.js",
+  "tris": 1654,
+  "bounds_studs": [
+   11.6,
+   8.85,
+   2
+  ],
+  "target_studs": [
+   12,
+   9,
+   2
+  ],
+  "deviation_pct": [
+   -3.3,
+   -1.7,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -5.8,
+   0,
+   -1
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "BoardInk_0D0F2B",
+   "ZoneCyan_35C9F0",
+   "NeonPink_FF8FC0",
+   "Gold_FFC83D"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 162,
+   "BoardInk_0D0F2B": 44,
+   "ZoneCyan_35C9F0": 636,
+   "NeonPink_FF8FC0": 772,
+   "Gold_FFC83D": 40
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_neonsign_front.png after one fix: gold chopsticks ran through the pink frame tube (visible interpenetration); shortened. NeonPink #FF8FC0 is the sakura key hex, used because the kit asks for pink tubes. Tubes 0.44 thick."
+ },
+ {
+  "name": "Prop_hero_city_SubwayEntrance",
+  "path": "assets/meshes/zones/Prop_hero_city_SubwayEntrance.glb",
+  "source": "assets/meshes/src/zones/Prop_hero_city_SubwayEntrance.kiln.js",
+  "tris": 2198,
+  "bounds_studs": [
+   12.2,
+   6.885,
+   10
+  ],
+  "target_studs": [
+   12,
+   7,
+   10
+  ],
+  "deviation_pct": [
+   1.7,
+   -1.6,
+   0.0
+  ],
+  "bounds_min_studs": [
+   -6.1,
+   0,
+   -5
+  ],
+  "colour_parts": [
+   "StoneDark_6B7686",
+   "StoneLight_9AA4B2",
+   "Ink_0D0F2B",
+   "ZoneCyan_35C9F0",
+   "CanopyWhite_FFFFFF"
+  ],
+  "tris_per_part": {
+   "StoneDark_6B7686": 44,
+   "StoneLight_9AA4B2": 516,
+   "Ink_0D0F2B": 340,
+   "ZoneCyan_35C9F0": 1138,
+   "CanopyWhite_FFFFFF": 160
+  },
+  "front": "-Z",
+  "tier": 3,
+  "verified": true,
+  "collision_note": "set CollisionFidelity on import (Box/Hull for scenery); Import 3D defaults to mesh collision",
+  "ids": {
+   "modelId": null,
+   "meshId": null,
+   "note": "not uploaded (brief: no uploads). Colours are per-part material hex, no texture id needed"
+  },
+  "notes": "Gate pass on v2_batch3 sheet, first build. Cannot go below y=0, so the stairs descend into a 1.6-stud plinth toward an ink tunnel mouth. Round metro sign: cyan ring, white disc, ink M."
+ }
+]

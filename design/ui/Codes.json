@@ -1,0 +1,450 @@
+{
+ "name": "Codes",
+ "theme": "theme.json",
+ "resolution": [
+  1280,
+  720
+ ],
+ "kind": "page",
+ "ignoreGuiInset": true,
+ "children": [
+  {
+   "type": "frame",
+   "name": "Scrim",
+   "colour": [
+    "#0D0F2B",
+    "#0D0F2B"
+   ],
+   "alpha": 0.55,
+   "outline": false,
+   "z": -2,
+   "size": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "children": []
+  },
+  {
+   "type": "panel",
+   "name": "Window",
+   "colour": "panel",
+   "size": [
+    0,
+    500,
+    0,
+    210
+   ],
+   "children": [
+    {
+     "type": "panel",
+     "name": "Header",
+     "colour": [
+      "#FFC93C",
+      "#FF5A5F"
+     ],
+     "size": [
+      0,
+      260,
+      0,
+      70
+     ],
+     "rotation": -2,
+     "keyline": "#FFFFFF",
+     "comic": 6,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.28,
+      "tile": 34
+     },
+     "children": [
+      {
+       "type": "label",
+       "text": "CODES",
+       "size": [
+        0,
+        220,
+        0,
+        56
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.6964,
+       "textStroke": 3,
+       "name": "Title",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      -36
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 3,
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "BodyArt",
+     "colour": [
+      "#2E3488",
+      "#161944"
+     ],
+     "outline": false,
+     "size": [
+      1,
+      -16,
+      1,
+      -16
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 16,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.07,
+      "tile": 28
+     },
+     "overhang": true,
+     "z": -1,
+     "children": []
+    },
+    {
+     "type": "button",
+     "name": "CloseButton",
+     "colour": "danger",
+     "size": [
+      0,
+      56,
+      0,
+      56
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconClose",
+       "name": "Icon",
+       "size": [
+        0,
+        30,
+        0,
+        30
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      1,
+      14,
+      0,
+      -18
+     ],
+     "anchor": [
+      1,
+      0
+     ],
+     "z": 4,
+     "overhang": true,
+     "closes": true,
+     "sizeClass": "L"
+    },
+    {
+     "type": "frame",
+     "name": "Body",
+     "transparent": true,
+     "size": [
+      0,
+      452,
+      0,
+      104
+     ],
+     "children": [
+      {
+       "type": "label",
+       "text": "Join the group to find new codes!",
+       "size": [
+        0,
+        420,
+        0,
+        19
+       ],
+       "textColour": "soft",
+       "align": "center",
+       "textScale": 0.7368,
+       "textStroke": 2,
+       "name": "CodesHint",
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "maxText": 14
+      },
+      {
+       "type": "frame",
+       "name": "CodeRow",
+       "transparent": true,
+       "size": [
+        0,
+        440,
+        0,
+        44
+       ],
+       "children": [
+        {
+         "type": "panel",
+         "name": "CodeField",
+         "colour": "panelDeep",
+         "size": [
+          0,
+          300,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconCodes",
+           "name": "Icon",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            0,
+            12,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "TYPE A CODE",
+           "size": [
+            0,
+            248,
+            0,
+            26
+           ],
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.7692,
+           "textStroke": 3,
+           "name": "CodeBox",
+           "font": "display",
+           "pos": [
+            0,
+            44,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "maxText": 20,
+           "cls": "TextBox"
+          }
+         ],
+         "keyline": "#FFFFFF",
+         "depth": 0,
+         "corner": 14
+        },
+        {
+         "type": "button",
+         "name": "RedeemButton",
+         "size": [
+          0,
+          153,
+          0,
+          44
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "Icon",
+           "size": [
+            0,
+            26,
+            0,
+            26
+           ]
+          },
+          {
+           "type": "label",
+           "text": "REDEEM",
+           "size": [
+            0,
+            87,
+            0,
+            26
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7308,
+           "textStroke": 2,
+           "name": "Label",
+           "font": "display",
+           "maxText": 19
+          }
+         ],
+         "layout": {
+          "type": "list",
+          "dir": "x",
+          "gap": 8,
+          "align": "center"
+         },
+         "sizeClass": "M",
+         "depth": 4,
+         "corner": 18,
+         "colour": "#48D687",
+         "paintable": true,
+         "gloss": true,
+         "stops": [
+          [
+           0.0,
+           "#48D687"
+          ],
+          [
+           0.4,
+           "#48D687"
+          ],
+          [
+           0.41000000000000003,
+           "#41C17A"
+          ],
+          [
+           1.0,
+           "#3BAF6F"
+          ]
+         ],
+         "attrs": {
+          "PressLip": 4
+         }
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 12,
+        "align": "center"
+       },
+       "pos": [
+        0.5,
+        0,
+        0,
+        28
+       ],
+       "anchor": [
+        0.5,
+        0
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        420,
+        0,
+        19
+       ],
+       "textColour": "confirm",
+       "align": "center",
+       "textScale": 0.7368,
+       "textStroke": 2,
+       "name": "ResultLabel",
+       "samples": [
+        "Code redeemed! +3 Lucky Throws",
+        "That code has expired"
+       ],
+       "pos": [
+        0.5,
+        0,
+        0,
+        84
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "maxText": 14
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      84
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ],
+   "comic": 10,
+   "modal": true,
+   "corner": 22,
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "keyline": "#FFFFFF"
+  }
+ ],
+ "displayOrder": 12
+}

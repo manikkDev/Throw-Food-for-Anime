@@ -225,60 +225,200 @@
    "why": "the collectible itself: baked R15 rig from Workspace.Characters_R15/Luffy Wano"
   },
   {
-   "name": "Char_starlight_idol",
-   "entity": "Starlight Idol",
+   "name": "Char_shadow_summoner",
+   "entity": "Shadow Summoner",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: baked R15 rig (avatar still to be imported: galaxy-print stage outfit, star wand)"
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Megumi Fushiguro"
+  },
+  {
+   "name": "Char_classroom_mastermind",
+   "entity": "Classroom Mastermind",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Ayanokoji"
+  },
+  {
+   "name": "Char_chainsaw_kid",
+   "entity": "Chainsaw Kid",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Denji"
+  },
+  {
+   "name": "Char_speed_heir",
+   "entity": "Speed Heir",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Naoya Zenin"
+  },
+  {
+   "name": "Char_thunder_sleeper",
+   "entity": "Thunder Sleeper",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Zenitsu Agatsuma"
+  },
+  {
+   "name": "Char_flashy_shinobi",
+   "entity": "Flashy Shinobi",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Tengen Uzui"
+  },
+  {
+   "name": "Char_return_runner",
+   "entity": "Return Runner",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Subaru Natsuki"
+  },
+  {
+   "name": "Char_wheel_guardian",
+   "entity": "Wheel Guardian",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Mahoraga"
+  },
+  {
+   "name": "Char_freedom_seeker",
+   "entity": "Freedom Seeker",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Eren Yeager"
+  },
+  {
+   "name": "Char_rebel_emperor",
+   "entity": "Rebel Emperor",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Lelouch"
+  },
+  {
+   "name": "Char_ripple_trickster",
+   "entity": "Ripple Trickster",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Joseph Joestar"
+  },
+  {
+   "name": "Char_star_delinquent",
+   "entity": "Star Delinquent",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Jotaro Joestar"
+  },
+  {
+   "name": "Char_lightning_assassin",
+   "entity": "Lightning Assassin",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Killua"
+  },
+  {
+   "name": "Char_masked_phantom",
+   "entity": "Masked Phantom",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Obito Uchiha"
+  },
+  {
+   "name": "Char_shadow_mastermind",
+   "entity": "Shadow Mastermind",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Cid Kagenou"
+  },
+  {
+   "name": "Char_black_swordsman",
+   "entity": "Black Swordsman",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Guts"
+  },
+  {
+   "name": "Char_crimson_boss",
+   "entity": "Crimson Boss",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Diavolo"
+  },
+  {
+   "name": "Char_shadow_monarch",
+   "entity": "Shadow Monarch",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Sung Jinwoo"
+  },
+  {
+   "name": "Char_attack_giant",
+   "entity": "Attack Giant",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Eren Titan"
+  },
+  {
+   "name": "Char_golden_vampire",
+   "entity": "Golden Vampire",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself: baked R15 rig from ServerStorage.CharacterSources.R15_Final/Dio Brando"
+  },
+  {
+   "name": "Char_starlight_idol",
+   "entity": "Cosplay Star",
+   "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
+   "tris": 12000,
+   "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Marin Kitagawa"
   },
   {
    "name": "Char_clockwork_butler",
-   "entity": "Clockwork Butler",
+   "entity": "Sweet-Tooth Detective",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: baked R15 rig (avatar still to be imported: tailcoat, brass monocle, gear back-piece)"
+   "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Lawliet"
   },
   {
    "name": "Char_phantom_thief",
-   "entity": "Phantom Thief",
+   "entity": "One-Eyed Ghoul",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: baked R15 rig (avatar still to be imported: top hat, white mask, cape, rose)"
+   "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Ken Kaneki"
   },
   {
    "name": "Char_demon_lord_heir",
-   "entity": "Demon Lord Heir",
+   "entity": "Control Devil",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: baked R15 rig (avatar still to be imported: curled horns, dark royal coat, bat wings)"
+   "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Makima"
   },
   {
    "name": "Char_angel_commander",
-   "entity": "Angel Commander",
+   "entity": "Elf Archmage",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: baked R15 rig (avatar still to be imported: white wings, halo, gold spear)"
+   "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Frieren"
   },
   {
    "name": "Char_void_empress",
-   "entity": "Void Empress",
+   "entity": "Illusion Overlord",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: baked R15 rig (avatar still to be imported: black star gown, floating crown, void wings)"
+   "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Aizen Sosuke"
   },
   {
    "name": "Char_lucky_cat_mascot",
-   "entity": "Lucky Cat Mascot",
+   "entity": "Blood Fiend",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: baked R15 rig (avatar still to be imported: lucky-cat hood, bell collar, coin)"
+   "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Power"
   },
   {
    "name": "Char_sakura_shogun",
-   "entity": "Sakura Shogun",
+   "entity": "First Sun Swordsman",
    "route": "bake: whole avatar look -> HumanoidDescription snapshot -> R15 rig (design/plan/03)",
    "tris": 12000,
-   "why": "the collectible itself: baked R15 rig (avatar still to be imported: pink petal armour, blossom katana, petal cape)"
+   "why": "the collectible itself (premium): baked R15 rig from ServerStorage.CharacterSources.R15_Final/Yoriichi Tsugikuni"
   },
   {
    "name": "Food_onigiri",
@@ -489,6 +629,20 @@
    "route": "CC0 pack import first, Kiln otherwise",
    "tris": 5000,
    "why": "daily reward point"
+  },
+  {
+   "name": "Hub_GiftBox",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 5000,
+   "why": "the playtime-gift anchor in the hub: players walk to it to claim timed gifts"
+  },
+  {
+   "name": "Hub_IndexBoard",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 5000,
+   "why": "the hero index anchor in the hub: opens the collection screen"
   },
   {
    "name": "Lane_ZoneGate",
@@ -713,6 +867,265 @@
    "route": "CC0 pack import first (Quaternius), roblox-3d-model otherwise",
    "tris": 4000,
    "why": "zone identity: a zone the player cannot tell from the last one is not a reward"
+  },
+  {
+   "name": "Prop_shared_RamenStand",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_shared_VendingMachine",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_shared_LuckyCat",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_shared_KoiFlagPole",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_shared_LanternString",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_shared_Daruma",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_shared_DangoStatue",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_SchoolBuilding",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_BasketballHoop",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_SakuraArch",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_sakura_schoolyard_BikeRack",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_pirate_harbor_GiantAnchor",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_pirate_harbor_TreasurePile",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_pirate_harbor_Cannon",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_pirate_harbor_FishStall",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_pirate_harbor_SkullRock",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_ninja_village_NinjaHouse",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_ninja_village_GiantShuriken",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_ninja_village_FoxStatue",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_ninja_village_ScrollStand",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_ninja_village_TreeHouse",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_samurai_castle_Pagoda",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_samurai_castle_KatanaMonument",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_samurai_castle_TaikoDrum",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_samurai_castle_ArmorStand",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_samurai_castle_ToriiRow",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_hero_city_MechaStatue",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_hero_city_ArcadeMachine",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_hero_city_NeonSign",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_hero_city_SubwayEntrance",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_hero_city_Shop",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_realm_of_legends_DragonStatue",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_realm_of_legends_SpiritGate",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_realm_of_legends_FloatingShrine",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_realm_of_legends_StarAltar",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Prop_realm_of_legends_GiantSword",
+   "entity": "Zone scenery",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 4000,
+   "why": "set piece along the lane walls"
+  },
+  {
+   "name": "Plot_ThrowStage",
+   "entity": "Plot and hub kit",
+   "route": "roblox-3d-model hard-surface route (Kiln)",
+   "tris": 1500,
+   "why": "the raised stage the player throws from"
   }
  ]
 }

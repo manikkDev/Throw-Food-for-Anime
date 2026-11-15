@@ -1,0 +1,1263 @@
+{
+ "name": "Rebirth",
+ "theme": "theme.json",
+ "resolution": [
+  1280,
+  720
+ ],
+ "kind": "page",
+ "ignoreGuiInset": true,
+ "children": [
+  {
+   "type": "frame",
+   "name": "Scrim",
+   "colour": [
+    "#0D0F2B",
+    "#0D0F2B"
+   ],
+   "alpha": 0.55,
+   "outline": false,
+   "z": -2,
+   "size": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "children": []
+  },
+  {
+   "type": "panel",
+   "name": "Window",
+   "colour": "panel",
+   "size": [
+    0,
+    770,
+    0,
+    468
+   ],
+   "children": [
+    {
+     "type": "panel",
+     "name": "Header",
+     "colour": [
+      "#FFC93C",
+      "#FF5A5F"
+     ],
+     "size": [
+      0,
+      360,
+      0,
+      70
+     ],
+     "rotation": -2,
+     "keyline": "#FFFFFF",
+     "comic": 6,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.28,
+      "tile": 34
+     },
+     "children": [
+      {
+       "type": "label",
+       "text": "REBIRTH",
+       "size": [
+        0,
+        320,
+        0,
+        56
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.6964,
+       "textStroke": 3,
+       "name": "Title",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      -36
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 3,
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "BodyArt",
+     "colour": [
+      "#2E3488",
+      "#161944"
+     ],
+     "outline": false,
+     "size": [
+      1,
+      -16,
+      1,
+      -16
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 16,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.07,
+      "tile": 28
+     },
+     "overhang": true,
+     "z": -1,
+     "children": []
+    },
+    {
+     "type": "button",
+     "name": "CloseButton",
+     "colour": "danger",
+     "size": [
+      0,
+      56,
+      0,
+      56
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconClose",
+       "name": "Icon",
+       "size": [
+        0,
+        30,
+        0,
+        30
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      1,
+      14,
+      0,
+      -18
+     ],
+     "anchor": [
+      1,
+      0
+     ],
+     "z": 4,
+     "overhang": true,
+     "closes": true,
+     "sizeClass": "L"
+    },
+    {
+     "type": "frame",
+     "name": "Body",
+     "transparent": true,
+     "size": [
+      0,
+      722,
+      0,
+      362
+     ],
+     "children": [
+      {
+       "type": "panel",
+       "name": "Requirements",
+       "colour": "panelHi",
+       "size": [
+        0,
+        440,
+        0,
+        150
+       ],
+       "children": [
+        {
+         "type": "label",
+         "text": "NEXT REBIRTH",
+         "size": [
+          0,
+          220,
+          0,
+          21
+         ],
+         "textColour": "onDark",
+         "align": "left",
+         "textScale": 0.7619,
+         "textStroke": 2,
+         "name": "ReqTitle",
+         "font": "display",
+         "pos": [
+          0,
+          14,
+          0,
+          10
+         ],
+         "maxText": 16
+        },
+        {
+         "type": "label",
+         "text": "<unbound>",
+         "size": [
+          0,
+          180,
+          0,
+          21
+         ],
+         "textColour": "buy",
+         "align": "right",
+         "textScale": 0.7619,
+         "textStroke": 2,
+         "name": "NextTier",
+         "samples": [
+          "REBIRTH 999",
+          "REBIRTH 1"
+         ],
+         "font": "display",
+         "pos": [
+          1,
+          -14,
+          0,
+          10
+         ],
+         "anchor": [
+          1,
+          0
+         ],
+         "maxText": 16
+        },
+        {
+         "type": "icon",
+         "icon": "IconPower",
+         "name": "PowerIcon",
+         "size": [
+          0,
+          26,
+          0,
+          26
+         ],
+         "pos": [
+          0,
+          14,
+          0,
+          50
+         ]
+        },
+        {
+         "type": "frame",
+         "name": "PowerBar",
+         "colour": [
+          "#0B0D29",
+          "#12153A"
+         ],
+         "size": [
+          0,
+          370,
+          0,
+          28
+         ],
+         "corner": 14,
+         "children": [
+          {
+           "type": "frame",
+           "name": "Fill",
+           "colour": [
+            "#38BDF8",
+            "#30A3D5"
+           ],
+           "paint": "#38BDF8",
+           "children": [],
+           "size": [
+            0.82,
+            -6,
+            1,
+            -6
+           ],
+           "pos": [
+            0,
+            3,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "outline": false,
+           "corner": 11,
+           "overhang": true
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            354,
+            0,
+            28
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.5714,
+           "textStroke": 3,
+           "name": "PowerReqText",
+           "samples": [
+            "999.99Qi / 999.99Qi",
+            "98.4M / 120M"
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "overhang": true,
+           "z": 2
+          }
+         ],
+         "pos": [
+          0,
+          52,
+          0,
+          49
+         ]
+        },
+        {
+         "type": "icon",
+         "icon": "IconYen",
+         "name": "YenIcon",
+         "size": [
+          0,
+          26,
+          0,
+          26
+         ],
+         "pos": [
+          0,
+          14,
+          0,
+          98
+         ]
+        },
+        {
+         "type": "frame",
+         "name": "YenBar",
+         "colour": [
+          "#0B0D29",
+          "#12153A"
+         ],
+         "size": [
+          0,
+          370,
+          0,
+          28
+         ],
+         "corner": 14,
+         "children": [
+          {
+           "type": "frame",
+           "name": "Fill",
+           "colour": [
+            "#34D17A",
+            "#2DB469"
+           ],
+           "paint": "#34D17A",
+           "children": [],
+           "size": [
+            0.44,
+            -6,
+            1,
+            -6
+           ],
+           "pos": [
+            0,
+            3,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ],
+           "outline": false,
+           "corner": 11,
+           "overhang": true
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            354,
+            0,
+            28
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.5714,
+           "textStroke": 3,
+           "name": "YenReqText",
+           "samples": [
+            "999.99Qi / 999.99Qi",
+            "220B / 500B"
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "overhang": true,
+           "z": 2
+          }
+         ],
+         "pos": [
+          0,
+          52,
+          0,
+          97
+         ]
+        }
+       ],
+       "depth": 3,
+       "corner": 14
+      },
+      {
+       "type": "panel",
+       "name": "Rewards",
+       "colour": [
+        "#FFE27A",
+        "#FFB020"
+       ],
+       "size": [
+        0,
+        268,
+        0,
+        150
+       ],
+       "children": [
+        {
+         "type": "label",
+         "text": "REWARD",
+         "size": [
+          0,
+          240,
+          0,
+          26
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.7692,
+         "textStroke": 3,
+         "name": "RewardTitle",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          0,
+          10
+         ],
+         "anchor": [
+          0.5,
+          0
+         ],
+         "maxText": 20
+        },
+        {
+         "type": "label",
+         "text": "<unbound>",
+         "size": [
+          0,
+          240,
+          0,
+          26
+         ],
+         "textColour": "confirm",
+         "align": "center",
+         "textScale": 0.7692,
+         "textStroke": 3,
+         "name": "RewardIncome",
+         "samples": [
+          "+50% INCOME",
+          "+150% INCOME"
+         ],
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          0,
+          46
+         ],
+         "anchor": [
+          0.5,
+          0
+         ],
+         "maxText": 20
+        },
+        {
+         "type": "label",
+         "text": "<unbound>",
+         "size": [
+          0,
+          240,
+          0,
+          26
+         ],
+         "textColour": "info",
+         "align": "center",
+         "textScale": 0.7692,
+         "textStroke": 3,
+         "name": "RewardLuck",
+         "samples": [
+          "+10% LUCK",
+          "+30% LUCK"
+         ],
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          0,
+          80
+         ],
+         "anchor": [
+          0.5,
+          0
+         ],
+         "maxText": 20
+        },
+        {
+         "type": "label",
+         "text": "FOREVER!",
+         "size": [
+          0,
+          240,
+          0,
+          19
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.7368,
+         "textStroke": 2,
+         "name": "RewardForever",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          0,
+          116
+         ],
+         "anchor": [
+          0.5,
+          0
+         ],
+         "maxText": 14
+        }
+       ],
+       "comic": 4,
+       "pos": [
+        1,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        1,
+        0
+       ],
+       "keyline": "#FFFFFF"
+      },
+      {
+       "type": "panel",
+       "name": "Keeps",
+       "colour": "panelHi",
+       "size": [
+        0,
+        354,
+        0,
+        128
+       ],
+       "children": [
+        {
+         "type": "label",
+         "text": "YOU KEEP",
+         "size": [
+          0,
+          300,
+          0,
+          21
+         ],
+         "textColour": "confirm",
+         "align": "left",
+         "textScale": 0.7619,
+         "textStroke": 2,
+         "name": "Title",
+         "font": "display",
+         "pos": [
+          0,
+          12,
+          0,
+          8
+         ],
+         "maxText": 16
+        },
+        {
+         "type": "frame",
+         "name": "List",
+         "transparent": true,
+         "size": [
+          0,
+          330,
+          0,
+          88
+         ],
+         "children": [
+          {
+           "type": "frame",
+           "name": "Item1",
+           "transparent": true,
+           "size": [
+            0,
+            330,
+            0,
+            16
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "Icon",
+             "size": [
+              0,
+              16,
+              0,
+              16
+             ]
+            },
+            {
+             "type": "label",
+             "text": "Hero Index",
+             "size": [
+              0,
+              300,
+              0,
+              19
+             ],
+             "textColour": "onDark",
+             "align": "left",
+             "textScale": 0.7368,
+             "textStroke": 2,
+             "name": "Text",
+             "maxText": 14
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "start"
+           }
+          },
+          {
+           "type": "frame",
+           "name": "Item2",
+           "transparent": true,
+           "size": [
+            0,
+            330,
+            0,
+            16
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "Icon",
+             "size": [
+              0,
+              16,
+              0,
+              16
+             ]
+            },
+            {
+             "type": "label",
+             "text": "Game passes",
+             "size": [
+              0,
+              300,
+              0,
+              19
+             ],
+             "textColour": "onDark",
+             "align": "left",
+             "textScale": 0.7368,
+             "textStroke": 2,
+             "name": "Text",
+             "maxText": 14
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "start"
+           }
+          },
+          {
+           "type": "frame",
+           "name": "Item3",
+           "transparent": true,
+           "size": [
+            0,
+            330,
+            0,
+            16
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "Icon",
+             "size": [
+              0,
+              16,
+              0,
+              16
+             ]
+            },
+            {
+             "type": "label",
+             "text": "Premium heroes",
+             "size": [
+              0,
+              300,
+              0,
+              19
+             ],
+             "textColour": "onDark",
+             "align": "left",
+             "textScale": 0.7368,
+             "textStroke": 2,
+             "name": "Text",
+             "maxText": 14
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "start"
+           }
+          },
+          {
+           "type": "frame",
+           "name": "Item4",
+           "transparent": true,
+           "size": [
+            0,
+            330,
+            0,
+            16
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "Icon",
+             "size": [
+              0,
+              16,
+              0,
+              16
+             ]
+            },
+            {
+             "type": "label",
+             "text": "Lucky Throws",
+             "size": [
+              0,
+              300,
+              0,
+              19
+             ],
+             "textColour": "onDark",
+             "align": "left",
+             "textScale": 0.7368,
+             "textStroke": 2,
+             "name": "Text",
+             "maxText": 14
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "start"
+           }
+          }
+         ],
+         "layout": {
+          "type": "list",
+          "dir": "y",
+          "gap": 6,
+          "align": "start"
+         },
+         "pos": [
+          0,
+          12,
+          0,
+          34
+         ]
+        }
+       ],
+       "depth": 3,
+       "corner": 14,
+       "pos": [
+        0,
+        0,
+        0,
+        164
+       ],
+       "anchor": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "panel",
+       "name": "Resets",
+       "colour": "panelHi",
+       "size": [
+        0,
+        354,
+        0,
+        128
+       ],
+       "children": [
+        {
+         "type": "label",
+         "text": "YOU LOSE",
+         "size": [
+          0,
+          300,
+          0,
+          21
+         ],
+         "textColour": "danger",
+         "align": "left",
+         "textScale": 0.7619,
+         "textStroke": 2,
+         "name": "Title",
+         "font": "display",
+         "pos": [
+          0,
+          12,
+          0,
+          8
+         ],
+         "maxText": 16
+        },
+        {
+         "type": "frame",
+         "name": "List",
+         "transparent": true,
+         "size": [
+          0,
+          330,
+          0,
+          88
+         ],
+         "children": [
+          {
+           "type": "frame",
+           "name": "Item1",
+           "transparent": true,
+           "size": [
+            0,
+            330,
+            0,
+            16
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconClose",
+             "name": "Icon",
+             "size": [
+              0,
+              16,
+              0,
+              16
+             ]
+            },
+            {
+             "type": "label",
+             "text": "Yen and power",
+             "size": [
+              0,
+              300,
+              0,
+              19
+             ],
+             "textColour": "onDark",
+             "align": "left",
+             "textScale": 0.7368,
+             "textStroke": 2,
+             "name": "Text",
+             "maxText": 14
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "start"
+           }
+          },
+          {
+           "type": "frame",
+           "name": "Item2",
+           "transparent": true,
+           "size": [
+            0,
+            330,
+            0,
+            16
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconClose",
+             "name": "Icon",
+             "size": [
+              0,
+              16,
+              0,
+              16
+             ]
+            },
+            {
+             "type": "label",
+             "text": "Foods and gear",
+             "size": [
+              0,
+              300,
+              0,
+              19
+             ],
+             "textColour": "onDark",
+             "align": "left",
+             "textScale": 0.7368,
+             "textStroke": 2,
+             "name": "Text",
+             "maxText": 14
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "start"
+           }
+          },
+          {
+           "type": "frame",
+           "name": "Item3",
+           "transparent": true,
+           "size": [
+            0,
+            330,
+            0,
+            16
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconClose",
+             "name": "Icon",
+             "size": [
+              0,
+              16,
+              0,
+              16
+             ]
+            },
+            {
+             "type": "label",
+             "text": "Plot slots",
+             "size": [
+              0,
+              300,
+              0,
+              19
+             ],
+             "textColour": "onDark",
+             "align": "left",
+             "textScale": 0.7368,
+             "textStroke": 2,
+             "name": "Text",
+             "maxText": 14
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "start"
+           }
+          },
+          {
+           "type": "frame",
+           "name": "Item4",
+           "transparent": true,
+           "size": [
+            0,
+            330,
+            0,
+            16
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconClose",
+             "name": "Icon",
+             "size": [
+              0,
+              16,
+              0,
+              16
+             ]
+            },
+            {
+             "type": "label",
+             "text": "Caught heroes",
+             "size": [
+              0,
+              300,
+              0,
+              19
+             ],
+             "textColour": "onDark",
+             "align": "left",
+             "textScale": 0.7368,
+             "textStroke": 2,
+             "name": "Text",
+             "maxText": 14
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "start"
+           }
+          }
+         ],
+         "layout": {
+          "type": "list",
+          "dir": "y",
+          "gap": 6,
+          "align": "start"
+         },
+         "pos": [
+          0,
+          12,
+          0,
+          34
+         ]
+        }
+       ],
+       "depth": 3,
+       "corner": 14,
+       "pos": [
+        1,
+        0,
+        0,
+        164
+       ],
+       "anchor": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        340,
+        0,
+        21
+       ],
+       "textColour": "soft",
+       "align": "left",
+       "textScale": 0.7619,
+       "textStroke": 2,
+       "name": "CurrentRebirth",
+       "samples": [
+        "You are at Rebirth 999",
+        "You are at Rebirth 0"
+       ],
+       "pos": [
+        0,
+        0,
+        0,
+        326
+       ],
+       "maxText": 16
+      },
+      {
+       "type": "button",
+       "name": "ConfirmButton",
+       "size": [
+        0,
+        227,
+        0,
+        56
+       ],
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconRebirth",
+         "name": "Icon",
+         "size": [
+          0,
+          34,
+          0,
+          34
+         ]
+        },
+        {
+         "type": "label",
+         "text": "REBIRTH!",
+         "size": [
+          0,
+          143,
+          0,
+          35
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.6857,
+         "textStroke": 2,
+         "name": "Label",
+         "font": "display",
+         "maxText": 24
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "center"
+       },
+       "sizeClass": "L",
+       "depth": 5,
+       "corner": 24,
+       "pos": [
+        1,
+        0,
+        0,
+        306
+       ],
+       "anchor": [
+        1,
+        0
+       ],
+       "selfFace": true,
+       "colour": "#FFCE50",
+       "paintable": true,
+       "gloss": true,
+       "stops": [
+        [
+         0.0,
+         "#FFCE50"
+        ],
+        [
+         0.4,
+         "#FFCE50"
+        ],
+        [
+         0.41000000000000003,
+         "#E6B948"
+        ],
+        [
+         1.0,
+         "#D1A942"
+        ]
+       ],
+       "attrs": {
+        "PressLip": 5
+       }
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      84
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ],
+   "comic": 10,
+   "modal": true,
+   "corner": 22,
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "keyline": "#FFFFFF"
+  }
+ ]
+}

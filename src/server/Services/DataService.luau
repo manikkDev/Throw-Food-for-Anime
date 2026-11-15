@@ -148,6 +148,12 @@ function DataService:_load(player: Player): any?
 			self._store:UpdateAsync(key, function(record: any): any
 				-- the transform can run more than once: reset every time
 				profile, busy, tookOver = nil, false, false
+				-- Only a key that has NEVER been written (nil) starts a fresh
+				-- profile. Anything else that is not a readable save is left
+				-- exactly as it is: starting fresh over it would be a wipe.
+				if record ~= nil and (type(record) ~= "table" or type(record.data) ~= "table") then
+					error("stored save is unreadable; refusing to overwrite it")
+				end
 				local row = if type(record) == "table" then record else {}
 				if not Session.canAcquire(row.lock, JOB, os.time(), waited) then
 					busy = true

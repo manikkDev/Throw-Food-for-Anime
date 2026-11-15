@@ -1,0 +1,609 @@
+{
+ "_what": "Per-zone dressing for tools/map/gen_map.py. One entry per config.Zones Id (design/game.json). Zone ORDER, LENGTH, name and power come from game.json; colours, ground and props come from here. To add a zone: add its row to config.Zones, add an entry here, regenerate. Model names are ReplicatedStorage.Assets.Kit.<Name>; sizes come from the mesh manifests, else design/kit.json. Names starting Prop_store_ are free Creator Store models the owner asked for (tools/studio/install_store_assets.py; sizes in assets/meshes/manifest-store.json).",
+ "_lists": {
+  "foot": "props at the foot of BOTH walls of every lane, cycled so the same model never repeats twice in a row. Must fit the 9-stud margin (depth <= 8.6 once turned to face the lane).",
+  "set": "a set piece every 50-70 studs, alternating walls. Same 9-stud margin rule.",
+  "walltop": "props on top of the 12-wide inner walls (trees go here: they are too wide for the margin).",
+  "skyline": "landmarks on the 20-wide outer wall tops and the hills behind them, so the zone has a skyline.",
+  "hills": "cheap repeated props on the hills behind the outer walls.",
+  "generated_kinds": "Our own generated models by ROLE. gen_map.py uses one only when design/store_assets.json has no store piece of that kind for the zone (brief E: store first). A generated model's zone comes from its name (Prop_<zoneId>_ / Prop_shared_ = all).",
+  "kind_fallback": "When a zone has no store or generated piece of a kind, the next kind in this list is used; every fallback is printed and written to the spec (layout.pools).",
+  "town": "Per zone: 'row' kinds cycled along each building row on the wall terraces, 'landmark' kinds for the tall piece every 150-200 studs, 'spine' kinds for the trees and lanterns between the two rows, 'hills' kinds for the outer tiers. 'gap': one piece placed in a tree gap between clusters (pirate treasure, ninja rope bridge).",
+  "floor": "v3 lane floor: floor_texture (landing strip tile), pave (margin paving material), wall_texture (wall panel tile), hung (what hangs between the pilasters, cycled per bay: noren, banner, lanterns, sign, window, poster). Texture names are assets/map/textures/<name>.png."
+ },
+ "finale": [
+  "Prop_realm_of_legends_SpiritGate",
+  "Prop_realm_of_legends_DragonStatue",
+  "Prop_realm_of_legends_GreatTorii",
+  "Prop_realm_of_legends_GreatTorii",
+  "Prop_realm_of_legends_DragonStatue",
+  "Prop_realm_of_legends_SpiritGate"
+ ],
+ "finale_sky": [
+  "Prop_realm_of_legends_FloatingShrine",
+  "Prop_realm_of_legends_FloatingIsland",
+  "Prop_store_IslandTall",
+  "Prop_store_IslandShort"
+ ],
+ "hub": {
+  "foot": [
+   "Prop_shared_VendingMachine",
+   "Prop_shared_Daruma",
+   "Prop_shared_KoiFlagPole",
+   "Prop_shared_LanternString",
+   "Prop_shared_DangoStatue",
+   "Prop_realm_of_legends_SpiritLantern",
+   "Prop_store_StoneLantern"
+  ],
+  "set": [
+   "Prop_shared_RamenStand",
+   "Prop_shared_LuckyCat",
+   "Prop_store_MarketTent",
+   "Prop_store_GongB"
+  ],
+  "walltop": [
+   "Prop_sakura_schoolyard_CherryTree"
+  ],
+  "wall": "#C98A6B",
+  "cap": "#5BD43A",
+  "wall_texture": "brick",
+  "hung": [
+   "banner",
+   "lanterns",
+   "noren"
+  ],
+  "pave": "Cobblestone"
+ },
+ "zones": {
+  "sakura_schoolyard": {
+   "colour": "#FF8FC0",
+   "ground": "Grass",
+   "wall": "#D79A78",
+   "cap": "#FFB3D1",
+   "foot": [
+    "Prop_sakura_schoolyard_TrackHurdle",
+    "Prop_shared_VendingMachine",
+    "Prop_sakura_schoolyard_BasketballHoop",
+    "Prop_sakura_schoolyard_Bench",
+    "Prop_shared_LanternString",
+    "Prop_sakura_schoolyard_BikeRack",
+    "Prop_shared_Daruma",
+    "Prop_shared_KoiFlagPole",
+    "Prop_store_Bush",
+    "Prop_store_SmallTree",
+    "Prop_store_Bonsai",
+    "Prop_store_StoneLantern"
+   ],
+   "set": [
+    "Prop_sakura_schoolyard_SakuraArch",
+    "Prop_shared_RamenStand",
+    "Prop_shared_LuckyCat",
+    "Prop_shared_DangoStatue"
+   ],
+   "walltop": [
+    "Prop_sakura_schoolyard_CherryTree",
+    "Prop_store_BigTree"
+   ],
+   "skyline": [
+    "Prop_sakura_schoolyard_ClockTower",
+    "Prop_sakura_schoolyard_SchoolBuilding",
+    "Prop_sakura_schoolyard_SchoolGate"
+   ],
+   "hills": [
+    "Prop_sakura_schoolyard_CherryTree",
+    "Prop_store_BigTree",
+    "Prop_store_FlatRock"
+   ],
+   "town": {
+    "row": [
+     "house",
+     "shop",
+     "house",
+     "shrine",
+     "house",
+     "stall"
+    ],
+    "landmark": [
+     "temple",
+     "tower"
+    ],
+    "spine": [
+     "tree",
+     "lantern",
+     "tree"
+    ],
+    "hills": [
+     "house",
+     "tree",
+     "shrine",
+     "tree"
+    ]
+   },
+   "floor_texture": "asanoha",
+   "pave": "Cobblestone",
+   "wall_texture": "brick",
+   "hung": [
+    "banner",
+    "window",
+    "lanterns",
+    "poster"
+   ]
+  },
+  "pirate_harbor": {
+   "colour": "#FF9A3D",
+   "ground": "Sand",
+   "wall": "#E2B27A",
+   "cap": "#5BD43A",
+   "bay": true,
+   "foot": [
+    "Prop_pirate_harbor_BarrelStack",
+    "Prop_pirate_harbor_Cannon",
+    "Prop_pirate_harbor_GiantAnchor",
+    "Prop_shared_LanternString",
+    "Prop_pirate_harbor_TreasurePile",
+    "Prop_shared_KoiFlagPole",
+    "Prop_store_Barrel",
+    "Prop_store_Crate"
+   ],
+   "set": [
+    "Prop_pirate_harbor_FishStall",
+    "Prop_pirate_harbor_TreasurePile",
+    "Prop_shared_LuckyCat"
+   ],
+   "walltop": [
+    "Prop_pirate_harbor_PalmTree",
+    "Prop_store_PalmTree"
+   ],
+   "skyline": [
+    "Prop_pirate_harbor_Lighthouse",
+    "Prop_pirate_harbor_SkullRock",
+    "Prop_pirate_harbor_PirateShip",
+    "Prop_pirate_harbor_Dock"
+   ],
+   "hills": [
+    "Prop_pirate_harbor_PalmTree",
+    "Prop_store_PalmTree",
+    "Prop_store_TallRock"
+   ],
+   "town": {
+    "row": [
+     "house",
+     "shop",
+     "house",
+     "stall",
+     "house"
+    ],
+    "landmark": [
+     "tower"
+    ],
+    "spine": [
+     "tree",
+     "lantern",
+     "tree"
+    ],
+    "hills": [
+     "house",
+     "tree",
+     "tree"
+    ],
+    "gap": [
+     "treasure"
+    ]
+   },
+   "floor_texture": "planks",
+   "pave": "WoodPlanks",
+   "wall_texture": "planks",
+   "hung": [
+    "window",
+    "sign",
+    "lanterns",
+    "noren"
+   ]
+  },
+  "ninja_village": {
+   "colour": "#3FBF6A",
+   "ground": "LeafyGrass",
+   "wall": "#8C7A60",
+   "cap": "#3FBF6A",
+   "foot": [
+    "Prop_ninja_village_TrainingLog",
+    "Prop_ninja_village_ScrollStand",
+    "Prop_ninja_village_BambooCluster",
+    "Prop_ninja_village_GiantShuriken",
+    "Prop_shared_LanternString",
+    "Prop_shared_Daruma",
+    "Prop_store_TrainingPole",
+    "Prop_store_ZenLantern",
+    "Prop_store_BambooFence",
+    "Prop_store_Bell",
+    "Prop_store_LampPost"
+   ],
+   "set": [
+    "Prop_ninja_village_FoxStatue",
+    "Prop_ninja_village_HiddenGate",
+    "Prop_ninja_village_RopeBridge"
+   ],
+   "walltop": [
+    "Prop_ninja_village_BambooCluster"
+   ],
+   "skyline": [
+    "Prop_ninja_village_WatchPost",
+    "Prop_ninja_village_NinjaHouse",
+    "Prop_ninja_village_TreeHouse"
+   ],
+   "hills": [
+    "Prop_ninja_village_BambooCluster",
+    "Prop_store_SmallTree"
+   ],
+   "town": {
+    "row": [
+     "house",
+     "shop",
+     "house",
+     "shrine",
+     "house"
+    ],
+    "landmark": [
+     "temple",
+     "castle",
+     "tower"
+    ],
+    "spine": [
+     "bamboo",
+     "lantern",
+     "tree"
+    ],
+    "hills": [
+     "house",
+     "bamboo",
+     "tree",
+     "shrine"
+    ],
+    "gap": [
+     "ropebridge"
+    ]
+   },
+   "floor_texture": "kikko",
+   "pave": "Slate",
+   "wall_texture": "shoji",
+   "hung": [
+    "noren",
+    "window",
+    "lanterns",
+    "banner"
+   ]
+  },
+  "samurai_castle": {
+   "colour": "#E0453C",
+   "ground": "Slate",
+   "wall": "#A3ACB9",
+   "cap": "#E0453C",
+   "foot": [
+    "Prop_samurai_castle_WarBanner",
+    "Prop_samurai_castle_ArmorStand",
+    "Prop_samurai_castle_KatanaMonument",
+    "Prop_samurai_castle_TaikoDrum",
+    "Prop_shared_LanternString",
+    "Prop_shared_KoiFlagPole",
+    "Prop_store_StoneLanternWide",
+    "Prop_store_FlagB",
+    "Prop_store_Brazier",
+    "Prop_store_LionA",
+    "Prop_store_FlagC",
+    "Prop_store_FlagA"
+   ],
+   "set": [
+    "Prop_samurai_castle_StoneWall",
+    "Prop_samurai_castle_TaikoDrum",
+    "Prop_shared_DangoStatue"
+   ],
+   "walltop": [
+    "Prop_samurai_castle_PineTree",
+    "Prop_samurai_castle_ToriiRow"
+   ],
+   "skyline": [
+    "Prop_samurai_castle_Pagoda",
+    "Prop_samurai_castle_CastleKeep",
+    "Prop_samurai_castle_RedBridge",
+    "Prop_store_TowerSlim",
+    "Prop_store_TowerBig",
+    "Prop_store_CastleGate"
+   ],
+   "hills": [
+    "Prop_samurai_castle_PineTree"
+   ],
+   "town": {
+    "row": [
+     "house",
+     "shop",
+     "shrine",
+     "house",
+     "torii"
+    ],
+    "landmark": [
+     "castle",
+     "temple",
+     "tower"
+    ],
+    "spine": [
+     "tree",
+     "lantern",
+     "flag"
+    ],
+    "hills": [
+     "house",
+     "tree",
+     "shrine",
+     "tree"
+    ]
+   },
+   "floor_texture": "setts",
+   "pave": "Cobblestone",
+   "wall_texture": "panels",
+   "hung": [
+    "banner",
+    "noren",
+    "lanterns",
+    "window"
+   ]
+  },
+  "hero_city": {
+   "colour": "#35C9F0",
+   "ground": "Basalt",
+   "wall": "#4A5577",
+   "cap": "#35C9F0",
+   "foot": [
+    "Prop_hero_city_StreetLamp",
+    "Prop_hero_city_ArcadeMachine",
+    "Prop_shared_VendingMachine",
+    "Prop_hero_city_NeonSign",
+    "Prop_hero_city_HeroStatue",
+    "Prop_shared_Daruma"
+   ],
+   "set": [
+    "Prop_hero_city_Billboard",
+    "Prop_hero_city_HeroStatue",
+    "Prop_shared_RamenStand"
+   ],
+   "walltop": [
+    "Prop_hero_city_SubwayEntrance",
+    "Prop_hero_city_StreetLamp"
+   ],
+   "skyline": [
+    "Prop_hero_city_NeonTower",
+    "Prop_hero_city_MechaStatue",
+    "Prop_hero_city_Shop",
+    "Prop_hero_city_RooftopPad"
+   ],
+   "hills": [
+    "Prop_hero_city_RooftopPad"
+   ],
+   "town": {
+    "row": [
+     "shop",
+     "house",
+     "sign",
+     "shop"
+    ],
+    "landmark": [
+     "tower",
+     "statue"
+    ],
+    "spine": [
+     "tree",
+     "lantern"
+    ],
+    "hills": [
+     "shop",
+     "tree",
+     "platform"
+    ]
+   },
+   "floor_texture": "checker",
+   "pave": "Concrete",
+   "wall_texture": "panels",
+   "hung": [
+    "sign",
+    "poster",
+    "window",
+    "poster"
+   ]
+  },
+  "realm_of_legends": {
+   "colour": "#A66BFF",
+   "ground": "Salt",
+   "wall": "#7B66B8",
+   "cap": "#D9C9FF",
+   "foot": [
+    "Prop_realm_of_legends_SpiritLantern",
+    "Prop_realm_of_legends_GiantSword",
+    "Prop_shared_LanternString",
+    "Prop_shared_KoiFlagPole",
+    "Prop_shared_Daruma",
+    "Prop_store_Portal"
+   ],
+   "set": [
+    "Prop_realm_of_legends_SpiritGate",
+    "Prop_shared_LuckyCat",
+    "Prop_shared_DangoStatue"
+   ],
+   "walltop": [
+    "Prop_realm_of_legends_CrystalTree",
+    "Prop_realm_of_legends_StarAltar"
+   ],
+   "skyline": [
+    "Prop_realm_of_legends_FloatingShrine",
+    "Prop_realm_of_legends_DragonStatue",
+    "Prop_realm_of_legends_FloatingIsland",
+    "Prop_realm_of_legends_CloudBank"
+   ],
+   "hills": [
+    "Prop_realm_of_legends_CrystalTree",
+    "Prop_store_IslandShort"
+   ],
+   "town": {
+    "row": [
+     "shrine",
+     "torii",
+     "shrine",
+     "altar"
+    ],
+    "landmark": [
+     "statue",
+     "temple"
+    ],
+    "spine": [
+     "crystal_tree",
+     "lantern",
+     "tree"
+    ],
+    "hills": [
+     "shrine",
+     "crystal_tree",
+     "tree"
+    ]
+   },
+   "floor_texture": "seigaiha",
+   "pave": "Marble",
+   "wall_texture": "panels",
+   "hung": [
+    "lanterns",
+    "banner",
+    "window"
+   ]
+  }
+ },
+ "generated_kinds": {
+  "house": [
+   "Prop_ninja_village_NinjaHouse",
+   "Prop_sakura_schoolyard_SchoolBuilding"
+  ],
+  "shop": [
+   "Prop_hero_city_Shop"
+  ],
+  "stall": [
+   "Prop_pirate_harbor_FishStall",
+   "Prop_shared_RamenStand"
+  ],
+  "tower": [
+   "Prop_hero_city_NeonTower",
+   "Prop_sakura_schoolyard_ClockTower",
+   "Prop_pirate_harbor_Lighthouse",
+   "Prop_ninja_village_WatchPost",
+   "Prop_ninja_village_TreeHouse"
+  ],
+  "castle": [
+   "Prop_samurai_castle_CastleKeep"
+  ],
+  "temple": [
+   "Prop_samurai_castle_Pagoda"
+  ],
+  "statue": [
+   "Prop_hero_city_MechaStatue",
+   "Prop_realm_of_legends_DragonStatue",
+   "Prop_hero_city_HeroStatue"
+  ],
+  "torii": [
+   "Prop_realm_of_legends_GreatTorii",
+   "Prop_samurai_castle_ToriiRow",
+   "Prop_realm_of_legends_SpiritGate"
+  ],
+  "tree": [
+   "Prop_sakura_schoolyard_CherryTree",
+   "Prop_samurai_castle_PineTree",
+   "Prop_pirate_harbor_PalmTree"
+  ],
+  "platform": [
+   "Prop_hero_city_RooftopPad"
+  ],
+  "bamboo": [
+   "Prop_ninja_village_BambooCluster"
+  ],
+  "crystal_tree": [
+   "Prop_realm_of_legends_CrystalTree"
+  ],
+  "altar": [
+   "Prop_realm_of_legends_StarAltar"
+  ],
+  "sign": [
+   "Prop_hero_city_Billboard",
+   "Prop_hero_city_SubwayEntrance"
+  ],
+  "treasure": [
+   "Prop_pirate_harbor_TreasurePile"
+  ],
+  "ropebridge": [
+   "Prop_ninja_village_RopeBridge"
+  ]
+ },
+ "kind_fallback": {
+  "house": [
+   "shop",
+   "shrine",
+   "stall"
+  ],
+  "shop": [
+   "house",
+   "stall"
+  ],
+  "shrine": [
+   "temple",
+   "house"
+  ],
+  "torii": [
+   "gatehouse",
+   "shrine"
+  ],
+  "stall": [
+   "shop",
+   "house"
+  ],
+  "platform": [
+   "shop",
+   "house"
+  ],
+  "temple": [
+   "castle",
+   "tower"
+  ],
+  "castle": [
+   "temple",
+   "tower"
+  ],
+  "tower": [
+   "temple",
+   "castle",
+   "statue"
+  ],
+  "statue": [
+   "tower",
+   "temple"
+  ],
+  "tree": [
+   "bush"
+  ],
+  "bamboo": [
+   "tree"
+  ],
+  "crystal_tree": [
+   "tree"
+  ],
+  "lantern": [
+   "small"
+  ],
+  "flag": [
+   "lantern"
+  ],
+  "altar": [
+   "statue",
+   "lantern"
+  ],
+  "sign": [
+   "lantern"
+  ],
+  "gatehouse": [
+   "torii",
+   "shrine"
+  ]
+ }
+}

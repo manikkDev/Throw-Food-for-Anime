@@ -1,0 +1,1000 @@
+{
+ "generated_by": "assets/meshes/src/zones/manifest.py",
+ "measured_with": "Blender 4.5 re-import of each GLB (tris, bounds); converter sizeStuds cross-check",
+ "integrator_notes": [
+  "One MeshPart per colour; the hex is the _RRGGBB suffix of each mesh/material name. GLB baseColorFactor is the linear encoding of that hex (checked: #8A -> 0.2542).",
+  "Not uploaded: no modelId / meshId / image ids exist yet. No textures: colour is per-part, so there is no colour-map id to attach.",
+  "Set CollisionFidelity (Box/Hull) or CanCollide=false on decorative parts: mesh collision is on by default.",
+  "Non-bible colours used: red #F04848 (hurdle, lighthouse), yellow #FFD23F (warm highlight), cream #FFF1DC (clock tower walls), brick #D0603F (school gate)."
+ ],
+ "assets": [
+  {
+   "name": "Prop_sakura_schoolyard_CherryTree",
+   "path": "assets/meshes/zones/Prop_sakura_schoolyard_CherryTree.glb",
+   "source": "assets/meshes/src/zones/Prop_sakura_schoolyard_CherryTree.kiln.js",
+   "tris": 1420,
+   "bounds_studs": [
+    10.899,
+    13.426,
+    10.499
+   ],
+   "bounds_converter_studs": [
+    10.899,
+    13.426,
+    10.499
+   ],
+   "target_studs": [
+    11,
+    14,
+    11
+   ],
+   "size_error_pct": [
+    -0.9,
+    -4.1,
+    -4.6
+   ],
+   "min_studs": [
+    -5.45,
+    0.0,
+    -5.25
+   ],
+   "colour_parts": [
+    {
+     "part": "Bark_8A5A2B",
+     "hex": "#8A5A2B"
+    },
+    {
+     "part": "Grass_46B82C",
+     "hex": "#46B82C"
+    },
+    {
+     "part": "Sakura_FF8FC0",
+     "hex": "#FF8FC0"
+    },
+    {
+     "part": "SakuraLight_FFC4DD",
+     "hex": "#FFC4DD"
+    }
+   ],
+   "zone_key": "#FF8FC0",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (4)",
+    "darker_base_lip": "pass (grass mound)",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass"
+   },
+   "notes": "Changed after look: trunk thickened (r 1.0->1.25, root flare 1.8), third branch, lobes flattened 0.85->0.78 and overlapped so the crown reads as one mass, light-pink caps flattened. Key colour IS the crown."
+  },
+  {
+   "name": "Prop_pirate_harbor_PalmTree",
+   "path": "assets/meshes/zones/Prop_pirate_harbor_PalmTree.glb",
+   "source": "assets/meshes/src/zones/Prop_pirate_harbor_PalmTree.kiln.js",
+   "tris": 2356,
+   "bounds_studs": [
+    9.279,
+    14.48,
+    8.866
+   ],
+   "bounds_converter_studs": [
+    9.279,
+    14.48,
+    8.866
+   ],
+   "target_studs": [
+    9,
+    15,
+    9
+   ],
+   "size_error_pct": [
+    3.1,
+    -3.5,
+    -1.5
+   ],
+   "min_studs": [
+    -4.64,
+    0.0,
+    -4.433
+   ],
+   "colour_parts": [
+    {
+     "part": "Frond_5BD43A",
+     "hex": "#5BD43A"
+    },
+    {
+     "part": "HarborOrange_FF9A3D",
+     "hex": "#FF9A3D"
+    },
+    {
+     "part": "Ring_8A5A2B",
+     "hex": "#8A5A2B"
+    },
+    {
+     "part": "Sand_F4D58A",
+     "hex": "#F4D58A"
+    },
+    {
+     "part": "Trunk_B5793F",
+     "hex": "#B5793F"
+    }
+   ],
+   "zone_key": "#FF9A3D",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass (sand mound)",
+    "min_0.4": "pass (frond thickness 0.52)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass"
+   },
+   "notes": "Changed after look: first build 10.13 wide (+12.5%), lean 2.4->1.2 and frond reach rebalanced; fronds widened. Orange key = rope band at trunk base (small; reads at mid range only)."
+  },
+  {
+   "name": "Prop_sakura_schoolyard_SchoolGate",
+   "path": "assets/meshes/zones/Prop_sakura_schoolyard_SchoolGate.glb",
+   "source": "assets/meshes/src/zones/Prop_sakura_schoolyard_SchoolGate.kiln.js",
+   "tris": 2512,
+   "bounds_studs": [
+    26.4,
+    12.15,
+    4.0
+   ],
+   "bounds_converter_studs": [
+    26.4,
+    12.15,
+    4
+   ],
+   "target_studs": [
+    26,
+    12,
+    4
+   ],
+   "size_error_pct": [
+    1.5,
+    1.3,
+    0.0
+   ],
+   "min_studs": [
+    -13.2,
+    -0.0,
+    -2.0
+   ],
+   "colour_parts": [
+    {
+     "part": "Brick_D0603F",
+     "hex": "#D0603F"
+    },
+    {
+     "part": "Plate_FFFFFF",
+     "hex": "#FFFFFF"
+    },
+    {
+     "part": "Sakura_FF8FC0",
+     "hex": "#FF8FC0"
+    },
+    {
+     "part": "Stone_9AA4B2",
+     "hex": "#9AA4B2"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    }
+   ],
+   "zone_key": "#FF8FC0",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass (slate pillar bases)",
+    "min_0.4": "pass",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass"
+   },
+   "notes": "Changed after look: spindly gate with diagonal brace (read as a broken ladder) replaced by a framed panel: thicker bars, mid rail, end stiles. Plate glyphs are slate blocks (no text)."
+  },
+  {
+   "name": "Prop_sakura_schoolyard_ClockTower",
+   "path": "assets/meshes/zones/Prop_sakura_schoolyard_ClockTower.glb",
+   "source": "assets/meshes/src/zones/Prop_sakura_schoolyard_ClockTower.kiln.js",
+   "tris": 3970,
+   "bounds_studs": [
+    12.3,
+    38.025,
+    12.3
+   ],
+   "bounds_converter_studs": [
+    12.3,
+    38.025,
+    12.3
+   ],
+   "target_studs": [
+    12,
+    34,
+    12
+   ],
+   "size_error_pct": [
+    2.5,
+    11.8,
+    2.5
+   ],
+   "min_studs": [
+    -6.15,
+    -0.0,
+    -6.15
+   ],
+   "colour_parts": [
+    {
+     "part": "Sakura_FF8FC0",
+     "hex": "#FF8FC0"
+    },
+    {
+     "part": "Stone_9AA4B2",
+     "hex": "#9AA4B2"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    },
+    {
+     "part": "Wall_FFF1DC",
+     "hex": "#FFF1DC"
+    },
+    {
+     "part": "Yellow_FFD23F",
+     "hex": "#FFD23F"
+    }
+   ],
+   "zone_key": "#FF8FC0",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass",
+    "min_0.4": "pass",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass (landmark)"
+   },
+   "notes": "Defect fixed: first build 17.8 wide because Euler XYZ yaws before pitching, so side clock discs faced Z and stuck out; discs now pre-rotated. Tris 4166->3954 (ring segments 16->12). Roof raised 4.2->6.6 after look (read as a flat lid). Clock on all four sides. Height now 38.0 (+12%, inside the 15% allowance) because of the taller roof."
+  },
+  {
+   "name": "Prop_pirate_harbor_PirateShip",
+   "path": "assets/meshes/zones/Prop_pirate_harbor_PirateShip.glb",
+   "source": "assets/meshes/src/zones/Prop_pirate_harbor_PirateShip.kiln.js",
+   "tris": 2542,
+   "bounds_studs": [
+    19.2,
+    30.2,
+    42.725
+   ],
+   "bounds_converter_studs": [
+    19.2,
+    30.2,
+    42.725
+   ],
+   "target_studs": [
+    20,
+    30,
+    44
+   ],
+   "size_error_pct": [
+    -4.0,
+    0.7,
+    -2.9
+   ],
+   "min_studs": [
+    -9.6,
+    0.0,
+    -21.362
+   ],
+   "colour_parts": [
+    {
+     "part": "Deck_B5793F",
+     "hex": "#B5793F"
+    },
+    {
+     "part": "HarborOrange_FF9A3D",
+     "hex": "#FF9A3D"
+    },
+    {
+     "part": "Hull_8A5A2B",
+     "hex": "#8A5A2B"
+    },
+    {
+     "part": "Ink_0D0F2B",
+     "hex": "#0D0F2B"
+    },
+    {
+     "part": "Sail_FFFFFF",
+     "hex": "#FFFFFF"
+    }
+   ],
+   "zone_key": "#FF9A3D",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass (dark hull under light deck)",
+    "min_0.4": "pass",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass (landmark)"
+   },
+   "notes": "Bow at -Z. Flat keel at y=0 (sits on a water plane, not in it). Hull and deck are both wood browns; the orange stripe and gunwale carry the contrast."
+  },
+  {
+   "name": "Prop_ninja_village_WatchPost",
+   "path": "assets/meshes/zones/Prop_ninja_village_WatchPost.glb",
+   "source": "assets/meshes/src/zones/Prop_ninja_village_WatchPost.kiln.js",
+   "tris": 3296,
+   "bounds_studs": [
+    9.2,
+    22.813,
+    10.037
+   ],
+   "bounds_converter_studs": [
+    9.2,
+    22.813,
+    10.037
+   ],
+   "target_studs": [
+    9,
+    22,
+    9
+   ],
+   "size_error_pct": [
+    2.2,
+    3.7,
+    11.5
+   ],
+   "min_studs": [
+    -4.6,
+    0.0,
+    -5.019
+   ],
+   "colour_parts": [
+    {
+     "part": "Ink_0D0F2B",
+     "hex": "#0D0F2B"
+    },
+    {
+     "part": "LeafGreen_3FBF6A",
+     "hex": "#3FBF6A"
+    },
+    {
+     "part": "Log_8A5A2B",
+     "hex": "#8A5A2B"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    },
+    {
+     "part": "Wood_B5793F",
+     "hex": "#B5793F"
+    }
+   ],
+   "zone_key": "#3FBF6A",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass (slate footings)",
+    "min_0.4": "pass",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass (landmark)"
+   },
+   "notes": "Defect fixed: Kiln rejected the program with no message; error was Manifold 'Not manifold' from four equal-length balcony rails whose corner faces coincided. Rails now differ in length; prelude falls back to incremental union. Depth +12% is the front ladder."
+  },
+  {
+   "name": "Prop_pirate_harbor_Lighthouse",
+   "path": "assets/meshes/zones/Prop_pirate_harbor_Lighthouse.glb",
+   "source": "assets/meshes/src/zones/Prop_pirate_harbor_Lighthouse.kiln.js",
+   "tris": 2132,
+   "bounds_studs": [
+    11.826,
+    40.3,
+    11.826
+   ],
+   "bounds_converter_studs": [
+    11.826,
+    40.3,
+    11.826
+   ],
+   "target_studs": [
+    12,
+    40,
+    12
+   ],
+   "size_error_pct": [
+    -1.4,
+    0.7,
+    -1.4
+   ],
+   "min_studs": [
+    -5.913,
+    0.0,
+    -5.913
+   ],
+   "colour_parts": [
+    {
+     "part": "HarborOrange_FF9A3D",
+     "hex": "#FF9A3D"
+    },
+    {
+     "part": "Lamp_FFD23F",
+     "hex": "#FFD23F"
+    },
+    {
+     "part": "LighthouseRed_F04848",
+     "hex": "#F04848"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    },
+    {
+     "part": "White_FFFFFF",
+     "hex": "#FFFFFF"
+    }
+   ],
+   "zone_key": "#FF9A3D",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass",
+    "min_0.4": "pass",
+    "no_zfight": "pass (red bands 0.18 proud)",
+    "thumbnail_read": "pass"
+   },
+   "notes": "Red #F04848 is not in the bible palette (brief asked red and white)."
+  },
+  {
+   "name": "Prop_sakura_schoolyard_Bench",
+   "path": "assets/meshes/zones/Prop_sakura_schoolyard_Bench.glb",
+   "source": "assets/meshes/src/zones/Prop_sakura_schoolyard_Bench.kiln.js",
+   "tris": 894,
+   "bounds_studs": [
+    6.238,
+    2.999,
+    2.567
+   ],
+   "bounds_converter_studs": [
+    6.238,
+    2.999,
+    2.567
+   ],
+   "target_studs": [
+    6,
+    3,
+    2.5
+   ],
+   "size_error_pct": [
+    4.0,
+    -0.0,
+    2.7
+   ],
+   "min_studs": [
+    -3.119,
+    0.0,
+    -1.284
+   ],
+   "colour_parts": [
+    {
+     "part": "Sakura_FF8FC0",
+     "hex": "#FF8FC0"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    },
+    {
+     "part": "Wood_B5793F",
+     "hex": "#B5793F"
+    }
+   ],
+   "zone_key": "#FF8FC0",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (3)",
+    "darker_base_lip": "pass (slate foot lips)",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass"
+   },
+   "notes": "No change after look."
+  },
+  {
+   "name": "Prop_sakura_schoolyard_TrackHurdle",
+   "path": "assets/meshes/zones/Prop_sakura_schoolyard_TrackHurdle.glb",
+   "source": "assets/meshes/src/zones/Prop_sakura_schoolyard_TrackHurdle.kiln.js",
+   "tris": 568,
+   "bounds_studs": [
+    5.05,
+    3.55,
+    1.525
+   ],
+   "bounds_converter_studs": [
+    5.05,
+    3.55,
+    1.525
+   ],
+   "target_studs": [
+    5,
+    3.5,
+    1.5
+   ],
+   "size_error_pct": [
+    1.0,
+    1.4,
+    1.7
+   ],
+   "min_studs": [
+    -2.525,
+    0.0,
+    -0.762
+   ],
+   "colour_parts": [
+    {
+     "part": "HurdleRed_F04848",
+     "hex": "#F04848"
+    },
+    {
+     "part": "Sakura_FF8FC0",
+     "hex": "#FF8FC0"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    },
+    {
+     "part": "White_FFFFFF",
+     "hex": "#FFFFFF"
+    }
+   ],
+   "zone_key": "#FF8FC0",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (4)",
+    "darker_base_lip": "pass (slate feet)",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass"
+   },
+   "notes": "Red blocks stand 0.05 proud of the white board (no coplanar faces). Red #F04848 not in bible palette. No change after look."
+  },
+  {
+   "name": "Prop_pirate_harbor_Dock",
+   "path": "assets/meshes/zones/Prop_pirate_harbor_Dock.glb",
+   "source": "assets/meshes/src/zones/Prop_pirate_harbor_Dock.kiln.js",
+   "tris": 2536,
+   "bounds_studs": [
+    14.675,
+    3.0,
+    24.3
+   ],
+   "bounds_converter_studs": [
+    14.675,
+    3,
+    24.3
+   ],
+   "target_studs": [
+    14,
+    3,
+    24
+   ],
+   "size_error_pct": [
+    4.8,
+    0.0,
+    1.3
+   ],
+   "min_studs": [
+    -7.338,
+    0.0,
+    -12.15
+   ],
+   "colour_parts": [
+    {
+     "part": "HarborOrange_FF9A3D",
+     "hex": "#FF9A3D"
+    },
+    {
+     "part": "Plank_B5793F",
+     "hex": "#B5793F"
+    },
+    {
+     "part": "Post_8A5A2B",
+     "hex": "#8A5A2B"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    }
+   ],
+   "zone_key": "#FF9A3D",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (4)",
+    "darker_base_lip": "pass (slate post collars)",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass"
+   },
+   "notes": "Deck top at y 2.45, posts to 3.0. Plank gaps 0.15 show dark stringers. Life ring on the -X outside of the front post is small. No change after look."
+  },
+  {
+   "name": "Prop_pirate_harbor_BarrelStack",
+   "path": "assets/meshes/zones/Prop_pirate_harbor_BarrelStack.glb",
+   "source": "assets/meshes/src/zones/Prop_pirate_harbor_BarrelStack.kiln.js",
+   "tris": 1430,
+   "bounds_studs": [
+    6.005,
+    6.025,
+    5.94
+   ],
+   "bounds_converter_studs": [
+    6.005,
+    6.025,
+    5.94
+   ],
+   "target_studs": [
+    6,
+    6,
+    6
+   ],
+   "size_error_pct": [
+    0.1,
+    0.4,
+    -1.0
+   ],
+   "min_studs": [
+    -3.003,
+    0.0,
+    -2.97
+   ],
+   "colour_parts": [
+    {
+     "part": "HarborOrange_FF9A3D",
+     "hex": "#FF9A3D"
+    },
+    {
+     "part": "Wood_B5793F",
+     "hex": "#B5793F"
+    },
+    {
+     "part": "WoodDark_8A5A2B",
+     "hex": "#8A5A2B"
+    }
+   ],
+   "zone_key": "#FF9A3D",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (3)",
+    "darker_base_lip": "pass (dark crate bottom band)",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass"
+   },
+   "notes": "Orange hoops on all three barrels + orange stripe on crate front. No change after look."
+  },
+  {
+   "name": "Prop_ninja_village_BambooCluster",
+   "path": "assets/meshes/zones/Prop_ninja_village_BambooCluster.glb",
+   "source": "assets/meshes/src/zones/Prop_ninja_village_BambooCluster.kiln.js",
+   "tris": 3748,
+   "bounds_studs": [
+    8.673,
+    19.488,
+    8.762
+   ],
+   "bounds_converter_studs": [
+    8.673,
+    19.488,
+    8.762
+   ],
+   "target_studs": [
+    8,
+    20,
+    8
+   ],
+   "size_error_pct": [
+    8.4,
+    -2.6,
+    9.5
+   ],
+   "min_studs": [
+    -4.336,
+    0.0,
+    -4.381
+   ],
+   "colour_parts": [
+    {
+     "part": "Bamboo_5BD43A",
+     "hex": "#5BD43A"
+    },
+    {
+     "part": "LeafGreen_3FBF6A",
+     "hex": "#3FBF6A"
+    },
+    {
+     "part": "Node_F4D58A",
+     "hex": "#F4D58A"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    }
+   ],
+   "zone_key": "#3FBF6A",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass",
+    "colours_3_to_5": "pass (4)",
+    "darker_base_lip": "pass (slate base)"
+   },
+   "notes": "Changed after look: 4420 tris (over 4000 budget) -> node rings as plain 4-point bands, wider node spacing, one side tuft -> 3748. Leaves are the key green; stalks #5BD43A, so the greens are close in hue."
+  },
+  {
+   "name": "Prop_ninja_village_RopeBridge",
+   "path": "assets/meshes/zones/Prop_ninja_village_RopeBridge.glb",
+   "source": "assets/meshes/src/zones/Prop_ninja_village_RopeBridge.kiln.js",
+   "tris": 3092,
+   "bounds_studs": [
+    8.3,
+    6.29,
+    26.3
+   ],
+   "bounds_converter_studs": [
+    8.3,
+    6.29,
+    26.3
+   ],
+   "target_studs": [
+    8,
+    6,
+    26
+   ],
+   "size_error_pct": [
+    3.8,
+    4.8,
+    1.2
+   ],
+   "min_studs": [
+    -4.15,
+    0.0,
+    -13.15
+   ],
+   "colour_parts": [
+    {
+     "part": "LeafGreen_3FBF6A",
+     "hex": "#3FBF6A"
+    },
+    {
+     "part": "Plank_B5793F",
+     "hex": "#B5793F"
+    },
+    {
+     "part": "Post_8A5A2B",
+     "hex": "#8A5A2B"
+    },
+    {
+     "part": "Rope_F4D58A",
+     "hex": "#F4D58A"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    }
+   ],
+   "zone_key": "#3FBF6A",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass (slate footings)"
+   },
+   "notes": "Changed after look: 4204 tris -> rope tubes 6-sided, 5 hangers per side -> 3092. Deck sags 1.9 -> 1.05 at mid-span. Rope tubes are 0.44-0.48 thick (above the 0.4 floor)."
+  },
+  {
+   "name": "Prop_ninja_village_HiddenGate",
+   "path": "assets/meshes/zones/Prop_ninja_village_HiddenGate.glb",
+   "source": "assets/meshes/src/zones/Prop_ninja_village_HiddenGate.kiln.js",
+   "tris": 1152,
+   "bounds_studs": [
+    22.0,
+    15.9,
+    5.0
+   ],
+   "bounds_converter_studs": [
+    22,
+    15.9,
+    5
+   ],
+   "target_studs": [
+    22,
+    16,
+    5
+   ],
+   "size_error_pct": [
+    0.0,
+    -0.6,
+    0.0
+   ],
+   "min_studs": [
+    -11.0,
+    0.0,
+    -2.5
+   ],
+   "colour_parts": [
+    {
+     "part": "Ink_0D0F2B",
+     "hex": "#0D0F2B"
+    },
+    {
+     "part": "LeafGreen_3FBF6A",
+     "hex": "#3FBF6A"
+    },
+    {
+     "part": "StoneDark_6B7686",
+     "hex": "#6B7686"
+    },
+    {
+     "part": "Wood_B5793F",
+     "hex": "#B5793F"
+    },
+    {
+     "part": "WoodDark_8A5A2B",
+     "hex": "#8A5A2B"
+    }
+   ],
+   "zone_key": "#3FBF6A",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass (slate footings)"
+   },
+   "notes": "Swirl is an ink tube (0.44 thick) on a light plaque in a green frame. No change after look."
+  },
+  {
+   "name": "Prop_ninja_village_TrainingLog",
+   "path": "assets/meshes/zones/Prop_ninja_village_TrainingLog.glb",
+   "source": "assets/meshes/src/zones/Prop_ninja_village_TrainingLog.kiln.js",
+   "tris": 824,
+   "bounds_studs": [
+    3.086,
+    6.975,
+    2.987
+   ],
+   "bounds_converter_studs": [
+    3.086,
+    6.975,
+    2.987
+   ],
+   "target_studs": [
+    3,
+    7,
+    3
+   ],
+   "size_error_pct": [
+    2.9,
+    -0.4,
+    -0.4
+   ],
+   "min_studs": [
+    -1.543,
+    0.0,
+    -1.493
+   ],
+   "colour_parts": [
+    {
+     "part": "Ink_0D0F2B",
+     "hex": "#0D0F2B"
+    },
+    {
+     "part": "LeafGreen_3FBF6A",
+     "hex": "#3FBF6A"
+    },
+    {
+     "part": "White_FFFFFF",
+     "hex": "#FFFFFF"
+    },
+    {
+     "part": "Wood_B5793F",
+     "hex": "#B5793F"
+    },
+    {
+     "part": "WoodDark_8A5A2B",
+     "hex": "#8A5A2B"
+    }
+   ],
+   "zone_key": "#3FBF6A",
+   "zone_key_present": true,
+   "tier": 3,
+   "route": "kiln -> kiln_to_roblox.mjs",
+   "front": "-Z",
+   "verified": true,
+   "gate": {
+    "bevelled": "pass",
+    "min_0.4": "pass (guarded)",
+    "no_zfight": "pass",
+    "thumbnail_read": "pass (stars weak)",
+    "colours_3_to_5": "pass (5)",
+    "darker_base_lip": "pass (dark root flare)"
+   },
+   "notes": "Changed after look: 3.485 wide (+16%) because the throwing stars stuck out; stars smaller and deeper -> 3.086. Weak point: the stars read as dark wedges, not clearly as shuriken; star tips are thinner than 0.4 in-plane (0.4 thick)."
+  }
+ ]
+}

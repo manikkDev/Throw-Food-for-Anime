@@ -1,0 +1,17 @@
+{
+ "name": "festival_day",
+ "note": "Bright sunny anime day over stylised_day: higher sun, punchier grade, a light haze so the far zones (900-1300 studs down the lane) fade. One knob per value, from the skill's measured ranges (density 0.08-0.15 outdoors, ColorShift_Top additive near (12,10,6), near-white tint).",
+ "lighting": {
+  "Technology": "Future",
+  "ClockTime": 13.2, "GeographicLatitude": 22,
+  "Brightness": 2.8, "ExposureCompensation": 0.1,
+  "Ambient": [70, 68, 66], "OutdoorAmbient": [132, 132, 128],
+  "ColorShift_Top": [14, 12, 6],
+  "EnvironmentDiffuseScale": 0.7, "EnvironmentSpecularScale": 0.3,
+  "ShadowSoftness": 0.35,
+  "Atmosphere": {"Density": 0.14, "Offset": 0.1, "Color": [214, 230, 255], "Decay": [150, 182, 232], "Glare": 0.1, "Haze": 0.55},
+  "Bloom": {"Intensity": 0.5, "Size": 22, "Threshold": 0.92},
+  "ColorCorrection": {"Brightness": 0.02, "Contrast": 0.12, "Saturation": 0.26, "TintColor": [255, 253, 248]},
+  "SunRays": {"Intensity": 0.06, "Spread": 0.85}
+ }
+}

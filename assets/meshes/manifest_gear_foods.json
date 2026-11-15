@@ -1,0 +1,1441 @@
+{
+ "generated": "2026-11-14T13:53:09.479Z",
+ "frame": "Roblox: studs, +Y up, front -Z. Gear min y = 0 centred on x,z; foods centred on bounds centre (grip).",
+ "colour": "No textures. One mesh per colour, named Label_RRGGBB; set MeshPart.Color from the hex. textureId is not applicable.",
+ "collision": "Set CollisionFidelity on import: gear Box or Hull (default mesh collision is precise and expensive); foods CanCollide=false while held/thrown or Box.",
+ "ids_note": "Nothing uploaded. modelId/meshId are filled by the publishing thread; CreateMeshPartAsync needs the meshId as a STRING.",
+ "assets": [
+  {
+   "name": "Equip_dragon_shrine",
+   "kind": "gear",
+   "path": "assets/meshes/gear/Equip_dragon_shrine.glb",
+   "source": "assets/meshes/src/gear/Equip_dragon_shrine.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 2616,
+   "budget_tris": 4000,
+   "bounds_studs": [
+    9.263,
+    13.202,
+    9.263
+   ],
+   "target_studs": [
+    9,
+    13,
+    9
+   ],
+   "deviation_pct": [
+    2.9,
+    1.6,
+    2.9
+   ],
+   "colour_parts": [
+    "6B7686",
+    "9AA4B2",
+    "E0453C",
+    "FFC83D",
+    "3FBF6A"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "DarkStone_6B7686",
+     "hex": "6B7686",
+     "tris": 172
+    },
+    {
+     "name": "Stone_9AA4B2",
+     "hex": "9AA4B2",
+     "tris": 44
+    },
+    {
+     "name": "Red_E0453C",
+     "hex": "E0453C",
+     "tris": 568
+    },
+    {
+     "name": "Gold_FFC83D",
+     "hex": "FFC83D",
+     "tris": 1416
+    },
+    {
+     "name": "Dragon_3FBF6A",
+     "hex": "3FBF6A",
+     "tris": 416
+    }
+   ],
+   "icon": null,
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (horns 0.14 at tip, a detail)",
+    "no_zfight": "pass",
+    "ladder": "pass (gear_ladder.png reads left to right)"
+   },
+   "notes": "After look: flame bowls read as small red cones with the yellow core hidden -> flames scaled 1.5x and cores moved forward.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Equip_gravity_dojo",
+   "kind": "gear",
+   "path": "assets/meshes/gear/Equip_gravity_dojo.glb",
+   "source": "assets/meshes/src/gear/Equip_gravity_dojo.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 3052,
+   "budget_tris": 4000,
+   "bounds_studs": [
+    9,
+    9.9,
+    9.15
+   ],
+   "target_studs": [
+    9,
+    10,
+    9
+   ],
+   "deviation_pct": [
+    0,
+    -1,
+    1.7
+   ],
+   "colour_parts": [
+    "6B7686",
+    "E8EEF5",
+    "A66BFF",
+    "E2CCFF",
+    "0D0F2B"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Steel_6B7686",
+     "hex": "6B7686",
+     "tris": 372
+    },
+    {
+     "name": "White_E8EEF5",
+     "hex": "E8EEF5",
+     "tris": 480
+    },
+    {
+     "name": "Purple_A66BFF",
+     "hex": "A66BFF",
+     "tris": 1788
+    },
+    {
+     "name": "Glow_E2CCFF",
+     "hex": "E2CCFF",
+     "tris": 160
+    },
+    {
+     "name": "Ink_0D0F2B",
+     "hex": "0D0F2B",
+     "tris": 252
+    }
+   ],
+   "icon": null,
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (rings 0.4-0.44 tube)",
+    "no_zfight": "pass (rings pass through pylons: clean intersections, no coplanar faces)",
+    "ladder": "pass (gear_ladder.png reads left to right)"
+   },
+   "notes": "Passed first look. The three tilted rings read a little like a spring; accepted.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Equip_iron_dummy",
+   "kind": "gear",
+   "path": "assets/meshes/gear/Equip_iron_dummy.glb",
+   "source": "assets/meshes/src/gear/Equip_iron_dummy.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 2240,
+   "budget_tris": 4000,
+   "bounds_studs": [
+    3.9,
+    6.956,
+    3.9
+   ],
+   "target_studs": [
+    4,
+    7,
+    4
+   ],
+   "deviation_pct": [
+    -2.5,
+    -0.6,
+    -2.5
+   ],
+   "colour_parts": [
+    "6B7686",
+    "35C9F0",
+    "9AA4B2",
+    "E8EEF5",
+    "0D0F2B"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "DarkSteel_6B7686",
+     "hex": "6B7686",
+     "tris": 728
+    },
+    {
+     "name": "Blue_35C9F0",
+     "hex": "35C9F0",
+     "tris": 624
+    },
+    {
+     "name": "Steel_9AA4B2",
+     "hex": "9AA4B2",
+     "tris": 428
+    },
+    {
+     "name": "Shine_E8EEF5",
+     "hex": "E8EEF5",
+     "tris": 416
+    },
+    {
+     "name": "Visor_0D0F2B",
+     "hex": "0D0F2B",
+     "tris": 44
+    }
+   ],
+   "icon": null,
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (spikes taper to a point by design; base 0.4)",
+    "no_zfight": "pass",
+    "ladder": "pass (gear_ladder.png reads left to right)"
+   },
+   "notes": "Passed first look. Reads more robot than dummy; accepted.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Equip_sandbag",
+   "kind": "gear",
+   "path": "assets/meshes/gear/Equip_sandbag.glb",
+   "source": "assets/meshes/src/gear/Equip_sandbag.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 1072,
+   "budget_tris": 4000,
+   "bounds_studs": [
+    4.1,
+    7.85,
+    3.9
+   ],
+   "target_studs": [
+    4,
+    8,
+    4
+   ],
+   "deviation_pct": [
+    2.5,
+    -1.9,
+    -2.5
+   ],
+   "colour_parts": [
+    "8A5A2B",
+    "B5793F",
+    "FFC83D",
+    "E0453C",
+    "FFFFFF"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "DarkWood_8A5A2B",
+     "hex": "8A5A2B",
+     "tris": 176
+    },
+    {
+     "name": "Wood_B5793F",
+     "hex": "B5793F",
+     "tris": 172
+    },
+    {
+     "name": "Yellow_FFC83D",
+     "hex": "FFC83D",
+     "tris": 420
+    },
+    {
+     "name": "Bag_E0453C",
+     "hex": "E0453C",
+     "tris": 224
+    },
+    {
+     "name": "White_FFFFFF",
+     "hex": "FFFFFF",
+     "tris": 80
+    }
+   ],
+   "icon": null,
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (legs 0.6, rope 0.4)",
+    "no_zfight": "pass",
+    "ladder": "pass (gear_ladder.png reads left to right)"
+   },
+   "notes": "Passed first look.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Equip_star_forge",
+   "kind": "gear",
+   "path": "assets/meshes/gear/Equip_star_forge.glb",
+   "source": "assets/meshes/src/gear/Equip_star_forge.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 3076,
+   "budget_tris": 4000,
+   "bounds_studs": [
+    9,
+    13.51,
+    9
+   ],
+   "target_studs": [
+    9,
+    14,
+    9
+   ],
+   "deviation_pct": [
+    0,
+    -3.5,
+    0
+   ],
+   "colour_parts": [
+    "2A1F5C",
+    "FFC83D",
+    "35C9F0",
+    "A66BFF",
+    "FFF3A0"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Cosmic_2A1F5C",
+     "hex": "2A1F5C",
+     "tris": 340
+    },
+    {
+     "name": "Gold_FFC83D",
+     "hex": "FFC83D",
+     "tris": 1500
+    },
+    {
+     "name": "Cyan_35C9F0",
+     "hex": "35C9F0",
+     "tris": 716
+    },
+    {
+     "name": "Purple_A66BFF",
+     "hex": "A66BFF",
+     "tris": 256
+    },
+    {
+     "name": "StarCore_FFF3A0",
+     "hex": "FFF3A0",
+     "tris": 264
+    }
+   ],
+   "icon": null,
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (ring tubes 0.44-0.52)",
+    "no_zfight": "pass",
+    "ladder": "pass (gear_ladder.png reads left to right)"
+   },
+   "notes": "Passed first look; reads as the top tier.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Equip_stone_pillar",
+   "kind": "gear",
+   "path": "assets/meshes/gear/Equip_stone_pillar.glb",
+   "source": "assets/meshes/src/gear/Equip_stone_pillar.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 2120,
+   "budget_tris": 4000,
+   "bounds_studs": [
+    4.619,
+    8.7,
+    4.619
+   ],
+   "target_studs": [
+    5,
+    9,
+    5
+   ],
+   "deviation_pct": [
+    -7.6,
+    -3.3,
+    -7.6
+   ],
+   "colour_parts": [
+    "6B7686",
+    "9AA4B2",
+    "FFA21F",
+    "F4D58A",
+    "FFFFFF"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "DarkStone_6B7686",
+     "hex": "6B7686",
+     "tris": 176
+    },
+    {
+     "name": "Stone_9AA4B2",
+     "hex": "9AA4B2",
+     "tris": 48
+    },
+    {
+     "name": "CrackGlow_FFA21F",
+     "hex": "FFA21F",
+     "tris": 216
+    },
+    {
+     "name": "Rope_F4D58A",
+     "hex": "F4D58A",
+     "tris": 800
+    },
+    {
+     "name": "Paper_FFFFFF",
+     "hex": "FFFFFF",
+     "tris": 880
+    }
+   ],
+   "icon": null,
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (cracks 0.34, tags 0.22 deep paper)",
+    "no_zfight": "pass",
+    "ladder": "pass (gear_ladder.png reads left to right)"
+   },
+   "notes": "After look: paper tags floated 0.5 off the column and read as plain stacked boxes -> moved onto the column surface, rounded and tilted alternately. Width 4.62 is -7.6% (accepted).",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Equip_waterfall",
+   "kind": "gear",
+   "path": "assets/meshes/gear/Equip_waterfall.glb",
+   "source": "assets/meshes/src/gear/Equip_waterfall.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 2072,
+   "budget_tris": 4000,
+   "bounds_studs": [
+    9.217,
+    10.21,
+    6.549
+   ],
+   "target_studs": [
+    9,
+    11,
+    7
+   ],
+   "deviation_pct": [
+    2.4,
+    -7.2,
+    -6.4
+   ],
+   "colour_parts": [
+    "6B7686",
+    "38BDF8",
+    "9AA4B2",
+    "5BD43A",
+    "FFFFFF"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "DarkStone_6B7686",
+     "hex": "6B7686",
+     "tris": 216
+    },
+    {
+     "name": "Water_38BDF8",
+     "hex": "38BDF8",
+     "tris": 232
+    },
+    {
+     "name": "Stone_9AA4B2",
+     "hex": "9AA4B2",
+     "tris": 704
+    },
+    {
+     "name": "Grass_5BD43A",
+     "hex": "5BD43A",
+     "tris": 384
+    },
+    {
+     "name": "Foam_FFFFFF",
+     "hex": "FFFFFF",
+     "tris": 536
+    }
+   ],
+   "icon": null,
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (chamfered turns, rounded boxes, tubes)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (foam streaks 0.4)",
+    "no_zfight": "pass",
+    "ladder": "pass (gear_ladder.png reads left to right)"
+   },
+   "notes": "Passed first look. Boulder pillars read slightly as a stack of equal rocks; accepted. Height 10.21 is -7.2%.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Equip_wooden_dummy",
+   "kind": "gear",
+   "path": "assets/meshes/gear/Equip_wooden_dummy.glb",
+   "source": "assets/meshes/src/gear/Equip_wooden_dummy.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 1208,
+   "budget_tris": 4000,
+   "bounds_studs": [
+    2.96,
+    5.986,
+    2.827
+   ],
+   "target_studs": [
+    3,
+    6,
+    3
+   ],
+   "deviation_pct": [
+    -1.3,
+    -0.2,
+    -5.8
+   ],
+   "colour_parts": [
+    "8A5A2B",
+    "B5793F",
+    "F4D58A",
+    "E0453C",
+    "FFF8EC"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "DarkWood_8A5A2B",
+     "hex": "8A5A2B",
+     "tris": 332
+    },
+    {
+     "name": "Wood_B5793F",
+     "hex": "B5793F",
+     "tris": 284
+    },
+    {
+     "name": "Straw_F4D58A",
+     "hex": "F4D58A",
+     "tris": 192
+    },
+    {
+     "name": "Red_E0453C",
+     "hex": "E0453C",
+     "tris": 256
+    },
+    {
+     "name": "White_FFF8EC",
+     "hex": "FFF8EC",
+     "tris": 144
+    }
+   ],
+   "icon": null,
+   "verified": true,
+   "gates": {
+    "bevelled": "pass",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (arm 0.6, post 0.84)",
+    "no_zfight": "pass (target rings stepped 0.04 apart)"
+   },
+   "notes": "After look: arm 0.5 -> 0.6 thick, knobs r 0.36 -> 0.42 (fat posts rule).",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_curry",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_curry.glb",
+   "source": "assets/meshes/src/foods/Food_curry.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 736,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    2.4,
+    1.064,
+    1.773
+   ],
+   "target_studs": [
+    2.4,
+    1,
+    1.8
+   ],
+   "deviation_pct": [
+    0,
+    6.4,
+    -1.5
+   ],
+   "colour_parts": [
+    "A8DDF7",
+    "FFFBF2",
+    "B8642A",
+    "FF9A3D",
+    "E0453C"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Plate_A8DDF7",
+     "hex": "A8DDF7",
+     "tris": 216
+    },
+    {
+     "name": "Rice_FFFBF2",
+     "hex": "FFFBF2",
+     "tris": 144
+    },
+    {
+     "name": "Curry_B8642A",
+     "hex": "B8642A",
+     "tris": 112
+    },
+    {
+     "name": "Carrot_FF9A3D",
+     "hex": "FF9A3D",
+     "tris": 132
+    },
+    {
+     "name": "Pickle_E0453C",
+     "hex": "E0453C",
+     "tris": 132
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_curry.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "Passed first look. Pickle pile is small at thumbnail size but visible.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_dango",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_dango.glb",
+   "source": "assets/meshes/src/foods/Food_dango.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 496,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    0.76,
+    2.45,
+    0.76
+   ],
+   "target_studs": [
+    0.8,
+    2.4,
+    0.8
+   ],
+   "deviation_pct": [
+    -5,
+    2.1,
+    -5
+   ],
+   "colour_parts": [
+    "D9A35F",
+    "FF8FC0",
+    "FFF6EE",
+    "7ED957"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Stick_D9A35F",
+     "hex": "D9A35F",
+     "tris": 64
+    },
+    {
+     "name": "Pink_FF8FC0",
+     "hex": "FF8FC0",
+     "tris": 144
+    },
+    {
+     "name": "White_FFF6EE",
+     "hex": "FFF6EE",
+     "tris": 144
+    },
+    {
+     "name": "Green_7ED957",
+     "hex": "7ED957",
+     "tris": 144
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_dango.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (4)",
+    "min_thickness": "pass (stick 0.18 dia)",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "Passed first look.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_dragon_feast",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_dragon_feast.glb",
+   "source": "assets/meshes/src/foods/Food_dragon_feast.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 1456,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    2.8,
+    2.101,
+    2.184
+   ],
+   "target_studs": [
+    2.8,
+    2,
+    2.2
+   ],
+   "deviation_pct": [
+    0,
+    5,
+    -0.7
+   ],
+   "colour_parts": [
+    "FFC83D",
+    "FF4A2E",
+    "FFE14A",
+    "B5552B",
+    "FFF6E0"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Gold_FFC83D",
+     "hex": "FFC83D",
+     "tris": 192
+    },
+    {
+     "name": "FlameRed_FF4A2E",
+     "hex": "FF4A2E",
+     "tris": 480
+    },
+    {
+     "name": "FlameYellow_FFE14A",
+     "hex": "FFE14A",
+     "tris": 420
+    },
+    {
+     "name": "Roast_B5552B",
+     "hex": "B5552B",
+     "tris": 120
+    },
+    {
+     "name": "Bone_FFF6E0",
+     "hex": "FFF6E0",
+     "tris": 244
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_dragon_feast.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (horn tips 0.12 dia)",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "After build: 1880 -> 1456 tris. Flame parts carry emissive 0.4 in the GLB (Studio ignores it; colour is from the hex).",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_festival_cake",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_festival_cake.glb",
+   "source": "assets/meshes/src/foods/Food_festival_cake.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 1392,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    2.1,
+    2.4,
+    2.1
+   ],
+   "target_studs": [
+    2.2,
+    2.2,
+    2.2
+   ],
+   "deviation_pct": [
+    -4.5,
+    9.1,
+    -4.5
+   ],
+   "colour_parts": [
+    "FF8FC0",
+    "FFFFFF",
+    "E0453C",
+    "FFD23F"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Pink_FF8FC0",
+     "hex": "FF8FC0",
+     "tris": 288
+    },
+    {
+     "name": "Icing_FFFFFF",
+     "hex": "FFFFFF",
+     "tris": 576
+    },
+    {
+     "name": "Strawberry_E0453C",
+     "hex": "E0453C",
+     "tris": 400
+    },
+    {
+     "name": "Star_FFD23F",
+     "hex": "FFD23F",
+     "tris": 128
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_festival_cake.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (4)",
+    "min_thickness": "pass (drips 0.24 wide)",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "After build: 3960 tris -> 1392 (segments cut, drips 25 -> 8, berries 14 -> 10, green leaves removed: 5 -> 4 colours). Y 2.4 is +9.1% (accepted, under 15%).",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_gyoza",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_gyoza.glb",
+   "source": "assets/meshes/src/foods/Food_gyoza.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 916,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    1.954,
+    1.063,
+    1.114
+   ],
+   "target_studs": [
+    2,
+    1,
+    1.2
+   ],
+   "deviation_pct": [
+    -2.3,
+    6.3,
+    -7.2
+   ],
+   "colour_parts": [
+    "FFF0D2",
+    "D98A3D",
+    "5BD43A"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Dough_FFF0D2",
+     "hex": "FFF0D2",
+     "tris": 628
+    },
+    {
+     "name": "Toasted_D98A3D",
+     "hex": "D98A3D",
+     "tris": 180
+    },
+    {
+     "name": "Chive_5BD43A",
+     "hex": "5BD43A",
+     "tris": 108
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_gyoza.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (3)",
+    "min_thickness": "pass (chive flecks 0.16)",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "After look: crimp knobs r 0.13 -> 0.16 so the crimped edge reads.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_ice_cream",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_ice_cream.glb",
+   "source": "assets/meshes/src/foods/Food_ice_cream.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 1302,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    1.374,
+    2.722,
+    1.383
+   ],
+   "target_studs": [
+    1.3,
+    2.6,
+    1.3
+   ],
+   "deviation_pct": [
+    5.7,
+    4.7,
+    6.4
+   ],
+   "colour_parts": [
+    "E8A55A",
+    "B86E2C",
+    "7EE8C0",
+    "FF8FC0",
+    "F4D58A"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Cone_E8A55A",
+     "hex": "E8A55A",
+     "tris": 120
+    },
+    {
+     "name": "ConeLine_B86E2C",
+     "hex": "B86E2C",
+     "tris": 288
+    },
+    {
+     "name": "Mint_7EE8C0",
+     "hex": "7EE8C0",
+     "tris": 446
+    },
+    {
+     "name": "Pink_FF8FC0",
+     "hex": "FF8FC0",
+     "tris": 404
+    },
+    {
+     "name": "Wafer_F4D58A",
+     "hex": "F4D58A",
+     "tris": 44
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_ice_cream.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "After build: 1700 tris over 1500 budget -> scoop/lump segments cut to 1302.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_onigiri",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_onigiri.glb",
+   "source": "assets/meshes/src/foods/Food_onigiri.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 424,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    1.8,
+    1.78,
+    1.026
+   ],
+   "target_studs": [
+    1.8,
+    1.7,
+    1
+   ],
+   "deviation_pct": [
+    0,
+    4.7,
+    2.6
+   ],
+   "colour_parts": [
+    "FFFBF2",
+    "1F3D34",
+    "FF8A5B"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Rice_FFFBF2",
+     "hex": "FFFBF2",
+     "tris": 180
+    },
+    {
+     "name": "Nori_1F3D34",
+     "hex": "1F3D34",
+     "tris": 144
+    },
+    {
+     "name": "Salmon_FF8A5B",
+     "hex": "FF8A5B",
+     "tris": 100
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_onigiri.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (puffy pillow edges)",
+    "colours_3_to_5": "pass (3)",
+    "min_thickness": "pass (nori proud 0.08, filling 0.48 wide)",
+    "no_zfight": "pass"
+   },
+   "notes": "After look: Z was 13.6% over (1.136) -> faces pulled in to 1.026; nori crease 50 -> 30 (blotchy shading on flat face). Salmon filling dot added for a third colour.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_ramen",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_ramen.glb",
+   "source": "assets/meshes/src/foods/Food_ramen.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 1310,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    2.209,
+    1.48,
+    2.16
+   ],
+   "target_studs": [
+    2.2,
+    1.5,
+    2.2
+   ],
+   "deviation_pct": [
+    0.4,
+    -1.3,
+    -1.8
+   ],
+   "colour_parts": [
+    "E0453C",
+    "FFFFFF",
+    "E89A3C",
+    "FFE08A",
+    "FF8FC0"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Bowl_E0453C",
+     "hex": "E0453C",
+     "tris": 224
+    },
+    {
+     "name": "White_FFFFFF",
+     "hex": "FFFFFF",
+     "tris": 410
+    },
+    {
+     "name": "Broth_E89A3C",
+     "hex": "E89A3C",
+     "tris": 228
+    },
+    {
+     "name": "Noodle_FFE08A",
+     "hex": "FFE08A",
+     "tris": 348
+    },
+    {
+     "name": "Pink_FF8FC0",
+     "hex": "FF8FC0",
+     "tris": 100
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_ramen.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (noodles 0.15, swirl 0.12 dia)",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "After build: height 1.11 (-26%) -> bowl deepened to 1.48; 1860 tris -> 1310; rim torus replaced by a tube ring (torus carried UVs so the converter could not join it, giving two White MeshParts).",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_spicy_bun",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_spicy_bun.glb",
+   "source": "assets/meshes/src/foods/Food_spicy_bun.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 796,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    1.84,
+    1.498,
+    1.84
+   ],
+   "target_studs": [
+    1.8,
+    1.5,
+    1.8
+   ],
+   "deviation_pct": [
+    2.2,
+    -0.1,
+    2.2
+   ],
+   "colour_parts": [
+    "FFF1DE",
+    "E0453C",
+    "46B82C"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Dough_FFF1DE",
+     "hex": "FFF1DE",
+     "tris": 708
+    },
+    {
+     "name": "Chilli_E0453C",
+     "hex": "E0453C",
+     "tris": 64
+    },
+    {
+     "name": "Stem_46B82C",
+     "hex": "46B82C",
+     "tris": 24
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_spicy_bun.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (3)",
+    "min_thickness": "pass (pleats 0.13-0.18 dia, stem 0.13)",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "Passed first look.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_sushi",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_sushi.glb",
+   "source": "assets/meshes/src/foods/Food_sushi.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 604,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    2.069,
+    1,
+    1
+   ],
+   "target_studs": [
+    2,
+    1,
+    1
+   ],
+   "deviation_pct": [
+    3.4,
+    0,
+    0
+   ],
+   "colour_parts": [
+    "FFFBF2",
+    "FF7A45",
+    "FFD2BD",
+    "1F3D34"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Rice_FFFBF2",
+     "hex": "FFFBF2",
+     "tris": 192
+    },
+    {
+     "name": "Salmon_FF7A45",
+     "hex": "FF7A45",
+     "tris": 192
+    },
+    {
+     "name": "SalmonFat_FFD2BD",
+     "hex": "FFD2BD",
+     "tris": 176
+    },
+    {
+     "name": "Nori_1F3D34",
+     "hex": "1F3D34",
+     "tris": 44
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_sushi.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (4)",
+    "min_thickness": "pass (fat stripes 0.14 wide)",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "Passed first look. Kiln QA warn: duplicate node names (Mesh_Fat) - cosmetic, joined by colour on convert.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_takoyaki",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_takoyaki.glb",
+   "source": "assets/meshes/src/foods/Food_takoyaki.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 1308,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    2.385,
+    1.256,
+    1.12
+   ],
+   "target_studs": [
+    2.4,
+    1.2,
+    1.2
+   ],
+   "deviation_pct": [
+    -0.6,
+    4.7,
+    -6.7
+   ],
+   "colour_parts": [
+    "FFF3D6",
+    "F2A03D",
+    "7A3B1C",
+    "5BD43A",
+    "D9A35F"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Boat_FFF3D6",
+     "hex": "FFF3D6",
+     "tris": 96
+    },
+    {
+     "name": "Batter_F2A03D",
+     "hex": "F2A03D",
+     "tris": 432
+    },
+    {
+     "name": "Sauce_7A3B1C",
+     "hex": "7A3B1C",
+     "tris": 432
+    },
+    {
+     "name": "Aonori_5BD43A",
+     "hex": "5BD43A",
+     "tris": 324
+    },
+    {
+     "name": "Pick_D9A35F",
+     "hex": "D9A35F",
+     "tris": 24
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_takoyaki.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (5)",
+    "min_thickness": "pass (pick 0.14 dia, flakes 0.15)",
+    "no_zfight": "pass (sauce cap is a second sphere intersecting the ball: clean intersection line, no coplanar faces)",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "Passed first look.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  },
+  {
+   "name": "Food_tempura",
+   "kind": "foods",
+   "path": "assets/meshes/foods/Food_tempura.glb",
+   "source": "assets/meshes/src/foods/Food_tempura.kiln.js",
+   "tier": 3,
+   "route": "kiln",
+   "tris": 846,
+   "budget_tris": 1500,
+   "bounds_studs": [
+    2.3,
+    1.112,
+    0.994
+   ],
+   "target_studs": [
+    2.2,
+    1.2,
+    1
+   ],
+   "deviation_pct": [
+    4.5,
+    -7.3,
+    -0.6
+   ],
+   "colour_parts": [
+    "F2B544",
+    "E07F22",
+    "FF4A2E"
+   ],
+   "colours_read_back_match": true,
+   "meshparts": [
+    {
+     "name": "Batter_F2B544",
+     "hex": "F2B544",
+     "tris": 414
+    },
+    {
+     "name": "Crumb_E07F22",
+     "hex": "E07F22",
+     "tris": 168
+    },
+    {
+     "name": "Tail_FF4A2E",
+     "hex": "FF4A2E",
+     "tris": 264
+    }
+   ],
+   "icon": "assets/ui/food_icons/Food_tempura.png",
+   "verified": true,
+   "gates": {
+    "bevelled": "pass (rounded lofts/turns, low-poly smooth)",
+    "colours_3_to_5": "pass (3)",
+    "min_thickness": "pass",
+    "no_zfight": "pass",
+    "recognisable_at_thumbnail": "pass (foods_all.png, 256 icon)"
+   },
+   "notes": "Passed first look.",
+   "ids": {
+    "modelId": null,
+    "meshId": null,
+    "textureId": null
+   }
+  }
+ ]
+}

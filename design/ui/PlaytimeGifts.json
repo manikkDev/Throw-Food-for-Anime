@@ -1,0 +1,1262 @@
+{
+ "name": "PlaytimeGifts",
+ "theme": "theme.json",
+ "resolution": [
+  1280,
+  720
+ ],
+ "kind": "page",
+ "ignoreGuiInset": true,
+ "children": [
+  {
+   "type": "frame",
+   "name": "Scrim",
+   "colour": [
+    "#0D0F2B",
+    "#0D0F2B"
+   ],
+   "alpha": 0.55,
+   "outline": false,
+   "z": -2,
+   "size": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "children": []
+  },
+  {
+   "type": "panel",
+   "name": "Window",
+   "colour": "panel",
+   "size": [
+    0,
+    736,
+    0,
+    358
+   ],
+   "children": [
+    {
+     "type": "panel",
+     "name": "Header",
+     "colour": [
+      "#FFC93C",
+      "#FF5A5F"
+     ],
+     "size": [
+      0,
+      360,
+      0,
+      70
+     ],
+     "rotation": -2,
+     "keyline": "#FFFFFF",
+     "comic": 6,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.28,
+      "tile": 34
+     },
+     "children": [
+      {
+       "type": "label",
+       "text": "FREE GIFTS",
+       "size": [
+        0,
+        320,
+        0,
+        56
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.6964,
+       "textStroke": 3,
+       "name": "Title",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      -36
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 3,
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "BodyArt",
+     "colour": [
+      "#2E3488",
+      "#161944"
+     ],
+     "outline": false,
+     "size": [
+      1,
+      -16,
+      1,
+      -16
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "corner": 16,
+     "pattern": {
+      "name": "dots",
+      "colour": "#FFFFFF",
+      "opacity": 0.07,
+      "tile": 28
+     },
+     "overhang": true,
+     "z": -1,
+     "children": []
+    },
+    {
+     "type": "button",
+     "name": "CloseButton",
+     "colour": "danger",
+     "size": [
+      0,
+      56,
+      0,
+      56
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconClose",
+       "name": "Icon",
+       "size": [
+        0,
+        30,
+        0,
+        30
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "pos": [
+      1,
+      14,
+      0,
+      -18
+     ],
+     "anchor": [
+      1,
+      0
+     ],
+     "z": 4,
+     "overhang": true,
+     "closes": true,
+     "sizeClass": "L"
+    },
+    {
+     "type": "frame",
+     "name": "Body",
+     "transparent": true,
+     "size": [
+      0,
+      688,
+      0,
+      242
+     ],
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        400,
+        0,
+        19
+       ],
+       "textColour": "soft",
+       "align": "center",
+       "textScale": 0.7368,
+       "textStroke": 2,
+       "name": "Timer",
+       "samples": [
+        "Played today: 59:59",
+        "Played today: 3:12"
+       ],
+       "pos": [
+        0.5,
+        0,
+        0,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "maxText": 14
+      },
+      {
+       "type": "frame",
+       "name": "GiftGrid",
+       "transparent": true,
+       "size": [
+        0,
+        688,
+        0,
+        238
+       ],
+       "children": [
+        {
+         "type": "panel",
+         "name": "GiftCell1",
+         "colour": "panelHi",
+         "depth": 4,
+         "corner": 14,
+         "size": [
+          0,
+          220,
+          0,
+          112
+         ],
+         "aspect": 1.9643,
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconGiftBig",
+           "name": "Icon",
+           "size": [
+            0,
+            52,
+            0,
+            52
+           ],
+           "pos": [
+            0,
+            10,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "GIFT 1",
+           "size": [
+            0,
+            136,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "GiftTitle",
+           "font": "display",
+           "pos": [
+            0,
+            72,
+            0,
+            8
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "label",
+           "text": "after 3 min",
+           "size": [
+            0,
+            136,
+            0,
+            17
+           ],
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.7647,
+           "textStroke": 2,
+           "name": "GiftWhen",
+           "pos": [
+            0,
+            72,
+            0,
+            32
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "panel",
+           "name": "GiftButton",
+           "colour": [
+            "#5C628F",
+            "#5C628F"
+           ],
+           "size": [
+            0,
+            127,
+            0,
+            34
+           ],
+           "corner": 14,
+           "depth": 0,
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "Icon",
+             "size": [
+              0,
+              17,
+              0,
+              17
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              80,
+              0,
+              24
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.625,
+             "textStroke": 2,
+             "name": "GiftState",
+             "samples": [
+              "CLAIMED"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "pos": [
+            0,
+            72,
+            1,
+            -10
+           ],
+           "anchor": [
+            0,
+            1
+           ]
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "GiftCell2",
+         "colour": "panelHi",
+         "depth": 4,
+         "corner": 14,
+         "size": [
+          0,
+          220,
+          0,
+          112
+         ],
+         "aspect": 1.9643,
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconGiftBig",
+           "name": "Icon",
+           "size": [
+            0,
+            52,
+            0,
+            52
+           ],
+           "pos": [
+            0,
+            10,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "GIFT 2",
+           "size": [
+            0,
+            136,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "GiftTitle",
+           "font": "display",
+           "pos": [
+            0,
+            72,
+            0,
+            8
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "label",
+           "text": "after 8 min",
+           "size": [
+            0,
+            136,
+            0,
+            17
+           ],
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.7647,
+           "textStroke": 2,
+           "name": "GiftWhen",
+           "pos": [
+            0,
+            72,
+            0,
+            32
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "panel",
+           "name": "GiftButton",
+           "colour": [
+            "#5C628F",
+            "#5C628F"
+           ],
+           "size": [
+            0,
+            127,
+            0,
+            34
+           ],
+           "corner": 14,
+           "depth": 0,
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "Icon",
+             "size": [
+              0,
+              17,
+              0,
+              17
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              80,
+              0,
+              24
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.625,
+             "textStroke": 2,
+             "name": "GiftState",
+             "samples": [
+              "CLAIMED"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "pos": [
+            0,
+            72,
+            1,
+            -10
+           ],
+           "anchor": [
+            0,
+            1
+           ]
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "GiftCell3",
+         "colour": "panelHi",
+         "depth": 4,
+         "corner": 14,
+         "size": [
+          0,
+          220,
+          0,
+          112
+         ],
+         "aspect": 1.9643,
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconGiftBig",
+           "name": "Icon",
+           "size": [
+            0,
+            52,
+            0,
+            52
+           ],
+           "pos": [
+            0,
+            10,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "GIFT 3",
+           "size": [
+            0,
+            136,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "GiftTitle",
+           "font": "display",
+           "pos": [
+            0,
+            72,
+            0,
+            8
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "label",
+           "text": "after 15 min",
+           "size": [
+            0,
+            136,
+            0,
+            17
+           ],
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.7647,
+           "textStroke": 2,
+           "name": "GiftWhen",
+           "pos": [
+            0,
+            72,
+            0,
+            32
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "button",
+           "name": "GiftButton",
+           "size": [
+            0,
+            119,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconGift",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              69,
+              0,
+              21
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "GiftState",
+             "samples": [
+              "CLAIM!",
+              "59:59"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "selfFace": true,
+           "colour": "#48D687",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#48D687"
+            ],
+            [
+             0.4,
+             "#48D687"
+            ],
+            [
+             0.41000000000000003,
+             "#41C17A"
+            ],
+            [
+             1.0,
+             "#3BAF6F"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           },
+           "pos": [
+            0,
+            72,
+            1,
+            -10
+           ],
+           "anchor": [
+            0,
+            1
+           ]
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "GiftCell4",
+         "colour": "panelHi",
+         "depth": 4,
+         "corner": 14,
+         "size": [
+          0,
+          220,
+          0,
+          112
+         ],
+         "aspect": 1.9643,
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconGiftBig",
+           "name": "Icon",
+           "size": [
+            0,
+            52,
+            0,
+            52
+           ],
+           "pos": [
+            0,
+            10,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "GIFT 4",
+           "size": [
+            0,
+            136,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "GiftTitle",
+           "font": "display",
+           "pos": [
+            0,
+            72,
+            0,
+            8
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "label",
+           "text": "after 25 min",
+           "size": [
+            0,
+            136,
+            0,
+            17
+           ],
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.7647,
+           "textStroke": 2,
+           "name": "GiftWhen",
+           "pos": [
+            0,
+            72,
+            0,
+            32
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "button",
+           "name": "GiftButton",
+           "size": [
+            0,
+            108,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTimer",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              58,
+              0,
+              21
+             ],
+             "textColour": "soft",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "GiftState",
+             "samples": [
+              "24:59",
+              "59:59"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "selfFace": true,
+           "colour": "#5C6286",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#5C6286"
+            ],
+            [
+             0.4,
+             "#5C6286"
+            ],
+            [
+             0.41000000000000003,
+             "#535879"
+            ],
+            [
+             1.0,
+             "#4B506E"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           },
+           "pos": [
+            0,
+            72,
+            1,
+            -10
+           ],
+           "anchor": [
+            0,
+            1
+           ]
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "GiftCell5",
+         "colour": "panelHi",
+         "depth": 4,
+         "corner": 14,
+         "size": [
+          0,
+          220,
+          0,
+          112
+         ],
+         "aspect": 1.9643,
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconGiftBig",
+           "name": "Icon",
+           "size": [
+            0,
+            52,
+            0,
+            52
+           ],
+           "pos": [
+            0,
+            10,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "GIFT 5",
+           "size": [
+            0,
+            136,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "GiftTitle",
+           "font": "display",
+           "pos": [
+            0,
+            72,
+            0,
+            8
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "label",
+           "text": "after 40 min",
+           "size": [
+            0,
+            136,
+            0,
+            17
+           ],
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.7647,
+           "textStroke": 2,
+           "name": "GiftWhen",
+           "pos": [
+            0,
+            72,
+            0,
+            32
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "button",
+           "name": "GiftButton",
+           "size": [
+            0,
+            108,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTimer",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              58,
+              0,
+              21
+             ],
+             "textColour": "soft",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "GiftState",
+             "samples": [
+              "39:59",
+              "59:59"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "selfFace": true,
+           "colour": "#5C6286",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#5C6286"
+            ],
+            [
+             0.4,
+             "#5C6286"
+            ],
+            [
+             0.41000000000000003,
+             "#535879"
+            ],
+            [
+             1.0,
+             "#4B506E"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           },
+           "pos": [
+            0,
+            72,
+            1,
+            -10
+           ],
+           "anchor": [
+            0,
+            1
+           ]
+          }
+         ]
+        },
+        {
+         "type": "panel",
+         "name": "GiftCell6",
+         "colour": "panelHi",
+         "depth": 4,
+         "corner": 14,
+         "size": [
+          0,
+          220,
+          0,
+          112
+         ],
+         "aspect": 1.9643,
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconGiftBig",
+           "name": "Icon",
+           "size": [
+            0,
+            52,
+            0,
+            52
+           ],
+           "pos": [
+            0,
+            10,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0,
+            0.5
+           ]
+          },
+          {
+           "type": "label",
+           "text": "GIFT 6",
+           "size": [
+            0,
+            136,
+            0,
+            21
+           ],
+           "textColour": "onDark",
+           "align": "left",
+           "textScale": 0.7619,
+           "textStroke": 2,
+           "name": "GiftTitle",
+           "font": "display",
+           "pos": [
+            0,
+            72,
+            0,
+            8
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "label",
+           "text": "after 60 min",
+           "size": [
+            0,
+            136,
+            0,
+            17
+           ],
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.7647,
+           "textStroke": 2,
+           "name": "GiftWhen",
+           "pos": [
+            0,
+            72,
+            0,
+            32
+           ],
+           "maxText": 13
+          },
+          {
+           "type": "button",
+           "name": "GiftButton",
+           "size": [
+            0,
+            108,
+            0,
+            34
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTimer",
+             "name": "Icon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              58,
+              0,
+              21
+             ],
+             "textColour": "soft",
+             "align": "center",
+             "textScale": 0.7143,
+             "textStroke": 2,
+             "name": "GiftState",
+             "samples": [
+              "59:59",
+              "59:59"
+             ],
+             "font": "display",
+             "maxText": 15
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 6,
+            "align": "center"
+           },
+           "sizeClass": "S",
+           "depth": 3,
+           "corner": 14,
+           "selfFace": true,
+           "colour": "#5C6286",
+           "paintable": true,
+           "gloss": true,
+           "stops": [
+            [
+             0.0,
+             "#5C6286"
+            ],
+            [
+             0.4,
+             "#5C6286"
+            ],
+            [
+             0.41000000000000003,
+             "#535879"
+            ],
+            [
+             1.0,
+             "#4B506E"
+            ]
+           ],
+           "attrs": {
+            "PressLip": 3
+           },
+           "pos": [
+            0,
+            72,
+            1,
+            -10
+           ],
+           "anchor": [
+            0,
+            1
+           ]
+          }
+         ]
+        }
+       ],
+       "layout": {
+        "type": "grid",
+        "cell": [
+         220,
+         112
+        ],
+        "gap": 14,
+        "cols": 3
+       },
+       "pos": [
+        0.5,
+        0,
+        0,
+        28
+       ],
+       "anchor": [
+        0.5,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      70
+     ],
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ],
+   "comic": 10,
+   "modal": true,
+   "corner": 22,
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "keyline": "#FFFFFF"
+  }
+ ]
+}

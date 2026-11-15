@@ -94,6 +94,9 @@ function PlotService:SetArrival(player: Player, uid: string, seconds: number)
 	end
 end
 
+-- premium heroes have no rarity row: their pedestal is the store's pink
+local PREMIUM_PEDESTAL = Color3.fromHex("FF4FA3")
+
 local function setText(anchor: Instance?, guiName: string, text: string)
 	local gui = anchor and anchor:FindFirstChild(guiName)
 	local label = gui and gui:FindFirstChild("Text")
@@ -102,20 +105,81 @@ local function setText(anchor: Instance?, guiName: string, text: string)
 	end
 end
 
+-- The model of a training-gear tier, if the place has it
+-- (ReplicatedStorage.Assets.Gear.Equip_<name>).
+local function gearTemplate(tier: number): Model?
+	local row = Config.Training.Equipment[tier]
+	local assets = ReplicatedStorage:FindFirstChild("Assets")
+	local folder = assets and assets:FindFirstChild("Gear")
+	if not row or not folder then
+		return nil
+	end
+	local slug = "Equip_" .. string.gsub(string.lower(row.Name), "%s+", "_")
+	local found = folder:FindFirstChild(slug)
+	return if found and found:IsA("Model") then found else nil
+end
+
+-- Stand the owner's gear tier on the dojo pad. The `Gear` anchor keeps the
+-- prompt and the label; it turns invisible once a real model stands on it.
+function PlotService:_showGear(model: Instance, tier: number)
+	local anchor = model:FindFirstChild("Gear")
+	if not anchor or not anchor:IsA("BasePart") or anchor:GetAttribute("Tier") == tier then
+		return
+	end
+	anchor:SetAttribute("Tier", tier)
+	local old = anchor:FindFirstChild("GearModel")
+	if old then
+		old:Destroy()
+	end
+	local template = gearTemplate(tier)
+	if not template then
+		-- an empty plot shows nothing; a plot whose model is missing keeps the box
+		anchor.Transparency = if tier == 0 and gearTemplate(1) then 1 else 0
+		return
+	end
+	local copy = template:Clone()
+	copy.Name = "GearModel"
+	local ground = anchor.Position - Vector3.new(0, anchor.Size.Y / 2, 0)
+	copy:PivotTo(CFrame.new(ground))
+	for _, piece in copy:GetDescendants() do
+		if piece:IsA("BasePart") then
+			piece.Anchored = true
+		end
+	end
+	copy.Parent = anchor
+	anchor.Transparency = 1
+	anchor.CanCollide = false
+end
+
 function PlotService:_dress(index: number, player: Player?, profile: any?, income: number)
 	local model = self:_model(index)
 	if not model then
 		return
 	end
+	self:_showGear(model, if profile then profile.gear else 0)
 	local slots = if profile then profile.slots else 0
+	-- an occupied pedestal wears the rarity colour of the hero standing on it
+	local seated: { [number]: Color3 } = {}
+	if profile then
+		for _, hero in profile.heroes do
+			local character = MAPS.character[hero.id]
+			local rarity = character and Config.Rarities[character.Rarity]
+			if hero.slot > 0 then
+				seated[hero.slot] = if rarity
+					then Color3.fromHex(rarity.Color)
+					else PREMIUM_PEDESTAL
+			end
+		end
+	end
 	local pedestals = model:FindFirstChild("Pedestals")
 	if pedestals then
 		for _, pedestal in pedestals:GetChildren() do
 			if pedestal:IsA("BasePart") then
-				local open = (pedestal:GetAttribute("Slot") or 0) <= slots
-				pedestal.Color = if open
-					then Color3.fromRGB(235, 235, 245)
-					else Color3.fromRGB(70, 70, 80)
+				local slot = pedestal:GetAttribute("Slot") or 0
+				local open = slot <= slots
+				pedestal.Color = if not open
+					then Color3.fromRGB(70, 70, 80)
+					else seated[slot] or Color3.fromRGB(235, 235, 245)
 				pedestal.Transparency = if open then 0 else 0.6
 			end
 		end

@@ -1,5 +1,6 @@
 --!strict
 -- TutorialController - the objective line for the first five minutes.
+-- (Every line fits the slim hint pill: about 48 characters or fewer.)
 --
 -- No modal, no forced camera: one line at the top says what to do next, and it
 -- advances the moment the player does it. A returning player resumes where
@@ -36,7 +37,7 @@ function TutorialController:KnitStart()
 			end,
 		},
 		{
-			text = "Hold THROW (or T) and release near the top of the bar!",
+			text = "TAP when the marker is near the top!",
 			done = function(s: any): boolean
 				return s.stats.caught >= 1
 			end,
@@ -48,19 +49,19 @@ function TutorialController:KnitStart()
 			end,
 		},
 		{
-			text = `Buy {food2.Name}: open FOODS, or use the Food Cart behind your plot`,
+			text = `Buy {food2.Name} in the SHOP`,
 			done = function(s: any): boolean
 				return s.foods[food2.Id] == true
 			end,
 		},
 		{
-			text = "Train on the blue DOJO PAD to throw further",
+			text = "Train on the DOJO PAD to throw further",
 			done = function(s: any): boolean
 				return s.power >= Config.Training.StartPower + 10
 			end,
 		},
 		{
-			text = `Reach {zone2.Name}: train to {Format.short(zone2.PowerReq)} power, then throw`,
+			text = `Reach {zone2.Name}: train to {Format.short(zone2.PowerReq)} power`,
 			done = function(): boolean
 				return (throw:LastZone() or 1) >= 2
 			end,

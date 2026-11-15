@@ -27,6 +27,8 @@ STEPS = [
     ("code gates", [str(SKILLS / "roblox-code" / "scripts" / "check.py")]),
     ("config matches contract", [str(SKILLS / "create-roblox-game" / "scripts" / "gen_config.py"), "--dir", str(ROOT), "--check"]),
     ("server config matches contract", [str(ROOT / "tools" / "gen_server_config.py"), "--check"]),
+    ("icon table matches uploads", [str(ROOT / "tools" / "gen_icons.py"), "--check"]),
+    ("ui labels all bound", [str(SKILLS / "roblox-ui" / "scripts" / "verify_labels.py"), "--ui", str(ROOT / "src" / "ui"), "--client", str(ROOT / "src" / "client")]),
     ("contract valid", [str(SKILLS / "create-roblox-game" / "scripts" / "validate.py")]),
     ("pacing", [str(ROOT / "tools" / "balance_sim.py"), "--check", "--runs", "7", "--hours", "20"]),
 ]

@@ -17,6 +17,8 @@ local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local World = require(ReplicatedStorage.Shared.Core.World)
+local Screens = require(script.Parent.Parent.Ui.Screens)
+local Theme = require(script.Parent.Parent.Ui.Theme)
 
 local MAPS = Lookup.of(Config)
 local W = Config.World
@@ -26,12 +28,19 @@ local DASH = Config.Throw.DashSeconds
 -- Section 4 replaces it with the authored idles named in Config.Characters.
 local IDLE_ANIMATION = "rbxassetid://507766388"
 
-local MUTATION_COLORS: { [string]: Color3 } = {
-	Golden = Color3.fromRGB(255, 210, 60),
-	Flame = Color3.fromRGB(255, 110, 40),
-	Lightning = Color3.fromRGB(120, 200, 255),
-	Galaxy = Color3.fromRGB(190, 110, 255),
-}
+local MUTATION_COLORS = Theme.MUTATION
+
+-- The Nameplate tree is authored in pixels (320 x 132). Over a hero it is
+-- sized in studs instead, and kept small: a plot can hold 28 heroes, and 28
+-- full plates are a wall of text. So a plate is ONE line (name and income),
+-- shown only near the camera (PLATE_DISTANCE) and never during a throw
+-- sequence; only the plate the camera is aimed at opens up to show its tags
+-- and stars.
+local PLATE_STUDS = 6.5
+local PLATE_DISTANCE = 35
+local PLATE_LINE = 48 / 132 -- the name line's share of the plate's height
+local FOCUS_SECONDS = 0.25
+local FOCUS_AIM = 0.94 -- cosine of how far off the camera's aim still counts
 
 type Record = {
 	key: string,
@@ -40,6 +49,19 @@ type Record = {
 	model: Model?,
 	thread: thread?,
 	track: AnimationTrack?,
+	plate: Plate?,
+}
+
+type Plate = {
+	gui: BillboardGui,
+	scale: UIScale,
+	width: number,
+	studsWide: number,
+	studsHigh: number,
+	headTop: number,
+	name: TextLabel,
+	income: TextLabel,
+	focused: boolean,
 }
 
 type Dash = { model: Model, from: Vector3, goal: CFrame, t0: number }
@@ -51,6 +73,8 @@ local HeroController = Knit.CreateController({
 	_folder = nil :: Folder?,
 	_templates = nil :: Instance?,
 	_state = nil :: any,
+	_platesHidden = false,
+	_focus = nil :: Record?,
 })
 
 local function rarityColor(id: string): Color3
@@ -86,6 +110,52 @@ local function placeholder(id: string): Model
 	return model
 end
 
+-- Templates are baked with the pivot at the soles, under the root, and every
+-- caller places that point (a pedestal top, the lane). Re-check it on the
+-- built model: after ScaleTo a pivot that was even slightly off the soles is
+-- off by that much times the scale, and a Titan sinks into its pedestal or
+-- stands beside it.
+local function settle(model: Model, scale: number)
+	local root = model.PrimaryPart
+	if not root then
+		return
+	end
+	local lowest = math.huge
+	local function consider(piece: BasePart)
+		local cf, half = piece.CFrame, piece.Size / 2
+		local reach = math.abs(cf.XVector.Y) * half.X
+			+ math.abs(cf.YVector.Y) * half.Y
+			+ math.abs(cf.ZVector.Y) * half.Z
+		lowest = math.min(lowest, cf.Position.Y - reach)
+	end
+	for _, name in { "LeftFoot", "RightFoot" } do
+		local foot = model:FindFirstChild(name, true)
+		if foot and foot:IsA("BasePart") then
+			consider(foot)
+		end
+	end
+	if lowest == math.huge then
+		for _, piece in model:GetDescendants() do
+			if piece:IsA("BasePart") then
+				consider(piece)
+			end
+		end
+	end
+	if lowest == math.huge then
+		return
+	end
+	local pivot = model:GetPivot()
+	local at = pivot.Position
+	local centre = root.Position
+	local offCentre = Vector2.new(at.X - centre.X, at.Z - centre.Z).Magnitude > 0.5 * scale
+	local x = if offCentre then centre.X else at.X
+	local z = if offCentre then centre.Z else at.Z
+	if offCentre or math.abs(at.Y - lowest) > 0.02 then
+		local wanted = pivot.Rotation + Vector3.new(x, lowest, z)
+		root.PivotOffset = root.CFrame:ToObjectSpace(wanted)
+	end
+end
+
 --- A hero model for (id, mutation, size), not parented. Used for plots and
 --- for the reveal at the landing spot.
 function HeroController:Build(id: string, mut: string?, size: string?): (Model, number)
@@ -99,8 +169,10 @@ function HeroController:Build(id: string, mut: string?, size: string?): (Model, 
 	local sizeRow = if size then MAPS.size[size] else nil
 	local scale = if sizeRow then sizeRow.Scale else 1
 	if scale ~= 1 then
+		-- about the pivot (the soles): the hero grows upward from its feet
 		model:ScaleTo(scale)
 	end
+	settle(model, scale)
 	if mut and MUTATION_COLORS[mut] then
 		-- placeholder aura: a glowing ring at the feet. Section 4 replaces it
 		-- with the authored Aura_<Mutation> effect.
@@ -145,48 +217,139 @@ function HeroController:Animate(model: Model): AnimationTrack?
 	return track
 end
 
-local function plate(model: Model, entry: any, scale: number)
+-- keep the plate's contents the size of the plate on screen
+local function fitPlate(plate: Plate)
+	local target = math.clamp(plate.gui.AbsoluteSize.X / plate.width, 0.05, 1)
+	if math.abs(plate.scale.Scale - target) > 0.03 * target then
+		plate.scale.Scale = target
+	end
+end
+
+-- What a plate says. One line unless it is the plate the camera is aimed at.
+local function writePlate(plate: Plate, entry: any)
+	local gui = plate.gui
+	local focused = plate.focused
+	local name = displayName(entry.id)
+	local income = `+{Format.short(entry.i or 0)}/s`
+	plate.name.Text = if focused then name else `{name}  {income}`
+	plate.income.Text = income
+	Screens.frame(gui, "TagRow").Visible = focused and (entry.z ~= nil or entry.m ~= nil)
+	Screens.frame(gui, "BottomRow").Visible = focused
+	local high = if focused then plate.studsHigh else plate.studsHigh * PLATE_LINE
+	gui.Size = UDim2.fromScale(plate.studsWide, high)
+	gui.StudsOffsetWorldSpace = Vector3.new(0, plate.headTop + 0.4 + high / 2, 0)
+end
+
+-- The plate over a hero: name and yen/s; tags and star pips when focused.
+local function makePlate(model: Model, entry: any, scale: number, hidden: boolean): Plate?
 	local root = model.PrimaryPart
-	if not root then
+	local gui = Screens.world("Nameplate")
+	if not root or not gui or not gui:IsA("BillboardGui") then
+		return nil
+	end
+	local canvas = Screens.frame(gui, "CanvasFrame")
+	local refWidth = canvas:GetAttribute("RefWidth")
+	local refHeight = canvas:GetAttribute("RefHeight")
+	local width = if typeof(refWidth) == "number" then refWidth else 320
+	local height = if typeof(refHeight) == "number" then refHeight else 132
+	local studsWide = PLATE_STUDS * (1 + (scale - 1) * 0.5)
+	local box, size = model:GetBoundingBox()
+	gui.StudsOffset = Vector3.zero
+	gui.MaxDistance = PLATE_DISTANCE
+	gui.Adornee = root
+	gui.Enabled = not hidden
+	-- the canvas keeps its authored pixel size, hangs from the top of the
+	-- plate, and is scaled to the plate's size on screen
+	canvas.AnchorPoint = Vector2.new(0.5, 0)
+	canvas.Position = UDim2.fromScale(0.5, 0)
+	canvas.Size = UDim2.fromOffset(width, height)
+	local uiScale = Instance.new("UIScale")
+	uiScale.Name = "PlateScale"
+	uiScale.Parent = canvas
+
+	local name = Screens.label(gui, "HeroName")
+	name.TextColor3 = rarityColor(entry.id)
+	Screens.frame(gui, "SizeTagCell").Visible = entry.z ~= nil
+	Screens.label(gui, "SizeText").Text = if entry.z then entry.z:upper() else ""
+	Screens.frame(gui, "MutationTagCell").Visible = entry.m ~= nil
+	Screens.label(gui, "MutationText").Text = if entry.m then entry.m:upper() else ""
+	Screens.tint(Screens.frame(gui, "MutationTag"), Theme.mutation(entry.m))
+	for star = 1, 3 do
+		Screens.image(gui, "Star" .. star).Visible = star <= (entry.st or 0)
+	end
+
+	local made: Plate = {
+		gui = gui,
+		scale = uiScale,
+		width = width,
+		studsWide = studsWide,
+		studsHigh = studsWide * height / width,
+		headTop = box.Position.Y + size.Y / 2 - root.Position.Y,
+		name = name,
+		income = Screens.label(gui, "YenPerSecond"),
+		focused = false,
+	}
+	writePlate(made, entry)
+	gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+		fitPlate(made)
+	end)
+	gui.Parent = root
+	return made
+end
+
+--- Hide every nameplate (a throw sequence is playing) or bring them back.
+function HeroController:SetPlatesHidden(hidden: boolean)
+	if hidden == self._platesHidden then
 		return
 	end
-	local gui = Instance.new("BillboardGui")
-	gui.Name = "Nameplate"
-	gui.Size = UDim2.fromScale(9, 3)
-	gui.StudsOffsetWorldSpace = Vector3.new(0, 6.4 * scale + 1.6, 0)
-	gui.MaxDistance = 80
-	gui.Adornee = root
-	gui.Parent = root
+	self._platesHidden = hidden
+	for _, slots in self._rigs do
+		for _, record in slots do
+			if record.plate then
+				record.plate.gui.Enabled = not hidden
+			end
+		end
+	end
+end
 
-	local tags = {}
-	if entry.z then
-		table.insert(tags, entry.z:upper())
+-- The one plate that shows its tags and stars: the nearest hero the camera
+-- is aimed at, if any is close enough to have a plate at all.
+function HeroController:_refocus()
+	if self._platesHidden then
+		return
 	end
-	if entry.m then
-		table.insert(tags, entry.m:upper())
+	local camera = workspace.CurrentCamera
+	local eye, aim = camera.CFrame.Position, camera.CFrame.LookVector
+	local best: Record? = nil
+	local bestAim = FOCUS_AIM
+	for _, slots in self._rigs do
+		for _, record in slots do
+			local model = record.model
+			if model and model.Parent and record.plate then
+				local to = model:GetPivot().Position + Vector3.new(0, 3, 0) - eye
+				local distance = to.Magnitude
+				if distance <= PLATE_DISTANCE and distance > 0.1 then
+					local onAim = to:Dot(aim) / distance
+					if onAim > bestAim then
+						bestAim = onAim
+						best = record
+					end
+				end
+			end
+		end
 	end
-	local stars = string.rep("*", entry.st or 0)
-	local lines = {
-		{
-			text = table.concat(tags, " ")
-				.. (if #tags > 0 and stars ~= "" then " " else "")
-				.. stars,
-		},
-		{ text = displayName(entry.id), color = rarityColor(entry.id) },
-		{ text = Format.short(entry.i or 0) .. " yen/s", color = Color3.fromRGB(140, 255, 150) },
-	}
-	for i, line in lines do
-		local label = Instance.new("TextLabel")
-		label.Name = "Line" .. i
-		label.BackgroundTransparency = 1
-		label.Size = UDim2.fromScale(1, 1 / 3)
-		label.Position = UDim2.fromScale(0, (i - 1) / 3)
-		label.Font = Enum.Font.FredokaOne
-		label.TextScaled = true
-		label.TextStrokeTransparency = 0
-		label.TextColor3 = line.color or MUTATION_COLORS[entry.m or ""] or Color3.new(1, 1, 1)
-		label.Text = line.text
-		label.Parent = gui
+	local was = self._focus
+	if was == best then
+		return
+	end
+	self._focus = best
+	if was and was.plate then
+		was.plate.focused = false
+		writePlate(was.plate, was.entry)
+	end
+	if best and best.plate then
+		best.plate.focused = true
+		writePlate(best.plate, best.entry)
 	end
 end
 
@@ -202,7 +365,7 @@ function HeroController:_show(record: Record, dashIn: boolean)
 	end
 	local entry = record.entry
 	local model, scale = self:Build(entry.id, entry.m, entry.z)
-	plate(model, entry, scale)
+	record.plate = makePlate(model, entry, scale, self._platesHidden)
 	local goal = self:_goal(record.plot, entry.s)
 	record.model = model
 	if dashIn then
@@ -244,6 +407,9 @@ function HeroController:_budget(record: Record)
 	elseif not visible and model.Parent ~= nil then
 		model.Parent = nil
 	end
+	if visible and record.plate then
+		fitPlate(record.plate)
+	end
 	local animate = visible and not low and distance <= W.HeroAnimateDistance
 	if animate and not record.track then
 		record.track = self:Animate(model)
@@ -256,6 +422,10 @@ end
 
 function HeroController:_drop(record: Record)
 	record.track = nil
+	record.plate = nil
+	if self._focus == record then
+		self._focus = nil
+	end
 	if record.thread then
 		pcall(task.cancel, record.thread)
 		record.thread = nil
@@ -313,12 +483,8 @@ function HeroController:_render(plot: number, state: any)
 				-- same hero: only its income line can have changed
 				local income = have.entry.i
 				have.entry = entry
-				local model = have.model
-				local root = model and model.PrimaryPart
-				local gui = root and root:FindFirstChild("Nameplate")
-				local line = gui and gui:FindFirstChild("Line3")
-				if income ~= entry.i and line and line:IsA("TextLabel") then
-					line.Text = Format.short(entry.i or 0) .. " yen/s"
+				if income ~= entry.i and have.plate then
+					writePlate(have.plate, entry)
 				end
 			else
 				if have then
@@ -382,6 +548,14 @@ function HeroController:KnitStart()
 					CFrame.lookAt(position, dash.goal.Position + Vector3.new(0, 0, -0.01))
 				)
 			end
+		end
+	end)
+
+	-- which plate is open follows the camera's aim, a few times a second
+	task.spawn(function()
+		while true do
+			task.wait(FOCUS_SECONDS)
+			self:_refocus()
 		end
 	end)
 

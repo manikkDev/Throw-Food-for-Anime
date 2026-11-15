@@ -1,10 +1,8 @@
 --!strict
--- Make - the few lines of GUI the SECTION 2 TEST HUD is built from.
---
--- This is deliberately plain. The real screens are built in section 3 with
--- the roblox-ui skill from design/ui.json; until then the loop has to be
--- playable and every server feature has to be reachable, and that is all this
--- is for. Nothing here is the game's look.
+-- Make - a few lines of plain code-built GUI, used ONLY by Ui/DevPanel (the
+-- owner / Studio TEST panel, which is not a player screen and so is not in
+-- design/ui). Every player-facing screen is an authored tree under src/ui,
+-- reached through Ui/Screens. Nothing here is the game's look.
 
 local Make = {}
 
@@ -16,6 +14,17 @@ Make.BUY = Color3.fromRGB(255, 201, 60)
 Make.INFO = Color3.fromRGB(56, 189, 248)
 
 export type Props = { [string]: any }
+
+-- No text under 13 px at the 720p reference: scaled text may shrink to fit
+-- its box, but never below this.
+local MIN_TEXT = 13
+
+local function floorText(label: Instance)
+	local floor = Instance.new("UITextSizeConstraint")
+	floor.MinTextSize = MIN_TEXT
+	floor.MaxTextSize = 100
+	floor.Parent = label
+end
 
 local function apply(instance: Instance, props: Props?)
 	if props then
@@ -58,6 +67,7 @@ function Make.label(parent: Instance, text: string, props: Props?): TextLabel
 	label.TextScaled = true
 	label.Text = text
 	apply(label, props)
+	floorText(label)
 	label.Parent = parent
 	return label
 end
@@ -74,6 +84,7 @@ function Make.button(parent: Instance, text: string, color: Color3, props: Props
 	button.TextScaled = true
 	button.Text = text
 	apply(button, props)
+	floorText(button)
 	Make.corner(button, 10)
 	Make.stroke(button, 3)
 	local pad = Instance.new("UIPadding")

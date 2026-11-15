@@ -184,5 +184,181 @@
   "Name": "Sun God Captain",
   "Source": "Luffy Wano",
   "Rig": "Workspace.Characters_R15/Luffy Wano (R15)"
+ },
+ {
+  "Id": "freedom_seeker",
+  "Name": "Freedom Seeker",
+  "Source": "Eren Yeager",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Eren Yeager (R15)"
+ },
+ {
+  "Id": "rebel_emperor",
+  "Name": "Rebel Emperor",
+  "Source": "Lelouch",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Lelouch (R15)"
+ },
+ {
+  "Id": "ripple_trickster",
+  "Name": "Ripple Trickster",
+  "Source": "Joseph Joestar",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Joseph Joestar (R15)"
+ },
+ {
+  "Id": "star_delinquent",
+  "Name": "Star Delinquent",
+  "Source": "Jotaro Joestar",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Jotaro Joestar (R15)"
+ },
+ {
+  "Id": "lightning_assassin",
+  "Name": "Lightning Assassin",
+  "Source": "Killua",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Killua (R15)"
+ },
+ {
+  "Id": "masked_phantom",
+  "Name": "Masked Phantom",
+  "Source": "Obito Uchiha",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Obito Uchiha (R15)"
+ },
+ {
+  "Id": "shadow_mastermind",
+  "Name": "Shadow Mastermind",
+  "Source": "Cid Kagenou",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Cid Kagenou (R15)"
+ },
+ {
+  "Id": "black_swordsman",
+  "Name": "Black Swordsman",
+  "Source": "Guts",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Guts (R15)"
+ },
+ {
+  "Id": "crimson_boss",
+  "Name": "Crimson Boss",
+  "Source": "Diavolo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Diavolo (R15)"
+ },
+ {
+  "Id": "shadow_monarch",
+  "Name": "Shadow Monarch",
+  "Source": "Sung Jinwoo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Sung Jinwoo (R15)"
+ },
+ {
+  "Id": "attack_giant",
+  "Name": "Attack Giant",
+  "Source": "Eren Titan",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Eren Titan (R15)"
+ },
+ {
+  "Id": "golden_vampire",
+  "Name": "Golden Vampire",
+  "Source": "Dio Brando",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Dio Brando (R15)"
+ },
+ {
+  "Id": "shadow_summoner",
+  "Name": "Shadow Summoner",
+  "Source": "Megumi Fushiguro",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Megumi Fushiguro (R15)"
+ },
+ {
+  "Id": "classroom_mastermind",
+  "Name": "Classroom Mastermind",
+  "Source": "Ayanokoji",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Ayanokoji (R15)"
+ },
+ {
+  "Id": "chainsaw_kid",
+  "Name": "Chainsaw Kid",
+  "Source": "Denji",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Denji (R15)"
+ },
+ {
+  "Id": "speed_heir",
+  "Name": "Speed Heir",
+  "Source": "Naoya Zenin",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Naoya Zenin (R15)"
+ },
+ {
+  "Id": "thunder_sleeper",
+  "Name": "Thunder Sleeper",
+  "Source": "Zenitsu Agatsuma",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Zenitsu Agatsuma (R15)"
+ },
+ {
+  "Id": "flashy_shinobi",
+  "Name": "Flashy Shinobi",
+  "Source": "Tengen Uzui",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Tengen Uzui (R15)"
+ },
+ {
+  "Id": "return_runner",
+  "Name": "Return Runner",
+  "Source": "Subaru Natsuki",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Subaru Natsuki (R15)"
+ },
+ {
+  "Id": "wheel_guardian",
+  "Name": "Wheel Guardian",
+  "Source": "Mahoraga",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Mahoraga (R15)"
+ },
+ {
+  "Id": "starlight_idol",
+  "Name": "Cosplay Star",
+  "Source": "Marin Kitagawa",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Marin Kitagawa (R15)",
+  "Premium": true
+ },
+ {
+  "Id": "clockwork_butler",
+  "Name": "Sweet-Tooth Detective",
+  "Source": "Lawliet",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Lawliet (R15)",
+  "Premium": true
+ },
+ {
+  "Id": "phantom_thief",
+  "Name": "One-Eyed Ghoul",
+  "Source": "Ken Kaneki",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Ken Kaneki (R15)",
+  "Premium": true
+ },
+ {
+  "Id": "demon_lord_heir",
+  "Name": "Control Devil",
+  "Source": "Makima",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Makima (R15)",
+  "Premium": true
+ },
+ {
+  "Id": "angel_commander",
+  "Name": "Elf Archmage",
+  "Source": "Frieren",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Frieren (R15)",
+  "Premium": true
+ },
+ {
+  "Id": "void_empress",
+  "Name": "Illusion Overlord",
+  "Source": "Aizen Sosuke",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Aizen Sosuke (R15)",
+  "Premium": true
+ },
+ {
+  "Id": "lucky_cat_mascot",
+  "Name": "Blood Fiend",
+  "Source": "Power",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Power (R15)",
+  "Premium": true
+ },
+ {
+  "Id": "sakura_shogun",
+  "Name": "First Sun Swordsman",
+  "Source": "Yoriichi Tsugikuni",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Yoriichi Tsugikuni (R15)",
+  "Premium": true
  }
 ]

@@ -47,7 +47,8 @@ return {
 
 	["the roll uses the same closed form as the pacing simulator"] = function()
 		-- tools/balance_sim.py computes, per rarity:
-		--   weight = Weight x (1 + (luck - 1) x LuckScale) x heroes of that rarity
+		--   weight = Weight x (1 + (luck - 1) x LuckScale)   for each rarity the
+		--   zone has, however many heroes share it
 		-- and per variant:  chance = Chance x (1 + (luck - 1) x LuckScale), capped
 		-- at what is left. If this spec and the simulator ever disagree, the
 		-- pacing table is describing a different game.
@@ -55,9 +56,9 @@ return {
 			for _, zone in C.Zones do
 				local total = 0
 				local want: { [string]: number } = {}
-				for rarity, count in zone.Slots do
+				for rarity in zone.Slots do
 					local row = C.Rarities[rarity]
-					want[rarity] = row.Weight * (1 + (luck - 1) * row.LuckScale) * count
+					want[rarity] = row.Weight * (1 + (luck - 1) * row.LuckScale)
 					total += want[rarity]
 				end
 				local rows = Roll.heroWeights(C, M.zoneCharacters[zone.Id], luck, nil)
@@ -101,6 +102,36 @@ return {
 				counts[rarity] = nil
 			end
 			assert(next(counts) == nil, `{zone.Name} has heroes of a rarity missing from Slots`)
+		end
+	end,
+
+	["adding a hero to a zone never changes its rarity odds"] = function()
+		-- the roster grows by importing avatars; that must never move the economy
+		local before = Roll.heroWeights(C, ZONE1, 2, nil)
+		local grown = table.clone(ZONE1)
+		for _, rarity in { "Common", "Legendary", "Legendary" } do
+			table.insert(grown, { Id = "extra_" .. #grown, Rarity = rarity, Craves = "None" })
+		end
+		local after = Roll.heroWeights(C, grown, 2, nil)
+		for rarity in C.Zones[1].Slots do
+			assert(
+				Support.near(chanceOf(after, rarity), chanceOf(before, rarity), 1e-9),
+				`{rarity} odds moved when heroes were added`
+			)
+		end
+	end,
+
+	["heroes of one rarity share its chance equally"] = function()
+		for _, zone in C.Zones do
+			local rows = Roll.heroWeights(C, M.zoneCharacters[zone.Id], 1, nil)
+			for rarity, count in zone.Slots do
+				local whole = chanceOf(rows, rarity)
+				for _, row in rows do
+					if row.rarity == rarity then
+						assert(Support.near(row.chance, whole / count, 1e-9), `{row.id} share is off`)
+					end
+				end
+			end
 		end
 	end,
 

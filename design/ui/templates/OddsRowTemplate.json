@@ -1,0 +1,138 @@
+{
+ "name": "OddsRowTemplate",
+ "theme": "theme.json",
+ "resolution": [
+  624,
+  64
+ ],
+ "kind": "world",
+ "children": [
+  {
+   "type": "panel",
+   "name": "OddsRowTemplate",
+   "colour": "panelHi",
+   "depth": 3,
+   "corner": 12,
+   "size": [
+    0,
+    600,
+    0,
+    40
+   ],
+   "padding": 4,
+   "layout": {
+    "type": "list",
+    "dir": "x",
+    "gap": 12,
+    "align": "start"
+   },
+   "attrs": {
+    "HeroId": "void_empress"
+   },
+   "children": [
+    {
+     "type": "frame",
+     "name": "Portrait",
+     "cls": "ViewportFrame",
+     "colour": [
+      "#FB3B6B",
+      "#FB3B6B"
+     ],
+     "size": [
+      0,
+      32,
+      0,
+      32
+     ],
+     "children": []
+    },
+    {
+     "type": "label",
+     "text": "Illusion Overlord",
+     "size": [
+      0,
+      230,
+      0,
+      21
+     ],
+     "textColour": "onDark",
+     "align": "left",
+     "textScale": 0.7619,
+     "textStroke": 2,
+     "name": "HeroName",
+     "font": "display",
+     "maxText": 16
+    },
+    {
+     "type": "label",
+     "text": "12x your best",
+     "size": [
+      0,
+      180,
+      0,
+      17
+     ],
+     "textColour": "soft",
+     "align": "left",
+     "textScale": 0.7647,
+     "textStroke": 2,
+     "name": "OddsEarn",
+     "maxText": 13
+    },
+    {
+     "type": "panel",
+     "name": "OddsChip",
+     "colour": "#FB3B6B",
+     "size": [
+      0,
+      70,
+      0,
+      26
+     ],
+     "selfFace": true,
+     "paintable": true,
+     "depth": 0,
+     "children": [
+      {
+       "type": "label",
+       "text": "1%",
+       "size": [
+        0,
+        62,
+        0,
+        22
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.6364,
+       "textStroke": 3,
+       "name": "OddsPercent",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "stroke": 2
+    }
+   ],
+   "pos": [
+    0,
+    12,
+    0,
+    12
+   ],
+   "anchor": [
+    0,
+    0
+   ]
+  }
+ ]
+}

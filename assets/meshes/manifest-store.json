@@ -1,0 +1,1656 @@
+{
+ "_what": "Creator Store models installed as kit templates (see tools/studio/install_store_assets.py). Sources: ServerStorage.StoreAssets in the place.",
+ "assets": [
+  {
+   "name": "Prop_store_BambooFence",
+   "bounds_studs": [
+    7.06,
+    10.02,
+    2.43
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_Barrel",
+   "bounds_studs": [
+    3.24,
+    2.99,
+    3.24
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_Bell",
+   "bounds_studs": [
+    3.17,
+    6.89,
+    3.17
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_BigCherry",
+   "bounds_studs": [
+    41.73,
+    54.02,
+    34.3
+   ],
+   "parts": 135,
+   "tris": 1620,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p10",
+    "p11",
+    "p12",
+    "p13",
+    "p14",
+    "p15",
+    "p16",
+    "p17",
+    "p18",
+    "p19",
+    "p20",
+    "p21",
+    "p22",
+    "p23",
+    "p24",
+    "p25",
+    "p26",
+    "p27",
+    "p28",
+    "p29",
+    "p30",
+    "p31",
+    "p32",
+    "p33",
+    "p34",
+    "p35",
+    "p36",
+    "p37",
+    "p38",
+    "p39",
+    "p40",
+    "p41",
+    "p42",
+    "p43",
+    "p44",
+    "p45",
+    "p46",
+    "p47",
+    "p48",
+    "p49",
+    "p50",
+    "p51",
+    "p52",
+    "p53",
+    "p54",
+    "p55",
+    "p56",
+    "p57",
+    "p58",
+    "p59",
+    "p60",
+    "p61",
+    "p62",
+    "p63",
+    "p64",
+    "p65",
+    "p66",
+    "p67",
+    "p68",
+    "p69",
+    "p70",
+    "p71",
+    "p72",
+    "p73",
+    "p74",
+    "p75",
+    "p76",
+    "p77",
+    "p78",
+    "p79",
+    "p80",
+    "p81",
+    "p82",
+    "p83",
+    "p84",
+    "p85",
+    "p86",
+    "p87",
+    "p88",
+    "p89",
+    "p90",
+    "p91",
+    "p92",
+    "p93",
+    "p94",
+    "p95",
+    "p96",
+    "p97",
+    "p98",
+    "p99",
+    "p100",
+    "p101",
+    "p102",
+    "p103",
+    "p104",
+    "p105",
+    "p106",
+    "p107",
+    "p108",
+    "p109",
+    "p110",
+    "p111",
+    "p112",
+    "p113",
+    "p114",
+    "p115",
+    "p116",
+    "p117",
+    "p118",
+    "p119",
+    "p120",
+    "p121",
+    "p122",
+    "p123",
+    "p124",
+    "p125",
+    "p126",
+    "p127",
+    "p128",
+    "p129",
+    "p130",
+    "p131",
+    "p132",
+    "p133",
+    "p134"
+   ]
+  },
+  {
+   "name": "Prop_store_BigTree",
+   "bounds_studs": [
+    8.98,
+    13.71,
+    6.05
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_Bonsai",
+   "bounds_studs": [
+    5.42,
+    6.54,
+    4.65
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_Brazier",
+   "bounds_studs": [
+    7.8,
+    6.94,
+    7.8
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_BridgeCover",
+   "bounds_studs": [
+    33.72,
+    15.83,
+    33.06
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_Bush",
+   "bounds_studs": [
+    6.3,
+    2.95,
+    6.14
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_Castle",
+   "bounds_studs": [
+    65.67,
+    78.49,
+    65.67
+   ],
+   "parts": 9,
+   "tris": 5400,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8"
+   ]
+  },
+  {
+   "name": "Prop_store_CastleGate",
+   "bounds_studs": [
+    29.06,
+    19.51,
+    28.93
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_CastleKeepSmall",
+   "bounds_studs": [
+    65.65,
+    67.62,
+    51.9
+   ],
+   "parts": 7,
+   "tris": 4200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6"
+   ]
+  },
+  {
+   "name": "Prop_store_Crate",
+   "bounds_studs": [
+    3.05,
+    3.01,
+    3.05
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_FarmHouseA",
+   "bounds_studs": [
+    39.9,
+    36.92,
+    26.48
+   ],
+   "parts": 3,
+   "tris": 1800,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2"
+   ]
+  },
+  {
+   "name": "Prop_store_FarmHouseB",
+   "bounds_studs": [
+    39.9,
+    27.96,
+    26.48
+   ],
+   "parts": 3,
+   "tris": 1800,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2"
+   ]
+  },
+  {
+   "name": "Prop_store_FarmHouseC",
+   "bounds_studs": [
+    32.2,
+    27.96,
+    26.47
+   ],
+   "parts": 3,
+   "tris": 1800,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2"
+   ]
+  },
+  {
+   "name": "Prop_store_FlagA",
+   "bounds_studs": [
+    3.44,
+    19.14,
+    1.92
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_FlagB",
+   "bounds_studs": [
+    5.34,
+    14.52,
+    1.04
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_FlagC",
+   "bounds_studs": [
+    5.31,
+    14.52,
+    1.38
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_FlatRock",
+   "bounds_studs": [
+    4.56,
+    2.07,
+    4.03
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_GongA",
+   "bounds_studs": [
+    16.1,
+    17.26,
+    14.61
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_GongB",
+   "bounds_studs": [
+    18.42,
+    17.13,
+    10.15
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_HallA",
+   "bounds_studs": [
+    40.31,
+    12.52,
+    25.1
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_HallB",
+   "bounds_studs": [
+    31.18,
+    12.52,
+    22.9
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_HallC",
+   "bounds_studs": [
+    22.42,
+    12.52,
+    20.77
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_HouseA",
+   "bounds_studs": [
+    24.37,
+    12.27,
+    22.17
+   ],
+   "parts": 2,
+   "tris": 1200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1"
+   ]
+  },
+  {
+   "name": "Prop_store_HouseB",
+   "bounds_studs": [
+    26.47,
+    17.39,
+    24.62
+   ],
+   "parts": 2,
+   "tris": 1200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1"
+   ]
+  },
+  {
+   "name": "Prop_store_HouseC",
+   "bounds_studs": [
+    31.54,
+    12.27,
+    24.77
+   ],
+   "parts": 2,
+   "tris": 1200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1"
+   ]
+  },
+  {
+   "name": "Prop_store_HouseD",
+   "bounds_studs": [
+    32.58,
+    17.48,
+    23.45
+   ],
+   "parts": 2,
+   "tris": 1200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1"
+   ]
+  },
+  {
+   "name": "Prop_store_HouseG",
+   "bounds_studs": [
+    26.47,
+    17.39,
+    24.62
+   ],
+   "parts": 2,
+   "tris": 1200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1"
+   ]
+  },
+  {
+   "name": "Prop_store_HouseH",
+   "bounds_studs": [
+    32.58,
+    17.48,
+    23.45
+   ],
+   "parts": 2,
+   "tris": 1200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1"
+   ]
+  },
+  {
+   "name": "Prop_store_IslandShort",
+   "bounds_studs": [
+    12.26,
+    6.69,
+    12.14
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_IslandTall",
+   "bounds_studs": [
+    12.93,
+    14.22,
+    12.87
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_LampPost",
+   "bounds_studs": [
+    5.29,
+    9.05,
+    1.7
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_LionA",
+   "bounds_studs": [
+    7.5,
+    8.11,
+    5.54
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_LionB",
+   "bounds_studs": [
+    6.45,
+    8.11,
+    7.25
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_MarketTent",
+   "bounds_studs": [
+    17.08,
+    17.45,
+    17.08
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_PagodaDark",
+   "bounds_studs": [
+    52.36,
+    47.02,
+    52.36
+   ],
+   "parts": 7,
+   "tris": 4200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6"
+   ]
+  },
+  {
+   "name": "Prop_store_PagodaTemple",
+   "bounds_studs": [
+    52.36,
+    50.72,
+    52.36
+   ],
+   "parts": 8,
+   "tris": 4800,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7"
+   ]
+  },
+  {
+   "name": "Prop_store_PalmTree",
+   "bounds_studs": [
+    11.58,
+    13.88,
+    11.52
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_Portal",
+   "bounds_studs": [
+    10.07,
+    11.42,
+    4.77
+   ],
+   "parts": 3,
+   "tris": 1800,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2"
+   ]
+  },
+  {
+   "name": "Prop_store_ProduceTable",
+   "bounds_studs": [
+    11.83,
+    8.73,
+    10.68
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_RamenCart",
+   "bounds_studs": [
+    14.51,
+    10.1,
+    8.68
+   ],
+   "parts": 212,
+   "tris": 2544,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p10",
+    "p11",
+    "p12",
+    "p13",
+    "p14",
+    "p15",
+    "p16",
+    "p17",
+    "p18",
+    "p19",
+    "p20",
+    "p21",
+    "p22",
+    "p23",
+    "p24",
+    "p25",
+    "p26",
+    "p27",
+    "p28",
+    "p29",
+    "p30",
+    "p31",
+    "p32",
+    "p33",
+    "p34",
+    "p35",
+    "p36",
+    "p37",
+    "p38",
+    "p39",
+    "p40",
+    "p41",
+    "p42",
+    "p43",
+    "p44",
+    "p45",
+    "p46",
+    "p47",
+    "p48",
+    "p49",
+    "p50",
+    "p51",
+    "p52",
+    "p53",
+    "p54",
+    "p55",
+    "p56",
+    "p57",
+    "p58",
+    "p59",
+    "p60",
+    "p61",
+    "p62",
+    "p63",
+    "p64",
+    "p65",
+    "p66",
+    "p67",
+    "p68",
+    "p69",
+    "p70",
+    "p71",
+    "p72",
+    "p73",
+    "p74",
+    "p75",
+    "p76",
+    "p77",
+    "p78",
+    "p79",
+    "p80",
+    "p81",
+    "p82",
+    "p83",
+    "p84",
+    "p85",
+    "p86",
+    "p87",
+    "p88",
+    "p89",
+    "p90",
+    "p91",
+    "p92",
+    "p93",
+    "p94",
+    "p95",
+    "p96",
+    "p97",
+    "p98",
+    "p99",
+    "p100",
+    "p101",
+    "p102",
+    "p103",
+    "p104",
+    "p105",
+    "p106",
+    "p107",
+    "p108",
+    "p109",
+    "p110",
+    "p111",
+    "p112",
+    "p113",
+    "p114",
+    "p115",
+    "p116",
+    "p117",
+    "p118",
+    "p119",
+    "p120",
+    "p121",
+    "p122",
+    "p123",
+    "p124",
+    "p125",
+    "p126",
+    "p127",
+    "p128",
+    "p129",
+    "p130",
+    "p131",
+    "p132",
+    "p133",
+    "p134",
+    "p135",
+    "p136",
+    "p137",
+    "p138",
+    "p139",
+    "p140",
+    "p141",
+    "p142",
+    "p143",
+    "p144",
+    "p145",
+    "p146",
+    "p147",
+    "p148",
+    "p149",
+    "p150",
+    "p151",
+    "p152",
+    "p153",
+    "p154",
+    "p155",
+    "p156",
+    "p157",
+    "p158",
+    "p159",
+    "p160",
+    "p161",
+    "p162",
+    "p163",
+    "p164",
+    "p165",
+    "p166",
+    "p167",
+    "p168",
+    "p169",
+    "p170",
+    "p171",
+    "p172",
+    "p173",
+    "p174",
+    "p175",
+    "p176",
+    "p177",
+    "p178",
+    "p179",
+    "p180",
+    "p181",
+    "p182",
+    "p183",
+    "p184",
+    "p185",
+    "p186",
+    "p187",
+    "p188",
+    "p189",
+    "p190",
+    "p191",
+    "p192",
+    "p193",
+    "p194",
+    "p195",
+    "p196",
+    "p197",
+    "p198",
+    "p199",
+    "p200",
+    "p201",
+    "p202",
+    "p203",
+    "p204",
+    "p205",
+    "p206",
+    "p207",
+    "p208",
+    "p209",
+    "p210",
+    "p211"
+   ]
+  },
+  {
+   "name": "Prop_store_RamenShop",
+   "bounds_studs": [
+    13.65,
+    10.53,
+    8.27
+   ],
+   "parts": 375,
+   "tris": 4500,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p10",
+    "p11",
+    "p12",
+    "p13",
+    "p14",
+    "p15",
+    "p16",
+    "p17",
+    "p18",
+    "p19",
+    "p20",
+    "p21",
+    "p22",
+    "p23",
+    "p24",
+    "p25",
+    "p26",
+    "p27",
+    "p28",
+    "p29",
+    "p30",
+    "p31",
+    "p32",
+    "p33",
+    "p34",
+    "p35",
+    "p36",
+    "p37",
+    "p38",
+    "p39",
+    "p40",
+    "p41",
+    "p42",
+    "p43",
+    "p44",
+    "p45",
+    "p46",
+    "p47",
+    "p48",
+    "p49",
+    "p50",
+    "p51",
+    "p52",
+    "p53",
+    "p54",
+    "p55",
+    "p56",
+    "p57",
+    "p58",
+    "p59",
+    "p60",
+    "p61",
+    "p62",
+    "p63",
+    "p64",
+    "p65",
+    "p66",
+    "p67",
+    "p68",
+    "p69",
+    "p70",
+    "p71",
+    "p72",
+    "p73",
+    "p74",
+    "p75",
+    "p76",
+    "p77",
+    "p78",
+    "p79",
+    "p80",
+    "p81",
+    "p82",
+    "p83",
+    "p84",
+    "p85",
+    "p86",
+    "p87",
+    "p88",
+    "p89",
+    "p90",
+    "p91",
+    "p92",
+    "p93",
+    "p94",
+    "p95",
+    "p96",
+    "p97",
+    "p98",
+    "p99",
+    "p100",
+    "p101",
+    "p102",
+    "p103",
+    "p104",
+    "p105",
+    "p106",
+    "p107",
+    "p108",
+    "p109",
+    "p110",
+    "p111",
+    "p112",
+    "p113",
+    "p114",
+    "p115",
+    "p116",
+    "p117",
+    "p118",
+    "p119",
+    "p120",
+    "p121",
+    "p122",
+    "p123",
+    "p124",
+    "p125",
+    "p126",
+    "p127",
+    "p128",
+    "p129",
+    "p130",
+    "p131",
+    "p132",
+    "p133",
+    "p134",
+    "p135",
+    "p136",
+    "p137",
+    "p138",
+    "p139",
+    "p140",
+    "p141",
+    "p142",
+    "p143",
+    "p144",
+    "p145",
+    "p146",
+    "p147",
+    "p148",
+    "p149",
+    "p150",
+    "p151",
+    "p152",
+    "p153",
+    "p154",
+    "p155",
+    "p156",
+    "p157",
+    "p158",
+    "p159",
+    "p160",
+    "p161",
+    "p162",
+    "p163",
+    "p164",
+    "p165",
+    "p166",
+    "p167",
+    "p168",
+    "p169",
+    "p170",
+    "p171",
+    "p172",
+    "p173",
+    "p174",
+    "p175",
+    "p176",
+    "p177",
+    "p178",
+    "p179",
+    "p180",
+    "p181",
+    "p182",
+    "p183",
+    "p184",
+    "p185",
+    "p186",
+    "p187",
+    "p188",
+    "p189",
+    "p190",
+    "p191",
+    "p192",
+    "p193",
+    "p194",
+    "p195",
+    "p196",
+    "p197",
+    "p198",
+    "p199",
+    "p200",
+    "p201",
+    "p202",
+    "p203",
+    "p204",
+    "p205",
+    "p206",
+    "p207",
+    "p208",
+    "p209",
+    "p210",
+    "p211",
+    "p212",
+    "p213",
+    "p214",
+    "p215",
+    "p216",
+    "p217",
+    "p218",
+    "p219",
+    "p220",
+    "p221",
+    "p222",
+    "p223",
+    "p224",
+    "p225",
+    "p226",
+    "p227",
+    "p228",
+    "p229",
+    "p230",
+    "p231",
+    "p232",
+    "p233",
+    "p234",
+    "p235",
+    "p236",
+    "p237",
+    "p238",
+    "p239",
+    "p240",
+    "p241",
+    "p242",
+    "p243",
+    "p244",
+    "p245",
+    "p246",
+    "p247",
+    "p248",
+    "p249",
+    "p250",
+    "p251",
+    "p252",
+    "p253",
+    "p254",
+    "p255",
+    "p256",
+    "p257",
+    "p258",
+    "p259",
+    "p260",
+    "p261",
+    "p262",
+    "p263",
+    "p264",
+    "p265",
+    "p266",
+    "p267",
+    "p268",
+    "p269",
+    "p270",
+    "p271",
+    "p272",
+    "p273",
+    "p274",
+    "p275",
+    "p276",
+    "p277",
+    "p278",
+    "p279",
+    "p280",
+    "p281",
+    "p282",
+    "p283",
+    "p284",
+    "p285",
+    "p286",
+    "p287",
+    "p288",
+    "p289",
+    "p290",
+    "p291",
+    "p292",
+    "p293",
+    "p294",
+    "p295",
+    "p296",
+    "p297",
+    "p298",
+    "p299",
+    "p300",
+    "p301",
+    "p302",
+    "p303",
+    "p304",
+    "p305",
+    "p306",
+    "p307",
+    "p308",
+    "p309",
+    "p310",
+    "p311",
+    "p312",
+    "p313",
+    "p314",
+    "p315",
+    "p316",
+    "p317",
+    "p318",
+    "p319",
+    "p320",
+    "p321",
+    "p322",
+    "p323",
+    "p324",
+    "p325",
+    "p326",
+    "p327",
+    "p328",
+    "p329",
+    "p330",
+    "p331",
+    "p332",
+    "p333",
+    "p334",
+    "p335",
+    "p336",
+    "p337",
+    "p338",
+    "p339",
+    "p340",
+    "p341",
+    "p342",
+    "p343",
+    "p344",
+    "p345",
+    "p346",
+    "p347",
+    "p348",
+    "p349",
+    "p350",
+    "p351",
+    "p352",
+    "p353",
+    "p354",
+    "p355",
+    "p356",
+    "p357",
+    "p358",
+    "p359",
+    "p360",
+    "p361",
+    "p362",
+    "p363",
+    "p364",
+    "p365",
+    "p366",
+    "p367",
+    "p368",
+    "p369",
+    "p370",
+    "p371",
+    "p372",
+    "p373",
+    "p374"
+   ]
+  },
+  {
+   "name": "Prop_store_SakuraFluffy",
+   "bounds_studs": [
+    19.54,
+    20.29,
+    17.35
+   ],
+   "parts": 3,
+   "tris": 1800,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2"
+   ]
+  },
+  {
+   "name": "Prop_store_SakuraPink",
+   "bounds_studs": [
+    26.1,
+    27.79,
+    13.5
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_ShrineA",
+   "bounds_studs": [
+    23.4,
+    22.31,
+    23.4
+   ],
+   "parts": 3,
+   "tris": 1800,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2"
+   ]
+  },
+  {
+   "name": "Prop_store_ShrineB",
+   "bounds_studs": [
+    23.4,
+    16.42,
+    23.4
+   ],
+   "parts": 3,
+   "tris": 1800,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2"
+   ]
+  },
+  {
+   "name": "Prop_store_SmallTree",
+   "bounds_studs": [
+    4.31,
+    9.33,
+    3.99
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_StageA",
+   "bounds_studs": [
+    60.8,
+    12.29,
+    60.81
+   ],
+   "parts": 2,
+   "tris": 1200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1"
+   ]
+  },
+  {
+   "name": "Prop_store_StoneLantern",
+   "bounds_studs": [
+    4.5,
+    9.83,
+    4.5
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_StoneLanternWide",
+   "bounds_studs": [
+    6.23,
+    6.34,
+    6.23
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_TallRock",
+   "bounds_studs": [
+    5.1,
+    3.33,
+    5.1
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_TowerBig",
+   "bounds_studs": [
+    24.52,
+    32.69,
+    24.41
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_TowerDark",
+   "bounds_studs": [
+    24.47,
+    32.69,
+    24.35
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_TowerSlim",
+   "bounds_studs": [
+    13.25,
+    30.45,
+    13.25
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_TowerSlimDark",
+   "bounds_studs": [
+    13.22,
+    30.45,
+    13.22
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_TrainingPole",
+   "bounds_studs": [
+    6.06,
+    11.76,
+    5.21
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  },
+  {
+   "name": "Prop_store_WaterfallCliff",
+   "bounds_studs": [
+    142.83,
+    68.77,
+    118.1
+   ],
+   "parts": 30,
+   "tris": 360,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p10",
+    "p11",
+    "p12",
+    "p13",
+    "p14",
+    "p15",
+    "p16",
+    "p17",
+    "p18",
+    "p19",
+    "p20",
+    "p21",
+    "p22",
+    "p23",
+    "p24",
+    "p25",
+    "p26",
+    "p27",
+    "p28",
+    "p29"
+   ]
+  },
+  {
+   "name": "Prop_store_WaterfallSheet",
+   "bounds_studs": [
+    18.07,
+    27.98,
+    13.94
+   ],
+   "parts": 2,
+   "tris": 1200,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0",
+    "p1"
+   ]
+  },
+  {
+   "name": "Prop_store_ZenLantern",
+   "bounds_studs": [
+    3.57,
+    5.92,
+    3.62
+   ],
+   "parts": 1,
+   "tris": 600,
+   "tris_estimated": true,
+   "colour_parts": [
+    "p0"
+   ]
+  }
+ ]
+}
