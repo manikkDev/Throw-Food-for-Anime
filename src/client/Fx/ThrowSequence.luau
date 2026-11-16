@@ -996,7 +996,9 @@ function ThrowSequence.play(deps: Deps): boolean
 		-- about half the frame whatever its size, aimed a little below its middle
 		local tall = math.max(model:GetExtentsSize().Y, 3)
 		local view = math.rad(baseFov - 12)
-		local back = tall / (0.5 * 2 * math.tan(view / 2))
+		-- 46% of the frame (was 50%): the odds now sit at the very top and the head keeps a clear
+		-- gap under them, the feet stay above the card (owner's review of section 5)
+		local back = tall / (0.46 * 2 * math.tan(view / 2))
 		local toward = Vector3.new(-side * 0.22, 0, -1).Unit
 		local finalCam = CFrame.lookAt(
 			heroSpot + toward * back + Vector3.new(0, tall * 0.55, 0),

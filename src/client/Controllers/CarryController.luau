@@ -47,6 +47,7 @@ local CarryController = Knit.CreateController({
 	_glows = {} :: { Highlight },
 	_hold = nil :: AnimationTrack?,
 	_placing = false,
+	_toldFull = nil :: string?,
 })
 
 local function parse(value: any): (string?, string?, string?, string?, number)
@@ -176,6 +177,18 @@ function CarryController:_refresh(owner: Player)
 		local humanoid = character:FindFirstChildOfClass("Humanoid")
 		self._hold = Motion.play(humanoid, "CarryHold", { fade = 0.25, looped = true })
 		self:_setPrompts(uid, id, stars)
+		-- a full plot: the catch was saved on the bench. Say what to do with it, once per catch
+		-- (owner's review of section 5: "what if the plots are full?")
+		local state = self._state.State
+		local hero = state and state.heroes and state.heroes[uid]
+		if hero and hero.slot == 0 and self._toldFull ~= uid then
+			self._toldFull = uid
+			local hud = Knit.GetController("HudController") :: any
+			hud:Toast(
+				"Plot full! Swap it onto a pedestal with E, or it waits on your bench",
+				"info"
+			)
+		end
 	end
 end
 

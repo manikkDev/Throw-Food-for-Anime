@@ -57,10 +57,11 @@ KEYS = {
     "IconSquad": "Squad", "IconStar": "Star", "IconStore": "Store", "IconThrow": "Throw", "IconTick": "Tick",
     "IconTimer": "Timer", "IconTrain": "Power", "IconYen": "Yen",
     "IconRobux": "@robux_white", "IconRobuxBig": "RobuxBig",
+    "IconDaily": "Daily",
 }
 BIG = ["Auto", "Bench", "Codes", "Crown", "FlavorSavory", "FlavorSeafood", "FlavorSpicy", "FlavorSweet", "Fuse",
        "Gift", "Index", "Lock", "Luck", "LuckyThrow", "Place", "Power", "Rebirth", "Scroll", "Sell", "Settings",
-       "Shop", "Squad", "Store", "Throw", "Timer", "Train", "Yen"]
+       "Shop", "Squad", "Store", "Throw", "Timer", "Train", "Yen", "Daily"]
 for _k in BIG:
     KEYS[f"Icon{_k}Big"] = KEYS[f"Icon{_k}"]
 SMALL: dict[str, str] = {}   # base key -> simpler render; the sheet review found none needed (all read at 16-24 px)

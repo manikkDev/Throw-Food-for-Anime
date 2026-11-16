@@ -2413,7 +2413,7 @@
         ],
         [
          0,
-         244
+         330
         ]
        ]
       },
@@ -2425,7 +2425,7 @@
         ],
         [
          0,
-         224
+         140
         ]
        ]
       },
@@ -3066,7 +3066,7 @@
       },
       {
        "className": "Frame",
-       "name": "BtnGiftCell",
+       "name": "BtnDailyCell",
        "properties": {
         "Size": {
          "UDim2": [
@@ -3101,6 +3101,615 @@
         "ZIndex": 0,
         "BackgroundTransparency": 1,
         "LayoutOrder": 1
+       },
+       "children": [
+        {
+         "className": "TextButton",
+         "name": "BtnDaily",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             72
+            ],
+            [
+             0,
+             72
+            ]
+           ]
+          },
+          "Position": {
+           "UDim2": [
+            [
+             0.5,
+             0
+            ],
+            [
+             0,
+             0
+            ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0.5,
+            0
+           ]
+          },
+          "ZIndex": 0,
+          "BackgroundTransparency": 1,
+          "Text": "",
+          "AutoButtonColor": false
+         },
+         "attributes": {
+          "HoverScale": 1.06,
+          "HoverRotate": 0.0,
+          "HoverTime": 0.1,
+          "HoverStyle": "Back",
+          "PressScale": 0.94,
+          "PressTime": 0.08,
+          "OpensPage": "DailyRewards",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "className": "Frame",
+           "name": "Shadow",
+           "properties": {
+            "Size": {
+             "UDim2": [
+              [
+               1,
+               -6
+              ],
+              [
+               1,
+               -10
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               3
+              ],
+              [
+               0,
+               7
+              ]
+             ]
+            },
+            "ZIndex": 0,
+            "BackgroundColor3": {
+             "Color3": [
+              0.1059,
+              0.3176,
+              0.6431
+             ]
+            },
+            "BorderSizePixel": 0
+           },
+           "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                0,
+                20
+               ]
+              }
+             }
+            }
+           ]
+          },
+          {
+           "className": "Frame",
+           "name": "Face",
+           "properties": {
+            "Size": {
+             "UDim2": [
+              [
+               1,
+               -6
+              ],
+              [
+               1,
+               -10
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               3
+              ],
+              [
+               0,
+               3
+              ]
+             ]
+            },
+            "ZIndex": 1,
+            "BackgroundColor3": {
+             "Color3": [
+              1.0,
+              1.0,
+              1.0
+             ]
+            }
+           },
+           "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                0,
+                20
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIGradient",
+             "name": "Gradient",
+             "properties": {
+              "Rotation": -90,
+              "Color": {
+               "ColorSequence": {
+                "keypoints": [
+                 {
+                  "time": 0,
+                  "color": [
+                   0.2196,
+                   0.7412,
+                   0.9725
+                  ]
+                 },
+                 {
+                  "time": 1,
+                  "color": [
+                   0.3255,
+                   0.7922,
+                   1.0
+                  ]
+                 }
+                ]
+               }
+              }
+             }
+            },
+            {
+             "className": "UIStroke",
+             "name": "Stroke",
+             "properties": {
+              "Thickness": 3,
+              "ApplyStrokeMode": "Border",
+              "Color": {
+               "Color3": [
+                0.6118,
+                0.8706,
+                0.9882
+               ]
+              }
+             }
+            },
+            {
+             "className": "ImageLabel",
+             "name": "Icon",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 40
+                ],
+                [
+                 0,
+                 40
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0.5,
+                 0
+                ],
+                [
+                 0,
+                 1
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0.5,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "ScaleType": "Fit"
+             },
+             "attributes": {
+              "PendingIcon": "IconDailyBig",
+              "IconName": "IconDailyBig",
+              "IconKey": "IconDailyBig"
+             }
+            },
+            {
+             "className": "Frame",
+             "name": "BadgeCell",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 26
+                ],
+                [
+                 0,
+                 26
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 1,
+                 6
+                ],
+                [
+                 0,
+                 -6
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                1,
+                0
+               ]
+              },
+              "ZIndex": 4,
+              "Visible": false,
+              "BackgroundTransparency": 1
+             },
+             "children": [
+              {
+               "className": "Frame",
+               "name": "Badge",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   1,
+                   -4
+                  ],
+                  [
+                   1,
+                   -4
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   2
+                  ],
+                  [
+                   0,
+                   2
+                  ]
+                 ]
+                },
+                "ZIndex": 5,
+                "BackgroundColor3": {
+                 "Color3": [
+                  0.9412,
+                  0.2667,
+                  0.2196
+                 ]
+                }
+               },
+               "children": [
+                {
+                 "className": "UICorner",
+                 "name": "Corner",
+                 "properties": {
+                  "CornerRadius": {
+                   "UDim": [
+                    0,
+                    13
+                   ]
+                  }
+                 }
+                },
+                {
+                 "className": "UIGradient",
+                 "name": "Gradient",
+                 "properties": {
+                  "Rotation": -90,
+                  "Color": {
+                   "ColorSequence": {
+                    "keypoints": [
+                     {
+                      "time": 0,
+                      "color": [
+                       0.8588,
+                       0.8588,
+                       0.8588
+                      ]
+                     },
+                     {
+                      "time": 1,
+                      "color": [
+                       1.0,
+                       1.0,
+                       1.0
+                      ]
+                     }
+                    ]
+                   }
+                  }
+                 }
+                },
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 2,
+                  "ApplyStrokeMode": "Border",
+                  "Color": {
+                   "Color3": [
+                    1.0,
+                    1.0,
+                    1.0
+                   ]
+                  }
+                 }
+                },
+                {
+                 "className": "TextLabel",
+                 "name": "BadgeText",
+                 "properties": {
+                  "Size": {
+                   "UDim2": [
+                    [
+                     0,
+                     18
+                    ],
+                    [
+                     0,
+                     20
+                    ]
+                   ]
+                  },
+                  "Position": {
+                   "UDim2": [
+                    [
+                     0.5,
+                     0
+                    ],
+                    [
+                     0.5,
+                     0
+                    ]
+                   ]
+                  },
+                  "AnchorPoint": {
+                   "Vector2": [
+                    0.5,
+                    0.5
+                   ]
+                  },
+                  "ZIndex": 0,
+                  "BackgroundTransparency": 1,
+                  "Text": "!",
+                  "TextScaled": true,
+                  "FontFace": {
+                   "Font": {
+                    "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                    "weight": "Regular",
+                    "style": "Normal"
+                   }
+                  },
+                  "TextColor3": {
+                   "Color3": [
+                    1.0,
+                    1.0,
+                    1.0
+                   ]
+                  },
+                  "TextXAlignment": "Center"
+                 },
+                 "children": [
+                  {
+                   "className": "UIStroke",
+                   "name": "Stroke",
+                   "properties": {
+                    "Thickness": 1.5,
+                    "ApplyStrokeMode": "Contextual",
+                    "Color": {
+                     "Color3": [
+                      0.051,
+                      0.0588,
+                      0.1686
+                     ]
+                    },
+                    "LineJoinMode": "Bevel"
+                   }
+                  },
+                  {
+                   "className": "UITextSizeConstraint",
+                   "name": "SizeCap",
+                   "properties": {
+                    "MaxTextSize": 16,
+                    "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
+                   }
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "className": "TextLabel",
+             "name": "Caption",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 70
+                ],
+                [
+                 0,
+                 22
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0.5,
+                 0
+                ],
+                [
+                 1,
+                 -2
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0.5,
+                1
+               ]
+              },
+              "ZIndex": 4,
+              "BackgroundTransparency": 1,
+              "Text": "DAILY",
+              "TextScaled": true,
+              "FontFace": {
+               "Font": {
+                "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                "weight": "Regular",
+                "style": "Normal"
+               }
+              },
+              "TextColor3": {
+               "Color3": [
+                1.0,
+                1.0,
+                1.0
+               ]
+              },
+              "TextXAlignment": "Center"
+             },
+             "children": [
+              {
+               "className": "UIStroke",
+               "name": "Stroke",
+               "properties": {
+                "Thickness": 1.5,
+                "ApplyStrokeMode": "Contextual",
+                "Color": {
+                 "Color3": [
+                  0.051,
+                  0.0588,
+                  0.1686
+                 ]
+                },
+                "LineJoinMode": "Bevel"
+               }
+              },
+              {
+               "className": "UITextSizeConstraint",
+               "name": "SizeCap",
+               "properties": {
+                "MaxTextSize": 18,
+                "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "className": "Frame",
+       "name": "BtnGiftCell",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           72
+          ],
+          [
+           0,
+           72
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "AnchorPoint": {
+         "Vector2": [
+          0,
+          0
+         ]
+        },
+        "ZIndex": 0,
+        "BackgroundTransparency": 1,
+        "LayoutOrder": 2
        },
        "children": [
         {
@@ -3939,7 +4548,7 @@
         },
         "ZIndex": 0,
         "BackgroundTransparency": 1,
-        "LayoutOrder": 2
+        "LayoutOrder": 3
        },
        "children": [
         {
@@ -6897,17 +7506,17 @@
     },
     {
      "className": "Frame",
-     "name": "ServerLuckBar",
+     "name": "BuffTray",
      "properties": {
       "Size": {
        "UDim2": [
         [
          0,
-         224
+         316
         ],
         [
          0,
-         56
+         264
         ]
        ]
       },
@@ -6915,11 +7524,11 @@
        "UDim2": [
         [
          1,
-         -108
+         -20
         ],
         [
          0,
-         236
+         76
         ]
        ]
       },
@@ -6930,177 +7539,63 @@
        ]
       },
       "ZIndex": 4,
+      "Visible": false,
       "BackgroundTransparency": 1
      },
      "children": [
       {
-       "className": "Frame",
-       "name": "Face",
+       "className": "TextButton",
+       "name": "BuffToggle",
        "properties": {
         "Size": {
          "UDim2": [
           [
-           1,
-           -6
+           0,
+           180
           ],
           [
-           1,
-           -6
+           0,
+           40
           ]
          ]
         },
         "Position": {
          "UDim2": [
           [
-           0,
-           3
+           1,
+           0
           ],
           [
            0,
-           3
+           0
           ]
          ]
         },
-        "ZIndex": 5,
-        "BackgroundColor3": {
-         "Color3": [
-          1.0,
-          1.0,
-          1.0
+        "AnchorPoint": {
+         "Vector2": [
+          1,
+          0
          ]
-        }
+        },
+        "ZIndex": 0,
+        "BackgroundTransparency": 1,
+        "Text": "",
+        "AutoButtonColor": false
        },
        "children": [
         {
-         "className": "UICorner",
-         "name": "Corner",
-         "properties": {
-          "CornerRadius": {
-           "UDim": [
-            0,
-            16
-           ]
-          }
-         }
-        },
-        {
-         "className": "UIGradient",
-         "name": "Gradient",
-         "properties": {
-          "Rotation": -90,
-          "Color": {
-           "ColorSequence": {
-            "keypoints": [
-             {
-              "time": 0,
-              "color": [
-               0.1059,
-               0.1216,
-               0.2941
-              ]
-             },
-             {
-              "time": 1,
-              "color": [
-               0.2,
-               0.2196,
-               0.4353
-              ]
-             }
-            ]
-           }
-          }
-         }
-        },
-        {
-         "className": "UIStroke",
-         "name": "Stroke",
-         "properties": {
-          "Thickness": 3,
-          "ApplyStrokeMode": "Border",
-          "Color": {
-           "Color3": [
-            0.3569,
-            0.3922,
-            0.7882
-           ]
-          }
-         }
-        },
-        {
-         "className": "UIListLayout",
-         "name": "Layout",
-         "properties": {
-          "FillDirection": "Horizontal",
-          "Padding": {
-           "UDim": [
-            0,
-            8
-           ]
-          },
-          "SortOrder": "LayoutOrder",
-          "HorizontalAlignment": "Center",
-          "VerticalAlignment": "Center"
-         }
-        },
-        {
-         "className": "ImageLabel",
-         "name": "Icon",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             34
-            ],
-            [
-             0,
-             34
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "AnchorPoint": {
-           "Vector2": [
-            0,
-            0
-           ]
-          },
-          "ZIndex": 0,
-          "BackgroundTransparency": 1,
-          "ScaleType": "Fit",
-          "LayoutOrder": 0
-         },
-         "attributes": {
-          "PendingIcon": "IconLuckBig",
-          "IconName": "IconLuckBig",
-          "IconKey": "IconLuckBig"
-         }
-        },
-        {
          "className": "Frame",
-         "name": "EventText",
+         "name": "BuffHead",
          "properties": {
           "Size": {
            "UDim2": [
             [
              0,
-             112
+             180
             ],
             [
              0,
-             46
+             40
             ]
            ]
           },
@@ -7123,228 +7618,12 @@
            ]
           },
           "ZIndex": 0,
-          "BackgroundTransparency": 1,
-          "LayoutOrder": 1
-         },
-         "children": [
-          {
-           "className": "TextLabel",
-           "name": "Multiplier",
-           "properties": {
-            "Size": {
-             "UDim2": [
-              [
-               0,
-               112
-              ],
-              [
-               0,
-               25
-              ]
-             ]
-            },
-            "Position": {
-             "UDim2": [
-              [
-               0,
-               0
-              ],
-              [
-               0,
-               0
-              ]
-             ]
-            },
-            "AnchorPoint": {
-             "Vector2": [
-              0,
-              0
-             ]
-            },
-            "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "Text": "<unbound>",
-            "TextScaled": true,
-            "FontFace": {
-             "Font": {
-              "family": "rbxasset://fonts/families/LuckiestGuy.json",
-              "weight": "Regular",
-              "style": "Normal"
-             }
-            },
-            "TextColor3": {
-             "Color3": [
-              0.3569,
-              0.8902,
-              0.4902
-             ]
-            },
-            "TextXAlignment": "Left"
-           },
-           "children": [
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 1.5,
-              "ApplyStrokeMode": "Contextual",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
-               ]
-              },
-              "LineJoinMode": "Bevel"
-             }
-            },
-            {
-             "className": "UITextSizeConstraint",
-             "name": "SizeCap",
-             "properties": {
-              "MaxTextSize": 20,
-              "MinTextSize": 9
-             }
-            },
-            {
-             "className": "UIPadding",
-             "name": "Nudge",
-             "properties": {
-              "PaddingTop": {
-               "UDim": [
-                0,
-                5
-               ]
-              }
-             }
-            }
-           ]
-          },
-          {
-           "className": "TextLabel",
-           "name": "TimeLeft",
-           "properties": {
-            "Size": {
-             "UDim2": [
-              [
-               0,
-               112
-              ],
-              [
-               0,
-               20
-              ]
-             ]
-            },
-            "Position": {
-             "UDim2": [
-              [
-               0,
-               0
-              ],
-              [
-               1,
-               0
-              ]
-             ]
-            },
-            "AnchorPoint": {
-             "Vector2": [
-              0,
-              1
-             ]
-            },
-            "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "Text": "<unbound>",
-            "TextScaled": true,
-            "FontFace": {
-             "Font": {
-              "family": "rbxasset://fonts/families/FredokaOne.json",
-              "weight": "Regular",
-              "style": "Normal"
-             }
-            },
-            "TextColor3": {
-             "Color3": [
-              1.0,
-              1.0,
-              1.0
-             ]
-            },
-            "TextXAlignment": "Left"
-           },
-           "children": [
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 1.5,
-              "ApplyStrokeMode": "Contextual",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
-               ]
-              },
-              "LineJoinMode": "Bevel"
-             }
-            },
-            {
-             "className": "UITextSizeConstraint",
-             "name": "SizeCap",
-             "properties": {
-              "MaxTextSize": 16,
-              "MinTextSize": 9
-             }
-            }
-           ]
-          }
-         ]
-        },
-        {
-         "className": "Frame",
-         "name": "BoostButtonCell",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             44
-            ],
-            [
-             0,
-             48
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "AnchorPoint": {
-           "Vector2": [
-            0,
-            0
-           ]
-          },
-          "ZIndex": 0,
-          "BackgroundTransparency": 1,
-          "LayoutOrder": 2
+          "BackgroundTransparency": 1
          },
          "children": [
           {
            "className": "Frame",
-           "name": "Shadow",
+           "name": "Face",
            "properties": {
             "Size": {
              "UDim2": [
@@ -7354,60 +7633,7 @@
               ],
               [
                1,
-               -10
-              ]
-             ]
-            },
-            "Position": {
-             "UDim2": [
-              [
-               0,
-               3
-              ],
-              [
-               0,
-               7
-              ]
-             ]
-            },
-            "ZIndex": 0,
-            "BackgroundColor3": {
-             "Color3": [
-              0.6588,
-              0.2118,
-              0.5608
-             ]
-            },
-            "BorderSizePixel": 0
-           },
-           "children": [
-            {
-             "className": "UICorner",
-             "name": "Corner",
-             "properties": {
-              "CornerRadius": {
-               "UDim": [
-                0,
-                16
-               ]
-              }
-             }
-            }
-           ]
-          },
-          {
-           "className": "TextButton",
-           "name": "BoostButton",
-           "properties": {
-            "Size": {
-             "UDim2": [
-              [
-               1,
                -6
-              ],
-              [
-               1,
-               -10
               ]
              ]
             },
@@ -7427,20 +7653,10 @@
             "BackgroundColor3": {
              "Color3": [
               1.0,
-              0.3804,
-              0.6745
+              1.0,
+              1.0
              ]
-            },
-            "Text": "",
-            "AutoButtonColor": false
-           },
-           "attributes": {
-            "HoverScale": 1.06,
-            "HoverRotate": 0.0,
-            "HoverTime": 0.1,
-            "HoverStyle": "Back",
-            "PressScale": 0.94,
-            "PressTime": 0.08
+            }
            },
            "children": [
             {
@@ -7464,35 +7680,19 @@
                "ColorSequence": {
                 "keypoints": [
                  {
-                  "time": 0.0,
+                  "time": 0,
                   "color": [
-                   0.74,
-                   0.74,
-                   0.74
+                   0.1059,
+                   0.1216,
+                   0.2941
                   ]
                  },
                  {
-                  "time": 0.5,
+                  "time": 1,
                   "color": [
-                   0.86,
-                   0.86,
-                   0.86
-                  ]
-                 },
-                 {
-                  "time": 0.51,
-                  "color": [
-                   1.0,
-                   1.0,
-                   1.0
-                  ]
-                 },
-                 {
-                  "time": 1.0,
-                  "color": [
-                   1.0,
-                   1.0,
-                   1.0
+                   0.2,
+                   0.2196,
+                   0.4353
                   ]
                  }
                 ]
@@ -7508,9 +7708,9 @@
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                1.0,
-                0.6902,
-                0.8392
+                0.3569,
+                0.3922,
+                0.7882
                ]
               }
              }
@@ -7523,7 +7723,7 @@
               "Padding": {
                "UDim": [
                 0,
-                0
+                6
                ]
               },
               "SortOrder": "LayoutOrder",
@@ -7539,11 +7739,11 @@
                "UDim2": [
                 [
                  0,
-                 28
+                 26
                 ],
                 [
                  0,
-                 28
+                 26
                 ]
                ]
               },
@@ -7571,19 +7771,2424 @@
               "LayoutOrder": 0
              },
              "attributes": {
-              "PendingIcon": "IconRobux",
-              "IconName": "IconRobux",
-              "IconKey": "IconRobux"
+              "PendingIcon": "IconLuckBig",
+              "IconName": "IconLuckBig",
+              "IconKey": "IconLuckBig"
+             }
+            },
+            {
+             "className": "TextLabel",
+             "name": "BuffTitle",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 72
+                ],
+                [
+                 0,
+                 20
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "Text": "BOOSTS",
+              "TextScaled": true,
+              "FontFace": {
+               "Font": {
+                "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                "weight": "Regular",
+                "style": "Normal"
+               }
+              },
+              "TextColor3": {
+               "Color3": [
+                1.0,
+                1.0,
+                1.0
+               ]
+              },
+              "TextXAlignment": "Left",
+              "LayoutOrder": 1
+             },
+             "children": [
+              {
+               "className": "UIStroke",
+               "name": "Stroke",
+               "properties": {
+                "Thickness": 1.5,
+                "ApplyStrokeMode": "Contextual",
+                "Color": {
+                 "Color3": [
+                  0.051,
+                  0.0588,
+                  0.1686
+                 ]
+                },
+                "LineJoinMode": "Bevel"
+               }
+              },
+              {
+               "className": "UITextSizeConstraint",
+               "name": "SizeCap",
+               "properties": {
+                "MaxTextSize": 16,
+                "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
+               }
+              }
+             ]
+            },
+            {
+             "className": "Frame",
+             "name": "BuffCount",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 28
+                ],
+                [
+                 0,
+                 24
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "LayoutOrder": 2
+             },
+             "children": [
+              {
+               "className": "Frame",
+               "name": "Face",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   1,
+                   -4
+                  ],
+                  [
+                   1,
+                   -4
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   2
+                  ],
+                  [
+                   0,
+                   2
+                  ]
+                 ]
+                },
+                "ZIndex": 1,
+                "BackgroundColor3": {
+                 "Color3": [
+                  1.0,
+                  1.0,
+                  1.0
+                 ]
+                }
+               },
+               "children": [
+                {
+                 "className": "UICorner",
+                 "name": "Corner",
+                 "properties": {
+                  "CornerRadius": {
+                   "UDim": [
+                    0,
+                    12
+                   ]
+                  }
+                 }
+                },
+                {
+                 "className": "UIGradient",
+                 "name": "Gradient",
+                 "properties": {
+                  "Rotation": -90,
+                  "Color": {
+                   "ColorSequence": {
+                    "keypoints": [
+                     {
+                      "time": 0,
+                      "color": [
+                       0.9412,
+                       0.2667,
+                       0.2196
+                      ]
+                     },
+                     {
+                      "time": 1,
+                      "color": [
+                       1.0,
+                       0.3765,
+                       0.3333
+                      ]
+                     }
+                    ]
+                   }
+                  }
+                 }
+                },
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 2,
+                  "ApplyStrokeMode": "Border",
+                  "Color": {
+                   "Color3": [
+                    1.0,
+                    1.0,
+                    1.0
+                   ]
+                  }
+                 }
+                },
+                {
+                 "className": "TextLabel",
+                 "name": "BuffCountText",
+                 "properties": {
+                  "Size": {
+                   "UDim2": [
+                    [
+                     0,
+                     24
+                    ],
+                    [
+                     0,
+                     20
+                    ]
+                   ]
+                  },
+                  "Position": {
+                   "UDim2": [
+                    [
+                     0,
+                     0
+                    ],
+                    [
+                     0,
+                     0
+                    ]
+                   ]
+                  },
+                  "AnchorPoint": {
+                   "Vector2": [
+                    0,
+                    0
+                   ]
+                  },
+                  "ZIndex": 0,
+                  "BackgroundTransparency": 1,
+                  "Text": "<unbound>",
+                  "TextScaled": true,
+                  "FontFace": {
+                   "Font": {
+                    "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                    "weight": "Regular",
+                    "style": "Normal"
+                   }
+                  },
+                  "TextColor3": {
+                   "Color3": [
+                    1.0,
+                    1.0,
+                    1.0
+                   ]
+                  },
+                  "TextXAlignment": "Center"
+                 },
+                 "children": [
+                  {
+                   "className": "UIStroke",
+                   "name": "Stroke",
+                   "properties": {
+                    "Thickness": 1.5,
+                    "ApplyStrokeMode": "Contextual",
+                    "Color": {
+                     "Color3": [
+                      0.051,
+                      0.0588,
+                      0.1686
+                     ]
+                    },
+                    "LineJoinMode": "Bevel"
+                   }
+                  },
+                  {
+                   "className": "UITextSizeConstraint",
+                   "name": "SizeCap",
+                   "properties": {
+                    "MaxTextSize": 16,
+                    "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
+                   }
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "className": "ImageLabel",
+             "name": "Chevron",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 16
+                ],
+                [
+                 0,
+                 16
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "ScaleType": "Fit",
+              "LayoutOrder": 3
+             },
+             "attributes": {
+              "PendingIcon": "IconArrow",
+              "IconName": "IconArrow",
+              "IconKey": "IconArrow"
              }
             }
            ]
           }
-         ],
-         "attributes": {
-          "PressLip": 4,
-          "AutoShine": true,
-          "Rim": 0.5
+         ]
+        }
+       ]
+      },
+      {
+       "className": "Frame",
+       "name": "BuffRows",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           232
+          ],
+          [
+           0,
+           218
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           1,
+           -84
+          ],
+          [
+           0,
+           46
+          ]
+         ]
+        },
+        "AnchorPoint": {
+         "Vector2": [
+          1,
+          0
+         ]
+        },
+        "ZIndex": 0,
+        "Visible": false,
+        "BackgroundTransparency": 1
+       },
+       "children": [
+        {
+         "className": "UIListLayout",
+         "name": "Layout",
+         "properties": {
+          "FillDirection": "Vertical",
+          "Padding": {
+           "UDim": [
+            0,
+            6
+           ]
+          },
+          "SortOrder": "LayoutOrder",
+          "HorizontalAlignment": "Center",
+          "VerticalAlignment": "Top"
          }
+        },
+        {
+         "className": "Frame",
+         "name": "BuffServerLuck",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             232
+            ],
+            [
+             0,
+             50
+            ]
+           ]
+          },
+          "Position": {
+           "UDim2": [
+            [
+             0,
+             0
+            ],
+            [
+             0,
+             0
+            ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0
+           ]
+          },
+          "ZIndex": 0,
+          "Visible": false,
+          "BackgroundTransparency": 1,
+          "LayoutOrder": 0
+         },
+         "children": [
+          {
+           "className": "Frame",
+           "name": "Face",
+           "properties": {
+            "Size": {
+             "UDim2": [
+              [
+               1,
+               -6
+              ],
+              [
+               1,
+               -6
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               3
+              ],
+              [
+               0,
+               3
+              ]
+             ]
+            },
+            "ZIndex": 1,
+            "BackgroundColor3": {
+             "Color3": [
+              1.0,
+              1.0,
+              1.0
+             ]
+            }
+           },
+           "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                0,
+                16
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIGradient",
+             "name": "Gradient",
+             "properties": {
+              "Rotation": -90,
+              "Color": {
+               "ColorSequence": {
+                "keypoints": [
+                 {
+                  "time": 0,
+                  "color": [
+                   0.1059,
+                   0.1216,
+                   0.2941
+                  ]
+                 },
+                 {
+                  "time": 1,
+                  "color": [
+                   0.2,
+                   0.2196,
+                   0.4353
+                  ]
+                 }
+                ]
+               }
+              }
+             }
+            },
+            {
+             "className": "UIStroke",
+             "name": "Stroke",
+             "properties": {
+              "Thickness": 3,
+              "ApplyStrokeMode": "Border",
+              "Color": {
+               "Color3": [
+                0.3569,
+                0.3922,
+                0.7882
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIListLayout",
+             "name": "Layout",
+             "properties": {
+              "FillDirection": "Horizontal",
+              "Padding": {
+               "UDim": [
+                0,
+                8
+               ]
+              },
+              "SortOrder": "LayoutOrder",
+              "HorizontalAlignment": "Center",
+              "VerticalAlignment": "Center"
+             }
+            },
+            {
+             "className": "ImageLabel",
+             "name": "Icon",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 30
+                ],
+                [
+                 0,
+                 30
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "ScaleType": "Fit",
+              "LayoutOrder": 0
+             },
+             "attributes": {
+              "PendingIcon": "IconLuckBig",
+              "IconName": "IconLuckBig",
+              "IconKey": "IconLuckBig"
+             }
+            },
+            {
+             "className": "Frame",
+             "name": "BuffServerLuckText",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 128
+                ],
+                [
+                 0,
+                 40
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "LayoutOrder": 1
+             },
+             "children": [
+              {
+               "className": "TextLabel",
+               "name": "BuffServerLuckName",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   0,
+                   128
+                  ],
+                  [
+                   0,
+                   20
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   0
+                  ],
+                  [
+                   0,
+                   0
+                  ]
+                 ]
+                },
+                "AnchorPoint": {
+                 "Vector2": [
+                  0,
+                  0
+                 ]
+                },
+                "ZIndex": 0,
+                "BackgroundTransparency": 1,
+                "Text": "SERVER LUCK",
+                "TextScaled": true,
+                "FontFace": {
+                 "Font": {
+                  "family": "rbxasset://fonts/families/FredokaOne.json",
+                  "weight": "Regular",
+                  "style": "Normal"
+                 }
+                },
+                "TextColor3": {
+                 "Color3": [
+                  1.0,
+                  1.0,
+                  1.0
+                 ]
+                },
+                "TextXAlignment": "Left"
+               },
+               "children": [
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 1.5,
+                  "ApplyStrokeMode": "Contextual",
+                  "Color": {
+                   "Color3": [
+                    0.051,
+                    0.0588,
+                    0.1686
+                   ]
+                  },
+                  "LineJoinMode": "Bevel"
+                 }
+                },
+                {
+                 "className": "UITextSizeConstraint",
+                 "name": "SizeCap",
+                 "properties": {
+                  "MaxTextSize": 16,
+                  "MinTextSize": 9
+                 }
+                }
+               ]
+              },
+              {
+               "className": "TextLabel",
+               "name": "BuffServerLuckValue",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   0,
+                   128
+                  ],
+                  [
+                   0,
+                   20
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   0
+                  ],
+                  [
+                   1,
+                   0
+                  ]
+                 ]
+                },
+                "AnchorPoint": {
+                 "Vector2": [
+                  0,
+                  1
+                 ]
+                },
+                "ZIndex": 0,
+                "BackgroundTransparency": 1,
+                "Text": "<unbound>",
+                "TextScaled": true,
+                "FontFace": {
+                 "Font": {
+                  "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                  "weight": "Regular",
+                  "style": "Normal"
+                 }
+                },
+                "TextColor3": {
+                 "Color3": [
+                  0.3569,
+                  0.8902,
+                  0.4902
+                 ]
+                },
+                "TextXAlignment": "Left"
+               },
+               "children": [
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 1.5,
+                  "ApplyStrokeMode": "Contextual",
+                  "Color": {
+                   "Color3": [
+                    0.051,
+                    0.0588,
+                    0.1686
+                   ]
+                  },
+                  "LineJoinMode": "Bevel"
+                 }
+                },
+                {
+                 "className": "UITextSizeConstraint",
+                 "name": "SizeCap",
+                 "properties": {
+                  "MaxTextSize": 16,
+                  "MinTextSize": 9
+                 }
+                },
+                {
+                 "className": "UIPadding",
+                 "name": "Nudge",
+                 "properties": {
+                  "PaddingTop": {
+                   "UDim": [
+                    0,
+                    4
+                   ]
+                  }
+                 }
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "className": "TextLabel",
+             "name": "BuffServerLuckTime",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 52
+                ],
+                [
+                 0,
+                 20
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "Text": "<unbound>",
+              "TextScaled": true,
+              "FontFace": {
+               "Font": {
+                "family": "rbxasset://fonts/families/FredokaOne.json",
+                "weight": "Regular",
+                "style": "Normal"
+               }
+              },
+              "TextColor3": {
+               "Color3": [
+                1.0,
+                1.0,
+                1.0
+               ]
+              },
+              "TextXAlignment": "Right",
+              "LayoutOrder": 2
+             },
+             "children": [
+              {
+               "className": "UIStroke",
+               "name": "Stroke",
+               "properties": {
+                "Thickness": 1.5,
+                "ApplyStrokeMode": "Contextual",
+                "Color": {
+                 "Color3": [
+                  0.051,
+                  0.0588,
+                  0.1686
+                 ]
+                },
+                "LineJoinMode": "Bevel"
+               }
+              },
+              {
+               "className": "UITextSizeConstraint",
+               "name": "SizeCap",
+               "properties": {
+                "MaxTextSize": 16,
+                "MinTextSize": 9
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "className": "Frame",
+         "name": "BuffFestival",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             232
+            ],
+            [
+             0,
+             50
+            ]
+           ]
+          },
+          "Position": {
+           "UDim2": [
+            [
+             0,
+             0
+            ],
+            [
+             0,
+             0
+            ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0
+           ]
+          },
+          "ZIndex": 0,
+          "Visible": false,
+          "BackgroundTransparency": 1,
+          "LayoutOrder": 1
+         },
+         "children": [
+          {
+           "className": "Frame",
+           "name": "Face",
+           "properties": {
+            "Size": {
+             "UDim2": [
+              [
+               1,
+               -6
+              ],
+              [
+               1,
+               -6
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               3
+              ],
+              [
+               0,
+               3
+              ]
+             ]
+            },
+            "ZIndex": 1,
+            "BackgroundColor3": {
+             "Color3": [
+              1.0,
+              1.0,
+              1.0
+             ]
+            }
+           },
+           "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                0,
+                16
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIGradient",
+             "name": "Gradient",
+             "properties": {
+              "Rotation": -90,
+              "Color": {
+               "ColorSequence": {
+                "keypoints": [
+                 {
+                  "time": 0,
+                  "color": [
+                   0.1059,
+                   0.1216,
+                   0.2941
+                  ]
+                 },
+                 {
+                  "time": 1,
+                  "color": [
+                   0.2,
+                   0.2196,
+                   0.4353
+                  ]
+                 }
+                ]
+               }
+              }
+             }
+            },
+            {
+             "className": "UIStroke",
+             "name": "Stroke",
+             "properties": {
+              "Thickness": 3,
+              "ApplyStrokeMode": "Border",
+              "Color": {
+               "Color3": [
+                0.3569,
+                0.3922,
+                0.7882
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIListLayout",
+             "name": "Layout",
+             "properties": {
+              "FillDirection": "Horizontal",
+              "Padding": {
+               "UDim": [
+                0,
+                8
+               ]
+              },
+              "SortOrder": "LayoutOrder",
+              "HorizontalAlignment": "Center",
+              "VerticalAlignment": "Center"
+             }
+            },
+            {
+             "className": "ImageLabel",
+             "name": "Icon",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 30
+                ],
+                [
+                 0,
+                 30
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "ScaleType": "Fit",
+              "LayoutOrder": 0
+             },
+             "attributes": {
+              "PendingIcon": "IconGiftBig",
+              "IconName": "IconGiftBig",
+              "IconKey": "IconGiftBig"
+             }
+            },
+            {
+             "className": "Frame",
+             "name": "BuffFestivalText",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 128
+                ],
+                [
+                 0,
+                 40
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "LayoutOrder": 1
+             },
+             "children": [
+              {
+               "className": "TextLabel",
+               "name": "BuffFestivalName",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   0,
+                   128
+                  ],
+                  [
+                   0,
+                   20
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   0
+                  ],
+                  [
+                   0,
+                   0
+                  ]
+                 ]
+                },
+                "AnchorPoint": {
+                 "Vector2": [
+                  0,
+                  0
+                 ]
+                },
+                "ZIndex": 0,
+                "BackgroundTransparency": 1,
+                "Text": "FESTIVAL HOUR",
+                "TextScaled": true,
+                "FontFace": {
+                 "Font": {
+                  "family": "rbxasset://fonts/families/FredokaOne.json",
+                  "weight": "Regular",
+                  "style": "Normal"
+                 }
+                },
+                "TextColor3": {
+                 "Color3": [
+                  1.0,
+                  1.0,
+                  1.0
+                 ]
+                },
+                "TextXAlignment": "Left"
+               },
+               "children": [
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 1.5,
+                  "ApplyStrokeMode": "Contextual",
+                  "Color": {
+                   "Color3": [
+                    0.051,
+                    0.0588,
+                    0.1686
+                   ]
+                  },
+                  "LineJoinMode": "Bevel"
+                 }
+                },
+                {
+                 "className": "UITextSizeConstraint",
+                 "name": "SizeCap",
+                 "properties": {
+                  "MaxTextSize": 16,
+                  "MinTextSize": 9
+                 }
+                }
+               ]
+              },
+              {
+               "className": "TextLabel",
+               "name": "BuffFestivalValue",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   0,
+                   128
+                  ],
+                  [
+                   0,
+                   20
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   0
+                  ],
+                  [
+                   1,
+                   0
+                  ]
+                 ]
+                },
+                "AnchorPoint": {
+                 "Vector2": [
+                  0,
+                  1
+                 ]
+                },
+                "ZIndex": 0,
+                "BackgroundTransparency": 1,
+                "Text": "<unbound>",
+                "TextScaled": true,
+                "FontFace": {
+                 "Font": {
+                  "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                  "weight": "Regular",
+                  "style": "Normal"
+                 }
+                },
+                "TextColor3": {
+                 "Color3": [
+                  0.3569,
+                  0.8902,
+                  0.4902
+                 ]
+                },
+                "TextXAlignment": "Left"
+               },
+               "children": [
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 1.5,
+                  "ApplyStrokeMode": "Contextual",
+                  "Color": {
+                   "Color3": [
+                    0.051,
+                    0.0588,
+                    0.1686
+                   ]
+                  },
+                  "LineJoinMode": "Bevel"
+                 }
+                },
+                {
+                 "className": "UITextSizeConstraint",
+                 "name": "SizeCap",
+                 "properties": {
+                  "MaxTextSize": 16,
+                  "MinTextSize": 9
+                 }
+                },
+                {
+                 "className": "UIPadding",
+                 "name": "Nudge",
+                 "properties": {
+                  "PaddingTop": {
+                   "UDim": [
+                    0,
+                    4
+                   ]
+                  }
+                 }
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "className": "TextLabel",
+             "name": "BuffFestivalTime",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 52
+                ],
+                [
+                 0,
+                 20
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "Text": "<unbound>",
+              "TextScaled": true,
+              "FontFace": {
+               "Font": {
+                "family": "rbxasset://fonts/families/FredokaOne.json",
+                "weight": "Regular",
+                "style": "Normal"
+               }
+              },
+              "TextColor3": {
+               "Color3": [
+                1.0,
+                1.0,
+                1.0
+               ]
+              },
+              "TextXAlignment": "Right",
+              "LayoutOrder": 2
+             },
+             "children": [
+              {
+               "className": "UIStroke",
+               "name": "Stroke",
+               "properties": {
+                "Thickness": 1.5,
+                "ApplyStrokeMode": "Contextual",
+                "Color": {
+                 "Color3": [
+                  0.051,
+                  0.0588,
+                  0.1686
+                 ]
+                },
+                "LineJoinMode": "Bevel"
+               }
+              },
+              {
+               "className": "UITextSizeConstraint",
+               "name": "SizeCap",
+               "properties": {
+                "MaxTextSize": 16,
+                "MinTextSize": 9
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "className": "Frame",
+         "name": "BuffDoubleYen",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             232
+            ],
+            [
+             0,
+             50
+            ]
+           ]
+          },
+          "Position": {
+           "UDim2": [
+            [
+             0,
+             0
+            ],
+            [
+             0,
+             0
+            ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0
+           ]
+          },
+          "ZIndex": 0,
+          "Visible": false,
+          "BackgroundTransparency": 1,
+          "LayoutOrder": 2
+         },
+         "children": [
+          {
+           "className": "Frame",
+           "name": "Face",
+           "properties": {
+            "Size": {
+             "UDim2": [
+              [
+               1,
+               -6
+              ],
+              [
+               1,
+               -6
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               3
+              ],
+              [
+               0,
+               3
+              ]
+             ]
+            },
+            "ZIndex": 1,
+            "BackgroundColor3": {
+             "Color3": [
+              1.0,
+              1.0,
+              1.0
+             ]
+            }
+           },
+           "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                0,
+                16
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIGradient",
+             "name": "Gradient",
+             "properties": {
+              "Rotation": -90,
+              "Color": {
+               "ColorSequence": {
+                "keypoints": [
+                 {
+                  "time": 0,
+                  "color": [
+                   0.1059,
+                   0.1216,
+                   0.2941
+                  ]
+                 },
+                 {
+                  "time": 1,
+                  "color": [
+                   0.2,
+                   0.2196,
+                   0.4353
+                  ]
+                 }
+                ]
+               }
+              }
+             }
+            },
+            {
+             "className": "UIStroke",
+             "name": "Stroke",
+             "properties": {
+              "Thickness": 3,
+              "ApplyStrokeMode": "Border",
+              "Color": {
+               "Color3": [
+                0.3569,
+                0.3922,
+                0.7882
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIListLayout",
+             "name": "Layout",
+             "properties": {
+              "FillDirection": "Horizontal",
+              "Padding": {
+               "UDim": [
+                0,
+                8
+               ]
+              },
+              "SortOrder": "LayoutOrder",
+              "HorizontalAlignment": "Center",
+              "VerticalAlignment": "Center"
+             }
+            },
+            {
+             "className": "ImageLabel",
+             "name": "Icon",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 30
+                ],
+                [
+                 0,
+                 30
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "ScaleType": "Fit",
+              "LayoutOrder": 0
+             },
+             "attributes": {
+              "PendingIcon": "IconYenBig",
+              "IconName": "IconYenBig",
+              "IconKey": "IconYenBig"
+             }
+            },
+            {
+             "className": "Frame",
+             "name": "BuffDoubleYenText",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 128
+                ],
+                [
+                 0,
+                 40
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "LayoutOrder": 1
+             },
+             "children": [
+              {
+               "className": "TextLabel",
+               "name": "BuffDoubleYenName",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   0,
+                   128
+                  ],
+                  [
+                   0,
+                   20
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   0
+                  ],
+                  [
+                   0,
+                   0
+                  ]
+                 ]
+                },
+                "AnchorPoint": {
+                 "Vector2": [
+                  0,
+                  0
+                 ]
+                },
+                "ZIndex": 0,
+                "BackgroundTransparency": 1,
+                "Text": "2x YEN",
+                "TextScaled": true,
+                "FontFace": {
+                 "Font": {
+                  "family": "rbxasset://fonts/families/FredokaOne.json",
+                  "weight": "Regular",
+                  "style": "Normal"
+                 }
+                },
+                "TextColor3": {
+                 "Color3": [
+                  1.0,
+                  1.0,
+                  1.0
+                 ]
+                },
+                "TextXAlignment": "Left"
+               },
+               "children": [
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 1.5,
+                  "ApplyStrokeMode": "Contextual",
+                  "Color": {
+                   "Color3": [
+                    0.051,
+                    0.0588,
+                    0.1686
+                   ]
+                  },
+                  "LineJoinMode": "Bevel"
+                 }
+                },
+                {
+                 "className": "UITextSizeConstraint",
+                 "name": "SizeCap",
+                 "properties": {
+                  "MaxTextSize": 16,
+                  "MinTextSize": 9
+                 }
+                }
+               ]
+              },
+              {
+               "className": "TextLabel",
+               "name": "BuffDoubleYenValue",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   0,
+                   128
+                  ],
+                  [
+                   0,
+                   20
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   0
+                  ],
+                  [
+                   1,
+                   0
+                  ]
+                 ]
+                },
+                "AnchorPoint": {
+                 "Vector2": [
+                  0,
+                  1
+                 ]
+                },
+                "ZIndex": 0,
+                "BackgroundTransparency": 1,
+                "Text": "<unbound>",
+                "TextScaled": true,
+                "FontFace": {
+                 "Font": {
+                  "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                  "weight": "Regular",
+                  "style": "Normal"
+                 }
+                },
+                "TextColor3": {
+                 "Color3": [
+                  0.3569,
+                  0.8902,
+                  0.4902
+                 ]
+                },
+                "TextXAlignment": "Left"
+               },
+               "children": [
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 1.5,
+                  "ApplyStrokeMode": "Contextual",
+                  "Color": {
+                   "Color3": [
+                    0.051,
+                    0.0588,
+                    0.1686
+                   ]
+                  },
+                  "LineJoinMode": "Bevel"
+                 }
+                },
+                {
+                 "className": "UITextSizeConstraint",
+                 "name": "SizeCap",
+                 "properties": {
+                  "MaxTextSize": 16,
+                  "MinTextSize": 9
+                 }
+                },
+                {
+                 "className": "UIPadding",
+                 "name": "Nudge",
+                 "properties": {
+                  "PaddingTop": {
+                   "UDim": [
+                    0,
+                    4
+                   ]
+                  }
+                 }
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "className": "TextLabel",
+             "name": "BuffDoubleYenTime",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 52
+                ],
+                [
+                 0,
+                 20
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "Text": "<unbound>",
+              "TextScaled": true,
+              "FontFace": {
+               "Font": {
+                "family": "rbxasset://fonts/families/FredokaOne.json",
+                "weight": "Regular",
+                "style": "Normal"
+               }
+              },
+              "TextColor3": {
+               "Color3": [
+                1.0,
+                1.0,
+                1.0
+               ]
+              },
+              "TextXAlignment": "Right",
+              "LayoutOrder": 2
+             },
+             "children": [
+              {
+               "className": "UIStroke",
+               "name": "Stroke",
+               "properties": {
+                "Thickness": 1.5,
+                "ApplyStrokeMode": "Contextual",
+                "Color": {
+                 "Color3": [
+                  0.051,
+                  0.0588,
+                  0.1686
+                 ]
+                },
+                "LineJoinMode": "Bevel"
+               }
+              },
+              {
+               "className": "UITextSizeConstraint",
+               "name": "SizeCap",
+               "properties": {
+                "MaxTextSize": 16,
+                "MinTextSize": 9
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "className": "Frame",
+         "name": "BuffLucky",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             232
+            ],
+            [
+             0,
+             50
+            ]
+           ]
+          },
+          "Position": {
+           "UDim2": [
+            [
+             0,
+             0
+            ],
+            [
+             0,
+             0
+            ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0
+           ]
+          },
+          "ZIndex": 0,
+          "Visible": false,
+          "BackgroundTransparency": 1,
+          "LayoutOrder": 3
+         },
+         "children": [
+          {
+           "className": "Frame",
+           "name": "Face",
+           "properties": {
+            "Size": {
+             "UDim2": [
+              [
+               1,
+               -6
+              ],
+              [
+               1,
+               -6
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               3
+              ],
+              [
+               0,
+               3
+              ]
+             ]
+            },
+            "ZIndex": 1,
+            "BackgroundColor3": {
+             "Color3": [
+              1.0,
+              1.0,
+              1.0
+             ]
+            }
+           },
+           "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                0,
+                16
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIGradient",
+             "name": "Gradient",
+             "properties": {
+              "Rotation": -90,
+              "Color": {
+               "ColorSequence": {
+                "keypoints": [
+                 {
+                  "time": 0,
+                  "color": [
+                   0.1059,
+                   0.1216,
+                   0.2941
+                  ]
+                 },
+                 {
+                  "time": 1,
+                  "color": [
+                   0.2,
+                   0.2196,
+                   0.4353
+                  ]
+                 }
+                ]
+               }
+              }
+             }
+            },
+            {
+             "className": "UIStroke",
+             "name": "Stroke",
+             "properties": {
+              "Thickness": 3,
+              "ApplyStrokeMode": "Border",
+              "Color": {
+               "Color3": [
+                0.3569,
+                0.3922,
+                0.7882
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIListLayout",
+             "name": "Layout",
+             "properties": {
+              "FillDirection": "Horizontal",
+              "Padding": {
+               "UDim": [
+                0,
+                8
+               ]
+              },
+              "SortOrder": "LayoutOrder",
+              "HorizontalAlignment": "Center",
+              "VerticalAlignment": "Center"
+             }
+            },
+            {
+             "className": "ImageLabel",
+             "name": "Icon",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 30
+                ],
+                [
+                 0,
+                 30
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "ScaleType": "Fit",
+              "LayoutOrder": 0
+             },
+             "attributes": {
+              "PendingIcon": "IconLuckyThrowBig",
+              "IconName": "IconLuckyThrowBig",
+              "IconKey": "IconLuckyThrowBig"
+             }
+            },
+            {
+             "className": "Frame",
+             "name": "BuffLuckyText",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 128
+                ],
+                [
+                 0,
+                 40
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "LayoutOrder": 1
+             },
+             "children": [
+              {
+               "className": "TextLabel",
+               "name": "BuffLuckyName",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   0,
+                   128
+                  ],
+                  [
+                   0,
+                   20
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   0
+                  ],
+                  [
+                   0,
+                   0
+                  ]
+                 ]
+                },
+                "AnchorPoint": {
+                 "Vector2": [
+                  0,
+                  0
+                 ]
+                },
+                "ZIndex": 0,
+                "BackgroundTransparency": 1,
+                "Text": "LUCKY THROWS",
+                "TextScaled": true,
+                "FontFace": {
+                 "Font": {
+                  "family": "rbxasset://fonts/families/FredokaOne.json",
+                  "weight": "Regular",
+                  "style": "Normal"
+                 }
+                },
+                "TextColor3": {
+                 "Color3": [
+                  1.0,
+                  1.0,
+                  1.0
+                 ]
+                },
+                "TextXAlignment": "Left"
+               },
+               "children": [
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 1.5,
+                  "ApplyStrokeMode": "Contextual",
+                  "Color": {
+                   "Color3": [
+                    0.051,
+                    0.0588,
+                    0.1686
+                   ]
+                  },
+                  "LineJoinMode": "Bevel"
+                 }
+                },
+                {
+                 "className": "UITextSizeConstraint",
+                 "name": "SizeCap",
+                 "properties": {
+                  "MaxTextSize": 16,
+                  "MinTextSize": 9
+                 }
+                }
+               ]
+              },
+              {
+               "className": "TextLabel",
+               "name": "BuffLuckyValue",
+               "properties": {
+                "Size": {
+                 "UDim2": [
+                  [
+                   0,
+                   128
+                  ],
+                  [
+                   0,
+                   20
+                  ]
+                 ]
+                },
+                "Position": {
+                 "UDim2": [
+                  [
+                   0,
+                   0
+                  ],
+                  [
+                   1,
+                   0
+                  ]
+                 ]
+                },
+                "AnchorPoint": {
+                 "Vector2": [
+                  0,
+                  1
+                 ]
+                },
+                "ZIndex": 0,
+                "BackgroundTransparency": 1,
+                "Text": "<unbound>",
+                "TextScaled": true,
+                "FontFace": {
+                 "Font": {
+                  "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                  "weight": "Regular",
+                  "style": "Normal"
+                 }
+                },
+                "TextColor3": {
+                 "Color3": [
+                  0.3569,
+                  0.8902,
+                  0.4902
+                 ]
+                },
+                "TextXAlignment": "Left"
+               },
+               "children": [
+                {
+                 "className": "UIStroke",
+                 "name": "Stroke",
+                 "properties": {
+                  "Thickness": 1.5,
+                  "ApplyStrokeMode": "Contextual",
+                  "Color": {
+                   "Color3": [
+                    0.051,
+                    0.0588,
+                    0.1686
+                   ]
+                  },
+                  "LineJoinMode": "Bevel"
+                 }
+                },
+                {
+                 "className": "UITextSizeConstraint",
+                 "name": "SizeCap",
+                 "properties": {
+                  "MaxTextSize": 16,
+                  "MinTextSize": 9
+                 }
+                },
+                {
+                 "className": "UIPadding",
+                 "name": "Nudge",
+                 "properties": {
+                  "PaddingTop": {
+                   "UDim": [
+                    0,
+                    4
+                   ]
+                  }
+                 }
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "className": "TextLabel",
+             "name": "BuffLuckyTime",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 52
+                ],
+                [
+                 0,
+                 20
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0,
+                 0
+                ],
+                [
+                 0,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0,
+                0
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "Text": "<unbound>",
+              "TextScaled": true,
+              "FontFace": {
+               "Font": {
+                "family": "rbxasset://fonts/families/FredokaOne.json",
+                "weight": "Regular",
+                "style": "Normal"
+               }
+              },
+              "TextColor3": {
+               "Color3": [
+                1.0,
+                1.0,
+                1.0
+               ]
+              },
+              "TextXAlignment": "Right",
+              "LayoutOrder": 2
+             },
+             "children": [
+              {
+               "className": "UIStroke",
+               "name": "Stroke",
+               "properties": {
+                "Thickness": 1.5,
+                "ApplyStrokeMode": "Contextual",
+                "Color": {
+                 "Color3": [
+                  0.051,
+                  0.0588,
+                  0.1686
+                 ]
+                },
+                "LineJoinMode": "Bevel"
+               }
+              },
+              {
+               "className": "UITextSizeConstraint",
+               "name": "SizeCap",
+               "properties": {
+                "MaxTextSize": 16,
+                "MinTextSize": 9
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
         }
        ]
       }

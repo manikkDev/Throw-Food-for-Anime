@@ -544,6 +544,9 @@ export type ConfirmInfo = {
 	cost: number?,
 	costKind: string?,
 	canAfford: boolean?,
+	-- re-asked while the dialog is open (income ticks every second): the button
+	-- turns from NEED MORE YEN to the confirm look the moment the player can pay
+	affordCheck: (() -> boolean)?,
 	confirmText: string?,
 	color: Color3?,
 	tag: string?, -- v4.3: a tier / rarity chip under the name ("TIER 6", "LEGENDARY")
@@ -694,21 +697,44 @@ function Moments.confirm(info: ConfirmInfo?): Handle
 	end
 	local yes = Screens.button(gui, "ConfirmYes")
 	local yesText = Screens.label(yes, "YesText")
-	yes:SetAttribute("Allowed", afford)
-	if afford then
-		Screens.setButtonState(
-			yes,
-			if robux then "robux" else "afford",
-			(str(data.confirmText) or "CONFIRM"):upper(),
-			if robux then "IconRobux" else "IconTick"
-		)
-	else
-		Screens.setButtonState(
-			yes,
-			"cannot",
-			if robux then "NOT ENOUGH" else "NEED MORE YEN",
-			"IconYen"
-		)
+	local function showAfford(can: boolean)
+		yes:SetAttribute("Allowed", can)
+		if cost then
+			costText.TextColor3 = if can then yenColour :: Color3 else Theme.SOFT_RED
+		end
+		if can then
+			Screens.setButtonState(
+				yes,
+				if robux then "robux" else "afford",
+				(str(data.confirmText) or "CONFIRM"):upper(),
+				if robux then "IconRobux" else "IconTick"
+			)
+		else
+			Screens.setButtonState(
+				yes,
+				"cannot",
+				if robux then "NOT ENOUGH" else "NEED MORE YEN",
+				"IconYen"
+			)
+		end
+	end
+	showAfford(afford)
+	local check = data.affordCheck
+	if typeof(check) == "function" then
+		task.spawn(function()
+			local last = afford
+			while confirmStamp == stamp and confirmClose ~= nil do
+				task.wait(0.25)
+				if confirmStamp ~= stamp then
+					break
+				end
+				local ok, now = pcall(check)
+				if ok and type(now) == "boolean" and now ~= last then
+					last = now
+					showAfford(now)
+				end
+			end
+		end)
 	end
 
 	yesText.Visible = true

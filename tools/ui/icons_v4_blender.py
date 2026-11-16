@@ -567,6 +567,27 @@ def b_seafood():
     return (-14, 0, 0)
 
 
+def b_daily(mark="one"):
+    """Daily rewards: a chunky tear-off calendar page, red header band, two silver binder rings, a big
+    bold "1" on the page (mark="star": a gold star; the "1" read better at 40 px on green), the bottom right corner folded over."""
+    page = M(WHITE, col="#FFFFFF", dark="#C9D2F2")
+    slab("cal_page", M(CREAM, col="#F3E6CC", dark="#B98F5A"), size=2.0, depth=0.16, bevel=0.05,
+         loc=(0.07, -0.08, -0.16))                                    # the next page of the pad, behind
+    slab("cal_page", page, size=2.0, depth=0.3, bevel=0.08)
+    slab("cal_fold", M(CREAM, col="#E9DCC4", dark="#B0926A"), size=2.0, depth=0.1, bevel=0.03, loc=(0, 0, 0.16))
+    red = M(RED)
+    prim("cube", red, loc=(0, -0.01, 0.6), scale=(0.86, 0.2, 0.27), bevel=0.12)
+    for x in (-0.44, 0.44):
+        prim("cyl", M(INK), loc=(x, -0.2, 0.62), scale=(0.1, 0.1, 0.03), rot=(90, 0, 0))
+        prim("torus", M(SILVER), loc=(x, -0.02, 0.86), rot=(0, 90, 0), major=0.2, minor=0.07)
+    if mark == "star":
+        slab("star5", M(GOLD), size=1.05, depth=0.16, bevel=0.05, loc=(0, -0.22, 0.17))
+    else:
+        slab("one", M(INK, col="#2B3A8C", dark="#141B4F", light="#4A63D0"), size=1.15, depth=0.14, bevel=0.035,
+             loc=(0, -0.25, 0.16))
+    return (-16, 6, 0)
+
+
 BUILDERS = {
     "Tick": b_tick, "Close": b_close, "Plus": b_plus, "Arrow": b_arrow, "Info": b_info, "Star": b_star,
     "Yen": b_yen, "RobuxBig": b_robux_big, "Power": b_dumbbell, "Luck": b_luck, "LuckyThrow": b_lucky_throw,
@@ -575,6 +596,7 @@ BUILDERS = {
     "Fuse": b_fuse, "Bench": b_bench, "Place": b_place, "Scroll": b_scroll, "Throw": b_throw, "Auto": b_auto,
     "Hide": b_hide, "LowDetail": b_lowdetail, "Music": b_music, "Sfx": b_sfx, "Fast": b_fast,
     "FlavorSavory": b_savory, "FlavorSweet": b_sweet, "FlavorSpicy": b_spicy, "FlavorSeafood": b_seafood,
+    "Daily": b_daily,
 }
 
 

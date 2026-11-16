@@ -54,10 +54,11 @@ local HOTKEYS: { [Enum.KeyCode]: string } = {
 	[Enum.KeyCode.Three] = "HeroIndex",
 	[Enum.KeyCode.Four] = "Store",
 	[Enum.KeyCode.Five] = "PlaytimeGifts",
+	[Enum.KeyCode.Six] = "DailyRewards",
 }
 
 -- HUD buttons that can carry a "!" badge
-local BADGED = { "BtnShop", "BtnRebirth", "BtnGift", "BtnIndex" }
+local BADGED = { "BtnShop", "BtnRebirth", "BtnGift", "BtnDaily", "BtnIndex" }
 
 -- ProximityPrompt `Action` attribute on a hub station -> the screen it opens
 local STATIONS: { [string]: string } = {
@@ -128,8 +129,9 @@ function MenuController:_session(): number
 	return (if state then state.sessionSeconds else 0) + (os.clock() - self._stateAt)
 end
 
--- The Gifts button leads to whatever is waiting: offline earnings first, then
--- today's daily reward, otherwise the playtime gifts.
+-- The Gifts button leads to offline earnings while they wait, otherwise the playtime gifts.
+-- The daily reward has its own DAILY button (owner's review of section 5: it had vanished
+-- behind the Gifts button once claimed).
 function MenuController:_route(name: string, from: string?): string
 	local state = self._state.State
 	if name ~= "PlaytimeGifts" or from ~= nil or not state then
@@ -137,9 +139,6 @@ function MenuController:_route(name: string, from: string?): string
 	end
 	if state.offline then
 		return "OfflineEarnings"
-	end
-	if Collection.dailyState(state.daily, Collection.dayOf(self:_now())).canClaim then
-		return "DailyRewards"
 	end
 	return name
 end
@@ -191,7 +190,8 @@ function MenuController:_refreshBadges()
 	end
 	local today = Collection.dayOf(self:_now())
 	local session = self:_session()
-	local ready = Collection.dailyState(state.daily, today).canClaim or state.offline ~= nil
+	flags.BtnDaily = Collection.dailyState(state.daily, today).canClaim
+	local ready = state.offline ~= nil
 	local nextGift: number? = nil
 	for i, minutes in Config.Rewards.PlaytimeMinutes do
 		if Collection.giftClaimable(Config, state.gifts, today, session, i) then

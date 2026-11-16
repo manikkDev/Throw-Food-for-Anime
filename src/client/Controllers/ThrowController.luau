@@ -78,6 +78,7 @@ local ThrowController = Knit.CreateController({
 	-- pad centre facing the lane; only the Exit button (or Backspace) lets them off
 	_locked = false,
 	_lockedAt = 0,
+	_carryToastAt = 0,
 	_leaving = false,
 	_padRemote = nil :: RemoteEvent?,
 	_sentAt = 0,
@@ -140,6 +141,7 @@ function ThrowController:_canThrow(): boolean
 	-- no answer, and the pad would then sit locked waiting for one
 	return self._mode == "throw"
 		and not self._busy
+		and player:GetAttribute("Carrying") == nil
 		and self._state.State ~= nil
 		and os.clock() - self._sentAt >= T.ServerCooldownSeconds + 0.1
 end
@@ -925,7 +927,22 @@ function ThrowController:KnitStart()
 				-- set down off the stage: the next step onto it locks again
 				self._leaving = false
 			end
-			if self._onPad and not self._leaving and not self._locked then
+			if
+				self._onPad
+				and not self._leaving
+				and not self._locked
+				and player:GetAttribute("Carrying") ~= nil
+				and not self._playing
+			then
+				-- a hero in the hands: no pad until it is set down (the server says so once);
+				-- walking on does not lock until the player steps off and back on
+				self._leaving = true
+				local hud = self._hud :: any
+				if hud and hud.Toast and os.clock() - self._carryToastAt > 4 then
+					self._carryToastAt = os.clock()
+					hud:Toast("Place your hero on a pedestal first!", "bad")
+				end
+			elseif self._onPad and not self._leaving and not self._locked then
 				self:_lock(true)
 			elseif
 				self._locked

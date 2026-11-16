@@ -12,6 +12,7 @@ local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Income = require(ReplicatedStorage.Shared.Core.Income)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local SquadRules = require(ReplicatedStorage.Shared.Core.Squad)
+local Moments = require(script.Parent.Parent.Moments)
 local Screens = require(script.Parent.Parent.Screens)
 local Theme = require(script.Parent.Parent.Theme)
 local UiFx = require(script.Parent.Parent.UiFx)
@@ -36,6 +37,44 @@ local function incomeOf(state: any): (any) -> number
 	return function(hero: any): number
 		return Income.hero(Config, MAPS, hero, best)
 	end
+end
+
+-- SELL cannot be undone, so it asks first: what the hero sells for and the
+-- income the plot loses (a misclick must never cost a Legendary)
+local function confirmSell(uid: string)
+	local state = ctx.state()
+	local hero = state and state.heroes[uid]
+	if not hero then
+		return
+	end
+	local character = MAPS.character[hero.id] or MAPS.premium[hero.id]
+	local rarity = if character and character.Rarity then character.Rarity else "Premium"
+	local earn = incomeOf(state)(hero)
+	local value = Income.sellValue(Config, earn)
+	local assets = ReplicatedStorage:FindFirstChild("Assets")
+	local characters = assets and assets:FindFirstChild("Characters")
+	local template = characters and characters:FindFirstChild(`Char_{hero.id}`)
+	Moments.confirm({
+		title = "SELL HERO",
+		name = if character then character.Name else hero.id,
+		tag = rarity,
+		tagColor = Theme.rarity(rarity),
+		model = template,
+		rows = {
+			{ label = "You get", to = `{Format.short(value)} yen`, icon = "IconYen" },
+			{
+				label = "Income",
+				from = if hero.slot > 0 then `+{Format.short(earn)}/s` else nil,
+				to = if hero.slot > 0 then "+0/s" else "on the bench",
+				icon = "IconPower",
+			},
+		},
+		confirmText = "SELL",
+		color = Theme.DANGER,
+		onConfirm = function()
+			ctx.fire("SquadAction", "sell", uid)
+		end,
+	})
 end
 
 -- PLACE puts a bench hero on a free pedestal, or swaps it for the weakest
@@ -277,7 +316,7 @@ function Squad.render(state: any)
 				ctx.fire("SquadAction", "fuse", uid)
 			end)
 			Screens.button(row, "SellButton").Activated:Connect(function()
-				ctx.fire("SquadAction", "sell", uid)
+				confirmSell(uid)
 			end)
 			Screens.label(row, "HeroName").Text = if character then character.Name else hero.id
 			Screens.label(row, "RarityText").Text = rarity:upper()

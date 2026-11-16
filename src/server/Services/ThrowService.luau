@@ -34,6 +34,7 @@ local ThrowService = Knit.CreateService({
 	Name = "ThrowService",
 	_last = {} :: { [Player]: number },
 	_focusToken = {} :: { [Player]: number },
+	_placeFirstAt = {} :: { [Player]: number },
 	_forced = {} :: { [Player]: { rarity: string?, mutation: string?, size: string? } },
 	_forcedLook = nil :: { mutation: string?, size: string? }?,
 	-- players held on their throw pad: what their humanoid had before
@@ -51,6 +52,18 @@ function ThrowService:_refuse(player: Player, why: string)
 	if workspace:GetAttribute("TFADebug") then
 		print(`[ThrowService] refused {player.Name}: {why}`)
 	end
+end
+
+-- "set your hero down first", at most once every few seconds (the pad and a throw both ask)
+local PLACE_FIRST_GAP = 4
+function ThrowService:_placeFirst(player: Player)
+	local now = os.clock()
+	local last = self._placeFirstAt[player]
+	if last and now - last < PLACE_FIRST_GAP then
+		return
+	end
+	self._placeFirstAt[player] = now
+	self._state:Toast(player, "Place your hero on a pedestal first!", "bad")
 end
 
 -- The very first throw of a new player is a guaranteed good catch from the
@@ -90,6 +103,12 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown, a
 	end
 	if not self._pad[player] and not self._plots:OnThrowPad(player) then
 		return self:_refuse(player, "not on own throw pad")
+	end
+	-- a hero in the hands is set down first: a throw would fling food with a hero still held
+	-- (owner's review of section 5)
+	if self._plots:Carrying(player) then
+		self:_placeFirst(player)
+		return self:_refuse(player, "carrying a hero")
 	end
 	local food = MAPS.food[profile.food]
 	if not food or not profile.foods[profile.food] then
@@ -302,6 +321,10 @@ function ThrowService:SetPad(player: Player, on: boolean)
 		if self._pad[player] or humanoid.Health <= 0 or not self._plots:OnThrowPad(player) then
 			return
 		end
+		if self._plots:Carrying(player) then
+			self:_placeFirst(player)
+			return
+		end
 		self._training:Stop(player)
 		self._pad[player] = {
 			walk = humanoid.WalkSpeed,
@@ -388,6 +411,7 @@ function ThrowService:KnitStart()
 	Players.PlayerRemoving:Connect(function(player: Player)
 		self._last[player] = nil
 		self._focusToken[player] = nil
+		self._placeFirstAt[player] = nil
 		self._pad[player] = nil
 		local folder = workspace:FindFirstChild("StreamFocus")
 		local focus = folder and folder:FindFirstChild(tostring(player.UserId))

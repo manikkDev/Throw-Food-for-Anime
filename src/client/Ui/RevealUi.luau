@@ -530,7 +530,7 @@ function RevealUi.final(result: any)
 	-- the numbers
 	Screens.label(card, "IncomeLabel").Text = `+{Format.short(result.income or 0)}/s`
 	if typeof(result.oneInN) == "number" then
-		RevealUi.finalOdds(result.oneInN, color)
+		RevealUi.finalOdds(result.oneInN, color, rarity)
 	else
 		show("FinalOdds", false)
 	end
@@ -582,18 +582,138 @@ function RevealUi.final(result: any)
 	end)
 end
 
---- v4.6 (owner's review 7): the final beat's "1 IN N" at the top centre, held for the
---- whole beat. The number SLAMS in (scaled down from 2.4x with a hard overshoot and a
---- short shake), the glow and the turning sunburst behind it bloom in the rarity colour,
---- the CHANCE chip pops in under it, and a shine runs through the letters every ~2.4 s
---- (a white band in the text's UIGradient, so it never draws a box).
+--- The final beat's "1 IN N" at the top edge (v4.7, owner's review of section 5: it sat on the
+--- hero's head, and every rarity looked the same). How loud it is grows with the rarity
+--- (ODDS_STYLE): its size, how hard it slams in (the scale it drops from) and shakes, the
+--- outline, a gentle pulse while it holds, the sparkles, a flash in the rarity colour, and the
+--- letters' colours: a white shine running through the rarity colour up to Epic, molten gold for
+--- Legendary, the Mythic palette flowing through the letters, a full rainbow with a glitch for
+--- Secret. The glow and the sunburst behind it turn and pulse at the rarity's own pace (UiFx).
+type OddsStyle = {
+	scale: number, -- resting size (the frame is anchored at its top: it grows downward)
+	slam: number, -- the multiple of its size it slams in from
+	shake: number, -- px of impact shake
+	stroke: number,
+	pulse: number, -- share of its size it breathes by while it holds
+	sparkle: boolean,
+	flash: number?, -- peak of a full-screen flash in the rarity colour (0..1)
+	colours: { Color3 }?, -- flowing letter colours (else the white shine band)
+	rainbow: boolean?,
+	glitch: boolean?,
+}
+local GOLD_FLOW = {
+	Color3.fromHex("FFF6C8"),
+	Color3.fromHex("FFD045"),
+	Color3.fromHex("FF9A1F"),
+	Color3.fromHex("FFE58A"),
+}
+local MYTHIC_FLOW = {
+	Color3.fromHex("FF4D6D"),
+	Color3.fromHex("FFB020"),
+	Color3.fromHex("FFE14D"),
+	Color3.fromHex("4ADE80"),
+	Color3.fromHex("38BDF8"),
+	Color3.fromHex("A855F7"),
+}
+local GOLDEN: OddsStyle = {
+	scale = 1.1,
+	slam = 2.8,
+	shake = 9,
+	stroke = 5,
+	pulse = 0.035,
+	sparkle = true,
+	flash = 0.32,
+	colours = GOLD_FLOW,
+}
+local ODDS_STYLE: { [string]: OddsStyle } = {
+	Common = { scale = 0.8, slam = 1.7, shake = 3, stroke = 3, pulse = 0, sparkle = false },
+	Uncommon = { scale = 0.86, slam = 1.9, shake = 4, stroke = 3, pulse = 0, sparkle = false },
+	Rare = { scale = 0.94, slam = 2.2, shake = 5, stroke = 4, pulse = 0.015, sparkle = true },
+	Epic = {
+		scale = 1.02,
+		slam = 2.5,
+		shake = 7,
+		stroke = 4,
+		pulse = 0.025,
+		sparkle = true,
+		flash = 0.18,
+	},
+	Legendary = GOLDEN,
+	Mythic = {
+		scale = 1.18,
+		slam = 3.0,
+		shake = 11,
+		stroke = 5,
+		pulse = 0.045,
+		sparkle = true,
+		flash = 0.45,
+		colours = MYTHIC_FLOW,
+	},
+	Secret = {
+		scale = 1.26,
+		slam = 3.2,
+		shake = 13,
+		stroke = 6,
+		pulse = 0.05,
+		sparkle = true,
+		flash = 0.6,
+		rainbow = true,
+		glitch = true,
+	},
+	Premium = GOLDEN,
+}
 local SHINE_BASE = 0.32 -- how far the rarity colour is lifted toward white at rest
-function RevealUi.finalOdds(oneInN: number, color: Color3)
+
+-- a list of colours as a gradient that tiles: the list twice over 0..1, so sliding the Offset by
+-- one period is seamless
+local function flowSequence(colours: { Color3 }): ColorSequence
+	local points = {}
+	local n = #colours
+	for i = 0, 2 * n do
+		table.insert(points, ColorSequenceKeypoint.new(i / (2 * n), colours[(i % n) + 1]))
+	end
+	return ColorSequence.new(points)
+end
+
+-- a short full-screen flash in `color`, up to `peak` opacity (the white flash, tinted)
+local function tintFlash(color: Color3, peak: number)
+	local frame = flashFrame
+	if not frame then
+		return
+	end
+	flashId += 1
+	local id = flashId
+	frame.BackgroundColor3 = color:Lerp(Color3.new(1, 1, 1), 0.35)
+	frame.BackgroundTransparency = 1
+	frame.Visible = true
+	TweenService:Create(frame, TweenInfo.new(0.06), { BackgroundTransparency = 1 - peak }):Play()
+	task.delay(0.06, function()
+		if flashId ~= id then
+			return
+		end
+		TweenService
+			:Create(
+				frame,
+				TweenInfo.new(0.5, Enum.EasingStyle.Quad),
+				{ BackgroundTransparency = 1 }
+			)
+			:Play()
+		task.delay(0.5, function()
+			if flashId == id then
+				frame.Visible = false
+				frame.BackgroundColor3 = Color3.new(1, 1, 1)
+			end
+		end)
+	end)
+end
+
+function RevealUi.finalOdds(oneInN: number, color: Color3, rarity: string?)
 	local holder = holders.FinalOdds
 	local label = labels.FinalOdds
 	if not holder or not label then
 		return
 	end
+	local style = ODDS_STYLE[rarity or ""] or ODDS_STYLE.Rare
 	finalOddsId += 1
 	local id = finalOddsId
 	label.Text = Format.oneIn(oneInN):upper()
@@ -601,10 +721,12 @@ function RevealUi.finalOdds(oneInN: number, color: Color3)
 	local stroke = label:FindFirstChildOfClass("UIStroke")
 	if stroke then
 		stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
-		stroke.Color = color:Lerp(Color3.new(0, 0, 0), 0.6)
-		stroke.Thickness = 4
+		stroke.Color = if style.rainbow
+			then Color3.new(0, 0, 0)
+			else color:Lerp(Color3.new(0, 0, 0), 0.6)
+		stroke.Thickness = style.stroke
 	end
-	-- the letters: the rarity colour with a white band parked off the left edge
+	-- the letters' colours
 	local gradient = label:FindFirstChild("OddsShine")
 	if not gradient or not gradient:IsA("UIGradient") then
 		for _, other in label:GetChildren() do
@@ -618,21 +740,41 @@ function RevealUi.finalOdds(oneInN: number, color: Color3)
 		gradient = made
 	end
 	local shine = gradient :: UIGradient
-	local base = color:Lerp(Color3.new(1, 1, 1), SHINE_BASE)
-	shine.Rotation = 18
-	shine.Color = ColorSequence.new({
-		ColorSequenceKeypoint.new(0, base),
-		ColorSequenceKeypoint.new(0.4, base),
-		ColorSequenceKeypoint.new(0.5, Color3.new(1, 1, 1)),
-		ColorSequenceKeypoint.new(0.6, base),
-		ColorSequenceKeypoint.new(1, base),
-	})
-	shine.Offset = Vector2.new(-1, 0)
+	local flowing: { Color3 }? = style.colours
+	if style.rainbow then
+		local hues = {}
+		for i = 0, 6 do
+			table.insert(hues, Color3.fromHSV(i / 7, 0.75, 1))
+		end
+		flowing = hues
+	end
+	if flowing then
+		shine.Rotation = 0
+		shine.Color = flowSequence(flowing)
+		shine.Offset = Vector2.new(-0.5, 0)
+	else
+		local base = color:Lerp(Color3.new(1, 1, 1), SHINE_BASE)
+		shine.Rotation = 18
+		shine.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, base),
+			ColorSequenceKeypoint.new(0.4, base),
+			ColorSequenceKeypoint.new(0.5, Color3.new(1, 1, 1)),
+			ColorSequenceKeypoint.new(0.6, base),
+			ColorSequenceKeypoint.new(1, base),
+		})
+		shine.Offset = Vector2.new(-1, 0)
+	end
 
-	-- the glow and the sunburst take the rarity's colour and motion
+	-- the glow and the sunburst: the rarity's colour and its own turn / pulse / gold / cycle
 	UiFx.scan(holder)
-	UiFx.setRarity(holder, nil)
+	UiFx.setRarity(holder, rarity)
 	UiFx.setColour(holder, color:Lerp(Color3.new(1, 1, 1), 0.2))
+	for _, name in { "Twinkle1", "Twinkle2" } do
+		local twinkle = holder:FindFirstChild(name)
+		if twinkle and twinkle:IsA("GuiObject") then
+			twinkle.Visible = style.sparkle
+		end
+	end
 	local caption = Screens.frame(holder, "ChancePill")
 	Screens.tint(caption, color:Lerp(Color3.new(0, 0, 0), 0.55))
 	local captionCell = caption.Parent
@@ -659,19 +801,25 @@ function RevealUi.finalOdds(oneInN: number, color: Color3)
 		scale = made
 	end
 	local slam = scale :: UIScale
-	slam.Scale = 2.4
+	slam.Scale = style.slam * style.scale
 	TweenService:Create(
 		slam,
 		TweenInfo.new(0.32, Enum.EasingStyle.Back, Enum.EasingDirection.Out, 0, false, 0),
-		{ Scale = 1 }
+		{ Scale = style.scale }
 	):Play()
 	task.delay(0.12, function()
-		-- the impact: a short shake, settling
-		for i = 1, 6 do
+		if finalOddsId ~= id then
+			return
+		end
+		if style.flash then
+			tintFlash(color, style.flash)
+		end
+		-- the impact: a shake, settling
+		for i = 1, 7 do
 			if finalOddsId ~= id then
 				return
 			end
-			local j = 7 * (1 - i / 7)
+			local j = style.shake * (1 - i / 8)
 			holder.Position = (home :: UDim2)
 				+ UDim2.fromOffset((math.random() - 0.5) * 2 * j, (math.random() - 0.5) * 2 * j)
 			task.wait(0.03)
@@ -683,17 +831,48 @@ function RevealUi.finalOdds(oneInN: number, color: Color3)
 		captionWhole.Visible = true
 		pop(captionWhole, 1.6)
 	end)
-	-- the shine, through the letters, for as long as the beat holds
+	-- while the beat holds: the letters' colours move, it breathes, and a Secret glitches
 	task.spawn(function()
-		task.wait(0.4)
+		task.wait(0.45)
+		local t0 = os.clock()
+		local nextGlitch = t0 + 1.2
+		local nextShine = 0
 		while finalOddsId == id and holder.Visible do
-			shine.Offset = Vector2.new(-1, 0)
-			TweenService:Create(
-				shine,
-				TweenInfo.new(0.7, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
-				{ Offset = Vector2.new(1, 0) }
-			):Play()
-			task.wait(2.4)
+			local now = os.clock()
+			if style.pulse > 0 then
+				slam.Scale = style.scale * (1 + style.pulse * math.sin((now - t0) * 3.2))
+			end
+			if flowing then
+				-- one period of the tiled colours every 2.4 s, seamless
+				shine.Offset = Vector2.new(((now - t0) / 2.4) % 1 - 1, 0)
+			elseif now >= nextShine then
+				nextShine = now + 2.4
+				shine.Offset = Vector2.new(-1, 0)
+				TweenService:Create(
+					shine,
+					TweenInfo.new(0.7, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+					{ Offset = Vector2.new(1, 0) }
+				):Play()
+			end
+			if style.glitch and now >= nextGlitch then
+				nextGlitch = now + 1.4 + math.random() * 1.2
+				for _ = 1, 3 do
+					if finalOddsId ~= id then
+						return
+					end
+					holder.Position = (home :: UDim2)
+						+ UDim2.fromOffset(math.random(-6, 6), math.random(-2, 2))
+					if stroke then
+						stroke.Color = Color3.fromHSV(math.random(), 0.9, 1)
+					end
+					task.wait(0.04)
+				end
+				holder.Position = home :: UDim2
+				if stroke then
+					stroke.Color = Color3.new(0, 0, 0)
+				end
+			end
+			task.wait(1 / 30)
 		end
 	end)
 end

@@ -306,6 +306,17 @@ def chili(d):
     ell(d, 0.11, 0.08, 0.41, 0.26)
 
 
+def cal_page(d):
+    """Daily: a tear-off calendar page, the bottom right corner folded (dog-ear cut)."""
+    rrect(d, 0.08, 0.06, 0.92, 0.94, 0.09)
+    d.polygon(P([(0.70, 0.96), (0.96, 0.96), (0.96, 0.70)]), fill=0)
+
+
+def cal_fold(d):
+    """Daily: the folded-over corner flap that sits on the cut of cal_page."""
+    d.polygon(P([(0.70, 0.94), (0.70, 0.74), (0.90, 0.74)]), fill=255)
+
+
 def speaker_full(d):
     speaker(d)
     wave1(d)
@@ -323,6 +334,7 @@ SHAPES = {
     "shackle": (shackle, 6), "yen": (glyph("\u00a5"), 6), "info_i": (info_i, 6), "fish": (fish, 30),
     "fin": (fin, 16), "bolt": (bolt, 18), "speed_line": (speed_line, 4), "swirl": (swirl, 4),
     "chili": (chili, 10), "star5_small": (star5, 40),
+    "cal_page": (cal_page, 10), "cal_fold": (cal_fold, 6), "one": (glyph("1"), 6),
 }
 
 

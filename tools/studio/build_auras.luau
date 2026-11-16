@@ -57,6 +57,13 @@ for k in EFFECT do
 	KEEP[k] = true
 end
 
+-- textures in the owner's packs that Roblox has moderated (design/ui/CHANGES-v4.md, rejected list)
+local MODERATED = {
+	["12026515010"] = true, -- Smoke2
+	["12867093437"] = true, -- Hypnotism
+	["14053069521"] = true, -- HANMA 4
+}
+
 local function bodyName(name)
 	return R6MAP[name] or R15[name]
 end
@@ -106,6 +113,19 @@ local function strip(inst, keepParts)
 			d:Destroy()
 		elseif (d:IsA("Beam") or d:IsA("Trail")) and not d.Enabled then
 			d:Destroy()
+		end
+	end
+	-- drop effects whose texture Roblox has moderated: they draw a placeholder (or nothing) and
+	-- every server and client logs "Asset is not approved for the requester" (section 5 playtest)
+	-- (the clone itself too: an emitter copied straight off a body part is stripped on its own)
+	local all = inst:GetDescendants()
+	table.insert(all, inst)
+	for _, d in all do
+		if d:IsA("ParticleEmitter") or d:IsA("Beam") or d:IsA("Trail") then
+			local id = string.match(d.Texture, "%d+")
+			if id and MODERATED[id] then
+				d:Destroy()
+			end
 		end
 	end
 end

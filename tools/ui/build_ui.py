@@ -25,7 +25,7 @@ import mangapop as mp  # noqa: E402  (applies the patches)
 from mangapop import ub  # noqa: E402
 import mp3  # noqa: E402,F401  (v3 system: emitter additions)
 import mp4  # noqa: E402,F401  (v4 system: thin strokes, lip only on buttons, type scale)
-import screens_v46 as screens  # noqa: E402  (UI v4.6: v4.4 + owner's review 7)
+import screens_v47 as screens  # noqa: E402  (UI v4.7: v4.6 + owner's review of section 5)
 import verify_ui as vu  # noqa: E402
 from PIL import Image, ImageDraw  # noqa: E402
 

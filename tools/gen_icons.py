@@ -52,9 +52,16 @@ def render() -> str:
         for key, value in json.loads(path.read_text(encoding="utf-8")).items():
             if isinstance(value, int) and not key.startswith("_"):
                 rows[key] = value
+    # the UI specs name a food slot FoodIcon_<id>; the uploads call it Food_<id>: both keys
+    for key in list(rows):
+        if key.startswith("Food_") and f"FoodIcon_{key[5:]}" not in rows:
+            rows[f"FoodIcon_{key[5:]}"] = rows[key]
     lines = [BANNER, "local Icons: { [string]: string } = {"]
     for key in sorted(rows):
         lines.append(f'\t{key} = "rbxassetid://{rows[key]}",')
+    # filled per player at run time (the leaderboard rows: WorldUiController sets an rbxthumb://
+    # avatar headshot for each entry); listed so a key check knows it is a runtime image
+    lines.append('\tPlayerHeadshot = "",')
     lines += ["}", "", "return Icons", ""]
     return "\n".join(lines)
 

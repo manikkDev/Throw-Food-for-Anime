@@ -60,7 +60,7 @@ local CINEMATIC_GROUPS = {
 	"LuckChip",
 	"TutorialHint",
 	"NoticeCard",
-	"ServerLuckBar",
+	"BuffTray",
 }
 -- headline over an announcement that is not a catch
 local ANNOUNCE_HEADS: { [string]: string } = {
@@ -81,7 +81,11 @@ local HudController = Knit.CreateController({
 	_noticePage = nil :: string?,
 	_noticeSeen = {} :: { [string]: boolean },
 	_noticeStamp = 0,
-	_envActive = false,
+	_buffCount = 0,
+	_buffOpen = false,
+	_buffPinned = false,
+	_buffSeen = {} :: { [string]: boolean },
+	_buffStamp = 0,
 	_labels = {} :: { [string]: TextLabel },
 	_toastHolder = nil :: GuiObject?,
 	_toastsLive = {} :: { GuiObject },
@@ -165,6 +169,22 @@ function HudController:Toast(text: string, kind: string?)
 		end
 		return
 	end
+	-- the same words already on screen (the client and the server can both say "place your hero
+	-- first"): that toast gets its time again and a pop, no second copy
+	for _, live in self._toastsLive do
+		if Screens.label(live, "Text").Text == text then
+			self._toastCount += 1
+			local again = self._toastCount
+			live:SetAttribute("Stamp", again)
+			Screens.pop(live, 1.12)
+			task.delay(TOAST_SECONDS, function()
+				if live:GetAttribute("Stamp") == again then
+					self:_retire(live)
+				end
+			end)
+			return
+		end
+	end
 	while #self._toastsLive >= TOAST_MAX do
 		self:_retire(self._toastsLive[1], true)
 	end
@@ -188,6 +208,52 @@ function HudController:Toast(text: string, kind: string?)
 			self:_retire(toast)
 		end
 	end)
+end
+
+-- Toasts draw above EVERY page and dialog (owner's review of section 5: "Sold for ..." came up
+-- behind the Squad page, purchase notices behind the Store). The HUD sits under the pages
+-- (DisplayOrder 1), so its Toasts stack moves into a top layer of its own whose canvas copies
+-- the HUD canvas's size, position and scale as Screens fits them: every toast keeps the same
+-- place on screen, only its draw order changes.
+local TOAST_LAYER_ORDER = 40 -- pages 10-12, Confirm 14, HudFx 15; under the VFX overlay (50)
+function HudController:_raiseToasts(hud: ScreenGui, holder: GuiObject)
+	local canvas = hud:FindFirstChild("CanvasFrame")
+	if not canvas or not canvas:IsA("GuiObject") then
+		return
+	end
+	local layer = Instance.new("ScreenGui")
+	layer.Name = "ToastLayer"
+	layer.DisplayOrder = TOAST_LAYER_ORDER
+	layer.IgnoreGuiInset = hud.IgnoreGuiInset
+	layer.ScreenInsets = hud.ScreenInsets
+	layer.ZIndexBehavior = hud.ZIndexBehavior
+	layer.ResetOnSpawn = false
+	local mirror = Instance.new("Frame")
+	mirror.Name = "CanvasFrame"
+	mirror.BackgroundTransparency = 1
+	local scale = Instance.new("UIScale")
+	scale.Name = "Scale"
+	scale.Parent = mirror
+	local source = canvas:FindFirstChild("Scale")
+	local function sync()
+		mirror.AnchorPoint = canvas.AnchorPoint
+		mirror.Position = canvas.Position
+		mirror.Size = canvas.Size
+		if source and source:IsA("UIScale") then
+			scale.Scale = source.Scale
+		end
+	end
+	sync()
+	for _, property in { "AnchorPoint", "Position", "Size" } do
+		canvas:GetPropertyChangedSignal(property):Connect(sync)
+	end
+	if source and source:IsA("UIScale") then
+		source:GetPropertyChangedSignal("Scale"):Connect(sync)
+	end
+	mirror.Parent = layer
+	holder.Parent = mirror
+	layer.Parent = hud.Parent
+	self._toastLayer = layer
 end
 
 --- While held, the income line does not move. The throw sequence holds it so
@@ -250,30 +316,9 @@ function HudController:_layout()
 	)
 	-- the announcement keeps showing on the throw pad and in a soft cinematic
 	self:_setVisible("Announcement", self._mode ~= "cinematic" and self._announcing)
-	-- v4.6 (owner's review 7): an event (server luck, Festival Hour) is told ONCE
-	-- by the announcement bar; then it lives in a compact chip beside the right
-	-- button column (icon, multiplier over the clock, the boost button). The chip
-	-- waits while an announcement shows, then pops in, small, out of the way.
-	local chipOn = open and self._envActive and not self._announcing
-	local chip = self:_part("ServerLuckBar")
-	local wasOn = chip ~= nil and chip.Visible
-	self:_setVisible("ServerLuckBar", chipOn)
-	if chip and chipOn and not wasOn then
-		local scale = chip:FindFirstChild("ChipPop")
-		if not scale or not scale:IsA("UIScale") then
-			local made = Instance.new("UIScale")
-			made.Name = "ChipPop"
-			made.Parent = chip
-			scale = made
-		end
-		local pop = scale :: UIScale
-		pop.Scale = 1.35
-		TweenService
-			:Create(pop, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-				Scale = 1,
-			})
-			:Play()
-	end
+	-- v4.7 (owner's review of section 5): every active boost lives in the BOOSTS tray in the
+	-- top-right corner under the settings gear, folded to its header unless opened
+	self:_setVisible("BuffTray", open and self._buffCount > 0)
 	-- the hint belongs to the normal HUD: not in throw mode, not in a sequence
 	self:_setVisible("TutorialHint", open and self._objective ~= "")
 	self:_placeToasts()
@@ -303,6 +348,24 @@ function HudController:_placeToasts()
 		end
 	end
 	local goal = UDim2.new(0.5, 0, 0, bottom + TOAST_CLEAR)
+	-- a page is open: the stack drops to the bottom centre, under the window, so a toast never
+	-- covers the page's title (owner's review of section 5) and stays in plain sight
+	local layout = holder:FindFirstChildOfClass("UIListLayout")
+	local atBottom = Screens.isOpen()
+	local anchor = if atBottom then Vector2.new(0.5, 1) else Vector2.new(0.5, 0)
+	if atBottom then
+		goal = UDim2.new(0.5, 0, 1, -TOAST_CLEAR)
+	end
+	if holder.AnchorPoint ~= anchor then
+		-- switching ends: jump, do not slide across the screen
+		holder.AnchorPoint = anchor
+		holder.Position = goal
+		if layout then
+			layout.VerticalAlignment = if atBottom
+				then Enum.VerticalAlignment.Bottom
+				else Enum.VerticalAlignment.Top
+		end
+	end
 	if holder.Position ~= goal then
 		TweenService:Create(holder, TweenInfo.new(0.25, Enum.EasingStyle.Quad), { Position = goal })
 			:Play()
@@ -751,8 +814,6 @@ function HudController:_bind()
 			"FoodName",
 			"FoodFlavor",
 			"ObjectiveLine",
-			"Multiplier",
-			"TimeLeft",
 			"FlashText",
 		}
 	do
@@ -789,9 +850,14 @@ function HudController:_bind()
 	-- live toasts are clones of ToastTemplate; the tree's own ToastSample rows
 	-- are mockup data and Screens has already destroyed them
 	self._toastHolder = Screens.frame(hud, "Toasts")
+	self:_raiseToasts(hud, self._toastHolder)
 
-	Screens.button(hud, "BoostButton").Activated:Connect(function()
-		Knit.GetController("MenuController"):Prompt(MAPS.product.ServerLuck, false)
+	-- the boosts tray: the header opens and closes it; it stays as the player left it
+	Screens.button(hud, "BuffToggle").Activated:Connect(function()
+		Screens.sound("ui_click")
+		self._buffPinned = true
+		self._buffOpen = not self._buffOpen
+		self:_refreshBuffs()
 	end)
 	self:_layout()
 end
@@ -823,29 +889,102 @@ function HudController:_refresh()
 	end
 end
 
--- The event chip (v4.6: beside the right button column): server luck while it
--- is raised, the Festival Hour while it runs. With both active it alternates
--- every few seconds.
+-- The BOOSTS tray (v4.7): one row per active boost (server luck, Festival Hour, timed 2x Yen,
+-- lucky throws), a count on the header. Folded it is only the header; a boost that was not there
+-- before opens it for BUFF_PEEK seconds (unless the player has opened or closed it by hand).
+local BUFF_PEEK = 5
+-- each row: the row, its value label, its clock label (spelled out: the dead-label gate reads them)
+local BUFF_ROWS = {
+	{ "BuffServerLuck", "BuffServerLuckValue", "BuffServerLuckTime" },
+	{ "BuffFestival", "BuffFestivalValue", "BuffFestivalTime" },
+	{ "BuffDoubleYen", "BuffDoubleYenValue", "BuffDoubleYenTime" },
+	{ "BuffLucky", "BuffLuckyValue", "BuffLuckyTime" },
+}
 function HudController:_refreshEnv()
-	local env = self._state.Env
+	self:_refreshBuffs()
+end
+
+function HudController:_refreshBuffs()
 	local hud = self._hud
-	if not env or not hud then
+	if not hud then
 		return
 	end
-	local now = env.unixNow + (os.clock() - self._envAt)
-	local luckOn = env.luck > 1
-	local festivalOn = env.festival == true
-	if self._envActive ~= (luckOn or festivalOn) then
-		self._envActive = luckOn or festivalOn
-		self:_layout()
+	local env = self._state.Env
+	local state = self._state.State
+	local now = if env then env.unixNow + (os.clock() - self._envAt) else os.time()
+	local active: { [string]: { value: string, time: string } } = {}
+	if env and env.luck > 1 then
+		active.BuffServerLuck =
+			{ value = `{Format.mult(env.luck)} LUCK`, time = Screens.clock(env.luckUntil - now) }
 	end
-	local labels = self._labels
-	if festivalOn and (not luckOn or math.floor(now / 4) % 2 == 1) then
-		labels.Multiplier.Text = "FESTIVAL"
-		labels.TimeLeft.Text = Screens.clock(env.festivalEnds - now)
-	elseif luckOn then
-		labels.Multiplier.Text = `{Format.mult(env.luck)} LUCK`
-		labels.TimeLeft.Text = Screens.clock(env.luckUntil - now)
+	if env and env.festival == true then
+		active.BuffFestival =
+			{ value = "2x MUTATIONS", time = Screens.clock(env.festivalEnds - now) }
+	end
+	local passes = state and state.passes
+	local yenUntil = if state then tonumber(state.doubleYenUntil) or 0 else 0
+	if yenUntil > now and not (passes and passes.DoubleYen) then
+		active.BuffDoubleYen = { value = "x2 INCOME", time = Screens.clock(yenUntil - now) }
+	end
+	local lucky = if state then tonumber(state.luckyThrows) or 0 else 0
+	if lucky > 0 then
+		active.BuffLucky = { value = `{lucky} LEFT`, time = "" }
+	end
+
+	local count = 0
+	local fresh = false
+	for key in active do
+		count += 1
+		if not self._buffSeen[key] then
+			fresh = true
+		end
+	end
+	for key in self._buffSeen do
+		if not active[key] then
+			self._buffSeen[key] = nil
+		end
+	end
+	for key in active do
+		self._buffSeen[key] = true
+	end
+	if fresh and not self._buffPinned then
+		-- a new boost: show the rows for a moment, then fold them away again
+		self._buffOpen = true
+		self._buffStamp += 1
+		local stamp = self._buffStamp
+		task.delay(BUFF_PEEK, function()
+			if self._buffStamp == stamp and not self._buffPinned then
+				self._buffOpen = false
+				self:_refreshBuffs()
+			end
+		end)
+	end
+
+	local changed = (count > 0) ~= (self._buffCount > 0)
+	self._buffCount = count
+	Screens.label(hud, "BuffCountText").Text = tostring(count)
+	for _, names in BUFF_ROWS do
+		local row = Screens.frame(hud, names[1])
+		local data = active[names[1]]
+		row.Visible = data ~= nil
+		if data then
+			Screens.label(row, names[2]).Text = data.value
+			Screens.label(row, names[3]).Text = data.time
+		end
+	end
+	local rows = Screens.frame(hud, "BuffRows")
+	local open = self._buffOpen and count > 0
+	if rows.Visible ~= open then
+		rows.Visible = open
+		if open then
+			Screens.pop(rows, 0.9)
+		end
+	end
+	local chevron = Screens.image(hud, "Chevron")
+	-- IconArrow points up: down while folded, up while open
+	chevron.Rotation = if open then 0 else 180
+	if changed then
+		self:_layout()
 	end
 end
 
@@ -869,6 +1008,7 @@ function HudController:KnitStart()
 
 	self._state:Observe(function(state: any)
 		self:_refresh()
+		self:_refreshBuffs()
 		if typeof(state) == "table" then
 			local ok, err = pcall(self._purchases, self, state)
 			if not ok then

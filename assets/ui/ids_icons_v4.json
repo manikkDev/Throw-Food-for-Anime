@@ -21,6 +21,8 @@
   "IconCodesBig": 135015349429222,
   "IconCrown": 79602993223846,
   "IconCrownBig": 79602993223846,
+  "IconDaily": 138384433800619,
+  "IconDailyBig": 138384433800619,
   "IconFast": 112753028531361,
   "IconFlavorSavory": 90010041566233,
   "IconFlavorSavoryBig": 90010041566233,
@@ -129,7 +131,8 @@
     "IconThrow": "3a851fbe779ee4b7",
     "IconTick": "9283df50895673ac",
     "IconTimer": "ebf0052c45f715fd",
-    "IconYen": "2c5e328f2a5c0495"
+    "IconYen": "2c5e328f2a5c0495",
+    "IconDaily": "98a32da02427f511"
   },
   "_aliases": {
     "IconTrain": "IconPower",
@@ -159,6 +162,7 @@
     "IconThrowBig": "IconThrow",
     "IconTimerBig": "IconTimer",
     "IconTrainBig": "IconPower",
-    "IconYenBig": "IconYen"
+    "IconYenBig": "IconYen",
+    "IconDailyBig": "IconDaily"
   }
 }

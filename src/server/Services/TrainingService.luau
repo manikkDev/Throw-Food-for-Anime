@@ -76,6 +76,11 @@ function TrainingService:Start(player: Player, station: number)
 	if self._sessions[player] then
 		self:Stop(player)
 	end
+	-- not with a hero in the hands: set it down first (owner's review of section 5)
+	if self._plots:Carrying(player) then
+		self._state:Toast(player, "Place your hero on a pedestal first!", "bad")
+		return
+	end
 	if (profile.gear or 0) < row.Unlock then
 		local gear = Config.Training.Equipment[row.Unlock]
 		self._state:Toast(

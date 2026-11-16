@@ -82,6 +82,12 @@ function ProgressService:Rebirth(player: Player)
 	self._training:Stop(player)
 	self._telemetry:Economy(player, "sink", "rebirth", nextTier.YenCost, 0)
 	Progress.applyRebirth(Config, MAPS, profile)
+	-- a hero in the player's hands that the rebirth took is gone too (found in the section 5
+	-- playtest: the hands kept a hero the data no longer had, until the carry timed out)
+	local carried = self._plots:Carrying(player)
+	if carried and not profile.heroes[carried] then
+		self._plots:ClearCarry(player, true)
+	end
 	self._plots:Refresh(player)
 	self._state:MarkDirty(player)
 	self._state:Tick(player)

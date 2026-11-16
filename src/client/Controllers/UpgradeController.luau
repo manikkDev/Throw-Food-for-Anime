@@ -130,6 +130,10 @@ function UpgradeController:_confirmGear()
 		cost = cost,
 		costKind = "yen",
 		canAfford = state.yen >= cost,
+		affordCheck = function(): boolean
+			local live = self._state.State
+			return live ~= nil and live.yen >= cost
+		end,
 		confirmText = "UPGRADE",
 		color = GOLD,
 		onConfirm = function()
@@ -170,6 +174,10 @@ function UpgradeController:_confirmSlot()
 		cost = cost,
 		costKind = "yen",
 		canAfford = state.yen >= cost,
+		affordCheck = function(): boolean
+			local live = self._state.State
+			return live ~= nil and live.yen >= cost
+		end,
 		confirmText = "BUY SLOT",
 		color = GREEN,
 		onConfirm = function()
