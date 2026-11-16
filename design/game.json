@@ -3572,7 +3572,13 @@
   },
   "publish": {
     "universe_id": 10776373502,
-    "place_id": 106586376894468
+    "place_id": 106586376894468,
+    "published_version": 284,
+    "build": "s5-04",
+    "visibility": "PRIVATE",
+    "visibility_note": "The owner releases the game when they choose (2026-11-16): the pipeline never changes visibility.",
+    "live_check": "2026-11-16 Open Cloud Luau Execution on version 284: 24/24 animations, 78/78 sounds load; Knit services start (24 remotes); tools/live_check.py -> work/live_check.json",
+    "open": "Max players 6 and the store description are NOT set: every place write (serverSize, displayName, description) returns 403 although the key lists universe-places:write; a universe description PATCH returns 200 but changes nothing (the text lives on the root place). Then: python tools/set_experience.py --apply"
   },
   "wiring_ignore": [
     "ServerStorage.ImportedVfx",
