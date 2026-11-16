@@ -8,9 +8,14 @@ Sources (written by the roblox-ui skill's upload_icons.py, one per folder):
     assets/ui/ids_icons.json        system glyphs   IconYen, IconShop, ...
     assets/ui/ids_food_icons.json   food renders    Food_onigiri, ...
     assets/ui/ids_patterns.json     panel patterns  pattern_dots, ...
-    assets/ui/ids_icons_big.json    the large glossy family, own keys (IconShopBig, ...): 40 px and up.
-                                    Under 30 px a slot uses the flat glyph under the base key (UI v3 rule:
-                                    size decides style). ids_icons_v2.json is the retired v2 map, not read.
+    assets/ui/ids_icons_big.json    the v3 large glossy family, own keys (IconShopBig, ...).
+                                    ids_icons_v2.json is the retired v2 map, not read.
+    assets/ui/ids_icons_v4.json     icons v4 (tools/ui/icons_v4.py): ONE premium rendered family for every
+                                    base key, every ...Big key, IconRobux/IconRobuxBig and the re-framed
+                                    Food_* icons. Read LAST, so it overrides the older maps key by key; the
+                                    older maps stay as fallbacks for any key v4 does not carry (FxStarburst,
+                                    FxSunburst, pattern_*).
+    assets/ui/ids_zone_bg.json      Hero Index zone card backdrops ZoneBg_<zoneId> (tools/ui/zone_backdrops.py).
 
 The UI trees carry no image ids: every icon slot is an ImageLabel with an `IconKey` attribute and
 every patterned panel a `PatternName`. The client fills them from this table when it mounts a
@@ -26,7 +31,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "src" / "shared" / "Config" / "Icons.luau"
-MAPS = ["ids_icons.json", "ids_food_icons.json", "ids_patterns.json", "ids_icons_big.json"]
+# Order matters: a later map overrides an earlier one key by key. v4 is last on purpose.
+MAPS = ["ids_icons.json", "ids_food_icons.json", "ids_patterns.json", "ids_icons_big.json", "ids_icons_v4.json", "ids_fx_v4.json",
+        "ids_zone_bg.json"]
 
 BANNER = """--!strict
 -- GENERATED FILE - DO NOT EDIT BY HAND.

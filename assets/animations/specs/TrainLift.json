@@ -1,0 +1,1019 @@
+{
+ "name": "TrainLift",
+ "rbx_name": "TrainLift",
+ "priority": "Action",
+ "loop": true,
+ "fps": 30,
+ "duration": 2.0,
+ "_intent": "Alternating standing hammer curls with a dumbbell in each hand: elbows pinned at the sides, right then left, squeeze at the top, slower lowering.",
+ "_reference": "alternating dumbbell hammer curl, 2.0 s loop, rep tops at frames 14 and 44",
+ "markers": [
+  {
+   "name": "Rep",
+   "time": 0.4667
+  },
+  {
+   "name": "Rep",
+   "time": 1.4667
+  }
+ ],
+ "w": 300,
+ "h": 300,
+ "margin": 1.08,
+ "plain": true,
+ "preview": false,
+ "views": {
+  "front": [
+   0.25,
+   1.0,
+   0.2
+  ],
+  "back": [
+   -0.3,
+   -1.0,
+   0.4
+  ],
+  "side": [
+   1.0,
+   0.08,
+   0.1
+  ]
+ },
+ "properties": {
+  "ARM_IK_FK.L": 0.0,
+  "ARM_IK_FK.R": 0.0,
+  "LEG_IK_FK.L": 0.0,
+  "LEG_IK_FK.R": 0.0
+ },
+ "keyframes": [
+  {
+   "t": 0.0,
+   "ease": "smooth",
+   "_note": "both dumbbells down, elbows at the sides",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -6.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.0,
+      0.0,
+      5.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -15.23,
+      6.3,
+      1.7
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.4,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -12.98,
+      -0.68,
+      -1.57
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -15.23,
+      -6.3,
+      -1.7
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      28.4,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -12.98,
+      0.68,
+      1.57
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      -0.06
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.4667,
+   "ease": "smooth",
+   "_note": "REP right: forearm up, dumbbell at the shoulder",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      3.0,
+      4.0,
+      2.0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -10.0,
+      6.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -22.0,
+      0.0,
+      5.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -128.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -12.26,
+      6.33,
+      1.68
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      22.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -10.36,
+      -0.63,
+      -1.58
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -12.26,
+      -6.33,
+      -1.68
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      22.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -10.36,
+      0.63,
+      1.58
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      -0.04
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.6,
+   "ease": "smooth",
+   "_note": "squeeze at the top",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.0,
+      4.0,
+      2.0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -10.0,
+      6.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -24.0,
+      0.0,
+      5.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -132.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -8.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -12.26,
+      6.33,
+      1.68
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      22.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -10.36,
+      -0.63,
+      -1.58
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -12.26,
+      -6.33,
+      -1.68
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      22.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -10.36,
+      0.63,
+      1.58
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      -0.04
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.0,
+   "ease": "smooth",
+   "_note": "lowered under control",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -6.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.0,
+      0.0,
+      5.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -15.23,
+      6.3,
+      1.7
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.4,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -12.98,
+      -0.68,
+      -1.57
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -15.23,
+      -6.3,
+      -1.7
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      28.4,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -12.98,
+      0.68,
+      1.57
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      -0.06
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.4667,
+   "ease": "smooth",
+   "_note": "REP left",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      3.0,
+      -4.0,
+      -2.0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -10.0,
+      -6.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.0,
+      0.0,
+      5.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -22.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -128.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -12.26,
+      6.33,
+      1.68
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      22.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -10.36,
+      -0.63,
+      -1.58
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -12.26,
+      -6.33,
+      -1.68
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      22.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -10.36,
+      0.63,
+      1.58
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      -0.04
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.6,
+   "ease": "smooth",
+   "_note": "squeeze at the top",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.0,
+      -4.0,
+      -2.0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -10.0,
+      -6.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.0,
+      0.0,
+      5.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -24.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -132.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -8.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -12.26,
+      6.33,
+      1.68
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      22.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -10.36,
+      -0.63,
+      -1.58
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -12.26,
+      -6.33,
+      -1.68
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      22.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -10.36,
+      0.63,
+      1.58
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      -0.04
+     ]
+    }
+   }
+  },
+  {
+   "t": 2.0,
+   "ease": "smooth",
+   "_note": "lowered (loop)",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -6.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.0,
+      0.0,
+      5.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -10.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -15.23,
+      6.3,
+      1.7
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.4,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -12.98,
+      -0.68,
+      -1.57
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -15.23,
+      -6.3,
+      -1.7
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      28.4,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -12.98,
+      0.68,
+      1.57
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      -0.06
+     ]
+    }
+   }
+  }
+ ],
+ "_attach": [
+  {
+   "bone": "RightHand",
+   "pos": [
+    1.5,
+    0.0,
+    -0.85
+   ],
+   "size": [
+    0.2,
+    1.7,
+    0.2
+   ],
+   "colour": [
+    0.5,
+    0.5,
+    0.52
+   ]
+  },
+  {
+   "bone": "RightHand",
+   "pos": [
+    1.5,
+    0.68,
+    -0.85
+   ],
+   "size": [
+    0.78,
+    0.3,
+    0.78
+   ],
+   "colour": [
+    0.18,
+    0.18,
+    0.2
+   ]
+  },
+  {
+   "bone": "RightHand",
+   "pos": [
+    1.5,
+    -0.68,
+    -0.85
+   ],
+   "size": [
+    0.78,
+    0.3,
+    0.78
+   ],
+   "colour": [
+    0.18,
+    0.18,
+    0.2
+   ]
+  },
+  {
+   "bone": "LeftHand",
+   "pos": [
+    -1.5,
+    0.0,
+    -0.85
+   ],
+   "size": [
+    0.2,
+    1.7,
+    0.2
+   ],
+   "colour": [
+    0.5,
+    0.5,
+    0.52
+   ]
+  },
+  {
+   "bone": "LeftHand",
+   "pos": [
+    -1.5,
+    0.68,
+    -0.85
+   ],
+   "size": [
+    0.78,
+    0.3,
+    0.78
+   ],
+   "colour": [
+    0.18,
+    0.18,
+    0.2
+   ]
+  },
+  {
+   "bone": "LeftHand",
+   "pos": [
+    -1.5,
+    -0.68,
+    -0.85
+   ],
+   "size": [
+    0.78,
+    0.3,
+    0.78
+   ],
+   "colour": [
+    0.18,
+    0.18,
+    0.2
+   ]
+  }
+ ],
+ "_grip": {
+  "hands": [
+   "RightHand",
+   "LeftHand"
+  ],
+  "grip": "hammer (neutral)",
+  "weld_C0_hand_space": [
+   0,
+   0,
+   0
+  ],
+  "long_axis_hand_space": "Z (front-back of the hand part at rest)",
+  "dumbbell_size_studs": {
+   "bar": [
+    0.2,
+    1.7,
+    0.2
+   ],
+   "plate": [
+    0.78,
+    0.3,
+    0.78
+   ],
+   "plate_offset": 0.68
+  }
+ }
+}

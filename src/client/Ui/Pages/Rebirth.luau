@@ -29,8 +29,10 @@ function Rebirth.render(state: any)
 		Screens.label(gui, "NextTier").Text = "MAX REBIRTH"
 		Screens.label(gui, "PowerReqText").Text = "MAX"
 		Screens.label(gui, "YenReqText").Text = "MAX"
-		Screens.label(gui, "RewardIncome").Text = "This is the highest rebirth"
+		Screens.label(gui, "RewardIncome").Text = "MAX REBIRTH"
 		Screens.label(gui, "RewardLuck").Text = ""
+		Screens.image(gui, "PowerDone").Visible = true
+		Screens.image(gui, "YenDone").Visible = true
 		Screens.fill(Screens.frame(powerBar, "Fill"), 1)
 		Screens.fill(Screens.frame(yenBar, "Fill"), 1)
 		Screens.setButtonState(confirm, "off")
@@ -43,6 +45,9 @@ function Rebirth.render(state: any)
 		`{Format.short(state.yen)} / {Format.short(tier.YenCost)}`
 	Screens.fill(Screens.frame(powerBar, "Fill"), state.power / tier.PowerReq)
 	Screens.fill(Screens.frame(yenBar, "Fill"), state.yen / tier.YenCost)
+	-- a tick by each requirement that is met
+	Screens.image(gui, "PowerDone").Visible = state.power >= tier.PowerReq
+	Screens.image(gui, "YenDone").Visible = state.yen >= tier.YenCost
 	Screens.label(gui, "RewardIncome").Text = `+{percent(tier.IncomeBonus)}% INCOME`
 	Screens.label(gui, "RewardLuck").Text = `+{percent(tier.LuckBonus)}% LUCK`
 	Screens.setButtonState(

@@ -34,7 +34,9 @@ def build_lanes(G):
     gx, gy, gz = SIZES["Lane_ZoneGate"]
     for b in g["BANDS"]:
         key = hexrgb(b["colour"])
-        tones = (mix(key, WHITE, 0.22), mix(key, WHITE, 0.42))
+        # deep enough not to bloom: the first tones (0.22 / 0.42 toward white) made the pale pink
+        # Sakura strip render pure white in play under the map bloom (threshold 0.92)
+        tones = (mix(key, WHITE, 0.06), mix(key, WHITE, 0.20))
         accent = hexrgb(b["cap"])
         pave_rgb = mix(hexrgb(b["wall"]), WHITE, 0.35)
         F = f"Lanes/Zone_{b['id']}"

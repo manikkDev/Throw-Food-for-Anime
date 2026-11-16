@@ -26,12 +26,17 @@ export type EventName =
 	| "ThrowRequest"
 	-- client -> server: (on: boolean) start or stop training on the dojo pad.
 	| "TrainSet"
+	-- client -> server: (on: boolean) hold me on my throw pad / let me off it (server snaps,
+	-- anchors and releases the character, like training).
+	| "ThrowPad"
+	| "TrainTap"
 	-- client -> server: (kind: "food" | "gear" | "slot", id: string?) spend Yen.
 	| "ShopBuy"
 	-- client -> server: (foodId: string) equip a food already owned.
 	| "FoodEquip"
 	-- client -> server: (action: "place" | "bench" | "sell" | "equipBest" |
-	-- "fuse", uid: string?, slot: number?) manage owned heroes.
+	-- "fuse" | "drop", uid: string?, slot: number?) manage owned heroes ("drop": set the carried
+	-- hero down on the slot it already holds).
 	| "SquadAction"
 	-- client -> server: (action: "claimZone" | "rebirth", zoneId: string?).
 	| "ProgressAction"

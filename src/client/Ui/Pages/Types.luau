@@ -22,6 +22,11 @@ export type Ctx = {
 	toast: (text: string, kind: string?) -> (),
 	--- One big line on the HUD that fades by itself ("RANK UP!").
 	banner: (text: string) -> (),
+	--- The celebratory LEVEL UP banner (HudController:LevelUp): a rank up, new gear.
+	levelUp: (title: string, sub: string, color: Color3?) -> (),
+	--- The unboxing reward popup (HudController:Reward): { title, name, sub?,
+	--- model?, image?, color?, rarity? }.
+	reward: (info: any) -> (),
 	--- Run `handler(yen, power)` on every server tick (once a second, and on
 	--- every training rep).
 	ticked: (handler: (yen: number, power: number) -> ()) -> (),

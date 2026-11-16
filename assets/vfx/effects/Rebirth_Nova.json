@@ -1,0 +1,899 @@
+{
+ "name": "Rebirth_Nova",
+ "note": "Rebirth: radial nova round the player.",
+ "duration": 2.2,
+ "camera": {
+  "pos": [
+   16,
+   12,
+   34
+  ],
+  "at": [
+   0,
+   4,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": true
+ },
+ "brief": {
+  "category": "explosion",
+  "tier": "big skill",
+  "style": "stylised_game",
+  "shape": "radial nova",
+  "dominant": "#FF4FD8",
+  "accent": "#FFD23F",
+  "signature_beats": [
+   "shape born at full size",
+   "screen-edge flash"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0.05,
+    "t1": 0.06666666666666667
+   },
+   {
+    "name": "sustain",
+    "t0": 0.06666666666666667,
+    "t1": 1.1
+   },
+   {
+    "name": "residue",
+    "t0": 1.1,
+    "t1": 2.2
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Ground",
+   "CFrame": [
+    0,
+    0.15,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Shock",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/flipbooks/shockwaves/shockwave_cel_01_4x4",
+        "FlipbookLayout": {
+         "Enum": "ParticleFlipbookLayout.Grid4x4"
+        },
+        "FlipbookMode": {
+         "Enum": "ParticleFlipbookMode.OneShot"
+        },
+        "FlipbookBlendFrames": false,
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "FlipbookFramerate": {
+         "NumberRange": [
+          26.666666666666668,
+          26.666666666666668
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.6,
+          0.6
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           7.0
+          ],
+          [
+           1,
+           17.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           0.3,
+           [
+            1.0,
+            0.5169,
+            0.893
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.3098,
+            0.8471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.45,
+        "ZOffset": 0.1
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Spiked",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_spiked_cel_05",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.7,
+          0.7
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "RotSpeed": {
+         "NumberRange": [
+          80,
+          80
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           4.5
+          ],
+          [
+           0.15,
+           12.0
+          ],
+          [
+           1,
+           15.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.6,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           0.2,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.6039,
+            0.2392
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 0.2
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Core",
+   "CFrame": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Flash",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/stars/star_glow_00",
+        "Lifetime": {
+         "NumberRange": [
+          0.12,
+          0.12
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           5.0
+          ],
+          [
+           1,
+           7.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.6,
+        "ZOffset": 3
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Wall",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_glow_08",
+        "Lifetime": {
+         "NumberRange": [
+          0.5,
+          0.5
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           3.0
+          ],
+          [
+           0.2,
+           11.0
+          ],
+          [
+           1,
+           14.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1.0,
+            0.3098,
+            0.8471
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.3098,
+            0.8471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.55,
+        "ZOffset": 1
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Rays",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/elements/rays_glow_01",
+        "Lifetime": {
+         "NumberRange": [
+          1.3,
+          1.3
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "RotSpeed": {
+         "NumberRange": [
+          30,
+          30
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           4.0
+          ],
+          [
+           0.12,
+           10.0
+          ],
+          [
+           1,
+           12.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.2
+          ],
+          [
+           0.6,
+           0.4
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1.0,
+            0.8764,
+            0.473
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8764,
+            0.473
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.45,
+        "ZOffset": -1
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Disc",
+   "CFrame": [
+    0,
+    0.4,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    14,
+    0.2,
+    14
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Rise",
+     "props": {
+      "Rate": 60,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_04",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Enabled": false,
+      "Speed": {
+       "NumberRange": [
+        8,
+        16
+       ]
+      },
+      "Drag": 0.8,
+      "Lifetime": {
+       "NumberRange": [
+        0.7,
+        1.0
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        90
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.2,
+         0.7
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0.0,
+         [
+          1.0,
+          0.35,
+          0.35
+         ]
+        ],
+        [
+         0.0556,
+         [
+          1.0,
+          1.0,
+          0.35
+         ]
+        ],
+        [
+         0.1111,
+         [
+          0.35,
+          1.0,
+          0.35
+         ]
+        ],
+        [
+         0.1667,
+         [
+          0.35,
+          1.0,
+          1.0
+         ]
+        ],
+        [
+         0.2222,
+         [
+          0.35,
+          0.35,
+          1.0
+         ]
+        ],
+        [
+         0.2778,
+         [
+          1.0,
+          0.35,
+          1.0
+         ]
+        ],
+        [
+         0.3333,
+         [
+          1.0,
+          0.35,
+          0.35
+         ]
+        ],
+        [
+         0.3889,
+         [
+          1.0,
+          1.0,
+          0.35
+         ]
+        ],
+        [
+         0.4444,
+         [
+          0.35,
+          1.0,
+          0.35
+         ]
+        ],
+        [
+         0.5,
+         [
+          0.35,
+          1.0,
+          1.0
+         ]
+        ],
+        [
+         0.5556,
+         [
+          0.35,
+          0.35,
+          1.0
+         ]
+        ],
+        [
+         0.6111,
+         [
+          1.0,
+          0.35,
+          1.0
+         ]
+        ],
+        [
+         0.6667,
+         [
+          1.0,
+          0.35,
+          0.35
+         ]
+        ],
+        [
+         0.7222,
+         [
+          1.0,
+          1.0,
+          0.35
+         ]
+        ],
+        [
+         0.7778,
+         [
+          0.35,
+          1.0,
+          0.35
+         ]
+        ],
+        [
+         0.8333,
+         [
+          0.35,
+          1.0,
+          1.0
+         ]
+        ],
+        [
+         0.8889,
+         [
+          0.35,
+          0.35,
+          1.0
+         ]
+        ],
+        [
+         0.9444,
+         [
+          1.0,
+          0.35,
+          1.0
+         ]
+        ],
+        [
+         1.0,
+         [
+          1.0,
+          0.35,
+          0.35
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.6
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Lamp",
+   "CFrame": [
+    0,
+    4,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "PointLight",
+     "name": "L",
+     "props": {
+      "Brightness": 0,
+      "Range": 30,
+      "Color": {
+       "Color3": [
+        1.0,
+        0.6549,
+        0.9235
+       ]
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Ground.A.Shock",
+   "count": 1,
+   "t": 0.05
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Spiked",
+   "count": 1,
+   "t": 0.05
+  },
+  {
+   "do": "emit",
+   "target": "Core.A.Flash",
+   "count": 1,
+   "t": 0.05
+  },
+  {
+   "do": "emit",
+   "target": "Core.A.Wall",
+   "count": 1,
+   "t": 0.05
+  },
+  {
+   "do": "emit",
+   "target": "Core.A.Rays",
+   "count": 1,
+   "t": 0.05
+  },
+  {
+   "do": "enable",
+   "target": "Disc.Rise",
+   "duration": 1.0,
+   "t": 0.05
+  },
+  {
+   "do": "set",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "value": 4,
+   "t": 0.05
+  },
+  {
+   "do": "tween",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "to": 0,
+   "time": 0.8,
+   "style": "Quad",
+   "dir": "Out",
+   "t": 0.07
+  },
+  {
+   "do": "overlay",
+   "kind": "lines",
+   "image": "sim:tfa/edge_glow",
+   "spin": false,
+   "scale": 0.87,
+   "time": 0.4,
+   "fin": 0.03,
+   "fout": 0.3,
+   "color": [
+    1.0,
+    0.5169,
+    0.893
+   ],
+   "transparency": 0.3,
+   "t": 0.05
+  },
+  {
+   "do": "shake",
+   "amp": 0.3,
+   "time": 0.3,
+   "freq": 24,
+   "t": 0.05
+  }
+ ],
+ "strip": [
+  0.0,
+  0.07,
+  0.12,
+  0.25,
+  0.45,
+  0.8,
+  1.2,
+  1.7
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

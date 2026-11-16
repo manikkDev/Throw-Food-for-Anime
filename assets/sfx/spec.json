@@ -1,0 +1,318 @@
+{
+ "name": "ThrowFoodForAnime",
+ "roles": [
+  {
+   "name": "amb_sakura_schoolyard",
+   "query": "school yard birds ambience",
+   "kind": "Music",
+   "min_len": 15,
+   "max_len": 300,
+   "volume": 0.15,
+   "looped": true
+  },
+  {
+   "name": "amb_pirate_harbor",
+   "query": "harbor waves seagulls ambience",
+   "kind": "Music",
+   "min_len": 15,
+   "max_len": 300,
+   "volume": 0.15,
+   "looped": true
+  },
+  {
+   "name": "amb_ninja_village",
+   "query": "bamboo forest wind ambience",
+   "kind": "Music",
+   "min_len": 15,
+   "max_len": 300,
+   "volume": 0.15,
+   "looped": true
+  },
+  {
+   "name": "amb_samurai_castle",
+   "query": "japanese castle wind ambience",
+   "kind": "Music",
+   "min_len": 15,
+   "max_len": 300,
+   "volume": 0.15,
+   "looped": true
+  },
+  {
+   "name": "amb_hero_city",
+   "query": "city night ambience",
+   "kind": "Music",
+   "min_len": 15,
+   "max_len": 300,
+   "volume": 0.15,
+   "looped": true
+  },
+  {
+   "name": "amb_realm_of_legends",
+   "query": "mystic shrine ambience",
+   "kind": "Music",
+   "min_len": 15,
+   "max_len": 300,
+   "volume": 0.15,
+   "looped": true
+  },
+  {
+   "name": "ui_click",
+   "query": "ui click pop",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 0.6,
+   "volume": 0.4
+  },
+  {
+   "name": "ui_open",
+   "query": "ui whoosh open",
+   "kind": "SoundEffect",
+   "min_len": 0.1,
+   "max_len": 1,
+   "volume": 0.35
+  },
+  {
+   "name": "ui_close",
+   "query": "ui close swish",
+   "kind": "SoundEffect",
+   "min_len": 0.1,
+   "max_len": 1,
+   "volume": 0.3
+  },
+  {
+   "name": "ui_error",
+   "query": "error buzz short",
+   "kind": "SoundEffect",
+   "min_len": 0.1,
+   "max_len": 1,
+   "volume": 0.4
+  },
+  {
+   "name": "buy_success",
+   "query": "cash register purchase",
+   "kind": "SoundEffect",
+   "min_len": 0.2,
+   "max_len": 2,
+   "volume": 0.5
+  },
+  {
+   "name": "coin_tick",
+   "query": "coin collect",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 0.8,
+   "volume": 0.25
+  },
+  {
+   "name": "throw_charge",
+   "query": "charge up power",
+   "kind": "SoundEffect",
+   "min_len": 0.5,
+   "max_len": 2.5,
+   "volume": 0.4
+  },
+  {
+   "name": "throw_whoosh",
+   "query": "throw whoosh",
+   "kind": "SoundEffect",
+   "min_len": 0.2,
+   "max_len": 1.5,
+   "volume": 0.5
+  },
+  {
+   "name": "perfect_ding",
+   "query": "perfect ding sparkle",
+   "kind": "SoundEffect",
+   "min_len": 0.2,
+   "max_len": 1.5,
+   "volume": 0.5
+  },
+  {
+   "name": "food_land",
+   "query": "soft thud impact",
+   "kind": "SoundEffect",
+   "min_len": 0.1,
+   "max_len": 1.2,
+   "volume": 0.5
+  },
+  {
+   "name": "reveal_drumroll",
+   "query": "drum roll short",
+   "kind": "SoundEffect",
+   "min_len": 0.8,
+   "max_len": 3.5,
+   "volume": 0.5
+  },
+  {
+   "name": "reveal_common",
+   "query": "pop reveal",
+   "kind": "SoundEffect",
+   "min_len": 0.1,
+   "max_len": 1.2,
+   "volume": 0.45
+  },
+  {
+   "name": "reveal_rare",
+   "query": "magic chime reveal",
+   "kind": "SoundEffect",
+   "min_len": 0.3,
+   "max_len": 2,
+   "volume": 0.5
+  },
+  {
+   "name": "reveal_epic",
+   "query": "epic reveal whoosh chime",
+   "kind": "SoundEffect",
+   "min_len": 0.5,
+   "max_len": 3,
+   "volume": 0.55
+  },
+  {
+   "name": "reveal_legendary",
+   "query": "legendary fanfare",
+   "kind": "SoundEffect",
+   "min_len": 0.8,
+   "max_len": 4,
+   "volume": 0.6
+  },
+  {
+   "name": "reveal_mythic",
+   "query": "anime power up explosion",
+   "kind": "SoundEffect",
+   "min_len": 1,
+   "max_len": 5,
+   "volume": 0.65
+  },
+  {
+   "name": "index_new",
+   "query": "achievement unlock",
+   "kind": "SoundEffect",
+   "min_len": 0.3,
+   "max_len": 2.5,
+   "volume": 0.5
+  },
+  {
+   "name": "train_hit",
+   "query": "punch hit",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 0.8,
+   "volume": 0.4
+  },
+  {
+   "name": "power_up",
+   "query": "level up",
+   "kind": "SoundEffect",
+   "min_len": 0.4,
+   "max_len": 2.5,
+   "volume": 0.55
+  },
+  {
+   "name": "slot_unlock",
+   "query": "unlock",
+   "kind": "SoundEffect",
+   "min_len": 0.3,
+   "max_len": 2,
+   "volume": 0.5
+  },
+  {
+   "name": "rebirth",
+   "query": "ascend power surge",
+   "kind": "SoundEffect",
+   "min_len": 1,
+   "max_len": 5,
+   "volume": 0.6
+  },
+  {
+   "name": "summon_open",
+   "query": "portal open magic",
+   "kind": "SoundEffect",
+   "min_len": 0.8,
+   "max_len": 4,
+   "volume": 0.55
+  },
+  {
+   "name": "daily_claim",
+   "query": "reward claim chest",
+   "kind": "SoundEffect",
+   "min_len": 0.4,
+   "max_len": 3,
+   "volume": 0.5
+  },
+  {
+   "name": "server_luck",
+   "query": "lucky bell shimmer",
+   "kind": "SoundEffect",
+   "min_len": 0.5,
+   "max_len": 3,
+   "volume": 0.5
+  },
+  {
+   "name": "eat_munch",
+   "query": "eating munch",
+   "kind": "SoundEffect",
+   "min_len": 0.2,
+   "max_len": 1.5,
+   "volume": 0.45
+  },
+  {
+   "name": "dash_whoosh",
+   "query": "anime dash whoosh",
+   "kind": "SoundEffect",
+   "min_len": 0.2,
+   "max_len": 1.2,
+   "volume": 0.45
+  },
+  {
+   "name": "music_home",
+   "query": "upbeat japanese festival",
+   "kind": "Music",
+   "min_len": 45,
+   "max_len": 300,
+   "volume": 0.18,
+   "looped": true
+  },
+  {
+   "name": "music_festival_hour",
+   "query": "fast taiko festival",
+   "kind": "Music",
+   "min_len": 45,
+   "max_len": 300,
+   "volume": 0.18,
+   "looped": true
+  },
+  {
+   "name": "reveal_tick",
+   "query": "tick click counter",
+   "kind": "SoundEffect",
+   "min_len": 0.02,
+   "max_len": 0.4,
+   "volume": 0.3
+  },
+  {
+   "name": "letter_type",
+   "query": "typewriter key",
+   "kind": "SoundEffect",
+   "min_len": 0.02,
+   "max_len": 0.5,
+   "volume": 0.3
+  },
+  {
+   "name": "zone_cross",
+   "query": "whoosh pass by",
+   "kind": "SoundEffect",
+   "min_len": 0.2,
+   "max_len": 1.5,
+   "volume": 0.35
+  },
+  {
+   "name": "toast_pop",
+   "query": "notification pop",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 1.0,
+   "volume": 0.35
+  }
+ ],
+ "note": "roblox-sfx. One role per thing the game needs a sound FOR. Length is measured in Studio, never trusted from the toolbox. reveal_tick / letter_type / zone_cross / toast_pop added in section 4 for the reveal beats and notices. Uncommon reveals reuse reveal_common, Secret reuses reveal_mythic (with pitch)."
+}

@@ -37,54 +37,89 @@ return {
 			assert(not seen[key], `slot {slot} overlaps slot {seen[key]}`)
 			seen[key] = slot
 			assert(math.abs(dx) <= W.PlotWidth / 2 - 2, `slot {slot} is outside the plot width`)
-			assert(z > W.PlotBackZ + 2 and z < W.ThrowPadZ - W.ThrowPadRadius, `slot {slot} z = {z}`)
+			assert(
+				z > W.PlotBackZ + 2 and z < W.ThrowPadZ - W.ThrowPadRadius,
+				`slot {slot} z = {z}`
+			)
 		end
 	end,
 
-	["the dojo pad and the sign are inside the plot; the throw stage is out in front"] = function()
-		local padX, padZ = World.throwPad(W, 1, COUNT)
-		local dojoX, dojoZ = World.dojoPad(W, 1, COUNT)
+	["the slot sign stands by the walkway out to the throw stage, off the walkway itself"] = function()
 		local x0 = World.plotX(W, 1, COUNT)
-		-- the throw stage stands out in FRONT of the base, a walk away from the
-		-- pedestals, and before the first zone begins
-		assert(padX == x0)
-		assert(padZ - W.ThrowPadRadius > W.PlotFrontZ + 20, "the throw stage is too close to the base")
-		assert(padZ + W.ThrowPadRadius < W.LaneStartZ, "the throw stage reaches into the first zone")
-		assert(math.abs(dojoX - x0) <= W.PlotWidth / 2 and dojoZ < W.PlotFrontZ)
-		-- the two pads must not overlap: a player training must not count as "on the throw pad"
-		local gap = World.distance(padX, padZ, dojoX, dojoZ)
-		assert(gap > W.ThrowPadRadius + W.DojoPadRadius + 8, `pads are only {gap} studs apart`)
+		local signX, signZ = World.slotSign(W, 1, COUNT)
+		local _, padZ = World.throwPad(W, 1, COUNT)
+		assert(padZ > W.PlotFrontZ, "the throw stage is not in front of the plot")
+		assert(
+			signZ > W.PlotFrontZ and signZ < padZ - W.ThrowPadRadius,
+			"the sign is not on the forecourt"
+		)
+		assert(
+			math.abs(signX - x0) > 8 and math.abs(signX - x0) < W.PlotWidth / 2,
+			"the sign blocks the walkway"
+		)
 	end,
 
-	["pedestals fill the back half, the front half is an open yard"] = function()
-		local mid = (W.PlotBackZ + W.PlotFrontZ) / 2
+	["pedestals fill the back half and leave room after the gate"] = function()
+		local mid = (W.PlotFrontZ + W.PlotBackZ) / 2
 		for slot = 1, World.pedestalCount(W) do
 			local _, z = World.pedestalOffset(W, slot)
-			assert(z + 2.5 < mid + 1, `slot {slot} (z = {z}) reaches into the front yard`)
+			assert(z + 2.5 < mid + 4, `slot {slot} (z = {z}) reaches into the training courts`)
+			assert(z - 2.5 >= W.PlotBackZ + 8, `slot {slot} (z = {z}) crowds the gate`)
 		end
-		local _, dojoZ = World.dojoPad(W, 1, COUNT)
-		assert(dojoZ > mid, "the dojo pad is not in the front yard")
 	end,
 
-	["the training yard is inside the plot, clear of the spawn, dojo pad and sign"] = function()
+	["training stations: inside their court, in front of the pedestals, mirrored, clear of the spawn"] = function()
 		local x0 = World.plotX(W, 1, COUNT)
-		local yx, yz, yw, yd = World.yard(W, 1, COUNT)
-		local mid = (W.PlotBackZ + W.PlotFrontZ) / 2
-		assert(math.abs(yx - x0) + yw / 2 <= W.PlotWidth / 2 - 2, "the yard pokes out of the plot side")
-		assert(yz - yd / 2 >= mid and yz + yd / 2 <= W.PlotFrontZ - 2, "the yard is not in the front half")
-		assert(yw >= 24 and yd >= 20, "the yard is too small for a mini game")
-		-- the spawn (6 x 6 at plot centre, PlotFrontZ - 16) stays outside the yard
-		assert(math.abs(yx - x0) - yw / 2 > 3, "the spawn stands in the yard")
-		local dojoX = World.dojoPad(W, 1, COUNT)
-		assert(math.abs(dojoX - yx) > yw / 2 + W.DojoPadRadius, "the dojo pad is in the yard")
+		local stations = C.Training.Stations
+		assert(#stations % 2 == 0, "stations come in mirrored pairs")
+		for i, row in stations do
+			local x, z, sx, sz = World.station(W, C.Training, 1, COUNT, i)
+			local cx, cz, cw, cd = World.court(W, 1, COUNT, row.Side)
+			assert(
+				math.abs(x - cx) <= cw / 2 - 2 and math.abs(sx - cx) <= cw / 2 - 2,
+				`{row.Id} pokes out of its court`
+			)
+			assert(z - cz >= -cd / 2 and sz <= cz + cd / 2, `{row.Id} pokes out of its court (z)`)
+			assert(math.abs(cx - x0) + cw / 2 <= W.PlotWidth / 2, "a court pokes out of the plot")
+			-- the spawn (6 x 6 at the plot centre, PlotFrontZ - 16) stays clear
+			assert(math.abs(sx - x0) > 6, `{row.Id} stands on the spawn`)
+			-- its mirror twin
+			local twin = false
+			for _, other in stations do
+				if
+					other.Side == -row.Side
+					and math.abs(other.X + row.X) < 0.01
+					and other.Z == row.Z
+				then
+					twin = true
+				end
+			end
+			assert(twin, `{row.Id} has no mirrored twin`)
+			for j, other in stations do
+				if j ~= i then
+					local ox = World.station(W, C.Training, 1, COUNT, j)
+					assert(
+						math.abs(ox - x) >= 2 * W.StationRadius + 4,
+						`{row.Id} and {other.Id} are too close`
+					)
+				end
+			end
+		end
 		local signX, signZ = World.slotSign(W, 1, COUNT)
-		local inX = math.abs(signX - yx) < yw / 2 + 2
-		local inZ = math.abs(signZ - yz) < yd / 2 + 2
-		assert(not (inX and inZ), "the slot sign is in the yard")
+		for _, side in { -1, 1 } do
+			local cx, cz, cw, cd = World.court(W, 1, COUNT, side)
+			assert(
+				not (math.abs(signX - cx) < cw / 2 and math.abs(signZ - cz) < cd / 2),
+				"the slot sign is in a court"
+			)
+		end
 	end,
 
 	["neighbouring bases have a garden gap between them"] = function()
-		assert(W.PlotPitch - W.PlotWidth >= 20, `only {W.PlotPitch - W.PlotWidth} studs between bases`)
+		assert(
+			W.PlotPitch - W.PlotWidth >= 20,
+			`only {W.PlotPitch - W.PlotWidth} studs between bases`
+		)
 	end,
 
 	["a landing stays inside its own lane"] = function()
@@ -120,7 +155,10 @@ return {
 	end,
 
 	["the lock timeout outlasts several autosaves"] = function()
-		assert(Session.TIMEOUT >= C.Server.AutosaveSeconds * 3, "one slow autosave must not lose the lock")
+		assert(
+			Session.TIMEOUT >= C.Server.AutosaveSeconds * 3,
+			"one slow autosave must not lose the lock"
+		)
 	end,
 
 	["a lock left behind is taken over after a short wait, not before"] = function()

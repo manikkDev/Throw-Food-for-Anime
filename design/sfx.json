@@ -280,7 +280,399 @@
    "max_len": 300,
    "volume": 0.18,
    "looped": true
+  },
+  {
+   "name": "reveal_tick",
+   "query": "tick click counter",
+   "kind": "SoundEffect",
+   "min_len": 0.02,
+   "max_len": 0.4,
+   "volume": 0.3
+  },
+  {
+   "name": "letter_type",
+   "query": "typewriter key",
+   "kind": "SoundEffect",
+   "min_len": 0.02,
+   "max_len": 0.5,
+   "volume": 0.3
+  },
+  {
+   "name": "zone_cross",
+   "query": "whoosh pass by",
+   "kind": "SoundEffect",
+   "min_len": 0.2,
+   "max_len": 1.5,
+   "volume": 0.35
+  },
+  {
+   "name": "toast_pop",
+   "query": "notification pop",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 1.0,
+   "volume": 0.35
+  },
+  {
+   "name": "food_flight",
+   "query": "fast wind rush loop",
+   "kind": "SoundEffect",
+   "min_len": 2,
+   "max_len": 60,
+   "volume": 0.35,
+   "looped": true
+  },
+  {
+   "name": "food_impact",
+   "query": "heavy thud impact",
+   "kind": "SoundEffect",
+   "min_len": 0.5,
+   "max_len": 4,
+   "volume": 0.7,
+   "looped": false
+  },
+  {
+   "name": "rarity_step",
+   "query": "sparkle whoosh",
+   "kind": "SoundEffect",
+   "min_len": 0.5,
+   "max_len": 5,
+   "volume": 0.45,
+   "looped": false
+  },
+  {
+   "name": "suspense_riser",
+   "query": "cinematic riser",
+   "kind": "SoundEffect",
+   "min_len": 2,
+   "max_len": 8,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "heartbeat",
+   "query": "heartbeat",
+   "kind": "SoundEffect",
+   "min_len": 1,
+   "max_len": 10,
+   "volume": 0.55,
+   "looped": true
+  },
+  {
+   "name": "impact_frame",
+   "query": "deep boom hit",
+   "kind": "SoundEffect",
+   "min_len": 1,
+   "max_len": 6,
+   "volume": 0.75,
+   "looped": false
+  },
+  {
+   "name": "train_lift",
+   "query": "metal weight clank",
+   "kind": "SoundEffect",
+   "min_len": 0.2,
+   "max_len": 2,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "train_push",
+   "query": "heavy thud",
+   "kind": "SoundEffect",
+   "min_len": 0.3,
+   "max_len": 3,
+   "volume": 0.55,
+   "looped": false
+  },
+  {
+   "name": "rebirth_clock",
+   "query": "clock ticking",
+   "kind": "SoundEffect",
+   "min_len": 1,
+   "max_len": 8,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "ui_hover",
+   "query": "ui hover",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.25,
+   "looped": false
+  },
+  {
+   "name": "toast_good",
+   "query": "reward chime",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "toast_warn",
+   "query": "error beep",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "announce",
+   "query": "fanfare sting",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "zone_hype",
+   "query": "orchestral hit",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "level_up",
+   "query": "level up sting",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "fuse_charge",
+   "query": "energy charge up",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "fuse_burst",
+   "query": "magic burst",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "hero_pickup",
+   "query": "magic whoosh up",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "hero_place",
+   "query": "magic impact",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "footstep_heavy",
+   "query": "foot stomp",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.7,
+   "looped": false
+  },
+  {
+   "name": "odds_tick",
+   "query": "ui small click",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.35,
+   "looped": false
+  },
+  {
+   "name": "odds_slam",
+   "query": "big impact hit",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "dialogue_blip",
+   "query": "8bit blip",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.25,
+   "looped": false
+  },
+  {
+   "name": "rebirth_rise",
+   "query": "power up rise",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "rebirth_burst",
+   "query": "magic transformation",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "cam_whoosh",
+   "query": "ui whoosh",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.4,
+   "looped": false
+  },
+  {
+   "name": "pad_enter",
+   "query": "ui select",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.45,
+   "looped": false
+  },
+  {
+   "name": "train_curl",
+   "query": "barbell weights",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "reward_whoosh",
+   "query": "reward whoosh",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.4,
+   "looped": false
+  },
+  {
+   "name": "reward_pop",
+   "query": "reward sparkle burst",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.55,
+   "looped": false
+  },
+  {
+   "name": "confirm_open",
+   "query": "dialog open ding",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.35,
+   "looped": false
+  },
+  {
+   "name": "confirm_yes",
+   "query": "confirm purchase",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.5,
+   "looped": false
+  },
+  {
+   "name": "stat_tick",
+   "query": "stat row tick",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.4,
+   "looped": false
+  },
+  {
+   "name": "prompt_show",
+   "query": "prompt appears",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.25,
+   "looped": false
+  },
+  {
+   "name": "upgrade_ready",
+   "query": "upgrade affordable chime",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 6.04,
+   "volume": 0.35,
+   "looped": false
+  },
+  {
+   "name": "banner_slam",
+   "query": "banner slam",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 7.0,
+   "volume": 0.45,
+   "looped": false
+  },
+  {
+   "name": "upgrade_burst",
+   "query": "new gear arrives",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.55,
+   "looped": false
+  },
+  {
+   "name": "rebirth_villain",
+   "query": "dark braam, villain level-up",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 10.16,
+   "volume": 0.6,
+   "looped": false
+  },
+  {
+   "name": "villain_power",
+   "query": "silhouette clenches its fists",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 4,
+   "volume": 0.6,
+   "looped": false
+  },
+  {
+   "name": "reveal_wind",
+   "query": "eerie wind under the reveal",
+   "kind": "SoundEffect",
+   "min_len": 0.05,
+   "max_len": 38.38,
+   "volume": 0.3,
+   "looped": true
   }
  ],
- "note": "roblox-sfx. One role per thing the game needs a sound FOR. Length is measured in Studio, never trusted from the toolbox."
+ "note": "roblox-sfx. One role per thing the game needs a sound FOR. Length is measured in Studio, never trusted from the toolbox. reveal_tick / letter_type / zone_cross / toast_pop added in section 4 for the reveal beats and notices. Uncommon reveals reuse reveal_common, Secret reuses reveal_mythic (with pitch)."
 }

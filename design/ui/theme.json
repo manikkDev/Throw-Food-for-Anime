@@ -1,10 +1,10 @@
 {
  "_comment": "Manga Pop (design/plan/05-ui-ux.md). Read by tools/ui/mangapop.py through the roblox-ui builder. outline = ink, used for buttons and all text strokes; panels add a white keyline and an ink comic shadow per element (keyline/comic keys).",
  "font": "FredokaOne",
- "stroke": 4,
- "textStroke": 3,
+ "stroke": 3,
+ "textStroke": 2,
  "corner": 16,
- "shadowOffset": 6,
+ "shadowOffset": 0,
  "outline": "#0D0F2B",
  "backdrop": [
   "#8ED1FC",

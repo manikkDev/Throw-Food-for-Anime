@@ -214,7 +214,8 @@ local function billboard(parent, b)
 	local gui = Instance.new("BillboardGui")
 	gui.Name = b.name
 	gui.Size = UDim2.fromScale(b.studs, b.studs / 4)
-	gui.StudsOffsetWorldSpace = Vector3.new(0, b.height, 0)
+	-- the offset is in the parent's own axes: say world up in them (a cylinder lies on its side)
+	gui.StudsOffsetWorldSpace = if parent:IsA("BasePart") then parent.CFrame:VectorToObjectSpace(Vector3.new(0, b.height, 0)) else Vector3.new(0, b.height, 0)
 	gui.MaxDistance = b.max or 260
 	local t = Instance.new("TextLabel")
 	t.Name = "Text"
@@ -241,6 +242,7 @@ local function prompt(parent, p)
 	pr.KeyboardKeyCode = KEYS[p.key] or Enum.KeyCode.E
 	pr:SetAttribute("Action", p.action)
 	if p.plot then pr:SetAttribute("Plot", p.plot) end
+	if p.station then pr:SetAttribute("Station", p.station) end
 	pr.Parent = parent
 	stats.prompts += 1
 end
@@ -324,6 +326,7 @@ local function plainPart(e, parent)
 	p.BottomSurface = Enum.SurfaceType.Smooth
 	if e.attrs then for k, v in pairs(e.attrs) do p:SetAttribute(k, v) end end
 	if e.noshadow then p.CastShadow = false end
+	if e.noquery then p.CanQuery = false; p.CanTouch = false end
 	if e.tex then
 		-- a tiled Texture per face (brief D); only emitted when assets/map/ids_textures.json has the id
 		for _, face in ipairs(e.tex.faces) do
@@ -393,6 +396,7 @@ BUILD.part = function(e)
 	local parent = container(e.f)
 	local p = plainPart(e, parent)
 	if e.prompt then prompt(p, e.prompt) end
+	if e.billboard then billboard(p, e.billboard) end
 	if e.primary and parent:IsA("Model") then parent.PrimaryPart = p end
 end
 BUILD.barrier = function(e)
@@ -432,7 +436,7 @@ BUILD.anchor = function(e)
 	local size = e.asize or e.s
 	local cy = e.ady and (e.y + e.ady) or (e.y + e.s[2] / 2)
 	local a = anchorPart(e.name, size, CFrame.new(e.x, cy, e.z) * rot, parent)
-	local m = kitModel(e.kit, nil, e.x, e.y, e.z, e.yaw, e.s, e.col, a, nil, e.fid)
+	local m = kitModel(e.kit, nil, e.x, e.y, e.z, e.yaw, e.s, e.col, a, e.scale, e.fid)
 	local face = findFace(m)
 	if e.billboard and face and e.billboard.name == "Title" and e.facegui then
 		-- the server's setText finds anchor.Title.Text: a SurfaceGui named Title, adorned to the face
@@ -568,7 +572,7 @@ def entry(b, raw):
             e["tex"] = {"name": t["name"], "id": str(tid), "faces": t.get("faces") or ["Top"],
                         "su": t.get("su") or st, "sv": t.get("sv") or st, "c": tint}
     for src, dst in (("far", "far"), ("shadow", "shadow"), ("facetext", "facetext"), ("noshadow", "noshadow"), ("toplabel", "toplabel"), ("labelrot", "labelrot"), ("fidelity", "fid"), ("scale", "scale"), ("facegui", "facegui"), ("facelabel", "facelabel"), ("prompt", "prompt"), ("billboard", "billboard"), ("accent", "accent"),
-                     ("banner", "banner"), ("attrs", "attrs"), ("primary", "primary"), ("face", "face")):
+                     ("banner", "banner"), ("attrs", "attrs"), ("primary", "primary"), ("face", "face"), ("noquery", "noquery")):
         if src in bd:
             e[dst] = bd[src]
     if "anchor_size" in bd:

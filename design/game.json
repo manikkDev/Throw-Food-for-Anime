@@ -46,15 +46,33 @@
   },
   "animation": {
    "spec": "design/animations.json",
-   "status": "todo"
+   "status": "done",
+   "artifacts": [
+    "assets/animations/manifest.json",
+    "assets/animations/ids.json",
+    "src/shared/Config/Animations.luau",
+    "src/client/Fx/Motion.luau"
+   ]
   },
   "vfx": {
    "spec": "design/vfx.json",
-   "status": "todo"
+   "status": "done",
+   "artifacts": [
+    "assets/vfx/manifest.json",
+    "assets/vfx/ids.json",
+    "src/client/Fx/VfxKit.luau",
+    "src/client/Fx/Vfx.luau"
+   ]
   },
   "sfx": {
    "spec": "design/sfx.json",
-   "status": "todo"
+   "status": "done",
+   "artifacts": [
+    "assets/sfx/manifest.json",
+    "src/shared/Config/SoundBank.luau",
+    "src/shared/Sfx.luau",
+    "src/client/Controllers/SoundController.luau"
+   ]
   }
  },
  "systems": [
@@ -304,16 +322,61 @@
      "Power": 3000000000
     }
    ],
-   "StyleByTier": [
-    "TrainStrike",
-    "TrainStrike",
-    "TrainStrike",
-    "TrainPush",
-    "TrainMeditate",
-    "TrainMeditate",
-    "TrainMeditate",
-    "TrainMeditate"
-   ]
+   "Stations": [
+    {
+     "Id": "strike",
+     "Name": "Strike Dummy",
+     "Clip": "TrainStrike",
+     "Side": -1,
+     "X": -32.5,
+     "Z": 9,
+     "Stand": 4.0,
+     "Unlock": 1,
+     "Prop": "gear_strike",
+     "Hint": "Punch the dummy",
+     "Contact": 2.47
+    },
+    {
+     "Id": "lift",
+     "Name": "Dumbbell Curls",
+     "Clip": "TrainLift",
+     "Side": -1,
+     "X": -17.5,
+     "Z": 9,
+     "Stand": 3.6,
+     "Unlock": 2,
+     "Prop": "Prop_ninja_village_TrainingLog",
+     "Hint": "Curl the dumbbells"
+    },
+    {
+     "Id": "push",
+     "Name": "Stone Push",
+     "Clip": "TrainPush",
+     "Side": 1,
+     "X": 17.5,
+     "Z": 9,
+     "Stand": 4.75,
+     "Unlock": 4,
+     "Prop": "Equip_stone_pillar",
+     "Hint": "Push the stone pillar",
+     "Contact": 2.44
+    },
+    {
+     "Id": "meditate",
+     "Name": "Waterfall Focus",
+     "Clip": "TrainMeditate",
+     "Side": 1,
+     "X": 32.5,
+     "Z": 9,
+     "Stand": 5.0,
+     "Unlock": 5,
+     "Prop": "gear_spirit",
+     "Hint": "Meditate under the falls"
+    }
+   ],
+   "PerfectBonus": 0.5,
+   "PerfectWindow": 0.22,
+   "MaxTapsPerSecond": 4
   },
   "Flavors": [
    "Savory",
@@ -537,7 +600,7 @@
     "IncomeMult": 1,
     "Order": 1,
     "Color": "B8C0CC",
-    "RevealSeconds": 4.6,
+    "RevealSeconds": 12.0,
     "Announce": false
    },
    "Uncommon": {
@@ -546,7 +609,7 @@
     "IncomeMult": 2.5,
     "Order": 2,
     "Color": "4ADE80",
-    "RevealSeconds": 5.0,
+    "RevealSeconds": 12.8,
     "Announce": false
    },
    "Rare": {
@@ -555,7 +618,7 @@
     "IncomeMult": 7,
     "Order": 3,
     "Color": "38BDF8",
-    "RevealSeconds": 5.6,
+    "RevealSeconds": 14.6,
     "Announce": false
    },
    "Epic": {
@@ -564,7 +627,7 @@
     "IncomeMult": 25,
     "Order": 4,
     "Color": "A855F7",
-    "RevealSeconds": 6.4,
+    "RevealSeconds": 16.2,
     "Announce": false
    },
    "Legendary": {
@@ -573,7 +636,7 @@
     "IncomeMult": 120,
     "Order": 5,
     "Color": "FACC15",
-    "RevealSeconds": 7.4,
+    "RevealSeconds": 18.0,
     "Announce": true
    },
    "Mythic": {
@@ -582,7 +645,7 @@
     "IncomeMult": 900,
     "Order": 6,
     "Color": "FB3B6B",
-    "RevealSeconds": 8.4,
+    "RevealSeconds": 19.6,
     "Announce": true
    },
    "Secret": {
@@ -591,7 +654,7 @@
     "IncomeMult": 10000,
     "Order": 7,
     "Color": "111111",
-    "RevealSeconds": 9.4,
+    "RevealSeconds": 21.0,
     "Announce": true
    }
   },
@@ -1487,23 +1550,52 @@
    "PedestalColumns": 7,
    "PedestalRows": 4,
    "PedestalSpacing": 8,
-   "PedestalCenterZ": -26,
+   "PedestalCenterZ": -20,
    "ThrowPadZ": 70,
    "ThrowPadRadius": 7,
-   "DojoPadX": -26,
-   "DojoPadZ": 12,
-   "DojoPadRadius": 6,
-   "SlotSignX": 32,
-   "SlotSignZ": -6,
-   "YardX": 24,
-   "YardZ": 12,
-   "YardWidth": 28,
-   "YardDepth": 24,
+   "SlotSignX": 11.6,
+   "SlotSignZ": 36.5,
    "HubDepth": 110,
    "InteractRange": 14,
    "PedestalTop": 1,
    "HeroViewDistance": 260,
-   "HeroAnimateDistance": 120
+   "HeroAnimateDistance": 120,
+   "CourtX": 25,
+   "CourtZ": 14,
+   "CourtWidth": 30,
+   "CourtDepth": 22,
+   "StationRadius": 4
+  },
+  "RevealLines": {
+   "_note": "What a caught hero says during its reveal (shown from Rare up, over the hero's own point of view). Per hero: add \"Line\" to its row in config.Characters / PremiumCharacters and it wins over these.",
+   "FromRarity": "Rare",
+   "ByRarity": {
+    "Rare": [
+     "Hm? What smells so good?",
+     "Someone is calling me...",
+     "Food? Out here?"
+    ],
+    "Epic": [
+     "That aroma... I can't ignore it.",
+     "So you're the one who threw this.",
+     "Fine. One bite."
+    ],
+    "Legendary": [
+     "Who dares summon me with a meal?",
+     "You have good taste. I like that.",
+     "This had better be worth my time."
+    ],
+    "Mythic": [
+     "At last... a worthy offering.",
+     "Few have ever called me here.",
+     "I accept your tribute."
+    ],
+    "Secret": [
+     "...You should not have found me.",
+     "The ones who see me never forget.",
+     "So. It begins."
+    ]
+   }
   }
  },
  "asset_plan": [

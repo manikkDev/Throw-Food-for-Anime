@@ -1,13 +1,13 @@
 {
-  "asanoha": 112103169176661,
-  "brick": 80917706491232,
-  "checker": 77310487640719,
-  "kikko": 123547421160508,
+  "asanoha": 127577455218509,
+  "brick": 126643057607841,
+  "checker": 137486297287622,
+  "kikko": 74216386238047,
   "panels": 90522550957199,
-  "planks": 127704484785655,
-  "seigaiha": 77131237493092,
-  "setts": 108930799930691,
-  "shoji": 113781603539121,
+  "planks": 82901655376528,
+  "seigaiha": 124206900155967,
+  "setts": 98779809858113,
+  "shoji": 118248231147230,
   "banner": 74108907832221,
   "noren": 88561501074330,
   "_hashes": {
@@ -22,5 +22,6 @@
     "shoji": "e10cb653dfdfaa07",
     "banner": "9cfc2a657dde2f2e",
     "noren": "d74a8c57651badac"
-  }
+  },
+  "_note": "2026-11-16: eight tiles re-uploaded as Images (the 2026-11-14 ids failed to fetch: 'No asset content representation found'); swapped in the place directly."
 }

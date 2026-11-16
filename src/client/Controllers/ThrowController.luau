@@ -27,12 +27,30 @@ local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local World = require(ReplicatedStorage.Shared.Core.World)
-local Particles = require(script.Parent.Parent.Fx.Particles)
+local Motion = require(script.Parent.Parent.Fx.Motion)
 local ThrowSequence = require(script.Parent.Parent.Fx.ThrowSequence)
+local Vfx = require(script.Parent.Parent.Fx.Vfx)
 local Screens = require(script.Parent.Parent.Ui.Screens)
 local Theme = require(script.Parent.Parent.Ui.Theme)
+local Sound = require(script.Parent.SoundController)
 
 local MAPS = Lookup.of(Config)
+-- zone id -> its index down the lane
+local ZONE_INDEX: { [string]: number } = {}
+for index, zone in Config.Zones do
+	ZONE_INDEX[zone.Id] = index
+end
+-- a catch of this rarity order or better makes the player celebrate
+local CELEBRATE_ORDER = Config.Rarities.Rare.Order
+-- each region's colour on its banner as the food crosses into it
+local ZONE_COLORS: { [number]: Color3 } = {
+	Color3.fromHex("FF8FC8"), -- Sakura Schoolyard
+	Color3.fromHex("3FB6FF"), -- Pirate Harbor
+	Color3.fromHex("FF9A3C"), -- Ninja Village
+	Color3.fromHex("E8434F"), -- Samurai Castle
+	Color3.fromHex("FFD23F"), -- Hero City
+	Color3.fromHex("B266FF"), -- Realm of Legends
+}
 local T = Config.Throw
 local W = Config.World
 local COUNT = Config.Server.PlotCount
@@ -56,6 +74,12 @@ local ThrowController = Knit.CreateController({
 	_auto = false,
 	_autoThrown = false,
 	_onPad = false,
+	-- the throw spot holds the player (owner's review 2026-11-15): stepping on locks them to the
+	-- pad centre facing the lane; only the Exit button (or Backspace) lets them off
+	_locked = false,
+	_lockedAt = 0,
+	_leaving = false,
+	_padRemote = nil :: RemoteEvent?,
 	_sentAt = 0,
 	_playing = false,
 	_playStart = 0,
@@ -70,6 +94,10 @@ local ThrowController = Knit.CreateController({
 	_zoneText = "",
 	_zoneBands = {} :: { [number]: GuiObject },
 	_zoneColors = {} :: { [number]: Color3 },
+	_bestZone = 0,
+	_sweep = -1,
+	_charge = nil :: Sound?,
+	_luckyFx = nil :: Vfx.Handle?,
 })
 
 local function rootPart(): BasePart?
@@ -122,7 +150,11 @@ function ThrowController:_send(value: number, auto: boolean)
 	self._frozen = value
 	self._autoThrown = auto
 	self._sentAt = os.clock()
-	self._request:FireServer(charge, self._useLucky)
+	self._request:FireServer(charge, self._useLucky, auto)
+	if self._charge then
+		Sound:Stop(self._charge, 0.1)
+		self._charge = nil
+	end
 	if self._tapLabel then
 		self._tapLabel.Text = if Throw.isPerfect(T, charge) then "PERFECT!" else "NICE THROW!"
 	end
@@ -139,6 +171,7 @@ end
 function ThrowController:_rearm()
 	self._frozen = nil
 	self._sweepStart = os.clock()
+	self._sweep = -1
 	if self._tapLabel then
 		self._tapLabel.Text = "TAP TO THROW!"
 	end
@@ -195,6 +228,12 @@ function ThrowController:_bindUi()
 	self._zoneLabel.Text = ""
 	self._luckyCount.Text = ""
 	self._tapLabel.Text = "TAP TO THROW!"
+	local exit = gui:FindFirstChild("ExitButton", true)
+	if exit and exit:IsA("GuiButton") then
+		exit.Activated:Connect(function()
+			self:_exitPad()
+		end)
+	end
 	self._luckyCell.Visible = false
 	self._autoCell.Visible = false
 
@@ -280,7 +319,16 @@ function ThrowController:_refreshUi()
 	end
 
 	-- one band per zone, made the first time the zone is reachable and then
-	-- only moved: its height is the smallest marker value that reaches it
+	-- only moved: its height is the smallest marker value that reaches it. Zones already reached
+	-- at the minimum charge all sit at the bottom: only the furthest of them shows (their names
+	-- stacked on one another under the meter, found in the owner's review 2026-11-15)
+	local bottom = 0
+	for index in Config.Zones do
+		local need = Throw.chargeForZone(T, Config.Zones, state.power, food.PowerMult, index)
+		if need and index > 1 and (need - T.MinCharge) / (1 - T.MinCharge) <= 0.02 then
+			bottom = index
+		end
+	end
 	for index, zone in Config.Zones do
 		local need = Throw.chargeForZone(T, Config.Zones, state.power, food.PowerMult, index)
 		local band = self._zoneBands[index]
@@ -295,7 +343,7 @@ function ThrowController:_refreshUi()
 			end
 			local height = (need - T.MinCharge) / (1 - T.MinCharge)
 			band.Position = UDim2.new(band.Position.X.Scale, band.Position.X.Offset, 1 - height, 0)
-			band.Visible = true
+			band.Visible = height > 0.02 or index == bottom
 		elseif band then
 			band.Visible = false
 		end
@@ -327,6 +375,157 @@ function ThrowController:_tickMeter()
 	end
 end
 
+-- The meter's sounds and the lucky glow: throw_charge each time the marker
+-- starts up the meter, LuckyThrow_Charge on the hand while a lucky throw is
+-- armed (it goes when the food leaves the hand).
+function ThrowController:_tickCharge()
+	if not self._frozen and not self._busy then
+		local sweep = math.floor((os.clock() - self._sweepStart) / (2 * T.ChargeSeconds))
+		if sweep ~= self._sweep then
+			self._sweep = sweep
+			self._charge = Sound:Play("throw_charge")
+		end
+	end
+	self:_setLuckyFx(self._useLucky)
+end
+
+function ThrowController:_setLuckyFx(on: boolean)
+	local live = self._luckyFx
+	if on and not live then
+		local character = player.Character
+		local hand = character and character:FindFirstChild("RightHand")
+		if hand and hand:IsA("BasePart") then
+			self._luckyFx = Vfx.play("LuckyThrow_Charge", hand, { loop = true })
+		end
+	elseif not on and live then
+		live.stop()
+		self._luckyFx = nil
+	end
+end
+
+-- The furthest zone this player has caught a hero in (the index carries every
+-- hero ever caught): a gate past it is a first, and fires Zone_Unlock.
+function ThrowController:_readBestZone(state: any)
+	local best = self._bestZone
+	for id in state.index or {} do
+		local character = MAPS.character[id]
+		local zone = if character then ZONE_INDEX[character.Zone] else nil
+		if zone and zone > best then
+			best = zone
+		end
+	end
+	self._bestZone = best
+end
+
+-- ----------------------------------------------------------------- lock --
+
+local controls: any = nil
+local function getControls(): any
+	if controls then
+		return controls
+	end
+	local ok, module = pcall(function()
+		local scripts = player:FindFirstChild("PlayerScripts")
+		local playerModule = scripts and scripts:FindFirstChild("PlayerModule")
+		return if playerModule then (require :: any)(playerModule) else nil
+	end)
+	if ok and module then
+		controls = module:GetControls()
+	end
+	return controls
+end
+
+-- Hold the player on the throw spot. The SERVER snaps them to the pad centre facing the lane and
+-- anchors them (ThrowService:SetPad, like training); here the controls go off, the HUD fades out
+-- and the camera is throw mode's. Released by the Exit button (or X) only. Found in play
+-- 2026-11-16: the client-only hold leaked (the player still walked off the pad), and the old exit
+-- walked the character away with Humanoid:MoveTo, which could resume seconds later on its own.
+function ThrowController:_lock(on: boolean)
+	if on == self._locked then
+		return
+	end
+	self._locked = on
+	self._lockedAt = os.clock()
+	local character = player.Character
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	local c = getControls()
+	local root = rootPart()
+	-- The client holds the player AT ONCE (owner's review 5: "after I enter the throwing area I
+	-- can still move"): the server refused the lock whenever its copy of a walking player was
+	-- still a few studs short of the pad, and this Roblox build has no control module to switch
+	-- off, so the player walked straight through. Snap to the pad centre and anchor locally; the
+	-- server's own snap and anchor follow (asked twice, in case the first ask arrives early).
+	local state = self._state.State
+	if on and root and state and state.plot then
+		local x, z = World.throwPad(W, state.plot, COUNT)
+		local at = Vector3.new(x, root.Position.Y, z)
+		root.AssemblyLinearVelocity = Vector3.zero
+		root.CFrame = CFrame.lookAt(at, at + Vector3.zAxis)
+		root.Anchored = true
+	elseif not on and root then
+		root.Anchored = false
+	end
+	if self._padRemote then
+		local remote = self._padRemote
+		remote:FireServer(on)
+		if on then
+			task.delay(0.5, function()
+				if self._locked then
+					remote:FireServer(true)
+				end
+			end)
+		end
+	end
+	-- the pad's own "THROW HERE" sign is pointless while standing on it
+	local pads = workspace:FindFirstChild("Map")
+	pads = pads and pads:FindFirstChild("Plots")
+	local plotModel = if pads
+			and state
+			and state.plot
+		then pads:FindFirstChild("Plot" .. state.plot)
+		else nil
+	local pad = plotModel and plotModel:FindFirstChild("ThrowPad")
+	local hint = pad and pad:FindFirstChild("Hint", true)
+	if hint and hint:IsA("BillboardGui") then
+		hint.Enabled = not on
+	end
+	if humanoid then
+		-- cancel any walk target left over from before (a MoveTo resumes when walking is back)
+		humanoid:Move(Vector3.zero)
+		if root then
+			humanoid:MoveTo(root.Position)
+		end
+		humanoid.AutoRotate = not on
+	end
+	if on then
+		if c then
+			c:Disable()
+		end
+		Sound:Play("pad_enter")
+		-- the throw clip is fetched now, not on the first throw (owner's review 4: the wind-up came
+		-- late, the food sat in a still hand)
+		if humanoid then
+			Motion.load(humanoid, "Throw")
+		end
+	elseif c then
+		c:Enable()
+	end
+	local hud = self._hud :: any
+	if hud and hud.SetCinematic then
+		hud:SetCinematic("throwpad", on)
+	end
+end
+
+-- Leave the throw spot: the server sets the character down just behind the pad, facing the plot.
+function ThrowController:_exitPad()
+	if not self._locked or self._playing then
+		return
+	end
+	self._leaving = true
+	self:_lock(false)
+	Sound:Play("ui_close")
+end
+
 -- ----------------------------------------------------------------- mode --
 
 function ThrowController:_setMode(mode: string)
@@ -341,6 +540,11 @@ function ThrowController:_setMode(mode: string)
 	if mode == "normal" then
 		ContextActionService:UnbindAction(TAP_ACTION)
 		camera.CameraType = Enum.CameraType.Custom
+		self:_setLuckyFx(false)
+		if self._charge then
+			Sound:Stop(self._charge, 0.1)
+			self._charge = nil
+		end
 		return
 	end
 	if was == "normal" then
@@ -432,10 +636,13 @@ local function makeFood(foodId: string): Part
 			end
 		end
 		model.Parent = ball
-		-- tumble in flight
+		-- tumble IN FLIGHT only (ThrowSequence sets "Tumble"); landed or in a hand it stays upright
+		-- (owner's review 5: "rotating like a tyre even after landing and in the hand")
 		local spin = RunService.RenderStepped:Connect(function()
-			local t = os.clock()
-			ball.CFrame = CFrame.new(ball.Position) * CFrame.Angles(t * 5, t * 3, 0)
+			if ball:GetAttribute("Tumble") == true then
+				local t = os.clock()
+				ball.CFrame = CFrame.new(ball.Position) * CFrame.Angles(t * 5, t * 3, 0)
+			end
 		end)
 		ball.Destroying:Once(function()
 			spin:Disconnect()
@@ -471,11 +678,32 @@ function ThrowController:_play(result: any)
 				return self._abort
 			end,
 			makeFood = makeFood,
-			build = function(id: string, mut: string?, size: string?): (Model, number)
-				return self._heroes:Build(id, mut, size)
+			build = function(
+				id: string,
+				mut: string?,
+				size: string?,
+				bare: boolean?
+			): (Model, number)
+				return self._heroes:Build(id, mut, size, bare)
 			end,
 			animate = function(model: Model): any
 				return self._heroes:Animate(model)
+			end,
+			land = function(model: Model, holding: boolean?)
+				self._heroes:RevealAnimate(model, holding)
+			end,
+			bestZone = self._bestZone,
+			released = function()
+				self:_setLuckyFx(false)
+			end,
+			zoneCross = function(index: number)
+				local zone = Config.Zones[index]
+				local hud = self._hud :: any
+				if zone and hud and hud.ZoneCross then
+					hud:ZoneCross(zone.Name, ZONE_COLORS[index] or Color3.new(1, 1, 1), index)
+				else
+					Sound:Play("zone_cross")
+				end
 			end,
 		})
 	end)
@@ -491,8 +719,34 @@ function ThrowController:_play(result: any)
 	self._playing = false
 	self._busy = false
 	self._lastZone = result.zone
+	self._bestZone = math.max(self._bestZone, result.zone or 0)
+	-- a hand-thrown catch comes to the hands: the throw is over, the player steps off the pad
+	-- holding it and walks to a pedestal (owner's review 3). Auto Throw seats its catches itself.
+	local carrying = result.uid ~= nil and player:GetAttribute("Carrying") ~= nil
+	if carrying and self._locked then
+		self._leaving = true
+		self:_lock(false)
+	end
+	pcall(self._afterCatch, self, result, carrying)
 	self:_rearm()
 	self:_setMode(self:_wantedMode())
+end
+
+-- Back on the pad after a catch: a Rare or better makes the player
+-- celebrate; a hero auto-sold for yen pops coins.
+function ThrowController:_afterCatch(result: any, carrying: boolean?)
+	local character = player.Character
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	local root = rootPart()
+	local rarity = Config.Rarities[result.rarity]
+	-- no cheer while the hands are full (CarryHold plays)
+	if humanoid and rarity and rarity.Order >= CELEBRATE_ORDER and not carrying then
+		Motion.play(humanoid, "Celebrate")
+	end
+	if typeof(result.soldYen) == "number" and result.soldYen > 0 and root then
+		Vfx.play("Coin_Pop", root.Position + Vector3.new(0, 2, 0))
+		Sound:Play("coin_tick")
+	end
 end
 
 -- Where another player's throw starts: over their own character if it is
@@ -516,6 +770,12 @@ function ThrowController:_watch(seen: any)
 	local from = self:_throwerPosition(seen.plot)
 	local target = Vector3.new(seen.x, W.GroundY + 2, seen.z)
 	local ball = makeFood(seen.food)
+	local trailName, tint = ThrowSequence.trailFor(seen.food)
+	local trailFx = Vfx.play(trailName, ball, { loop = true, tint = tint })
+	local trail = ball:FindFirstChildOfClass("Trail")
+	if trail and trailFx.authored then
+		trail.Enabled = false
+	end
 	task.spawn(function()
 		local t0 = os.clock()
 		while ball.Parent do
@@ -526,9 +786,19 @@ function ThrowController:_watch(seen: any)
 			end
 			RunService.RenderStepped:Wait()
 		end
-		Particles.dust(Vector3.new(seen.x, W.GroundY + 0.15, seen.z), 0.7)
+		trailFx.stop()
+		Vfx.play(
+			"Land_Impact",
+			Vector3.new(seen.x, W.GroundY + 0.15, seen.z),
+			{ scale = 0.7, mult = 0.5 }
+		)
 		task.wait(seen.reveal + T.LandPauseSeconds)
-		Particles.burst(target + Vector3.new(0, 2, 0), Theme.rarity(seen.rarity), 24)
+		-- a short reveal, no camera, no sound
+		Vfx.play("Reveal_" .. tostring(seen.rarity), target, {
+			scale = 0.6,
+			tint = Theme.rarity(seen.rarity),
+			mult = 0.3,
+		})
 		ball:Destroy()
 	end)
 end
@@ -537,10 +807,21 @@ function ThrowController:_wantedMode(): string
 	if self._playing then
 		return "cinematic"
 	end
-	return if self._onPad and not Screens.isOpen() then "throw" else "normal"
+	return if self._onPad and not self._leaving and not Screens.isOpen() then "throw" else "normal"
 end
 
 function ThrowController:KnitStart()
+	-- the clips of a throw, its reveal, the carry and a rebirth are fetched at once, not on first use
+	Motion.preload({
+		"Throw",
+		"HeroStalk",
+		"HeroPickUp",
+		"HeroMenace",
+		"Eat",
+		"CarryHold",
+		"PlaceHero",
+		"RebirthAwaken",
+	})
 	self._state = Knit.GetController("StateController")
 	self._heroes = Knit.GetController("HeroController")
 	self._hud = Knit.GetController("HudController")
@@ -552,6 +833,7 @@ function ThrowController:KnitStart()
 		return
 	end
 	self._request = request
+	self._padRemote = Net.client("ThrowPad")
 	self:_bindUi()
 
 	result.OnClientEvent:Connect(function(payload: any)
@@ -571,8 +853,11 @@ function ThrowController:KnitStart()
 			warn(`[ThrowController] watch failed inert: {err}`)
 		end
 	end)
-	self._state:Observe(function()
+	self._state:Observe(function(state: any)
 		self:_refreshUi()
+		if not self._playing then
+			self:_readBestZone(state)
+		end
 	end)
 	self._state.Ticked:Connect(function()
 		-- power moves the zone bands while training
@@ -588,6 +873,15 @@ function ThrowController:KnitStart()
 		-- action (input injected by a test tool can bypass ContextActionService):
 		-- it still throws. One the action took arrives processed, and so does
 		-- a key typed into a text box, so neither is counted twice or by mistake.
+		if
+			not processed
+			and self._locked
+			and not self._playing
+			and (input.KeyCode == Enum.KeyCode.Backspace or input.KeyCode == Enum.KeyCode.X)
+		then
+			self:_exitPad()
+			return
+		end
 		if not processed and self._mode ~= "normal" and table.find(TAP_KEYS, input.KeyCode) then
 			self:_tap()
 			return
@@ -604,6 +898,19 @@ function ThrowController:KnitStart()
 		end
 	end)
 
+	player.CharacterAdded:Connect(function()
+		self._locked = false
+		self._leaving = false
+		local c = getControls()
+		if c then
+			c:Enable()
+		end
+		local hud = self._hud :: any
+		if hud and hud.SetCinematic then
+			hud:SetCinematic("throwpad", false)
+		end
+	end)
+
 	local lastAuto = 0
 	RunService.RenderStepped:Connect(function(dt: number)
 		local state = self._state.State
@@ -611,7 +918,23 @@ function ThrowController:KnitStart()
 		if state and state.plot and root then
 			local x, z = World.throwPad(W, state.plot, COUNT)
 			local distance = World.distance(root.Position.X, root.Position.Z, x, z)
-			self._onPad = distance <= W.ThrowPadRadius + 3
+			-- locked, the player IS on the pad (the server holds them there); unlocked, stepping
+			-- well onto it locks them
+			self._onPad = self._locked or distance <= W.ThrowPadRadius + 1.5
+			if self._leaving and distance > W.ThrowPadRadius + 4 then
+				-- set down off the stage: the next step onto it locks again
+				self._leaving = false
+			end
+			if self._onPad and not self._leaving and not self._locked then
+				self:_lock(true)
+			elseif
+				self._locked
+				and distance > W.ThrowPadRadius + 8
+				and os.clock() - self._lockedAt > 2
+			then
+				-- moved off by something else (a teleport, a respawn): let go
+				self:_lock(false)
+			end
 		else
 			self._onPad = false
 		end
@@ -633,6 +956,7 @@ function ThrowController:KnitStart()
 			return
 		end
 		self:_tickMeter()
+		self:_tickCharge()
 		if root then
 			-- ease in behind the shoulder, and follow small steps on the pad
 			local camera = workspace.CurrentCamera

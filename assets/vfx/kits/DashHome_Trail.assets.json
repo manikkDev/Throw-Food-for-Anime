@@ -1,0 +1,8 @@
+{
+ "textures": [
+  "sim:lib/beams/speed_streaks_cel_02__vt",
+  "sim:lib/flipbooks/smoke/smoke_puff_fb_cel_03_4x4",
+  "sim:lib/sprites/specks/streak_soft_00"
+ ],
+ "meshes": []
+}

@@ -2,22 +2,27 @@
  "name": "PassCardTemplate",
  "theme": "theme.json",
  "resolution": [
-  160,
-  196
+  334,
+  210
  ],
  "kind": "world",
  "children": [
   {
    "type": "panel",
    "name": "PassCardTemplate",
-   "colour": "panelHi",
-   "depth": 4,
-   "corner": 14,
+   "colour": [
+    "#8B5CF6",
+    "#3F1F99"
+   ],
+   "keyline": "#D3C2FF",
+   "paintable": true,
+   "depth": 0,
+   "corner": 16,
    "size": [
     0,
-    136,
+    310,
     0,
-    172
+    186
    ],
    "attrs": {
     "PassKey": "DoubleTraining"
@@ -25,13 +30,134 @@
    "children": [
     {
      "type": "icon",
-     "icon": "IconTrainBig",
-     "name": "Icon",
+     "icon": "BgStars",
+     "name": "CardBg",
+     "size": [
+      1,
+      0,
+      1,
+      0
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 0,
+     "props": {
+      "ScaleType": "Crop"
+     },
+     "corner": 14,
+     "overhang": true,
+     "tint": "#FFFFFF",
+     "alphaImg": 0.78
+    },
+    {
+     "type": "sheen",
+     "name": "Sheen",
+     "size": [
+      1,
+      0,
+      1,
+      0
+     ],
+     "angle": -24,
+     "opacity": 0.14,
+     "bands": [
+      [
+       0.3,
+       0.05
+      ],
+      [
+       0.4,
+       0.1
+      ]
+     ],
+     "corner": 16,
+     "overhang": true,
+     "children": [],
+     "z": 1
+    },
+    {
+     "type": "frame",
+     "name": "HeaderBand",
+     "colour": [
+      "#BC97FF",
+      "#8358D1"
+     ],
+     "corner": 12,
+     "keyline": "#FFFFFF",
+     "keepKeyline": true,
      "size": [
       0,
-      48,
+      294,
       0,
-      48
+      38
+     ],
+     "children": [
+      {
+       "type": "sheen",
+       "name": "Sheen",
+       "size": [
+        1,
+        0,
+        1,
+        0
+       ],
+       "angle": -24,
+       "opacity": 0.18,
+       "bands": [
+        [
+         0.3,
+         0.05
+        ],
+        [
+         0.4,
+         0.1
+        ]
+       ],
+       "corner": 12,
+       "overhang": true,
+       "children": [],
+       "z": 1
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        262,
+        0,
+        28
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.7857,
+       "textStroke": 1.5,
+       "name": "PassName",
+       "samples": [
+        "2x Training",
+        "2x Training"
+       ],
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "maxText": 22,
+       "z": 4
+      }
      ],
      "pos": [
       0.5,
@@ -42,48 +168,122 @@
      "anchor": [
       0.5,
       0
-     ]
+     ],
+     "z": 2,
+     "strokePx": 3
+    },
+    {
+     "type": "frame",
+     "name": "IconSlot",
+     "colour": [
+      "#2E1870",
+      "#12082E"
+     ],
+     "corner": 14,
+     "keyline": "#FFFFFF",
+     "keepKeyline": true,
+     "size": [
+      0,
+      94,
+      0,
+      94
+     ],
+     "children": [
+      {
+       "type": "icon",
+       "icon": "FxGlow",
+       "name": "SlotGlow",
+       "size": [
+        0,
+        90,
+        0,
+        90
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 1,
+       "tint": "#FFFFFF",
+       "overhang": true,
+       "centre": false,
+       "attrs": {},
+       "alphaImg": 0.55
+      },
+      {
+       "type": "icon",
+       "icon": "IconTrainBig",
+       "name": "CardIcon",
+       "size": [
+        0,
+        72,
+        0,
+        72
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 3
+      }
+     ],
+     "pos": [
+      0,
+      12,
+      0,
+      68
+     ],
+     "z": 2,
+     "strokePx": 3
     },
     {
      "type": "label",
      "text": "<unbound>",
      "size": [
       0,
-      120,
+      176,
       0,
-      37
+      56
      ],
      "textColour": "onDark",
-     "align": "center",
-     "textScale": 0.3784,
-     "textStroke": 2,
-     "name": "PassName",
+     "align": "left",
+     "textScale": 0.2857,
+     "textStroke": 1.5,
+     "name": "PassDesc",
      "samples": [
-      "2x Training",
-      "2x Training"
+      "Every hero earns double yen, forever.",
+      "2x Power from every rep, perfect tap and boost."
      ],
      "wrap": true,
-     "font": "display",
      "pos": [
-      0.5,
       0,
+      122,
       0,
-      60
+      56
      ],
-     "anchor": [
-      0.5,
-      0
-     ],
-     "maxText": 14
+     "maxText": 16,
+     "z": 3
     },
     {
      "type": "button",
      "name": "PassBuyButton",
      "size": [
       0,
-      112,
+      176,
       0,
-      44
+      48
      ],
      "children": [
       {
@@ -92,9 +292,9 @@
        "name": "Icon",
        "size": [
         0,
-        26,
+        28,
         0,
-        26
+        28
        ]
       },
       {
@@ -102,69 +302,170 @@
        "text": "<unbound>",
        "size": [
         0,
-        46,
+        78,
         0,
-        26
+        32
        ],
        "textColour": "onDark",
        "align": "center",
-       "textScale": 0.7308,
-       "textStroke": 2,
+       "textScale": 0.625,
+       "textStroke": 1.5,
        "name": "PassPrice",
        "samples": [
         "149",
-        "999"
+        "999",
+        "GIFT 149"
        ],
        "font": "display",
-       "maxText": 19
+       "maxText": 20,
+       "autoX": true,
+       "capW": 119
       }
      ],
      "layout": {
       "type": "list",
       "dir": "x",
-      "gap": 8,
+      "gap": 7,
       "align": "center"
      },
-     "sizeClass": "M",
+     "sizeClass": "S",
      "depth": 4,
-     "corner": 18,
+     "corner": 16,
      "selfFace": true,
-     "colour": "#FF61AC",
+     "colour": "#48D687",
      "paintable": true,
      "gloss": true,
      "stops": [
       [
        0.0,
-       "#FF61AC"
+       "#48D687"
       ],
       [
-       0.4,
-       "#FF61AC"
+       0.49,
+       "#48D687"
       ],
       [
-       0.41000000000000003,
-       "#E6579B"
+       0.5,
+       "#3EB874"
       ],
       [
        1.0,
-       "#D1508D"
+       "#359E64"
       ]
      ],
      "attrs": {
-      "PressLip": 4
+      "PressLip": 4,
+      "AutoShine": true,
+      "Rim": 0.5
      },
+     "pos": [
+      1,
+      -12,
+      1,
+      -12
+     ],
+     "anchor": [
+      1,
+      1
+     ],
+     "stroke": 3,
+     "keyline": "#A4EAC3"
+    },
+    {
+     "type": "panel",
+     "name": "Sticker",
+     "colour": "danger",
+     "size": [
+      0,
+      126,
+      0,
+      24
+     ],
+     "corner": 12,
+     "depth": 0,
+     "keyline": "#FFFFFF",
+     "selfFace": true,
+     "paintable": true,
      "pos": [
       0.5,
       0,
-      1,
-      -8
+      0,
+      0
      ],
      "anchor": [
       0.5,
-      1
-     ]
+      0.5
+     ],
+     "z": 8,
+     "overhang": true,
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        114,
+        0,
+        20
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.8333,
+       "textStroke": 1.5,
+       "name": "StickerText",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "samples": [
+        "BEST VALUE",
+        "MOST VALUE",
+        "GOOD VALUE",
+        "LIMITED",
+        "NEW!",
+        "BEST VALUE"
+       ],
+       "maxText": 16
+      },
+      {
+       "type": "sheen",
+       "name": "Sheen",
+       "size": [
+        1,
+        0,
+        1,
+        0
+       ],
+       "angle": -24,
+       "opacity": 0.25,
+       "bands": [
+        [
+         0.3,
+         0.05
+        ],
+        [
+         0.4,
+         0.1
+        ]
+       ],
+       "corner": 12,
+       "overhang": true,
+       "children": []
+      }
+     ],
+     "visible": false,
+     "mockHide": true,
+     "stroke": 2
     }
    ],
+   "stroke": 3,
    "pos": [
     0,
     12,

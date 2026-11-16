@@ -1,0 +1,12 @@
+{
+ "textures": [
+  "sim:lib/flipbooks/shockwaves/shockwave_cel_01_4x4",
+  "sim:lib/sprites/elements/rays_glow_01",
+  "sim:lib/sprites/rings/ring_glow_08",
+  "sim:lib/sprites/rings/ring_spiked_cel_05",
+  "sim:lib/sprites/stars/star_glow_00",
+  "sim:lib/sprites/stars/star_glow_04",
+  "sim:tfa/edge_glow"
+ ],
+ "meshes": []
+}

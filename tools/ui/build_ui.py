@@ -24,7 +24,8 @@ sys.path.insert(0, str(HERE))
 import mangapop as mp  # noqa: E402  (applies the patches)
 from mangapop import ub  # noqa: E402
 import mp3  # noqa: E402,F401  (v3 system: emitter additions)
-import screens_v3 as screens  # noqa: E402  (UI v3)
+import mp4  # noqa: E402,F401  (v4 system: thin strokes, lip only on buttons, type scale)
+import screens_v46 as screens  # noqa: E402  (UI v4.6: v4.4 + owner's review 7)
 import verify_ui as vu  # noqa: E402
 from PIL import Image, ImageDraw  # noqa: E402
 
@@ -40,10 +41,10 @@ THEME = {
                 "builder. outline = ink, used for buttons and all text strokes; panels add a white keyline "
                 "and an ink comic shadow per element (keyline/comic keys).",
     "font": "FredokaOne",
-    "stroke": 4,
-    "textStroke": 3,
+    "stroke": 3,
+    "textStroke": 2,
     "corner": 16,
-    "shadowOffset": 6,
+    "shadowOffset": 0,
     "outline": "#0D0F2B",
     "backdrop": ["#8ED1FC", "#9BDB7A"],
     "palette": {
@@ -68,6 +69,10 @@ def icon_map():
         m[p.stem] = p
     for p in (ROOT / "assets" / "ui" / "food_icons").glob("*.png"):
         m[f"FoodIcon_{p.stem}"] = p
+    for p in (ROOT / "assets" / "ui" / "fx_v4").glob("*.png"):  # effect sprites and card backdrops
+        m[p.stem] = p
+    for p in (ROOT / "assets" / "ui" / "zone_bg").glob("*.png"):  # Hero Index zone card backdrops
+        m[p.stem] = p
     return m
 
 
@@ -232,7 +237,7 @@ def main() -> int:
     for fn in screens.SCREENS:
         spec = fn()
         for c in spec["children"]:
-            mp3.clamp_text(c)
+            mp4.normalize(c)
         name = spec["name"]
         if only and name not in only:
             continue
@@ -252,7 +257,7 @@ def main() -> int:
         results[name] = {"project": verify(spec), "stock": verify(spec, stock=True)}
 
     for fn, owner in screens.TEMPLATES:
-        node = mp3.clamp_text(fn())
+        node = mp4.normalize(fn())
         tname = node["name"]
         if only and owner not in only:
             continue

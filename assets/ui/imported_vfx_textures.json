@@ -1,0 +1,4343 @@
+{
+ "_note": "Every distinct texture in ServerStorage.ImportedVfx (the owner's hand-picked aura/particle packs), dumped 2026-11-17 from the place. ParticleEmitters do NOT render inside ViewportFrames: use these ids as UI ImageLabels (flipbook ones: step ImageRectOffset/ImageRectSize over the grid, e.g. Grid4x4 = 16 frames). 'from' is the pack path.",
+ "textures": [
+  {
+   "tex": "rbxassetid://241876428",
+   "class": "ParticleEmitter",
+   "name": "Lines D",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff7272",
+   "from": "HandPicked.aura (2).HumanoidRootPart.Lines D"
+  },
+  {
+   "tex": "rbxassetid://8047533775",
+   "class": "ParticleEmitter",
+   "name": "Energy Flare2",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff4747",
+   "from": "HandPicked.aura (2).HumanoidRootPart.Attachment.Energy Flare2"
+  },
+  {
+   "tex": "rbxassetid://10435576555",
+   "class": "ParticleEmitter",
+   "name": "Energy Flare",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff4747",
+   "from": "HandPicked.aura (2).HumanoidRootPart.Attachment.Energy Flare"
+  },
+  {
+   "tex": "rbxassetid://10567383038",
+   "class": "ParticleEmitter",
+   "name": "Specs",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff7979",
+   "from": "HandPicked.aura (2).HumanoidRootPart.Specs"
+  },
+  {
+   "tex": "rbxassetid://2360242557",
+   "class": "ParticleEmitter",
+   "name": "aura",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff4747",
+   "from": "HandPicked.aura (2).Torso.aura"
+  },
+  {
+   "tex": "rbxassetid://10428805046",
+   "class": "ParticleEmitter",
+   "name": "aura2",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff4747",
+   "from": "HandPicked.aura (2).Torso.aura2"
+  },
+  {
+   "tex": "rbxassetid://7857596636",
+   "class": "ParticleEmitter",
+   "name": "AwakeningL",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff7373",
+   "from": "HandPicked.aura (2).Torso.Attachment.AwakeningL"
+  },
+  {
+   "tex": "rbxassetid://11341694984",
+   "class": "ParticleEmitter",
+   "name": "Light1",
+   "flipbook": "Grid2x2/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (2).Torso.Light1"
+  },
+  {
+   "tex": "rbxassetid://1084996976",
+   "class": "ParticleEmitter",
+   "name": "Embers1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (2).Torso.Embers1"
+  },
+  {
+   "tex": "rbxassetid://10558425570",
+   "class": "ParticleEmitter",
+   "name": "Wind1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (2).Head.Wind1"
+  },
+  {
+   "tex": "rbxassetid://1053548563",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "HandPicked.aura (1).Aura.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://530839385",
+   "class": "ParticleEmitter",
+   "name": "aura de fundo",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "0000ff",
+   "from": "HandPicked.aura (1).Limit Break.aura de fundo"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=250186345",
+   "class": "ParticleEmitter",
+   "name": "aura 2",
+   "flipbook": "None/Loop",
+   "light": 0.7,
+   "color": "2a1253",
+   "from": "HandPicked.aura (1).Limit Break.aura 2"
+  },
+  {
+   "tex": "rbxassetid://243043091",
+   "class": "ParticleEmitter",
+   "name": "2 Efeito",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "003ebc",
+   "from": "HandPicked.aura (1).Limit Break.2 Efeito"
+  },
+  {
+   "tex": "rbxassetid://9591714216",
+   "class": "ParticleEmitter",
+   "name": "glowSmall",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (1).Part.glowSmall"
+  },
+  {
+   "tex": "rbxassetid://9591714714",
+   "class": "ParticleEmitter",
+   "name": "glow",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (1).Part.Attachment.glow"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7511321694",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "dd8ceb",
+   "from": "HandPicked.Wings Aura.Torso.WINGS.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://8710671751",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "dd8ceb",
+   "from": "HandPicked.Wings Aura.Torso.WINGS.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://10205180639",
+   "class": "ParticleEmitter",
+   "name": "Specs",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "dd8ceb",
+   "from": "HandPicked.Wings Aura.Torso.Specs"
+  },
+  {
+   "tex": "rbxassetid://10545078665",
+   "class": "ParticleEmitter",
+   "name": "Flame",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "dd8ceb",
+   "from": "HandPicked.Wings Aura.Torso.Flame"
+  },
+  {
+   "tex": "rbxassetid://1075864321",
+   "class": "ParticleEmitter",
+   "name": "Glow",
+   "flipbook": "None/Loop",
+   "light": -1.0,
+   "color": "dd8ceb",
+   "from": "HandPicked.Wings Aura.Torso.Attachment.Glow"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=6453904355",
+   "class": "ParticleEmitter",
+   "name": "HalfAHeart",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Wings Aura.Torso.Attachment.HalfAHeart"
+  },
+  {
+   "tex": "rbxassetid://6909741538",
+   "class": "ParticleEmitter",
+   "name": "Star",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "dd8ceb",
+   "from": "HandPicked.Wings Aura.Torso.Attachment.Star"
+  },
+  {
+   "tex": "rbxassetid://6900421398",
+   "class": "ParticleEmitter",
+   "name": "Rings",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "dd8ceb",
+   "from": "HandPicked.Wings Aura.Torso.Attachment.Rings"
+  },
+  {
+   "tex": "rbxassetid://10176632695",
+   "class": "ParticleEmitter",
+   "name": "Wind",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.Wind"
+  },
+  {
+   "tex": "rbxassetid://10439119562",
+   "class": "ParticleEmitter",
+   "name": "ShardsDark",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.ShardsDark"
+  },
+  {
+   "tex": "rbxassetid://9997556038",
+   "class": "ParticleEmitter",
+   "name": "Specs2",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.Specs2"
+  },
+  {
+   "tex": "rbxassetid://8030760338",
+   "class": "ParticleEmitter",
+   "name": "Specs1",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "aa55ff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.Specs1"
+  },
+  {
+   "tex": "rbxassetid://10632727506",
+   "class": "ParticleEmitter",
+   "name": "SpecsDark",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.SpecsDark"
+  },
+  {
+   "tex": "rbxassetid://10180479311",
+   "class": "ParticleEmitter",
+   "name": "Smoke",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.Smoke"
+  },
+  {
+   "tex": "rbxassetid://9470888178",
+   "class": "ParticleEmitter",
+   "name": "Cubes",
+   "flipbook": "None/Loop",
+   "light": 0.6,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.Cubes"
+  },
+  {
+   "tex": "rbxassetid://8905832887",
+   "class": "ParticleEmitter",
+   "name": "15",
+   "flipbook": "None/Loop",
+   "light": 0.15,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.15"
+  },
+  {
+   "tex": "rbxassetid://9660685442",
+   "class": "ParticleEmitter",
+   "name": "6",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.6"
+  },
+  {
+   "tex": "rbxassetid://13266124480",
+   "class": "ParticleEmitter",
+   "name": "Fire2",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.Fire2"
+  },
+  {
+   "tex": "rbxassetid://7153311499",
+   "class": "ParticleEmitter",
+   "name": "10",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "aa55ff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.10"
+  },
+  {
+   "tex": "rbxassetid://8904012224",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.2"
+  },
+  {
+   "tex": "rbxassetid://8888098483",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.2"
+  },
+  {
+   "tex": "rbxassetid://9660651022",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.2"
+  },
+  {
+   "tex": "rbxassetid://9660490682",
+   "class": "ParticleEmitter",
+   "name": "3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.3"
+  },
+  {
+   "tex": "rbxassetid://8667276133",
+   "class": "ParticleEmitter",
+   "name": "5",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "55aaff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.5"
+  },
+  {
+   "tex": "rbxassetid://8048608283",
+   "class": "ParticleEmitter",
+   "name": "6",
+   "flipbook": "None/Loop",
+   "light": 0.75,
+   "color": "aa55ff",
+   "from": "HandPicked.Ethereal Harmony.2.Explosion.6"
+  },
+  {
+   "tex": "rbxassetid://10034873151",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "Grid8x8/OneShot",
+   "light": 1.0,
+   "color": "535353",
+   "from": "HandPicked.Ethereal Harmony.2.Dust.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://80836162192530",
+   "class": "ParticleEmitter",
+   "name": "BlackStar2x2",
+   "flipbook": "Grid2x2/OneShot",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.BlackStar2x2"
+  },
+  {
+   "tex": "rbxassetid://94129642400712",
+   "class": "ParticleEmitter",
+   "name": "BrightStars2x2",
+   "flipbook": "Grid2x2/OneShot",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.BrightStars2x2"
+  },
+  {
+   "tex": "rbxassetid://3060556198",
+   "class": "ParticleEmitter",
+   "name": "Flare111New",
+   "flipbook": "None/OneShot",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Torso.Flare111New"
+  },
+  {
+   "tex": "rbxassetid://1847258023",
+   "class": "ParticleEmitter",
+   "name": "Flare221New",
+   "flipbook": "None/OneShot",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.Flare221New"
+  },
+  {
+   "tex": "rbxassetid://17062426399",
+   "class": "ParticleEmitter",
+   "name": "Star4",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.Star4"
+  },
+  {
+   "tex": "rbxassetid://86661686280797",
+   "class": "ParticleEmitter",
+   "name": "Breaking Apart Dark",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -4.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.Breaking Apart Dark"
+  },
+  {
+   "tex": "rbxassetid://126275989641021",
+   "class": "ParticleEmitter",
+   "name": "Breaking Apart Lightning",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -4.0,
+   "color": "000000",
+   "from": "HandPicked.Torso.Breaking Apart Lightning"
+  },
+  {
+   "tex": "rbxassetid://83784868925844",
+   "class": "ParticleEmitter",
+   "name": "Error Overlay",
+   "flipbook": "Grid8x8/OneShot",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.Error Overlay"
+  },
+  {
+   "tex": "rbxassetid://12237413962",
+   "class": "ParticleEmitter",
+   "name": "Glitch FX",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.Glitch FX"
+  },
+  {
+   "tex": "rbxassetid://71152974359183",
+   "class": "ParticleEmitter",
+   "name": "Scratchy",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -4.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.Scratchy"
+  },
+  {
+   "tex": "rbxassetid://102472052965646",
+   "class": "ParticleEmitter",
+   "name": "Scribbles",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -4.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.Scribbles"
+  },
+  {
+   "tex": "rbxassetid://15481334255",
+   "class": "ParticleEmitter",
+   "name": "Thin Scribbling",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -4.0,
+   "color": "000000",
+   "from": "HandPicked.Torso.Thin Scribbling"
+  },
+  {
+   "tex": "rbxassetid://16892450421",
+   "class": "Beam",
+   "name": "Beam10",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Torso.Base.Beam10"
+  },
+  {
+   "tex": "rbxassetid://14197083420",
+   "class": "ParticleEmitter",
+   "name": "lightning #3",
+   "flipbook": "Grid8x8/OneShot",
+   "light": 1.0,
+   "color": "22b9ff",
+   "from": "HandPicked.electric aura.Torso.LightningAura.lightning #3"
+  },
+  {
+   "tex": "rbxassetid://14068947349",
+   "class": "ParticleEmitter",
+   "name": "lightning #6",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "22b9ff",
+   "from": "HandPicked.electric aura.Torso.LightningAura.lightning #6"
+  },
+  {
+   "tex": "rbxassetid://139759126655001",
+   "class": "ParticleEmitter",
+   "name": "lightning #1",
+   "flipbook": "Grid2x2/OneShot",
+   "light": 1.0,
+   "color": "22b9ff",
+   "from": "HandPicked.electric aura.Torso.LightningAura.lightning #1"
+  },
+  {
+   "tex": "rbxassetid://16504113471",
+   "class": "ParticleEmitter",
+   "name": "lightning #5",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "22b9ff",
+   "from": "HandPicked.electric aura.Torso.LightningAura.lightning #5"
+  },
+  {
+   "tex": "rbxassetid://6764385668",
+   "class": "ParticleEmitter",
+   "name": "AuraPart",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff9c11",
+   "from": "HandPicked.POF:RE AURA: Sun Necromancer.Head.AuraPart"
+  },
+  {
+   "tex": "rbxassetid://3186494455",
+   "class": "ParticleEmitter",
+   "name": "AuraPart2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff9c11",
+   "from": "HandPicked.POF:RE AURA: Sun Necromancer.Head.AuraPart2"
+  },
+  {
+   "tex": "rbxassetid://2152222413",
+   "class": "ParticleEmitter",
+   "name": "CircleOuter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff850a",
+   "from": "HandPicked.POF:RE AURA: Sun Necromancer.Aura.Attachment.CircleOuter"
+  },
+  {
+   "tex": "rbxassetid://2830891958",
+   "class": "ParticleEmitter",
+   "name": "Circle",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff850a",
+   "from": "HandPicked.POF:RE AURA: Sun Necromancer.Aura.Attachment.Circle"
+  },
+  {
+   "tex": "rbxassetid://5076152048",
+   "class": "ParticleEmitter",
+   "name": "SmallParticles",
+   "flipbook": "None/Loop",
+   "light": 100.0,
+   "color": "b55704",
+   "from": "HandPicked.POF:RE AURA: Sun Necromancer.Aura.SmallParticles"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13712000835",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "Grid8x8/OneShot",
+   "light": 1.0,
+   "color": "0055ff",
+   "from": "HandPicked.Gojo and Sukuna Aura.Gojo Aura.Head.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://10012239637",
+   "class": "ParticleEmitter",
+   "name": "Force Aura",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "0055ff",
+   "from": "HandPicked.Gojo and Sukuna Aura.Gojo Aura.Head.Force Aura"
+  },
+  {
+   "tex": "rbxassetid://7216849325",
+   "class": "ParticleEmitter",
+   "name": "Star",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00aaff",
+   "from": "HandPicked.Gojo and Sukuna Aura.Gojo Aura.Head.Attachment.Star"
+  },
+  {
+   "tex": "rbxassetid://12015546676",
+   "class": "ParticleEmitter",
+   "name": "Flare",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "0062ff",
+   "from": "HandPicked.Gojo and Sukuna Aura.Gojo Aura.Head.Attachment.Flare"
+  },
+  {
+   "tex": "rbxassetid://16142397363",
+   "class": "ParticleEmitter",
+   "name": "Particle",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -1.0,
+   "color": "00aaff",
+   "from": "HandPicked.Gojo and Sukuna Aura.Gojo Aura.Left Arm.Fist.Particle"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12800314277",
+   "class": "ParticleEmitter",
+   "name": "Electricity",
+   "flipbook": "Grid2x2/OneShot",
+   "light": -2.0,
+   "color": "2f7fff",
+   "from": "HandPicked.Gojo and Sukuna Aura.Gojo Aura.HumanoidRootPart.Attachment.Electricit"
+  },
+  {
+   "tex": "rbxassetid://7216855914",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": -5.0,
+   "color": "00aaff",
+   "from": "HandPicked.Gojo and Sukuna Aura.Gojo Aura.HumanoidRootPart.Attachment.ParticleEm"
+  },
+  {
+   "tex": "rbxassetid://14049993216",
+   "class": "ParticleEmitter",
+   "name": "MaxRed",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "0066ff",
+   "from": "HandPicked.Gojo and Sukuna Aura.Gojo Aura.HumanoidRootPart.Attachment.MaxRed"
+  },
+  {
+   "tex": "rbxassetid://7216850580",
+   "class": "ParticleEmitter",
+   "name": "Shade",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Gojo and Sukuna Aura.Sukuna Aura.HumanoidRootPart.Attachment.Shade"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12878479033",
+   "class": "ParticleEmitter",
+   "name": "Shadow",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Gojo and Sukuna Aura.Sukuna Aura.HumanoidRootPart.Attachment.Shadow"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=917181007",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff3c3c",
+   "from": "HandPicked.Gojo and Sukuna Aura.Sukuna Aura.HumanoidRootPart.Attachment.Particle"
+  },
+  {
+   "tex": "rbxassetid://14197139100",
+   "class": "ParticleEmitter",
+   "name": "Images/0003",
+   "flipbook": "Grid8x8/OneShot",
+   "light": 0.7,
+   "color": "aaffff",
+   "from": "HandPicked.Goku - SSJ2 Aura.Head.Images/0003"
+  },
+  {
+   "tex": "rbxassetid://17612127081",
+   "class": "ParticleEmitter",
+   "name": "Images/OriginalAura2x2",
+   "flipbook": "Grid2x2/OneShot",
+   "light": 0.65,
+   "color": "ffef77",
+   "from": "HandPicked.Goku - SSJ2 Aura.Torso.AuraAttachment.Images/OriginalAura2x2"
+  },
+  {
+   "tex": "rbxassetid://11037513578",
+   "class": "ParticleEmitter",
+   "name": "Images/Magic8",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "5b552a",
+   "from": "HandPicked.Goku - SSJ2 Aura.Torso.Images/Magic8"
+  },
+  {
+   "tex": "rbxassetid://833874434",
+   "class": "ParticleEmitter",
+   "name": "aura",
+   "flipbook": "None/Loop",
+   "light": 0.3,
+   "color": "00aaff",
+   "from": "HandPicked.Rimuru.Left Arm.aura"
+  },
+  {
+   "tex": "rbxassetid://243740013",
+   "class": "ParticleEmitter",
+   "name": "small",
+   "flipbook": "None/Loop",
+   "light": 0.3,
+   "color": "ffffff",
+   "from": "HandPicked.Rimuru.Left Arm.small"
+  },
+  {
+   "tex": "rbxassetid://8133845150",
+   "class": "ParticleEmitter",
+   "name": "bot",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "HandPicked.Rimuru.Torso.Aura_Attachment2.bot"
+  },
+  {
+   "tex": "rbxassetid://8133994161",
+   "class": "ParticleEmitter",
+   "name": "backAura",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "0000ff",
+   "from": "HandPicked.Rimuru.Torso.Aura_Attachment3.backAura"
+  },
+  {
+   "tex": "rbxassetid://8618373035",
+   "class": "ParticleEmitter",
+   "name": "Ground1",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "7588ff",
+   "from": "HandPicked.Rimuru.Torso.Ground1"
+  },
+  {
+   "tex": "rbxassetid://8708744804",
+   "class": "ParticleEmitter",
+   "name": "Ground",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "4e5aff",
+   "from": "HandPicked.Rimuru.Torso.Ground"
+  },
+  {
+   "tex": "rbxassetid://8030746658",
+   "class": "ParticleEmitter",
+   "name": "Gradient",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "7588ff",
+   "from": "HandPicked.Rimuru.Torso.Gradient"
+  },
+  {
+   "tex": "rbxassetid://8271975883",
+   "class": "ParticleEmitter",
+   "name": "Stuff",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "666bff",
+   "from": "HandPicked.Rimuru.Torso.Stuff"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=8089467613",
+   "class": "Beam",
+   "name": "Beam8",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "8741ff",
+   "from": "HandPicked.Atomic.HumanoidRootPart.Beam8"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=18925205019",
+   "class": "Beam",
+   "name": "Beam24",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "8741ff",
+   "from": "HandPicked.Atomic.HumanoidRootPart.Beam24"
+  },
+  {
+   "tex": "rbxassetid://8114157061",
+   "class": "ParticleEmitter",
+   "name": "Sparks1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "5f29ff",
+   "from": "HandPicked.Atomic.HumanoidRootPart.Attachment25.Sparks1"
+  },
+  {
+   "tex": "rbxassetid://16860267787",
+   "class": "ParticleEmitter",
+   "name": "Aura2",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "9225ff",
+   "from": "HandPicked.Atomic.HumanoidRootPart.Attachment25.Aura2"
+  },
+  {
+   "tex": "rbxassetid://15371082237",
+   "class": "ParticleEmitter",
+   "name": "Dark Shadow Fire",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "f7000a",
+   "from": "HandPicked.Test Reversal Red Aura.Head.Dark Shadow Fire"
+  },
+  {
+   "tex": "rbxassetid://16846986401",
+   "class": "ParticleEmitter",
+   "name": "Fire18",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "de2f00",
+   "from": "HandPicked.Test Reversal Red Aura.Head.Fire18"
+  },
+  {
+   "tex": "rbxassetid://16843151641",
+   "class": "ParticleEmitter",
+   "name": "Fire2",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -1.0,
+   "color": "f71000",
+   "from": "HandPicked.Test Reversal Red Aura.Head.Fire2"
+  },
+  {
+   "tex": "rbxassetid://16878181512",
+   "class": "ParticleEmitter",
+   "name": "Spec1",
+   "flipbook": "None/OneShot",
+   "light": 1.0,
+   "color": "f70000",
+   "from": "HandPicked.Test Reversal Red Aura.Head.Spec1"
+  },
+  {
+   "tex": "rbxassetid://16892453445",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "5079ff",
+   "from": "HandPicked.Sung Jinwoo.Head.Beams.Right.Beam"
+  },
+  {
+   "tex": "rbxassetid://123105682256045",
+   "class": "Beam",
+   "name": "Beam68",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "5885ff",
+   "from": "HandPicked.Sung Jinwoo.Head.Beams.Right.Beam68"
+  },
+  {
+   "tex": "rbxassetid://17749735982",
+   "class": "ParticleEmitter",
+   "name": "Flames",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "1b1b1b",
+   "from": "HandPicked.Sung Jinwoo.Head.Flames"
+  },
+  {
+   "tex": "rbxassetid://15410021685",
+   "class": "ParticleEmitter",
+   "name": "Smoke",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "5e7cff",
+   "from": "HandPicked.Sung Jinwoo.Head.Smoke"
+  },
+  {
+   "tex": "rbxassetid://11843575561",
+   "class": "ParticleEmitter",
+   "name": "Clean Flame Blast",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -2.0,
+   "color": "5e7cff",
+   "from": "HandPicked.Sung Jinwoo.Head.Clean Flame Blast"
+  },
+  {
+   "tex": "rbxassetid://15371144313",
+   "class": "ParticleEmitter",
+   "name": "Dark Glow Fire",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "5e7cff",
+   "from": "HandPicked.Sung Jinwoo.Head.Dark Glow Fire"
+  },
+  {
+   "tex": "rbxassetid://11852978685",
+   "class": "ParticleEmitter",
+   "name": "Flame Burst",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "5e7cff",
+   "from": "HandPicked.Sung Jinwoo.Head.Flame Burst"
+  },
+  {
+   "tex": "rbxassetid://16878183760",
+   "class": "ParticleEmitter",
+   "name": "Spec2",
+   "flipbook": "None/OneShot",
+   "light": 0.0,
+   "color": "5e7cff",
+   "from": "HandPicked.Sung Jinwoo.HumanoidRootPart.Spec2"
+  },
+  {
+   "tex": "rbxassetid://16879800718",
+   "class": "ParticleEmitter",
+   "name": "Spec23",
+   "flipbook": "None/OneShot",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Sung Jinwoo.HumanoidRootPart.Spec23"
+  },
+  {
+   "tex": "rbxassetid://16879806460",
+   "class": "ParticleEmitter",
+   "name": "Spec26",
+   "flipbook": "None/OneShot",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Sung Jinwoo.HumanoidRootPart.Spec26"
+  },
+  {
+   "tex": "rbxassetid://71361577926659",
+   "class": "ParticleEmitter",
+   "name": "AZFI20",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "ff2f2f",
+   "from": "HandPicked.Aura_RedHeartFire.RootPart.Attachment.AZFI20"
+  },
+  {
+   "tex": "rbxassetid://16867567145",
+   "class": "ParticleEmitter",
+   "name": "smoksmok",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -1.0,
+   "color": "ff2f2f",
+   "from": "HandPicked.Aura_RedHeartFire.Head.smoksmok"
+  },
+  {
+   "tex": "rbxassetid://14066311352",
+   "class": "ParticleEmitter",
+   "name": "smoksmok",
+   "flipbook": "Grid8x8/OneShot",
+   "light": 0.0,
+   "color": "ff2f2f",
+   "from": "HandPicked.Aura_RedHeartFire.Head.smoksmok"
+  },
+  {
+   "tex": "rbxassetid://12929509192",
+   "class": "ParticleEmitter",
+   "name": "s",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "7535ff",
+   "from": "HandPicked.AURA.Head.s"
+  },
+  {
+   "tex": "rbxassetid://103790628162800",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "5715ff",
+   "from": "HandPicked.AURA.Head.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://103745196712409",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter2",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "7a37ff",
+   "from": "HandPicked.AURA.Head.ParticleEmitter2"
+  },
+  {
+   "tex": "rbxassetid://12848554034",
+   "class": "ParticleEmitter",
+   "name": "Lightning 2",
+   "flipbook": "Grid4x4/OneShot",
+   "light": -3.0,
+   "color": "7a37ff",
+   "from": "HandPicked.AURA.Head.Lightning 2"
+  },
+  {
+   "tex": "rbxassetid://1084987899",
+   "class": "ParticleEmitter",
+   "name": "Smoke3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00aaff",
+   "from": "HandPicked.new mui aura'.Left Arm.Smoke3"
+  },
+  {
+   "tex": "rbxassetid://12026515010",
+   "class": "ParticleEmitter",
+   "name": "Smoke2",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "0055ff",
+   "from": "HandPicked.new mui aura'.Left Arm.Smoke2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7451746284",
+   "class": "ParticleEmitter",
+   "name": "Flame",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "0055ff",
+   "from": "HandPicked.new mui aura'.Left Arm.Flame"
+  },
+  {
+   "tex": "rbxassetid://8012987204",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "575fff",
+   "from": "HandPicked.new mui aura'.Left Arm.2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7061230679",
+   "class": "Beam",
+   "name": "1",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "93a2ff",
+   "from": "HandPicked.new mui aura'.Torso.Bottom.1"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=6045867277",
+   "class": "Beam",
+   "name": "2",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "93a2ff",
+   "from": "HandPicked.new mui aura'.Torso.Bottom.2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=6091474388",
+   "class": "Beam",
+   "name": "3",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "93a2ff",
+   "from": "HandPicked.new mui aura'.Torso.Bottom.3"
+  },
+  {
+   "tex": "rbxassetid://11975017454",
+   "class": "Beam",
+   "name": "4",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "93a2ff",
+   "from": "HandPicked.new mui aura'.Torso.Bottom.4"
+  },
+  {
+   "tex": "rbxassetid://10811367080",
+   "class": "Beam",
+   "name": "5",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "93a2ff",
+   "from": "HandPicked.new mui aura'.Torso.Bottom.5"
+  },
+  {
+   "tex": "rbxassetid://7216853129",
+   "class": "ParticleEmitter",
+   "name": "Sphere thingy",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.new mui aura'.Torso.Body Particles.Sphere thingy"
+  },
+  {
+   "tex": "rbxassetid://7216848401",
+   "class": "ParticleEmitter",
+   "name": "Sphere thingy2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.new mui aura'.Torso.Body Particles.Sphere thingy2"
+  },
+  {
+   "tex": "rbxassetid://11975015979",
+   "class": "ParticleEmitter",
+   "name": "Sphere thingy3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.new mui aura'.Torso.Body Particles.Sphere thingy3"
+  },
+  {
+   "tex": "rbxassetid://12191903502",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "5ea6ff",
+   "from": "HandPicked.Apostolos.Torso.Beam"
+  },
+  {
+   "tex": "rbxassetid://16656589764",
+   "class": "Beam",
+   "name": "cloak",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "ca0000",
+   "from": "HandPicked.Apostolos.Torso.cloak"
+  },
+  {
+   "tex": "rbxassetid://12781855685",
+   "class": "Beam",
+   "name": "flame",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Apostolos.Torso.flame"
+  },
+  {
+   "tex": "rbxassetid://14050319723",
+   "class": "ParticleEmitter",
+   "name": "fog",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "5a99ff",
+   "from": "HandPicked.Apostolos.Left Arm.Gripchain.fog"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7185003058",
+   "class": "ParticleEmitter",
+   "name": "bubble",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff6b5e",
+   "from": "HandPicked.Apostolos.Left Arm.Gripchain.bubble"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12800353201",
+   "class": "ParticleEmitter",
+   "name": "flame",
+   "flipbook": "Grid4x4/Loop",
+   "light": 0.0,
+   "color": "ff6060",
+   "from": "HandPicked.Apostolos.Left Arm.Gripchain.flame"
+  },
+  {
+   "tex": "rbxassetid://14590086212",
+   "class": "ParticleEmitter",
+   "name": "light",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff3030",
+   "from": "HandPicked.Apostolos.Left Arm.Gripchain.light"
+  },
+  {
+   "tex": "rbxassetid://12781855094",
+   "class": "Beam",
+   "name": "slashblack",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "ff0000",
+   "from": "HandPicked.Apostolos.Right Arm.handle.slashblack"
+  },
+  {
+   "tex": "rbxassetid://14050983225",
+   "class": "Beam",
+   "name": "Beam1-2",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ff2323",
+   "from": "HandPicked.Apostolos.Right Arm.handle.Model.Beam1-2"
+  },
+  {
+   "tex": "rbxassetid://14050886838",
+   "class": "Beam",
+   "name": "Beam1-1black",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Apostolos.Right Arm.handle.Model.Beam1-1black"
+  },
+  {
+   "tex": "rbxassetid://298984512",
+   "class": "ParticleEmitter",
+   "name": "part",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff2e2e",
+   "from": "HandPicked.Apostolos.Right Arm.handle.particle.part"
+  },
+  {
+   "tex": "rbxassetid://13877773941",
+   "class": "ParticleEmitter",
+   "name": "ray",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff2e2e",
+   "from": "HandPicked.Apostolos.Right Arm.handle.particle.ray"
+  },
+  {
+   "tex": "rbxassetid://12788868051",
+   "class": "Beam",
+   "name": "Beamy",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ff2020",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.Beamy"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12721435220",
+   "class": "Beam",
+   "name": "chainb",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "ff9560",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.chainb"
+  },
+  {
+   "tex": "rbxassetid://3052949762",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff4040",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.darksword.darkswordeff.connect chain.Parti"
+  },
+  {
+   "tex": "https://assetgame.roblox.com/asset/?id=12713360567&assetName=trail2",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ff2525",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.darksword.darkswordeff.Beam"
+  },
+  {
+   "tex": "rbxassetid://14221474657",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff3535",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.darksword.darkswordeff.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://1470871817",
+   "class": "Trail",
+   "name": "Trail",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "e23a3a",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.darksword.darkswordeff.Trail"
+  },
+  {
+   "tex": "rbxassetid://12403112662",
+   "class": "ParticleEmitter",
+   "name": "lightring",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff2626",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.darksword.darkswordeff.mid.lightring"
+  },
+  {
+   "tex": "https://assetgame.roblox.com/asset/?id=12389948201&assetName=05 %281%29",
+   "class": "ParticleEmitter",
+   "name": "magiccircle",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff2727",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.darksword.darkswordeff.mid.magiccircle"
+  },
+  {
+   "tex": "https://assetgame.roblox.com/asset/?id=12389945119&assetName=39ab5bcc-4b0f-46e8-8186-95c23204cfe4",
+   "class": "ParticleEmitter",
+   "name": "magiccircle",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff9557",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.lightsword.lightswordeff.mid.magiccircle"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12656891791",
+   "class": "ParticleEmitter",
+   "name": "Swirl",
+   "flipbook": "Grid8x8/Loop",
+   "light": 1.0,
+   "color": "8e6cff",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.lightB.center.Swirl"
+  },
+  {
+   "tex": "rbxassetid://12656840930",
+   "class": "ParticleEmitter",
+   "name": "flame",
+   "flipbook": "Grid4x4/Loop",
+   "light": 0.0,
+   "color": "5d82e8",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.lightB.center.flame"
+  },
+  {
+   "tex": "rbxassetid://14050361514",
+   "class": "ParticleEmitter",
+   "name": "fog",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "8754ac",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.lightB.center.fog"
+  },
+  {
+   "tex": "rbxassetid://14054628491",
+   "class": "ParticleEmitter",
+   "name": "ray",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "97c6ff",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.lightB.center.ray"
+  },
+  {
+   "tex": "https://assetgame.roblox.com/asset/?id=12713358298&assetName=Debris1",
+   "class": "ParticleEmitter",
+   "name": "dust",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.lightB.center.dust"
+  },
+  {
+   "tex": "rbxassetid://16669702010",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "Grid2x2/Loop",
+   "light": 0.1,
+   "color": "6f8eff",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.lightB.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://11726473936",
+   "class": "ParticleEmitter",
+   "name": "letter",
+   "flipbook": "Grid8x8/Loop",
+   "light": 1.0,
+   "color": "ff742f",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.letter"
+  },
+  {
+   "tex": "rbxassetid://14050423054",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.floor.ParticleEmitter"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=5726444189",
+   "class": "ParticleEmitter",
+   "name": "wind1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.floor.wind1"
+  },
+  {
+   "tex": "https://assetgame.roblox.com/asset/?id=12363778394&assetName=flare_4",
+   "class": "ParticleEmitter",
+   "name": "ray",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff6b3a",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.floor.ray"
+  },
+  {
+   "tex": "rbxassetid://14032901187",
+   "class": "ParticleEmitter",
+   "name": "Swirl",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "9ca3ff",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.floor.Swirl"
+  },
+  {
+   "tex": "rbxassetid://14054635072",
+   "class": "ParticleEmitter",
+   "name": "wind2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "62a9ff",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.floor.wind2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12800312727",
+   "class": "ParticleEmitter",
+   "name": "lighting",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "ff8c49",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.lighting"
+  },
+  {
+   "tex": "rbxassetid://14050906710",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.Beam"
+  },
+  {
+   "tex": "https://assetgame.roblox.com/asset/?id=12363817944&assetName=lines_4",
+   "class": "ParticleEmitter",
+   "name": "flash",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff9752",
+   "from": "HandPicked.Apostolos.HumanoidRootPart.floor.flash"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=10249842540",
+   "class": "ParticleEmitter",
+   "name": "DarkAura",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "fff7f8",
+   "from": "HandPicked.Hakari Emote.Head.DarkAura"
+  },
+  {
+   "tex": "rbxassetid://99634001621539",
+   "class": "ParticleEmitter",
+   "name": "Circle78",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff007f",
+   "from": "HandPicked.Love Vfx Pack.Love Orb.Attachment.Circle78"
+  },
+  {
+   "tex": "rbxassetid://16502428362",
+   "class": "ParticleEmitter",
+   "name": "Circle79",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Love Orb.Attachment.Circle79"
+  },
+  {
+   "tex": "rbxassetid://86448734575922",
+   "class": "ParticleEmitter",
+   "name": "Chrome Plus",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Love Orb.Attachment.Chrome Plus"
+  },
+  {
+   "tex": "rbxassetid://16879789169",
+   "class": "ParticleEmitter",
+   "name": "Spec19",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Love Orb.Attachment.Spec19"
+  },
+  {
+   "tex": "rbxassetid://14635196973",
+   "class": "ParticleEmitter",
+   "name": "Circle79",
+   "flipbook": "Grid8x8/OneShot",
+   "light": 0.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Love Orb.Attachment.Circle79"
+  },
+  {
+   "tex": "rbxassetid://86186431822396",
+   "class": "ParticleEmitter",
+   "name": "Circle79",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 2.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Love Orb.Attachment.Circle79"
+  },
+  {
+   "tex": "rbxassetid://17062535921",
+   "class": "ParticleEmitter",
+   "name": "Fire55",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Love Orb.Attachment.Fire55"
+  },
+  {
+   "tex": "rbxassetid://16860424478",
+   "class": "ParticleEmitter",
+   "name": "Fire55",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Love Orb.Attachment.Fire55"
+  },
+  {
+   "tex": "rbxassetid://16879578139",
+   "class": "ParticleEmitter",
+   "name": "Spec7",
+   "flipbook": "Grid8x8/Loop",
+   "light": 0.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Broken Heart.Attachment.Spec7"
+  },
+  {
+   "tex": "rbxassetid://16879808635",
+   "class": "ParticleEmitter",
+   "name": "Spec27",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff557f",
+   "from": "HandPicked.Love Vfx Pack.Broken Heart.Attachment.Spec27"
+  },
+  {
+   "tex": "rbxassetid://16841991986",
+   "class": "ParticleEmitter",
+   "name": "Fire1",
+   "flipbook": "Grid4x4/Loop",
+   "light": 0.0,
+   "color": "aa557f",
+   "from": "HandPicked.Love Vfx Pack.Love Aura.Head.Fire1"
+  },
+  {
+   "tex": "rbxassetid://16879847192",
+   "class": "ParticleEmitter",
+   "name": "Spec43",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "aa557f",
+   "from": "HandPicked.Love Vfx Pack.Love Aura.auraPart.Spec43"
+  },
+  {
+   "tex": "rbxassetid://16867490141",
+   "class": "ParticleEmitter",
+   "name": "Smoke32",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.5,
+   "color": "aa557f",
+   "from": "HandPicked.Love Vfx Pack.Love Aura.auraPart.Smoke32"
+  },
+  {
+   "tex": "rbxassetid://14050027802",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Purity.Torso.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://11198241185",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Purity.Torso.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://14050984567",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Purity.Part.Attachment.Beam"
+  },
+  {
+   "tex": "rbxassetid://14197063144",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "Grid8x8/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Purity.Part.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://14124153904",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "ffffff",
+   "from": "HandPicked.Purity.Part.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://11197917329",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Purity.Part.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://9632168658",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "aaffff",
+   "from": "HandPicked.Chain.Aura.Attachment.Beam"
+  },
+  {
+   "tex": "rbxassetid://7216853898",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "9efffc",
+   "from": "HandPicked.Chain.Aura.Attachment.1"
+  },
+  {
+   "tex": "rbxassetid://196969716",
+   "class": "ParticleEmitter",
+   "name": "3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "9efffc",
+   "from": "HandPicked.Chain.Aura.Attachment.3"
+  },
+  {
+   "tex": "rbxassetid://8944348380",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aaffff",
+   "from": "HandPicked.Chain.Aura.Attachment.1"
+  },
+  {
+   "tex": "rbxassetid://5407035714",
+   "class": "ParticleEmitter",
+   "name": "DarkAura",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "3a005e",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment.DarkAura"
+  },
+  {
+   "tex": "rbxassetid://5406968633",
+   "class": "ParticleEmitter",
+   "name": "DarkAura",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "3a005e",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment.DarkAura"
+  },
+  {
+   "tex": "rbxassetid://6706234595",
+   "class": "ParticleEmitter",
+   "name": "Flame",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "9114ff",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment1.Flame"
+  },
+  {
+   "tex": "rbxassetid://9973574373",
+   "class": "ParticleEmitter",
+   "name": "Glow",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "5d34ff",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment1.Glow"
+  },
+  {
+   "tex": "rbxassetid://1084982817",
+   "class": "ParticleEmitter",
+   "name": "Orb",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment1.Orb"
+  },
+  {
+   "tex": "rbxassetid://10558510611",
+   "class": "ParticleEmitter",
+   "name": "Outline",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "5d34ff",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment1.Outline"
+  },
+  {
+   "tex": "rbxassetid://10358044068",
+   "class": "ParticleEmitter",
+   "name": "Outline3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "5d34ff",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment1.Outline3"
+  },
+  {
+   "tex": "rbxassetid://10357918337",
+   "class": "ParticleEmitter",
+   "name": "Pulse",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "5d34ff",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment1.Pulse"
+  },
+  {
+   "tex": "rbxassetid://10357952493",
+   "class": "ParticleEmitter",
+   "name": "Swirls",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "5d34ff",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment1.Swirls"
+  },
+  {
+   "tex": "rbxassetid://11492870634",
+   "class": "ParticleEmitter",
+   "name": "Zaps",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "8011ff",
+   "from": "HandPicked.Chromatic : Void.Torso.Attachment1.Zaps"
+  },
+  {
+   "tex": "rbxassetid://8451174579",
+   "class": "ParticleEmitter",
+   "name": "Flame1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "d21cff",
+   "from": "HandPicked.Chromatic : Void.Torso.Flame1"
+  },
+  {
+   "tex": "rbxassetid://11204150798",
+   "class": "ParticleEmitter",
+   "name": "SM",
+   "flipbook": "None/Loop",
+   "light": 0.35,
+   "color": "5500ff",
+   "from": "HandPicked.Chromatic : Void.Torso.A.SM"
+  },
+  {
+   "tex": "rbxassetid://7516569981",
+   "class": "ParticleEmitter",
+   "name": "Imp",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff78f4",
+   "from": "HandPicked.Chromatic : Void.Torso.A.Imp"
+  },
+  {
+   "tex": "rbxassetid://8920075832",
+   "class": "Beam",
+   "name": "glow",
+   "flipbook": "",
+   "light": 0.1,
+   "color": "ffff7f",
+   "from": "HandPicked.Chromatic : Void.Torso.glow"
+  },
+  {
+   "tex": "rbxassetid://8966830600",
+   "class": "ParticleEmitter",
+   "name": "shine",
+   "flipbook": "None/Loop",
+   "light": 10.0,
+   "color": "ffff7f",
+   "from": "HandPicked.Chromatic : Void.Torso.middle.shine"
+  },
+  {
+   "tex": "rbxassetid://8966886535",
+   "class": "ParticleEmitter",
+   "name": "largehand",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.Chromatic : Void.Torso.middle.largehand"
+  },
+  {
+   "tex": "rbxassetid://8966915998",
+   "class": "ParticleEmitter",
+   "name": "smallhand",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "HandPicked.Chromatic : Void.Torso.middle.smallhand"
+  },
+  {
+   "tex": "rbxassetid://8966949234",
+   "class": "ParticleEmitter",
+   "name": "ring1",
+   "flipbook": "None/Loop",
+   "light": 10.0,
+   "color": "ffffff",
+   "from": "HandPicked.Chromatic : Void.Torso.middle.ring1"
+  },
+  {
+   "tex": "rbxassetid://8966783318",
+   "class": "ParticleEmitter",
+   "name": "clockdistortion",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.Chromatic : Void.Torso.middle.clockdistortion"
+  },
+  {
+   "tex": "rbxassetid://7268197516",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "9603ff",
+   "from": "HandPicked.Chromatic : Void.Torso.ring.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://7757967763",
+   "class": "ParticleEmitter",
+   "name": "atuff",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "3b00ff",
+   "from": "HandPicked.aura for nas.soulless aur.Head.Attachment.atuff"
+  },
+  {
+   "tex": "rbxassetid://8247403083",
+   "class": "ParticleEmitter",
+   "name": "lightning",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "3b00ff",
+   "from": "HandPicked.aura for nas.Part.lightning"
+  },
+  {
+   "tex": "rbxassetid://8247407577",
+   "class": "ParticleEmitter",
+   "name": "lightning",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "3b00ff",
+   "from": "HandPicked.aura for nas.Part.lightning"
+  },
+  {
+   "tex": "rbxassetid://7312463465",
+   "class": "ParticleEmitter",
+   "name": "outer layer",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "3b00ff",
+   "from": "HandPicked.aura for nas.Part.Attachment.outer layer"
+  },
+  {
+   "tex": "rbxassetid://10365549270",
+   "class": "ParticleEmitter",
+   "name": "red BG",
+   "flipbook": "None/Loop",
+   "light": 0.85,
+   "color": "ff0004",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.red BG"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=4543893907",
+   "class": "ParticleEmitter",
+   "name": "spinning",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "550000",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.spinning"
+  },
+  {
+   "tex": "rbxassetid://7216854591",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff8f91",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=626588936",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff0004",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://14197216945",
+   "class": "ParticleEmitter",
+   "name": "Black bg",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff0004",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.Black bg"
+  },
+  {
+   "tex": "rbxassetid://1525327413",
+   "class": "ParticleEmitter",
+   "name": "fog",
+   "flipbook": "None/Loop",
+   "light": 0.35,
+   "color": "830002",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.fog"
+  },
+  {
+   "tex": "rbxassetid://10372847108",
+   "class": "ParticleEmitter",
+   "name": "circle",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "830002",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.circle"
+  },
+  {
+   "tex": "rbxassetid://14590122278",
+   "class": "ParticleEmitter",
+   "name": "circle",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "830002",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.circle"
+  },
+  {
+   "tex": "rbxassetid://867619398",
+   "class": "ParticleEmitter",
+   "name": "circle",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "510001",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.circle"
+  },
+  {
+   "tex": "rbxasset://textures/particles/sparkles_main.dds",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.45,
+   "color": "830002",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://12781785184",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "830002",
+   "from": "HandPicked.Deep Red.HumanoidRootPart.Top.Beam"
+  },
+  {
+   "tex": "rbxassetid://1084955012",
+   "class": "ParticleEmitter",
+   "name": "Bolts",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Attachment.Part.Bolts"
+  },
+  {
+   "tex": "rbxassetid://1084959312",
+   "class": "ParticleEmitter",
+   "name": "Bolts",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Attachment.Part.Bolts"
+  },
+  {
+   "tex": "rbxassetid://1084959112",
+   "class": "ParticleEmitter",
+   "name": "Bolts",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Attachment.Part.Bolts"
+  },
+  {
+   "tex": "rbxassetid://8214516794",
+   "class": "ParticleEmitter",
+   "name": "Explosions 2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Shifting beam.1.Explosions 2"
+  },
+  {
+   "tex": "rbxassetid://13370283312",
+   "class": "ParticleEmitter",
+   "name": "Explosion 2",
+   "flipbook": "Grid2x2/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Shifting beam.B.Explosion 2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12072303767",
+   "class": "ParticleEmitter",
+   "name": "Lightning 1",
+   "flipbook": "Grid4x4/Random",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Shifting beam.2.Lightning 1"
+  },
+  {
+   "tex": "rbxassetid://12414458390",
+   "class": "Beam",
+   "name": "Beam 2",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Shifting beam.T2.Beam 2"
+  },
+  {
+   "tex": "rbxassetid://13712010201",
+   "class": "Beam",
+   "name": "Beam 4",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Shifting beam.T2.Beam 4"
+  },
+  {
+   "tex": "rbxassetid://13370272316",
+   "class": "Beam",
+   "name": "Beam 3",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Shifting beam.T2.Beam 3"
+  },
+  {
+   "tex": "rbxassetid://13712011229",
+   "class": "Beam",
+   "name": "Beam 1",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Shifting beam.T2.Beam 1"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13712001736",
+   "class": "ParticleEmitter",
+   "name": "Upward",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffff00",
+   "from": "HandPicked.Aot Aura Pack.Shifting aura.Torso.Shifting beam.Upward"
+  },
+  {
+   "tex": "rbxassetid://7731347137",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Aot Aura Pack.Titan Steam Aura.Torso.Attachment.Part.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://13156873238",
+   "class": "ParticleEmitter",
+   "name": "MainDebris",
+   "flipbook": "Grid4x4/Loop",
+   "light": 0.5,
+   "color": "ff0734",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura.MainDebris"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12728644177",
+   "class": "ParticleEmitter",
+   "name": "Intake",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "ff0734",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura.Intake"
+  },
+  {
+   "tex": "rbxassetid://12397489619",
+   "class": "ParticleEmitter",
+   "name": "OuterGlow",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff0734",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura.OuterGlow"
+  },
+  {
+   "tex": "rbxassetid://13156870577",
+   "class": "ParticleEmitter",
+   "name": "OuterGlowFlipBk",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "ff0004",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura.OuterGlowFlipBk"
+  },
+  {
+   "tex": "rbxassetid://12678933489",
+   "class": "ParticleEmitter",
+   "name": "Slashes",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura.Slashes"
+  },
+  {
+   "tex": "rbxassetid://12591390025",
+   "class": "ParticleEmitter",
+   "name": "RainbowOutside",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura.RainbowOutside"
+  },
+  {
+   "tex": "rbxassetid://12867093437",
+   "class": "ParticleEmitter",
+   "name": "Hypnotism",
+   "flipbook": "Grid4x4/Loop",
+   "light": 0.0,
+   "color": "ff0734",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura.Hypnotism"
+  },
+  {
+   "tex": "rbxassetid://12423428506",
+   "class": "ParticleEmitter",
+   "name": "Hypnotism2",
+   "flipbook": "Grid8x8/Loop",
+   "light": 0.0,
+   "color": "ff0734",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura.Hypnotism2"
+  },
+  {
+   "tex": "rbxassetid://12142723563",
+   "class": "ParticleEmitter",
+   "name": "Expellation",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff0734",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Aura2.Expellation"
+  },
+  {
+   "tex": "rbxassetid://10234757197",
+   "class": "Beam",
+   "name": "Outside",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "ff0734",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Outside"
+  },
+  {
+   "tex": "rbxassetid://10433365157",
+   "class": "Beam",
+   "name": "InnerBeam",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "8b041d",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.InnerBeam"
+  },
+  {
+   "tex": "rbxassetid://11172050895",
+   "class": "Beam",
+   "name": "InnerBeam2",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "000000",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.InnerBeam2"
+  },
+  {
+   "tex": "rbxassetid://11448304274",
+   "class": "ParticleEmitter",
+   "name": "Dots",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ff0734",
+   "from": "HandPicked.POF:RE AURA: Fiery Ritual of Hallownest.Torso.Dots"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=11534281007",
+   "class": "ParticleEmitter",
+   "name": "FIRE",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "ff3503",
+   "from": "HandPicked.SSJ.Torso.Attachment.D - ROARING FLAMES.FIRE"
+  },
+  {
+   "tex": "rbxassetid://4509687978",
+   "class": "ParticleEmitter",
+   "name": "GLOW",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff7410",
+   "from": "HandPicked.SSJ.Torso.Attachment.D - ROARING FLAMES.GLOW"
+  },
+  {
+   "tex": "rbxassetid://7451697448",
+   "class": "ParticleEmitter",
+   "name": "SPIKES",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff5411",
+   "from": "HandPicked.SSJ.Torso.Attachment.F - RAGING PILLAR.SPIKES"
+  },
+  {
+   "tex": "rbxassetid://340014130",
+   "class": "ParticleEmitter",
+   "name": "Dust [1]",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (4).Torso.Dust.Dust [1]"
+  },
+  {
+   "tex": "rbxassetid://272050333",
+   "class": "ParticleEmitter",
+   "name": "Dust [2]",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "515151",
+   "from": "HandPicked.aura (4).Torso.Dust.Dust [2]"
+  },
+  {
+   "tex": "rbxassetid://8030734851",
+   "class": "ParticleEmitter",
+   "name": "Trace3",
+   "flipbook": "None/Loop",
+   "light": 0.3,
+   "color": "ffffff",
+   "from": "HandPicked.aura (4).Torso.Ground.Trace3"
+  },
+  {
+   "tex": "rbxassetid://36952938",
+   "class": "ParticleEmitter",
+   "name": "Rocks",
+   "flipbook": "None/Loop",
+   "light": 0.15,
+   "color": "5e3a00",
+   "from": "HandPicked.aura (4).Torso.Rocks1.Rocks"
+  },
+  {
+   "tex": "rbxassetid://6246398215",
+   "class": "ParticleEmitter",
+   "name": "Rings",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (4).Torso.Shockwave.Rings"
+  },
+  {
+   "tex": "rbxassetid://6991254829",
+   "class": "ParticleEmitter",
+   "name": "Wave",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (4).Torso.Shockwave.Wave"
+  },
+  {
+   "tex": "rbxassetid://8515250971",
+   "class": "ParticleEmitter",
+   "name": "Wind",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "HandPicked.aura (4).Torso.Wind.Wind"
+  },
+  {
+   "tex": "rbxassetid://15128606507",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.HalloweenTime.R15 Dummy.HumanoidRootPart.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://438134150",
+   "class": "ParticleEmitter",
+   "name": "aura",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "550001",
+   "from": "HandPicked.HalloweenTime.R15 Dummy.HumanoidRootPart.aura"
+  },
+  {
+   "tex": "rbxassetid://508124512",
+   "class": "ParticleEmitter",
+   "name": "lightning",
+   "flipbook": "None/Loop",
+   "light": 0.2,
+   "color": "000000",
+   "from": "HandPicked.HalloweenTime.R15 Dummy.HumanoidRootPart.lightning"
+  },
+  {
+   "tex": "rbxassetid://7884762369",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmittereye",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0004",
+   "from": "HandPicked.HalloweenTime.R15 Dummy.Head.Attachment.ParticleEmittereye"
+  },
+  {
+   "tex": "rbxassetid://6964048307",
+   "class": "ParticleEmitter",
+   "name": "Detail",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "1d52ff",
+   "from": "HandPicked.Model.Lightning cloak thingy.Torso.Attachment.Detail"
+  },
+  {
+   "tex": "rbxassetid://6959235625",
+   "class": "ParticleEmitter",
+   "name": "Lightning1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "295bff",
+   "from": "HandPicked.Model.Lightning cloak thingy.Torso.Lightning1"
+  },
+  {
+   "tex": "rbxassetid://6967938745",
+   "class": "ParticleEmitter",
+   "name": "Lightning2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "1c7eff",
+   "from": "HandPicked.Model.Lightning cloak thingy.Torso.Lightning2"
+  },
+  {
+   "tex": "rbxassetid://6964374407",
+   "class": "ParticleEmitter",
+   "name": "Lightning3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "13adff",
+   "from": "HandPicked.Model.Lightning cloak thingy.Torso.Lightning3"
+  },
+  {
+   "tex": "rbxassetid://6967940662",
+   "class": "ParticleEmitter",
+   "name": "Lightning4",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "1aa4ff",
+   "from": "HandPicked.Model.Lightning cloak thingy.Torso.Lightning4"
+  },
+  {
+   "tex": "rbxassetid://113083314207224",
+   "class": "Beam",
+   "name": "Beam4",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "560cff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Beam4"
+  },
+  {
+   "tex": "rbxassetid://125283151882051",
+   "class": "Beam",
+   "name": "Beam9",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "560cff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Beam9"
+  },
+  {
+   "tex": "rbxassetid://12159555294",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "None/OneShot",
+   "light": 0.0,
+   "color": "8532ff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Attachment9.1"
+  },
+  {
+   "tex": "rbxassetid://16877946118",
+   "class": "ParticleEmitter",
+   "name": "Circle12",
+   "flipbook": "None/OneShot",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Attachment9.Circle12"
+  },
+  {
+   "tex": "rbxassetid://137185023437881",
+   "class": "Beam",
+   "name": "Beam13",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "560cff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Beam13"
+  },
+  {
+   "tex": "rbxassetid://16511726823",
+   "class": "ParticleEmitter",
+   "name": "Dull Triangular Circle",
+   "flipbook": "None/OneShot",
+   "light": 1.0,
+   "color": "4e27ff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Attachment11.Dull Triangular Circle"
+  },
+  {
+   "tex": "rbxassetid://16860377662",
+   "class": "ParticleEmitter",
+   "name": "Fire40",
+   "flipbook": "Grid8x8/OneShot",
+   "light": 0.0,
+   "color": "681cff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Attachment10.Fire40"
+  },
+  {
+   "tex": "rbxassetid://133073163609304",
+   "class": "ParticleEmitter",
+   "name": "Rune_Heal_In003",
+   "flipbook": "None/OneShot",
+   "light": 1.0,
+   "color": "621dff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Part Khusus.Attachment12.Rune_Heal_In003"
+  },
+  {
+   "tex": "rbxassetid://71046177668087",
+   "class": "ParticleEmitter",
+   "name": "rune_11",
+   "flipbook": "None/OneShot",
+   "light": 1.0,
+   "color": "8b3cff",
+   "from": "HandPicked.Animation Aura by Vinn.Aura.Part Khusus.Attachment12.rune_11"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=243728104",
+   "class": "ParticleEmitter",
+   "name": "Determination",
+   "flipbook": "None/Loop",
+   "light": 0.7,
+   "color": "aaffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Chain God.Head.Determinati"
+  },
+  {
+   "tex": "rbxassetid://7216855364",
+   "class": "ParticleEmitter",
+   "name": "Determination",
+   "flipbook": "None/Loop",
+   "light": 0.7,
+   "color": "aaffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Chain God.Head.Determinati"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=564938805",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Devil's beam.Aura.Attachme"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=9573351641",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Devil's beam.Aura.Attachme"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=1134824633",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Devil's beam.Aura.Attachme"
+  },
+  {
+   "tex": "rbxassetid://1084975295",
+   "class": "ParticleEmitter",
+   "name": "Rays",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "55aa7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Green power.Torso.Rays"
+  },
+  {
+   "tex": "rbxassetid://1085001473",
+   "class": "ParticleEmitter",
+   "name": "Flare",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "28b301",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Green power.Torso.Flare"
+  },
+  {
+   "tex": "rbxassetid://1084976679",
+   "class": "ParticleEmitter",
+   "name": "Charge",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "28ff07",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Green power.Torso.Charge"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=5320401463",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "32cb17",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Green power.Aura.Beam"
+  },
+  {
+   "tex": "rbxassetid://5830549480",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "32cb17",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Green power.Aura.Beam"
+  },
+  {
+   "tex": "rbxassetid://8944323917",
+   "class": "ParticleEmitter",
+   "name": "Determination2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "89ffec",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Crystal determination.Head"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7648565918",
+   "class": "ParticleEmitter",
+   "name": "Determination",
+   "flipbook": "None/Loop",
+   "light": 0.65,
+   "color": "89ffec",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Crystal determination.Head"
+  },
+  {
+   "tex": "rbxassetid://8944209524",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "9efffc",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Crystal determination.Aura"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=8091408769",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "aaffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Crystal determination.Aura"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=5309396094",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Bass.Aura.Attachment1.Beam"
+  },
+  {
+   "tex": "rbxassetid://7216856158",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Bass.Aura.Attachment.Parti"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=243457340",
+   "class": "ParticleEmitter",
+   "name": "Flames",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Head.Flames"
+  },
+  {
+   "tex": "rbxassetid://7216851093",
+   "class": "ParticleEmitter",
+   "name": "Substance",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Head.Substance"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=24419398",
+   "class": "ParticleEmitter",
+   "name": "Black Spheres",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Aura.Black Spheres"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=502107146",
+   "class": "ParticleEmitter",
+   "name": "White Spheres",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Aura.White Spheres"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=4883036276",
+   "class": "ParticleEmitter",
+   "name": "Ring Spheres",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Aura.Ring Spheres"
+  },
+  {
+   "tex": "rbxassetid://7216979191",
+   "class": "ParticleEmitter",
+   "name": "Black Sparks",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Aura.Substance.Black Sparks"
+  },
+  {
+   "tex": "rbxassetid://7216980374",
+   "class": "ParticleEmitter",
+   "name": "Big Spike",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Aura.Spikes.Big Spike"
+  },
+  {
+   "tex": "rbxassetid://7216979305",
+   "class": "ParticleEmitter",
+   "name": "Small Spike",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Aura.Spikes.Small Spike"
+  },
+  {
+   "tex": "rbxassetid://7216980052",
+   "class": "ParticleEmitter",
+   "name": "Small Spike2",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Pure Vessel.Aura.Spikes.Small Spike2"
+  },
+  {
+   "tex": "rbxassetid://6479250779",
+   "class": "ParticleEmitter",
+   "name": "Aurora BorealisGreentoTeal",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Aurora Borealis.Aura.Aurora Borealis.Au"
+  },
+  {
+   "tex": "rbxasset://textures/particles/fire_sparks_main.dds",
+   "class": "ParticleEmitter",
+   "name": "Aurora BorealisTeal",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Aurora Borealis.Aura.Aurora Borealis.Au"
+  },
+  {
+   "tex": "rbxassetid://1946917526",
+   "class": "ParticleEmitter",
+   "name": "Smoke",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "cacbd1",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Battleship.Head.CannonballR.Smoke"
+  },
+  {
+   "tex": "rbxassetid://7216854285",
+   "class": "ParticleEmitter",
+   "name": "Cannon Inner",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Battleship.Head.CannonballR.Cannon Inne"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=249902641",
+   "class": "ParticleEmitter",
+   "name": "Cannon Outer",
+   "flipbook": "None/Loop",
+   "light": 0.8,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Battleship.Head.CannonballR.Cannon Oute"
+  },
+  {
+   "tex": "rbxassetid://7948622114",
+   "class": "ParticleEmitter",
+   "name": "Lost",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "0004ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Corruption (Revised).Corruption (Revise"
+  },
+  {
+   "tex": "rbxassetid://12990592",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ff26",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Corruption (Revised).Corruption (Revise"
+  },
+  {
+   "tex": "rbxassetid://12990495",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ff26",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Corruption (Revised).Corruption (Revise"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=11557894675",
+   "class": "ParticleEmitter",
+   "name": "Ring",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Red Ring of Death.Torso.AU"
+  },
+  {
+   "tex": "rbxassetid://11156583888",
+   "class": "ParticleEmitter",
+   "name": "Debris",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Red Ring of Death.Torso.De"
+  },
+  {
+   "tex": "rbxassetid://13197291986",
+   "class": "ParticleEmitter",
+   "name": "SkullEmission",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.POF:RE AURA: Red Ring of Death.Torso.EM"
+  },
+  {
+   "tex": "rbxassetid://11989899750",
+   "class": "ParticleEmitter",
+   "name": "Secondary",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Head.Secondary"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13712000437",
+   "class": "ParticleEmitter",
+   "name": "Tirtiary",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Head.Tirtiary"
+  },
+  {
+   "tex": "rbxassetid://8187306179",
+   "class": "ParticleEmitter",
+   "name": "Debris",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Torso.MidAttachment.Debris"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=341277531",
+   "class": "ParticleEmitter",
+   "name": "Blust",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Torso.MidAttachment.Blust"
+  },
+  {
+   "tex": "rbxassetid://13189667061",
+   "class": "ParticleEmitter",
+   "name": "Debris2",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Torso.MidAttachment.Debris2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13712002093",
+   "class": "ParticleEmitter",
+   "name": "IncomingDots",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Torso.MidAttachment.IncomingDots"
+  },
+  {
+   "tex": "rbxassetid://10528782340",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Torso.Beam"
+  },
+  {
+   "tex": "rbxassetid://13378758969",
+   "class": "Beam",
+   "name": "Beam2",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Torso.Beam2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12222002958",
+   "class": "ParticleEmitter",
+   "name": "SpinningDots",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Torso.SpinningDots"
+  },
+  {
+   "tex": "rbxassetid://11290364024",
+   "class": "Beam",
+   "name": "Beam2",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.s.Torso.Spin.SpinningPart.Beam2"
+  },
+  {
+   "tex": "rbxassetid://75202463",
+   "class": "ParticleEmitter",
+   "name": "Beam",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa00ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack2.Deadly Orbital Strike.Torso.Attachment."
+  },
+  {
+   "tex": "rbxassetid://9306956615",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA SUMMER LOVIN'.Head.Attachme"
+  },
+  {
+   "tex": "rbxassetid://9307120868",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA SUMMER LOVIN'.Torso.Attachm"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=6091329339",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA SUMMER LOVIN'.Torso.Attachm"
+  },
+  {
+   "tex": "rbxassetid://531628477",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": -1.0,
+   "color": "55007f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA POISON.Left Arm.Attachment."
+  },
+  {
+   "tex": "rbxassetid://9345859417",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA  CELESTIAL BODY.Head.Attach"
+  },
+  {
+   "tex": "rbxassetid://9345944139",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA  CELESTIAL BODY.Torso.Torso"
+  },
+  {
+   "tex": "rbxassetid://1849531275",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "aa007f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA OMEGA.Torso.Attachment.Beam"
+  },
+  {
+   "tex": "rbxassetid://1277447946",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "aa007f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA OMEGA.Torso.Attachment.Beam"
+  },
+  {
+   "tex": "rbxassetid://7216848832",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa007f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA OMEGA.Torso.Attachment.Part"
+  },
+  {
+   "tex": "rbxassetid://1084991215",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa007f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA OMEGA.Torso.Attachment.Part"
+  },
+  {
+   "tex": "rbxassetid://11381556016",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "Grid8x8/Loop",
+   "light": 0.65,
+   "color": "959595",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA COIN RAIN.Torso.Attachment."
+  },
+  {
+   "tex": "rbxassetid://11381557354",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "Grid8x8/Loop",
+   "light": 1.0,
+   "color": "959595",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA COIN RAIN.Torso.Attachment."
+  },
+  {
+   "tex": "rbxassetid://11381560992",
+   "class": "ParticleEmitter",
+   "name": "3",
+   "flipbook": "Grid8x8/Loop",
+   "light": 1.0,
+   "color": "959595",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA COIN RAIN.Torso.Attachment."
+  },
+  {
+   "tex": "rbxassetid://12010904379",
+   "class": "ParticleEmitter",
+   "name": "3",
+   "flipbook": "Grid4x4/Loop",
+   "light": 0.0,
+   "color": "adadad",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA COIN RAIN.Torso.Part.3"
+  },
+  {
+   "tex": "rbxassetid://8214518341",
+   "class": "ParticleEmitter",
+   "name": "SPIN",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff5500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA COOL VAPOR.Torso.Attachment"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=4708294541",
+   "class": "ParticleEmitter",
+   "name": "SQUARE",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff5500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA COOL VAPOR.Torso.Attachment"
+  },
+  {
+   "tex": "rbxassetid://1084961641",
+   "class": "ParticleEmitter",
+   "name": "SPOTLIGHT",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa00ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA COOL VAPOR.Torso.Part.SPOTL"
+  },
+  {
+   "tex": "rbxassetid://7216851326",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "550000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA PLAGUE FUMES.Torso.Part.Par"
+  },
+  {
+   "tex": "rbxassetid://7948792468",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff5500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA CINDER.Head.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://7948793250",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff5500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA CINDER.Head.ParticleEmitter"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=49178292",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA BEE SWARM.Head.Attachment.P"
+  },
+  {
+   "tex": "rbxassetid://7994629407",
+   "class": "ParticleEmitter",
+   "name": "crown",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA RED KING.Torso.Attachment.c"
+  },
+  {
+   "tex": "rbxassetid://7216851225",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "00007f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Smoke.Particle"
+  },
+  {
+   "tex": "rbxassetid://9417491190",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Sun.ParticleEm"
+  },
+  {
+   "tex": "rbxassetid://9417581544",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417567500",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417577759",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417579376",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417569549",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417564951",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417576057",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417583355",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417573180",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417584737",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://9417571239",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff7f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA ZODIAC.Torso.Zodiac symbols"
+  },
+  {
+   "tex": "rbxassetid://7216854921",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA DUTCHMAN.Torso.ParticleEmit"
+  },
+  {
+   "tex": "rbxassetid://7216855030",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA DUTCHMAN.Torso.ParticleEmit"
+  },
+  {
+   "tex": "rbxassetid://9409918569",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "00ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA DUTCHMAN.Torso.HOLDS 16 ATT"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=63817194",
+   "class": "ParticleEmitter",
+   "name": "GHOST",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA DUTCHMAN.Torso.Part.GHOST"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=35967221",
+   "class": "ParticleEmitter",
+   "name": "GHOST",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA DUTCHMAN.Torso.Part.GHOST"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=5845786601",
+   "class": "ParticleEmitter",
+   "name": "GHOST",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA DUTCHMAN.Torso.Part.GHOST"
+  },
+  {
+   "tex": "rbxassetid://516660287",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.2,
+   "color": "005500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA MALWARE.Head.Attachment.Par"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=4292970642",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA SWEETWAVE.Torso.Part.Partic"
+  },
+  {
+   "tex": "rbxassetid://9417978422",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack1.POF:RE AURA SWEETWAVE.Torso.Part.Partic"
+  },
+  {
+   "tex": "rbxassetid://13370275515",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "8827ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA PSYCHIC .Head.1"
+  },
+  {
+   "tex": "rbxassetid://1084999891",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "8827ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA PSYCHIC .Torso.Central.2"
+  },
+  {
+   "tex": "rbxassetid://11975019541",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "4c64ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA PSYCHIC .Torso.Central.1"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7387058218",
+   "class": "ParticleEmitter",
+   "name": "3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aaaaff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA PSYCHIC .Torso.Central.3"
+  },
+  {
+   "tex": "rbxassetid://13370267318",
+   "class": "ParticleEmitter",
+   "name": "4",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "852aff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA PSYCHIC .Torso.Central.4"
+  },
+  {
+   "tex": "rbxassetid://13378753362",
+   "class": "ParticleEmitter",
+   "name": "Rocks",
+   "flipbook": "Grid4x4/Loop",
+   "light": 0.25,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA PSYCHIC .Torso.feet wind.Ro"
+  },
+  {
+   "tex": "rbxassetid://13378772116",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA PSYCHIC .Torso.Wind (Don't "
+  },
+  {
+   "tex": "rbxassetid://11290366632",
+   "class": "Beam",
+   "name": "3",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "007bff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA SSJB.Torso.B.3"
+  },
+  {
+   "tex": "rbxassetid://11290362515",
+   "class": "Beam",
+   "name": "5",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "2655ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA SSJB.Torso.B.5"
+  },
+  {
+   "tex": "rbxassetid://11975007944",
+   "class": "Beam",
+   "name": "7",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ff006f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA SSJB.Torso.B.7"
+  },
+  {
+   "tex": "rbxassetid://12074324396",
+   "class": "ParticleEmitter",
+   "name": "A3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "2655ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA SSJB.Torso.Full body aura.B"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7451697448",
+   "class": "ParticleEmitter",
+   "name": "A1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "2655ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA SSJB.Torso.Full body aura.B"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=567395887",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "2655ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA SSJB.Torso.Full body aura.B"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=11557895555",
+   "class": "ParticleEmitter",
+   "name": "Ring",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff439e",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA: Gravity God.Torso.Quake.Ri"
+  },
+  {
+   "tex": "rbxassetid://10598374841",
+   "class": "ParticleEmitter",
+   "name": "Star",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff75bf",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA: Gravity God.Torso.Quake.St"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=8090715771",
+   "class": "ParticleEmitter",
+   "name": "Debris",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff75bf",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA: Gravity God.Torso.Quake.De"
+  },
+  {
+   "tex": "rbxassetid://13278236180",
+   "class": "ParticleEmitter",
+   "name": "Debris2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff75bf",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA: Gravity God.Torso.Quake.De"
+  },
+  {
+   "tex": "rbxassetid://12681270997",
+   "class": "ParticleEmitter",
+   "name": "LightBeams",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ea00ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.POF:RE AURA: Gravity God.Aura.LightBeam"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12094495797",
+   "class": "ParticleEmitter",
+   "name": "Swirls",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "f56aff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Dummy.Torso.Attachment15.Swirls"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12807576645",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "f18bff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Dummy.Torso.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://12362727262",
+   "class": "ParticleEmitter",
+   "name": "Star",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "f28cff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Dummy.Torso.Attachment1512.Star"
+  },
+  {
+   "tex": "rbxassetid://8210105223",
+   "class": "ParticleEmitter",
+   "name": "Burst",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "f18aff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Dummy.Torso.Attachment1512.Burst"
+  },
+  {
+   "tex": "rbxassetid://7216850022",
+   "class": "ParticleEmitter",
+   "name": "Charge",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aaffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Electrical Charge.Aura.Charge"
+  },
+  {
+   "tex": "rbxassetid://6707322206",
+   "class": "ParticleEmitter",
+   "name": "BuildupB",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aaffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Electrical Charge.Aura.Attachment.Build"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=1290675373",
+   "class": "ParticleEmitter",
+   "name": "Motionless Flames",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff5500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Flame Barrage.Left Arm.Motionless Flame"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=418380863",
+   "class": "ParticleEmitter",
+   "name": "Fireball",
+   "flipbook": "None/Loop",
+   "light": 0.8,
+   "color": "ffaa00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Flame Barrage.Aura.Left Hip.Fireball"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=244158800",
+   "class": "ParticleEmitter",
+   "name": "Fireball Shine",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Flame Barrage.Aura.Left Hip.Fireball Sh"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=3232005358",
+   "class": "ParticleEmitter",
+   "name": "Fireball Swirl",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack3.Flame Barrage.Aura.Left Hip.Fireball Sw"
+  },
+  {
+   "tex": "rbxassetid://917186750",
+   "class": "ParticleEmitter",
+   "name": "Body Aura",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.Infinite Reality.Left Arm.Body Aura"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=52318239",
+   "class": "ParticleEmitter",
+   "name": "Gravitational Field",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.Infinite Reality.Torso.Gravitational.Gr"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=3339218899",
+   "class": "ParticleEmitter",
+   "name": "Secondary Aura",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.Infinite Reality.Aura.Secondary Aura"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=14641036736",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "ff0084",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA  BEAST.Head.1.2"
+  },
+  {
+   "tex": "rbxassetid://13712007292",
+   "class": "ParticleEmitter",
+   "name": "1",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "ff0044",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA  BEAST.Head.1.1"
+  },
+  {
+   "tex": "rbxassetid://13393033122",
+   "class": "ParticleEmitter",
+   "name": "2",
+   "flipbook": "Grid2x2/Random",
+   "light": 1.0,
+   "color": "ff3edc",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA  BEAST.Torso.C.2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13703813488",
+   "class": "Beam",
+   "name": "3",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ff0084",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA  BEAST.Torso.B.3"
+  },
+  {
+   "tex": "rbxassetid://13177024890",
+   "class": "ParticleEmitter",
+   "name": "4",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "5977ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA  BEAST.Torso.A.4"
+  },
+  {
+   "tex": "rbxassetid://6572632309",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.Model.PoF:RE Aura Revamp: Blackhole.Tor"
+  },
+  {
+   "tex": "rbxassetid://6559566303",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.Model.PoF:RE Aura Revamp: Blackhole.Tor"
+  },
+  {
+   "tex": "rbxassetid://8123728660",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 11.0,
+   "color": "ff5500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA SSJG By ZironTheDerg.Head.P"
+  },
+  {
+   "tex": "rbxassetid://1196526222",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 11.0,
+   "color": "ff5500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA SSJG By ZironTheDerg.Head.P"
+  },
+  {
+   "tex": "rbxassetid://448862775",
+   "class": "ParticleEmitter",
+   "name": "TopStar",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.North Star.Head.SmallCenterA.TopStar"
+  },
+  {
+   "tex": "rbxassetid://6479253935",
+   "class": "ParticleEmitter",
+   "name": "ShineTopLeft",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.North Star.Head.Descending Beams.ShineT"
+  },
+  {
+   "tex": "rbxassetid://13516765561",
+   "class": "ParticleEmitter",
+   "name": "Quake 2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "6effe0",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA MUTANTS RAGE.Torso.B.Quake "
+  },
+  {
+   "tex": "rbxassetid://12102242479",
+   "class": "ParticleEmitter",
+   "name": "Quake 1",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "449e83",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA MUTANTS RAGE.Torso.B.Quake "
+  },
+  {
+   "tex": "rbxassetid://11172058603",
+   "class": "ParticleEmitter",
+   "name": "Explosion 1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "6effe0",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA MUTANTS RAGE.Torso.1.Explos"
+  },
+  {
+   "tex": "rbxassetid://11172062124",
+   "class": "ParticleEmitter",
+   "name": "Explosion 2",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "449e83",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA MUTANTS RAGE.Torso.1.Explos"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13713754466",
+   "class": "Trail",
+   "name": "Trail",
+   "flipbook": "",
+   "light": 0.5,
+   "color": "6effe0",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA MUTANTS RAGE.Torso.eye.EYE "
+  },
+  {
+   "tex": "rbxassetid://13370277278",
+   "class": "ParticleEmitter",
+   "name": "Explosions 1",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "6effe0",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA MUTANTS RAGE.Torso.eye.EYE "
+  },
+  {
+   "tex": "rbxassetid://13501212865",
+   "class": "ParticleEmitter",
+   "name": "Eye",
+   "flipbook": "None/Loop",
+   "light": 0.15,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA MUTANTS RAGE.Torso.eye.EYE "
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=8926705013",
+   "class": "ParticleEmitter",
+   "name": "Specs 1",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "6effe0",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA MUTANTS RAGE.Torso.eye.EYE "
+  },
+  {
+   "tex": "rbxassetid://11151868349",
+   "class": "ParticleEmitter",
+   "name": "FLASH E FFECT",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "fffec6",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA HEAVEN.Head.FLASH E FFECT"
+  },
+  {
+   "tex": "rbxassetid://7673945506",
+   "class": "Beam",
+   "name": "1",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "fffec6",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA HEAVEN.Head.Bottom.1"
+  },
+  {
+   "tex": "rbxassetid://11156590261",
+   "class": "ParticleEmitter",
+   "name": "Steam",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "3737ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA: Blue Heat.Head.Steam"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13711999895",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.uh.Head.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13712002536",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.uh.Torso.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13712006924",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.uh.Torso.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=13174088481",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.uh.Torso.Attachment.Beam"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=12728872220",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "fcffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.uh.Torso.Attachment.ParticleEmitter"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7150933366",
+   "class": "ParticleEmitter",
+   "name": "Particle1",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA Pure Darkness (REVAMP).Head"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=4622205463",
+   "class": "ParticleEmitter",
+   "name": "Particle2",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA Pure Darkness (REVAMP).Head"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=5367817750",
+   "class": "ParticleEmitter",
+   "name": "Orb",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA Pure Darkness (REVAMP).Head"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=11350021906",
+   "class": "ParticleEmitter",
+   "name": "Ring",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA Pure Darkness (REVAMP).Tors"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7151778302",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack4.POF:RE AURA Pure Darkness (REVAMP).Tors"
+  },
+  {
+   "tex": "rbxassetid://14053069521",
+   "class": "ParticleEmitter",
+   "name": "4",
+   "flipbook": "Grid4x4/Loop",
+   "light": 1.0,
+   "color": "ff0004",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA HANMA.Head.1.4"
+  },
+  {
+   "tex": "rbxassetid://12265080565",
+   "class": "Beam",
+   "name": "Beam 2",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ff0004",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA HANMA.Torso.Beam 2"
+  },
+  {
+   "tex": "rbxassetid://3074825547",
+   "class": "ParticleEmitter",
+   "name": "Flowing energy",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff2f2f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ARMAGEDDON.Head.Part.Flowin"
+  },
+  {
+   "tex": "rbxassetid://1379899761",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ARMAGEDDON.Torso.BottomMain"
+  },
+  {
+   "tex": "rbxassetid://10931231138",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff2f2f",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ARMAGEDDON.Torso.Symbol.Par"
+  },
+  {
+   "tex": "rbxassetid://11290368841",
+   "class": "Beam",
+   "name": "2",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "6ea5c7",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.Bottom.2"
+  },
+  {
+   "tex": "rbxassetid://11974968572",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "6ea5c7",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.Attachment.Pa"
+  },
+  {
+   "tex": "rbxassetid://11975024774",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "6ea5c7",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.Attachment.Pa"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7386910629",
+   "class": "ParticleEmitter",
+   "name": "Dust",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "6ea5c7",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.Dust"
+  },
+  {
+   "tex": "rbxassetid://11300510544",
+   "class": "ParticleEmitter",
+   "name": "Shard falling1",
+   "flipbook": "None/Loop",
+   "light": 0.12,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.Shard fa"
+  },
+  {
+   "tex": "rbxassetid://11300527301",
+   "class": "ParticleEmitter",
+   "name": "Shard2",
+   "flipbook": "None/Loop",
+   "light": 0.12,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.Shard2"
+  },
+  {
+   "tex": "rbxassetid://11300524366",
+   "class": "ParticleEmitter",
+   "name": "Shard1",
+   "flipbook": "None/Loop",
+   "light": 0.12,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.Shard1"
+  },
+  {
+   "tex": "rbxassetid://11300525806",
+   "class": "ParticleEmitter",
+   "name": "Shard3",
+   "flipbook": "None/Loop",
+   "light": 0.12,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.Shard3"
+  },
+  {
+   "tex": "rbxassetid://11171860032",
+   "class": "ParticleEmitter",
+   "name": "Spike2",
+   "flipbook": "None/Loop",
+   "light": 0.12,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.Spike2"
+  },
+  {
+   "tex": "rbxassetid://11171864352",
+   "class": "ParticleEmitter",
+   "name": "Spike1",
+   "flipbook": "None/Loop",
+   "light": 0.12,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.Spike1"
+  },
+  {
+   "tex": "rbxassetid://11300523181",
+   "class": "ParticleEmitter",
+   "name": "Shard falling2",
+   "flipbook": "None/Loop",
+   "light": 0.12,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.Shard fa"
+  },
+  {
+   "tex": "rbxassetid://11975030489",
+   "class": "Beam",
+   "name": "1",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "6ea5c7",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.1"
+  },
+  {
+   "tex": "rbxassetid://11975023580",
+   "class": "Beam",
+   "name": "2",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "6ea5c7",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA CRYOGEN.Torso.S7.1.2"
+  },
+  {
+   "tex": "rbxassetid://10716752960",
+   "class": "Beam",
+   "name": "Beam",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "5500aa",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ULTIMATE EVIL.Head.TOP.Beam"
+  },
+  {
+   "tex": "rbxassetid://10716751908",
+   "class": "ParticleEmitter",
+   "name": "Galaxy",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ULTIMATE EVIL.Head.Part.Gal"
+  },
+  {
+   "tex": "rbxassetid://8187308066",
+   "class": "ParticleEmitter",
+   "name": "Galaxy3",
+   "flipbook": "None/Loop",
+   "light": 0.8,
+   "color": "aa55ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ULTIMATE EVIL.Head.Part.Gal"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7451831540",
+   "class": "ParticleEmitter",
+   "name": "Glow",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa55ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ULTIMATE EVIL.Head.Part.Glo"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=8719522623",
+   "class": "ParticleEmitter",
+   "name": "Swirl2",
+   "flipbook": "None/Loop",
+   "light": 0.6,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ULTIMATE EVIL.Head.Part.Swi"
+  },
+  {
+   "tex": "rbxassetid://10717728332",
+   "class": "ParticleEmitter",
+   "name": "Swirl3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ULTIMATE EVIL.Head.Part.Swi"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7833655167",
+   "class": "ParticleEmitter",
+   "name": "Swirl",
+   "flipbook": "None/Loop",
+   "light": 0.6,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA ULTIMATE EVIL.Head.Part.Swi"
+  },
+  {
+   "tex": "rbxassetid://14247831290",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 0.4,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.R6.Torso.Veins.ParticleEmitter"
+  },
+  {
+   "tex": "rbxassetid://1084959583",
+   "class": "ParticleEmitter",
+   "name": "Zap3",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "f3ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Cloak of Lightning.Head.Za"
+  },
+  {
+   "tex": "rbxassetid://446970589",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffbb1a",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Fire Eyes.Aura.ParticleEmi"
+  },
+  {
+   "tex": "rbxassetid://243664672",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffbb1a",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Fire Eyes.Aura.ParticleEmi"
+  },
+  {
+   "tex": "rbxassetid://9075230254",
+   "class": "ParticleEmitter",
+   "name": "glow",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff2c99",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Street Demon.Head.eyeleft."
+  },
+  {
+   "tex": "rbxassetid://9075197234",
+   "class": "ParticleEmitter",
+   "name": "smoke1",
+   "flipbook": "None/Loop",
+   "light": 0.08,
+   "color": "7a0737",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Street Demon.Left Arm.Arm."
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=5813586550",
+   "class": "ParticleEmitter",
+   "name": "flames",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "cf234b",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Street Demon.Left Arm.Arm."
+  },
+  {
+   "tex": "rbxassetid://8984297489",
+   "class": "ParticleEmitter",
+   "name": "extra specs",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ee5686",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Street Demon.Left Arm.Arm."
+  },
+  {
+   "tex": "rbxassetid://9033871413",
+   "class": "ParticleEmitter",
+   "name": "Symbol",
+   "flipbook": "None/Loop",
+   "light": 0.32,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Street Demon.Torso.SymbolP"
+  },
+  {
+   "tex": "rbxassetid://8971465962",
+   "class": "Beam",
+   "name": "First",
+   "flipbook": "",
+   "light": 0.3,
+   "color": "ff0c24",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack5.POF:RE AURA: Street Demon.Torso.First"
+  },
+  {
+   "tex": "rbxassetid://10365552890",
+   "class": "ParticleEmitter",
+   "name": "Emission",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA: Incognito.Head.Eye.Emissio"
+  },
+  {
+   "tex": "rbxassetid://11156592081",
+   "class": "ParticleEmitter",
+   "name": "Smog2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "da0000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA: Incognito.Head.Smog2"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7138214030",
+   "class": "ParticleEmitter",
+   "name": "Moon",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffa6a6",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Lunar Eclipse.Aura.Attachment.Moon"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=6991254829",
+   "class": "ParticleEmitter",
+   "name": "Lunar Aura",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Lunar Eclipse.Aura.Attachment.Lunar Aur"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=5450294704",
+   "class": "ParticleEmitter",
+   "name": "Lunar Ring",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Lunar Eclipse.Aura.Attachment.Lunar Rin"
+  },
+  {
+   "tex": "rbxassetid://11306904002",
+   "class": "Beam",
+   "name": "arrow",
+   "flipbook": "",
+   "light": 1.0,
+   "color": "00aa00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA  HIGH GRAVITY.Torso.main1.a"
+  },
+  {
+   "tex": "rbxassetid://11172047500",
+   "class": "ParticleEmitter",
+   "name": "ParticleEmitter",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "00aa00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA  HIGH GRAVITY.Torso.circle."
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=7145697768",
+   "class": "ParticleEmitter",
+   "name": "Darkness",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "000000",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Solar Eclipse.Aura.Attachment.Darkness"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=434732071",
+   "class": "ParticleEmitter",
+   "name": "Light",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ff5500",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Solar Eclipse.Aura.Attachment.Light"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=1280736246",
+   "class": "ParticleEmitter",
+   "name": "Eclipse Aura",
+   "flipbook": "None/Loop",
+   "light": 0.0,
+   "color": "ffaa00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Solar Eclipse.Aura.Attachment.Eclipse A"
+  },
+  {
+   "tex": "rbxassetid://13278756202",
+   "class": "ParticleEmitter",
+   "name": "Scream",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffc987",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA: Roar of The Jungle Dragon."
+  },
+  {
+   "tex": "rbxassetid://12994153008",
+   "class": "ParticleEmitter",
+   "name": "OuterHeat",
+   "flipbook": "Grid4x4/OneShot",
+   "light": 1.0,
+   "color": "ffc987",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA: Roar of The Jungle Dragon."
+  },
+  {
+   "tex": "rbxassetid://12681289795",
+   "class": "ParticleEmitter",
+   "name": "Scream2",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffc987",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA: Roar of The Jungle Dragon."
+  },
+  {
+   "tex": "rbxassetid://6032245879",
+   "class": "ParticleEmitter",
+   "name": "Specs",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffc987",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA: Roar of The Jungle Dragon."
+  },
+  {
+   "tex": "rbxassetid://547900945",
+   "class": "ParticleEmitter",
+   "name": "Heat",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "0e6a04",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA: Roar of The Jungle Dragon."
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=23596922",
+   "class": "ParticleEmitter",
+   "name": "Outer Orb",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Universal Keys.Aura.Yellow Key Orb.Oute"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=3020184976",
+   "class": "ParticleEmitter",
+   "name": "Rising Glow",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Universal Keys.Aura.Yellow Key Orb.Risi"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=4671048471",
+   "class": "ParticleEmitter",
+   "name": "Inner Orb",
+   "flipbook": "None/Loop",
+   "light": 0.5,
+   "color": "ffff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Universal Keys.Aura.Yellow Key Orb.Inne"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=631172870",
+   "class": "ParticleEmitter",
+   "name": "Center Eye",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "ffffff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Universal Keys.Aura.Yellow Key Orb.Cent"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=2340835636",
+   "class": "ParticleEmitter",
+   "name": "Outer Orb",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "aa00ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Universal Keys.Aura.Purple Key Orb.Oute"
+  },
+  {
+   "tex": "http://www.roblox.com/asset/?id=329615000",
+   "class": "ParticleEmitter",
+   "name": "Outer Orb",
+   "flipbook": "None/Loop",
+   "light": 1.0,
+   "color": "55ff00",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.Universal Keys.Aura.Green Key Orb.Outer"
+  },
+  {
+   "tex": "rbxassetid://11172202928",
+   "class": "ParticleEmitter",
+   "name": "Flame1",
+   "flipbook": "None/Loop",
+   "light": -0.4,
+   "color": "0037ff",
+   "from": "AuraPacksAll.Folder.Aura packs all.Pack6.POF:RE AURA: Midnight Blues.Head.Flame1"
+  }
+ ]
+}

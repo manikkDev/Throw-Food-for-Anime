@@ -29,52 +29,177 @@
   {
    "type": "panel",
    "name": "Window",
-   "colour": "panel",
+   "colour": [
+    "#2C3280",
+    "#181B4C"
+   ],
+   "keyline": "#FFFFFF",
+   "depth": 0,
+   "stroke": 4,
+   "corner": 22,
    "size": [
     0,
-    500,
+    600,
     0,
-    210
+    246
    ],
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "modal": true,
+   "pattern": {
+    "name": "dots",
+    "colour": "#FFFFFF",
+    "opacity": 0.05,
+    "tile": 28
+   },
    "children": [
     {
-     "type": "panel",
+     "type": "frame",
      "name": "Header",
      "colour": [
-      "#FFC93C",
-      "#FF5A5F"
+      "#4FE3D2",
+      "#1597A8"
      ],
+     "corner": 16,
+     "outline": false,
      "size": [
+      1,
+      -12,
       0,
-      260,
-      0,
-      70
+      68
      ],
-     "rotation": -2,
-     "keyline": "#FFFFFF",
-     "comic": 6,
+     "pos": [
+      0.5,
+      0,
+      0,
+      6
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 2,
      "pattern": {
-      "name": "dots",
+      "name": "stripes",
       "colour": "#FFFFFF",
-      "opacity": 0.28,
-      "tile": 34
+      "opacity": 0.1,
+      "tile": 64
      },
      "children": [
       {
-       "type": "label",
-       "text": "CODES",
+       "type": "sheen",
+       "name": "Sheen",
+       "size": [
+        1,
+        0,
+        1,
+        0
+       ],
+       "angle": -24,
+       "opacity": 0.24,
+       "bands": [
+        [
+         0.3,
+         0.05
+        ],
+        [
+         0.4,
+         0.1
+        ]
+       ],
+       "corner": 16,
+       "overhang": true,
+       "children": []
+      },
+      {
+       "type": "frame",
+       "name": "HeaderShade",
+       "colour": [
+        "#000000",
+        "#000000"
+       ],
+       "alpha": 0.9,
+       "outline": false,
+       "corner": 16,
+       "size": [
+        1,
+        0,
+        0,
+        18
+       ],
+       "pos": [
+        0,
+        0,
+        1,
+        0
+       ],
+       "anchor": [
+        0,
+        1
+       ],
+       "z": 2,
+       "children": [],
+       "overhang": true
+      },
+      {
+       "type": "frame",
+       "name": "TitleRow",
+       "transparent": true,
        "size": [
         0,
-        220,
+        159,
         0,
         56
        ],
-       "textColour": "onDark",
-       "align": "center",
-       "textScale": 0.6964,
-       "textStroke": 3,
-       "name": "Title",
-       "font": "display",
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconCodesBig",
+         "name": "TitleIcon",
+         "size": [
+          0,
+          44,
+          0,
+          44
+         ]
+        },
+        {
+         "type": "label",
+         "text": "CODES",
+         "size": [
+          0,
+          105,
+          0,
+          45
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.8,
+         "textStroke": 2,
+         "name": "Title",
+         "font": "display",
+         "maxText": 36,
+         "autoX": true,
+         "textGrad": [
+          "#FFFFFF",
+          "#FFE9A8"
+         ]
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "center"
+       },
        "pos": [
         0.5,
         0,
@@ -84,67 +209,25 @@
        "anchor": [
         0.5,
         0.5
-       ]
+       ],
+       "z": 3,
+       "autoW": 0
       }
-     ],
-     "pos": [
-      0.5,
-      0,
-      0,
-      -36
-     ],
-     "anchor": [
-      0.5,
-      0
-     ],
-     "z": 3,
-     "overhang": true
-    },
-    {
-     "type": "frame",
-     "name": "BodyArt",
-     "colour": [
-      "#2E3488",
-      "#161944"
-     ],
-     "outline": false,
-     "size": [
-      1,
-      -16,
-      1,
-      -16
-     ],
-     "pos": [
-      0.5,
-      0,
-      0.5,
-      0
-     ],
-     "anchor": [
-      0.5,
-      0.5
-     ],
-     "corner": 16,
-     "pattern": {
-      "name": "dots",
-      "colour": "#FFFFFF",
-      "opacity": 0.07,
-      "tile": 28
-     },
-     "overhang": true,
-     "z": -1,
-     "children": []
+     ]
     },
     {
      "type": "button",
      "name": "CloseButton",
-     "colour": "danger",
+     "colour": "#F2574C",
      "size": [
       0,
       56,
       0,
       56
      ],
+     "corner": 28,
+     "depth": 3,
+     "sizeClass": "X",
      "children": [
       {
        "type": "icon",
@@ -170,18 +253,43 @@
      ],
      "pos": [
       1,
-      14,
+      -14,
       0,
-      -18
+      12
      ],
      "anchor": [
       1,
       0
      ],
      "z": 4,
-     "overhang": true,
      "closes": true,
-     "sizeClass": "L"
+     "overhang": true,
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#F2574C"
+      ],
+      [
+       0.49,
+       "#F2574C"
+      ],
+      [
+       0.5,
+       "#D04B41"
+      ],
+      [
+       1.0,
+       "#B34038"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3,
+      "Rim": 0.5
+     },
+     "stroke": 3,
+     "keyline": "#F8ABA6"
     },
     {
      "type": "frame",
@@ -189,9 +297,9 @@
      "transparent": true,
      "size": [
       0,
-      452,
+      560,
       0,
-      104
+      140
      ],
      "children": [
       {
@@ -199,14 +307,14 @@
        "text": "Join the group to find new codes!",
        "size": [
         0,
-        420,
+        560,
         0,
-        19
+        25
        ],
        "textColour": "soft",
        "align": "center",
-       "textScale": 0.7368,
-       "textStroke": 2,
+       "textScale": 0.8,
+       "textStroke": 1.5,
        "name": "CodesHint",
        "pos": [
         0.5,
@@ -218,7 +326,7 @@
         0.5,
         0
        ],
-       "maxText": 14
+       "maxText": 20
       },
       {
        "type": "frame",
@@ -226,20 +334,26 @@
        "transparent": true,
        "size": [
         0,
-        440,
+        560,
         0,
-        44
+        56
        ],
        "children": [
         {
          "type": "panel",
          "name": "CodeField",
-         "colour": "panelDeep",
+         "colour": [
+          "#12153A",
+          "#0B0D29"
+         ],
+         "keyline": "#5B64C9",
+         "depth": 0,
+         "corner": 16,
          "size": [
           0,
-          300,
+          360,
           0,
-          44
+          56
          ],
          "children": [
           {
@@ -248,13 +362,13 @@
            "name": "Icon",
            "size": [
             0,
-            22,
+            28,
             0,
-            22
+            28
            ],
            "pos": [
             0,
-            12,
+            14,
             0.5,
             0
            ],
@@ -268,19 +382,19 @@
            "text": "TYPE A CODE",
            "size": [
             0,
-            248,
+            296,
             0,
-            26
+            30
            ],
            "textColour": "soft",
            "align": "left",
-           "textScale": 0.7692,
-           "textStroke": 3,
+           "textScale": 0.8,
+           "textStroke": 2,
            "name": "CodeBox",
            "font": "display",
            "pos": [
             0,
-            44,
+            52,
             0.5,
             0
            ],
@@ -288,22 +402,20 @@
             0,
             0.5
            ],
-           "maxText": 20,
+           "maxText": 24,
            "cls": "TextBox"
           }
          ],
-         "keyline": "#FFFFFF",
-         "depth": 0,
-         "corner": 14
+         "stroke": 3
         },
         {
          "type": "button",
          "name": "RedeemButton",
          "size": [
           0,
-          153,
+          168,
           0,
-          44
+          56
          ],
          "children": [
           {
@@ -312,9 +424,9 @@
            "name": "Icon",
            "size": [
             0,
-            26,
+            32,
             0,
-            26
+            32
            ]
           },
           {
@@ -322,17 +434,19 @@
            "text": "REDEEM",
            "size": [
             0,
-            87,
+            92,
             0,
-            26
+            38
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7308,
+           "textScale": 0.6842,
            "textStroke": 2,
            "name": "Label",
            "font": "display",
-           "maxText": 19
+           "maxText": 26,
+           "autoX": true,
+           "capW": 106
           }
          ],
          "layout": {
@@ -343,7 +457,7 @@
          },
          "sizeClass": "M",
          "depth": 4,
-         "corner": 18,
+         "corner": 19,
          "colour": "#48D687",
          "paintable": true,
          "gloss": true,
@@ -353,34 +467,38 @@
            "#48D687"
           ],
           [
-           0.4,
+           0.49,
            "#48D687"
           ],
           [
-           0.41000000000000003,
-           "#41C17A"
+           0.5,
+           "#3EB874"
           ],
           [
            1.0,
-           "#3BAF6F"
+           "#359E64"
           ]
          ],
          "attrs": {
-          "PressLip": 4
-         }
+          "PressLip": 4,
+          "AutoShine": true,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#A4EAC3"
         }
        ],
        "layout": {
         "type": "list",
         "dir": "x",
-        "gap": 12,
+        "gap": 14,
         "align": "center"
        },
        "pos": [
         0.5,
         0,
         0,
-        28
+        40
        ],
        "anchor": [
         0.5,
@@ -392,58 +510,45 @@
        "text": "<unbound>",
        "size": [
         0,
-        420,
+        560,
         0,
-        19
+        25
        ],
        "textColour": "confirm",
        "align": "center",
-       "textScale": 0.7368,
-       "textStroke": 2,
+       "textScale": 0.8,
+       "textStroke": 1.5,
        "name": "ResultLabel",
        "samples": [
         "Code redeemed! +3 Lucky Throws",
         "That code has expired"
        ],
+       "font": "display",
        "pos": [
         0.5,
         0,
         0,
-        84
+        112
        ],
        "anchor": [
         0.5,
         0
        ],
-       "maxText": 14
+       "maxText": 20
       }
      ],
      "pos": [
       0.5,
       0,
       0,
-      84
+      86
      ],
      "anchor": [
       0.5,
       0
      ]
     }
-   ],
-   "comic": 10,
-   "modal": true,
-   "corner": 22,
-   "pos": [
-    0.5,
-    0,
-    0.5,
-    0
-   ],
-   "anchor": [
-    0.5,
-    0.5
-   ],
-   "keyline": "#FFFFFF"
+   ]
   }
  ],
  "displayOrder": 12

@@ -2,8 +2,8 @@
  "name": "HeroTileTemplate",
  "theme": "theme.json",
  "resolution": [
-  160,
-  182
+  170,
+  238
  ],
  "kind": "world",
  "children": [
@@ -12,31 +12,101 @@
    "name": "HeroTileTemplate",
    "colour": "#A855F7",
    "paintable": true,
-   "depth": 4,
-   "corner": 14,
+   "depth": 0,
+   "keyline": "#FFFFFF",
+   "corner": 16,
    "size": [
     0,
-    136,
+    146,
     0,
-    158
+    214
    ],
-   "aspect": 0.8608,
+   "aspect": 0.6822,
+   "pattern": {
+    "name": "dots",
+    "colour": "#FFFFFF",
+    "opacity": 0.12,
+    "tile": 22
+   },
    "children": [
     {
      "type": "frame",
-     "name": "Portrait",
-     "cls": "ViewportFrame",
+     "name": "PortraitWell",
      "colour": [
-      "#12153A",
+      "#232866",
       "#12153A"
      ],
+     "corner": 12,
+     "keyline": "#FFFFFF",
      "size": [
       0,
-      124,
+      130,
       0,
-      78
+      104
      ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      8
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "props": {
+      "ClipsDescendants": true
+     },
      "children": [
+      {
+       "type": "icon",
+       "icon": "FxSunburst",
+       "name": "Sunburst",
+       "size": [
+        0,
+        150,
+        0,
+        150
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 1,
+       "tint": "#A855F7",
+       "alphaImg": 0.0,
+       "overhang": true
+      },
+      {
+       "type": "frame",
+       "name": "Portrait",
+       "transparent": true,
+       "cls": "ViewportFrame",
+       "size": [
+        0,
+        126,
+        0,
+        100
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 2,
+       "children": []
+      },
       {
        "type": "label",
        "text": "?",
@@ -44,12 +114,12 @@
         0,
         60,
         0,
-        45
+        60
        ],
        "textColour": "onDark",
        "align": "center",
-       "textScale": 0.7556,
-       "textStroke": 3,
+       "textScale": 0.8,
+       "textStroke": 2,
        "name": "UnknownMark",
        "font": "display",
        "pos": [
@@ -62,7 +132,9 @@
         0.5,
         0.5
        ],
-       "maxText": 34,
+       "z": 4,
+       "maxText": 48,
+       "overhang": true,
        "props": {
         "TextColor3": {
          "Color3": [
@@ -76,86 +148,134 @@
        "mockHide": true
       }
      ],
-     "pos": [
-      0.5,
-      0,
-      0,
-      2
-     ],
-     "anchor": [
-      0.5,
-      0
-     ]
+     "strokePx": 3
     },
     {
-     "type": "frame",
-     "name": "RarityStripe",
-     "colour": [
-      "#A855F7",
-      "#9049D4"
+     "type": "panel",
+     "name": "RarityTag",
+     "colour": "#A855F7",
+     "size": [
+      0,
+      105,
+      0,
+      26
      ],
-     "paint": "#A855F7",
-     "children": [],
-     "corner": 2,
+     "selfFace": true,
+     "paintable": true,
+     "depth": 0,
+     "corner": 13,
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        95,
+        0,
+        20
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.8,
+       "textStroke": 1.5,
+       "name": "RarityText",
+       "samples": [
+        "EPIC",
+        "LEGENDARY"
+       ],
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "maxText": 16
+      }
+     ],
      "pos": [
       0.5,
       0,
       0,
-      81
+      99
      ],
      "anchor": [
       0.5,
       0
      ],
-     "z": 2,
-     "size": [
-      0,
-      124,
-      0,
-      5
-     ]
+     "z": 5,
+     "overhang": true,
+     "stroke": 2,
+     "keyline": "#FFFFFF"
     },
     {
      "type": "label",
      "text": "<unbound>",
      "size": [
       0,
-      124,
+      134,
       0,
-      36
+      40
      ],
      "textColour": "onDark",
      "align": "center",
-     "textScale": 0.3784,
-     "textStroke": 2,
+     "textScale": 0.425,
+     "textStroke": 1.5,
      "name": "HeroName",
      "samples": [
       "Heavenly String King",
       "Heavenly String King"
      ],
      "wrap": true,
+     "font": "display",
      "pos": [
       0.5,
       0,
       0,
-      88
+      130
      ],
      "anchor": [
       0.5,
       0
      ],
-     "maxText": 14
+     "maxText": 17
     },
     {
      "type": "frame",
      "name": "BottomRow",
-     "transparent": true,
+     "colour": [
+      "#12153A",
+      "#12153A"
+     ],
+     "alpha": 0.25,
+     "outline": false,
+     "corner": 13,
      "size": [
       0,
-      124,
+      130,
       0,
-      16
+      28
      ],
+     "pos": [
+      0.5,
+      0,
+      1,
+      -8
+     ],
+     "anchor": [
+      0.5,
+      1
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 8,
+      "align": "center"
+     },
      "children": [
       {
        "type": "icon",
@@ -163,9 +283,9 @@
        "name": "CraveIcon",
        "size": [
         0,
-        16,
+        20,
         0,
-        16
+        20
        ]
       },
       {
@@ -173,41 +293,27 @@
        "text": "<unbound>",
        "size": [
         0,
-        80,
+        72,
         0,
-        17
+        23
        ],
        "textColour": "onDark",
        "align": "center",
-       "textScale": 0.7647,
-       "textStroke": 2,
+       "textScale": 0.7826,
+       "textStroke": 1.5,
        "name": "ChanceText",
        "samples": [
         "0.0012%",
         "0.0012%"
        ],
        "font": "display",
-       "maxText": 13
+       "maxText": 18,
+       "autoX": true
       }
-     ],
-     "layout": {
-      "type": "list",
-      "dir": "x",
-      "gap": 6,
-      "align": "center"
-     },
-     "pos": [
-      0.5,
-      0,
-      0,
-      126
-     ],
-     "anchor": [
-      0.5,
-      0
      ]
     }
    ],
+   "stroke": 3,
    "pos": [
     0,
     12,

@@ -1,0 +1,278 @@
+{
+ "name": "Coin_Pop",
+ "note": "Yen coins pop (frequent, tiny).",
+ "duration": 0.8,
+ "camera": {
+  "pos": [
+   5,
+   4,
+   10
+  ],
+  "at": [
+   0,
+   2.5,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": false,
+  "origin": [
+   0,
+   1,
+   0
+  ]
+ },
+ "brief": {
+  "category": "ambient_pickup",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "spinning coins",
+  "dominant": "#FFCD28",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "pop to max in one frame"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.15
+   },
+   {
+    "name": "residue",
+    "t0": 0.15,
+    "t1": 0.7
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Pop",
+   "CFrame": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Coins",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:tfa/coin_spin_4x4",
+        "FlipbookLayout": {
+         "Enum": "ParticleFlipbookLayout.Grid4x4"
+        },
+        "FlipbookMode": {
+         "Enum": "ParticleFlipbookMode.Loop"
+        },
+        "FlipbookBlendFrames": false,
+        "FlipbookFramerate": {
+         "NumberRange": [
+          26,
+          34
+         ]
+        },
+        "FlipbookStartRandom": true,
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          28,
+          28
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          11,
+          15
+         ]
+        },
+        "Acceleration": {
+         "Vector3": [
+          0,
+          -38,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.6,
+          0.7
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.3
+          ],
+          [
+           0.12,
+           0.625
+          ],
+          [
+           0.8,
+           0.6
+          ],
+          [
+           1,
+           0.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "ZOffset": 1
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Glint",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/stars/star_glow_04",
+        "Lifetime": {
+         "NumberRange": [
+          0.18,
+          0.18
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          45
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.25
+          ],
+          [
+           0.3,
+           0.9
+          ],
+          [
+           1,
+           0.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.6,
+        "ZOffset": 2
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Pop.A.Coins",
+   "count": 4,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Pop.A.Glint",
+   "count": 1,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.0,
+  0.06,
+  0.15,
+  0.25,
+  0.35,
+  0.5,
+  0.65
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

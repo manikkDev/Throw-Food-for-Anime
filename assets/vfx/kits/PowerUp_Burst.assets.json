@@ -1,0 +1,9 @@
+{
+ "textures": [
+  "sim:lib/sprites/rings/ring_glow_08",
+  "sim:lib/sprites/shapes/chevron_glow_01",
+  "sim:lib/sprites/specks/streak_glow_00",
+  "sim:lib/sprites/stars/star_glow_00"
+ ],
+ "meshes": []
+}

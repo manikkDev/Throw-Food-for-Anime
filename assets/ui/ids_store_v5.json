@@ -1,0 +1,236 @@
+{
+ "_note": "UI v5 store: the owner's OWN VFX textures (assets/ui/imported_vfx_textures.json, ServerStorage.ImportedVfx) used as UI ImageLabels. NOT re-uploaded: these are the owner's existing asset ids. grid > 1 = flipbook (cols = rows = grid), played by Ui/StoreFx.luau by moving a Sheet image inside a clipping frame (resolution independent). assets/ui/store_v5/Vfx_<id>.png are 420 px thumbnails for the mockup only. Read by tools/ui/screens_store_v5.py; the ids reach the client through the attributes of src/ui/Store.model.json.",
+ "textures": {
+  "Galaxy": {
+   "id": 10716751908,
+   "grid": 1,
+   "from": "Galaxy",
+   "use": "summon card and stage backdrop (cosmic, Illusion Overlord)"
+  },
+  "Sigil": {
+   "id": 12389948201,
+   "grid": 1,
+   "from": "magiccircle",
+   "use": "summon stage: slow-turning magic circle behind the hero (shrine sigil)"
+  },
+  "Runes": {
+   "id": 2152222413,
+   "grid": 1,
+   "from": "CircleOuter",
+   "use": "summon stage: counter-turning rune ring"
+  },
+  "SpeedRays": {
+   "id": 1084975295,
+   "grid": 1,
+   "from": "Rays",
+   "use": "radial speed-line burst behind the summon and limited heroes"
+  },
+  "AuraShape": {
+   "id": 17612127081,
+   "grid": 2,
+   "fps": 12,
+   "from": "Images/OriginalAura2x2 (Goku SSJ2)",
+   "use": "the summon hero's dark energy aura silhouette"
+  },
+  "AuraFlame": {
+   "id": 16860267787,
+   "grid": 4,
+   "fps": 22,
+   "from": "Aura2 (Atomic)",
+   "use": "violet aura flames either side of the summon hero"
+  },
+  "Smoke": {
+   "id": 15410021685,
+   "grid": 4,
+   "fps": 16,
+   "from": "Smoke (Sung Jinwoo)",
+   "use": "dark smoke rolling at the summon hero's feet"
+  },
+  "Zaps": {
+   "id": 11492870634,
+   "grid": 4,
+   "fps": 24,
+   "from": "Zaps (Chromatic Void)",
+   "use": "lightning crackle bursts round the summon hero"
+  },
+  "Lightning": {
+   "id": 14068947349,
+   "grid": 4,
+   "fps": 24,
+   "from": "lightning #6 (electric aura)",
+   "use": "second lightning crackle"
+  },
+  "StarFlip": {
+   "id": 17062426399,
+   "grid": 4,
+   "fps": 18,
+   "from": "Star4",
+   "use": "star glints on the summon stage"
+  },
+  "Streak": {
+   "id": 241876428,
+   "grid": 1,
+   "from": "Lines D",
+   "use": "rising manga speed lines"
+  },
+  "Flare": {
+   "id": 448862775,
+   "grid": 1,
+   "from": "TopStar",
+   "use": "embers and glints (tinted); replaces 'glow' 9591714714, whose texture is opaque black"
+  },
+  "EnergyCloud": {
+   "id": 10435576555,
+   "grid": 1,
+   "from": "Energy Flare",
+   "use": "soft energy glow behind each hero"
+  },
+  "SunBurst": {
+   "id": 8210105223,
+   "grid": 1,
+   "from": "Burst",
+   "use": "the limited hero's sun behind him; starter pack burst"
+  },
+  "SunCrest": {
+   "id": 16511726823,
+   "grid": 1,
+   "from": "Dull Triangular Circle",
+   "use": "the limited hero's turning sun crest"
+  },
+  "FireRoar": {
+   "id": 11534281007,
+   "grid": 4,
+   "fps": 22,
+   "from": "FIRE (SSJ roaring flames)",
+   "use": "sun-breathing flames behind the limited hero"
+  },
+  "FireLove": {
+   "id": 16841991986,
+   "grid": 4,
+   "fps": 22,
+   "from": "Fire1 (Love Aura)",
+   "use": "second flame layer, limited hero"
+  },
+  "Coin": {
+   "id": 12010904379,
+   "grid": 4,
+   "fps": 18,
+   "from": "3 (COIN RAIN)",
+   "use": "spinning gold coins on the starter pack"
+  },
+  "Eclipse": {
+   "id": 1280736246,
+   "grid": 1,
+   "from": "Eclipse Aura",
+   "use": "glow core behind the starter hero"
+  },
+  "Slashes": {
+   "id": 12678933489,
+   "grid": 1,
+   "from": "Slashes",
+   "use": "sword-slash arc pulsing in front of the limited hero"
+  },
+  "BgRedMoon": {
+   "id": 110074599004151,
+   "grid": 1,
+   "from": "owner_bg/bg_red_moon_pagoda.png (owner-generated, uploaded 2026-11-15 as Image)",
+   "use": "FIRST SUN SWORDSMAN (limited hero) card art, ScaleType Crop"
+  },
+  "BgBloodChains": {
+   "id": 98516886373195,
+   "grid": 1,
+   "from": "owner_bg/bg_blood_chains.png (owner-generated, uploaded 2026-11-15 as Image)",
+   "use": "STARTER PACK (Blood Fiend) card art, ScaleType Crop"
+  },
+  "FireColumn": {
+   "id": 16860424478,
+   "grid": 4,
+   "from": "Fire55",
+   "use": "limited: rising flame columns licking up the hero frame's left edge",
+   "fps": 20
+  },
+  "FireWisp": {
+   "id": 12656840930,
+   "grid": 4,
+   "from": "flame (looping wisps)",
+   "use": "limited: flame licks up the frame's right edge",
+   "fps": 20
+  },
+  "FireBlast": {
+   "id": 11843575561,
+   "grid": 4,
+   "from": "Clean Flame Blast",
+   "use": "limited: flame tongues at the hero's feet, inside the frame",
+   "fps": 18
+  },
+  "FlameSwirl": {
+   "id": 10365549270,
+   "grid": 1,
+   "from": "Black bg ring swirl",
+   "use": "limited: the sun-breathing flame ring turning behind the hero"
+  },
+  "FlameArc": {
+   "id": 4543893907,
+   "grid": 1,
+   "from": "spinning (arc)",
+   "use": "limited: a flame arc sweeping round the frame"
+  },
+  "BloodBlobs": {
+   "id": 16843151641,
+   "grid": 4,
+   "from": "Fire2 (white blobs)",
+   "use": "starter: blood splash bursts at the frame corners (tinted crimson)",
+   "fps": 16
+  },
+  "BloodWisp": {
+   "id": 16867567145,
+   "grid": 4,
+   "from": "smoksmok",
+   "use": "starter: crimson blood wisps flowing up the frame's edge",
+   "fps": 16
+  },
+  "BloodCrescent": {
+   "id": 11852978685,
+   "grid": 4,
+   "from": "Flame Burst (crescents)",
+   "use": "starter: blood slash splashes",
+   "fps": 18
+  },
+  "BloodSpear": {
+   "id": 7451697448,
+   "grid": 1,
+   "from": "SPIKES",
+   "use": "starter: crimson blood spears thrusting out of the frame corners"
+  },
+  "BloodRing": {
+   "id": 10372847108,
+   "grid": 1,
+   "from": "circle (smoke ring)",
+   "use": "starter: crimson ring turning behind the frame and inside it"
+  },
+  "BgThrone": {
+   "id": 104721066207509,
+   "grid": 1,
+   "from": "owner_bg/bg_throne_vortex.png (owner-generated, uploaded 2026-11-16 as Image)",
+   "use": "SUMMON SCROLL stage background (ScaleType Crop)"
+  },
+  "BloodSplat": {
+   "id": 138180682365808,
+   "grid": 1,
+   "from": "tools/ui/store_blood.py (drawn, uploaded 2026-11-16 as Image)",
+   "use": "starter: glossy blood splatters on the frame corners"
+  },
+  "BloodDrip": {
+   "id": 74310528338938,
+   "grid": 1,
+   "from": "tools/ui/store_blood.py",
+   "use": "starter: blood runs sliding down from the frame rim"
+  },
+  "BloodDrop": {
+   "id": 87019407382216,
+   "grid": 1,
+   "from": "tools/ui/store_blood.py",
+   "use": "starter: the drop that falls off each run"
+  }
+ }
+}

@@ -45,7 +45,6 @@ function ShopService:BuyFood(player: Player, id: string)
 	profile.foods[id] = true
 	profile.food = id
 	self._state:MarkDirty(player)
-	self._state:Toast(player, `Bought {food.Name}!`, "good")
 end
 
 --- Buy the cheapest food not owned yet (the food cart prompt).
@@ -91,8 +90,6 @@ function ShopService:BuyGear(player: Player)
 	profile.gear += 1
 	self._plots:Refresh(player)
 	self._state:MarkDirty(player)
-	local gear = Config.Training.Equipment[profile.gear]
-	self._state:Toast(player, `New gear: {gear.Name}!`, "good")
 end
 
 --- Buy the next plot slot.
@@ -113,7 +110,6 @@ function ShopService:BuySlot(player: Player)
 	profile.slots += 1
 	self._plots:Refresh(player)
 	self._state:MarkDirty(player)
-	self._state:Toast(player, `Plot slot {profile.slots} unlocked!`, "good")
 end
 
 function ShopService:KnitStart()

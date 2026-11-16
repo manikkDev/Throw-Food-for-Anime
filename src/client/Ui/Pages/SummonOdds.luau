@@ -10,11 +10,18 @@ local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Screens = require(script.Parent.Parent.Screens)
+local UiFx = require(script.Parent.Parent.UiFx)
 local Viewports = require(script.Parent.Parent.Viewports)
 local Types = require(script.Parent.Types)
 
 local MAPS = Lookup.of(Config)
-local ROW_COUNT = 6 -- OddsRow1..6 ship in the tree
+local ROW_COUNT = 6 -- OddsRow1..6 ship in the tree (UI v4: cards)
+-- the tier word on each card, rarest last (cards are in config order, most likely first)
+local TIERS = { "COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY", "MYTHIC" }
+-- each card's frame and flare by its tier (UiFx: gradient from Rare, turning
+-- from Epic, a gold shine on Legendary, colour-cycling on Mythic); the shared
+-- UI loop turns them while the page is open
+local STYLES = { "Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic" }
 
 local SummonOdds = { name = "SummonOdds" } :: Types.Page
 
@@ -24,6 +31,7 @@ local heroes: { any } = {}
 
 function SummonOdds.render(state: any)
 	Screens.frame(gui, "BuyButtons").Visible = not state.randomRestricted
+	Screens.frame(gui, "OddsBestValueCell").Visible = not state.randomRestricted
 end
 
 function SummonOdds.opened()
@@ -56,7 +64,15 @@ function SummonOdds.init(context: Types.Ctx)
 			Screens.label(row, "OddsEarn").Text =
 				`{Format.mult(hero.BestIncomeMult):sub(2)}x your best`
 			Screens.label(row, "OddsPercent").Text = `{hero.OddsPercent}%`
+			Screens.label(row, "RarityText").Text = TIERS[index] or ""
 		end
+		-- the shipped rainbow frame gives way to the tier frame
+		for _, descendant in row:GetDescendants() do
+			if descendant:IsA("UIGradient") and descendant.Name == "Rainbow" then
+				descendant:Destroy()
+			end
+		end
+		UiFx.styleCard(row, STYLES[index])
 	end
 	Screens.label(gui, "Total").Text = `TOTAL: {total}%`
 
@@ -64,7 +80,8 @@ function SummonOdds.init(context: Types.Ctx)
 		local product = MAPS.product["SummonScroll" .. amount]
 		local button = Screens.button(gui, "OddsBuy" .. amount)
 		if product then
-			Screens.label(button, "Label").Text = `x{product.Amount}  {product.Robux}`
+			Screens.label(button, "Count").Text = `BUY x{product.Amount}`
+			Screens.label(button, "Price").Text = tostring(product.Robux)
 		end
 		button.Activated:Connect(function()
 			local state = ctx.state()

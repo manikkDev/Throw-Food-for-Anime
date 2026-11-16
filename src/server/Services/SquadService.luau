@@ -211,7 +211,11 @@ end
 
 function SquadService:_place(player: Player, profile: any, uid: string, slot: number)
 	local hero = profile.heroes[uid]
-	if not hero or hero.slot == slot then
+	if not hero then
+		return
+	end
+	if hero.slot == slot then
+		self:_changed(player) -- a carried hero set down on its own pedestal still has to appear
 		return
 	end
 	for otherUid, other in profile.heroes do
@@ -290,6 +294,15 @@ function SquadService:KnitStart()
 				return
 			end
 			local id = uid :: string
+			-- whatever is done with the carried hero, it is no longer in the hands
+			if self._plots:Carrying(player) == id then
+				self._plots:ClearCarry(player, true)
+			end
+			if action == "drop" then
+				-- set down on the slot it already holds (or the bench)
+				self:_changed(player)
+				return
+			end
 			if action == "place" then
 				if Guard.integer(slot, 1, profile.slots) then
 					self:_place(player, profile, id, slot :: number)

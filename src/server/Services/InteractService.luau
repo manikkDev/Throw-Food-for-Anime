@@ -19,23 +19,21 @@ local InteractService = Knit.CreateService({
 function InteractService:KnitStart()
 	local state = Knit.GetService("StateService")
 	local plots = Knit.GetService("PlotService")
-	local shop = Knit.GetService("ShopService")
 	local squad = Knit.GetService("SquadService")
 	local training = Knit.GetService("TrainingService")
 
-	local actions: { [string]: (Player) -> () } = {
-		train = function(player: Player)
-			training:Toggle(player)
-		end,
-		gear = function(player: Player)
-			shop:BuyGear(player)
-		end,
-		slot = function(player: Player)
-			shop:BuySlot(player)
+	local actions: { [string]: (Player, ProximityPrompt) -> () } = {
+		-- a training station's prompt carries its index (attribute Station)
+		train = function(player: Player, prompt: ProximityPrompt)
+			local station = prompt:GetAttribute("Station")
+			training:Toggle(player, if typeof(station) == "number" then station else nil)
 		end,
 		equipBest = function(player: Player)
 			squad:EquipBest(player)
 		end,
+		-- The gear stand ("gear") and the slot sign ("slot") are not here either since the owner's
+		-- review 3: their prompts open a confirmation on the client (UpgradeController), whose
+		-- CONFIRM fires ShopBuy, checked by ShopService like any purchase.
 		-- The hub stations (food cart, daily chest, gift box, index board,
 		-- summon shrine, sell booth) carry the actions food / daily / gift /
 		-- index / summon / squad. They are NOT here on purpose: each one opens
@@ -56,7 +54,7 @@ function InteractService:KnitStart()
 			state:Toast(player, "That is not your plot", "info")
 			return
 		end
-		actions[action](player)
+		actions[action](player, prompt)
 	end)
 end
 

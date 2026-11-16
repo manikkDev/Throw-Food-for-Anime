@@ -1,0 +1,269 @@
+{
+ "_what": "Hero auras. Sources are the owner's hand-picked aura dummies, archived in ServerStorage.ImportedVfx.HandPicked (never delete). tools/gen_auras.py turns this file into src/shared/Config/Auras.luau (who wears what) and work/auras/build.luau (run in Studio edit mode: converts each source to our R15 heroes into ReplicatedStorage.Assets.Auras.<Key>). To give a hero another aura: change or add its line in 'heroes', run tools/gen_auras.py, done (no Studio step unless a NEW key is added to 'templates').",
+ "tiers": {
+  "_note": "cap = estimated live particles of ONE aura (Rate x Lifetime summed), lowered by scaling rates; size = the largest particle (studs), reach = the furthest piece from the root (studs): pedestals stand 8 studs apart, so bigger pieces are shrunk/pulled in",
+  "A": {
+   "cap": 90,
+   "_for": "Uncommon",
+   "size": 3.5,
+   "reach": 4.5
+  },
+  "B": {
+   "cap": 140,
+   "_for": "Rare",
+   "size": 4.5,
+   "reach": 5
+  },
+  "C": {
+   "cap": 200,
+   "_for": "Epic",
+   "size": 5.5,
+   "reach": 5.5
+  },
+  "D": {
+   "cap": 260,
+   "_for": "Legendary",
+   "size": 6.5,
+   "reach": 6.5
+  },
+  "E": {
+   "cap": 320,
+   "_for": "Mythic, Secret and top premium heroes",
+   "size": 7.5,
+   "reach": 7
+  }
+ },
+ "templates": {
+  "PurpleSpark": {
+   "source": "AURA",
+   "tier": "A"
+  },
+  "VioletWisp": {
+   "source": "aura for nas",
+   "tier": "A"
+  },
+  "JackpotGreen": {
+   "source": "Hakari Emote",
+   "tier": "A",
+   "size": 5
+  },
+  "RedOutline": {
+   "source": "Test Reversal Red Aura",
+   "tier": "A"
+  },
+  "ElectricBlue": {
+   "source": "electric aura",
+   "tier": "A"
+  },
+  "SaiyanGold": {
+   "source": "Goku - SSJ2 Aura",
+   "tier": "B"
+  },
+  "CyanStorm": {
+   "source": "Model",
+   "rig": 1,
+   "tier": "B"
+  },
+  "InkShadow": {
+   "source": "Model",
+   "rig": 2,
+   "tier": "B"
+  },
+  "ShadowMonarch": {
+   "source": "Sung Jinwoo",
+   "tier": "B"
+  },
+  "HeartFlame": {
+   "source": "Aura_RedHeartFire",
+   "tier": "B"
+  },
+  "InfinityBlue": {
+   "source": "Gojo and Sukuna Aura",
+   "rig": 1,
+   "tier": "B"
+  },
+  "NightWings": {
+   "source": "Wings Aura",
+   "tier": "C"
+  },
+  "CrimsonFlame": {
+   "source": "aura (2)",
+   "tier": "C"
+  },
+  "SilverLightning": {
+   "source": "aura (3)",
+   "tier": "C"
+  },
+  "SlimeStorm": {
+   "source": "Rimuru",
+   "tier": "C"
+  },
+  "BloodBubble": {
+   "source": "aura (4)",
+   "tier": "C"
+  },
+  "SunHalo": {
+   "source": "POF:RE AURA: Sun Necromancer",
+   "tier": "C"
+  },
+  "LoveStruck": {
+   "source": "Love Vfx Pack",
+   "tier": "C"
+  },
+  "Purity": {
+   "source": "Purity",
+   "tier": "D"
+  },
+  "TitanBolt": {
+   "source": "Aot Aura Pack",
+   "rig": 1,
+   "tier": "D"
+  },
+  "FieryRitual": {
+   "source": "POF:RE AURA: Fiery Ritual of Hallownest",
+   "tier": "D"
+  },
+  "UltraInstinct": {
+   "source": "new mui aura'",
+   "tier": "D"
+  },
+  "BloodMoon": {
+   "source": "HalloweenTime",
+   "tier": "D"
+  },
+  "Apostle": {
+   "source": "Apostolos",
+   "tier": "E",
+   "size": 6,
+   "reach": 6
+  },
+  "CrimsonSigil": {
+   "source": "Deep Red",
+   "tier": "E",
+   "size": 4.5,
+   "reach": 4.5
+  },
+  "ChromaticVoid": {
+   "source": "Chromatic : Void",
+   "tier": "E"
+  },
+  "KingOfCurses": {
+   "source": "Gojo and Sukuna Aura",
+   "rig": 2,
+   "tier": "E",
+   "size": 10,
+   "reach": 7
+  },
+  "SolarBurst": {
+   "source": "SSJ",
+   "tier": "E"
+  },
+  "VinnFlow": {
+   "source": "Animation Aura by Vinn",
+   "tier": "C"
+  },
+  "Atomic": {
+   "source": "Atomic",
+   "tier": "C"
+  },
+  "ChainBind": {
+   "source": "Chain",
+   "tier": "B"
+  },
+  "EtherealHarmony": {
+   "source": "Ethereal Harmony",
+   "tier": "C"
+  },
+  "AuraOne": {
+   "source": "aura (1)",
+   "tier": "B"
+  },
+  "TorsoBlaze": {
+   "source": "Torso",
+   "tier": "B"
+  }
+ },
+ "by_rarity": {
+  "_note": "a hero with no line in 'heroes' gets a stable pick (by its id) from its rarity's pool; an empty pool = no aura",
+  "Common": [],
+  "Uncommon": [
+   "PurpleSpark",
+   "VioletWisp",
+   "JackpotGreen",
+   "RedOutline",
+   "ElectricBlue"
+  ],
+  "Rare": [
+   "SaiyanGold",
+   "CyanStorm",
+   "InkShadow",
+   "ShadowMonarch",
+   "HeartFlame",
+   "InfinityBlue"
+  ],
+  "Epic": [
+   "NightWings",
+   "CrimsonFlame",
+   "SilverLightning",
+   "SlimeStorm",
+   "BloodBubble",
+   "SunHalo",
+   "LoveStruck"
+  ],
+  "Legendary": [
+   "Purity",
+   "TitanBolt",
+   "FieryRitual",
+   "UltraInstinct",
+   "BloodMoon"
+  ],
+  "Mythic": [
+   "Apostle",
+   "CrimsonSigil",
+   "ChromaticVoid",
+   "KingOfCurses",
+   "SolarBurst"
+  ],
+  "Secret": [
+   "ChromaticVoid",
+   "Apostle",
+   "SolarBurst"
+  ]
+ },
+ "heroes": {
+  "_note": "hand-matched to the character (theme first, then rarity)",
+  "curse_king": "KingOfCurses",
+  "sorcerer_hunter": "InkShadow",
+  "classroom_mastermind": "SilverLightning",
+  "red_haired_emperor": "FieryRitual",
+  "star_delinquent": "UltraInstinct",
+  "ghost_of_the_clan": "NightWings",
+  "demon_progenitor": "BloodMoon",
+  "black_swordsman": "ShadowMonarch",
+  "bald_cape_hero": "Purity",
+  "golden_vampire": "SaiyanGold",
+  "sun_god_captain": "SolarBurst",
+  "wheel_guardian": "Apostle",
+  "starlight_idol": "HeartFlame",
+  "clockwork_butler": "ElectricBlue",
+  "phantom_thief": "CrimsonFlame",
+  "demon_lord_heir": "CrimsonSigil",
+  "angel_commander": "TitanBolt",
+  "void_empress": "ChromaticVoid",
+  "lucky_cat_mascot": "BloodBubble",
+  "sakura_shogun": "SunHalo"
+ },
+ "budget": {
+  "_note": "runtime (src/client/Fx/HeroAura.luau via Fx/Vfx): nearest heroes first; an aura beyond the range or the count is not built at all",
+  "max_live": 10,
+  "range": 110,
+  "particle_budget": 2200,
+  "low_detail": {
+   "max_live": 5,
+   "range": 70,
+   "particle_budget": 700,
+   "rate_scale": 0.5
+  }
+ },
+ "_spare_note": "VinnFlow, Atomic, ChainBind, EtherealHarmony, AuraOne, TorsoBlaze: the owner's other hand-picked auras, converted but worn by nobody yet (shown on dummies in Workspace.AuraShowcase.Auras; rename a dummy to a hero's name and run tools/studio/sync_aura_showcase.py)."
+}

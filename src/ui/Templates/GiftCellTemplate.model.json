@@ -5,11 +5,11 @@
    "UDim2": [
     [
      0,
-     220
+     290
     ],
     [
      0,
-     112
+     140
     ]
    ]
   },
@@ -39,76 +39,9 @@
    "className": "UIAspectRatioConstraint",
    "name": "Aspect",
    "properties": {
-    "AspectRatio": 1.9643,
+    "AspectRatio": 2.0714,
     "DominantAxis": "Height"
    }
-  },
-  {
-   "className": "Frame",
-   "name": "Shadow",
-   "properties": {
-    "Size": {
-     "UDim2": [
-      [
-       1,
-       -8
-      ],
-      [
-       1,
-       -12
-      ]
-     ]
-    },
-    "Position": {
-     "UDim2": [
-      [
-       0,
-       4
-      ],
-      [
-       0,
-       8
-      ]
-     ]
-    },
-    "ZIndex": 0,
-    "BackgroundColor3": {
-     "Color3": [
-      0.0941,
-      0.1725,
-      0.302
-     ]
-    }
-   },
-   "children": [
-    {
-     "className": "UICorner",
-     "name": "Corner",
-     "properties": {
-      "CornerRadius": {
-       "UDim": [
-        0,
-        14
-       ]
-      }
-     }
-    },
-    {
-     "className": "UIStroke",
-     "name": "Stroke",
-     "properties": {
-      "Thickness": 4,
-      "ApplyStrokeMode": "Border",
-      "Color": {
-       "Color3": [
-        0.051,
-        0.0588,
-        0.1686
-       ]
-      }
-     }
-    }
-   ]
   },
   {
    "className": "Frame",
@@ -118,11 +51,11 @@
      "UDim2": [
       [
        1,
-       -8
+       -6
       ],
       [
        1,
-       -12
+       -6
       ]
      ]
     },
@@ -130,11 +63,11 @@
      "UDim2": [
       [
        0,
-       4
+       3
       ],
       [
        0,
-       4
+       3
       ]
      ]
     },
@@ -155,7 +88,7 @@
       "CornerRadius": {
        "UDim": [
         0,
-        14
+        16
        ]
       }
      }
@@ -193,15 +126,67 @@
      "className": "UIStroke",
      "name": "Stroke",
      "properties": {
-      "Thickness": 4,
+      "Thickness": 3,
       "ApplyStrokeMode": "Border",
       "Color": {
        "Color3": [
-        0.051,
-        0.0588,
-        0.1686
+        0.3569,
+        0.3922,
+        0.7882
        ]
       }
+     }
+    },
+    {
+     "className": "ImageLabel",
+     "name": "Sunburst",
+     "properties": {
+      "Size": {
+       "UDim2": [
+        [
+         0,
+         100
+        ],
+        [
+         0,
+         100
+        ]
+       ]
+      },
+      "Position": {
+       "UDim2": [
+        [
+         0,
+         50
+        ],
+        [
+         0.5,
+         0
+        ]
+       ]
+      },
+      "AnchorPoint": {
+       "Vector2": [
+        0.5,
+        0.5
+       ]
+      },
+      "ZIndex": 1,
+      "BackgroundTransparency": 1,
+      "ScaleType": "Fit",
+      "ImageColor3": {
+       "Color3": [
+        1.0,
+        0.7882,
+        0.2353
+       ]
+      },
+      "ImageTransparency": 0.35
+     },
+     "attributes": {
+      "PendingIcon": "FxSunburst",
+      "IconName": "FxSunburst",
+      "IconKey": "FxSunburst"
      }
     },
     {
@@ -212,11 +197,11 @@
        "UDim2": [
         [
          0,
-         52
+         66
         ],
         [
          0,
-         52
+         66
         ]
        ]
       },
@@ -224,7 +209,7 @@
        "UDim2": [
         [
          0,
-         10
+         50
         ],
         [
          0.5,
@@ -234,11 +219,11 @@
       },
       "AnchorPoint": {
        "Vector2": [
-        0,
+        0.5,
         0.5
        ]
       },
-      "ZIndex": 0,
+      "ZIndex": 2,
       "BackgroundTransparency": 1,
       "ScaleType": "Fit"
      },
@@ -256,11 +241,11 @@
        "UDim2": [
         [
          0,
-         136
+         180
         ],
         [
          0,
-         21
+         30
         ]
        ]
       },
@@ -268,11 +253,11 @@
        "UDim2": [
         [
          0,
-         72
+         96
         ],
         [
          0,
-         8
+         12
         ]
        ]
       },
@@ -323,8 +308,20 @@
        "className": "UITextSizeConstraint",
        "name": "SizeCap",
        "properties": {
-        "MaxTextSize": 16,
+        "MaxTextSize": 24,
         "MinTextSize": 9
+       }
+      },
+      {
+       "className": "UIPadding",
+       "name": "Nudge",
+       "properties": {
+        "PaddingTop": {
+         "UDim": [
+          0,
+          6
+         ]
+        }
        }
       }
      ]
@@ -337,11 +334,11 @@
        "UDim2": [
         [
          0,
-         136
+         180
         ],
         [
          0,
-         17
+         25
         ]
        ]
       },
@@ -349,11 +346,11 @@
        "UDim2": [
         [
          0,
-         72
+         96
         ],
         [
          0,
-         32
+         44
         ]
        ]
       },
@@ -388,7 +385,7 @@
        "className": "UIStroke",
        "name": "Stroke",
        "properties": {
-        "Thickness": 2,
+        "Thickness": 1.5,
         "ApplyStrokeMode": "Contextual",
         "Color": {
          "Color3": [
@@ -404,7 +401,7 @@
        "className": "UITextSizeConstraint",
        "name": "SizeCap",
        "properties": {
-        "MaxTextSize": 13,
+        "MaxTextSize": 20,
         "MinTextSize": 9
        }
       }
@@ -418,11 +415,11 @@
        "UDim2": [
         [
          0,
-         108
+         180
         ],
         [
          0,
-         34
+         48
         ]
        ]
       },
@@ -430,11 +427,11 @@
        "UDim2": [
         [
          0,
-         72
+         96
         ],
         [
          1,
-         -10
+         -12
         ]
        ]
       },
@@ -456,11 +453,11 @@
          "UDim2": [
           [
            1,
-           -8
+           -6
           ],
           [
            1,
-           -11
+           -10
           ]
          ]
         },
@@ -468,7 +465,7 @@
          "UDim2": [
           [
            0,
-           4
+           3
           ],
           [
            0,
@@ -483,7 +480,8 @@
           0.2745,
           0.3451
          ]
-        }
+        },
+        "BorderSizePixel": 0
        },
        "children": [
         {
@@ -493,22 +491,7 @@
           "CornerRadius": {
            "UDim": [
             0,
-            14
-           ]
-          }
-         }
-        },
-        {
-         "className": "UIStroke",
-         "name": "Stroke",
-         "properties": {
-          "Thickness": 4,
-          "ApplyStrokeMode": "Border",
-          "Color": {
-           "Color3": [
-            0.051,
-            0.0588,
-            0.1686
+            16
            ]
           }
          }
@@ -523,11 +506,11 @@
          "UDim2": [
           [
            1,
-           -8
+           -6
           ],
           [
            1,
-           -11
+           -10
           ]
          ]
         },
@@ -535,11 +518,11 @@
          "UDim2": [
           [
            0,
-           4
+           3
           ],
           [
            0,
-           4
+           3
           ]
          ]
         },
@@ -570,7 +553,7 @@
           "CornerRadius": {
            "UDim": [
             0,
-            14
+            16
            ]
           }
          }
@@ -586,21 +569,21 @@
              {
               "time": 0.0,
               "color": [
-               0.82,
-               0.82,
-               0.82
+               0.74,
+               0.74,
+               0.74
               ]
              },
              {
-              "time": 0.59,
+              "time": 0.5,
               "color": [
-               0.9,
-               0.9,
-               0.9
+               0.86,
+               0.86,
+               0.86
               ]
              },
              {
-              "time": 0.6,
+              "time": 0.51,
               "color": [
                1.0,
                1.0,
@@ -624,13 +607,13 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 4,
+          "Thickness": 3,
           "ApplyStrokeMode": "Border",
           "Color": {
            "Color3": [
-            0.051,
-            0.0588,
-            0.1686
+            0.6824,
+            0.6902,
+            0.7608
            ]
           }
          }
@@ -643,7 +626,7 @@
           "Padding": {
            "UDim": [
             0,
-            6
+            7
            ]
           },
           "SortOrder": "LayoutOrder",
@@ -659,11 +642,11 @@
            "UDim2": [
             [
              0,
-             20
+             28
             ],
             [
              0,
-             20
+             28
             ]
            ]
           },
@@ -704,11 +687,11 @@
            "UDim2": [
             [
              0,
-             58
+             0
             ],
             [
              0,
-             21
+             32
             ]
            ]
           },
@@ -733,7 +716,7 @@
           "ZIndex": 0,
           "BackgroundTransparency": 1,
           "Text": "<unbound>",
-          "TextScaled": true,
+          "TextScaled": false,
           "FontFace": {
            "Font": {
             "family": "rbxasset://fonts/families/LuckiestGuy.json",
@@ -749,6 +732,8 @@
            ]
           },
           "TextXAlignment": "Center",
+          "TextSize": 24,
+          "AutomaticSize": "X",
           "LayoutOrder": 1
          },
          "children": [
@@ -769,20 +754,40 @@
            }
           },
           {
-           "className": "UITextSizeConstraint",
-           "name": "SizeCap",
+           "className": "UISizeConstraint",
+           "name": "CapWidth",
            "properties": {
-            "MaxTextSize": 15,
-            "MinTextSize": 9
+            "MaxSize": {
+             "Vector2": [
+              123,
+              1000
+             ]
+            }
+           }
+          },
+          {
+           "className": "UIPadding",
+           "name": "Nudge",
+           "properties": {
+            "PaddingTop": {
+             "UDim": [
+              0,
+              6
+             ]
+            }
            }
           }
-         ]
+         ],
+         "attributes": {
+          "FitText": 24
+         }
         }
        ]
       }
      ],
      "attributes": {
-      "PressLip": 3
+      "PressLip": 4,
+      "Rim": 0.5
      }
     }
    ]

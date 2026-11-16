@@ -1,0 +1,110 @@
+{
+ "Aura_Flame": [
+  "OK",
+  "OK"
+ ],
+ "Aura_Galaxy": [
+  "OK",
+  "OK"
+ ],
+ "Aura_Golden": [
+  "OK",
+  "OK"
+ ],
+ "Aura_Lightning": [
+  "OK",
+  "OK"
+ ],
+ "Aura_Titan": [
+  "OK",
+  "OK"
+ ],
+ "Coin_Pop": [
+  "OK",
+  "OK"
+ ],
+ "DashHome_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Land_Impact": [
+  "OK",
+  "OK"
+ ],
+ "LuckyThrow_Charge": [
+  "OK",
+  "OK"
+ ],
+ "PerfectThrow_Flash": [
+  "OK",
+  "OK"
+ ],
+ "PowerUp_Burst": [
+  "OK",
+  "OK"
+ ],
+ "Rebirth_Nova": [
+  "OK",
+  "OK"
+ ],
+ "Reveal_Common": [
+  "OK",
+  "OK"
+ ],
+ "Reveal_Epic": [
+  "OK",
+  "OK"
+ ],
+ "Reveal_Legendary": [
+  "OK",
+  "OK"
+ ],
+ "Reveal_Mythic": [
+  "OK",
+  "OK"
+ ],
+ "Reveal_Rare": [
+  "OK",
+  "OK"
+ ],
+ "Reveal_Secret": [
+  "OK",
+  "OK"
+ ],
+ "Reveal_Uncommon": [
+  "OK",
+  "OK"
+ ],
+ "ServerLuck_Sky": [
+  "OK",
+  "OK"
+ ],
+ "Slot_Unlock": [
+  "OK",
+  "OK"
+ ],
+ "Summon_Portal": [
+  "OK",
+  "OK"
+ ],
+ "ThrowTrail_Basic": [
+  "OK",
+  "OK"
+ ],
+ "ThrowTrail_Epic": [
+  "OK",
+  "OK"
+ ],
+ "ThrowTrail_Hot": [
+  "OK",
+  "OK"
+ ],
+ "Train_Hit": [
+  "OK",
+  "OK"
+ ],
+ "Zone_Unlock": [
+  "OK",
+  "OK"
+ ]
+}

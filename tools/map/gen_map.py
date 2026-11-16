@@ -499,52 +499,107 @@ def build_plots():
              "build": {"kind": "anchor", "folder": F, "name": "ThrowPad", "kit": "Plot_ThrowStage",
                        "collide": True, "fidelity": "Default", "anchor_size": [d, 0.3, d], "anchor_dy": sy + 0.15,
                        "billboard": {"name": "Hint", "text": "THROW HERE", "height": 3.5, "studs": 4.5, "max": 70}}})
-        dxp, dzp = x0 + W["DojoPadX"], W["DojoPadZ"]
-        d = W["DojoPadRadius"] * 2
-        add({"id": f"P{i}_DojoPad", "size": [d, 0.3, d], "pos": [dxp, 0.55, dzp], "shape": "cylinder",
-             "roles": ["dojo_pad", "surface"], "color": [79, 139, 255], "material": "SmoothPlastic",
-             "build": {"kind": "part", "folder": F, "name": "DojoPad",
-                       "prompt": {"action": "train", "text": "Train", "key": "E", "plot": i}}})
-        gx, gy, gz = SIZES["Equip_wooden_dummy"]
-        add({"id": f"P{i}_Gear", "mesh": "Equip_wooden_dummy", "size": [gx, gy, gz],
-             "pos": [dxp, box_y(0.7, gy), dzp + 1.5], "roles": ["prop"], "decor": True, "biome": "plots",
-             "build": {"kind": "anchor", "folder": F, "name": "Gear", "kit": "Equip_wooden_dummy",
-                       "collide": True,
-                       "billboard": {"name": "Title", "text": "Dojo gear", "height": 5, "studs": 8, "max": 60},
-                       "prompt": {"action": "gear", "text": "Upgrade gear", "key": "F", "plot": i}}})
+        # ---- the TRAINING COURTS (owner's review 2026-11-15: a proper, symmetric training area):
+        # two mirrored courts either side of the central walkway, two stations each
+        # (config Training.Stations: strike / lift on the left, push / meditate on the right).
+        # A station = a coloured mat the trainee is snapped onto (the Train prompt, attr Station)
+        # and its target: the strike gear (anchor "Gear", PlotService shows the owner's tier),
+        # the training log, the stone pillar, the spirit gear (anchor "SpiritGear").
+        court_top = DECK_TOP + 0.15
+        cw, cd, cz = W["CourtWidth"], W["CourtDepth"], W["CourtZ"]
+        for side in (-1, 1):
+            cx = x0 + side * W["CourtX"]
+            tag = "L" if side < 0 else "R"
+            add({"id": f"P{i}_Court{tag}", "size": [cw, 0.4, cd], "pos": [cx, court_top - 0.2, cz],
+                 "roles": ["surface"], "color": [236, 206, 150], "material": "WoodPlanks",
+                 "build": {"kind": "part", "folder": F, "name": "Court" + tag, "noshadow": True}})
+            # the court's edge (owner's review 2026-11-16: the red rail looked odd): a dark wood trim
+            # flush with the floor, and a short post with a gold cap at each corner, like the fences
+            bt = 0.9
+            for k, (bx, bz, bsx, bsz) in enumerate(((cx, cz - cd / 2 - bt / 2, cw + 2 * bt, bt),
+                                                    (cx, cz + cd / 2 + bt / 2, cw + 2 * bt, bt),
+                                                    (cx - cw / 2 - bt / 2, cz, bt, cd),
+                                                    (cx + cw / 2 + bt / 2, cz, bt, cd))):
+                add({"id": f"P{i}_Court{tag}Border{k + 1}", "size": [bsx, 0.5, bsz],
+                     "pos": [bx, court_top + 0.05, bz], "roles": ["prop"], "decor": True, "solid": False,
+                     "color": [118, 78, 48], "material": "WoodPlanks",
+                     "build": {"kind": "part", "folder": F + "/Dressing", "name": "CourtTrim", "noshadow": True}})
+            for k, (px, pz) in enumerate(((cx - cw / 2 - bt / 2, cz - cd / 2 - bt / 2), (cx + cw / 2 + bt / 2, cz - cd / 2 - bt / 2),
+                                          (cx - cw / 2 - bt / 2, cz + cd / 2 + bt / 2), (cx + cw / 2 + bt / 2, cz + cd / 2 + bt / 2))):
+                add({"id": f"P{i}_Court{tag}Post{k + 1}", "size": [1.3, 2.2, 1.3], "pos": [px, court_top + 1.1, pz],
+                     "roles": ["prop"], "decor": True, "solid": False, "color": [118, 78, 48], "material": "Wood",
+                     "build": {"kind": "part", "folder": F + "/Dressing", "name": "CourtPost", "noshadow": True}})
+                add({"id": f"P{i}_Court{tag}Cap{k + 1}", "size": [1.5, 0.5, 1.5], "pos": [px, court_top + 2.45, pz],
+                     "roles": ["prop"], "decor": True, "solid": False, "color": [255, 214, 64], "material": "SmoothPlastic",
+                     "build": {"kind": "part", "folder": F + "/Dressing", "name": "CourtPostCap", "noshadow": True}})
+            # (no banners or lanterns on the courts: they cost ~6k triangles a plot, in view, and
+            # pushed the map over its 1.3M in-view budget; the courts read from the border and mats)
+        MAT_COLOURS = {"strike": [235, 80, 80], "lift": [255, 160, 60], "push": [120, 140, 200], "meditate": [60, 200, 190]}
+        for k, row in enumerate(CFG["Training"]["Stations"], 1):
+            tx, tz = x0 + row["X"], row["Z"]
+            sx, sz = tx, tz + row["Stand"]
+            d = W["StationRadius"] * 2
+            col = MAT_COLOURS.get(row["Id"], [79, 139, 255])
+            dark = [int(c * 0.62) for c in col]
+            light = [min(255, int(c + (255 - c) * 0.35)) for c in col]
+            # owner's review 3 ("the circular base is lame"): a dais, not a flat disc. A dark stone
+            # rim with gold studs, a gold trim ring, the coloured mat (the part the prompt is on), and
+            # a darker ring round a lighter centre, a target to stand on. Only the mat collides.
+            for nm, dd, hh, colr, mat_ in (("StationRim", d + 1.7, 0.36, [64, 58, 72], "Slate"),
+                                           ("StationTrim", d + 0.55, 0.44, [255, 196, 64], "SmoothPlastic"),
+                                           ("StationRing", d * 0.66, 0.53, dark, "SmoothPlastic"),
+                                           ("StationCore", d * 0.5, 0.545, light, "SmoothPlastic")):
+                add({"id": f"P{i}_Station{k}_{nm}", "size": [dd, hh, dd], "pos": [sx, court_top + hh / 2, sz],
+                     "shape": "cylinder", "roles": ["prop"], "decor": True, "solid": False, "color": colr,
+                     "material": mat_, "build": {"kind": "part", "folder": F + "/Dressing", "name": nm, "noshadow": True}})
+            for st in range(8):
+                ang = st * math.pi / 4 + math.pi / 8
+                rr = (d + 1.15) / 2
+                add({"id": f"P{i}_Station{k}_Stud{st}", "size": [0.55, 0.22, 0.55],
+                     "pos": [sx + rr * math.cos(ang), court_top + 0.47, sz + rr * math.sin(ang)], "shape": "cylinder",
+                     "roles": ["prop"], "decor": True, "solid": False, "color": [255, 214, 90], "material": "SmoothPlastic",
+                     "build": {"kind": "part", "folder": F + "/Dressing", "name": "StationStud", "noshadow": True}})
+            add({"id": f"P{i}_Station{k}", "size": [d - 0.2, 0.5, d - 0.2], "pos": [sx, court_top + 0.25, sz], "shape": "cylinder",
+                 "roles": ["surface"], "color": col, "material": "SmoothPlastic",
+                 "build": {"kind": "part", "folder": F, "name": f"Station{k}",
+                           "attrs": {"Station": k, "StationId": row["Id"]},
+                           "billboard": {"name": "Title", "text": row["Name"].upper(), "height": 8.5, "studs": 10, "max": 70},
+                           "prompt": {"action": "train", "text": "Train", "key": "E", "plot": i, "station": k}}})
+            prop = row["Prop"]
+            if prop == "gear_strike":
+                gx, gy, gz = SIZES["Equip_wooden_dummy"]
+                add({"id": f"P{i}_Gear", "mesh": "Equip_wooden_dummy", "size": [gx, gy, gz],
+                     "pos": [tx, box_y(court_top, gy), tz], "roles": ["prop"], "decor": True, "biome": "plots",
+                     "build": {"kind": "anchor", "folder": F, "name": "Gear", "kit": "Equip_wooden_dummy",
+                               "collide": True,
+                               "prompt": {"action": "gear", "text": "Upgrade gear", "key": "F", "plot": i}}})
+            elif prop == "gear_spirit":
+                gx, gy, gz = SIZES["Equip_waterfall"]
+                add({"id": f"P{i}_SpiritGear", "mesh": "Equip_waterfall", "size": [gx, gy, gz],
+                     "pos": [tx, box_y(court_top, gy), tz - 1.0], "roles": ["prop"], "decor": True, "biome": "plots",
+                     "build": {"kind": "anchor", "folder": F, "name": "SpiritGear", "kit": "Equip_waterfall",
+                               "collide": True}})
+            elif prop.startswith("Equip_"):
+                # gear models live in Assets.Gear, not the Kit: an anchor PlotService fills
+                gx, gy, gz = SIZES[prop]
+                add({"id": f"P{i}_Target{k}", "mesh": prop, "size": [gx, gy, gz],
+                     "pos": [tx, box_y(court_top, gy), tz], "roles": ["prop"], "decor": True, "biome": "plots",
+                     "build": {"kind": "anchor", "folder": F, "name": f"Target{k}", "kit": prop, "collide": True}})
+            elif prop in SIZES:
+                mesh(f"P{i}_Target{k}", prop, tx, court_top - 0.05, tz, yaw=0, folder=F + "/Stations",
+                     biome="plots", extra={"name": f"Target{k}"})
+        # the slot sign (owner's reviews 2026-11-16 and 3): 1.6x, on the grey gravel right beside the
+        # walkway where the player steps out of the base (where a stone lantern stood), facing the
+        # walkway, clear of the lantern string further out
         sx, sy, sz = SIZES["Plot_SlotSign"]
-        add({"id": f"P{i}_SlotSign", "mesh": "Plot_SlotSign", "size": [sx, sy, sz],
-             "pos": [x0 + W["SlotSignX"], box_y(DECK_TOP - 0.2, sy), W["SlotSignZ"]],
+        k_sign = 1.6
+        add({"id": f"P{i}_SlotSign", "mesh": "Plot_SlotSign", "size": [sx * k_sign, sy * k_sign, sz * k_sign],
+             "pos": [x0 + W["SlotSignX"], box_y(-0.45, sy * k_sign), W["SlotSignZ"]], "yaw": 90,
              "roles": ["prop"], "decor": True, "biome": "plots",
              "build": {"kind": "anchor", "folder": F, "name": "SlotSign", "kit": "Plot_SlotSign",
-                       "collide": True, "facegui": True,
+                       "collide": True, "facegui": True, "scale": k_sign,
                        "billboard": {"name": "Title", "text": "Plot slots", "height": 4.5, "studs": 16},
                        "prompt": {"action": "slot", "text": "Buy a slot", "key": "E", "plot": i}}})
-        # ---- the reserved TRAINING YARD (brief A): a tiled court with a low border, EMPTY inside
-        yx, yz, yw, yd = x0 + W["YardX"], W["YardZ"], W["YardWidth"], W["YardDepth"]
-        court_top = DECK_TOP + 0.15
-        add({"id": f"P{i}_YardCourt", "size": [yw, 0.4, yd], "pos": [yx, court_top - 0.2, yz],
-             "roles": ["surface"], "color": [246, 214, 160], "material": "SmoothPlastic", "texture": "checker",
-             "build": {"kind": "part", "folder": F, "name": "YardCourt", "toplabel": "TRAINING YARD"}})
-        bt = 0.6
-        for k, (bx, bz, bsx, bsz) in enumerate(((yx, yz - yd / 2 - bt / 2, yw + 2 * bt, bt),
-                                                (yx, yz + yd / 2 + bt / 2, yw + 2 * bt, bt),
-                                                (yx - yw / 2 - bt / 2, yz, bt, yd),
-                                                (yx + yw / 2 + bt / 2, yz, bt, yd))):
-            add({"id": f"P{i}_YardBorder{k + 1}", "size": [bsx, 0.8, bsz], "pos": [bx, DECK_TOP + 0.4, bz],
-                 "roles": ["prop"], "decor": True, "solid": False, "color": [224, 69, 60], "material": "Wood",
-                 "build": {"kind": "part", "folder": F + "/Dressing", "name": "YardBorder", "noshadow": True}})
-        add({"id": f"P{i}_Yard", "size": [yw, 0.2, yd], "pos": [yx, court_top + 0.5, yz], "roles": ["prop"],
-             "decor": True, "solid": False, "visible": False,
-             "build": {"kind": "part", "folder": F, "name": "Yard",
-                       "attrs": {"Reserved": "minigames", "Plot": i, "Width": yw, "Depth": yd}}})
-        # training props round its EDGE only (behind it, clear of the slot sign)
-        poles = pool("plot", "small") or []
-        for k, px in enumerate((yx - yw / 2 + 4, yx - yw / 2 + 12)):
-            kit = "Prop_store_TrainingPole" if "Prop_store_TrainingPole" in poles else (poles[k % len(poles)] if poles else None)
-            if kit:
-                mesh(f"P{i}_YardProp{k + 1}", kit, px, DECK_TOP - 0.1, yz - yd / 2 - 4.5, yaw=0,
-                     folder=F + "/Dressing", biome="plots")
         # name arch across the hub-side entrance
         sx, sy, sz = SIZES["Plot_NameArch"]
         az = W["PlotBackZ"] + 1.4
@@ -592,6 +647,12 @@ def build_plots():
              "pos": [x, APRON_TOP - 2, (LANE0 + STAGE_Z1) / 2], "roles": ["main_route"],
              "color": [255, 181, 71], "material": "SmoothPlastic", "texture": "setts",
              "build": {"kind": "part", "folder": "Lanes/Aprons", "name": f"Apron{i}"}})
+        # the lane is not for walking (owner's review 2026-11-15: "they should not be able to enter
+        # the tunnel"): an invisible wall across the lane mouth. Players only: it is not queried, so
+        # the food, the landing rays and the client-side heroes pass straight through.
+        add({"id": f"LaneGate{i}", "size": [LANE_W, 40, 2], "pos": [x, APRON_TOP + 20, LANE0 + 1],
+             "roles": ["boundary_wall"], "barrier": True, "visible": False,
+             "build": {"kind": "barrier", "folder": "Barriers", "name": f"LaneBlock{i}", "noquery": True}})
         # an entrance: low fences along the walkway; lantern strings and koi poles only beyond FENCE_CLEAR
         F = "Scenery/Plots"
         fx_, fy_, fz_ = SIZES["Plot_Fence"]
@@ -623,7 +684,6 @@ def forecourt(i, x0):
     z0, z1 = W["PlotFrontZ"] + 2, STAGE_Z0 - 1
     bush = (pool("plot", "bush") or [None])[0]
     trees = pool("hub", "tree")
-    lantern = next((n for n in pool("plot", "lantern") if SIZES[n][1] <= 7), None)
     for sd in (-1, 1):
         t = "E" if sd > 0 else "W"
         ax0, ax1 = WALK_W / 2 + 1.2, WALK_W / 2 + 9
@@ -636,7 +696,7 @@ def forecourt(i, x0):
                  "roles": ["prop"], "decor": True, "solid": False, "color": [200, 196, 188], "material": "Slate",
                  "build": {"kind": "part", "folder": F, "name": "SteppingStone", "noshadow": True}})
         bx = x0 + sd * 31
-        add({"id": f"Fore{i}{t}_Bed", "size": [14, 1, 7], "pos": [bx, -0.7, z0 + 10], "roles": ["prop"], "decor": True,
+        add({"id": f"Fore{i}{t}_Bed", "size": [14, 0.9, 7], "pos": [bx, -0.8, z0 + 10], "roles": ["prop"], "decor": True,
              "color": [110, 170, 80], "material": "LeafyGrass",
              "build": {"kind": "part", "folder": F, "name": "FlowerBed", "noshadow": True}})
         if bush:
@@ -646,9 +706,7 @@ def forecourt(i, x0):
             for k, hx in enumerate((22, 28, 34, 40)):          # a low hedge line beyond the fence-clear zone
                 mesh(f"Fore{i}{t}_Hedge{k}", bush, x0 + sd * hx, -0.8, W["PlotFrontZ"] + FENCE_CLEAR + 2, yaw=k * 37,
                      solid=False, folder=F, biome="plots")
-        if lantern:
-            mesh(f"Fore{i}{t}_Lantern", lantern, x0 + sd * (WALK_W / 2 + 2.6), -0.8, W["PlotFrontZ"] + FENCE_CLEAR + 1,
-                 yaw=180, folder=F, biome="plots")
+        # (no stone lantern on the gravel any more: owner's review 3 put the slot sign there instead)
         if trees:
             tk = trees[(i + (sd > 0)) % len(trees)]
             sc = min(1.0, 11.0 / max(SIZES[tk][0], SIZES[tk][2]))
@@ -1362,7 +1420,7 @@ def main():
     # if the whole map does not fit the MeshPart budget
     for gap in ((60, 100, 0), (70, 115, 0), (80, 130, 0), (95, 150, 0), (115, 175, 0), (140, 210, 0)):
         mp, nfoot, tris, view, bp = generate(gap)
-        tried.append((gap, mp, nfoot, tris))
+        tried.append((gap, mp, nfoot, tris, view, bp))
         # v3.1: also the in-view triangles (research ~1.2M, brief 1.3M) and the BasePart budget (14,000)
         if (mp <= ARGS.meshpart_budget and view <= ARGS.view_tris_budget and bp <= ARGS.basepart_budget
                 and (not ARGS.tris_budget or tris <= ARGS.tris_budget)):
@@ -1371,7 +1429,9 @@ def main():
         raise SystemExit(f"cannot fit {ARGS.meshpart_budget} MeshParts: {tried}")
 
     spawns = [[x, DECK_TOP, W["PlotFrontZ"] - 16] for x in LANES]
-    reachable = [f"P{i}_*" for i in range(1, COUNT + 1)] + ["Walk*", "Apron*", "Strip_*", "Line_*"]
+    # the lanes are closed to walking (LaneBlock walls, 2026-11-15): only the plots, walkways and
+    # aprons up to the lane mouth are meant to be reached on foot
+    reachable = [f"P{i}_*" for i in range(1, COUNT + 1)] + ["Walk*", "Apron*"]
     meshes = {}
     kinds = {"Plot_": ("plot_kit", "fence"), "Hub_": ("hub_kit", "building"), "Lane_": ("gate", "arch"),
              "Equip_": ("gear", "statue"), "Prop_": ("zone_prop", "prop")}
@@ -1456,7 +1516,7 @@ def main():
                                     "meshparts_budget": ARGS.meshpart_budget,
                                     "tris_estimate": tried[-1][3], "stale_manifests": STALE,
                                     "tried": [{"gap": list(g), "meshparts": m_, "foot_props": f_, "tris": t_}
-                                              for g, m_, f_, t_ in tried]}},
+                                              for g, m_, f_, t_, *_ in tried]}},
         "volume": {"bounds": [[-BX, -40, BZ0], [BX, 160, BZ1]], "killPlane": -80, "ringOutOffset": 0,
                    "lift": 0,
                    "lift_reason": ("config.World.GroundY = 0 is a game contract: the client renders pedestal "
@@ -1490,7 +1550,7 @@ def main():
     print(f"wrote {out}: {len(PARTS)} parts ({nm} mesh placements, ~{mp_total} MeshParts), "
           f"{len(BANDS)} zones, {COUNT} plots, lane end z={LANE_END}, dressing gap {tried[-1][0]}, "
           f"~{tris_total:,} tris total, ~{in_view:,} within {ARGS.view_radius:.0f} of the plot row")
-    for g, m_, f_, t_ in tried:
+    for g, m_, f_, t_, *_ in tried:
         print(f"   gap {g}: ~{m_} MeshParts, {f_} foot props, ~{t_} tris")
     if STALE:
         print("   stale manifest entries (kit target used):", STALE)

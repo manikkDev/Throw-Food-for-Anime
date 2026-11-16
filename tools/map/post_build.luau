@@ -41,7 +41,7 @@ for _, inst in map:GetDescendants() do
 	if inst:IsA("Part") and inst.Name == "WallBody" then
 		inst.Material = WALLS[inst.Parent.Name] or Enum.Material.Brick
 		walls += 1
-	elseif inst.Name == "Equip_wooden_dummy" and inst:GetAttribute("MissingMesh") then
+	elseif string.sub(inst.Name, 1, 6) == "Equip_" and inst:GetAttribute("MissingMesh") then
 		inst:Destroy()
 		dummies += 1
 	elseif inst:IsA("MeshPart") then

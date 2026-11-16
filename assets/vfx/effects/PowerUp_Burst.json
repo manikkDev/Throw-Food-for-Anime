@@ -1,0 +1,555 @@
+{
+ "name": "PowerUp_Burst",
+ "note": "New power rank: chevrons rise (owner's review 3: they pointed down in the engine; the sprite points right, Roblox turns +90 to point it up).",
+ "duration": 1.4,
+ "camera": {
+  "pos": [
+   9,
+   6,
+   16
+  ],
+  "at": [
+   0,
+   4,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": false
+ },
+ "brief": {
+  "category": "ambient_pickup",
+  "tier": "skill",
+  "style": "stylised_game",
+  "shape": "rising chevrons",
+  "dominant": "#FF9A3D",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "arrows carry the meaning"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.75
+   },
+   {
+    "name": "residue",
+    "t0": 0.75,
+    "t1": 1.4
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Ground",
+   "CFrame": [
+    0,
+    0.15,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Ring",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_glow_08",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.5,
+          0.5
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.0
+          ],
+          [
+           0.2,
+           4.5
+          ],
+          [
+           1,
+           5.25
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           0.3,
+           [
+            1.0,
+            0.6039,
+            0.2392
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.55,
+        "ZOffset": 0.2
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Column",
+   "CFrame": [
+    0,
+    0.4,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    5,
+    0.2,
+    5
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Chevrons",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/shapes/chevron_glow_01",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "ShapeStyle": {
+       "Enum": "ParticleEmitterShapeStyle.Surface"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        9,
+        13
+       ]
+      },
+      "Drag": 1.2,
+      "Lifetime": {
+       "NumberRange": [
+        0.7,
+        0.95
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        90,
+        90
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.4
+        ],
+        [
+         0.15,
+         1.15
+        ],
+        [
+         0.7,
+         1.0
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         0.3,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.6039,
+          0.2392
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Sparks",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/specks/streak_glow_00",
+      "Orientation": {
+       "Enum": "ParticleOrientation.VelocityParallel"
+      },
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        18,
+        28
+       ]
+      },
+      "Drag": 2,
+      "Lifetime": {
+       "NumberRange": [
+        0.35,
+        0.5
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.35
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.7
+     },
+     "attrs": {
+      "Tint": true
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Core",
+   "CFrame": [
+    0,
+    2.6,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Pop",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/stars/star_glow_00",
+        "Lifetime": {
+         "NumberRange": [
+          0.14,
+          0.14
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.0
+          ],
+          [
+           1,
+           3.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 2
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Lamp",
+   "CFrame": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "PointLight",
+     "name": "L",
+     "props": {
+      "Brightness": 0,
+      "Range": 14,
+      "Color": {
+       "Color3": [
+        1.0,
+        0.8941,
+        0.5483
+       ]
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Ground.A.Ring",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Core.A.Pop",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Column.Sparks",
+   "count": 14,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Column.Chevrons",
+   "count": 4,
+   "t": 0.04
+  },
+  {
+   "do": "emit",
+   "target": "Column.Chevrons",
+   "count": 4,
+   "t": 0.16
+  },
+  {
+   "do": "emit",
+   "target": "Column.Chevrons",
+   "count": 4,
+   "t": 0.28
+  },
+  {
+   "do": "emit",
+   "target": "Column.Chevrons",
+   "count": 4,
+   "t": 0.4
+  },
+  {
+   "do": "set",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "value": 3,
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "to": 0,
+   "time": 0.5,
+   "style": "Quad",
+   "dir": "Out",
+   "t": 0.03
+  }
+ ],
+ "strip": [
+  0.0,
+  0.05,
+  0.15,
+  0.3,
+  0.5,
+  0.75,
+  1.0,
+  1.25
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

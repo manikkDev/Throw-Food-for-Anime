@@ -1,0 +1,630 @@
+{
+ "name": "ThrowTrail_Basic",
+ "note": "Food trail (Basic) v2: 3-stud core + dark edge copy + crumbs; runs until stop.",
+ "duration": 1.1,
+ "camera": {
+  "pos": [
+   0,
+   11,
+   16
+  ],
+  "at": [
+   0,
+   4,
+   -10
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "stripFloors": [
+  "#F4EBD0",
+  "#FFD6E5",
+  "#CFF5E1"
+ ],
+ "game": {
+  "loop": true,
+  "attach": "part",
+  "screen": false,
+  "origin": [
+   0,
+   5,
+   0
+  ]
+ },
+ "brief": {
+  "category": "elemental",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "comet ribbon with a dark edge",
+  "dominant": "#37BDF7",
+  "accent": "#1D3A8A",
+  "signature_beats": [
+   "dark copy under the bright stroke",
+   "breadcrumb sparkles hang in the air"
+  ],
+  "phases": [
+   {
+    "name": "sustain",
+    "t0": 0,
+    "t1": 0.9
+   },
+   {
+    "name": "residue",
+    "t0": 0.9,
+    "t1": 1.1
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Food",
+   "CFrame": [
+    0,
+    5,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    2,
+    2,
+    2
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "T0",
+     "CFrame": [
+      0,
+      1.5,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "T1",
+     "CFrame": [
+      0,
+      -1.5,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "E0",
+     "CFrame": [
+      0,
+      1.95,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "E1",
+     "CFrame": [
+      0,
+      -1.95,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "G0",
+     "CFrame": [
+      0,
+      1.2000000000000002,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "G1",
+     "CFrame": [
+      0,
+      -1.2000000000000002,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "S0",
+     "CFrame": [
+      0,
+      0.35,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "S1",
+     "CFrame": [
+      0,
+      -0.35,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Crumbs",
+       "props": {
+        "Rate": 70,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/stars/star_cel_00",
+        "Speed": {
+         "NumberRange": [
+          0.5,
+          2.5
+         ]
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          180,
+          180
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.35,
+          0.55
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "RotSpeed": {
+         "NumberRange": [
+          -220,
+          220
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.65
+          ],
+          [
+           0.6,
+           0.5
+          ],
+          [
+           1,
+           0.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.8784,
+            0.949,
+            0.9961
+           ]
+          ],
+          [
+           0.3,
+           [
+            0.2196,
+            0.7412,
+            0.9725
+           ]
+          ],
+          [
+           1,
+           [
+            0.1176,
+            0.2275,
+            0.5412
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.15
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    },
+    {
+     "class": "Trail",
+     "name": "Edge",
+     "props": {
+      "Attachment0": {
+       "Ref": "Food.E0"
+      },
+      "Attachment1": {
+       "Ref": "Food.E1"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:tfa/ribbon_solid",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.22,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         0.5,
+         0.55
+        ],
+        [
+         1,
+         0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.1431,
+          0.3559,
+          0.649
+         ]
+        ],
+        [
+         1,
+         [
+          0.1176,
+          0.2275,
+          0.5412
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.6,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "Trail",
+     "name": "Ribbon",
+     "props": {
+      "Attachment0": {
+       "Ref": "Food.T0"
+      },
+      "Attachment1": {
+       "Ref": "Food.T1"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:tfa/ribbon_solid",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.2,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         0.5,
+         0.5
+        ],
+        [
+         1,
+         0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.8784,
+          0.949,
+          0.9961
+         ]
+        ],
+        [
+         0.2,
+         [
+          0.2196,
+          0.7412,
+          0.9725
+         ]
+        ],
+        [
+         1,
+         [
+          0.189,
+          0.5871,
+          0.8431
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.6,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0.1
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "Trail",
+     "name": "Glow",
+     "props": {
+      "Attachment0": {
+       "Ref": "Food.G0"
+      },
+      "Attachment1": {
+       "Ref": "Food.G1"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/beams/energy_soft_03",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.24,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         1,
+         0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.8784,
+          0.949,
+          0.9961
+         ]
+        ],
+        [
+         1,
+         [
+          0.2196,
+          0.7412,
+          0.9725
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.6,
+         0.2
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0.35
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "Trail",
+     "name": "Line",
+     "props": {
+      "Attachment0": {
+       "Ref": "Food.S0"
+      },
+      "Attachment1": {
+       "Ref": "Food.S1"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/beams/laser_glow_04",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.16,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         1,
+         0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.8784,
+          0.949,
+          0.9961
+         ]
+        ],
+        [
+         1,
+         [
+          0.8784,
+          0.949,
+          0.9961
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0.5
+     },
+     "attrs": {
+      "Tint": true
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "path",
+   "target": "Food",
+   "points": [
+    [
+     0,
+     5,
+     0
+    ],
+    [
+     0,
+     5,
+     -75
+    ],
+    [
+     0,
+     5,
+     -150
+    ]
+   ],
+   "time": 0.9,
+   "style": "Linear",
+   "sim": true,
+   "t": 0.0
+  },
+  {
+   "do": "camera",
+   "pos": [
+    0,
+    11,
+    16
+   ],
+   "at": [
+    0,
+    4,
+    -10
+   ],
+   "sim": true,
+   "t": 0.0
+  },
+  {
+   "do": "camera",
+   "pos": [
+    0,
+    11,
+    -134
+   ],
+   "at": [
+    0,
+    4,
+    -160
+   ],
+   "time": 0.9,
+   "style": "Linear",
+   "sim": true,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.2,
+  0.4,
+  0.6,
+  0.8
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

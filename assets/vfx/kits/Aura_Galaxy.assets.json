@@ -1,0 +1,11 @@
+{
+ "textures": [
+  "sim:lib/sprites/rings/ring_glow_05",
+  "sim:lib/sprites/shapes/orb_soft_00",
+  "sim:lib/sprites/specks/dot_glow_00",
+  "sim:lib/sprites/stars/star_glow_04",
+  "sim:lib/sprites/swirls/swirl_glow_03",
+  "sim:lib/sprites/swirls/vortex_glow_01"
+ ],
+ "meshes": []
+}

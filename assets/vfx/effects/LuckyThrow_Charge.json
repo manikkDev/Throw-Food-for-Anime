@@ -1,0 +1,462 @@
+{
+ "name": "LuckyThrow_Charge",
+ "note": "Lucky throw armed (loop on the hand).",
+ "duration": 2.0,
+ "camera": {
+  "pos": [
+   5,
+   5,
+   11
+  ],
+  "at": [
+   0.8,
+   3,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "game": {
+  "loop": true,
+  "attach": "part",
+  "screen": false,
+  "origin": [
+   1.6,
+   3.2,
+   -0.6
+  ]
+ },
+ "brief": {
+  "category": "orb_charge",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "clovers drawn into the palm",
+  "dominant": "#3FD25A",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "suck-in"
+  ],
+  "phases": [
+   {
+    "name": "sustain",
+    "t0": 0,
+    "t1": 2.0
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Shell",
+   "CFrame": [
+    1.6,
+    3.2,
+    -0.6,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    4.5,
+    4.5,
+    4.5
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Clovers",
+     "props": {
+      "Rate": 9,
+      "LightInfluence": 0,
+      "Texture": "sim:tfa/clover_cel",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Sphere"
+      },
+      "ShapeStyle": {
+       "Enum": "ParticleEmitterShapeStyle.Surface"
+      },
+      "ShapeInOut": {
+       "Enum": "ParticleEmitterShapeInOut.Inward"
+      },
+      "Speed": {
+       "NumberRange": [
+        3.5,
+        5
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.7
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -220,
+        220
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.2,
+         0.95
+        ],
+        [
+         0.8,
+         0.8
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.7137,
+          1.0,
+          0.4196
+         ]
+        ],
+        [
+         1,
+         [
+          0.2471,
+          0.8235,
+          0.3529
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.25,
+      "ZOffset": 0.5
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Motes",
+     "props": {
+      "Rate": 16,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_04",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Sphere"
+      },
+      "ShapeStyle": {
+       "Enum": "ParticleEmitterShapeStyle.Surface"
+      },
+      "ShapeInOut": {
+       "Enum": "ParticleEmitterShapeInOut.Inward"
+      },
+      "Speed": {
+       "NumberRange": [
+        4,
+        6
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.4,
+        0.55
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        90
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.3,
+         0.25
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.7137,
+          1.0,
+          0.4196
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.7
+     },
+     "attrs": {
+      "Tint": true
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Hand",
+   "CFrame": [
+    1.6,
+    3.2,
+    -0.6,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Swirl",
+       "props": {
+        "Rate": 3,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/swirls/swirl_glow_03",
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.6,
+          0.6
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "RotSpeed": {
+         "NumberRange": [
+          -320,
+          -320
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.2
+          ],
+          [
+           0.3,
+           1.9
+          ],
+          [
+           1,
+           2.1
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           1
+          ],
+          [
+           0.25,
+           0.3
+          ],
+          [
+           0.7,
+           0.4
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.2471,
+            0.8235,
+            0.3529
+           ]
+          ],
+          [
+           1,
+           [
+            0.2471,
+            0.8235,
+            0.3529
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.6,
+        "ZOffset": -0.5
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Glow",
+       "props": {
+        "Rate": 2.5,
+        "LightInfluence": 0,
+        "Texture": "sim:tfa/clover_glow",
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.5,
+          0.5
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          -15,
+          15
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.8
+          ],
+          [
+           0.4,
+           1.25
+          ],
+          [
+           1,
+           0.95
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           1
+          ],
+          [
+           0.3,
+           0.05
+          ],
+          [
+           0.7,
+           0.2
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.7137,
+            1.0,
+            0.4196
+           ]
+          ],
+          [
+           1,
+           [
+            0.2471,
+            0.8235,
+            0.3529
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 1
+       },
+       "attrs": {
+        "Tint": true,
+        "LowKeep": true
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "timeline": [],
+ "strip": [
+  0.25,
+  0.5,
+  0.8,
+  1.1,
+  1.4,
+  1.7
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

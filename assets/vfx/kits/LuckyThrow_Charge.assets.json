@@ -1,0 +1,9 @@
+{
+ "textures": [
+  "sim:lib/sprites/stars/star_glow_04",
+  "sim:lib/sprites/swirls/swirl_glow_03",
+  "sim:tfa/clover_cel",
+  "sim:tfa/clover_glow"
+ ],
+ "meshes": []
+}

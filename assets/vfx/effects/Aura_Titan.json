@@ -1,0 +1,468 @@
+{
+ "name": "Aura_Titan",
+ "note": "Titan: wide gold ground ripple (radius 6-8 at scale 1) pulsing twice a second, ring pulse, dust.",
+ "duration": 2.4,
+ "camera": {
+  "pos": [
+   16,
+   9,
+   25
+  ],
+  "at": [
+   0,
+   2.5,
+   0
+  ]
+ },
+ "camera2": {
+  "pos": [
+   32,
+   16,
+   50
+  ],
+  "at": [
+   0,
+   2.5,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "game": {
+  "loop": true,
+  "attach": "root",
+  "screen": false,
+  "origin": [
+   0,
+   3,
+   0
+  ]
+ },
+ "brief": {
+  "category": "aura_transform",
+  "tier": "skill",
+  "style": "stylised_game",
+  "shape": "glow disc + rising element shell",
+  "dominant": "#FDE68A",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "ground ripple pulse"
+  ],
+  "phases": [
+   {
+    "name": "sustain",
+    "t0": 0,
+    "t1": 2.4
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Ground",
+   "CFrame": [
+    0,
+    0.2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Ripple",
+       "props": {
+        "Rate": 2,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ripple_glow_03",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          1.0,
+          1.0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           3.5
+          ],
+          [
+           0.5,
+           6.5
+          ],
+          [
+           1,
+           8.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           1
+          ],
+          [
+           0.1,
+           0.05
+          ],
+          [
+           0.6,
+           0.25
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           0.3,
+           [
+            0.9922,
+            0.902,
+            0.5412
+           ]
+          ],
+          [
+           1,
+           [
+            0.9608,
+            0.6196,
+            0.0431
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 1,
+        "ZOffset": 0.2
+       },
+       "attrs": {
+        "Tint": true,
+        "LowKeep": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Pulse",
+       "props": {
+        "Rate": 1,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_cel_08",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.7,
+          0.7
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           3.0
+          ],
+          [
+           0.3,
+           6.0
+          ],
+          [
+           1,
+           7.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.6,
+           0.15
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 1,
+        "ZOffset": 0.25
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Base",
+       "props": {
+        "Rate": 1.4,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/shapes/orb_soft_00",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          1.0,
+          1.0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           5.5
+          ],
+          [
+           1,
+           6.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           1
+          ],
+          [
+           0.3,
+           0.45
+          ],
+          [
+           0.7,
+           0.5
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.9608,
+            0.6196,
+            0.0431
+           ]
+          ],
+          [
+           1,
+           [
+            0.9608,
+            0.6196,
+            0.0431
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 1,
+        "ZOffset": 0.1
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Shell",
+   "CFrame": [
+    0,
+    1.35,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    10.0,
+    2.5,
+    10.0
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Dust",
+     "props": {
+      "Rate": 20,
+      "LightInfluence": 0,
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Cylinder"
+      },
+      "ShapeStyle": {
+       "Enum": "ParticleEmitterShapeStyle.Surface"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        0.4,
+        1.4
+       ]
+      },
+      "Acceleration": {
+       "Vector3": [
+        0,
+        3.2,
+        0
+       ]
+      },
+      "Texture": "sim:lib/sprites/specks/dot_glow_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.7,
+        1.0
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.3,
+         0.4
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 1
+     },
+     "attrs": {
+      "Tint": true
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [],
+ "strip": [
+  0.6,
+  1.2,
+  1.8,
+  2.35
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

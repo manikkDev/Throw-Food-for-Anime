@@ -22,11 +22,31 @@ local ROWS = 10 -- Row1..10 ship in the Leaderboard tree
 local RESCAN_SECONDS = 2
 
 -- board key (as the server sends it) -> its anchor part in the hub, its title
-local BOARDS: { [string]: { anchor: string, title: string } } = {
-	yen = { anchor = "BoardYen", title = "MOST YEN" },
-	caught = { anchor = "BoardCaught", title = "MOST CAUGHT" },
-	rarest = { anchor = "BoardRarest", title = "RAREST CATCH" },
-}
+-- each board's own look: header colour, icon and subtitle (the v4 board ships gold + crown)
+local BOARDS: { [string]: { anchor: string, title: string, colour: string, icon: string, sub: string } } =
+	{
+		yen = {
+			anchor = "BoardYen",
+			title = "MOST YEN",
+			colour = "FFB13D",
+			icon = "IconYenBig",
+			sub = "Yen earned",
+		},
+		caught = {
+			anchor = "BoardCaught",
+			title = "MOST CAUGHT",
+			colour = "38BDF8",
+			icon = "IconSquadBig",
+			sub = "Heroes caught",
+		},
+		rarest = {
+			anchor = "BoardRarest",
+			title = "RAREST CATCH",
+			colour = "A855F7",
+			icon = "IconCrownBig",
+			sub = "Rarest hero caught",
+		},
+	}
 local SIGN_FACES = { Enum.NormalId.Front, Enum.NormalId.Back }
 
 type Mount = { part: BasePart, guis: { SurfaceGui } }
@@ -90,7 +110,16 @@ function WorldUiController:_paintBoard(key: string)
 	local boards = self._state.Boards
 	local data = if boards then boards[key] else nil
 	local rows = if data and data.rows then data.rows else {}
+	local look = BOARDS[key]
 	for _, gui in made.guis do
+		if not gui:GetAttribute("Painted") then
+			gui:SetAttribute("Painted", true)
+			pcall(function()
+				Screens.tint(Screens.frame(gui, "BoardHeader"), Color3.fromHex(look.colour))
+				Screens.setIcon(Screens.image(gui, "BoardIcon"), look.icon)
+				Screens.label(gui, "BoardSub").Text = look.sub
+			end)
+		end
 		Screens.label(gui, "BoardTitle").Text = if data and data.title
 			then tostring(data.title)
 			else BOARDS[key].title

@@ -29,52 +29,177 @@
   {
    "type": "panel",
    "name": "Window",
-   "colour": "panel",
+   "colour": [
+    "#2C3280",
+    "#181B4C"
+   ],
+   "keyline": "#FFFFFF",
+   "depth": 0,
+   "stroke": 4,
+   "corner": 22,
    "size": [
     0,
-    1008,
+    1080,
     0,
-    554
+    588
    ],
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "modal": true,
+   "pattern": {
+    "name": "dots",
+    "colour": "#FFFFFF",
+    "opacity": 0.05,
+    "tile": 28
+   },
    "children": [
     {
-     "type": "panel",
+     "type": "frame",
      "name": "Header",
      "colour": [
-      "#FFC93C",
-      "#FF5A5F"
+      "#FFB13D",
+      "#FF6B3D"
      ],
+     "corner": 16,
+     "outline": false,
      "size": [
+      1,
+      -12,
       0,
-      360,
-      0,
-      70
+      68
      ],
-     "rotation": -2,
-     "keyline": "#FFFFFF",
-     "comic": 6,
+     "pos": [
+      0.5,
+      0,
+      0,
+      6
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 2,
      "pattern": {
-      "name": "dots",
+      "name": "stripes",
       "colour": "#FFFFFF",
-      "opacity": 0.28,
-      "tile": 34
+      "opacity": 0.1,
+      "tile": 64
      },
      "children": [
       {
-       "type": "label",
-       "text": "FOOD SHOP",
+       "type": "sheen",
+       "name": "Sheen",
+       "size": [
+        1,
+        0,
+        1,
+        0
+       ],
+       "angle": -24,
+       "opacity": 0.24,
+       "bands": [
+        [
+         0.3,
+         0.05
+        ],
+        [
+         0.4,
+         0.1
+        ]
+       ],
+       "corner": 16,
+       "overhang": true,
+       "children": []
+      },
+      {
+       "type": "frame",
+       "name": "HeaderShade",
+       "colour": [
+        "#000000",
+        "#000000"
+       ],
+       "alpha": 0.9,
+       "outline": false,
+       "corner": 16,
+       "size": [
+        1,
+        0,
+        0,
+        18
+       ],
+       "pos": [
+        0,
+        0,
+        1,
+        0
+       ],
+       "anchor": [
+        0,
+        1
+       ],
+       "z": 2,
+       "children": [],
+       "overhang": true
+      },
+      {
+       "type": "frame",
+       "name": "TitleRow",
+       "transparent": true,
        "size": [
         0,
-        320,
+        238,
         0,
         56
        ],
-       "textColour": "onDark",
-       "align": "center",
-       "textScale": 0.6964,
-       "textStroke": 3,
-       "name": "Title",
-       "font": "display",
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconShopBig",
+         "name": "TitleIcon",
+         "size": [
+          0,
+          44,
+          0,
+          44
+         ]
+        },
+        {
+         "type": "label",
+         "text": "FOOD SHOP",
+         "size": [
+          0,
+          184,
+          0,
+          45
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.8,
+         "textStroke": 2,
+         "name": "Title",
+         "font": "display",
+         "maxText": 36,
+         "autoX": true,
+         "textGrad": [
+          "#FFFFFF",
+          "#FFE9A8"
+         ]
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "center"
+       },
        "pos": [
         0.5,
         0,
@@ -84,67 +209,25 @@
        "anchor": [
         0.5,
         0.5
-       ]
+       ],
+       "z": 3,
+       "autoW": 0
       }
-     ],
-     "pos": [
-      0.5,
-      0,
-      0,
-      -36
-     ],
-     "anchor": [
-      0.5,
-      0
-     ],
-     "z": 3,
-     "overhang": true
-    },
-    {
-     "type": "frame",
-     "name": "BodyArt",
-     "colour": [
-      "#2E3488",
-      "#161944"
-     ],
-     "outline": false,
-     "size": [
-      1,
-      -16,
-      1,
-      -16
-     ],
-     "pos": [
-      0.5,
-      0,
-      0.5,
-      0
-     ],
-     "anchor": [
-      0.5,
-      0.5
-     ],
-     "corner": 16,
-     "pattern": {
-      "name": "dots",
-      "colour": "#FFFFFF",
-      "opacity": 0.07,
-      "tile": 28
-     },
-     "overhang": true,
-     "z": -1,
-     "children": []
+     ]
     },
     {
      "type": "button",
      "name": "CloseButton",
-     "colour": "danger",
+     "colour": "#F2574C",
      "size": [
       0,
       56,
       0,
       56
      ],
+     "corner": 28,
+     "depth": 3,
+     "sizeClass": "X",
      "children": [
       {
        "type": "icon",
@@ -170,18 +253,43 @@
      ],
      "pos": [
       1,
-      14,
+      -14,
       0,
-      -18
+      12
      ],
      "anchor": [
       1,
       0
      ],
      "z": 4,
-     "overhang": true,
      "closes": true,
-     "sizeClass": "L"
+     "overhang": true,
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#F2574C"
+      ],
+      [
+       0.49,
+       "#F2574C"
+      ],
+      [
+       0.5,
+       "#D04B41"
+      ],
+      [
+       1.0,
+       "#B34038"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3,
+      "Rim": 0.5
+     },
+     "stroke": 3,
+     "keyline": "#F8ABA6"
     },
     {
      "type": "frame",
@@ -189,9 +297,9 @@
      "transparent": true,
      "size": [
       0,
-      960,
+      1040,
       0,
-      448
+      482
      ],
      "children": [
       {
@@ -200,9 +308,9 @@
        "transparent": true,
        "size": [
         0,
-        960,
+        1040,
         0,
-        34
+        48
        ],
        "children": [
         {
@@ -210,9 +318,9 @@
          "name": "FilterAll",
          "size": [
           0,
-          87,
+          108,
           0,
-          34
+          48
          ],
          "children": [
           {
@@ -221,9 +329,9 @@
            "name": "Icon",
            "size": [
             0,
-            20,
+            28,
             0,
-            20
+            28
            ]
           },
           {
@@ -231,28 +339,30 @@
            "text": "ALL",
            "size": [
             0,
-            37,
+            41,
             0,
-            21
+            32
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7143,
+           "textScale": 0.75,
            "textStroke": 2,
            "name": "Label",
            "font": "display",
-           "maxText": 15
+           "maxText": 24,
+           "autoX": true,
+           "capW": 51
           }
          ],
          "layout": {
           "type": "list",
           "dir": "x",
-          "gap": 6,
+          "gap": 7,
           "align": "center"
          },
          "sizeClass": "S",
-         "depth": 3,
-         "corner": 14,
+         "depth": 4,
+         "corner": 16,
          "selfFace": true,
          "colour": "#4CC4F9",
          "paintable": true,
@@ -263,30 +373,33 @@
            "#4CC4F9"
           ],
           [
-           0.4,
+           0.49,
            "#4CC4F9"
           ],
           [
-           0.41000000000000003,
-           "#44B0E0"
+           0.5,
+           "#41A9D6"
           ],
           [
            1.0,
-           "#3EA1CC"
+           "#3891B8"
           ]
          ],
          "attrs": {
-          "PressLip": 3
-         }
+          "PressLip": 4,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#A6E2FC"
         },
         {
          "type": "button",
          "name": "FilterSavory",
          "size": [
           0,
-          119,
+          159,
           0,
-          34
+          48
          ],
          "children": [
           {
@@ -295,9 +408,9 @@
            "name": "Icon",
            "size": [
             0,
-            20,
+            28,
             0,
-            20
+            28
            ]
           },
           {
@@ -305,28 +418,30 @@
            "text": "SAVORY",
            "size": [
             0,
-            69,
+            92,
             0,
-            21
+            32
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7143,
+           "textScale": 0.75,
            "textStroke": 2,
            "name": "Label",
            "font": "display",
-           "maxText": 15
+           "maxText": 24,
+           "autoX": true,
+           "capW": 102
           }
          ],
          "layout": {
           "type": "list",
           "dir": "x",
-          "gap": 6,
+          "gap": 7,
           "align": "center"
          },
          "sizeClass": "S",
-         "depth": 3,
-         "corner": 14,
+         "depth": 4,
+         "corner": 16,
          "selfFace": true,
          "colour": "#404683",
          "paintable": true,
@@ -337,30 +452,33 @@
            "#404683"
           ],
           [
-           0.4,
+           0.49,
            "#404683"
           ],
           [
-           0.41000000000000003,
-           "#3A3F76"
+           0.5,
+           "#373C71"
           ],
           [
            1.0,
-           "#34396B"
+           "#2F3461"
           ]
          ],
          "attrs": {
-          "PressLip": 3
-         }
+          "PressLip": 4,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#A0A2C1"
         },
         {
          "type": "button",
          "name": "FilterSweet",
          "size": [
           0,
-          108,
+          143,
           0,
-          34
+          48
          ],
          "children": [
           {
@@ -369,9 +487,9 @@
            "name": "Icon",
            "size": [
             0,
-            20,
+            28,
             0,
-            20
+            28
            ]
           },
           {
@@ -379,28 +497,30 @@
            "text": "SWEET",
            "size": [
             0,
-            58,
+            76,
             0,
-            21
+            32
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7143,
+           "textScale": 0.75,
            "textStroke": 2,
            "name": "Label",
            "font": "display",
-           "maxText": 15
+           "maxText": 24,
+           "autoX": true,
+           "capW": 86
           }
          ],
          "layout": {
           "type": "list",
           "dir": "x",
-          "gap": 6,
+          "gap": 7,
           "align": "center"
          },
          "sizeClass": "S",
-         "depth": 3,
-         "corner": 14,
+         "depth": 4,
+         "corner": 16,
          "selfFace": true,
          "colour": "#404683",
          "paintable": true,
@@ -411,30 +531,33 @@
            "#404683"
           ],
           [
-           0.4,
+           0.49,
            "#404683"
           ],
           [
-           0.41000000000000003,
-           "#3A3F76"
+           0.5,
+           "#373C71"
           ],
           [
            1.0,
-           "#34396B"
+           "#2F3461"
           ]
          ],
          "attrs": {
-          "PressLip": 3
-         }
+          "PressLip": 4,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#A0A2C1"
         },
         {
          "type": "button",
          "name": "FilterSpicy",
          "size": [
           0,
-          108,
+          132,
           0,
-          34
+          48
          ],
          "children": [
           {
@@ -443,9 +566,9 @@
            "name": "Icon",
            "size": [
             0,
-            20,
+            28,
             0,
-            20
+            28
            ]
           },
           {
@@ -453,28 +576,30 @@
            "text": "SPICY",
            "size": [
             0,
-            58,
+            65,
             0,
-            21
+            32
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7143,
+           "textScale": 0.75,
            "textStroke": 2,
            "name": "Label",
            "font": "display",
-           "maxText": 15
+           "maxText": 24,
+           "autoX": true,
+           "capW": 75
           }
          ],
          "layout": {
           "type": "list",
           "dir": "x",
-          "gap": 6,
+          "gap": 7,
           "align": "center"
          },
          "sizeClass": "S",
-         "depth": 3,
-         "corner": 14,
+         "depth": 4,
+         "corner": 16,
          "selfFace": true,
          "colour": "#404683",
          "paintable": true,
@@ -485,30 +610,33 @@
            "#404683"
           ],
           [
-           0.4,
+           0.49,
            "#404683"
           ],
           [
-           0.41000000000000003,
-           "#3A3F76"
+           0.5,
+           "#373C71"
           ],
           [
            1.0,
-           "#34396B"
+           "#2F3461"
           ]
          ],
          "attrs": {
-          "PressLip": 3
-         }
+          "PressLip": 4,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#A0A2C1"
         },
         {
          "type": "button",
          "name": "FilterSeafood",
          "size": [
           0,
-          130,
+          167,
           0,
-          34
+          48
          ],
          "children": [
           {
@@ -517,9 +645,9 @@
            "name": "Icon",
            "size": [
             0,
-            20,
+            28,
             0,
-            20
+            28
            ]
           },
           {
@@ -527,28 +655,30 @@
            "text": "SEAFOOD",
            "size": [
             0,
-            80,
+            100,
             0,
-            21
+            32
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7143,
+           "textScale": 0.75,
            "textStroke": 2,
            "name": "Label",
            "font": "display",
-           "maxText": 15
+           "maxText": 24,
+           "autoX": true,
+           "capW": 110
           }
          ],
          "layout": {
           "type": "list",
           "dir": "x",
-          "gap": 6,
+          "gap": 7,
           "align": "center"
          },
          "sizeClass": "S",
-         "depth": 3,
-         "corner": 14,
+         "depth": 4,
+         "corner": 16,
          "selfFace": true,
          "colour": "#404683",
          "paintable": true,
@@ -559,28 +689,31 @@
            "#404683"
           ],
           [
-           0.4,
+           0.49,
            "#404683"
           ],
           [
-           0.41000000000000003,
-           "#3A3F76"
+           0.5,
+           "#373C71"
           ],
           [
            1.0,
-           "#34396B"
+           "#2F3461"
           ]
          ],
          "attrs": {
-          "PressLip": 3
-         }
+          "PressLip": 4,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#A0A2C1"
         }
        ],
        "layout": {
         "type": "list",
         "dir": "x",
-        "gap": 8,
-        "align": "start"
+        "gap": 10,
+        "align": "center"
        },
        "pos": [
         0,
@@ -598,11 +731,11 @@
        "scrollXok": true,
        "size": [
         0,
-        960,
+        1040,
         0,
-        400
+        420
        ],
-       "padding": 12,
+       "padding": 14,
        "layout": {
         "type": "list",
         "dir": "x",
@@ -620,21 +753,22 @@
         0,
         0,
         0,
-        48
+        60
        ],
        "children": [
         {
          "type": "panel",
          "name": "FoodCardSample1",
          "colour": "cream",
+         "keyline": "#FFFFFF",
          "size": [
           0,
-          208,
+          220,
           0,
-          368
+          380
          ],
-         "depth": 5,
-         "corner": 16,
+         "depth": 0,
+         "corner": 18,
          "children": [
           {
            "type": "panel",
@@ -642,13 +776,14 @@
            "colour": "panel",
            "size": [
             0,
-            46,
+            48,
             0,
-            22
+            28
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 14,
            "children": [
             {
              "type": "label",
@@ -657,12 +792,12 @@
               0,
               38,
               0,
-              18
+              22
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
+             "textScale": 0.8182,
+             "textStroke": 1.5,
              "name": "TierText",
              "samples": [
               "T1",
@@ -678,16 +813,18 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 18
             }
            ],
            "pos": [
             0,
             12,
             0,
-            12
+            10
            ],
-           "stroke": 2
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "icon",
@@ -695,15 +832,15 @@
            "name": "FlavorIcon",
            "size": [
             0,
-            22,
+            30,
             0,
-            22
+            30
            ],
            "pos": [
             1,
             -12,
             0,
-            12
+            9
            ],
            "anchor": [
             1,
@@ -720,21 +857,25 @@
            "paint": "#F2A541",
            "size": [
             0,
-            184,
+            196,
             0,
-            130
+            128
            ],
            "pos": [
             0.5,
             0,
             0,
-            44
+            46
            ],
            "anchor": [
             0.5,
             0
            ],
-           "corner": 12,
+           "corner": 14,
+           "keyline": "#FFFFFF",
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
             {
              "type": "icon",
@@ -742,9 +883,9 @@
              "name": "Sunburst",
              "size": [
               0,
-              150,
+              200,
               0,
-              150
+              200
              ],
              "pos": [
               0.5,
@@ -757,7 +898,35 @@
               0.5
              ],
              "z": 1,
+             "tint": "#FFFFFF",
+             "alphaImg": 0.0,
              "overhang": true
+            },
+            {
+             "type": "sheen",
+             "name": "Sheen",
+             "size": [
+              1,
+              0,
+              1,
+              0
+             ],
+             "angle": -24,
+             "opacity": 0.22,
+             "bands": [
+              [
+               0.3,
+               0.05
+              ],
+              [
+               0.4,
+               0.1
+              ]
+             ],
+             "corner": 14,
+             "overhang": true,
+             "children": [],
+             "z": 1
             },
             {
              "type": "frame",
@@ -766,9 +935,9 @@
              "cls": "ViewportFrame",
              "size": [
               0,
-              170,
+              180,
               0,
-              116
+              118
              ],
              "pos": [
               0.5,
@@ -786,20 +955,76 @@
              },
              "z": 2
             }
-           ]
+           ],
+           "strokePx": 3
+          },
+          {
+           "type": "panel",
+           "name": "CravePill",
+           "colour": "premium",
+           "size": [
+            0,
+            132,
+            0,
+            28
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              122,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "CraveHint",
+             "samples": [
+              "+11 heroes",
+              "+3 heroes"
+             ],
+             "font": "display",
+             "maxText": 18
+            }
+           ],
+           "corner": 14,
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 0,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            184,
+            196,
             0,
-            24
+            30
            ],
            "textColour": "ink",
            "align": "center",
-           "textScale": 0.75,
+           "textScale": 0.8,
            "textStroke": 0,
            "name": "FoodName",
            "samples": [
@@ -811,13 +1036,13 @@
             0.5,
             0,
             0,
-            184
+            194
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 18
+           "maxText": 24
           },
           {
            "type": "frame",
@@ -825,21 +1050,35 @@
            "transparent": true,
            "size": [
             0,
-            184,
+            196,
             0,
-            54
+            66
            ],
            "children": [
             {
-             "type": "panel",
+             "type": "frame",
              "name": "PowerStat",
-             "colour": "#F1E3C2",
+             "colour": [
+              "#F1E3C2",
+              "#F1E3C2"
+             ],
+             "paint": "#F1E3C2",
+             "corner": 15,
+             "keyline": "#D8C69C",
+             "keepKeyline": true,
              "size": [
               0,
-              184,
+              167,
               0,
-              22
+              30
              ],
+             "autoW": 12,
+             "layout": {
+              "type": "list",
+              "dir": "x",
+              "gap": 6,
+              "align": "center"
+             },
              "children": [
               {
                "type": "icon",
@@ -847,9 +1086,9 @@
                "name": "PowerIcon",
                "size": [
                 0,
-                14,
+                22,
                 0,
-                14
+                22
                ]
               },
               {
@@ -857,13 +1096,13 @@
                "text": "<unbound>",
                "size": [
                 0,
-                150,
+                115,
                 0,
-                17
+                23
                ],
                "textColour": "powerInk",
                "align": "center",
-               "textScale": 0.7647,
+               "textScale": 0.7826,
                "textStroke": 0,
                "name": "PowerText",
                "samples": [
@@ -871,29 +1110,36 @@
                 "POWER x5.00"
                ],
                "font": "display",
-               "maxText": 13
+               "maxText": 18,
+               "autoX": true
               }
              ],
+             "strokePx": 2
+            },
+            {
+             "type": "frame",
+             "name": "LuckStat",
+             "colour": [
+              "#F1E3C2",
+              "#F1E3C2"
+             ],
+             "paint": "#F1E3C2",
+             "corner": 15,
+             "keyline": "#D8C69C",
+             "keepKeyline": true,
+             "size": [
+              0,
+              147,
+              0,
+              30
+             ],
+             "autoW": 12,
              "layout": {
               "type": "list",
               "dir": "x",
               "gap": 6,
               "align": "center"
              },
-             "depth": 0,
-             "corner": 11,
-             "stroke": 2
-            },
-            {
-             "type": "panel",
-             "name": "LuckStat",
-             "colour": "#F1E3C2",
-             "size": [
-              0,
-              184,
-              0,
-              22
-             ],
              "children": [
               {
                "type": "icon",
@@ -901,9 +1147,9 @@
                "name": "LuckIcon",
                "size": [
                 0,
-                14,
+                22,
                 0,
-                14
+                22
                ]
               },
               {
@@ -911,13 +1157,13 @@
                "text": "<unbound>",
                "size": [
                 0,
-                150,
+                95,
                 0,
-                17
+                23
                ],
                "textColour": "luckInk",
                "align": "center",
-               "textScale": 0.7647,
+               "textScale": 0.7826,
                "textStroke": 0,
                "name": "LuckText",
                "samples": [
@@ -925,83 +1171,29 @@
                 "LUCK x5.50"
                ],
                "font": "display",
-               "maxText": 13
+               "maxText": 18,
+               "autoX": true
               }
              ],
-             "layout": {
-              "type": "list",
-              "dir": "x",
-              "gap": 6,
-              "align": "center"
-             },
-             "depth": 0,
-             "corner": 11,
-             "stroke": 2
+             "strokePx": 2
             }
            ],
            "layout": {
             "type": "list",
             "dir": "y",
-            "gap": 10,
-            "align": "start"
+            "gap": 6,
+            "align": "center"
            },
            "pos": [
             0.5,
             0,
             0,
-            218
+            232
            ],
            "anchor": [
             0.5,
             0
            ]
-          },
-          {
-           "type": "panel",
-           "name": "CravePill",
-           "colour": "premium",
-           "size": [
-            0,
-            132,
-            0,
-            20
-           ],
-           "children": [
-            {
-             "type": "label",
-             "text": "<unbound>",
-             "size": [
-              0,
-              120,
-              0,
-              17
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
-             "name": "CraveHint",
-             "samples": [
-              "+11 heroes",
-              "+3 heroes"
-             ],
-             "font": "display",
-             "maxText": 13
-            }
-           ],
-           "depth": 0,
-           "corner": 10,
-           "pos": [
-            0.5,
-            0,
-            0,
-            282
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "stroke": 2
           },
           {
            "type": "panel",
@@ -1012,11 +1204,11 @@
            ],
            "size": [
             0,
-            184,
+            196,
             0,
-            44
+            56
            ],
-           "corner": 18,
+           "corner": 19,
            "depth": 0,
            "layout": {
             "type": "list",
@@ -1031,9 +1223,9 @@
              "name": "Icon",
              "size": [
               0,
-              22,
+              28,
               0,
-              22
+              28
              ]
             },
             {
@@ -1041,32 +1233,36 @@
              "text": "<unbound>",
              "size": [
               0,
-              114,
+              115,
               0,
-              30
+              35
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.6333,
+             "textScale": 0.7429,
              "textStroke": 2,
              "name": "PriceText",
              "samples": [
               "EQUIPPED"
              ],
              "font": "display",
-             "maxText": 19
+             "maxText": 26,
+             "autoX": true,
+             "capW": 134
             }
            ],
            "pos": [
             0.5,
             0,
-            0,
-            312
+            1,
+            -12
            ],
            "anchor": [
             0.5,
-            0
-           ]
+            1
+           ],
+           "stroke": 3,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "panel",
@@ -1074,11 +1270,11 @@
            "colour": "buy",
            "size": [
             0,
-            55,
+            78,
             0,
-            22
+            30
            ],
-           "corner": 11,
+           "corner": 15,
            "depth": 0,
            "keyline": "#FFFFFF",
            "selfFace": true,
@@ -1087,7 +1283,7 @@
             0.5,
             0,
             0,
-            -7
+            -15
            ],
            "anchor": [
             0.5,
@@ -1101,14 +1297,14 @@
              "text": "NEXT",
              "size": [
               0,
-              45,
+              66,
               0,
-              16
+              24
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.8156,
-             "textStroke": 2,
+             "textScale": 0.75,
+             "textStroke": 1.5,
              "name": "NextTagText",
              "font": "display",
              "pos": [
@@ -1121,7 +1317,32 @@
               0.5,
               0.5
              ],
-             "maxText": 13
+             "maxText": 18
+            },
+            {
+             "type": "sheen",
+             "name": "Sheen",
+             "size": [
+              1,
+              0,
+              1,
+              0
+             ],
+             "angle": -24,
+             "opacity": 0.25,
+             "bands": [
+              [
+               0.3,
+               0.05
+              ],
+              [
+               0.4,
+               0.1
+              ]
+             ],
+             "corner": 15,
+             "overhang": true,
+             "children": []
             }
            ],
            "visible": false,
@@ -1132,20 +1353,22 @@
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "FoodCardSample2",
          "colour": "cream",
+         "keyline": "#FFFFFF",
          "size": [
           0,
-          208,
+          220,
           0,
-          368
+          380
          ],
-         "depth": 5,
-         "corner": 16,
+         "depth": 0,
+         "corner": 18,
          "children": [
           {
            "type": "panel",
@@ -1153,13 +1376,14 @@
            "colour": "panel",
            "size": [
             0,
-            46,
+            48,
             0,
-            22
+            28
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 14,
            "children": [
             {
              "type": "label",
@@ -1168,12 +1392,12 @@
               0,
               38,
               0,
-              18
+              22
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
+             "textScale": 0.8182,
+             "textStroke": 1.5,
              "name": "TierText",
              "samples": [
               "T2",
@@ -1189,16 +1413,18 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 18
             }
            ],
            "pos": [
             0,
             12,
             0,
-            12
+            10
            ],
-           "stroke": 2
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "icon",
@@ -1206,15 +1432,15 @@
            "name": "FlavorIcon",
            "size": [
             0,
-            22,
+            30,
             0,
-            22
+            30
            ],
            "pos": [
             1,
             -12,
             0,
-            12
+            9
            ],
            "anchor": [
             1,
@@ -1231,21 +1457,25 @@
            "paint": "#FF8CC6",
            "size": [
             0,
-            184,
+            196,
             0,
-            130
+            128
            ],
            "pos": [
             0.5,
             0,
             0,
-            44
+            46
            ],
            "anchor": [
             0.5,
             0
            ],
-           "corner": 12,
+           "corner": 14,
+           "keyline": "#FFFFFF",
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
             {
              "type": "icon",
@@ -1253,9 +1483,9 @@
              "name": "Sunburst",
              "size": [
               0,
-              150,
+              200,
               0,
-              150
+              200
              ],
              "pos": [
               0.5,
@@ -1268,7 +1498,35 @@
               0.5
              ],
              "z": 1,
+             "tint": "#FFFFFF",
+             "alphaImg": 0.0,
              "overhang": true
+            },
+            {
+             "type": "sheen",
+             "name": "Sheen",
+             "size": [
+              1,
+              0,
+              1,
+              0
+             ],
+             "angle": -24,
+             "opacity": 0.22,
+             "bands": [
+              [
+               0.3,
+               0.05
+              ],
+              [
+               0.4,
+               0.1
+              ]
+             ],
+             "corner": 14,
+             "overhang": true,
+             "children": [],
+             "z": 1
             },
             {
              "type": "frame",
@@ -1277,9 +1535,9 @@
              "cls": "ViewportFrame",
              "size": [
               0,
-              170,
+              180,
               0,
-              116
+              118
              ],
              "pos": [
               0.5,
@@ -1297,20 +1555,76 @@
              },
              "z": 2
             }
-           ]
+           ],
+           "strokePx": 3
+          },
+          {
+           "type": "panel",
+           "name": "CravePill",
+           "colour": "premium",
+           "size": [
+            0,
+            132,
+            0,
+            28
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              122,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "CraveHint",
+             "samples": [
+              "+11 heroes",
+              "+3 heroes"
+             ],
+             "font": "display",
+             "maxText": 18
+            }
+           ],
+           "corner": 14,
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 0,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            184,
+            196,
             0,
-            24
+            30
            ],
            "textColour": "ink",
            "align": "center",
-           "textScale": 0.75,
+           "textScale": 0.8,
            "textStroke": 0,
            "name": "FoodName",
            "samples": [
@@ -1322,13 +1636,13 @@
             0.5,
             0,
             0,
-            184
+            194
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 18
+           "maxText": 24
           },
           {
            "type": "frame",
@@ -1336,21 +1650,35 @@
            "transparent": true,
            "size": [
             0,
-            184,
+            196,
             0,
-            54
+            66
            ],
            "children": [
             {
-             "type": "panel",
+             "type": "frame",
              "name": "PowerStat",
-             "colour": "#F1E3C2",
+             "colour": [
+              "#F1E3C2",
+              "#F1E3C2"
+             ],
+             "paint": "#F1E3C2",
+             "corner": 15,
+             "keyline": "#D8C69C",
+             "keepKeyline": true,
              "size": [
               0,
-              184,
+              167,
               0,
-              22
+              30
              ],
+             "autoW": 12,
+             "layout": {
+              "type": "list",
+              "dir": "x",
+              "gap": 6,
+              "align": "center"
+             },
              "children": [
               {
                "type": "icon",
@@ -1358,9 +1686,9 @@
                "name": "PowerIcon",
                "size": [
                 0,
-                14,
+                22,
                 0,
-                14
+                22
                ]
               },
               {
@@ -1368,13 +1696,13 @@
                "text": "<unbound>",
                "size": [
                 0,
-                150,
+                115,
                 0,
-                17
+                23
                ],
                "textColour": "powerInk",
                "align": "center",
-               "textScale": 0.7647,
+               "textScale": 0.7826,
                "textStroke": 0,
                "name": "PowerText",
                "samples": [
@@ -1382,29 +1710,36 @@
                 "POWER x5.00"
                ],
                "font": "display",
-               "maxText": 13
+               "maxText": 18,
+               "autoX": true
               }
              ],
+             "strokePx": 2
+            },
+            {
+             "type": "frame",
+             "name": "LuckStat",
+             "colour": [
+              "#F1E3C2",
+              "#F1E3C2"
+             ],
+             "paint": "#F1E3C2",
+             "corner": 15,
+             "keyline": "#D8C69C",
+             "keepKeyline": true,
+             "size": [
+              0,
+              147,
+              0,
+              30
+             ],
+             "autoW": 12,
              "layout": {
               "type": "list",
               "dir": "x",
               "gap": 6,
               "align": "center"
              },
-             "depth": 0,
-             "corner": 11,
-             "stroke": 2
-            },
-            {
-             "type": "panel",
-             "name": "LuckStat",
-             "colour": "#F1E3C2",
-             "size": [
-              0,
-              184,
-              0,
-              22
-             ],
              "children": [
               {
                "type": "icon",
@@ -1412,9 +1747,9 @@
                "name": "LuckIcon",
                "size": [
                 0,
-                14,
+                22,
                 0,
-                14
+                22
                ]
               },
               {
@@ -1422,13 +1757,13 @@
                "text": "<unbound>",
                "size": [
                 0,
-                150,
+                95,
                 0,
-                17
+                23
                ],
                "textColour": "luckInk",
                "align": "center",
-               "textScale": 0.7647,
+               "textScale": 0.7826,
                "textStroke": 0,
                "name": "LuckText",
                "samples": [
@@ -1436,31 +1771,24 @@
                 "LUCK x5.50"
                ],
                "font": "display",
-               "maxText": 13
+               "maxText": 18,
+               "autoX": true
               }
              ],
-             "layout": {
-              "type": "list",
-              "dir": "x",
-              "gap": 6,
-              "align": "center"
-             },
-             "depth": 0,
-             "corner": 11,
-             "stroke": 2
+             "strokePx": 2
             }
            ],
            "layout": {
             "type": "list",
             "dir": "y",
-            "gap": 10,
-            "align": "start"
+            "gap": 6,
+            "align": "center"
            },
            "pos": [
             0.5,
             0,
             0,
-            218
+            232
            ],
            "anchor": [
             0.5,
@@ -1468,60 +1796,13 @@
            ]
           },
           {
-           "type": "panel",
-           "name": "CravePill",
-           "colour": "premium",
-           "size": [
-            0,
-            132,
-            0,
-            20
-           ],
-           "children": [
-            {
-             "type": "label",
-             "text": "<unbound>",
-             "size": [
-              0,
-              120,
-              0,
-              17
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
-             "name": "CraveHint",
-             "samples": [
-              "+11 heroes",
-              "+3 heroes"
-             ],
-             "font": "display",
-             "maxText": 13
-            }
-           ],
-           "depth": 0,
-           "corner": 10,
-           "pos": [
-            0.5,
-            0,
-            0,
-            282
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "stroke": 2
-          },
-          {
            "type": "button",
            "name": "BuyButton",
            "size": [
             0,
-            180,
+            196,
             0,
-            44
+            56
            ],
            "children": [
             {
@@ -1530,9 +1811,9 @@
              "name": "Icon",
              "size": [
               0,
-              26,
+              32,
               0,
-              26
+              32
              ]
             },
             {
@@ -1540,13 +1821,13 @@
              "text": "<unbound>",
              "size": [
               0,
-              114,
+              106,
               0,
-              26
+              38
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7308,
+             "textScale": 0.6842,
              "textStroke": 2,
              "name": "PriceText",
              "samples": [
@@ -1554,7 +1835,9 @@
               "999.99Qi"
              ],
              "font": "display",
-             "maxText": 19
+             "maxText": 26,
+             "autoX": true,
+             "capW": 134
             }
            ],
            "layout": {
@@ -1565,7 +1848,7 @@
            },
            "sizeClass": "M",
            "depth": 4,
-           "corner": 18,
+           "corner": 19,
            "selfFace": true,
            "colour": "#4CC4F9",
            "paintable": true,
@@ -1576,31 +1859,34 @@
              "#4CC4F9"
             ],
             [
-             0.4,
+             0.49,
              "#4CC4F9"
             ],
             [
-             0.41000000000000003,
-             "#44B0E0"
+             0.5,
+             "#41A9D6"
             ],
             [
              1.0,
-             "#3EA1CC"
+             "#3891B8"
             ]
            ],
            "attrs": {
-            "PressLip": 4
+            "PressLip": 4,
+            "Rim": 0.5
            },
            "pos": [
             0.5,
             0,
-            0,
-            312
+            1,
+            -12
            ],
            "anchor": [
             0.5,
-            0
-           ]
+            1
+           ],
+           "stroke": 3,
+           "keyline": "#A6E2FC"
           },
           {
            "type": "panel",
@@ -1608,11 +1894,11 @@
            "colour": "buy",
            "size": [
             0,
-            55,
+            78,
             0,
-            22
+            30
            ],
-           "corner": 11,
+           "corner": 15,
            "depth": 0,
            "keyline": "#FFFFFF",
            "selfFace": true,
@@ -1621,7 +1907,7 @@
             0.5,
             0,
             0,
-            -7
+            -15
            ],
            "anchor": [
             0.5,
@@ -1635,14 +1921,14 @@
              "text": "NEXT",
              "size": [
               0,
-              45,
+              66,
               0,
-              16
+              24
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.8156,
-             "textStroke": 2,
+             "textScale": 0.75,
+             "textStroke": 1.5,
              "name": "NextTagText",
              "font": "display",
              "pos": [
@@ -1655,7 +1941,32 @@
               0.5,
               0.5
              ],
-             "maxText": 13
+             "maxText": 18
+            },
+            {
+             "type": "sheen",
+             "name": "Sheen",
+             "size": [
+              1,
+              0,
+              1,
+              0
+             ],
+             "angle": -24,
+             "opacity": 0.25,
+             "bands": [
+              [
+               0.3,
+               0.05
+              ],
+              [
+               0.4,
+               0.1
+              ]
+             ],
+             "corner": 15,
+             "overhang": true,
+             "children": []
             }
            ],
            "visible": false,
@@ -1666,20 +1977,22 @@
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "FoodCardSample3",
          "colour": "cream",
+         "keyline": "#FFC93C",
          "size": [
           0,
-          208,
+          220,
           0,
-          368
+          380
          ],
-         "depth": 5,
-         "corner": 16,
+         "depth": 0,
+         "corner": 18,
          "children": [
           {
            "type": "panel",
@@ -1687,13 +2000,14 @@
            "colour": "panel",
            "size": [
             0,
-            46,
+            48,
             0,
-            22
+            28
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 14,
            "children": [
             {
              "type": "label",
@@ -1702,12 +2016,12 @@
               0,
               38,
               0,
-              18
+              22
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
+             "textScale": 0.8182,
+             "textStroke": 1.5,
              "name": "TierText",
              "samples": [
               "T3",
@@ -1723,16 +2037,18 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 18
             }
            ],
            "pos": [
             0,
             12,
             0,
-            12
+            10
            ],
-           "stroke": 2
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "icon",
@@ -1740,15 +2056,15 @@
            "name": "FlavorIcon",
            "size": [
             0,
-            22,
+            30,
             0,
-            22
+            30
            ],
            "pos": [
             1,
             -12,
             0,
-            12
+            9
            ],
            "anchor": [
             1,
@@ -1765,21 +2081,25 @@
            "paint": "#2EC4B6",
            "size": [
             0,
-            184,
+            196,
             0,
-            130
+            128
            ],
            "pos": [
             0.5,
             0,
             0,
-            44
+            46
            ],
            "anchor": [
             0.5,
             0
            ],
-           "corner": 12,
+           "corner": 14,
+           "keyline": "#FFFFFF",
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
             {
              "type": "icon",
@@ -1787,9 +2107,9 @@
              "name": "Sunburst",
              "size": [
               0,
-              150,
+              200,
               0,
-              150
+              200
              ],
              "pos": [
               0.5,
@@ -1802,7 +2122,35 @@
               0.5
              ],
              "z": 1,
+             "tint": "#FFFFFF",
+             "alphaImg": 0.0,
              "overhang": true
+            },
+            {
+             "type": "sheen",
+             "name": "Sheen",
+             "size": [
+              1,
+              0,
+              1,
+              0
+             ],
+             "angle": -24,
+             "opacity": 0.22,
+             "bands": [
+              [
+               0.3,
+               0.05
+              ],
+              [
+               0.4,
+               0.1
+              ]
+             ],
+             "corner": 14,
+             "overhang": true,
+             "children": [],
+             "z": 1
             },
             {
              "type": "frame",
@@ -1811,9 +2159,9 @@
              "cls": "ViewportFrame",
              "size": [
               0,
-              170,
+              180,
               0,
-              116
+              118
              ],
              "pos": [
               0.5,
@@ -1831,20 +2179,76 @@
              },
              "z": 2
             }
-           ]
+           ],
+           "strokePx": 3
+          },
+          {
+           "type": "panel",
+           "name": "CravePill",
+           "colour": "premium",
+           "size": [
+            0,
+            132,
+            0,
+            28
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              122,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "CraveHint",
+             "samples": [
+              "+11 heroes",
+              "+3 heroes"
+             ],
+             "font": "display",
+             "maxText": 18
+            }
+           ],
+           "corner": 14,
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 0,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            184,
+            196,
             0,
-            24
+            30
            ],
            "textColour": "ink",
            "align": "center",
-           "textScale": 0.75,
+           "textScale": 0.8,
            "textStroke": 0,
            "name": "FoodName",
            "samples": [
@@ -1856,13 +2260,13 @@
             0.5,
             0,
             0,
-            184
+            194
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 18
+           "maxText": 24
           },
           {
            "type": "frame",
@@ -1870,21 +2274,35 @@
            "transparent": true,
            "size": [
             0,
-            184,
+            196,
             0,
-            54
+            66
            ],
            "children": [
             {
-             "type": "panel",
+             "type": "frame",
              "name": "PowerStat",
-             "colour": "#F1E3C2",
+             "colour": [
+              "#F1E3C2",
+              "#F1E3C2"
+             ],
+             "paint": "#F1E3C2",
+             "corner": 15,
+             "keyline": "#D8C69C",
+             "keepKeyline": true,
              "size": [
               0,
-              184,
+              167,
               0,
-              22
+              30
              ],
+             "autoW": 12,
+             "layout": {
+              "type": "list",
+              "dir": "x",
+              "gap": 6,
+              "align": "center"
+             },
              "children": [
               {
                "type": "icon",
@@ -1892,9 +2310,9 @@
                "name": "PowerIcon",
                "size": [
                 0,
-                14,
+                22,
                 0,
-                14
+                22
                ]
               },
               {
@@ -1902,13 +2320,13 @@
                "text": "<unbound>",
                "size": [
                 0,
-                150,
+                115,
                 0,
-                17
+                23
                ],
                "textColour": "powerInk",
                "align": "center",
-               "textScale": 0.7647,
+               "textScale": 0.7826,
                "textStroke": 0,
                "name": "PowerText",
                "samples": [
@@ -1916,29 +2334,36 @@
                 "POWER x5.00"
                ],
                "font": "display",
-               "maxText": 13
+               "maxText": 18,
+               "autoX": true
               }
              ],
+             "strokePx": 2
+            },
+            {
+             "type": "frame",
+             "name": "LuckStat",
+             "colour": [
+              "#F1E3C2",
+              "#F1E3C2"
+             ],
+             "paint": "#F1E3C2",
+             "corner": 15,
+             "keyline": "#D8C69C",
+             "keepKeyline": true,
+             "size": [
+              0,
+              147,
+              0,
+              30
+             ],
+             "autoW": 12,
              "layout": {
               "type": "list",
               "dir": "x",
               "gap": 6,
               "align": "center"
              },
-             "depth": 0,
-             "corner": 11,
-             "stroke": 2
-            },
-            {
-             "type": "panel",
-             "name": "LuckStat",
-             "colour": "#F1E3C2",
-             "size": [
-              0,
-              184,
-              0,
-              22
-             ],
              "children": [
               {
                "type": "icon",
@@ -1946,9 +2371,9 @@
                "name": "LuckIcon",
                "size": [
                 0,
-                14,
+                22,
                 0,
-                14
+                22
                ]
               },
               {
@@ -1956,13 +2381,13 @@
                "text": "<unbound>",
                "size": [
                 0,
-                150,
+                95,
                 0,
-                17
+                23
                ],
                "textColour": "luckInk",
                "align": "center",
-               "textScale": 0.7647,
+               "textScale": 0.7826,
                "textStroke": 0,
                "name": "LuckText",
                "samples": [
@@ -1970,31 +2395,24 @@
                 "LUCK x5.50"
                ],
                "font": "display",
-               "maxText": 13
+               "maxText": 18,
+               "autoX": true
               }
              ],
-             "layout": {
-              "type": "list",
-              "dir": "x",
-              "gap": 6,
-              "align": "center"
-             },
-             "depth": 0,
-             "corner": 11,
-             "stroke": 2
+             "strokePx": 2
             }
            ],
            "layout": {
             "type": "list",
             "dir": "y",
-            "gap": 10,
-            "align": "start"
+            "gap": 6,
+            "align": "center"
            },
            "pos": [
             0.5,
             0,
             0,
-            218
+            232
            ],
            "anchor": [
             0.5,
@@ -2002,60 +2420,13 @@
            ]
           },
           {
-           "type": "panel",
-           "name": "CravePill",
-           "colour": "premium",
-           "size": [
-            0,
-            132,
-            0,
-            20
-           ],
-           "children": [
-            {
-             "type": "label",
-             "text": "<unbound>",
-             "size": [
-              0,
-              120,
-              0,
-              17
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
-             "name": "CraveHint",
-             "samples": [
-              "+11 heroes",
-              "+3 heroes"
-             ],
-             "font": "display",
-             "maxText": 13
-            }
-           ],
-           "depth": 0,
-           "corner": 10,
-           "pos": [
-            0.5,
-            0,
-            0,
-            282
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "stroke": 2
-          },
-          {
            "type": "button",
            "name": "BuyButton",
            "size": [
             0,
-            180,
+            196,
             0,
-            44
+            56
            ],
            "children": [
             {
@@ -2064,9 +2435,9 @@
              "name": "Icon",
              "size": [
               0,
-              26,
+              32,
               0,
-              26
+              32
              ]
             },
             {
@@ -2074,13 +2445,13 @@
              "text": "<unbound>",
              "size": [
               0,
-              114,
+              106,
               0,
-              26
+              38
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7308,
+             "textScale": 0.6842,
              "textStroke": 2,
              "name": "PriceText",
              "samples": [
@@ -2088,7 +2459,9 @@
               "999.99Qi"
              ],
              "font": "display",
-             "maxText": 19
+             "maxText": 26,
+             "autoX": true,
+             "capW": 134
             }
            ],
            "layout": {
@@ -2099,7 +2472,7 @@
            },
            "sizeClass": "M",
            "depth": 4,
-           "corner": 18,
+           "corner": 19,
            "selfFace": true,
            "colour": "#48D687",
            "paintable": true,
@@ -2110,31 +2483,35 @@
              "#48D687"
             ],
             [
-             0.4,
+             0.49,
              "#48D687"
             ],
             [
-             0.41000000000000003,
-             "#41C17A"
+             0.5,
+             "#3EB874"
             ],
             [
              1.0,
-             "#3BAF6F"
+             "#359E64"
             ]
            ],
            "attrs": {
-            "PressLip": 4
+            "PressLip": 4,
+            "AutoShine": true,
+            "Rim": 0.5
            },
            "pos": [
             0.5,
             0,
-            0,
-            312
+            1,
+            -12
            ],
            "anchor": [
             0.5,
-            0
-           ]
+            1
+           ],
+           "stroke": 3,
+           "keyline": "#A4EAC3"
           },
           {
            "type": "panel",
@@ -2142,11 +2519,11 @@
            "colour": "buy",
            "size": [
             0,
-            55,
+            78,
             0,
-            22
+            30
            ],
-           "corner": 11,
+           "corner": 15,
            "depth": 0,
            "keyline": "#FFFFFF",
            "selfFace": true,
@@ -2155,7 +2532,7 @@
             0.5,
             0,
             0,
-            -7
+            -15
            ],
            "anchor": [
             0.5,
@@ -2169,14 +2546,14 @@
              "text": "NEXT",
              "size": [
               0,
-              45,
+              66,
               0,
-              16
+              24
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.8156,
-             "textStroke": 2,
+             "textScale": 0.75,
+             "textStroke": 1.5,
              "name": "NextTagText",
              "font": "display",
              "pos": [
@@ -2189,30 +2566,56 @@
               0.5,
               0.5
              ],
-             "maxText": 13
+             "maxText": 18
+            },
+            {
+             "type": "sheen",
+             "name": "Sheen",
+             "size": [
+              1,
+              0,
+              1,
+              0
+             ],
+             "angle": -24,
+             "opacity": 0.25,
+             "bands": [
+              [
+               0.3,
+               0.05
+              ],
+              [
+               0.4,
+               0.1
+              ]
+             ],
+             "corner": 15,
+             "overhang": true,
+             "children": []
             }
            ],
            "stroke": 2
           }
          ],
-         "keyline": "#FFC93C",
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "FoodCardSample4",
          "colour": "#D9CFBA",
+         "keyline": "#FFFFFF",
          "size": [
           0,
-          208,
+          220,
           0,
-          368
+          380
          ],
-         "depth": 5,
-         "corner": 16,
+         "depth": 0,
+         "corner": 18,
          "children": [
           {
            "type": "panel",
@@ -2220,13 +2623,14 @@
            "colour": "panel",
            "size": [
             0,
-            46,
+            48,
             0,
-            22
+            28
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 14,
            "children": [
             {
              "type": "label",
@@ -2235,12 +2639,12 @@
               0,
               38,
               0,
-              18
+              22
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
+             "textScale": 0.8182,
+             "textStroke": 1.5,
              "name": "TierText",
              "samples": [
               "T4",
@@ -2256,16 +2660,18 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 18
             }
            ],
            "pos": [
             0,
             12,
             0,
-            12
+            10
            ],
-           "stroke": 2
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "icon",
@@ -2273,15 +2679,15 @@
            "name": "FlavorIcon",
            "size": [
             0,
-            22,
+            30,
             0,
-            22
+            30
            ],
            "pos": [
             1,
             -12,
             0,
-            12
+            9
            ],
            "anchor": [
             1,
@@ -2298,21 +2704,25 @@
            "paint": "#FF6A3D",
            "size": [
             0,
-            184,
+            196,
             0,
-            130
+            128
            ],
            "pos": [
             0.5,
             0,
             0,
-            44
+            46
            ],
            "anchor": [
             0.5,
             0
            ],
-           "corner": 12,
+           "corner": 14,
+           "keyline": "#FFFFFF",
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
             {
              "type": "icon",
@@ -2320,9 +2730,9 @@
              "name": "Sunburst",
              "size": [
               0,
-              150,
+              200,
               0,
-              150
+              200
              ],
              "pos": [
               0.5,
@@ -2335,7 +2745,35 @@
               0.5
              ],
              "z": 1,
+             "tint": "#FFFFFF",
+             "alphaImg": 0.0,
              "overhang": true
+            },
+            {
+             "type": "sheen",
+             "name": "Sheen",
+             "size": [
+              1,
+              0,
+              1,
+              0
+             ],
+             "angle": -24,
+             "opacity": 0.22,
+             "bands": [
+              [
+               0.3,
+               0.05
+              ],
+              [
+               0.4,
+               0.1
+              ]
+             ],
+             "corner": 14,
+             "overhang": true,
+             "children": [],
+             "z": 1
             },
             {
              "type": "frame",
@@ -2344,9 +2782,9 @@
              "cls": "ViewportFrame",
              "size": [
               0,
-              170,
+              180,
               0,
-              116
+              118
              ],
              "pos": [
               0.5,
@@ -2364,20 +2802,76 @@
              },
              "z": 2
             }
-           ]
+           ],
+           "strokePx": 3
+          },
+          {
+           "type": "panel",
+           "name": "CravePill",
+           "colour": "premium",
+           "size": [
+            0,
+            132,
+            0,
+            28
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              122,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "CraveHint",
+             "samples": [
+              "+11 heroes",
+              "+3 heroes"
+             ],
+             "font": "display",
+             "maxText": 18
+            }
+           ],
+           "corner": 14,
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 0,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 4,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            184,
+            196,
             0,
-            24
+            30
            ],
            "textColour": "ink",
            "align": "center",
-           "textScale": 0.75,
+           "textScale": 0.8,
            "textStroke": 0,
            "name": "FoodName",
            "samples": [
@@ -2389,13 +2883,13 @@
             0.5,
             0,
             0,
-            184
+            194
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 18
+           "maxText": 24
           },
           {
            "type": "frame",
@@ -2403,21 +2897,35 @@
            "transparent": true,
            "size": [
             0,
-            184,
+            196,
             0,
-            54
+            66
            ],
            "children": [
             {
-             "type": "panel",
+             "type": "frame",
              "name": "PowerStat",
-             "colour": "#F1E3C2",
+             "colour": [
+              "#F1E3C2",
+              "#F1E3C2"
+             ],
+             "paint": "#F1E3C2",
+             "corner": 15,
+             "keyline": "#D8C69C",
+             "keepKeyline": true,
              "size": [
               0,
-              184,
+              167,
               0,
-              22
+              30
              ],
+             "autoW": 12,
+             "layout": {
+              "type": "list",
+              "dir": "x",
+              "gap": 6,
+              "align": "center"
+             },
              "children": [
               {
                "type": "icon",
@@ -2425,9 +2933,9 @@
                "name": "PowerIcon",
                "size": [
                 0,
-                14,
+                22,
                 0,
-                14
+                22
                ]
               },
               {
@@ -2435,13 +2943,13 @@
                "text": "<unbound>",
                "size": [
                 0,
-                150,
+                115,
                 0,
-                17
+                23
                ],
                "textColour": "powerInk",
                "align": "center",
-               "textScale": 0.7647,
+               "textScale": 0.7826,
                "textStroke": 0,
                "name": "PowerText",
                "samples": [
@@ -2449,29 +2957,36 @@
                 "POWER x5.00"
                ],
                "font": "display",
-               "maxText": 13
+               "maxText": 18,
+               "autoX": true
               }
              ],
+             "strokePx": 2
+            },
+            {
+             "type": "frame",
+             "name": "LuckStat",
+             "colour": [
+              "#F1E3C2",
+              "#F1E3C2"
+             ],
+             "paint": "#F1E3C2",
+             "corner": 15,
+             "keyline": "#D8C69C",
+             "keepKeyline": true,
+             "size": [
+              0,
+              147,
+              0,
+              30
+             ],
+             "autoW": 12,
              "layout": {
               "type": "list",
               "dir": "x",
               "gap": 6,
               "align": "center"
              },
-             "depth": 0,
-             "corner": 11,
-             "stroke": 2
-            },
-            {
-             "type": "panel",
-             "name": "LuckStat",
-             "colour": "#F1E3C2",
-             "size": [
-              0,
-              184,
-              0,
-              22
-             ],
              "children": [
               {
                "type": "icon",
@@ -2479,9 +2994,9 @@
                "name": "LuckIcon",
                "size": [
                 0,
-                14,
+                22,
                 0,
-                14
+                22
                ]
               },
               {
@@ -2489,13 +3004,13 @@
                "text": "<unbound>",
                "size": [
                 0,
-                150,
+                95,
                 0,
-                17
+                23
                ],
                "textColour": "luckInk",
                "align": "center",
-               "textScale": 0.7647,
+               "textScale": 0.7826,
                "textStroke": 0,
                "name": "LuckText",
                "samples": [
@@ -2503,31 +3018,24 @@
                 "LUCK x5.50"
                ],
                "font": "display",
-               "maxText": 13
+               "maxText": 18,
+               "autoX": true
               }
              ],
-             "layout": {
-              "type": "list",
-              "dir": "x",
-              "gap": 6,
-              "align": "center"
-             },
-             "depth": 0,
-             "corner": 11,
-             "stroke": 2
+             "strokePx": 2
             }
            ],
            "layout": {
             "type": "list",
             "dir": "y",
-            "gap": 10,
-            "align": "start"
+            "gap": 6,
+            "align": "center"
            },
            "pos": [
             0.5,
             0,
             0,
-            218
+            232
            ],
            "anchor": [
             0.5,
@@ -2535,60 +3043,13 @@
            ]
           },
           {
-           "type": "panel",
-           "name": "CravePill",
-           "colour": "premium",
-           "size": [
-            0,
-            132,
-            0,
-            20
-           ],
-           "children": [
-            {
-             "type": "label",
-             "text": "<unbound>",
-             "size": [
-              0,
-              120,
-              0,
-              17
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
-             "name": "CraveHint",
-             "samples": [
-              "+11 heroes",
-              "+3 heroes"
-             ],
-             "font": "display",
-             "maxText": 13
-            }
-           ],
-           "depth": 0,
-           "corner": 10,
-           "pos": [
-            0.5,
-            0,
-            0,
-            282
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "stroke": 2
-          },
-          {
            "type": "button",
            "name": "BuyButton",
            "size": [
             0,
-            180,
+            196,
             0,
-            44
+            56
            ],
            "children": [
             {
@@ -2597,9 +3058,9 @@
              "name": "Icon",
              "size": [
               0,
-              26,
+              32,
               0,
-              26
+              32
              ]
             },
             {
@@ -2607,13 +3068,13 @@
              "text": "<unbound>",
              "size": [
               0,
-              114,
+              106,
               0,
-              26
+              38
              ],
              "textColour": "softRed",
              "align": "center",
-             "textScale": 0.7308,
+             "textScale": 0.6842,
              "textStroke": 2,
              "name": "PriceText",
              "samples": [
@@ -2621,7 +3082,9 @@
               "999.99Qi"
              ],
              "font": "display",
-             "maxText": 19
+             "maxText": 26,
+             "autoX": true,
+             "capW": 134
             }
            ],
            "layout": {
@@ -2632,7 +3095,7 @@
            },
            "sizeClass": "M",
            "depth": 4,
-           "corner": 18,
+           "corner": 19,
            "selfFace": true,
            "colour": "#5C6286",
            "paintable": true,
@@ -2643,31 +3106,34 @@
              "#5C6286"
             ],
             [
-             0.4,
+             0.49,
              "#5C6286"
             ],
             [
-             0.41000000000000003,
-             "#535879"
+             0.5,
+             "#4F5473"
             ],
             [
              1.0,
-             "#4B506E"
+             "#444963"
             ]
            ],
            "attrs": {
-            "PressLip": 4
+            "PressLip": 4,
+            "Rim": 0.5
            },
            "pos": [
             0.5,
             0,
-            0,
-            312
+            1,
+            -12
            ],
            "anchor": [
             0.5,
-            0
-           ]
+            1
+           ],
+           "stroke": 3,
+           "keyline": "#AEB0C2"
           },
           {
            "type": "panel",
@@ -2675,11 +3141,11 @@
            "colour": "buy",
            "size": [
             0,
-            55,
+            78,
             0,
-            22
+            30
            ],
-           "corner": 11,
+           "corner": 15,
            "depth": 0,
            "keyline": "#FFFFFF",
            "selfFace": true,
@@ -2688,7 +3154,7 @@
             0.5,
             0,
             0,
-            -7
+            -15
            ],
            "anchor": [
             0.5,
@@ -2702,14 +3168,14 @@
              "text": "NEXT",
              "size": [
               0,
-              45,
+              66,
               0,
-              16
+              24
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.8156,
-             "textStroke": 2,
+             "textScale": 0.75,
+             "textStroke": 1.5,
              "name": "NextTagText",
              "font": "display",
              "pos": [
@@ -2722,7 +3188,32 @@
               0.5,
               0.5
              ],
-             "maxText": 13
+             "maxText": 18
+            },
+            {
+             "type": "sheen",
+             "name": "Sheen",
+             "size": [
+              1,
+              0,
+              1,
+              0
+             ],
+             "angle": -24,
+             "opacity": 0.25,
+             "bands": [
+              [
+               0.3,
+               0.05
+              ],
+              [
+               0.4,
+               0.1
+              ]
+             ],
+             "corner": 15,
+             "overhang": true,
+             "children": []
             }
            ],
            "visible": false,
@@ -2733,7 +3224,8 @@
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         }
        ]
       }
@@ -2742,28 +3234,14 @@
       0.5,
       0,
       0,
-      84
+      86
      ],
      "anchor": [
       0.5,
       0
      ]
     }
-   ],
-   "comic": 10,
-   "modal": true,
-   "corner": 22,
-   "pos": [
-    0.5,
-    0,
-    0.5,
-    0
-   ],
-   "anchor": [
-    0.5,
-    0.5
-   ],
-   "keyline": "#FFFFFF"
+   ]
   }
  ]
 }

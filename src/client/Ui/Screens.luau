@@ -18,18 +18,29 @@
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TextService = game:GetService("TextService")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 
 local Signal = require(ReplicatedStorage.Packages.Signal)
 local Icons: { [string]: string } = require(ReplicatedStorage.Shared.Config.Icons)
 local Theme = require(script.Parent.Theme)
+local UiFx = require(script.Parent.UiFx)
 
 local REF_WIDTH, REF_HEIGHT = 1280, 720
 local OPEN_TIME, CLOSE_TIME, OPEN_FROM = 0.18, 0.1, 0.85
 local BIG_ICON = 40 -- a slot this many px or more (at 720p) takes the `...Big` icon
 local PRESS = TweenInfo.new(0.05, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 local UNBOUND = "<unbound>" -- what every dynamic label ships showing
+local HOVER_SOUND_GAP = 0.07 -- the least time between two ui_hover sounds
+-- pages are capped on big screens: at most this share of the viewport (never
+-- smaller than they are authored at 1280 x 720, so phones and laptops are untouched)
+local PAGE_MAX_W, PAGE_MAX_H = 0.68, 0.82
+-- v4.4 (owner's review 5: windows "kinda big"): every page window on a
+-- keyboard / mouse screen is drawn at this share of the size worked out above
+-- (8% smaller at 720p and on big monitors alike). Touch keeps its thumb-sized fill.
+local PAGE_SCALE = 0.92
+local SHINE_SECONDS = 0.8 -- a hover / press shine crossing a button
 
 local player = Players.LocalPlayer
 
@@ -44,6 +55,7 @@ local Screens = {}
 Screens.Opened = Signal.new() -- (pageName)
 Screens.Closed = Signal.new() -- (pageName)
 Screens.Fitted = Signal.new() -- (extraWidth) after every rescale
+Screens.Pressed = Signal.new() -- (button) any button on any screen was activated (click sound)
 
 local phase = "idle" -- "idle" | "starting" | "ready"
 local source: Instance? = nil
@@ -63,6 +75,9 @@ local touchFactor: { [ScreenGui]: number } = {}
 local EDGE_HUGGING: { [string]: boolean } = { HUD = true }
 local authoredX: { [GuiObject]: UDim } = {}
 local extraWidth = 0
+local blocked = false -- pages cannot open (the HUD is in a cinematic)
+local soundHook: ((string) -> ())? = nil
+local lastHover = 0
 
 -- ---------------------------------------------------------------- finders --
 
@@ -133,6 +148,22 @@ function Screens.box(root: Instance, name: string): TextBox
 	return missing(root, name, "TextBox") :: TextBox
 end
 
+-- ------------------------------------------------------------------ sound --
+
+--- Who plays UI sounds (HudController hands the SoundController in; Screens
+--- cannot require it, the SoundController requires Screens).
+function Screens.setSound(play: (string) -> ())
+	soundHook = play
+end
+
+--- Play a sound role through the hook (silent before it is set).
+function Screens.sound(role: string)
+	local play = soundHook
+	if play then
+		pcall(play, role)
+	end
+end
+
 -- --------------------------------------------------------------- painting --
 
 --- The image for an IconKey / PatternName, or "" (the slot stays blank).
@@ -190,6 +221,25 @@ function Screens.tint(control: GuiObject, color: Color3?)
 			control:SetAttribute("ShippedLip", lip.BackgroundColor3)
 		end
 	end
+	-- v4.2: a button's rim is a pale tint of its own face colour (attribute Rim =
+	-- how pale), so it follows every repaint
+	local rim = control:GetAttribute("Rim")
+	local cell = control.Parent
+	if typeof(rim) ~= "number" and cell and cell.Name == control.Name .. "Cell" then
+		rim = cell:GetAttribute("Rim")
+	end
+	if typeof(rim) == "number" then
+		local stroke: UIStroke? = nil
+		for _, child in face:GetChildren() do
+			if child:IsA("UIStroke") and child.ApplyStrokeMode == Enum.ApplyStrokeMode.Border then
+				stroke = child
+			end
+		end
+		if stroke then
+			local base = color or control:GetAttribute("ShippedFace") :: Color3
+			stroke.Color = base:Lerp(Color3.new(1, 1, 1), rim)
+		end
+	end
 	if color then
 		face.BackgroundColor3 = color
 		if lip then
@@ -218,7 +268,8 @@ local function iconOf(face: GuiObject): ImageLabel?
 end
 
 -- buttons whose face is pressed down by their PressLip: how to let go
-local pressRest: { [GuiObject]: () -> () } = setmetatable({}, { __mode = "k" }) :: any
+-- (a strong table: a weak Instance key is dropped when its Luau wrapper is collected)
+local pressRest: { [GuiObject]: () -> () } = {}
 
 --- THE way a button shows what it is (Theme.BUTTON): "afford", "cannot",
 --- "neutral", "robux", "danger", "off", "idle", "panel", "gold"; "state" for
@@ -326,11 +377,74 @@ local function easing(name: any): Enum.EasingStyle
 	return if ok and style then style else Enum.EasingStyle.Quad
 end
 
--- Press feedback of the v3 button system: the face goes down by the
--- button's PressLip (onto its lip) while the button is held, and comes back
--- when it is let go or the pointer leaves. Mouse and touch both arrive as
+-- Where a button's visual parts live. A self-faced button sits in a
+-- `<Name>Cell` with its lip (Shadow) beside it: the cell holds the parts. A
+-- button built around a `Face` holds its own Face and Shadow. Scaling and
+-- shining the PARTS (never the laid-out button or cell) keeps a list layout
+-- from reflowing and lets a hover grow from the centre.
+local function partsOf(button: GuiButton): ({ GuiObject }, Instance?, GuiObject)
+	local face = faceOf(button)
+	local holder: Instance? = nil
+	if face ~= button then
+		holder = button
+	else
+		local cell = button.Parent
+		if cell and cell:IsA("GuiObject") and cell.Name == button.Name .. "Cell" then
+			holder = cell
+		end
+	end
+	local parts: { GuiObject } = {}
+	if holder then
+		for _, child in holder:GetChildren() do
+			if child:IsA("GuiObject") then
+				table.insert(parts, child)
+			end
+		end
+	else
+		parts = { button }
+	end
+	return parts, holder, face
+end
+
+-- Re-anchor a part on its centre without moving it, so a UIScale on it grows
+-- from the middle (a UIScale scales about the AnchorPoint). Not for a part a
+-- layout places.
+local function centreAnchor(part: GuiObject)
+	local parent = part.Parent
+	if parent and parent:FindFirstChildWhichIsA("UIGridStyleLayout") then
+		return
+	end
+	local a = part.AnchorPoint
+	if a.X == 0.5 and a.Y == 0.5 then
+		return
+	end
+	local size = part.Size
+	part.Position = part.Position
+		+ UDim2.new(
+			(0.5 - a.X) * size.X.Scale,
+			(0.5 - a.X) * size.X.Offset,
+			(0.5 - a.Y) * size.Y.Scale,
+			(0.5 - a.Y) * size.Y.Offset
+		)
+	part.AnchorPoint = Vector2.new(0.5, 0.5)
+end
+
+local function scaleOf(part: GuiObject): UIScale
+	local found = part:FindFirstChildOfClass("UIScale")
+	if found then
+		return found
+	end
+	local made = Instance.new("UIScale")
+	made.Name = "MotionScale"
+	made.Parent = part
+	return made
+end
+
+-- Press feedback of the v3 button system: the face (and its shine) goes down
+-- by the button's PressLip (onto its lip) while the button is held, and comes
+-- back when it is let go or the pointer leaves. Mouse and touch both arrive as
 -- MouseButton1 on a GuiButton. Returns false for a button with no lip.
-local function wirePress(button: GuiButton): boolean
+local function wirePress(button: GuiButton, face: GuiObject, overlays: { GuiObject }): boolean
 	local lip = button:GetAttribute("PressLip")
 	local cell = button.Parent
 	if typeof(lip) ~= "number" and cell and cell.Name == button.Name .. "Cell" then
@@ -339,37 +453,102 @@ local function wirePress(button: GuiButton): boolean
 	if typeof(lip) ~= "number" then
 		return false
 	end
-	local face = faceOf(button)
-	local up = face.Position
-	local down = up + UDim2.fromOffset(0, lip)
-	local function release()
-		TweenService:Create(face, PRESS, { Position = up }):Play()
+	local moving: { GuiObject } = { face }
+	for _, layer in overlays do
+		table.insert(moving, layer)
+	end
+	local ups: { UDim2 } = {}
+	for i, part in moving do
+		ups[i] = part.Position
+	end
+	local function move(down: boolean)
+		for i, part in moving do
+			local to = if down then ups[i] + UDim2.fromOffset(0, lip) else ups[i]
+			TweenService:Create(part, PRESS, { Position = to }):Play()
+		end
 	end
 	button.MouseButton1Down:Connect(function()
-		TweenService:Create(face, PRESS, { Position = down }):Play()
+		move(true)
 	end)
-	button.MouseButton1Up:Connect(release)
-	button.MouseLeave:Connect(release)
+	button.MouseButton1Up:Connect(function()
+		move(false)
+	end)
+	button.MouseLeave:Connect(function()
+		move(false)
+	end)
 	pressRest[button] = function()
-		face.Position = up
+		for i, part in moving do
+			part.Position = ups[i]
+		end
 	end
 	return true
 end
 
 local function wireMotion(button: GuiButton)
 	local hoverScale = button:GetAttribute("HoverScale")
+	local parts, holder, face = partsOf(button)
+	-- every part re-anchored on its centre BEFORE the press positions are taken
+	if holder then
+		for _, part in parts do
+			centreAnchor(part)
+		end
+	end
+	-- the permanent gloss and the soft shine streak, laid over the face (siblings,
+	-- so the face's own layout never moves them). The shine crosses on hover and
+	-- once on a press; it never runs on a timer (owner's review 3).
+	local shine: Frame? = nil
+	local overlays: { GuiObject } = {}
+	-- v4.3: the gloss and the shine go ONLY on a painted face. A transparent
+	-- button (the HUD's food chip, a tile that is all icon and text) has no
+	-- surface to light, and an opaque white layer the size of its box showed as
+	-- a translucent white panel across it (owner's review 4). Opt out of either
+	-- per button with the attribute Gloss = false.
+	local painted = face.BackgroundTransparency < 0.95
+		or (face:IsA("ImageButton") and (face :: ImageButton).Image ~= "")
+		or (face:IsA("ImageLabel") and (face :: ImageLabel).Image ~= "")
+	if button:GetAttribute("Gloss") == false or not painted then
+		holder = nil
+	end
+	if holder then
+		local gloss = UiFx.makeGloss(face, holder)
+		local made = UiFx.makeShine(face, holder)
+		shine = made
+		for _, layer in { gloss :: GuiObject, made :: GuiObject } do
+			table.insert(overlays, layer)
+			if not table.find(parts, layer) then
+				table.insert(parts, layer)
+			end
+		end
+	elseif
+		painted
+		and button:GetAttribute("Gloss") ~= false
+		and not face:FindFirstChildWhichIsA("UIGridStyleLayout")
+		and face:IsA("GuiButton")
+	then
+		-- a lone self-faced button (no cell, no layout inside): the layers go inside it
+		UiFx.makeGloss(face, face, true)
+		shine = UiFx.makeShine(face, face, true)
+	end
+	if shine then
+		button.Activated:Connect(function()
+			UiFx.sweep(shine :: Frame, SHINE_SECONDS)
+		end)
+	end
 	-- a button with a lip is pressed DOWN, not shrunk
-	local pressScale = if wirePress(button) then nil else button:GetAttribute("PressScale")
+	local pressScale = if wirePress(button, face, overlays)
+		then nil
+		else button:GetAttribute("PressScale")
 	if typeof(hoverScale) ~= "number" and typeof(pressScale) ~= "number" then
 		return
 	end
-	local motion = Instance.new("UIScale")
-	motion.Name = "MotionScale"
-	motion.Parent = button
+	local scales: { UIScale } = {}
+	for _, part in parts do
+		table.insert(scales, scaleOf(part))
+	end
 	local hoverTime = button:GetAttribute("HoverTime")
 	local pressTime = button:GetAttribute("PressTime")
 	local hoverInfo = TweenInfo.new(
-		if typeof(hoverTime) == "number" then hoverTime else 0.1,
+		if typeof(hoverTime) == "number" then math.max(hoverTime, 0.14) else 0.14,
 		easing(button:GetAttribute("HoverStyle")),
 		Enum.EasingDirection.Out
 	)
@@ -378,14 +557,28 @@ local function wireMotion(button: GuiButton)
 		Enum.EasingStyle.Quad,
 		Enum.EasingDirection.Out
 	)
+	local function scaleTo(value: number, info: TweenInfo)
+		for _, scale in scales do
+			TweenService:Create(scale, info, { Scale = value }):Play()
+		end
+	end
 	local hovered = false
 	local function rest()
-		local target = if hovered and typeof(hoverScale) == "number" then hoverScale else 1
-		TweenService:Create(motion, hoverInfo, { Scale = target }):Play()
+		scaleTo(if hovered and typeof(hoverScale) == "number" then hoverScale else 1, hoverInfo)
 	end
 	button.MouseEnter:Connect(function()
 		hovered = true
 		rest()
+		if button.Active then
+			if shine then
+				UiFx.sweep(shine, SHINE_SECONDS)
+			end
+			local now = os.clock()
+			if now - lastHover >= HOVER_SOUND_GAP then
+				lastHover = now
+				Screens.sound("ui_hover")
+			end
+		end
 	end)
 	button.MouseLeave:Connect(function()
 		hovered = false
@@ -393,10 +586,53 @@ local function wireMotion(button: GuiButton)
 	end)
 	if typeof(pressScale) == "number" then
 		button.MouseButton1Down:Connect(function()
-			TweenService:Create(motion, pressInfo, { Scale = pressScale }):Play()
+			scaleTo(pressScale, pressInfo)
 		end)
 		button.MouseButton1Up:Connect(rest)
 	end
+end
+
+-- A button caption (attribute FitText = its size) grows with its text up to
+-- its UISizeConstraint; a string too long for that shrinks its TextSize until
+-- it fits, so a caption never spills out of its button.
+local function fitText(label: TextLabel)
+	local cap = label:GetAttribute("FitText")
+	if typeof(cap) ~= "number" then
+		return
+	end
+	-- measured with TextService, never TextFits: TextFits is false while the label is hidden or its
+	-- font is still loading, which shrank every caption to the floor (found in play 2026-11-16)
+	local limit = label:FindFirstChildOfClass("UISizeConstraint")
+	local token = 0
+	local function fit()
+		token += 1
+		local mine = token
+		label.TextSize = cap
+		local room = if limit then limit.MaxSize.X else math.huge
+		if room == math.huge or label.Text == "" then
+			return
+		end
+		task.spawn(function()
+			local size = cap
+			while size > 12 do
+				local params = Instance.new("GetTextBoundsParams")
+				params.Text = label.Text
+				params.Font = label.FontFace
+				params.Size = size
+				params.Width = 100000
+				local ok, bounds = pcall(TextService.GetTextBoundsAsync, TextService, params)
+				if mine ~= token or not ok or bounds.X <= room then
+					break
+				end
+				size -= 2
+			end
+			if mine == token then
+				label.TextSize = size
+			end
+		end)
+	end
+	label:GetPropertyChangedSignal("Text"):Connect(fit)
+	fit()
 end
 
 local function pageOf(instance: Instance): string?
@@ -409,6 +645,9 @@ end
 
 local function wireButton(button: GuiButton)
 	wireMotion(button)
+	button.Activated:Connect(function()
+		Screens.Pressed:Fire(button)
+	end)
 	local opens = button:GetAttribute("OpensPage")
 	if typeof(opens) == "string" then
 		button.Activated:Connect(function()
@@ -505,12 +744,16 @@ function Screens.prepare(root: Instance)
 			if descendant:GetAttribute("WheelScrollsX") == true then
 				table.insert(wheelRows, descendant)
 			end
-		elseif descendant:IsA("TextLabel") and descendant.Text == UNBOUND then
-			-- a dynamic label ships with a placeholder: it is empty until
-			-- the code that owns it has real data to show
-			descendant.Text = ""
+		elseif descendant:IsA("TextLabel") then
+			if descendant.Text == UNBOUND then
+				-- a dynamic label ships with a placeholder: it is empty until
+				-- the code that owns it has real data to show
+				descendant.Text = ""
+			end
+			fitText(descendant)
 		end
 	end
+	UiFx.scan(root)
 end
 
 -- ------------------------------------------------------------------ scale --
@@ -587,6 +830,14 @@ local function fit()
 					1,
 					math.min(0.94 * view.X / (width * scale), 0.90 * view.Y / (height * scale))
 				)
+			elseif width > 0 and height > 0 and gui:GetAttribute("UIKind") == "page" then
+				-- a stable size on a big monitor: at most PAGE_MAX_W x PAGE_MAX_H of
+				-- the screen, never below the authored 720p pixel size
+				local cap = math.min(
+					PAGE_MAX_W * view.X / (width * scale),
+					PAGE_MAX_H * view.Y / (height * scale)
+				)
+				factor = PAGE_SCALE * math.min(1, math.max(1 / scale, cap))
 			end
 			touchFactor[gui] = factor
 			local touch = window:FindFirstChild("TouchScale")
@@ -708,6 +959,9 @@ end
 --- button opened it: closing the new page returns there.
 function Screens.open(name: string, from: string?)
 	Screens.init()
+	if blocked then
+		return -- the HUD is in a cinematic: no page opens over it
+	end
 	local gui = screens[name]
 	if not gui or gui:GetAttribute("UIKind") ~= "page" then
 		warn(`[Screens] no page named {name}`)
@@ -753,6 +1007,21 @@ function Screens.switch(name: string, from: string?)
 	else
 		Screens.open(target, from)
 	end
+end
+
+--- While blocked (the HUD is in a cinematic) no page opens, and an open
+--- page closes.
+function Screens.setBlocked(on: boolean)
+	blocked = on
+	if on and openName then
+		backTo = nil
+		Screens.close()
+	end
+end
+
+--- True while pages are blocked.
+function Screens.isBlocked(): boolean
+	return blocked
 end
 
 --- Let the game decide which page a button really opens (name, fromPage).
@@ -909,6 +1178,15 @@ function Screens.init()
 		end
 	end)
 
+	-- the shared UI motion loop (UiFx) runs while a page is open
+	Screens.Opened:Connect(function()
+		UiFx.activate("page", true)
+	end)
+	Screens.Closed:Connect(function()
+		if not openName then
+			UiFx.activate("page", false)
+		end
+	end)
 	UserInputService.InputBegan:Connect(function(input: InputObject)
 		if not openName then
 			return

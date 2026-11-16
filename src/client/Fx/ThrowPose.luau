@@ -2,8 +2,9 @@
 -- ThrowPose - a procedural overhand throw on an R15 character, driven on the
 -- Motor6Ds (`Motor6D.Transform`, written every RenderStepped while it runs).
 --
--- A STAND-IN until the authored throw clip arrives in section 4. Everything
--- about the motion is the POSE table below; `ThrowPose.start` only plays it.
+-- The FALLBACK for the authored Throw clip (Fx/Motion): ThrowSequence uses it
+-- only when that clip is neither uploaded nor registered this session.
+-- Everything about the motion is the POSE table below; `ThrowPose.start` only plays it.
 -- A character without these joints (R6, a rig mid-respawn) simply does not
 -- move: the caller's timing is unaffected.
 

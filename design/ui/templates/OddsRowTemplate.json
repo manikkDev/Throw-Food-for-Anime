@@ -2,110 +2,256 @@
  "name": "OddsRowTemplate",
  "theme": "theme.json",
  "resolution": [
-  624,
-  64
+  188,
+  302
  ],
  "kind": "world",
  "children": [
   {
    "type": "panel",
    "name": "OddsRowTemplate",
-   "colour": "panelHi",
-   "depth": 3,
-   "corner": 12,
+   "colour": [
+    "#FC6289",
+    "#9C2542"
+   ],
+   "keyline": "#FFFFFF",
+   "depth": 0,
+   "corner": 16,
    "size": [
     0,
-    600,
+    164,
     0,
-    40
+    278
    ],
-   "padding": 4,
-   "layout": {
-    "type": "list",
-    "dir": "x",
-    "gap": 12,
-    "align": "start"
-   },
    "attrs": {
-    "HeroId": "void_empress"
+    "HeroId": "void_empress",
+    "Rarest": true
+   },
+   "pattern": {
+    "name": "dots",
+    "colour": "#FFFFFF",
+    "opacity": 0.12,
+    "tile": 22
    },
    "children": [
     {
-     "type": "frame",
-     "name": "Portrait",
-     "cls": "ViewportFrame",
-     "colour": [
-      "#FB3B6B",
-      "#FB3B6B"
+     "type": "sheen",
+     "name": "Sheen",
+     "size": [
+      1,
+      0,
+      1,
+      0
      ],
+     "angle": -24,
+     "opacity": 0.18,
+     "bands": [
+      [
+       0.3,
+       0.05
+      ],
+      [
+       0.4,
+       0.1
+      ]
+     ],
+     "corner": 16,
+     "overhang": true,
+     "children": [],
+     "z": 1
+    },
+    {
+     "type": "icon",
+     "icon": "FxSunburst",
+     "name": "Sunburst",
      "size": [
       0,
-      32,
+      156,
       0,
-      32
+      156
      ],
-     "children": []
+     "pos": [
+      0.5,
+      0,
+      0,
+      98
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 1,
+     "tint": "#FFFFFF",
+     "alphaImg": 0.0,
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "Portrait",
+     "transparent": true,
+     "cls": "ViewportFrame",
+     "size": [
+      0,
+      140,
+      0,
+      118
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      38
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "children": [],
+     "z": 2
     },
     {
      "type": "label",
      "text": "Illusion Overlord",
      "size": [
       0,
-      230,
+      150,
       0,
-      21
+      47
      ],
      "textColour": "onDark",
-     "align": "left",
-     "textScale": 0.7619,
-     "textStroke": 2,
+     "align": "center",
+     "textScale": 0.4255,
+     "textStroke": 1.5,
      "name": "HeroName",
+     "wrap": true,
      "font": "display",
-     "maxText": 16
-    },
-    {
-     "type": "label",
-     "text": "12x your best",
-     "size": [
+     "pos": [
+      0.5,
       0,
-      180,
       0,
-      17
+      160
      ],
-     "textColour": "soft",
-     "align": "left",
-     "textScale": 0.7647,
-     "textStroke": 2,
-     "name": "OddsEarn",
-     "maxText": 13
+     "anchor": [
+      0.5,
+      0
+     ],
+     "maxText": 20
     },
     {
      "type": "panel",
-     "name": "OddsChip",
-     "colour": "#FB3B6B",
+     "name": "RarityTag",
+     "colour": "#B0294B",
      "size": [
       0,
-      70,
+      105,
       0,
       26
      ],
      "selfFace": true,
      "paintable": true,
      "depth": 0,
+     "corner": 13,
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        95,
+        0,
+        20
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.8,
+       "textStroke": 1.5,
+       "name": "RarityText",
+       "samples": [
+        "MYTHIC",
+        "LEGENDARY"
+       ],
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "maxText": 16
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      212
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "stroke": 2,
+     "keyline": "#FFFFFF"
+    },
+    {
+     "type": "label",
+     "text": "12x your best",
+     "size": [
+      0,
+      150,
+      0,
+      23
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.7826,
+     "textStroke": 1.5,
+     "name": "OddsEarn",
+     "font": "display",
+     "pos": [
+      0.5,
+      0,
+      0,
+      246
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "maxText": 18
+    },
+    {
+     "type": "panel",
+     "name": "OddsChip",
+     "colour": "danger",
+     "size": [
+      0,
+      104,
+      0,
+      40
+     ],
+     "selfFace": true,
+     "paintable": true,
+     "depth": 0,
+     "corner": 20,
      "children": [
       {
        "type": "label",
        "text": "1%",
        "size": [
         0,
-        62,
+        94,
         0,
-        22
+        34
        ],
        "textColour": "onDark",
        "align": "center",
-       "textScale": 0.6364,
-       "textStroke": 3,
+       "textScale": 0.7647,
+       "textStroke": 1.5,
        "name": "OddsPercent",
        "font": "display",
        "pos": [
@@ -117,12 +263,106 @@
        "anchor": [
         0.5,
         0.5
-       ]
+       ],
+       "maxText": 26
       }
      ],
-     "stroke": 2
+     "keyline": "#FFFFFF",
+     "pos": [
+      0.5,
+      0,
+      0,
+      -16
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 8,
+     "overhang": true,
+     "stroke": 3
+    },
+    {
+     "type": "icon",
+     "icon": "IconStar",
+     "name": "Sparkle1",
+     "size": [
+      0,
+      26,
+      0,
+      26
+     ],
+     "pos": [
+      0,
+      14,
+      0,
+      40
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 4,
+     "overhang": true
+    },
+    {
+     "type": "icon",
+     "icon": "IconStar",
+     "name": "Sparkle2",
+     "size": [
+      0,
+      18,
+      0,
+      18
+     ],
+     "pos": [
+      1,
+      -16,
+      0,
+      60
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 4,
+     "overhang": true
+    },
+    {
+     "type": "icon",
+     "icon": "IconStar",
+     "name": "Sparkle3",
+     "size": [
+      0,
+      22,
+      0,
+      22
+     ],
+     "pos": [
+      1,
+      -20,
+      0,
+      150
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 4,
+     "overhang": true
     }
    ],
+   "strokeGrad": [
+    "#FF4D6D",
+    "#FFB020",
+    "#FFE14D",
+    "#4ADE80",
+    "#38BDF8",
+    "#A855F7",
+    "#FF4D6D"
+   ],
+   "strokeW": 4,
+   "stroke": 3,
    "pos": [
     0,
     12,

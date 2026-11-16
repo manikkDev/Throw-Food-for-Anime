@@ -1,0 +1,10 @@
+{
+ "textures": [
+  "sim:lib/sprites/elements/flame_glow_02",
+  "sim:lib/sprites/rings/ring_dashed_glow_04",
+  "sim:lib/sprites/shapes/orb_soft_00",
+  "sim:lib/sprites/specks/dot_glow_00",
+  "sim:lib/sprites/stars/star_cel_06"
+ ],
+ "meshes": []
+}

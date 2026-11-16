@@ -6,6 +6,13 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Knit = require(ReplicatedStorage.Packages.Knit)
 
+-- Studio-only content never reaches a player: the aura showcase (tools/studio/aura_showcase.py)
+-- floats outside the map for the owner to look at in edit mode
+local showcase = workspace:FindFirstChild("AuraShowcase")
+if showcase then
+	showcase:Destroy()
+end
+
 Knit.AddServices(script.Services)
 
 Knit.Start()
@@ -14,6 +21,6 @@ Knit.Start()
 		-- running the code on disk. Check the Rojo plugin is actually CONNECTED
 		-- and syncing before debugging anything else - an established connection
 		-- is not the same as an accepted one.
-		print("[Throw Food for Anime] Server started - BUILD s3-v3-04")
+		print("[Throw Food for Anime] Server started - BUILD s4-08")
 	end)
 	:catch(warn)

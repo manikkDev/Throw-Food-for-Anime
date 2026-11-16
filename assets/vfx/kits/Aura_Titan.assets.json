@@ -1,0 +1,9 @@
+{
+ "textures": [
+  "sim:lib/sprites/rings/ring_cel_08",
+  "sim:lib/sprites/rings/ripple_glow_03",
+  "sim:lib/sprites/shapes/orb_soft_00",
+  "sim:lib/sprites/specks/dot_glow_00"
+ ],
+ "meshes": []
+}

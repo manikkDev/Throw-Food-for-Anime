@@ -17,6 +17,7 @@ local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Screens = require(script.Parent.Screens)
 local Theme = require(script.Parent.Theme)
+local UiFx = require(script.Parent.UiFx)
 
 local MAPS = Lookup.of(Config)
 local POP = TweenInfo.new(0.22, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
@@ -29,13 +30,15 @@ local ELEMENTS: { [string]: { holder: string, text: string? } } = {
 	Zone = { holder = "ZoneBanner", text = "ZoneBannerText" },
 	Odds = { holder = "OddsLabel", text = "OddsLabel" },
 	Burst = { holder = "OddsBurst" },
-	Stamp = { holder = "StampLabel", text = "StampLabel" },
-	Variant = { holder = "VariantLabel", text = "VariantLabel" },
 	Name = { holder = "NameLabel", text = "NameLabel" },
-	Ribbon = { holder = "RarityRibbon", text = "RarityText" },
-	Income = { holder = "IncomeRow", text = "IncomeLabel" },
-	Sold = { holder = "SoldLabel", text = "SoldLabel" },
+	-- v4.3: the final beat is ONE hero info card (HeroCard); the stamp and the
+	-- sold line ride its edges
+	Card = { holder = "HeroCard" },
+	Stamp = { holder = "Stamp", text = "StampLabel" },
+	Sold = { holder = "SoldTag", text = "SoldLabel" },
 	Skip = { holder = "SkipHint" },
+	-- v4.6: the final beat's odds, big at the top centre (the card no longer carries them)
+	FinalOdds = { holder = "FinalOdds", text = "FinalOddsText" },
 }
 
 local RevealUi = {}
@@ -50,6 +53,7 @@ local labels: { [string]: TextLabel } = {}
 local bars: { GuiObject } = {}
 local flashFrame: GuiObject? = nil
 local flashId = 0
+local finalOddsId = 0
 
 local function pop(target: GuiObject, from: number)
 	local scale = target:FindFirstChild("PopScale")
@@ -127,9 +131,11 @@ end
 
 --- Hide every element (the bars and the flash are left as they are).
 function RevealUi.clear()
+	finalOddsId += 1
 	for element in ELEMENTS do
 		show(element, false)
 	end
+	RevealUi.oddsTension(0)
 end
 
 --- Turn the screen on with nothing showing, or off again.
@@ -141,6 +147,7 @@ function RevealUi.enable(on: boolean)
 		return
 	end
 	RevealUi.clear()
+	UiFx.activate("revealCard", false)
 	if on then
 		-- a flash still fading from the last sequence must not switch this
 		-- one off when it ends
@@ -213,7 +220,8 @@ function RevealUi.flight(luck: number, zoneName: string)
 	show("Luck", true)
 	local ribbon = holders.Zone
 	local label = labels.Zone
-	if ribbon and label and (label.Text ~= zoneName or not ribbon.Visible) then
+	-- no name: the HUD's region banner (HudController:ZoneCross) is the zone label now
+	if zoneName ~= "" and ribbon and label and (label.Text ~= zoneName or not ribbon.Visible) then
 		-- a new zone (the food crossed a gate): the ribbon pops
 		label.Text = zoneName
 		ribbon.Visible = true
@@ -242,8 +250,189 @@ function RevealUi.odds(oneInN: number, withPop: boolean): boolean
 	return true
 end
 
+-- The odds counter's look as the suspense climbs: an outline and a gradient in the rarity the
+-- escalation has reached, and a punch that grows with each rung.
+local oddsDecor: { stroke: UIStroke?, gradient: UIGradient?, home: UDim2? } = {}
+function RevealUi.oddsTier(color: Color3?, rung: number?)
+	local label = labels.Odds
+	if not label then
+		return
+	end
+	if not oddsDecor.stroke or oddsDecor.stroke.Parent ~= label then
+		local stroke = label:FindFirstChild("TierStroke") :: UIStroke?
+		if not stroke then
+			local made = Instance.new("UIStroke")
+			made.Name = "TierStroke"
+			made.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+			made.Parent = label
+			stroke = made
+		end
+		local gradient = label:FindFirstChild("TierGradient") :: UIGradient?
+		if not gradient then
+			local made = Instance.new("UIGradient")
+			made.Name = "TierGradient"
+			made.Rotation = 90
+			made.Parent = label
+			gradient = made
+		end
+		oddsDecor.stroke, oddsDecor.gradient = stroke, gradient
+	end
+	local stroke = oddsDecor.stroke :: UIStroke
+	local gradient = oddsDecor.gradient :: UIGradient
+	if not color then
+		stroke.Enabled = false
+		gradient.Enabled = false
+		return
+	end
+	stroke.Enabled = true
+	stroke.Color = color:Lerp(Color3.new(0, 0, 0), 0.35)
+	stroke.Thickness = 3 + (rung or 0) * 0.6
+	gradient.Enabled = true
+	gradient.Color = ColorSequence.new(Color3.new(1, 1, 1), color:Lerp(Color3.new(1, 1, 1), 0.25))
+	pop(label, 1.25 + 0.08 * (rung or 0))
+end
+
+--- The counter's tension while the odds run (owner's review 3: "the 1 in ... should build
+--- suspense"): it trembles, more as `amount` (0..1) rises; 0 puts it back at rest.
+function RevealUi.oddsTension(amount: number)
+	local holder = holders.Odds
+	if not holder then
+		return
+	end
+	if not oddsDecor.home then
+		oddsDecor.home = holder.Position
+	end
+	local home = oddsDecor.home :: UDim2
+	if amount <= 0 then
+		holder.Position = home
+		holder.Rotation = 0
+		return
+	end
+	local j = 5 * amount
+	holder.Position = home + UDim2.fromOffset((math.random() - 0.5) * j, (math.random() - 0.5) * j)
+	holder.Rotation = (math.random() - 0.5) * 3 * amount
+end
+
+-- A line of dialogue under the odds while the silhouette walks in: who speaks, typed out.
+local sayFrame: Frame? = nil
+local sayId = 0
+function RevealUi.say(speaker: string?, text: string?, color: Color3?)
+	sayId += 1
+	local id = sayId
+	local screen = gui
+	if not text or not screen then
+		if sayFrame then
+			sayFrame.Visible = false
+		end
+		return
+	end
+	if not sayFrame then
+		local frame = Instance.new("Frame")
+		frame.Name = "DialogueLine"
+		frame.AnchorPoint = Vector2.new(0.5, 0.5)
+		frame.Position = UDim2.fromScale(0.5, 0.7)
+		frame.Size = UDim2.fromScale(0.46, 0.085)
+		frame.BackgroundColor3 = Color3.fromRGB(14, 12, 28)
+		frame.BackgroundTransparency = 0.18
+		frame.ZIndex = 50
+		local corner = Instance.new("UICorner")
+		corner.CornerRadius = UDim.new(0.3, 0)
+		corner.Parent = frame
+		local stroke = Instance.new("UIStroke")
+		stroke.Name = "Edge"
+		stroke.Thickness = 3
+		stroke.Color = Color3.new(1, 1, 1)
+		stroke.Parent = frame
+		local who = Instance.new("TextLabel")
+		who.Name = "Who"
+		who.BackgroundTransparency = 1
+		who.AnchorPoint = Vector2.new(0, 0.5)
+		who.Position = UDim2.fromScale(0.03, 0)
+		who.Size = UDim2.fromScale(0.3, 0.55)
+		who.Font = Enum.Font.FredokaOne
+		who.TextScaled = true
+		who.TextXAlignment = Enum.TextXAlignment.Left
+		who.TextColor3 = Color3.new(1, 1, 1)
+		who.ZIndex = 52
+		local whoStroke = Instance.new("UIStroke")
+		whoStroke.Thickness = 2
+		whoStroke.Parent = who
+		who.Parent = frame
+		local line = Instance.new("TextLabel")
+		line.Name = "Line"
+		line.BackgroundTransparency = 1
+		line.AnchorPoint = Vector2.new(0.5, 0.5)
+		line.Position = UDim2.fromScale(0.5, 0.56)
+		line.Size = UDim2.fromScale(0.92, 0.62)
+		line.Font = Enum.Font.FredokaOne
+		line.TextScaled = true
+		line.TextColor3 = Color3.new(1, 1, 1)
+		line.ZIndex = 52
+		local lineSize = Instance.new("UITextSizeConstraint")
+		lineSize.MaxTextSize = 30
+		lineSize.Parent = line
+		line.Parent = frame
+		frame.Parent = screen
+		sayFrame = frame
+	end
+	local frame = sayFrame :: Frame
+	local who = frame:FindFirstChild("Who") :: TextLabel
+	local line = frame:FindFirstChild("Line") :: TextLabel
+	local edge = frame:FindFirstChild("Edge") :: UIStroke
+	who.Text = speaker or ""
+	who.TextColor3 = color or Color3.new(1, 1, 1)
+	edge.Color = (color or Color3.new(1, 1, 1)):Lerp(Color3.new(1, 1, 1), 0.5)
+	line.Text = `"{text}"`
+	line.MaxVisibleGraphemes = 0
+	frame.Visible = true
+	pop(frame, 0.6)
+	-- typed out, a soft blip every other letter
+	local Sound = require(script.Parent.Parent.Controllers.SoundController) :: any
+	task.spawn(function()
+		local count = utf8.len(line.Text) or #line.Text
+		for typed = 1, count do
+			if sayId ~= id then
+				return
+			end
+			line.MaxVisibleGraphemes = typed
+			if typed % 2 == 0 then
+				Sound:Play("dialogue_blip", nil, { pitchVary = 0.08 })
+			end
+			task.wait(0.028)
+		end
+	end)
+end
+
+--- The line a caught hero says in its reveal, or nil (below RevealLines.FromRarity).
+function RevealUi.lineFor(result: any): string?
+	local lines = (Config :: any).RevealLines
+	local rarity = Config.Rarities[result.rarity]
+	local from = lines and Config.Rarities[lines.FromRarity]
+	if not lines or not rarity or not from or rarity.Order < from.Order then
+		return nil
+	end
+	local character = MAPS.character[result.id] or MAPS.premium[result.id]
+	local own = character and (character :: any).Line
+	if typeof(own) == "string" and own ~= "" then
+		return own
+	end
+	local pool = lines.ByRarity[result.rarity]
+	return if pool and #pool > 0 then pool[math.random(1, #pool)] else nil
+end
+
 --- The name line: underscores and the letters found so far, or the full name.
 function RevealUi.name(text: string)
+	-- one line, scaled to the width: wrapped, the spaced-out "_ _ _ _" name broke onto two lines
+	-- and shrank to unreadable (owner's review 6: "the name is not visible")
+	local label = labels.Name
+	if label then
+		-- sized from its length (about 0.62 em a character in this font), never auto-scaled: in play
+		-- the label came up with scaling off at TextSize 8, a speck under the silhouette
+		label.TextWrapped = false
+		label.TextScaled = false
+		local width = label.Size.X.Offset > 0 and label.Size.X.Offset or 820
+		label.TextSize = math.clamp(math.floor(width / (math.max(#text, 1) * 0.62)), 18, 46)
+	end
 	write("Name", text)
 	show("Name", true)
 end
@@ -254,68 +443,259 @@ function RevealUi.heroName(result: any): string
 	return if character then character.Name else tostring(result.id)
 end
 
---- The final beat: stamp, variant, full name, rarity ribbon, income, and the
---- burst behind the odds in the rarity colour.
+--- The final beat (v4.3, owner's review 4): ONE hero info card at the bottom
+--- centre that stays for the whole beat: the rarity ribbon on its top edge
+--- (the word in the tier's moving colours from Rare up), the name big, the size /
+--- mutation / craving tags in their colours and the fuse stars, the income big
+--- with the yen icon, the odds, a NEW! / NEW BEST! / LUCKY! stamp on its corner
+--- and the sold / bench line on its bottom edge. It slides up and scales in
+--- with a shine; the card frame and glow take the rarity's tier look.
+local function rarityWord(label: TextLabel, rarity: string)
+	local gradient = label:FindFirstChild("TierText")
+	local colours = UiFx.tierColours(rarity)
+	if not colours then
+		if gradient then
+			gradient:Destroy()
+		end
+		return
+	end
+	local made: UIGradient
+	if gradient and gradient:IsA("UIGradient") then
+		made = gradient
+	else
+		made = Instance.new("UIGradient")
+		made.Name = "TierText"
+		made.Parent = label
+		UiFx.spinGradient(made, 90)
+	end
+	local points = {}
+	for i, c in colours do
+		table.insert(
+			points,
+			ColorSequenceKeypoint.new((i - 1) / (#colours - 1), c:Lerp(Color3.new(1, 1, 1), 0.35))
+		)
+	end
+	made.Color = ColorSequence.new(points)
+end
+
 function RevealUi.final(result: any)
 	local rarity = result.rarity or "Premium"
 	local color = Theme.rarity(rarity)
+	local card = holders.Card
+	local character = MAPS.character[result.id] or MAPS.premium[result.id]
 
-	RevealUi.name(RevealUi.heroName(result))
-	pop(holders.Name, 1.3)
+	-- the card replaces the spelled name; the counter becomes the big final odds at the top
+	show("Name", false)
+	show("Odds", false)
+	show("Burst", false)
+	RevealUi.oddsTension(0)
 
-	local stamp = if result.mut or result.size
-		then "LUCKY!"
-		elseif result.isBest then "NEW BEST!"
+	Screens.label(card, "CardName").Text = RevealUi.heroName(result)
+	local word = Screens.label(card, "RarityText")
+	word.Text = rarity:upper()
+	rarityWord(word, rarity)
+	Screens.tint(Screens.frame(card, "RarityRibbon"), color)
+	local panel = Screens.frame(card, "CardPanel")
+	UiFx.styleCard(panel, rarity)
+	UiFx.setColour(card, color:Lerp(Color3.new(1, 1, 1), 0.3))
+
+	-- tags: size, mutation (its colour), craving (its flavour), stars
+	local size = if typeof(result.size) == "string" then result.size else nil
+	local mut = if typeof(result.mut) == "string" then result.mut else nil
+	Screens.frame(card, "SizeTagCell").Visible = size ~= nil
+	Screens.label(card, "SizeText").Text = if size then size:upper() else ""
+	Screens.frame(card, "MutationTagCell").Visible = mut ~= nil
+	Screens.label(card, "MutationText").Text = if mut then mut:upper() else ""
+	Screens.tint(Screens.frame(card, "MutationTag"), Theme.mutation(mut))
+	local craves = character and (character :: any).Craves
+	local crave = Screens.frame(card, "CraveTagCell")
+	crave.Visible = typeof(craves) == "string"
+	if typeof(craves) == "string" then
+		Screens.label(card, "CraveText").Text = if result.flavorMatch
+			then "CRAVING!"
+			else `CRAVES {craves:upper()}`
+		Screens.setIcon(Screens.image(card, "CraveTagIcon"), "IconFlavor" .. craves)
+		Screens.tint(Screens.frame(card, "CraveTag"), Theme.FLAVOR_TILE[craves] or Theme.PREMIUM)
+	end
+	local stars = tonumber(result.stars) or 0
+	for i = 1, 3 do
+		Screens.image(card, "Star" .. i).Visible = i <= stars
+	end
+	Screens.frame(card, "Stars").Visible = stars > 0
+	Screens.frame(card, "TagRow").Visible = size ~= nil
+		or mut ~= nil
+		or typeof(craves) == "string"
+		or stars > 0
+
+	-- the numbers
+	Screens.label(card, "IncomeLabel").Text = `+{Format.short(result.income or 0)}/s`
+	if typeof(result.oneInN) == "number" then
+		RevealUi.finalOdds(result.oneInN, color)
+	else
+		show("FinalOdds", false)
+	end
+
+	local stamp = if result.isBest
+		then "NEW BEST!"
 		elseif result.isNew then "NEW!"
+		elseif mut or size then "LUCKY!"
 		else nil
+	show("Stamp", stamp ~= nil)
 	if stamp then
 		write("Stamp", stamp)
-		show("Stamp", true)
-		pop(holders.Stamp, 1.8)
+		local cell = shown.Stamp
+		cell.Rotation = 7
+		task.delay(0.3, function()
+			pop(cell, 1.8)
+		end)
 	end
-
-	local variant = {}
-	if result.size then
-		table.insert(variant, result.size:upper())
-	end
-	if result.mut then
-		table.insert(variant, result.mut:upper())
-	end
-	if result.flavorMatch then
-		table.insert(variant, "CRAVING!")
-	end
-	if #variant > 0 then
-		write("Variant", table.concat(variant, "  "))
-		show("Variant", true)
-	end
-
-	Screens.tint(holders.Ribbon, color)
-	write("Ribbon", rarity:upper())
-	show("Ribbon", true)
-	pop(holders.Ribbon, 1.4)
-
-	write("Income", `+{Format.short(result.income or 0)}/s`)
-	show("Income", true)
-
 	local sold = if result.action == "sold"
 		then `sold for {Format.short(result.soldYen or 0)} yen`
 		elseif result.action == "bench" then "sent to your bench"
 		else nil
+	show("Sold", sold ~= nil)
 	if sold then
 		write("Sold", sold)
-		show("Sold", true)
 	end
 
-	if result.oneInN then
-		RevealUi.odds(result.oneInN, false)
-		local burst = holders.Burst
-		if burst:IsA("ImageLabel") then
-			burst.ImageColor3 = color
-		end
-		show("Burst", true)
-		pop(burst, 0.4)
-		pop(holders.Odds, 1.5)
+	-- in: slide up, scale in, then a shine across and the ribbon pops
+	local home = card:GetAttribute("Home")
+	if typeof(home) ~= "UDim2" then
+		home = card.Position
+		card:SetAttribute("Home", home)
 	end
+	card.Position = (home :: UDim2) + UDim2.fromOffset(0, 70)
+	show("Card", true)
+	pop(card, 0.82)
+	TweenService:Create(
+		card,
+		TweenInfo.new(0.45, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
+		{ Position = home }
+	):Play()
+	UiFx.activate("revealCard", true)
+	task.delay(0.3, function()
+		pop(Screens.frame(card, "RarityRibbon"), 1.4)
+		local face = panel:FindFirstChild("Face")
+		if face and face:IsA("GuiObject") then
+			UiFx.sweep(UiFx.makeShine(face, face, true), 0.9)
+		end
+	end)
+end
+
+--- v4.6 (owner's review 7): the final beat's "1 IN N" at the top centre, held for the
+--- whole beat. The number SLAMS in (scaled down from 2.4x with a hard overshoot and a
+--- short shake), the glow and the turning sunburst behind it bloom in the rarity colour,
+--- the CHANCE chip pops in under it, and a shine runs through the letters every ~2.4 s
+--- (a white band in the text's UIGradient, so it never draws a box).
+local SHINE_BASE = 0.32 -- how far the rarity colour is lifted toward white at rest
+function RevealUi.finalOdds(oneInN: number, color: Color3)
+	local holder = holders.FinalOdds
+	local label = labels.FinalOdds
+	if not holder or not label then
+		return
+	end
+	finalOddsId += 1
+	local id = finalOddsId
+	label.Text = Format.oneIn(oneInN):upper()
+	label.TextColor3 = Color3.new(1, 1, 1)
+	local stroke = label:FindFirstChildOfClass("UIStroke")
+	if stroke then
+		stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+		stroke.Color = color:Lerp(Color3.new(0, 0, 0), 0.6)
+		stroke.Thickness = 4
+	end
+	-- the letters: the rarity colour with a white band parked off the left edge
+	local gradient = label:FindFirstChild("OddsShine")
+	if not gradient or not gradient:IsA("UIGradient") then
+		for _, other in label:GetChildren() do
+			if other:IsA("UIGradient") then
+				other.Enabled = false
+			end
+		end
+		local made = Instance.new("UIGradient")
+		made.Name = "OddsShine"
+		made.Parent = label
+		gradient = made
+	end
+	local shine = gradient :: UIGradient
+	local base = color:Lerp(Color3.new(1, 1, 1), SHINE_BASE)
+	shine.Rotation = 18
+	shine.Color = ColorSequence.new({
+		ColorSequenceKeypoint.new(0, base),
+		ColorSequenceKeypoint.new(0.4, base),
+		ColorSequenceKeypoint.new(0.5, Color3.new(1, 1, 1)),
+		ColorSequenceKeypoint.new(0.6, base),
+		ColorSequenceKeypoint.new(1, base),
+	})
+	shine.Offset = Vector2.new(-1, 0)
+
+	-- the glow and the sunburst take the rarity's colour and motion
+	UiFx.scan(holder)
+	UiFx.setRarity(holder, nil)
+	UiFx.setColour(holder, color:Lerp(Color3.new(1, 1, 1), 0.2))
+	local caption = Screens.frame(holder, "ChancePill")
+	Screens.tint(caption, color:Lerp(Color3.new(0, 0, 0), 0.55))
+	local captionCell = caption.Parent
+	local captionWhole: GuiObject = if captionCell
+			and captionCell:IsA("GuiObject")
+			and captionCell.Name == "ChancePillCell"
+		then captionCell
+		else caption
+	captionWhole.Visible = false
+
+	-- the slam
+	local home = holder:GetAttribute("Home")
+	if typeof(home) ~= "UDim2" then
+		home = holder.Position
+		holder:SetAttribute("Home", home)
+	end
+	holder.Position = home :: UDim2
+	show("FinalOdds", true)
+	local scale = holder:FindFirstChild("SlamScale")
+	if not scale or not scale:IsA("UIScale") then
+		local made = Instance.new("UIScale")
+		made.Name = "SlamScale"
+		made.Parent = holder
+		scale = made
+	end
+	local slam = scale :: UIScale
+	slam.Scale = 2.4
+	TweenService:Create(
+		slam,
+		TweenInfo.new(0.32, Enum.EasingStyle.Back, Enum.EasingDirection.Out, 0, false, 0),
+		{ Scale = 1 }
+	):Play()
+	task.delay(0.12, function()
+		-- the impact: a short shake, settling
+		for i = 1, 6 do
+			if finalOddsId ~= id then
+				return
+			end
+			local j = 7 * (1 - i / 7)
+			holder.Position = (home :: UDim2)
+				+ UDim2.fromOffset((math.random() - 0.5) * 2 * j, (math.random() - 0.5) * 2 * j)
+			task.wait(0.03)
+		end
+		holder.Position = home :: UDim2
+		if finalOddsId ~= id then
+			return
+		end
+		captionWhole.Visible = true
+		pop(captionWhole, 1.6)
+	end)
+	-- the shine, through the letters, for as long as the beat holds
+	task.spawn(function()
+		task.wait(0.4)
+		while finalOddsId == id and holder.Visible do
+			shine.Offset = Vector2.new(-1, 0)
+			TweenService:Create(
+				shine,
+				TweenInfo.new(0.7, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+				{ Offset = Vector2.new(1, 0) }
+			):Play()
+			task.wait(2.4)
+		end
+	end)
 end
 
 --- "tap to continue" under the final beat.

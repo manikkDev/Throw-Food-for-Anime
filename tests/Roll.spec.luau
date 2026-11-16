@@ -98,7 +98,10 @@ return {
 				counts[character.Rarity] = (counts[character.Rarity] or 0) + 1
 			end
 			for rarity, count in zone.Slots do
-				assert(counts[rarity] == count, `{zone.Name} has {counts[rarity]} {rarity}, Slots says {count}`)
+				assert(
+					counts[rarity] == count,
+					`{zone.Name} has {counts[rarity]} {rarity}, Slots says {count}`
+				)
 				counts[rarity] = nil
 			end
 			assert(next(counts) == nil, `{zone.Name} has heroes of a rarity missing from Slots`)
@@ -128,7 +131,10 @@ return {
 				local whole = chanceOf(rows, rarity)
 				for _, row in rows do
 					if row.rarity == rarity then
-						assert(Support.near(row.chance, whole / count, 1e-9), `{row.id} share is off`)
+						assert(
+							Support.near(row.chance, whole / count, 1e-9),
+							`{row.id} share is off`
+						)
 					end
 				end
 			end

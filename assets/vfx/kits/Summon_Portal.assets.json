@@ -1,0 +1,12 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_02__vt",
+  "sim:lib/beams/laser_soft_04__vt",
+  "sim:lib/flipbooks/magic/sigil_spin_glow_02_4x4",
+  "sim:lib/sprites/sigils/rune_glow_02",
+  "sim:lib/sprites/specks/dot_glow_00",
+  "sim:lib/sprites/stars/star_cel_01",
+  "sim:lib/sprites/stars/star_glow_00"
+ ],
+ "meshes": []
+}

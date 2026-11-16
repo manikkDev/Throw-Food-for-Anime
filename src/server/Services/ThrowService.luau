@@ -9,6 +9,7 @@
 -- rarity, mutation, size, placement) is computed here.
 
 local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Knit = require(ReplicatedStorage.Packages.Knit)
@@ -32,6 +33,11 @@ local DASH_SECONDS = T.DashSeconds
 local ThrowService = Knit.CreateService({
 	Name = "ThrowService",
 	_last = {} :: { [Player]: number },
+	_focusToken = {} :: { [Player]: number },
+	_forced = {} :: { [Player]: { rarity: string?, mutation: string?, size: string? } },
+	_forcedLook = nil :: { mutation: string?, size: string? }?,
+	-- players held on their throw pad: what their humanoid had before
+	_pad = {} :: { [Player]: { walk: number, jump: number, jumpPower: number } },
 	_random = Random.new(),
 })
 
@@ -68,7 +74,7 @@ function ThrowService:_firstCatch(zoneCharacters: { any }, luck: number): Roll.R
 	return nil
 end
 
-function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown)
+function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown, auto: unknown)
 	local profile = self._data:Get(player)
 	local index = self._plots:IndexOf(player)
 	if not profile or not index then
@@ -82,7 +88,7 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown)
 	if last and now - last < T.ServerCooldownSeconds then
 		return self:_refuse(player, "cooldown")
 	end
-	if not self._plots:OnThrowPad(player) then
+	if not self._pad[player] and not self._plots:OnThrowPad(player) then
 		return self:_refuse(player, "not on own throw pad")
 	end
 	local food = MAPS.food[profile.food]
@@ -116,8 +122,39 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown)
 		result = Roll.throw(Config, zoneCharacters, luck, food.Flavor, function(): number
 			return self._random:NextNumber()
 		end, self._events:MutationMult())
+		-- Studio test (AdminService "nextrarity"): re-roll until the forced rarity comes up
+		local forced = self._forced[player]
+		if forced then
+			self._forced[player] = nil
+			self._forcedLook = { mutation = forced.mutation, size = forced.size }
+			for _ = 1, 20000 do
+				if result and (forced.rarity == nil or result.rarity == forced.rarity) then
+					break
+				end
+				result = Roll.throw(
+					Config,
+					zoneCharacters,
+					luck * 50,
+					food.Flavor,
+					function(): number
+						return self._random:NextNumber()
+					end,
+					self._events:MutationMult()
+				)
+			end
+		end
 	end
 	local roll = result :: Roll.Result
+	local forcedLook = self._forcedLook
+	if forcedLook then
+		self._forcedLook = nil
+		if forcedLook.mutation then
+			roll.mutation = if forcedLook.mutation == "none" then nil else forcedLook.mutation
+		end
+		if forcedLook.size then
+			roll.size = if forcedLook.size == "none" then nil else forcedLook.size
+		end
+	end
 	if useLucky then
 		profile.luckyThrows -= 1
 	end
@@ -142,6 +179,12 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown)
 
 	local x = World.landingX(Config.World, index, COUNT, self._random:NextNumber(-1, 1))
 	local z = Throw.landingZ(Config.World, Config.Zones, zoneIndex, depth)
+	self:_focus(player, x, z, flight, flight + LAND_PAUSE + reveal + 1.5)
+	-- a hand throw: the catch comes back to the thrower's hands, to be set on a pedestal of their
+	-- choice (Auto Throw seats it as before). Its data is already saved in its slot.
+	if grant.uid and auto ~= true then
+		self._plots:SetCarry(player, grant.uid, 0)
+	end
 	self._result:FireClient(player, {
 		zone = zoneIndex,
 		x = x,
@@ -186,6 +229,129 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown)
 	self._telemetry:Throw(player, zone.Id, roll.rarity, luck, firstEver)
 end
 
+-- Streaming follows the food: the lane is far longer than the streaming radius, so without this
+-- the landing spot (and the lane behind the revealed hero) is only partly streamed in and the map
+-- "disappears" behind the reveal (found in play 2026-11-15). A focus part glides down the lane with
+-- the food for the flight, holds at the landing spot through the reveal, then streaming goes back
+-- to the character.
+function ThrowService:_focus(player: Player, x: number, z: number, flight: number, hold: number)
+	local character = player.Character
+	local root = character and character:FindFirstChild("HumanoidRootPart")
+	if not root or not root:IsA("BasePart") then
+		return
+	end
+	local folder = workspace:FindFirstChild("StreamFocus")
+	if not folder then
+		folder = Instance.new("Folder")
+		folder.Name = "StreamFocus"
+		folder.Parent = workspace
+	end
+	local part = folder:FindFirstChild(tostring(player.UserId))
+	if not part then
+		local new = Instance.new("Part")
+		new.Name = tostring(player.UserId)
+		new.Anchored = true
+		new.CanCollide = false
+		new.CanQuery = false
+		new.CanTouch = false
+		new.Transparency = 1
+		new.Size = Vector3.new(1, 1, 1)
+		new.Parent = folder
+		part = new
+	end
+	local focus = part :: BasePart
+	focus.CFrame = CFrame.new(root.Position)
+	player.ReplicationFocus = focus
+	TweenService:Create(focus, TweenInfo.new(math.max(flight, 0.1), Enum.EasingStyle.Linear), {
+		CFrame = CFrame.new(x, 6, z),
+	}):Play()
+	local token = (self._focusToken[player] or 0) + 1
+	self._focusToken[player] = token
+	task.delay(hold, function()
+		if self._focusToken[player] == token and player.Parent then
+			player.ReplicationFocus = nil
+		end
+	end)
+end
+
+-- the floor under (x, z), ignoring the character
+local function floorAt(x: number, z: number, fromY: number, ignore: Instance?): number
+	local params = RaycastParams.new()
+	params.FilterDescendantsInstances = if ignore then { ignore } else {}
+	params.FilterType = Enum.RaycastFilterType.Exclude
+	params.RespectCanCollide = true
+	local hit = workspace:Raycast(Vector3.new(x, fromY + 8, z), Vector3.new(0, -60, 0), params)
+	return if hit then hit.Position.Y else Config.World.GroundY
+end
+
+--- Hold `player` on their throw pad (snapped to its centre facing down the lane, anchored, no
+--- walking or jumping) or let them off it (set down just behind the pad, facing their plot).
+--- The client asks; the server does it, so nothing on the client can drift the character off.
+function ThrowService:SetPad(player: Player, on: boolean)
+	local index = self._plots:IndexOf(player)
+	local character = player.Character
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	local root = character and character:FindFirstChild("HumanoidRootPart")
+	if not index or not humanoid or not root or not root:IsA("BasePart") then
+		self._pad[player] = nil
+		return
+	end
+	local x, z = World.throwPad(Config.World, index, COUNT)
+	local lift = humanoid.HipHeight + root.Size.Y / 2
+	if on then
+		if self._pad[player] or humanoid.Health <= 0 or not self._plots:OnThrowPad(player) then
+			return
+		end
+		self._training:Stop(player)
+		self._pad[player] = {
+			walk = humanoid.WalkSpeed,
+			jump = humanoid.JumpHeight,
+			jumpPower = humanoid.JumpPower,
+		}
+		humanoid.WalkSpeed = 0
+		humanoid.JumpHeight = 0
+		humanoid.JumpPower = 0
+		local y = floorAt(x, z, root.Position.Y, character) + lift
+		root.AssemblyLinearVelocity = Vector3.zero
+		root.CFrame = CFrame.lookAt(Vector3.new(x, y, z), Vector3.new(x, y, z + 10))
+		root.Anchored = true
+	else
+		local saved = self._pad[player]
+		if not saved then
+			return
+		end
+		self._pad[player] = nil
+		local backZ = z - (Config.World.ThrowPadRadius + 6)
+		local y = floorAt(x, backZ, root.Position.Y, character) + lift
+		root.Anchored = false
+		root.AssemblyLinearVelocity = Vector3.zero
+		root.CFrame = CFrame.lookAt(Vector3.new(x, y, backZ), Vector3.new(x, y, backZ - 10))
+		humanoid.WalkSpeed = saved.walk
+		humanoid.JumpHeight = saved.jump
+		humanoid.JumpPower = saved.jumpPower
+	end
+end
+
+--- True while `player` is held on their throw pad.
+function ThrowService:OnPad(player: Player): boolean
+	return self._pad[player] ~= nil
+end
+
+--- Studio test only (AdminService checks): the next throw of `player` lands `rarity`.
+--- Studio tests: the next throw lands this rarity and/or wears this mutation / size ("none"
+--- clears it). Calls merge, so rarity, mutation and size can be set one after another.
+function ThrowService:ForceNext(
+	player: Player,
+	what: { rarity: string?, mutation: string?, size: string? }
+)
+	local was = self._forced[player] or {}
+	self._forced[player] = {
+		rarity = what.rarity or was.rarity,
+		mutation = what.mutation or was.mutation,
+		size = what.size or was.size,
+	}
+end
+
 function ThrowService:KnitStart()
 	self._data = Knit.GetService("DataService")
 	self._state = Knit.GetService("StateService")
@@ -195,14 +361,39 @@ function ThrowService:KnitStart()
 	self._events = Knit.GetService("EventService")
 	self._telemetry = Knit.GetService("TelemetryService")
 
-	self._request.OnServerEvent:Connect(function(player: Player, charge: unknown, lucky: unknown)
-		if not Guard.allow(player, "ThrowRequest", 2, 3) then
+	self._request.OnServerEvent:Connect(
+		function(player: Player, charge: unknown, lucky: unknown, auto: unknown)
+			if not Guard.allow(player, "ThrowRequest", 2, 3) then
+				return
+			end
+			self:_handle(player, charge, lucky, auto)
+		end
+	)
+	self._padRemote = Net.server("ThrowPad")
+	self._padRemote.OnServerEvent:Connect(function(player: Player, on: unknown)
+		if typeof(on) ~= "boolean" or not Guard.allow(player, "ThrowPad", 4, 4) then
 			return
 		end
-		self:_handle(player, charge, lucky)
+		self:SetPad(player, on)
 	end)
+	local function watch(player: Player)
+		player.CharacterAdded:Connect(function()
+			self._pad[player] = nil
+		end)
+	end
+	Players.PlayerAdded:Connect(watch)
+	for _, player in Players:GetPlayers() do
+		watch(player)
+	end
 	Players.PlayerRemoving:Connect(function(player: Player)
 		self._last[player] = nil
+		self._focusToken[player] = nil
+		self._pad[player] = nil
+		local folder = workspace:FindFirstChild("StreamFocus")
+		local focus = folder and folder:FindFirstChild(tostring(player.UserId))
+		if focus then
+			focus:Destroy()
+		end
 	end)
 end
 

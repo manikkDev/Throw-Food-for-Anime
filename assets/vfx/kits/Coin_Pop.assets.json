@@ -1,0 +1,7 @@
+{
+ "textures": [
+  "sim:lib/sprites/stars/star_glow_04",
+  "sim:tfa/coin_spin_4x4"
+ ],
+ "meshes": []
+}

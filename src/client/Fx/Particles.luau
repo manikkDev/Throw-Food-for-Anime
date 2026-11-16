@@ -1,8 +1,9 @@
 --!strict
--- Particles - the throw's placeholder effects, built in code from Roblox's
--- built-in particle textures. Section 4 replaces these with authored VFX:
--- keep every effect behind one of the small functions below so that swap is
--- three function bodies and nothing else.
+-- Particles - code-built effects from Roblox's built-in particle textures.
+-- Since section 4 these are only FALLBACKS inside Fx/Vfx (dust for
+-- Land_Impact, burst for Reveal_<Rarity>) while the authored kit is absent,
+-- plus the silhouette's sparkle, which has no authored effect. Nothing else
+-- calls this module: play effects through Fx/Vfx by name.
 --
 -- Each one-shot cleans itself up; nothing here runs per frame.
 

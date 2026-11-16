@@ -143,84 +143,17 @@
        "children": [
         {
          "className": "Frame",
-         "name": "Shadow",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             1,
-             -8
-            ],
-            [
-             1,
-             -11
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0,
-             4
-            ],
-            [
-             0,
-             7
-            ]
-           ]
-          },
-          "ZIndex": 0,
-          "BackgroundColor3": {
-           "Color3": [
-            0.2549,
-            0.3098,
-            0.3961
-           ]
-          }
-         },
-         "children": [
-          {
-           "className": "UICorner",
-           "name": "Corner",
-           "properties": {
-            "CornerRadius": {
-             "UDim": [
-              0,
-              22
-             ]
-            }
-           }
-          },
-          {
-           "className": "UIStroke",
-           "name": "Stroke",
-           "properties": {
-            "Thickness": 4,
-            "ApplyStrokeMode": "Border",
-            "Color": {
-             "Color3": [
-              0.051,
-              0.0588,
-              0.1686
-             ]
-            }
-           }
-          }
-         ]
-        },
-        {
-         "className": "Frame",
          "name": "Face",
          "properties": {
           "Size": {
            "UDim2": [
             [
              1,
-             -8
+             -6
             ],
             [
              1,
-             -11
+             -6
             ]
            ]
           },
@@ -228,11 +161,11 @@
            "UDim2": [
             [
              0,
-             4
+             3
             ],
             [
              0,
-             4
+             3
             ]
            ]
           },
@@ -291,13 +224,13 @@
            "className": "UIStroke",
            "name": "Stroke",
            "properties": {
-            "Thickness": 4,
+            "Thickness": 3,
             "ApplyStrokeMode": "Border",
             "Color": {
              "Color3": [
-              0.051,
-              0.0588,
-              0.1686
+              1.0,
+              1.0,
+              1.0
              ]
             }
            }
@@ -476,9 +409,9 @@
             "ApplyStrokeMode": "Border",
             "Color": {
              "Color3": [
-              0.051,
-              0.0588,
-              0.1686
+              1.0,
+              1.0,
+              1.0
              ]
             }
            }
@@ -495,7 +428,7 @@
               ],
               [
                0,
-               18
+               20
               ]
              ]
             },
@@ -542,7 +475,7 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 3,
+              "Thickness": 1.5,
               "ApplyStrokeMode": "Contextual",
               "Color": {
                "Color3": [
@@ -558,8 +491,20 @@
              "className": "UITextSizeConstraint",
              "name": "SizeCap",
              "properties": {
-              "MaxTextSize": 13,
+              "MaxTextSize": 16,
               "MinTextSize": 9
+             }
+            },
+            {
+             "className": "UIPadding",
+             "name": "Nudge",
+             "properties": {
+              "PaddingTop": {
+               "UDim": [
+                0,
+                4
+               ]
+              }
              }
             }
            ]
@@ -712,7 +657,8 @@
           "HoverStyle": "Back",
           "PressScale": 0.94,
           "PressTime": 0.08,
-          "OpensPage": "FoodShop"
+          "OpensPage": "FoodShop",
+          "Rim": 0.5
          },
          "children": [
           {
@@ -723,11 +669,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -735,7 +681,7 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
@@ -750,7 +696,8 @@
               0.6588,
               0.1176
              ]
-            }
+            },
+            "BorderSizePixel": 0
            },
            "children": [
             {
@@ -760,22 +707,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
-               ]
-              }
-             }
-            },
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 4,
-              "ApplyStrokeMode": "Border",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                20
                ]
               }
              }
@@ -790,11 +722,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -802,11 +734,11 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
-               4
+               3
               ]
              ]
             },
@@ -827,7 +759,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
+                20
                ]
               }
              }
@@ -865,13 +797,13 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 4,
+              "Thickness": 3,
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                1.0,
+                0.8941,
+                0.6196
                ]
               }
              }
@@ -928,11 +860,11 @@
                "UDim2": [
                 [
                  0,
-                 22
+                 26
                 ],
                 [
                  0,
-                 22
+                 26
                 ]
                ]
               },
@@ -1004,7 +936,7 @@
                   "CornerRadius": {
                    "UDim": [
                     0,
-                    11
+                    13
                    ]
                   }
                  }
@@ -1046,9 +978,9 @@
                   "ApplyStrokeMode": "Border",
                   "Color": {
                    "Color3": [
-                    0.051,
-                    0.0588,
-                    0.1686
+                    1.0,
+                    1.0,
+                    1.0
                    ]
                   }
                  }
@@ -1061,11 +993,11 @@
                    "UDim2": [
                     [
                      0,
-                     16
+                     18
                     ],
                     [
                      0,
-                     18
+                     20
                     ]
                    ]
                   },
@@ -1112,7 +1044,7 @@
                    "className": "UIStroke",
                    "name": "Stroke",
                    "properties": {
-                    "Thickness": 3,
+                    "Thickness": 1.5,
                     "ApplyStrokeMode": "Contextual",
                     "Color": {
                      "Color3": [
@@ -1128,8 +1060,20 @@
                    "className": "UITextSizeConstraint",
                    "name": "SizeCap",
                    "properties": {
-                    "MaxTextSize": 13,
+                    "MaxTextSize": 16,
                     "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
                    }
                   }
                  ]
@@ -1146,11 +1090,11 @@
                "UDim2": [
                 [
                  0,
-                 68
+                 70
                 ],
                 [
                  0,
-                 20
+                 22
                 ]
                ]
               },
@@ -1162,7 +1106,7 @@
                 ],
                 [
                  1,
-                 -3
+                 -2
                 ]
                ]
               },
@@ -1197,7 +1141,7 @@
                "className": "UIStroke",
                "name": "Stroke",
                "properties": {
-                "Thickness": 3,
+                "Thickness": 1.5,
                 "ApplyStrokeMode": "Contextual",
                 "Color": {
                  "Color3": [
@@ -1213,8 +1157,20 @@
                "className": "UITextSizeConstraint",
                "name": "SizeCap",
                "properties": {
-                "MaxTextSize": 15,
+                "MaxTextSize": 18,
                 "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
                }
               }
              ]
@@ -1310,7 +1266,8 @@
           "HoverStyle": "Back",
           "PressScale": 0.94,
           "PressTime": 0.08,
-          "OpensPage": "Squad"
+          "OpensPage": "Squad",
+          "Rim": 0.5
          },
          "children": [
           {
@@ -1321,11 +1278,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -1333,7 +1290,7 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
@@ -1348,7 +1305,8 @@
               0.3176,
               0.6431
              ]
-            }
+            },
+            "BorderSizePixel": 0
            },
            "children": [
             {
@@ -1358,22 +1316,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
-               ]
-              }
-             }
-            },
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 4,
-              "ApplyStrokeMode": "Border",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                20
                ]
               }
              }
@@ -1388,11 +1331,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -1400,11 +1343,11 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
-               4
+               3
               ]
              ]
             },
@@ -1425,7 +1368,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
+                20
                ]
               }
              }
@@ -1463,13 +1406,13 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 4,
+              "Thickness": 3,
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                0.6118,
+                0.8706,
+                0.9882
                ]
               }
              }
@@ -1526,11 +1469,11 @@
                "UDim2": [
                 [
                  0,
-                 22
+                 26
                 ],
                 [
                  0,
-                 22
+                 26
                 ]
                ]
               },
@@ -1602,7 +1545,7 @@
                   "CornerRadius": {
                    "UDim": [
                     0,
-                    11
+                    13
                    ]
                   }
                  }
@@ -1644,9 +1587,9 @@
                   "ApplyStrokeMode": "Border",
                   "Color": {
                    "Color3": [
-                    0.051,
-                    0.0588,
-                    0.1686
+                    1.0,
+                    1.0,
+                    1.0
                    ]
                   }
                  }
@@ -1659,11 +1602,11 @@
                    "UDim2": [
                     [
                      0,
-                     16
+                     18
                     ],
                     [
                      0,
-                     18
+                     20
                     ]
                    ]
                   },
@@ -1710,7 +1653,7 @@
                    "className": "UIStroke",
                    "name": "Stroke",
                    "properties": {
-                    "Thickness": 3,
+                    "Thickness": 1.5,
                     "ApplyStrokeMode": "Contextual",
                     "Color": {
                      "Color3": [
@@ -1726,8 +1669,20 @@
                    "className": "UITextSizeConstraint",
                    "name": "SizeCap",
                    "properties": {
-                    "MaxTextSize": 13,
+                    "MaxTextSize": 16,
                     "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
                    }
                   }
                  ]
@@ -1744,11 +1699,11 @@
                "UDim2": [
                 [
                  0,
-                 68
+                 70
                 ],
                 [
                  0,
-                 20
+                 22
                 ]
                ]
               },
@@ -1760,7 +1715,7 @@
                 ],
                 [
                  1,
-                 -3
+                 -2
                 ]
                ]
               },
@@ -1795,7 +1750,7 @@
                "className": "UIStroke",
                "name": "Stroke",
                "properties": {
-                "Thickness": 3,
+                "Thickness": 1.5,
                 "ApplyStrokeMode": "Contextual",
                 "Color": {
                  "Color3": [
@@ -1811,8 +1766,20 @@
                "className": "UITextSizeConstraint",
                "name": "SizeCap",
                "properties": {
-                "MaxTextSize": 15,
+                "MaxTextSize": 18,
                 "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
                }
               }
              ]
@@ -1908,7 +1875,8 @@
           "HoverStyle": "Back",
           "PressScale": 0.94,
           "PressTime": 0.08,
-          "OpensPage": "HeroIndex"
+          "OpensPage": "HeroIndex",
+          "Rim": 0.5
          },
          "children": [
           {
@@ -1919,11 +1887,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -1931,7 +1899,7 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
@@ -1946,7 +1914,8 @@
               0.1804,
               0.6392
              ]
-            }
+            },
+            "BorderSizePixel": 0
            },
            "children": [
             {
@@ -1956,22 +1925,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
-               ]
-              }
-             }
-            },
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 4,
-              "ApplyStrokeMode": "Border",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                20
                ]
               }
              }
@@ -1986,11 +1940,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -1998,11 +1952,11 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
-               4
+               3
               ]
              ]
             },
@@ -2023,7 +1977,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
+                20
                ]
               }
              }
@@ -2061,13 +2015,13 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 4,
+              "Thickness": 3,
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                0.8314,
+                0.6667,
+                0.9843
                ]
               }
              }
@@ -2124,11 +2078,11 @@
                "UDim2": [
                 [
                  0,
-                 22
+                 26
                 ],
                 [
                  0,
-                 22
+                 26
                 ]
                ]
               },
@@ -2200,7 +2154,7 @@
                   "CornerRadius": {
                    "UDim": [
                     0,
-                    11
+                    13
                    ]
                   }
                  }
@@ -2242,9 +2196,9 @@
                   "ApplyStrokeMode": "Border",
                   "Color": {
                    "Color3": [
-                    0.051,
-                    0.0588,
-                    0.1686
+                    1.0,
+                    1.0,
+                    1.0
                    ]
                   }
                  }
@@ -2257,11 +2211,11 @@
                    "UDim2": [
                     [
                      0,
-                     16
+                     18
                     ],
                     [
                      0,
-                     18
+                     20
                     ]
                    ]
                   },
@@ -2308,7 +2262,7 @@
                    "className": "UIStroke",
                    "name": "Stroke",
                    "properties": {
-                    "Thickness": 3,
+                    "Thickness": 1.5,
                     "ApplyStrokeMode": "Contextual",
                     "Color": {
                      "Color3": [
@@ -2324,8 +2278,20 @@
                    "className": "UITextSizeConstraint",
                    "name": "SizeCap",
                    "properties": {
-                    "MaxTextSize": 13,
+                    "MaxTextSize": 16,
                     "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
                    }
                   }
                  ]
@@ -2342,11 +2308,11 @@
                "UDim2": [
                 [
                  0,
-                 68
+                 70
                 ],
                 [
                  0,
-                 20
+                 22
                 ]
                ]
               },
@@ -2358,7 +2324,7 @@
                 ],
                 [
                  1,
-                 -3
+                 -2
                 ]
                ]
               },
@@ -2393,7 +2359,7 @@
                "className": "UIStroke",
                "name": "Stroke",
                "properties": {
-                "Thickness": 3,
+                "Thickness": 1.5,
                 "ApplyStrokeMode": "Contextual",
                 "Color": {
                  "Color3": [
@@ -2409,8 +2375,20 @@
                "className": "UITextSizeConstraint",
                "name": "SizeCap",
                "properties": {
-                "MaxTextSize": 15,
+                "MaxTextSize": 18,
                 "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
                }
               }
              ]
@@ -2562,7 +2540,8 @@
           "HoverStyle": "Back",
           "PressScale": 0.94,
           "PressTime": 0.08,
-          "OpensPage": "Store"
+          "OpensPage": "Store",
+          "Rim": 0.5
          },
          "children": [
           {
@@ -2573,11 +2552,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -2585,7 +2564,7 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
@@ -2600,7 +2579,8 @@
               0.1647,
               0.549
              ]
-            }
+            },
+            "BorderSizePixel": 0
            },
            "children": [
             {
@@ -2610,22 +2590,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
-               ]
-              }
-             }
-            },
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 4,
-              "ApplyStrokeMode": "Border",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                20
                ]
               }
              }
@@ -2640,11 +2605,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -2652,11 +2617,11 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
-               4
+               3
               ]
              ]
             },
@@ -2677,7 +2642,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
+                20
                ]
               }
              }
@@ -2715,13 +2680,13 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 4,
+              "Thickness": 3,
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                1.0,
+                0.6549,
+                0.8196
                ]
               }
              }
@@ -2778,11 +2743,11 @@
                "UDim2": [
                 [
                  0,
-                 22
+                 26
                 ],
                 [
                  0,
-                 22
+                 26
                 ]
                ]
               },
@@ -2854,7 +2819,7 @@
                   "CornerRadius": {
                    "UDim": [
                     0,
-                    11
+                    13
                    ]
                   }
                  }
@@ -2896,9 +2861,9 @@
                   "ApplyStrokeMode": "Border",
                   "Color": {
                    "Color3": [
-                    0.051,
-                    0.0588,
-                    0.1686
+                    1.0,
+                    1.0,
+                    1.0
                    ]
                   }
                  }
@@ -2911,11 +2876,11 @@
                    "UDim2": [
                     [
                      0,
-                     16
+                     18
                     ],
                     [
                      0,
-                     18
+                     20
                     ]
                    ]
                   },
@@ -2962,7 +2927,7 @@
                    "className": "UIStroke",
                    "name": "Stroke",
                    "properties": {
-                    "Thickness": 3,
+                    "Thickness": 1.5,
                     "ApplyStrokeMode": "Contextual",
                     "Color": {
                      "Color3": [
@@ -2978,8 +2943,20 @@
                    "className": "UITextSizeConstraint",
                    "name": "SizeCap",
                    "properties": {
-                    "MaxTextSize": 13,
+                    "MaxTextSize": 16,
                     "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
                    }
                   }
                  ]
@@ -2996,11 +2973,11 @@
                "UDim2": [
                 [
                  0,
-                 68
+                 70
                 ],
                 [
                  0,
-                 20
+                 22
                 ]
                ]
               },
@@ -3012,7 +2989,7 @@
                 ],
                 [
                  1,
-                 -3
+                 -2
                 ]
                ]
               },
@@ -3047,7 +3024,7 @@
                "className": "UIStroke",
                "name": "Stroke",
                "properties": {
-                "Thickness": 3,
+                "Thickness": 1.5,
                 "ApplyStrokeMode": "Contextual",
                 "Color": {
                  "Color3": [
@@ -3063,8 +3040,20 @@
                "className": "UITextSizeConstraint",
                "name": "SizeCap",
                "properties": {
-                "MaxTextSize": 15,
+                "MaxTextSize": 18,
                 "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
                }
               }
              ]
@@ -3160,7 +3149,8 @@
           "HoverStyle": "Back",
           "PressScale": 0.94,
           "PressTime": 0.08,
-          "OpensPage": "PlaytimeGifts"
+          "OpensPage": "PlaytimeGifts",
+          "Rim": 0.5
          },
          "children": [
           {
@@ -3171,11 +3161,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -3183,7 +3173,7 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
@@ -3198,7 +3188,8 @@
               0.5412,
               0.4314
              ]
-            }
+            },
+            "BorderSizePixel": 0
            },
            "children": [
             {
@@ -3208,22 +3199,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
-               ]
-              }
-             }
-            },
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 4,
-              "ApplyStrokeMode": "Border",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                20
                ]
               }
              }
@@ -3238,11 +3214,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -3250,11 +3226,11 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
-               4
+               3
               ]
              ]
             },
@@ -3275,7 +3251,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
+                20
                ]
               }
              }
@@ -3313,13 +3289,13 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 4,
+              "Thickness": 3,
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                0.6039,
+                0.9098,
+                0.7373
                ]
               }
              }
@@ -3376,11 +3352,11 @@
                "UDim2": [
                 [
                  0,
-                 22
+                 26
                 ],
                 [
                  0,
-                 22
+                 26
                 ]
                ]
               },
@@ -3452,7 +3428,7 @@
                   "CornerRadius": {
                    "UDim": [
                     0,
-                    11
+                    13
                    ]
                   }
                  }
@@ -3494,9 +3470,9 @@
                   "ApplyStrokeMode": "Border",
                   "Color": {
                    "Color3": [
-                    0.051,
-                    0.0588,
-                    0.1686
+                    1.0,
+                    1.0,
+                    1.0
                    ]
                   }
                  }
@@ -3509,11 +3485,11 @@
                    "UDim2": [
                     [
                      0,
-                     16
+                     18
                     ],
                     [
                      0,
-                     18
+                     20
                     ]
                    ]
                   },
@@ -3560,7 +3536,7 @@
                    "className": "UIStroke",
                    "name": "Stroke",
                    "properties": {
-                    "Thickness": 3,
+                    "Thickness": 1.5,
                     "ApplyStrokeMode": "Contextual",
                     "Color": {
                      "Color3": [
@@ -3576,8 +3552,20 @@
                    "className": "UITextSizeConstraint",
                    "name": "SizeCap",
                    "properties": {
-                    "MaxTextSize": 13,
+                    "MaxTextSize": 16,
                     "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
                    }
                   }
                  ]
@@ -3594,11 +3582,11 @@
                "UDim2": [
                 [
                  0,
-                 68
+                 70
                 ],
                 [
                  0,
-                 20
+                 22
                 ]
                ]
               },
@@ -3610,7 +3598,7 @@
                 ],
                 [
                  1,
-                 -3
+                 -2
                 ]
                ]
               },
@@ -3645,7 +3633,7 @@
                "className": "UIStroke",
                "name": "Stroke",
                "properties": {
-                "Thickness": 3,
+                "Thickness": 1.5,
                 "ApplyStrokeMode": "Contextual",
                 "Color": {
                  "Color3": [
@@ -3661,8 +3649,20 @@
                "className": "UITextSizeConstraint",
                "name": "SizeCap",
                "properties": {
-                "MaxTextSize": 15,
+                "MaxTextSize": 18,
                 "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
                }
               }
              ]
@@ -3675,11 +3675,11 @@
                "UDim2": [
                 [
                  0,
-                 66
+                 68
                 ],
                 [
                  0,
-                 20
+                 22
                 ]
                ]
               },
@@ -3793,9 +3793,9 @@
                   "ApplyStrokeMode": "Border",
                   "Color": {
                    "Color3": [
-                    0.051,
-                    0.0588,
-                    0.1686
+                    1.0,
+                    1.0,
+                    1.0
                    ]
                   }
                  }
@@ -3808,11 +3808,11 @@
                    "UDim2": [
                     [
                      0,
-                     60
+                     62
                     ],
                     [
                      0,
-                     18
+                     20
                     ]
                    ]
                   },
@@ -3859,7 +3859,7 @@
                    "className": "UIStroke",
                    "name": "Stroke",
                    "properties": {
-                    "Thickness": 2,
+                    "Thickness": 1.5,
                     "ApplyStrokeMode": "Contextual",
                     "Color": {
                      "Color3": [
@@ -3875,8 +3875,20 @@
                    "className": "UITextSizeConstraint",
                    "name": "SizeCap",
                    "properties": {
-                    "MaxTextSize": 15,
+                    "MaxTextSize": 16,
                     "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
                    }
                   }
                  ]
@@ -3976,7 +3988,8 @@
           "HoverStyle": "Back",
           "PressScale": 0.94,
           "PressTime": 0.08,
-          "OpensPage": "Rebirth"
+          "OpensPage": "Rebirth",
+          "Rim": 0.5
          },
          "children": [
           {
@@ -3987,11 +4000,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -3999,7 +4012,7 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
@@ -4014,7 +4027,8 @@
               0.6588,
               0.1176
              ]
-            }
+            },
+            "BorderSizePixel": 0
            },
            "children": [
             {
@@ -4024,22 +4038,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
-               ]
-              }
-             }
-            },
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 4,
-              "ApplyStrokeMode": "Border",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                20
                ]
               }
              }
@@ -4054,11 +4053,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -4066,11 +4065,11 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
-               4
+               3
               ]
              ]
             },
@@ -4091,7 +4090,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                18
+                20
                ]
               }
              }
@@ -4129,13 +4128,13 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 4,
+              "Thickness": 3,
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                1.0,
+                0.8941,
+                0.6196
                ]
               }
              }
@@ -4192,11 +4191,11 @@
                "UDim2": [
                 [
                  0,
-                 22
+                 26
                 ],
                 [
                  0,
-                 22
+                 26
                 ]
                ]
               },
@@ -4268,7 +4267,7 @@
                   "CornerRadius": {
                    "UDim": [
                     0,
-                    11
+                    13
                    ]
                   }
                  }
@@ -4310,9 +4309,9 @@
                   "ApplyStrokeMode": "Border",
                   "Color": {
                    "Color3": [
-                    0.051,
-                    0.0588,
-                    0.1686
+                    1.0,
+                    1.0,
+                    1.0
                    ]
                   }
                  }
@@ -4325,11 +4324,11 @@
                    "UDim2": [
                     [
                      0,
-                     16
+                     18
                     ],
                     [
                      0,
-                     18
+                     20
                     ]
                    ]
                   },
@@ -4376,7 +4375,7 @@
                    "className": "UIStroke",
                    "name": "Stroke",
                    "properties": {
-                    "Thickness": 3,
+                    "Thickness": 1.5,
                     "ApplyStrokeMode": "Contextual",
                     "Color": {
                      "Color3": [
@@ -4392,8 +4391,20 @@
                    "className": "UITextSizeConstraint",
                    "name": "SizeCap",
                    "properties": {
-                    "MaxTextSize": 13,
+                    "MaxTextSize": 16,
                     "MinTextSize": 9
+                   }
+                  },
+                  {
+                   "className": "UIPadding",
+                   "name": "Nudge",
+                   "properties": {
+                    "PaddingTop": {
+                     "UDim": [
+                      0,
+                      4
+                     ]
+                    }
                    }
                   }
                  ]
@@ -4410,11 +4421,11 @@
                "UDim2": [
                 [
                  0,
-                 68
+                 70
                 ],
                 [
                  0,
-                 20
+                 22
                 ]
                ]
               },
@@ -4426,7 +4437,7 @@
                 ],
                 [
                  1,
-                 -3
+                 -2
                 ]
                ]
               },
@@ -4461,7 +4472,7 @@
                "className": "UIStroke",
                "name": "Stroke",
                "properties": {
-                "Thickness": 3,
+                "Thickness": 1.5,
                 "ApplyStrokeMode": "Contextual",
                 "Color": {
                  "Color3": [
@@ -4477,8 +4488,20 @@
                "className": "UITextSizeConstraint",
                "name": "SizeCap",
                "properties": {
-                "MaxTextSize": 15,
+                "MaxTextSize": 18,
                 "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
                }
               }
              ]
@@ -4620,7 +4643,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 4,
+          "Thickness": 3,
           "ApplyStrokeMode": "Border",
           "Color": {
            "Color3": [
@@ -4685,11 +4708,11 @@
          "UDim2": [
           [
            0,
-           180
+           184
           ],
           [
            0,
-           23
+           26
           ]
          ]
         },
@@ -4736,7 +4759,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 3,
+          "Thickness": 1.5,
           "ApplyStrokeMode": "Contextual",
           "Color": {
            "Color3": [
@@ -4752,7 +4775,7 @@
          "className": "UITextSizeConstraint",
          "name": "SizeCap",
          "properties": {
-          "MaxTextSize": 17,
+          "MaxTextSize": 20,
           "MinTextSize": 9
          }
         }
@@ -4766,11 +4789,11 @@
          "UDim2": [
           [
            0,
-           170
+           184
           ],
           [
            0,
-           18
+           22
           ]
          ]
         },
@@ -4820,11 +4843,11 @@
            "UDim2": [
             [
              0,
-             14
+             18
             ],
             [
              0,
-             14
+             18
             ]
            ]
           },
@@ -4865,11 +4888,11 @@
            "UDim2": [
             [
              0,
-             118
+             160
             ],
             [
              0,
-             18
+             22
             ]
            ]
           },
@@ -4917,7 +4940,7 @@
            "className": "UIStroke",
            "name": "Stroke",
            "properties": {
-            "Thickness": 2,
+            "Thickness": 1.5,
             "ApplyStrokeMode": "Contextual",
             "Color": {
              "Color3": [
@@ -4933,8 +4956,20 @@
            "className": "UITextSizeConstraint",
            "name": "SizeCap",
            "properties": {
-            "MaxTextSize": 13,
+            "MaxTextSize": 18,
             "MinTextSize": 9
+           }
+          },
+          {
+           "className": "UIPadding",
+           "name": "Nudge",
+           "properties": {
+            "PaddingTop": {
+             "UDim": [
+              0,
+              4
+             ]
+            }
            }
           }
          ]
@@ -5087,7 +5122,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 3,
+          "Thickness": 2,
           "ApplyStrokeMode": "Contextual",
           "Color": {
            "Color3": [
@@ -5106,6 +5141,18 @@
           "MaxTextSize": 34,
           "MinTextSize": 9
          }
+        },
+        {
+         "className": "UIPadding",
+         "name": "Nudge",
+         "properties": {
+          "PaddingTop": {
+           "UDim": [
+            0,
+            8
+           ]
+          }
+         }
         }
        ]
       },
@@ -5121,7 +5168,7 @@
           ],
           [
            0,
-           20
+           22
           ]
          ]
         },
@@ -5133,7 +5180,7 @@
           ],
           [
            0,
-           39
+           38
           ]
          ]
         },
@@ -5168,7 +5215,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 2,
+          "Thickness": 1.5,
           "ApplyStrokeMode": "Contextual",
           "Color": {
            "Color3": [
@@ -5184,8 +5231,20 @@
          "className": "UITextSizeConstraint",
          "name": "SizeCap",
          "properties": {
-          "MaxTextSize": 15,
+          "MaxTextSize": 18,
           "MinTextSize": 9
+         }
+        },
+        {
+         "className": "UIPadding",
+         "name": "Nudge",
+         "properties": {
+          "PaddingTop": {
+           "UDim": [
+            0,
+            4
+           ]
+          }
          }
         }
        ]
@@ -5333,7 +5392,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 3,
+          "Thickness": 2,
           "ApplyStrokeMode": "Contextual",
           "Color": {
            "Color3": [
@@ -5352,6 +5411,18 @@
           "MaxTextSize": 34,
           "MinTextSize": 9
          }
+        },
+        {
+         "className": "UIPadding",
+         "name": "Nudge",
+         "properties": {
+          "PaddingTop": {
+           "UDim": [
+            0,
+            8
+           ]
+          }
+         }
         }
        ]
       },
@@ -5367,7 +5438,7 @@
           ],
           [
            0,
-           20
+           22
           ]
          ]
         },
@@ -5379,7 +5450,7 @@
           ],
           [
            0,
-           39
+           38
           ]
          ]
         },
@@ -5414,7 +5485,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 2,
+          "Thickness": 1.5,
           "ApplyStrokeMode": "Contextual",
           "Color": {
            "Color3": [
@@ -5430,7 +5501,7 @@
          "className": "UITextSizeConstraint",
          "name": "SizeCap",
          "properties": {
-          "MaxTextSize": 15,
+          "MaxTextSize": 18,
           "MinTextSize": 9
          }
         }
@@ -5579,7 +5650,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 3,
+          "Thickness": 2,
           "ApplyStrokeMode": "Contextual",
           "Color": {
            "Color3": [
@@ -5598,6 +5669,18 @@
           "MaxTextSize": 34,
           "MinTextSize": 9
          }
+        },
+        {
+         "className": "UIPadding",
+         "name": "Nudge",
+         "properties": {
+          "PaddingTop": {
+           "UDim": [
+            0,
+            8
+           ]
+          }
+         }
         }
        ]
       }
@@ -5615,7 +5698,7 @@
         ],
         [
          0,
-         36
+         40
         ]
        ]
       },
@@ -5694,7 +5777,7 @@
        "className": "UIStroke",
        "name": "Stroke",
        "properties": {
-        "Thickness": 4,
+        "Thickness": 3,
         "ApplyStrokeMode": "Border",
         "Color": {
          "Color3": [
@@ -5761,7 +5844,7 @@
           ],
           [
            0,
-           24
+           28
           ]
          ]
         },
@@ -5802,7 +5885,7 @@
          ]
         },
         "TextXAlignment": "Left",
-        "TextSize": 16,
+        "TextSize": 20,
         "AutomaticSize": "X"
        },
        "children": [
@@ -5810,7 +5893,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 2,
+          "Thickness": 1.5,
           "ApplyStrokeMode": "Contextual",
           "Color": {
            "Color3": [
@@ -5858,11 +5941,11 @@
        "UDim2": [
         [
          0,
-         340
+         400
         ],
         [
          0,
-         104
+         112
         ]
        ]
       },
@@ -5891,84 +5974,17 @@
      "children": [
       {
        "className": "Frame",
-       "name": "Shadow",
-       "properties": {
-        "Size": {
-         "UDim2": [
-          [
-           1,
-           -12
-          ],
-          [
-           1,
-           -14
-          ]
-         ]
-        },
-        "Position": {
-         "UDim2": [
-          [
-           0,
-           8
-          ],
-          [
-           0,
-           8
-          ]
-         ]
-        },
-        "ZIndex": 5,
-        "BackgroundColor3": {
-         "Color3": [
-          0.051,
-          0.0588,
-          0.1686
-         ]
-        }
-       },
-       "children": [
-        {
-         "className": "UICorner",
-         "name": "Corner",
-         "properties": {
-          "CornerRadius": {
-           "UDim": [
-            0,
-            16
-           ]
-          }
-         }
-        },
-        {
-         "className": "UIStroke",
-         "name": "Stroke",
-         "properties": {
-          "Thickness": 4,
-          "ApplyStrokeMode": "Border",
-          "Color": {
-           "Color3": [
-            0.051,
-            0.0588,
-            0.1686
-           ]
-          }
-         }
-        }
-       ]
-      },
-      {
-       "className": "Frame",
        "name": "Face",
        "properties": {
         "Size": {
          "UDim2": [
           [
            1,
-           -12
+           -6
           ],
           [
            1,
-           -14
+           -6
           ]
          ]
         },
@@ -5976,11 +5992,11 @@
          "UDim2": [
           [
            0,
-           4
+           3
           ],
           [
            0,
-           4
+           3
           ]
          ]
         },
@@ -6039,13 +6055,13 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 4,
+          "Thickness": 3,
           "ApplyStrokeMode": "Border",
           "Color": {
            "Color3": [
-            1.0,
-            1.0,
-            1.0
+            0.3569,
+            0.3922,
+            0.7882
            ]
           }
          }
@@ -6102,11 +6118,11 @@
            "UDim2": [
             [
              0,
-             138
+             200
             ],
             [
              0,
-             20
+             24
             ]
            ]
           },
@@ -6114,11 +6130,11 @@
            "UDim2": [
             [
              0,
-             70
+             76
             ],
             [
              0,
-             10
+             12
             ]
            ]
           },
@@ -6153,7 +6169,7 @@
            "className": "UIStroke",
            "name": "Stroke",
            "properties": {
-            "Thickness": 2,
+            "Thickness": 1.5,
             "ApplyStrokeMode": "Contextual",
             "Color": {
              "Color3": [
@@ -6169,8 +6185,20 @@
            "className": "UITextSizeConstraint",
            "name": "SizeCap",
            "properties": {
-            "MaxTextSize": 14,
+            "MaxTextSize": 18,
             "MinTextSize": 9
+           }
+          },
+          {
+           "className": "UIPadding",
+           "name": "Nudge",
+           "properties": {
+            "PaddingTop": {
+             "UDim": [
+              0,
+              4
+             ]
+            }
            }
           }
          ]
@@ -6183,11 +6211,11 @@
            "UDim2": [
             [
              0,
-             138
+             168
             ],
             [
              0,
-             38
+             46
             ]
            ]
           },
@@ -6195,11 +6223,11 @@
            "UDim2": [
             [
              0,
-             70
+             76
             ],
             [
              0,
-             34
+             44
             ]
            ]
           },
@@ -6235,7 +6263,7 @@
            "className": "UIStroke",
            "name": "Stroke",
            "properties": {
-            "Thickness": 2,
+            "Thickness": 1.5,
             "ApplyStrokeMode": "Contextual",
             "Color": {
              "Color3": [
@@ -6251,7 +6279,7 @@
            "className": "UITextSizeConstraint",
            "name": "SizeCap",
            "properties": {
-            "MaxTextSize": 14,
+            "MaxTextSize": 18,
             "MinTextSize": 9
            }
           }
@@ -6265,11 +6293,11 @@
            "UDim2": [
             [
              0,
-             98
+             128
             ],
             [
              0,
-             34
+             48
             ]
            ]
           },
@@ -6277,11 +6305,11 @@
            "UDim2": [
             [
              1,
-             -12
+             -14
             ],
             [
              1,
-             -12
+             -14
             ]
            ]
           },
@@ -6303,11 +6331,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -6315,7 +6343,7 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
@@ -6330,7 +6358,8 @@
               0.5529,
               0.451
              ]
-            }
+            },
+            "BorderSizePixel": 0
            },
            "children": [
             {
@@ -6340,22 +6369,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                14
-               ]
-              }
-             }
-            },
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 4,
-              "ApplyStrokeMode": "Border",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                16
                ]
               }
              }
@@ -6370,11 +6384,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -6382,11 +6396,11 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
-               4
+               3
               ]
              ]
             },
@@ -6417,7 +6431,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                14
+                16
                ]
               }
              }
@@ -6433,21 +6447,21 @@
                  {
                   "time": 0.0,
                   "color": [
-                   0.82,
-                   0.82,
-                   0.82
+                   0.74,
+                   0.74,
+                   0.74
                   ]
                  },
                  {
-                  "time": 0.59,
+                  "time": 0.5,
                   "color": [
-                   0.9,
-                   0.9,
-                   0.9
+                   0.86,
+                   0.86,
+                   0.86
                   ]
                  },
                  {
-                  "time": 0.6,
+                  "time": 0.51,
                   "color": [
                    1.0,
                    1.0,
@@ -6471,13 +6485,13 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 4,
+              "Thickness": 3,
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                0.6431,
+                0.9176,
+                0.7647
                ]
               }
              }
@@ -6490,7 +6504,7 @@
               "Padding": {
                "UDim": [
                 0,
-                6
+                7
                ]
               },
               "SortOrder": "LayoutOrder",
@@ -6506,11 +6520,11 @@
                "UDim2": [
                 [
                  0,
-                 20
+                 28
                 ],
                 [
                  0,
-                 20
+                 28
                 ]
                ]
               },
@@ -6551,11 +6565,11 @@
                "UDim2": [
                 [
                  0,
-                 48
+                 0
                 ],
                 [
                  0,
-                 21
+                 32
                 ]
                ]
               },
@@ -6580,7 +6594,7 @@
               "ZIndex": 0,
               "BackgroundTransparency": 1,
               "Text": "<unbound>",
-              "TextScaled": true,
+              "TextScaled": false,
               "FontFace": {
                "Font": {
                 "family": "rbxasset://fonts/families/LuckiestGuy.json",
@@ -6596,6 +6610,8 @@
                ]
               },
               "TextXAlignment": "Center",
+              "TextSize": 24,
+              "AutomaticSize": "X",
               "LayoutOrder": 1
              },
              "children": [
@@ -6616,20 +6632,41 @@
                }
               },
               {
-               "className": "UITextSizeConstraint",
-               "name": "SizeCap",
+               "className": "UISizeConstraint",
+               "name": "CapWidth",
                "properties": {
-                "MaxTextSize": 15,
-                "MinTextSize": 9
+                "MaxSize": {
+                 "Vector2": [
+                  71,
+                  1000
+                 ]
+                }
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  6
+                 ]
+                }
                }
               }
-             ]
+             ],
+             "attributes": {
+              "FitText": 24
+             }
             }
            ]
           }
          ],
          "attributes": {
-          "PressLip": 3
+          "PressLip": 4,
+          "AutoShine": true,
+          "Rim": 0.5
          }
         },
         {
@@ -6797,9 +6834,9 @@
                 "ApplyStrokeMode": "Border",
                 "Color": {
                  "Color3": [
-                  0.051,
-                  0.0588,
-                  0.1686
+                  1.0,
+                  1.0,
+                  1.0
                  ]
                 }
                }
@@ -6866,103 +6903,36 @@
        "UDim2": [
         [
          0,
-         250
+         224
         ],
         [
          0,
-         40
+         56
         ]
        ]
       },
       "Position": {
        "UDim2": [
         [
-         0.5,
-         0
+         1,
+         -108
         ],
         [
          0,
-         58
+         236
         ]
        ]
       },
       "AnchorPoint": {
        "Vector2": [
-        0.5,
+        1,
         0
        ]
       },
-      "ZIndex": 0,
+      "ZIndex": 4,
       "BackgroundTransparency": 1
      },
      "children": [
-      {
-       "className": "Frame",
-       "name": "Shadow",
-       "properties": {
-        "Size": {
-         "UDim2": [
-          [
-           1,
-           -11
-          ],
-          [
-           1,
-           -14
-          ]
-         ]
-        },
-        "Position": {
-         "UDim2": [
-          [
-           0,
-           7
-          ],
-          [
-           0,
-           7
-          ]
-         ]
-        },
-        "ZIndex": 0,
-        "BackgroundColor3": {
-         "Color3": [
-          0.051,
-          0.0588,
-          0.1686
-         ]
-        }
-       },
-       "children": [
-        {
-         "className": "UICorner",
-         "name": "Corner",
-         "properties": {
-          "CornerRadius": {
-           "UDim": [
-            0,
-            20
-           ]
-          }
-         }
-        },
-        {
-         "className": "UIStroke",
-         "name": "Stroke",
-         "properties": {
-          "Thickness": 4,
-          "ApplyStrokeMode": "Border",
-          "Color": {
-           "Color3": [
-            0.051,
-            0.0588,
-            0.1686
-           ]
-          }
-         }
-        }
-       ]
-      },
       {
        "className": "Frame",
        "name": "Face",
@@ -6971,11 +6941,11 @@
          "UDim2": [
           [
            1,
-           -11
+           -6
           ],
           [
            1,
-           -14
+           -6
           ]
          ]
         },
@@ -6983,15 +6953,15 @@
          "UDim2": [
           [
            0,
-           4
+           3
           ],
           [
            0,
-           4
+           3
           ]
          ]
         },
-        "ZIndex": 1,
+        "ZIndex": 5,
         "BackgroundColor3": {
          "Color3": [
           1.0,
@@ -7008,7 +6978,7 @@
           "CornerRadius": {
            "UDim": [
             0,
-            20
+            16
            ]
           }
          }
@@ -7046,43 +7016,13 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 4,
+          "Thickness": 3,
           "ApplyStrokeMode": "Border",
           "Color": {
            "Color3": [
-            1.0,
-            1.0,
-            1.0
-           ]
-          }
-         }
-        },
-        {
-         "className": "UIPadding",
-         "name": "Padding",
-         "properties": {
-          "PaddingTop": {
-           "UDim": [
-            0,
-            4
-           ]
-          },
-          "PaddingBottom": {
-           "UDim": [
-            0,
-            4
-           ]
-          },
-          "PaddingLeft": {
-           "UDim": [
-            0,
-            4
-           ]
-          },
-          "PaddingRight": {
-           "UDim": [
-            0,
-            4
+            0.3569,
+            0.3922,
+            0.7882
            ]
           }
          }
@@ -7111,11 +7051,11 @@
            "UDim2": [
             [
              0,
-             24
+             34
             ],
             [
              0,
-             24
+             34
             ]
            ]
           },
@@ -7143,24 +7083,24 @@
           "LayoutOrder": 0
          },
          "attributes": {
-          "PendingIcon": "IconLuck",
-          "IconName": "IconLuck",
-          "IconKey": "IconLuck"
+          "PendingIcon": "IconLuckBig",
+          "IconName": "IconLuckBig",
+          "IconKey": "IconLuckBig"
          }
         },
         {
-         "className": "TextLabel",
-         "name": "Multiplier",
+         "className": "Frame",
+         "name": "EventText",
          "properties": {
           "Size": {
            "UDim2": [
             [
              0,
-             80
+             112
             ],
             [
              0,
-             28
+             46
             ]
            ]
           },
@@ -7184,131 +7124,182 @@
           },
           "ZIndex": 0,
           "BackgroundTransparency": 1,
-          "Text": "<unbound>",
-          "TextScaled": true,
-          "FontFace": {
-           "Font": {
-            "family": "rbxasset://fonts/families/LuckiestGuy.json",
-            "weight": "Regular",
-            "style": "Normal"
-           }
-          },
-          "TextColor3": {
-           "Color3": [
-            0.3569,
-            0.8902,
-            0.4902
-           ]
-          },
-          "TextXAlignment": "Center",
           "LayoutOrder": 1
          },
          "children": [
           {
-           "className": "UIStroke",
-           "name": "Stroke",
+           "className": "TextLabel",
+           "name": "Multiplier",
            "properties": {
-            "Thickness": 2,
-            "ApplyStrokeMode": "Contextual",
-            "Color": {
-             "Color3": [
-              0.051,
-              0.0588,
-              0.1686
+            "Size": {
+             "UDim2": [
+              [
+               0,
+               112
+              ],
+              [
+               0,
+               25
+              ]
              ]
             },
-            "LineJoinMode": "Bevel"
-           }
-          },
-          {
-           "className": "UITextSizeConstraint",
-           "name": "SizeCap",
-           "properties": {
-            "MaxTextSize": 18,
-            "MinTextSize": 9
-           }
-          }
-         ]
-        },
-        {
-         "className": "TextLabel",
-         "name": "TimeLeft",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             56
-            ],
-            [
-             0,
-             26
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "AnchorPoint": {
-           "Vector2": [
-            0,
-            0
-           ]
-          },
-          "ZIndex": 0,
-          "BackgroundTransparency": 1,
-          "Text": "<unbound>",
-          "TextScaled": true,
-          "FontFace": {
-           "Font": {
-            "family": "rbxasset://fonts/families/FredokaOne.json",
-            "weight": "Regular",
-            "style": "Normal"
-           }
-          },
-          "TextColor3": {
-           "Color3": [
-            1.0,
-            1.0,
-            1.0
-           ]
-          },
-          "TextXAlignment": "Center",
-          "LayoutOrder": 2
-         },
-         "children": [
-          {
-           "className": "UIStroke",
-           "name": "Stroke",
-           "properties": {
-            "Thickness": 2,
-            "ApplyStrokeMode": "Contextual",
-            "Color": {
-             "Color3": [
-              0.051,
-              0.0588,
-              0.1686
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               0
+              ],
+              [
+               0,
+               0
+              ]
              ]
             },
-            "LineJoinMode": "Bevel"
-           }
+            "AnchorPoint": {
+             "Vector2": [
+              0,
+              0
+             ]
+            },
+            "ZIndex": 0,
+            "BackgroundTransparency": 1,
+            "Text": "<unbound>",
+            "TextScaled": true,
+            "FontFace": {
+             "Font": {
+              "family": "rbxasset://fonts/families/LuckiestGuy.json",
+              "weight": "Regular",
+              "style": "Normal"
+             }
+            },
+            "TextColor3": {
+             "Color3": [
+              0.3569,
+              0.8902,
+              0.4902
+             ]
+            },
+            "TextXAlignment": "Left"
+           },
+           "children": [
+            {
+             "className": "UIStroke",
+             "name": "Stroke",
+             "properties": {
+              "Thickness": 1.5,
+              "ApplyStrokeMode": "Contextual",
+              "Color": {
+               "Color3": [
+                0.051,
+                0.0588,
+                0.1686
+               ]
+              },
+              "LineJoinMode": "Bevel"
+             }
+            },
+            {
+             "className": "UITextSizeConstraint",
+             "name": "SizeCap",
+             "properties": {
+              "MaxTextSize": 20,
+              "MinTextSize": 9
+             }
+            },
+            {
+             "className": "UIPadding",
+             "name": "Nudge",
+             "properties": {
+              "PaddingTop": {
+               "UDim": [
+                0,
+                5
+               ]
+              }
+             }
+            }
+           ]
           },
           {
-           "className": "UITextSizeConstraint",
-           "name": "SizeCap",
+           "className": "TextLabel",
+           "name": "TimeLeft",
            "properties": {
-            "MaxTextSize": 16,
-            "MinTextSize": 9
-           }
+            "Size": {
+             "UDim2": [
+              [
+               0,
+               112
+              ],
+              [
+               0,
+               20
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               0
+              ],
+              [
+               1,
+               0
+              ]
+             ]
+            },
+            "AnchorPoint": {
+             "Vector2": [
+              0,
+              1
+             ]
+            },
+            "ZIndex": 0,
+            "BackgroundTransparency": 1,
+            "Text": "<unbound>",
+            "TextScaled": true,
+            "FontFace": {
+             "Font": {
+              "family": "rbxasset://fonts/families/FredokaOne.json",
+              "weight": "Regular",
+              "style": "Normal"
+             }
+            },
+            "TextColor3": {
+             "Color3": [
+              1.0,
+              1.0,
+              1.0
+             ]
+            },
+            "TextXAlignment": "Left"
+           },
+           "children": [
+            {
+             "className": "UIStroke",
+             "name": "Stroke",
+             "properties": {
+              "Thickness": 1.5,
+              "ApplyStrokeMode": "Contextual",
+              "Color": {
+               "Color3": [
+                0.051,
+                0.0588,
+                0.1686
+               ]
+              },
+              "LineJoinMode": "Bevel"
+             }
+            },
+            {
+             "className": "UITextSizeConstraint",
+             "name": "SizeCap",
+             "properties": {
+              "MaxTextSize": 16,
+              "MinTextSize": 9
+             }
+            }
+           ]
           }
          ]
         },
@@ -7320,11 +7311,11 @@
            "UDim2": [
             [
              0,
-             34
+             44
             ],
             [
              0,
-             34
+             48
             ]
            ]
           },
@@ -7348,7 +7339,7 @@
           },
           "ZIndex": 0,
           "BackgroundTransparency": 1,
-          "LayoutOrder": 3
+          "LayoutOrder": 2
          },
          "children": [
           {
@@ -7359,11 +7350,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -7371,7 +7362,7 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
@@ -7386,7 +7377,8 @@
               0.2118,
               0.5608
              ]
-            }
+            },
+            "BorderSizePixel": 0
            },
            "children": [
             {
@@ -7396,22 +7388,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                14
-               ]
-              }
-             }
-            },
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 4,
-              "ApplyStrokeMode": "Border",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                16
                ]
               }
              }
@@ -7426,11 +7403,11 @@
              "UDim2": [
               [
                1,
-               -8
+               -6
               ],
               [
                1,
-               -11
+               -10
               ]
              ]
             },
@@ -7438,11 +7415,11 @@
              "UDim2": [
               [
                0,
-               4
+               3
               ],
               [
                0,
-               4
+               3
               ]
              ]
             },
@@ -7473,7 +7450,7 @@
               "CornerRadius": {
                "UDim": [
                 0,
-                14
+                16
                ]
               }
              }
@@ -7489,21 +7466,21 @@
                  {
                   "time": 0.0,
                   "color": [
-                   0.82,
-                   0.82,
-                   0.82
+                   0.74,
+                   0.74,
+                   0.74
                   ]
                  },
                  {
-                  "time": 0.59,
+                  "time": 0.5,
                   "color": [
-                   0.9,
-                   0.9,
-                   0.9
+                   0.86,
+                   0.86,
+                   0.86
                   ]
                  },
                  {
-                  "time": 0.6,
+                  "time": 0.51,
                   "color": [
                    1.0,
                    1.0,
@@ -7527,13 +7504,13 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 4,
+              "Thickness": 3,
               "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                1.0,
+                0.6902,
+                0.8392
                ]
               }
              }
@@ -7562,11 +7539,11 @@
                "UDim2": [
                 [
                  0,
-                 20
+                 28
                 ],
                 [
                  0,
-                 20
+                 28
                 ]
                ]
               },
@@ -7603,7 +7580,9 @@
           }
          ],
          "attributes": {
-          "PressLip": 3
+          "PressLip": 4,
+          "AutoShine": true,
+          "Rim": 0.5
          }
         }
        ]
@@ -7618,11 +7597,11 @@
        "UDim2": [
         [
          0,
-         672
+         760
         ],
         [
          0,
-         44
+         74
         ]
        ]
       },
@@ -7634,7 +7613,7 @@
         ],
         [
          0,
-         206
+         62
         ]
        ]
       },
@@ -7645,24 +7624,86 @@
        ]
       },
       "ZIndex": 6,
-      "Rotation": -1.0,
       "Visible": false,
-      "BackgroundTransparency": 1
+      "BackgroundColor3": {
+       "Color3": [
+        1.0,
+        1.0,
+        1.0
+       ]
+      },
+      "BackgroundTransparency": 0.06
      },
      "children": [
       {
+       "className": "UICorner",
+       "name": "Corner",
+       "properties": {
+        "CornerRadius": {
+         "UDim": [
+          0,
+          16
+         ]
+        }
+       }
+      },
+      {
+       "className": "UIGradient",
+       "name": "Gradient",
+       "properties": {
+        "Rotation": -90,
+        "Color": {
+         "ColorSequence": {
+          "keypoints": [
+           {
+            "time": 0,
+            "color": [
+             0.0549,
+             0.0627,
+             0.1882
+            ]
+           },
+           {
+            "time": 1,
+            "color": [
+             0.1373,
+             0.1569,
+             0.4
+            ]
+           }
+          ]
+         }
+        }
+       }
+      },
+      {
+       "className": "UIStroke",
+       "name": "Stroke",
+       "properties": {
+        "Thickness": 3,
+        "ApplyStrokeMode": "Border",
+        "Color": {
+         "Color3": [
+          1.0,
+          1.0,
+          1.0
+         ]
+        }
+       }
+      },
+      {
        "className": "Frame",
-       "name": "Shadow",
+       "name": "RarityWash",
        "properties": {
         "Size": {
          "UDim2": [
           [
            1,
-           -11
+           0
           ],
           [
            1,
-           -14
+           0
           ]
          ]
         },
@@ -7670,22 +7711,29 @@
          "UDim2": [
           [
            0,
-           7
+           0
           ],
           [
            0,
-           7
+           0
           ]
          ]
         },
-        "ZIndex": 6,
+        "AnchorPoint": {
+         "Vector2": [
+          0,
+          0
+         ]
+        },
+        "ZIndex": 1,
         "BackgroundColor3": {
          "Color3": [
-          0.051,
-          0.0588,
-          0.1686
+          1.0,
+          1.0,
+          1.0
          ]
-        }
+        },
+        "BorderSizePixel": 0
        },
        "children": [
         {
@@ -7695,23 +7743,61 @@
           "CornerRadius": {
            "UDim": [
             0,
-            10
+            16
            ]
           }
          }
         },
         {
-         "className": "UIStroke",
-         "name": "Stroke",
+         "className": "UIGradient",
+         "name": "Gradient",
          "properties": {
-          "Thickness": 4,
-          "ApplyStrokeMode": "Border",
-          "Color": {
-           "Color3": [
-            0.051,
-            0.0588,
-            0.1686
-           ]
+          "Rotation": 0,
+          "Transparency": {
+           "NumberSequence": {
+            "keypoints": [
+             {
+              "time": 0.0,
+              "value": 1.0,
+              "envelope": 0
+             },
+             {
+              "time": 0.001,
+              "value": 1.0,
+              "envelope": 0
+             },
+             {
+              "time": 0.03,
+              "value": 0.7,
+              "envelope": 0
+             },
+             {
+              "time": 0.39,
+              "value": 1.0,
+              "envelope": 0
+             },
+             {
+              "time": 0.61,
+              "value": 1.0,
+              "envelope": 0
+             },
+             {
+              "time": 0.97,
+              "value": 0.7,
+              "envelope": 0
+             },
+             {
+              "time": 0.999,
+              "value": 1.0,
+              "envelope": 0
+             },
+             {
+              "time": 1.0,
+              "value": 1.0,
+              "envelope": 0
+             }
+            ]
+           }
           }
          }
         }
@@ -7719,17 +7805,17 @@
       },
       {
        "className": "Frame",
-       "name": "Face",
+       "name": "AccentLeft",
        "properties": {
         "Size": {
          "UDim2": [
           [
-           1,
-           -11
+           0,
+           5
           ],
           [
            1,
-           -14
+           -26
           ]
          ]
         },
@@ -7737,15 +7823,21 @@
          "UDim2": [
           [
            0,
-           4
+           8
           ],
           [
-           0,
-           4
+           0.5,
+           0
           ]
          ]
         },
-        "ZIndex": 7,
+        "AnchorPoint": {
+         "Vector2": [
+          0,
+          0.5
+         ]
+        },
+        "ZIndex": 3,
         "BackgroundColor3": {
          "Color3": [
           1.0,
@@ -7762,7 +7854,7 @@
           "CornerRadius": {
            "UDim": [
             0,
-            10
+            3
            ]
           }
          }
@@ -7778,17 +7870,191 @@
              {
               "time": 0,
               "color": [
-               1.0,
-               0.3529,
-               0.3725
+               0.9098,
+               0.9098,
+               0.9098
               ]
              },
              {
               "time": 1,
               "color": [
                1.0,
-               0.7882,
-               0.2353
+               1.0,
+               1.0
+              ]
+             }
+            ]
+           }
+          }
+         }
+        }
+       ]
+      },
+      {
+       "className": "Frame",
+       "name": "AccentRight",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           5
+          ],
+          [
+           1,
+           -26
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           1,
+           -8
+          ],
+          [
+           0.5,
+           0
+          ]
+         ]
+        },
+        "AnchorPoint": {
+         "Vector2": [
+          1,
+          0.5
+         ]
+        },
+        "ZIndex": 3,
+        "BackgroundColor3": {
+         "Color3": [
+          1.0,
+          1.0,
+          1.0
+         ]
+        }
+       },
+       "children": [
+        {
+         "className": "UICorner",
+         "name": "Corner",
+         "properties": {
+          "CornerRadius": {
+           "UDim": [
+            0,
+            3
+           ]
+          }
+         }
+        },
+        {
+         "className": "UIGradient",
+         "name": "Gradient",
+         "properties": {
+          "Rotation": -90,
+          "Color": {
+           "ColorSequence": {
+            "keypoints": [
+             {
+              "time": 0,
+              "color": [
+               0.9098,
+               0.9098,
+               0.9098
+              ]
+             },
+             {
+              "time": 1,
+              "color": [
+               1.0,
+               1.0,
+               1.0
+              ]
+             }
+            ]
+           }
+          }
+         }
+        }
+       ]
+      },
+      {
+       "className": "Frame",
+       "name": "PortraitWell",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           56
+          ],
+          [
+           0,
+           56
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           22
+          ],
+          [
+           0.5,
+           0
+          ]
+         ]
+        },
+        "AnchorPoint": {
+         "Vector2": [
+          0,
+          0.5
+         ]
+        },
+        "ZIndex": 3,
+        "BackgroundColor3": {
+         "Color3": [
+          1.0,
+          1.0,
+          1.0
+         ]
+        }
+       },
+       "children": [
+        {
+         "className": "UICorner",
+         "name": "Corner",
+         "properties": {
+          "CornerRadius": {
+           "UDim": [
+            1,
+            0
+           ]
+          }
+         }
+        },
+        {
+         "className": "UIGradient",
+         "name": "Gradient",
+         "properties": {
+          "Rotation": -90,
+          "Color": {
+           "ColorSequence": {
+            "keypoints": [
+             {
+              "time": 0,
+              "color": [
+               0.0706,
+               0.0824,
+               0.2275
+              ]
+             },
+             {
+              "time": 1,
+              "color": [
+               0.1647,
+               0.1882,
+               0.5333
               ]
              }
             ]
@@ -7800,7 +8066,7 @@
          "className": "UIStroke",
          "name": "Stroke",
          "properties": {
-          "Thickness": 4,
+          "Thickness": 3,
           "ApplyStrokeMode": "Border",
           "Color": {
            "Color3": [
@@ -7813,7 +8079,51 @@
         },
         {
          "className": "ImageLabel",
-         "name": "Pattern",
+         "name": "AnnounceIcon",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             36
+            ],
+            [
+             0,
+             36
+            ]
+           ]
+          },
+          "Position": {
+           "UDim2": [
+            [
+             0.5,
+             0
+            ],
+            [
+             0.5,
+             0
+            ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0.5,
+            0.5
+           ]
+          },
+          "ZIndex": 4,
+          "BackgroundTransparency": 1,
+          "ScaleType": "Fit"
+         },
+         "attributes": {
+          "PendingIcon": "IconCrownBig",
+          "IconName": "IconCrownBig",
+          "IconKey": "IconCrownBig"
+         }
+        },
+        {
+         "className": "ViewportFrame",
+         "name": "AnnouncePortrait",
          "properties": {
           "Size": {
            "UDim2": [
@@ -7827,42 +8137,187 @@
             ]
            ]
           },
-          "BackgroundTransparency": 1,
-          "ZIndex": 7,
-          "ImageColor3": {
-           "Color3": [
-            1.0,
-            1.0,
-            1.0
-           ]
-          },
-          "ImageTransparency": 0.78,
-          "ScaleType": "Tile",
-          "TileSize": {
+          "Position": {
            "UDim2": [
             [
-             0,
-             26
+             0.5,
+             0
             ],
             [
-             0,
-             26
+             0.5,
+             0
             ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0.5,
+            0.5
+           ]
+          },
+          "ZIndex": 5,
+          "BackgroundTransparency": 1,
+          "Ambient": {
+           "Color3": [
+            0.8235,
+            0.8235,
+            0.8824
+           ]
+          },
+          "LightDirection": {
+           "Vector3": [
+            -1,
+            -1,
+            -1
            ]
           }
          },
-         "attributes": {
-          "PatternName": "pattern_dots"
+         "children": []
+        }
+       ]
+      },
+      {
+       "className": "Frame",
+       "name": "TextColumn",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           400
+          ],
+          [
+           0,
+           62
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           94
+          ],
+          [
+           0.5,
+           0
+          ]
+         ]
+        },
+        "AnchorPoint": {
+         "Vector2": [
+          0,
+          0.5
+         ]
+        },
+        "ZIndex": 3,
+        "BackgroundTransparency": 1
+       },
+       "children": [
+        {
+         "className": "UIListLayout",
+         "name": "Layout",
+         "properties": {
+          "FillDirection": "Vertical",
+          "Padding": {
+           "UDim": [
+            0,
+            4
+           ]
+          },
+          "SortOrder": "LayoutOrder",
+          "HorizontalAlignment": "Center",
+          "VerticalAlignment": "Top"
+         }
+        },
+        {
+         "className": "TextLabel",
+         "name": "PlayerName",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             400
+            ],
+            [
+             0,
+             20
+            ]
+           ]
+          },
+          "Position": {
+           "UDim2": [
+            [
+             0,
+             0
+            ],
+            [
+             0,
+             0
+            ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0
+           ]
+          },
+          "ZIndex": 0,
+          "BackgroundTransparency": 1,
+          "Text": "<unbound>",
+          "TextScaled": true,
+          "FontFace": {
+           "Font": {
+            "family": "rbxasset://fonts/families/LuckiestGuy.json",
+            "weight": "Regular",
+            "style": "Normal"
+           }
+          },
+          "TextColor3": {
+           "Color3": [
+            0.7882,
+            0.8039,
+            0.9608
+           ]
+          },
+          "TextXAlignment": "Left",
+          "LayoutOrder": 0
          },
          "children": [
           {
-           "className": "UICorner",
-           "name": "Corner",
+           "className": "UIStroke",
+           "name": "Stroke",
            "properties": {
-            "CornerRadius": {
+            "Thickness": 1.5,
+            "ApplyStrokeMode": "Contextual",
+            "Color": {
+             "Color3": [
+              0.051,
+              0.0588,
+              0.1686
+             ]
+            },
+            "LineJoinMode": "Bevel"
+           }
+          },
+          {
+           "className": "UITextSizeConstraint",
+           "name": "SizeCap",
+           "properties": {
+            "MaxTextSize": 16,
+            "MinTextSize": 9
+           }
+          },
+          {
+           "className": "UIPadding",
+           "name": "Nudge",
+           "properties": {
+            "PaddingTop": {
              "UDim": [
               0,
-              10
+              4
              ]
             }
            }
@@ -7870,84 +8325,207 @@
          ]
         },
         {
-         "className": "Frame",
-         "name": "Content",
+         "className": "TextLabel",
+         "name": "HeroName",
          "properties": {
           "Size": {
            "UDim2": [
             [
-             1,
+             0,
+             400
+            ],
+            [
+             0,
+             38
+            ]
+           ]
+          },
+          "Position": {
+           "UDim2": [
+            [
+             0,
              0
             ],
             [
-             1,
+             0,
              0
             ]
            ]
           },
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0
+           ]
+          },
+          "ZIndex": 0,
           "BackgroundTransparency": 1,
-          "ZIndex": 7
+          "Text": "<unbound>",
+          "TextScaled": true,
+          "FontFace": {
+           "Font": {
+            "family": "rbxasset://fonts/families/LuckiestGuy.json",
+            "weight": "Regular",
+            "style": "Normal"
+           }
+          },
+          "TextColor3": {
+           "Color3": [
+            1.0,
+            1.0,
+            1.0
+           ]
+          },
+          "TextXAlignment": "Left",
+          "LayoutOrder": 1
          },
          "children": [
           {
+           "className": "UIStroke",
+           "name": "Stroke",
+           "properties": {
+            "Thickness": 2,
+            "ApplyStrokeMode": "Contextual",
+            "Color": {
+             "Color3": [
+              0.051,
+              0.0588,
+              0.1686
+             ]
+            },
+            "LineJoinMode": "Bevel"
+           }
+          },
+          {
+           "className": "UITextSizeConstraint",
+           "name": "SizeCap",
+           "properties": {
+            "MaxTextSize": 30,
+            "MinTextSize": 9
+           }
+          },
+          {
            "className": "UIPadding",
-           "name": "Padding",
+           "name": "Nudge",
            "properties": {
             "PaddingTop": {
              "UDim": [
               0,
-              4
-             ]
-            },
-            "PaddingBottom": {
-             "UDim": [
-              0,
-              4
-             ]
-            },
-            "PaddingLeft": {
-             "UDim": [
-              0,
-              4
-             ]
-            },
-            "PaddingRight": {
-             "UDim": [
-              0,
-              4
+              7
              ]
             }
            }
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "className": "Frame",
+       "name": "MetaRow",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           230
+          ],
+          [
+           0,
+           30
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           1,
+           -24
+          ],
+          [
+           0.5,
+           0
+          ]
+         ]
+        },
+        "AnchorPoint": {
+         "Vector2": [
+          1,
+          0.5
+         ]
+        },
+        "ZIndex": 3,
+        "BackgroundTransparency": 1
+       },
+       "children": [
+        {
+         "className": "UIListLayout",
+         "name": "Layout",
+         "properties": {
+          "FillDirection": "Horizontal",
+          "Padding": {
+           "UDim": [
+            0,
+            10
+           ]
           },
-          {
-           "className": "UIListLayout",
-           "name": "Layout",
-           "properties": {
-            "FillDirection": "Horizontal",
-            "Padding": {
-             "UDim": [
-              0,
-              8
-             ]
-            },
-            "SortOrder": "LayoutOrder",
-            "HorizontalAlignment": "Center",
-            "VerticalAlignment": "Center"
-           }
+          "SortOrder": "LayoutOrder",
+          "HorizontalAlignment": "Right",
+          "VerticalAlignment": "Center"
+         }
+        },
+        {
+         "className": "Frame",
+         "name": "RarityChipCell",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             105
+            ],
+            [
+             0,
+             28
+            ]
+           ]
           },
+          "Position": {
+           "UDim2": [
+            [
+             0,
+             0
+            ],
+            [
+             0,
+             0
+            ]
+           ]
+          },
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0
+           ]
+          },
+          "ZIndex": 0,
+          "BackgroundTransparency": 1,
+          "LayoutOrder": 0
+         },
+         "children": [
           {
-           "className": "ImageLabel",
-           "name": "Icon",
+           "className": "Frame",
+           "name": "RarityChip",
            "properties": {
             "Size": {
              "UDim2": [
               [
-               0,
-               26
+               1,
+               -4
               ],
               [
-               0,
-               26
+               1,
+               -4
               ]
              ]
             },
@@ -7955,358 +8533,262 @@
              "UDim2": [
               [
                0,
-               0
+               2
               ],
               [
                0,
-               0
+               2
               ]
              ]
             },
-            "AnchorPoint": {
-             "Vector2": [
-              0,
-              0
-             ]
-            },
-            "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "ScaleType": "Fit",
-            "LayoutOrder": 0
-           },
-           "attributes": {
-            "PendingIcon": "IconStar",
-            "IconName": "IconStar",
-            "IconKey": "IconStar"
-           }
-          },
-          {
-           "className": "TextLabel",
-           "name": "PlayerName",
-           "properties": {
-            "Size": {
-             "UDim2": [
-              [
-               0,
-               212
-              ],
-              [
-               0,
-               22
-              ]
-             ]
-            },
-            "Position": {
-             "UDim2": [
-              [
-               0,
-               0
-              ],
-              [
-               0,
-               0
-              ]
-             ]
-            },
-            "AnchorPoint": {
-             "Vector2": [
-              0,
-              0
-             ]
-            },
-            "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "Text": "<unbound>",
-            "TextScaled": true,
-            "FontFace": {
-             "Font": {
-              "family": "rbxasset://fonts/families/FredokaOne.json",
-              "weight": "Regular",
-              "style": "Normal"
-             }
-            },
-            "TextColor3": {
+            "ZIndex": 1,
+            "BackgroundColor3": {
              "Color3": [
-              1.0,
-              1.0,
-              1.0
+              0.6588,
+              0.3333,
+              0.9686
              ]
-            },
-            "TextXAlignment": "Left",
-            "LayoutOrder": 1
+            }
            },
            "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                0,
+                14
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIGradient",
+             "name": "Gradient",
+             "properties": {
+              "Rotation": -90,
+              "Color": {
+               "ColorSequence": {
+                "keypoints": [
+                 {
+                  "time": 0,
+                  "color": [
+                   0.8588,
+                   0.8588,
+                   0.8588
+                  ]
+                 },
+                 {
+                  "time": 1,
+                  "color": [
+                   1.0,
+                   1.0,
+                   1.0
+                  ]
+                 }
+                ]
+               }
+              }
+             }
+            },
             {
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
               "Thickness": 2,
-              "ApplyStrokeMode": "Contextual",
+              "ApplyStrokeMode": "Border",
               "Color": {
                "Color3": [
-                0.051,
-                0.0588,
-                0.1686
+                1.0,
+                1.0,
+                1.0
                ]
-              },
-              "LineJoinMode": "Bevel"
+              }
              }
             },
             {
-             "className": "UITextSizeConstraint",
-             "name": "SizeCap",
+             "className": "TextLabel",
+             "name": "RarityText",
              "properties": {
-              "MaxTextSize": 14,
-              "MinTextSize": 9
-             }
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 95
+                ],
+                [
+                 0,
+                 22
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0.5,
+                 0
+                ],
+                [
+                 0.5,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0.5,
+                0.5
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "Text": "<unbound>",
+              "TextScaled": true,
+              "FontFace": {
+               "Font": {
+                "family": "rbxasset://fonts/families/LuckiestGuy.json",
+                "weight": "Regular",
+                "style": "Normal"
+               }
+              },
+              "TextColor3": {
+               "Color3": [
+                1.0,
+                1.0,
+                1.0
+               ]
+              },
+              "TextXAlignment": "Center"
+             },
+             "children": [
+              {
+               "className": "UIStroke",
+               "name": "Stroke",
+               "properties": {
+                "Thickness": 1.5,
+                "ApplyStrokeMode": "Contextual",
+                "Color": {
+                 "Color3": [
+                  0.051,
+                  0.0588,
+                  0.1686
+                 ]
+                },
+                "LineJoinMode": "Bevel"
+               }
+              },
+              {
+               "className": "UITextSizeConstraint",
+               "name": "SizeCap",
+               "properties": {
+                "MaxTextSize": 16,
+                "MinTextSize": 9
+               }
+              },
+              {
+               "className": "UIPadding",
+               "name": "Nudge",
+               "properties": {
+                "PaddingTop": {
+                 "UDim": [
+                  0,
+                  4
+                 ]
+                }
+               }
+              }
+             ]
             }
+           ]
+          }
+         ]
+        },
+        {
+         "className": "TextLabel",
+         "name": "OneInN",
+         "properties": {
+          "Size": {
+           "UDim2": [
+            [
+             0,
+             0
+            ],
+            [
+             0,
+             25
+            ]
            ]
           },
-          {
-           "className": "TextLabel",
-           "name": "HeroName",
-           "properties": {
-            "Size": {
-             "UDim2": [
-              [
-               0,
-               176
-              ],
-              [
-               0,
-               28
-              ]
-             ]
-            },
-            "Position": {
-             "UDim2": [
-              [
-               0,
-               0
-              ],
-              [
-               0,
-               0
-              ]
-             ]
-            },
-            "AnchorPoint": {
-             "Vector2": [
-              0,
-              0
-             ]
-            },
-            "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "Text": "<unbound>",
-            "TextScaled": true,
-            "FontFace": {
-             "Font": {
-              "family": "rbxasset://fonts/families/LuckiestGuy.json",
-              "weight": "Regular",
-              "style": "Normal"
-             }
-            },
-            "TextColor3": {
-             "Color3": [
-              1.0,
-              1.0,
-              1.0
-             ]
-            },
-            "TextXAlignment": "Center",
-            "LayoutOrder": 2
-           },
-           "children": [
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 3,
-              "ApplyStrokeMode": "Contextual",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
-               ]
-              },
-              "LineJoinMode": "Bevel"
-             }
-            },
-            {
-             "className": "UITextSizeConstraint",
-             "name": "SizeCap",
-             "properties": {
-              "MaxTextSize": 19,
-              "MinTextSize": 9
-             }
-            }
+          "Position": {
+           "UDim2": [
+            [
+             0,
+             0
+            ],
+            [
+             0,
+             0
+            ]
            ]
           },
-          {
-           "className": "TextLabel",
-           "name": "RarityText",
-           "properties": {
-            "Size": {
-             "UDim2": [
-              [
-               0,
-               88
-              ],
-              [
-               0,
-               22
-              ]
-             ]
-            },
-            "Position": {
-             "UDim2": [
-              [
-               0,
-               0
-              ],
-              [
-               0,
-               0
-              ]
-             ]
-            },
-            "AnchorPoint": {
-             "Vector2": [
-              0,
-              0
-             ]
-            },
-            "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "Text": "<unbound>",
-            "TextScaled": true,
-            "FontFace": {
-             "Font": {
-              "family": "rbxasset://fonts/families/LuckiestGuy.json",
-              "weight": "Regular",
-              "style": "Normal"
-             }
-            },
-            "TextColor3": {
-             "Color3": [
-              1.0,
-              1.0,
-              1.0
-             ]
-            },
-            "TextXAlignment": "Center",
-            "LayoutOrder": 3
-           },
-           "children": [
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 2,
-              "ApplyStrokeMode": "Contextual",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
-               ]
-              },
-              "LineJoinMode": "Bevel"
-             }
-            },
-            {
-             "className": "UITextSizeConstraint",
-             "name": "SizeCap",
-             "properties": {
-              "MaxTextSize": 14,
-              "MinTextSize": 9
-             }
-            }
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0
            ]
           },
-          {
-           "className": "TextLabel",
-           "name": "OneInN",
-           "properties": {
-            "Size": {
-             "UDim2": [
-              [
-               0,
-               126
-              ],
-              [
-               0,
-               22
-              ]
-             ]
-            },
-            "Position": {
-             "UDim2": [
-              [
-               0,
-               0
-              ],
-              [
-               0,
-               0
-              ]
-             ]
-            },
-            "AnchorPoint": {
-             "Vector2": [
-              0,
-              0
-             ]
-            },
-            "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "Text": "<unbound>",
-            "TextScaled": true,
-            "FontFace": {
-             "Font": {
-              "family": "rbxasset://fonts/families/FredokaOne.json",
-              "weight": "Regular",
-              "style": "Normal"
-             }
-            },
-            "TextColor3": {
-             "Color3": [
-              1.0,
-              1.0,
-              1.0
-             ]
-            },
-            "TextXAlignment": "Center",
-            "LayoutOrder": 4
-           },
-           "children": [
-            {
-             "className": "UIStroke",
-             "name": "Stroke",
-             "properties": {
-              "Thickness": 2,
-              "ApplyStrokeMode": "Contextual",
-              "Color": {
-               "Color3": [
-                0.051,
-                0.0588,
-                0.1686
-               ]
-              },
-              "LineJoinMode": "Bevel"
-             }
-            },
-            {
-             "className": "UITextSizeConstraint",
-             "name": "SizeCap",
-             "properties": {
-              "MaxTextSize": 14,
-              "MinTextSize": 9
-             }
-            }
+          "ZIndex": 0,
+          "BackgroundTransparency": 1,
+          "Text": "<unbound>",
+          "TextScaled": false,
+          "FontFace": {
+           "Font": {
+            "family": "rbxasset://fonts/families/LuckiestGuy.json",
+            "weight": "Regular",
+            "style": "Normal"
+           }
+          },
+          "TextColor3": {
+           "Color3": [
+            0.8667,
+            0.949,
+            0.3529
            ]
+          },
+          "TextXAlignment": "Center",
+          "TextSize": 20,
+          "AutomaticSize": "X",
+          "LayoutOrder": 1
+         },
+         "children": [
+          {
+           "className": "UIStroke",
+           "name": "Stroke",
+           "properties": {
+            "Thickness": 1.5,
+            "ApplyStrokeMode": "Contextual",
+            "Color": {
+             "Color3": [
+              0.051,
+              0.0588,
+              0.1686
+             ]
+            },
+            "LineJoinMode": "Bevel"
+           }
+          },
+          {
+           "className": "UIPadding",
+           "name": "Nudge",
+           "properties": {
+            "PaddingTop": {
+             "UDim": [
+              0,
+              5
+             ]
+            }
+           }
           }
          ]
         }
@@ -8338,7 +8820,7 @@
         ],
         [
          0,
-         260
+         300
         ]
        ]
       },
@@ -8374,7 +8856,7 @@
        "className": "UIStroke",
        "name": "Stroke",
        "properties": {
-        "Thickness": 4,
+        "Thickness": 2,
         "ApplyStrokeMode": "Contextual",
         "Color": {
          "Color3": [
@@ -8404,11 +8886,11 @@
        "UDim2": [
         [
          0,
-         380
+         640
         ],
         [
          0,
-         72
+         148
         ]
        ]
       },
@@ -8420,7 +8902,7 @@
         ],
         [
          0,
-         452
+         146
         ]
        ]
       },
@@ -8447,7 +8929,7 @@
         },
         "SortOrder": "LayoutOrder",
         "HorizontalAlignment": "Center",
-        "VerticalAlignment": "Bottom"
+        "VerticalAlignment": "Center"
        }
       },
       {
@@ -8458,11 +8940,11 @@
          "UDim2": [
           [
            0,
-           380
+           0
           ],
           [
            0,
-           32
+           44
           ]
          ]
         },
@@ -8487,76 +8969,10 @@
         "ZIndex": 0,
         "Visible": false,
         "BackgroundTransparency": 1,
+        "AutomaticSize": "X",
         "LayoutOrder": 0
        },
        "children": [
-        {
-         "className": "Frame",
-         "name": "Shadow",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             1,
-             -8
-            ],
-            [
-             1,
-             -11
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0,
-             4
-            ],
-            [
-             0,
-             7
-            ]
-           ]
-          },
-          "ZIndex": 0,
-          "BackgroundColor3": {
-           "Color3": [
-            0.0588,
-            0.1098,
-            0.1922
-           ]
-          }
-         },
-         "children": [
-          {
-           "className": "UICorner",
-           "name": "Corner",
-           "properties": {
-            "CornerRadius": {
-             "UDim": [
-              0,
-              16
-             ]
-            }
-           }
-          },
-          {
-           "className": "UIStroke",
-           "name": "Stroke",
-           "properties": {
-            "Thickness": 4,
-            "ApplyStrokeMode": "Border",
-            "Color": {
-             "Color3": [
-              1.0,
-              1.0,
-              1.0
-             ]
-            }
-           }
-          }
-         ]
-        },
         {
          "className": "Frame",
          "name": "Face",
@@ -8564,12 +8980,12 @@
           "Size": {
            "UDim2": [
             [
-             1,
-             -8
+             0,
+             0
             ],
             [
-             1,
-             -11
+             0,
+             40
             ]
            ]
           },
@@ -8577,24 +8993,50 @@
            "UDim2": [
             [
              0,
-             4
+             0
             ],
             [
-             0,
-             4
+             0.5,
+             0
             ]
            ]
           },
-          "ZIndex": 1,
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0.5
+           ]
+          },
+          "ZIndex": 0,
           "BackgroundColor3": {
            "Color3": [
-            0.1059,
-            0.1216,
-            0.2941
+            1.0,
+            1.0,
+            1.0
            ]
-          }
+          },
+          "BackgroundTransparency": 0.04,
+          "AutomaticSize": "X"
          },
          "children": [
+          {
+           "className": "UIPadding",
+           "name": "AutoPad",
+           "properties": {
+            "PaddingLeft": {
+             "UDim": [
+              0,
+              6
+             ]
+            },
+            "PaddingRight": {
+             "UDim": [
+              0,
+              6
+             ]
+            }
+           }
+          },
           {
            "className": "UICorner",
            "name": "Corner",
@@ -8602,7 +9044,7 @@
             "CornerRadius": {
              "UDim": [
               0,
-              16
+              20
              ]
             }
            }
@@ -8618,17 +9060,17 @@
                {
                 "time": 0,
                 "color": [
-                 0.8588,
-                 0.8588,
-                 0.8588
+                 0.0863,
+                 0.102,
+                 0.2824
                 ]
                },
                {
                 "time": 1,
                 "color": [
-                 1.0,
-                 1.0,
-                 1.0
+                 0.149,
+                 0.1686,
+                 0.4314
                 ]
                }
               ]
@@ -8640,43 +9082,13 @@
            "className": "UIStroke",
            "name": "Stroke",
            "properties": {
-            "Thickness": 4,
+            "Thickness": 3,
             "ApplyStrokeMode": "Border",
             "Color": {
              "Color3": [
-              1.0,
-              1.0,
-              1.0
-             ]
-            }
-           }
-          },
-          {
-           "className": "UIPadding",
-           "name": "Padding",
-           "properties": {
-            "PaddingTop": {
-             "UDim": [
-              0,
-              4
-             ]
-            },
-            "PaddingBottom": {
-             "UDim": [
-              0,
-              4
-             ]
-            },
-            "PaddingLeft": {
-             "UDim": [
-              0,
-              4
-             ]
-            },
-            "PaddingRight": {
-             "UDim": [
-              0,
-              4
+              0.3569,
+              0.3922,
+              0.7882
              ]
             }
            }
@@ -8689,7 +9101,7 @@
             "Padding": {
              "UDim": [
               0,
-              8
+              10
              ]
             },
             "SortOrder": "LayoutOrder",
@@ -8698,18 +9110,18 @@
            }
           },
           {
-           "className": "ImageLabel",
-           "name": "Icon",
+           "className": "Frame",
+           "name": "IconWell",
            "properties": {
             "Size": {
              "UDim2": [
               [
                0,
-               22
+               28
               ],
               [
                0,
-               22
+               28
               ]
              ]
             },
@@ -8732,15 +9144,102 @@
              ]
             },
             "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "ScaleType": "Fit",
+            "BackgroundColor3": {
+             "Color3": [
+              0.9412,
+              0.3216,
+              0.302
+             ]
+            },
             "LayoutOrder": 0
            },
-           "attributes": {
-            "PendingIcon": "IconYen",
-            "IconName": "IconYen",
-            "IconKey": "IconYen"
-           }
+           "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                1,
+                0
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIGradient",
+             "name": "Gradient",
+             "properties": {
+              "Rotation": -90,
+              "Color": {
+               "ColorSequence": {
+                "keypoints": [
+                 {
+                  "time": 0,
+                  "color": [
+                   0.8588,
+                   0.8588,
+                   0.8588
+                  ]
+                 },
+                 {
+                  "time": 1,
+                  "color": [
+                   1.0,
+                   1.0,
+                   1.0
+                  ]
+                 }
+                ]
+               }
+              }
+             }
+            },
+            {
+             "className": "ImageLabel",
+             "name": "Icon",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 18
+                ],
+                [
+                 0,
+                 18
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0.5,
+                 0
+                ],
+                [
+                 0.5,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0.5,
+                0.5
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "ScaleType": "Fit"
+             },
+             "attributes": {
+              "PendingIcon": "IconClose",
+              "IconName": "IconClose",
+              "IconKey": "IconClose"
+             }
+            }
+           ]
           },
           {
            "className": "TextLabel",
@@ -8750,11 +9249,11 @@
              "UDim2": [
               [
                0,
-               330
+               0
               ],
               [
                0,
-               22
+               23
               ]
              ]
             },
@@ -8779,10 +9278,10 @@
             "ZIndex": 0,
             "BackgroundTransparency": 1,
             "Text": "<unbound>",
-            "TextScaled": true,
+            "TextScaled": false,
             "FontFace": {
              "Font": {
-              "family": "rbxasset://fonts/families/FredokaOne.json",
+              "family": "rbxasset://fonts/families/LuckiestGuy.json",
               "weight": "Regular",
               "style": "Normal"
              }
@@ -8794,7 +9293,9 @@
               1.0
              ]
             },
-            "TextXAlignment": "Left",
+            "TextXAlignment": "Center",
+            "TextSize": 18,
+            "AutomaticSize": "X",
             "LayoutOrder": 1
            },
            "children": [
@@ -8802,7 +9303,7 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 2,
+              "Thickness": 1.5,
               "ApplyStrokeMode": "Contextual",
               "Color": {
                "Color3": [
@@ -8815,14 +9316,57 @@
              }
             },
             {
-             "className": "UITextSizeConstraint",
-             "name": "SizeCap",
+             "className": "UIPadding",
+             "name": "Nudge",
              "properties": {
-              "MaxTextSize": 14,
-              "MinTextSize": 9
+              "PaddingTop": {
+               "UDim": [
+                0,
+                4
+               ]
+              }
              }
             }
            ]
+          },
+          {
+           "className": "Frame",
+           "name": "Tail",
+           "properties": {
+            "Size": {
+             "UDim2": [
+              [
+               0,
+               4
+              ],
+              [
+               0,
+               10
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               0
+              ],
+              [
+               0,
+               0
+              ]
+             ]
+            },
+            "AnchorPoint": {
+             "Vector2": [
+              0,
+              0
+             ]
+            },
+            "ZIndex": 0,
+            "BackgroundTransparency": 1,
+            "LayoutOrder": 2
+           }
           }
          ]
         }
@@ -8839,11 +9383,11 @@
          "UDim2": [
           [
            0,
-           380
+           0
           ],
           [
            0,
-           32
+           44
           ]
          ]
         },
@@ -8868,76 +9412,10 @@
         "ZIndex": 0,
         "Visible": false,
         "BackgroundTransparency": 1,
+        "AutomaticSize": "X",
         "LayoutOrder": 1
        },
        "children": [
-        {
-         "className": "Frame",
-         "name": "Shadow",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             1,
-             -8
-            ],
-            [
-             1,
-             -11
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0,
-             4
-            ],
-            [
-             0,
-             7
-            ]
-           ]
-          },
-          "ZIndex": 0,
-          "BackgroundColor3": {
-           "Color3": [
-            0.0627,
-            0.2863,
-            0.251
-           ]
-          }
-         },
-         "children": [
-          {
-           "className": "UICorner",
-           "name": "Corner",
-           "properties": {
-            "CornerRadius": {
-             "UDim": [
-              0,
-              16
-             ]
-            }
-           }
-          },
-          {
-           "className": "UIStroke",
-           "name": "Stroke",
-           "properties": {
-            "Thickness": 4,
-            "ApplyStrokeMode": "Border",
-            "Color": {
-             "Color3": [
-              1.0,
-              1.0,
-              1.0
-             ]
-            }
-           }
-          }
-         ]
-        },
         {
          "className": "Frame",
          "name": "Face",
@@ -8945,12 +9423,12 @@
           "Size": {
            "UDim2": [
             [
-             1,
-             -8
+             0,
+             0
             ],
             [
-             1,
-             -11
+             0,
+             40
             ]
            ]
           },
@@ -8958,24 +9436,50 @@
            "UDim2": [
             [
              0,
-             4
+             0
             ],
             [
-             0,
-             4
+             0.5,
+             0
             ]
            ]
           },
-          "ZIndex": 1,
+          "AnchorPoint": {
+           "Vector2": [
+            0,
+            0.5
+           ]
+          },
+          "ZIndex": 0,
           "BackgroundColor3": {
            "Color3": [
-            0.1216,
-            0.4314,
-            0.2902
+            1.0,
+            1.0,
+            1.0
            ]
-          }
+          },
+          "BackgroundTransparency": 0.04,
+          "AutomaticSize": "X"
          },
          "children": [
+          {
+           "className": "UIPadding",
+           "name": "AutoPad",
+           "properties": {
+            "PaddingLeft": {
+             "UDim": [
+              0,
+              6
+             ]
+            },
+            "PaddingRight": {
+             "UDim": [
+              0,
+              6
+             ]
+            }
+           }
+          },
           {
            "className": "UICorner",
            "name": "Corner",
@@ -8983,7 +9487,7 @@
             "CornerRadius": {
              "UDim": [
               0,
-              16
+              20
              ]
             }
            }
@@ -8999,17 +9503,17 @@
                {
                 "time": 0,
                 "color": [
-                 0.8588,
-                 0.8588,
-                 0.8588
+                 0.0863,
+                 0.102,
+                 0.2824
                 ]
                },
                {
                 "time": 1,
                 "color": [
-                 1.0,
-                 1.0,
-                 1.0
+                 0.149,
+                 0.1686,
+                 0.4314
                 ]
                }
               ]
@@ -9021,43 +9525,13 @@
            "className": "UIStroke",
            "name": "Stroke",
            "properties": {
-            "Thickness": 4,
+            "Thickness": 3,
             "ApplyStrokeMode": "Border",
             "Color": {
              "Color3": [
-              1.0,
-              1.0,
-              1.0
-             ]
-            }
-           }
-          },
-          {
-           "className": "UIPadding",
-           "name": "Padding",
-           "properties": {
-            "PaddingTop": {
-             "UDim": [
-              0,
-              4
-             ]
-            },
-            "PaddingBottom": {
-             "UDim": [
-              0,
-              4
-             ]
-            },
-            "PaddingLeft": {
-             "UDim": [
-              0,
-              4
-             ]
-            },
-            "PaddingRight": {
-             "UDim": [
-              0,
-              4
+              0.3569,
+              0.3922,
+              0.7882
              ]
             }
            }
@@ -9070,7 +9544,7 @@
             "Padding": {
              "UDim": [
               0,
-              8
+              10
              ]
             },
             "SortOrder": "LayoutOrder",
@@ -9079,18 +9553,18 @@
            }
           },
           {
-           "className": "ImageLabel",
-           "name": "Icon",
+           "className": "Frame",
+           "name": "IconWell",
            "properties": {
             "Size": {
              "UDim2": [
               [
                0,
-               22
+               28
               ],
               [
                0,
-               22
+               28
               ]
              ]
             },
@@ -9113,15 +9587,102 @@
              ]
             },
             "ZIndex": 0,
-            "BackgroundTransparency": 1,
-            "ScaleType": "Fit",
+            "BackgroundColor3": {
+             "Color3": [
+              0.9608,
+              0.6471,
+              0.1412
+             ]
+            },
             "LayoutOrder": 0
            },
-           "attributes": {
-            "PendingIcon": "IconGift",
-            "IconName": "IconGift",
-            "IconKey": "IconGift"
-           }
+           "children": [
+            {
+             "className": "UICorner",
+             "name": "Corner",
+             "properties": {
+              "CornerRadius": {
+               "UDim": [
+                1,
+                0
+               ]
+              }
+             }
+            },
+            {
+             "className": "UIGradient",
+             "name": "Gradient",
+             "properties": {
+              "Rotation": -90,
+              "Color": {
+               "ColorSequence": {
+                "keypoints": [
+                 {
+                  "time": 0,
+                  "color": [
+                   0.8588,
+                   0.8588,
+                   0.8588
+                  ]
+                 },
+                 {
+                  "time": 1,
+                  "color": [
+                   1.0,
+                   1.0,
+                   1.0
+                  ]
+                 }
+                ]
+               }
+              }
+             }
+            },
+            {
+             "className": "ImageLabel",
+             "name": "Icon",
+             "properties": {
+              "Size": {
+               "UDim2": [
+                [
+                 0,
+                 18
+                ],
+                [
+                 0,
+                 18
+                ]
+               ]
+              },
+              "Position": {
+               "UDim2": [
+                [
+                 0.5,
+                 0
+                ],
+                [
+                 0.5,
+                 0
+                ]
+               ]
+              },
+              "AnchorPoint": {
+               "Vector2": [
+                0.5,
+                0.5
+               ]
+              },
+              "ZIndex": 0,
+              "BackgroundTransparency": 1,
+              "ScaleType": "Fit"
+             },
+             "attributes": {
+              "PendingIcon": "IconGift",
+              "IconName": "IconGift",
+              "IconKey": "IconGift"
+             }
+            }
+           ]
           },
           {
            "className": "TextLabel",
@@ -9131,11 +9692,11 @@
              "UDim2": [
               [
                0,
-               330
+               0
               ],
               [
                0,
-               22
+               23
               ]
              ]
             },
@@ -9160,10 +9721,10 @@
             "ZIndex": 0,
             "BackgroundTransparency": 1,
             "Text": "<unbound>",
-            "TextScaled": true,
+            "TextScaled": false,
             "FontFace": {
              "Font": {
-              "family": "rbxasset://fonts/families/FredokaOne.json",
+              "family": "rbxasset://fonts/families/LuckiestGuy.json",
               "weight": "Regular",
               "style": "Normal"
              }
@@ -9175,7 +9736,9 @@
               1.0
              ]
             },
-            "TextXAlignment": "Left",
+            "TextXAlignment": "Center",
+            "TextSize": 18,
+            "AutomaticSize": "X",
             "LayoutOrder": 1
            },
            "children": [
@@ -9183,7 +9746,7 @@
              "className": "UIStroke",
              "name": "Stroke",
              "properties": {
-              "Thickness": 2,
+              "Thickness": 1.5,
               "ApplyStrokeMode": "Contextual",
               "Color": {
                "Color3": [
@@ -9196,14 +9759,57 @@
              }
             },
             {
-             "className": "UITextSizeConstraint",
-             "name": "SizeCap",
+             "className": "UIPadding",
+             "name": "Nudge",
              "properties": {
-              "MaxTextSize": 14,
-              "MinTextSize": 9
+              "PaddingTop": {
+               "UDim": [
+                0,
+                4
+               ]
+              }
              }
             }
            ]
+          },
+          {
+           "className": "Frame",
+           "name": "Tail",
+           "properties": {
+            "Size": {
+             "UDim2": [
+              [
+               0,
+               4
+              ],
+              [
+               0,
+               10
+              ]
+             ]
+            },
+            "Position": {
+             "UDim2": [
+              [
+               0,
+               0
+              ],
+              [
+               0,
+               0
+              ]
+             ]
+            },
+            "AnchorPoint": {
+             "Vector2": [
+              0,
+              0
+             ]
+            },
+            "ZIndex": 0,
+            "BackgroundTransparency": 1,
+            "LayoutOrder": 2
+           }
           }
          ]
         }

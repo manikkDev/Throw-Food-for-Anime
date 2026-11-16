@@ -1,0 +1,9 @@
+{
+ "textures": [
+  "sim:lib/sprites/impacts/hit_cross_glow_00",
+  "sim:lib/sprites/rings/ring_glow_00",
+  "sim:lib/sprites/stars/star_cel_06",
+  "sim:lib/sprites/stars/star_glow_00"
+ ],
+ "meshes": []
+}

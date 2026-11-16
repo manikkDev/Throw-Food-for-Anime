@@ -1,0 +1,397 @@
+{
+ "textures": [
+  {
+   "file": "lib__beams__energy_glow_02__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__energy_glow_02__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\energy_glow_02.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__energy_glow_04__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__energy_glow_04__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\energy_glow_04.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__energy_soft_03__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__energy_soft_03__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\energy_soft_03.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__fire_trail_hot_02__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__fire_trail_hot_02__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\fire_trail_hot_02.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__laser_glow_01__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__laser_glow_01__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\laser_glow_01.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__laser_glow_04__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__laser_glow_04__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\laser_glow_04.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__laser_soft_04__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__laser_soft_04__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\laser_soft_04.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__sparkle_trail_cel_02__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__sparkle_trail_cel_02__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\sparkle_trail_cel_02.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__sparkle_trail_glow_02__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__sparkle_trail_glow_02__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\sparkle_trail_glow_02.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__beams__speed_streaks_cel_02__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__beams__speed_streaks_cel_02__vt.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\beams\\speed_streaks_cel_02.png",
+   "transposed": true
+  },
+  {
+   "file": "lib__flipbooks__fire__fire_burst_cel_01_4x4.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__flipbooks__fire__fire_burst_cel_01_4x4.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\flipbooks\\fire\\fire_burst_cel_01_4x4.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__flipbooks__fire__fire_loop_cel_01_4x4.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__flipbooks__fire__fire_loop_cel_01_4x4.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\flipbooks\\fire\\fire_loop_cel_01_4x4.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__flipbooks__magic__sigil_spin_glow_02_4x4.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__flipbooks__magic__sigil_spin_glow_02_4x4.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\flipbooks\\magic\\sigil_spin_glow_02_4x4.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__flipbooks__shockwaves__shockwave_cel_01_4x4.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__flipbooks__shockwaves__shockwave_cel_01_4x4.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\flipbooks\\shockwaves\\shockwave_cel_01_4x4.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__flipbooks__smoke__smoke_puff_fb_cel_03_4x4.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__flipbooks__smoke__smoke_puff_fb_cel_03_4x4.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\flipbooks\\smoke\\smoke_puff_fb_cel_03_4x4.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__elements__bolt_glow_03.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__elements__bolt_glow_03.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\elements\\bolt_glow_03.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__elements__flame_glow_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__elements__flame_glow_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\elements\\flame_glow_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__elements__rays_glow_01.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__elements__rays_glow_01.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\elements\\rays_glow_01.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__impacts__comic_burst_cel_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__impacts__comic_burst_cel_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\impacts\\comic_burst_cel_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__impacts__hit_cross_cel_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__impacts__hit_cross_cel_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\impacts\\hit_cross_cel_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__impacts__hit_cross_glow_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__impacts__hit_cross_glow_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\impacts\\hit_cross_glow_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__impacts__starburst_cel_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__impacts__starburst_cel_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\impacts\\starburst_cel_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__impacts__starburst_cel_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__impacts__starburst_cel_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\impacts\\starburst_cel_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_cel_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_cel_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_cel_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_cel_04.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_cel_04.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_cel_04.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_cel_08.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_cel_08.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_cel_08.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_dashed_cel_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_dashed_cel_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_dashed_cel_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_dashed_glow_04.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_dashed_glow_04.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_dashed_glow_04.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_glow_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_glow_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_glow_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_glow_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_glow_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_glow_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_glow_05.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_glow_05.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_glow_05.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_glow_08.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_glow_08.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_glow_08.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_spiked_cel_05.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_spiked_cel_05.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_spiked_cel_05.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ring_spiked_glow_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ring_spiked_glow_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ring_spiked_glow_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__rings__ripple_glow_03.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__rings__ripple_glow_03.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\rings\\ripple_glow_03.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__shapes__chevron_glow_01.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__shapes__chevron_glow_01.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\shapes\\chevron_glow_01.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__shapes__orb_soft_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__shapes__orb_soft_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\shapes\\orb_soft_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__sigils__rune_glow_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__sigils__rune_glow_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\sigils\\rune_glow_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__specks__dot_glow_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__specks__dot_glow_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\specks\\dot_glow_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__specks__ember_glow_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__specks__ember_glow_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\specks\\ember_glow_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__specks__streak_glow_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__specks__streak_glow_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\specks\\streak_glow_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__specks__streak_glow_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__specks__streak_glow_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\specks\\streak_glow_02.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__specks__streak_soft_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__specks__streak_soft_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\specks\\streak_soft_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__stars__star_cel_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__stars__star_cel_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\stars\\star_cel_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__stars__star_cel_01.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__stars__star_cel_01.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\stars\\star_cel_01.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__stars__star_cel_06.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__stars__star_cel_06.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\stars\\star_cel_06.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__stars__star_glow_00.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__stars__star_glow_00.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\stars\\star_glow_00.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__stars__star_glow_04.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__stars__star_glow_04.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\stars\\star_glow_04.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__swirls__swirl_glow_03.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__swirls__swirl_glow_03.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\swirls\\swirl_glow_03.png",
+   "transposed": false
+  },
+  {
+   "file": "lib__sprites__swirls__vortex_glow_01.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__swirls__vortex_glow_01.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\swirls\\vortex_glow_01.png",
+   "transposed": false
+  },
+  {
+   "file": "tfa__aurora_band__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__aurora_band__vt.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\aurora_band.png",
+   "transposed": true
+  },
+  {
+   "file": "tfa__clover_cel.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__clover_cel.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\clover_cel.png",
+   "transposed": false
+  },
+  {
+   "file": "tfa__clover_glow.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__clover_glow.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\clover_glow.png",
+   "transposed": false
+  },
+  {
+   "file": "tfa__coin_spin_4x4.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__coin_spin_4x4.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\coin_spin_4x4.png",
+   "transposed": false
+  },
+  {
+   "file": "tfa__edge_glow.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__edge_glow.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\edge_glow.png",
+   "transposed": false
+  },
+  {
+   "file": "tfa__ribbon_solid__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__ribbon_solid__vt.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\ribbon_solid.png",
+   "transposed": true
+  }
+ ],
+ "meshes": []
+}

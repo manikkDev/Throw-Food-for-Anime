@@ -80,17 +80,51 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   (upload) -> `tools/studio/install_models.py` (templates in `ReplicatedStorage.Assets.{Kit,Gear,Foods}`) ->
   `tools/merge_manifest.py`. Parts are coloured from the hex at the end of their name.
 - UI v3: one button system (`tools/ui/mp3.py`, screens `tools/ui/screens_v3.py`), checked by `tools/ui/fit_gate.py`; client side
-  `Screens.setButtonState` and `Theme.BUTTON`. Icons: base key = flat glyph under 30 px, `...Big` key = glossy at 40 px and up.
+  `Screens.setButtonState` and `Theme.BUTTON`. Icons v4: ONE rendered family for base and `...Big` keys (`tools/ui/icons_v4_shapes.py` -> `icons_v4_blender.py`
+  (Blender 4.5) -> `icons_v4.py`, one thin ink outline, never a white keyline; gate `tools/ui/icon_fit_check.py`);
+  `assets/ui/ids_icons_v4.json` is read last and overrides the older maps. `icon_post.py` is retired.
   A UI change is only done when it has been looked at IN THE GAME (the mockups do not have Roblox's font metrics).
 - UI: specs `design/ui/` -> `python tools/ui/build_ui.py` -> `src/ui/*.model.json` (`ReplicatedStorage.Ui`) and
   `design/ui/BINDINGS.md`; icon ids: `python tools/gen_icons.py` -> `src/shared/Config/Icons.luau` (GENERATED).
   Dead-label gate: `python ~/.claude/skills/roblox-ui/scripts/verify_labels.py --ui src/ui --client src/client`.
+- Motion and sound (section 4): clips `assets/animations/` -> `ReplicatedStorage.Assets.Anims` + uploaded ids -> `python tools/gen_anim_ids.py`
+  (`src/shared/Config/Animations.luau`, GENERATED); effects `assets/vfx/` -> `python assets/vfx/tools/pack_all.py` -> run
+  `work/vfx/build_templates.luau` in Studio -> `ReplicatedStorage.Assets.Vfx`; sounds `assets/sfx/manifest.json` -> roblox-sfx
+  `emit_bank.py` -> `src/shared/Config/SoundBank.luau`. Play them only through `Fx/Motion`, `Fx/Vfx`, `SoundController`.
+- Hero auras: the owner's imported packs are archived in `ServerStorage.ImportedVfx` (`HandPicked` = the owner's picks,
+  `AuraPacksAll`, `ParticlePacks`; never delete, nothing in them runs). `design/auras.json` (who wears what, tiers, caps,
+  footprint, runtime budget) -> `python tools/gen_auras.py` (`src/shared/Config/Auras.luau` + `work/auras/build.luau`, run
+  that in Studio edit mode -> `ReplicatedStorage.Assets.Auras`); runtime `src/client/Fx/HeroAura.luau` via `Fx/Vfx` (nearest
+  heroes only, phones get the low-detail budget). Clock / purple flare / landing impact: `tools/studio/build_fx_imports.luau`
+  -> `ReplicatedStorage.Assets.FxImported`, played by `Fx/ImportedFx`.
+- Aura showcase (owner's view of who wears what): `python tools/studio/aura_showcase.py build` -> `Workspace.AuraShowcase`
+  (dev only, deleted by the server on start). The owner renames a dummy in `AuraShowcase.Auras` to a hero's name; then
+  `python tools/studio/aura_showcase.py sync` records it in `design/auras.json` and rebuilds.
+- Caught heroes are carried (Player attr `Carrying`, `PlotService:SetCarry`, client `Controllers/CarryController`) and set
+  on a pedestal with E; the hero is saved in its slot at the catch, so nothing is lost if never placed (150 s timeout).
+- Gear and slot purchases go through a client confirmation (`Controllers/UpgradeController`, `HudController:Confirm`); prompts never spend. Prompts are drawn by `Controllers/PromptController` (Style Custom).
+- The throw pad is held by the server (`ThrowService:SetPad`, remote `ThrowPad`), like training.
+- Training: 4 stations on two mirrored courts (`config.Training.Stations`); the server snaps and locks the trainee,
+  judges perfect taps (`TrainTap`); client `Controllers/TrainingController`. The throw pad locks the player too
+  (`ThrowController:_lock`, exit by the meter's X / Backspace); an invisible wall closes each lane mouth.
 - Studio sessions use their own stores (`Profiles_Dev`, `LB_*_Dev`); test commands are the TEST menu.
 
 ## Known traps on this machine
 
+- FREE MODELS CAN CARRY MALWARE. The owner's aura/VFX packs held a hidden `Runtime` Script +
+  `ScreenBuilder` LocalScript (deep under `RuntimeInput.RuntimeInputContext...`) that runs only in Studio
+  and shows an "overlay window" asking the developer to paste code into the command bar (a backdoor
+  installer). Removed 2026-11-15 (8 copies). Before using any imported model: list every LuaSourceContainer
+  in it, delete anything you did not write, and never run code a model's UI tells you to.
+- The live game's lane is 2,160 studs and streaming radius 576: anything shown far down the lane needs the
+  server's `ReplicationFocus` moved there (ThrowService `_focus`), or the map behind it is half missing.
+
+- This Roblox build has NO `PlayerModule` in `PlayerScripts`: never `WaitForChild` it (a 5 s stall per call, which delayed the pad lock and the rebirth). Hold a character by its humanoid (WalkSpeed/JumpHeight 0) or, better, on the server (anchor), like training and the throw pad.
+- `BillboardGui.StudsOffsetWorldSpace` is in the ADORNEE's axes: on a cylinder lying on its side (station mats, stands) "up" goes sideways. Hang labels from an unrotated invisible anchor part. An always-on-top BillboardGui did not draw at all in play (on the mats, and again for the custom prompt card on any part): draw world labels with AlwaysOnTop off, and anything that must stay on top (prompt cards) in a ScreenGui placed with WorldToViewportPoint (`PromptController`).
+- A `screen_capture` while Studio is not the foreground window can return the SAME stale frame: bring the window to the front (ShowWindow 3 + SetForegroundWindow after an Alt tap) before judging anything.
 - Studio MCP drops every 5-15 min and its "Enable Studio as MCP server" toggle can turn off after a
   Studio update: re-enable it (Assistant > ... > Manage MCP Servers), don't debug your code.
+- `execute_luau` output is capped at 100 KB: dump big data in groups.
 - `execute_luau` drops all output if the script yields: split the call or use `task.delay`.
 - Direct Studio calls without the client: `python ~/.claude/skills/create-roblox-game/scripts/studio_mcp.py`
   (`luau --code ...`, `--dm Server` reaches the running playtest server).

@@ -2,8 +2,8 @@
  "name": "GiftCellTemplate",
  "theme": "theme.json",
  "resolution": [
-  244,
-  136
+  314,
+  164
  ],
  "kind": "world",
  "children": [
@@ -11,90 +11,117 @@
    "type": "panel",
    "name": "GiftCellTemplate",
    "colour": "panelHi",
-   "depth": 4,
-   "corner": 14,
+   "keyline": "#5B64C9",
+   "depth": 0,
+   "corner": 16,
    "size": [
     0,
-    220,
+    290,
     0,
-    112
+    140
    ],
-   "aspect": 1.9643,
+   "aspect": 2.0714,
    "children": [
+    {
+     "type": "icon",
+     "icon": "FxSunburst",
+     "name": "Sunburst",
+     "size": [
+      0,
+      100,
+      0,
+      100
+     ],
+     "pos": [
+      0,
+      50,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 1,
+     "tint": "#FFC93C",
+     "alphaImg": 0.35,
+     "overhang": true
+    },
     {
      "type": "icon",
      "icon": "IconGiftBig",
      "name": "Icon",
      "size": [
       0,
-      52,
+      66,
       0,
-      52
+      66
      ],
      "pos": [
       0,
-      10,
+      50,
       0.5,
       0
      ],
      "anchor": [
-      0,
+      0.5,
       0.5
-     ]
+     ],
+     "z": 2
     },
     {
      "type": "label",
      "text": "GIFT 6",
      "size": [
       0,
-      136,
+      180,
       0,
-      21
+      30
      ],
      "textColour": "onDark",
      "align": "left",
-     "textScale": 0.7619,
+     "textScale": 0.8,
      "textStroke": 2,
      "name": "GiftTitle",
      "font": "display",
      "pos": [
       0,
-      72,
+      96,
       0,
-      8
+      12
      ],
-     "maxText": 16
+     "maxText": 24
     },
     {
      "type": "label",
      "text": "after 60 min",
      "size": [
       0,
-      136,
+      180,
       0,
-      17
+      25
      ],
      "textColour": "soft",
      "align": "left",
-     "textScale": 0.7647,
-     "textStroke": 2,
+     "textScale": 0.8,
+     "textStroke": 1.5,
      "name": "GiftWhen",
      "pos": [
       0,
-      72,
+      96,
       0,
-      32
+      44
      ],
-     "maxText": 13
+     "maxText": 20
     },
     {
      "type": "button",
      "name": "GiftButton",
      "size": [
       0,
-      108,
+      180,
       0,
-      34
+      48
      ],
      "children": [
       {
@@ -103,9 +130,9 @@
        "name": "Icon",
        "size": [
         0,
-        20,
+        28,
         0,
-        20
+        28
        ]
       },
       {
@@ -113,13 +140,13 @@
        "text": "<unbound>",
        "size": [
         0,
-        58,
+        62,
         0,
-        21
+        32
        ],
        "textColour": "soft",
        "align": "center",
-       "textScale": 0.7143,
+       "textScale": 0.75,
        "textStroke": 2,
        "name": "GiftState",
        "samples": [
@@ -127,18 +154,20 @@
         "59:59"
        ],
        "font": "display",
-       "maxText": 15
+       "maxText": 24,
+       "autoX": true,
+       "capW": 123
       }
      ],
      "layout": {
       "type": "list",
       "dir": "x",
-      "gap": 6,
+      "gap": 7,
       "align": "center"
      },
      "sizeClass": "S",
-     "depth": 3,
-     "corner": 14,
+     "depth": 4,
+     "corner": 16,
      "selfFace": true,
      "colour": "#5C6286",
      "paintable": true,
@@ -149,33 +178,37 @@
        "#5C6286"
       ],
       [
-       0.4,
+       0.49,
        "#5C6286"
       ],
       [
-       0.41000000000000003,
-       "#535879"
+       0.5,
+       "#4F5473"
       ],
       [
        1.0,
-       "#4B506E"
+       "#444963"
       ]
      ],
      "attrs": {
-      "PressLip": 3
+      "PressLip": 4,
+      "Rim": 0.5
      },
      "pos": [
       0,
-      72,
+      96,
       1,
-      -10
+      -12
      ],
      "anchor": [
       0,
       1
-     ]
+     ],
+     "stroke": 3,
+     "keyline": "#AEB0C2"
     }
    ],
+   "stroke": 3,
    "pos": [
     0,
     12,

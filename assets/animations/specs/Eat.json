@@ -1,0 +1,1116 @@
+{
+ "name": "Eat",
+ "rbx_name": "Eat",
+ "priority": "Action",
+ "loop": false,
+ "fps": 30,
+ "duration": 1.6,
+ "_intent": "Crouch to pick the food up, stand, two clear bites with the food at the mouth, then a thumbs up to the thrower.",
+ "_reference": "crouch, pick up, two bites, thumbs up, 1.6 s",
+ "markers": [
+  {
+   "name": "Bite",
+   "time": 0.7
+  },
+  {
+   "name": "Bite",
+   "time": 0.95
+  }
+ ],
+ "w": 300,
+ "h": 300,
+ "margin": 1.08,
+ "plain": true,
+ "preview": false,
+ "views": {
+  "front": [
+   0.18,
+   1.0,
+   0.12
+  ],
+  "side": [
+   1.0,
+   0.12,
+   0.08
+  ]
+ },
+ "properties": {
+  "ARM_IK_FK.L": 0.0,
+  "ARM_IK_FK.R": 0.0,
+  "LEG_IK_FK.L": 0.0,
+  "LEG_IK_FK.R": 0.0
+ },
+ "keyframes": [
+  {
+   "t": 0.0,
+   "ease": "smooth",
+   "_note": "stand",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      0,
+      0,
+      5
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      15.45,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -15.45,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4,
+      0,
+      -5
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.98,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -14.98,
+      0,
+      5
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.04
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.3,
+   "ease": "out",
+   "_note": "crouch and reach down for the food",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -25,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      -30,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      26,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -45,
+      0,
+      -6
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -8,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -20,
+      0,
+      -10
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -40,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -70,
+      0,
+      8
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      124.16,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -79.16,
+      0,
+      -8
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -80,
+      0,
+      -8
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      127.15,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -72.15,
+      0,
+      8
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -1.0
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.5,
+   "ease": "smooth",
+   "_note": "stand up, food comes to the mouth",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      2,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -45,
+      -70,
+      0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -95,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -10,
+      0,
+      -6
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      0,
+      0,
+      5
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      15.45,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -15.45,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4,
+      0,
+      -5
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.98,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -14.98,
+      0,
+      5
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.06
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.7,
+   "ease": "out",
+   "_note": "BITE one",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      -6,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -8,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -60,
+      -80,
+      0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -110,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -10,
+      0,
+      -6
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      0,
+      0,
+      5
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      23.0,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -23.0,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4,
+      0,
+      -5
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      26.68,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -22.68,
+      0,
+      5
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.08
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.82,
+   "ease": "smooth",
+   "_note": "pull away, chew",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      2,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      6,
+      0,
+      4
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -45,
+      -70,
+      0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -95,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -10,
+      0,
+      -6
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      0,
+      0,
+      5
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      15.45,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -15.45,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4,
+      0,
+      -5
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.98,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -14.98,
+      0,
+      5
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.05
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.95,
+   "ease": "out",
+   "_note": "BITE two",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      -6,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -8,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -60,
+      -80,
+      0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -110,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -10,
+      0,
+      -6
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      0,
+      0,
+      5
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      23.0,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -23.0,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4,
+      0,
+      -5
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      26.68,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -22.68,
+      0,
+      5
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.08
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.12,
+   "ease": "smooth",
+   "_note": "chew, happy",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      3,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      8,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -45,
+      -70,
+      0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -95,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -10,
+      0,
+      -6
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      0,
+      0,
+      5
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      15.45,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -15.45,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4,
+      0,
+      -5
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.98,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -14.98,
+      0,
+      5
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.05
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.35,
+   "ease": "out",
+   "_note": "thumbs up with the left hand",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4,
+      -8,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      6,
+      10,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -10,
+      0,
+      8
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -40,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -32,
+      45,
+      0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -92,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      0,
+      0,
+      5
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      15.45,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -15.45,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4,
+      0,
+      -5
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.98,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -14.98,
+      0,
+      5
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.03
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.6,
+   "ease": "smooth",
+   "_note": "hold the thumbs up",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4,
+      -8,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      6,
+      10,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -10,
+      0,
+      8
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -40,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -34,
+      45,
+      0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -94,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      0,
+      0,
+      5
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      15.45,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -15.45,
+      0,
+      -5
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4,
+      0,
+      -5
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.98,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -14.98,
+      0,
+      5
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.03
+     ]
+    }
+   }
+  }
+ ]
+}

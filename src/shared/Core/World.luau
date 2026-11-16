@@ -57,23 +57,36 @@ function World.throwPad(world: any, plotIndex: number, count: number): (number, 
 	return World.plotX(world, plotIndex, count), world.ThrowPadZ
 end
 
---- World (x, z) of the dojo pad (training).
-function World.dojoPad(world: any, plotIndex: number, count: number): (number, number)
-	return World.plotX(world, plotIndex, count) + world.DojoPadX, world.DojoPadZ
-end
-
 --- World (x, z) of the slot sign.
 function World.slotSign(world: any, plotIndex: number, count: number): (number, number)
 	return World.plotX(world, plotIndex, count) + world.SlotSignX, world.SlotSignZ
 end
 
---- The reserved training yard (kept empty for future mini games): centre
---- (x, z) and its size (width along X, depth along Z).
-function World.yard(world: any, plotIndex: number, count: number): (number, number, number, number)
-	return World.plotX(world, plotIndex, count) + world.YardX,
-		world.YardZ,
-		world.YardWidth,
-		world.YardDepth
+--- Training station `i` (config Training.Stations): the target's world (x, z) and the point the
+--- trainee is snapped to, (standX, standZ). The trainee faces -Z, toward the target.
+function World.station(
+	world: any,
+	training: any,
+	plotIndex: number,
+	count: number,
+	i: number
+): (number, number, number, number)
+	local row = training.Stations[i]
+	local x = World.plotX(world, plotIndex, count) + row.X
+	return x, row.Z, x, row.Z + row.Stand
+end
+
+--- A training court: side -1 (left, -X) or 1 (right): centre (x, z) and size (width, depth).
+function World.court(
+	world: any,
+	plotIndex: number,
+	count: number,
+	side: number
+): (number, number, number, number)
+	return World.plotX(world, plotIndex, count) + side * world.CourtX,
+		world.CourtZ,
+		world.CourtWidth,
+		world.CourtDepth
 end
 
 --- World X of a landing: the plot's lane centre plus jitter in [-1, 1].

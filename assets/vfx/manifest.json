@@ -1,0 +1,409 @@
+{
+ "effects": [
+  {
+   "name": "Aura_Flame",
+   "loop": true,
+   "duration": 2.4,
+   "attach": "root",
+   "particles_peak": 49,
+   "strip": "assets/vfx/strips/Aura_Flame.jpg",
+   "kit": "assets/vfx/kits/Aura_Flame.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue no residue phase: pro effects leave something behind; WARN layer count 6 visual layers (corpus p25 7); WARN peak early brightest frame at 64% of the main event (want <= 25-30%)",
+   "notes": "Flame mutation: orange glow disc + spiked ring, big cel flame tongues and embers round the legs."
+  },
+  {
+   "name": "Aura_Galaxy",
+   "loop": true,
+   "duration": 2.4,
+   "attach": "root",
+   "particles_peak": 52,
+   "strip": "assets/vfx/strips/Aura_Galaxy.jpg",
+   "kit": "assets/vfx/kits/Aura_Galaxy.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue no residue phase: pro effects leave something behind; WARN peak early brightest frame at 100% of the main event (want <= 25-30%)",
+   "notes": "Galaxy mutation: violet vortex disc + pink ring, colour-cycling twinkles and swirl motes rising."
+  },
+  {
+   "name": "Aura_Golden",
+   "loop": true,
+   "duration": 2.4,
+   "attach": "root",
+   "particles_peak": 52,
+   "strip": "assets/vfx/strips/Aura_Golden.jpg",
+   "kit": "assets/vfx/kits/Aura_Golden.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue no residue phase: pro effects leave something behind; WARN layer count 6 visual layers (corpus p25 7); WARN peak early brightest frame at 65% of the main event (want <= 25-30%)",
+   "notes": "Golden mutation: gold glow disc + ring, gold stars and light motes rising round the body."
+  },
+  {
+   "name": "Aura_Lightning",
+   "loop": true,
+   "duration": 2.4,
+   "attach": "root",
+   "particles_peak": 38,
+   "strip": "assets/vfx/strips/Aura_Lightning.jpg",
+   "kit": "assets/vfx/kits/Aura_Lightning.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue no residue phase: pro effects leave something behind; WARN layer count 6 visual layers (corpus p25 7); WARN peak early brightest frame at 49% of the main event (want <= 25-30%)",
+   "notes": "Lightning mutation: cyan glow disc + crackle ring, bolts redrawn round the body, sparks, motes."
+  },
+  {
+   "name": "Aura_Titan",
+   "loop": true,
+   "duration": 2.4,
+   "attach": "root",
+   "particles_peak": 24,
+   "strip": "assets/vfx/strips/Aura_Titan.jpg",
+   "kit": "assets/vfx/kits/Aura_Titan.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue no residue phase: pro effects leave something behind; WARN layer count 4 visual layers (corpus p25 7); WARN peak early brightest frame at 53% of the main event (want <= 25-30%)",
+   "notes": "Titan: wide gold ground ripple (radius 6-8 at scale 1) pulsing twice a second, ring pulse, dust."
+  },
+  {
+   "name": "Coin_Pop",
+   "loop": false,
+   "duration": 0.8,
+   "attach": "point",
+   "particles_peak": 5,
+   "strip": "assets/vfx/strips/Coin_Pop.jpg",
+   "kit": "assets/vfx/kits/Coin_Pop.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.15s vs basic 0.3-0.8s; WARN layer count 2 visual layers (corpus p25 4); WARN peak early brightest frame at 33% of the main event (want <= 25-30%)",
+   "notes": "Yen coins pop (frequent, tiny)."
+  },
+  {
+   "name": "DashHome_Trail",
+   "loop": true,
+   "duration": 1.3,
+   "attach": "root",
+   "particles_peak": 12,
+   "strip": "assets/vfx/strips/DashHome_Trail.jpg",
+   "kit": "assets/vfx/kits/DashHome_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.30 (corpus 0.0 [0.0..0.0]); WARN layer count 3 visual layers (corpus p25 5); WARN accent hue distance 44 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 92% of the main event (want <= 25-30%)",
+   "notes": "Hero dashes home (loop until stop)."
+  },
+  {
+   "name": "Land_Impact",
+   "loop": false,
+   "duration": 0.9,
+   "attach": "point",
+   "particles_peak": 14,
+   "strip": "assets/vfx/strips/Land_Impact.jpg",
+   "kit": "assets/vfx/kits/Land_Impact.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN layer count 4 visual layers (corpus p25 6); WARN peak early brightest frame at 33% of the main event (want <= 25-30%)",
+   "notes": "Food hits the floor."
+  },
+  {
+   "name": "LuckyThrow_Charge",
+   "loop": true,
+   "duration": 2.0,
+   "attach": "part",
+   "particles_peak": 19,
+   "strip": "assets/vfx/strips/LuckyThrow_Charge.jpg",
+   "kit": "assets/vfx/kits/LuckyThrow_Charge.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 2.00s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind",
+   "notes": "Lucky throw armed (loop on the hand)."
+  },
+  {
+   "name": "PerfectThrow_Flash",
+   "loop": false,
+   "duration": 0.6,
+   "attach": "point",
+   "particles_peak": 13,
+   "strip": "assets/vfx/strips/PerfectThrow_Flash.jpg",
+   "kit": "assets/vfx/kits/PerfectThrow_Flash.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.20s vs basic 0.3-0.8s; WARN linear fades 2 emitters fade linearly from birth: ['Cross', 'Ring'] (hold, then fade late); WARN peak early brightest frame at 33% of the main event (want <= 25-30%)",
+   "notes": "Perfect release at the hand."
+  },
+  {
+   "name": "PowerUp_Burst",
+   "loop": false,
+   "duration": 1.4,
+   "attach": "point",
+   "particles_peak": 27,
+   "strip": "assets/vfx/strips/PowerUp_Burst.jpg",
+   "kit": "assets/vfx/kits/PowerUp_Burst.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN linear fades 2 emitters fade linearly from birth: ['Ring', 'Pop'] (hold, then fade late)",
+   "notes": "New power rank: chevrons rise (owner's review 3: they pointed down in the engine; the sprite points right, Roblox turns +90 to point it up)."
+  },
+  {
+   "name": "Rebirth_Nova",
+   "loop": false,
+   "duration": 2.2,
+   "attach": "point",
+   "particles_peak": 51,
+   "strip": "assets/vfx/strips/Rebirth_Nova.jpg",
+   "kit": "assets/vfx/kits/Rebirth_Nova.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 1.05s vs big skill 2.0-4.0s; WARN layer count 7 visual layers (corpus p25 8)",
+   "notes": "Rebirth: radial nova round the player."
+  },
+  {
+   "name": "Reveal_Common",
+   "loop": false,
+   "duration": 1.6,
+   "attach": "point",
+   "particles_peak": 17,
+   "strip": "assets/vfx/strips/Reveal_Common.jpg",
+   "kit": "assets/vfx/kits/Reveal_Common.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.55s vs skill 0.8-2.0s; WARN residue:main 2.14 (corpus 0.16 [0.0..1.0])",
+   "notes": "Catch reveal, Common: pillar climbs 0 rarity colours then locks; hero appears inside at t=0.06s."
+  },
+  {
+   "name": "Reveal_Epic",
+   "loop": false,
+   "duration": 2.2,
+   "attach": "point",
+   "particles_peak": 47,
+   "strip": "assets/vfx/strips/Reveal_Epic.jpg",
+   "kit": "assets/vfx/kits/Reveal_Epic.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "PASS",
+   "notes": "Catch reveal, Epic: pillar climbs 3 rarity colours then locks; hero appears inside at t=0.36s."
+  },
+  {
+   "name": "Reveal_Legendary",
+   "loop": false,
+   "duration": 2.5,
+   "attach": "point",
+   "particles_peak": 60,
+   "strip": "assets/vfx/strips/Reveal_Legendary.jpg",
+   "kit": "assets/vfx/kits/Reveal_Legendary.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "PASS",
+   "notes": "Catch reveal, Legendary: pillar climbs 4 rarity colours then locks; hero appears inside at t=0.46s."
+  },
+  {
+   "name": "Reveal_Mythic",
+   "loop": false,
+   "duration": 2.7,
+   "attach": "point",
+   "particles_peak": 68,
+   "strip": "assets/vfx/strips/Reveal_Mythic.jpg",
+   "kit": "assets/vfx/kits/Reveal_Mythic.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "PASS",
+   "notes": "Catch reveal, Mythic: pillar climbs 5 rarity colours then locks; hero appears inside at t=0.56s."
+  },
+  {
+   "name": "Reveal_Rare",
+   "loop": false,
+   "duration": 2.0,
+   "attach": "point",
+   "particles_peak": 36,
+   "strip": "assets/vfx/strips/Reveal_Rare.jpg",
+   "kit": "assets/vfx/kits/Reveal_Rare.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "PASS",
+   "notes": "Catch reveal, Rare: pillar climbs 2 rarity colours then locks; hero appears inside at t=0.26s."
+  },
+  {
+   "name": "Reveal_Secret",
+   "loop": false,
+   "duration": 3.0,
+   "attach": "point",
+   "particles_peak": 77,
+   "strip": "assets/vfx/strips/Reveal_Secret.jpg",
+   "kit": "assets/vfx/kits/Reveal_Secret.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "PASS",
+   "notes": "Catch reveal, Secret: pillar climbs 6 rarity colours then locks; hero appears inside at t=0.66s."
+  },
+  {
+   "name": "Reveal_Uncommon",
+   "loop": false,
+   "duration": 1.8,
+   "attach": "point",
+   "particles_peak": 26,
+   "strip": "assets/vfx/strips/Reveal_Uncommon.jpg",
+   "kit": "assets/vfx/kits/Reveal_Uncommon.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "PASS",
+   "notes": "Catch reveal, Uncommon: pillar climbs 1 rarity colours then locks; hero appears inside at t=0.16s."
+  },
+  {
+   "name": "ServerLuck_Sky",
+   "loop": true,
+   "duration": 4.0,
+   "attach": "point",
+   "particles_peak": 33,
+   "strip": "assets/vfx/strips/ServerLuck_Sky.jpg",
+   "kit": "assets/vfx/kits/ServerLuck_Sky.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 4.00s vs skill 0.8-2.0s; WARN residue no residue phase: pro effects leave something behind; WARN layer count 4 visual layers (corpus p25 7); WARN peak early brightest frame at 64% of the main event (want <= 25-30%)",
+   "notes": "Server luck active: soft green-and-gold aurora arcs + drifting clovers over the hub (loop)."
+  },
+  {
+   "name": "Slot_Unlock",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 21,
+   "strip": "assets/vfx/strips/Slot_Unlock.jpg",
+   "kit": "assets/vfx/kits/Slot_Unlock.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN linear fades 2 emitters fade linearly from birth: ['Flat', 'Pop'] (hold, then fade late)",
+   "notes": "Pedestal slot bought: rings rise off it."
+  },
+  {
+   "name": "Summon_Portal",
+   "loop": false,
+   "duration": 2.8,
+   "attach": "point",
+   "particles_peak": 55,
+   "strip": "assets/vfx/strips/Summon_Portal.jpg",
+   "kit": "assets/vfx/kits/Summon_Portal.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "PASS",
+   "notes": "Summon scroll: magic circle, light column, star pop at 1.9 s."
+  },
+  {
+   "name": "ThrowTrail_Basic",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 35,
+   "strip": "assets/vfx/strips/ThrowTrail_Basic.jpg",
+   "kit": "assets/vfx/kits/ThrowTrail_Basic.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN layer count 5 visual layers (corpus p25 6); WARN accent hue distance 26 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 96% of the main event (want <= 25-30%)",
+   "notes": "Food trail (Basic) v2: 3-stud core + dark edge copy + crumbs; runs until stop."
+  },
+  {
+   "name": "ThrowTrail_Epic",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 32,
+   "strip": "assets/vfx/strips/ThrowTrail_Epic.jpg",
+   "kit": "assets/vfx/kits/ThrowTrail_Epic.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN accent hue distance 4 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 93% of the main event (want <= 25-30%)",
+   "notes": "Food trail (Epic) v2: 3-stud core + dark edge copy + crumbs; runs until stop."
+  },
+  {
+   "name": "ThrowTrail_Hot",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 48,
+   "strip": "assets/vfx/strips/ThrowTrail_Hot.jpg",
+   "kit": "assets/vfx/kits/ThrowTrail_Hot.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN accent hue distance 19 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 96% of the main event (want <= 25-30%)",
+   "notes": "Food trail (Hot) v2: 3-stud core + dark edge copy + crumbs; runs until stop."
+  },
+  {
+   "name": "Train_Hit",
+   "loop": false,
+   "duration": 0.6,
+   "attach": "point",
+   "particles_peak": 9,
+   "strip": "assets/vfx/strips/Train_Hit.jpg",
+   "kit": "assets/vfx/kits/Train_Hit.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.20s vs basic 0.3-0.8s; WARN layer count 4 visual layers (corpus p25 6); WARN peak early brightest frame at 33% of the main event (want <= 25-30%)",
+   "notes": "Training rep impact at the dummy."
+  },
+  {
+   "name": "Zone_Unlock",
+   "loop": false,
+   "duration": 1.6,
+   "attach": "point",
+   "particles_peak": 73,
+   "strip": "assets/vfx/strips/Zone_Unlock.jpg",
+   "kit": "assets/vfx/kits/Zone_Unlock.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN distinct lifetimes 2 distinct of 14 emitters (layers must die at different times); WARN linear fades 7 emitters fade linearly from birth: ['Pop', 'Pop', 'Pop', 'Pop', 'Pop', 'Pop'] (hold, then fade late); WARN peak early brightest frame at 37% of the main event (want <= 25-30%)",
+   "notes": "New zone: sparkle sweep across the gate (tint = zone colour)."
+  }
+ ]
+}

@@ -9,176 +9,253 @@
  "ignoreGuiInset": true,
  "children": [
   {
-   "type": "button",
-   "name": "UpgradePrompt",
+   "type": "panel",
+   "name": "UpgradeReady",
+   "colour": [
+    "#FFE066",
+    "#FFA41B"
+   ],
+   "paintable": true,
+   "keyline": "#FFFFFF",
+   "depth": 0,
+   "corner": 22,
    "size": [
     0,
-    300,
+    470,
     0,
-    34
+    62
    ],
-   "children": [
-    {
-     "type": "icon",
-     "icon": "IconTrain",
-     "name": "Icon",
-     "size": [
-      0,
-      20,
-      0,
-      20
-     ]
-    },
-    {
-     "type": "label",
-     "text": "<unbound>",
-     "size": [
-      0,
-      250,
-      0,
-      21
-     ],
-     "textColour": "onDark",
-     "align": "center",
-     "textScale": 0.619,
-     "textStroke": 2,
-     "name": "UpgradeText",
-     "samples": [
-      "NEW GEAR: Dragon Shrine 28B",
-      "NEW GEAR: Sandbag 600"
-     ],
-     "font": "display",
-     "maxText": 13
-    }
-   ],
-   "layout": {
-    "type": "list",
-    "dir": "x",
-    "gap": 6,
-    "align": "center"
-   },
-   "sizeClass": "S",
-   "depth": 3,
-   "corner": 14,
    "pos": [
     0.5,
     0,
     1,
-    -102
+    -150
    ],
    "anchor": [
     0.5,
     1
    ],
    "visible": false,
-   "overhang": true,
-   "colour": "#48D687",
-   "paintable": true,
-   "gloss": true,
-   "stops": [
-    [
-     0.0,
-     "#48D687"
-    ],
-    [
-     0.4,
-     "#48D687"
-    ],
-    [
-     0.41000000000000003,
-     "#41C17A"
-    ],
-    [
-     1.0,
-     "#3BAF6F"
-    ]
-   ],
-   "attrs": {
-    "PressLip": 3
-   }
-  },
-  {
-   "type": "panel",
-   "name": "TrainingPanel",
-   "colour": "panel",
-   "size": [
-    0,
-    440,
-    0,
-    86
-   ],
+   "pattern": {
+    "name": "stripes",
+    "colour": "#FFFFFF",
+    "opacity": 0.14,
+    "tile": 64
+   },
    "children": [
     {
-     "type": "label",
-     "text": "<unbound>",
+     "type": "sheen",
+     "name": "Highlight",
+     "size": [
+      1,
+      0,
+      1,
+      0
+     ],
+     "angle": 90,
+     "opacity": 0.3,
+     "bands": [
+      [
+       0.08,
+       0.22
+      ]
+     ],
+     "corner": 22,
+     "overhang": true,
+     "children": [],
+     "z": 1
+    },
+    {
+     "type": "icon",
+     "icon": "FxGlow",
+     "name": "Glow",
      "size": [
       0,
-      200,
+      70,
       0,
-      21
+      70
      ],
-     "textColour": "power",
+     "pos": [
+      0,
+      38,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 2,
+     "tint": "#FFFFFF",
+     "alphaImg": 0.4,
+     "overhang": true,
+     "centre": false,
+     "attrs": {
+      "FxTurn": 0
+     }
+    },
+    {
+     "type": "icon",
+     "icon": "IconTrainBig",
+     "name": "ReadyIcon",
+     "size": [
+      0,
+      44,
+      0,
+      44
+     ],
+     "pos": [
+      0,
+      38,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 3
+    },
+    {
+     "type": "label",
+     "text": "UPGRADE READY!",
+     "size": [
+      0,
+      380,
+      0,
+      28
+     ],
+     "textColour": "onDark",
      "align": "left",
-     "textScale": 0.7619,
-     "textStroke": 2,
-     "name": "RankName",
-     "samples": [
-      "CHAMPION",
-      "ROOKIE"
-     ],
+     "textScale": 0.7857,
+     "textStroke": 1.5,
+     "name": "ReadyTitle",
      "font": "display",
      "pos": [
       0,
-      8,
+      72,
       0,
-      0
+      7
      ],
-     "maxText": 16
+     "maxText": 22,
+     "z": 3
     },
     {
      "type": "label",
      "text": "<unbound>",
      "size": [
       0,
-      200,
+      380,
       0,
-      19
+      23
      ],
-     "textColour": "soft",
-     "align": "right",
-     "textScale": 0.7647,
-     "textStroke": 2,
-     "name": "GearName",
+     "textColour": "#3A1A00",
+     "align": "left",
+     "textScale": 0.7826,
+     "textStroke": 0,
+     "name": "UpgradeText",
      "samples": [
-      "on Gravity Dojo",
-      "on Wooden Dummy"
+      "Leave training, press F at the gear stand",
+      "Leave training, tap the gear stand"
      ],
      "pos": [
-      1,
-      -8,
       0,
-      2
+      72,
+      0,
+      36
+     ],
+     "maxText": 18,
+     "z": 3
+    }
+   ],
+   "stroke": 3
+  },
+  {
+   "type": "panel",
+   "name": "TrainingPanel",
+   "colour": [
+    "#262B6E",
+    "#161A48"
+   ],
+   "keyline": "#5B64C9",
+   "depth": 0,
+   "corner": 16,
+   "size": [
+    0,
+    600,
+    0,
+    124
+   ],
+   "children": [
+    {
+     "type": "frame",
+     "name": "HeadRow",
+     "transparent": true,
+     "size": [
+      0,
+      568,
+      0,
+      32
+     ],
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        400,
+        0,
+        33
+       ],
+       "textColour": "power",
+       "align": "center",
+       "textScale": 0.7879,
+       "textStroke": 2,
+       "name": "RankName",
+       "samples": [
+        "CHAMPION",
+        "ROOKIE"
+       ],
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "maxText": 26
+      }
+     ],
+     "pos": [
+      0.5,
+      0,
+      0,
+      10
      ],
      "anchor": [
-      1,
+      0.5,
       0
-     ],
-     "maxText": 13
+     ]
     },
     {
      "type": "frame",
      "name": "ProgressBar",
      "colour": [
       "#0B0D29",
-      "#12153A"
+      "#161A48"
      ],
      "size": [
       0,
-      404,
+      568,
       0,
-      22
+      32
      ],
-     "corner": 11,
+     "corner": 16,
+     "keyline": "#FFFFFF",
      "children": [
       {
        "type": "frame",
@@ -188,7 +265,33 @@
         "#30A3D5"
        ],
        "paint": "#38BDF8",
-       "children": [],
+       "children": [
+        {
+         "type": "sheen",
+         "name": "Sheen",
+         "size": [
+          1,
+          0,
+          1,
+          0
+         ],
+         "angle": -90,
+         "opacity": 0.3,
+         "bands": [
+          [
+           0.62,
+           0.1
+          ],
+          [
+           0.72,
+           0.06
+          ]
+         ],
+         "corner": 13,
+         "overhang": true,
+         "children": []
+        }
+       ],
        "size": [
         0.58,
         -6,
@@ -206,7 +309,7 @@
         0.5
        ],
        "outline": false,
-       "corner": 8,
+       "corner": 13,
        "overhang": true
       },
       {
@@ -214,19 +317,20 @@
        "text": "<unbound>",
        "size": [
         0,
-        388,
+        552,
         0,
-        22
+        32
        ],
        "textColour": "onDark",
        "align": "center",
-       "textScale": 0.5932,
-       "textStroke": 2,
+       "textScale": 0.5938,
+       "textStroke": 1.5,
        "name": "ProgressText",
        "samples": [
         "999.99Qi / 999.99Qi -> LEGEND",
         "9.01K / 70K -> ELITE"
        ],
+       "font": "display",
        "pos": [
         0.5,
         0,
@@ -238,161 +342,444 @@
         0.5
        ],
        "overhang": true,
-       "z": 2
+       "z": 3,
+       "maxText": 19
       }
      ],
      "pos": [
       0.5,
       0,
       0,
-      22
+      48
      ],
      "anchor": [
       0.5,
       0
-     ]
+     ],
+     "strokePx": 3
     },
     {
-     "type": "icon",
-     "icon": "IconPower",
-     "name": "PowerIcon",
+     "type": "frame",
+     "name": "RepRow",
+     "transparent": true,
      "size": [
       0,
-      16,
+      300,
       0,
-      16
-     ],
-     "pos": [
-      0,
-      8,
-      0,
-      51
-     ]
-    },
-    {
-     "type": "label",
-     "text": "<unbound>",
-     "size": [
-      0,
-      220,
-      0,
-      17
-     ],
-     "textColour": "power",
-     "align": "left",
-     "textScale": 0.7647,
-     "textStroke": 2,
-     "name": "PowerPerRep",
-     "samples": [
-      "+11.00K power per rep",
-      "+560 power per rep"
-     ],
-     "pos": [
-      0,
-      28,
-      0,
-      49
-     ],
-     "maxText": 13
-    },
-    {
-     "type": "button",
-     "name": "StopButton",
-     "size": [
-      0,
-      98,
-      0,
-      34
+      28
      ],
      "children": [
       {
        "type": "icon",
-       "icon": "IconClose",
-       "name": "Icon",
+       "icon": "IconPower",
+       "name": "PowerIcon",
        "size": [
         0,
-        20,
+        24,
         0,
-        20
+        24
        ]
       },
       {
        "type": "label",
-       "text": "STOP",
+       "text": "<unbound>",
        "size": [
         0,
-        48,
+        224,
         0,
-        21
+        25
        ],
-       "textColour": "onDark",
+       "textColour": "power",
        "align": "center",
-       "textScale": 0.7143,
-       "textStroke": 2,
-       "name": "Label",
+       "textScale": 0.8,
+       "textStroke": 1.5,
+       "name": "PowerPerRep",
+       "samples": [
+        "+11.00K power per rep",
+        "+560 power per rep"
+       ],
        "font": "display",
-       "maxText": 15
+       "maxText": 20,
+       "autoX": true
       }
      ],
      "layout": {
       "type": "list",
       "dir": "x",
-      "gap": 6,
+      "gap": 8,
       "align": "center"
      },
-     "sizeClass": "S",
-     "depth": 3,
-     "corner": 14,
      "pos": [
-      1,
-      -8,
-      1,
-      0
+      0.5,
+      0,
+      0,
+      88
      ],
      "anchor": [
-      1,
-      1
+      0.5,
+      0
      ],
-     "selfFace": true,
-     "colour": "#F2574C",
-     "paintable": true,
-     "gloss": true,
-     "stops": [
-      [
-       0.0,
-       "#F2574C"
-      ],
-      [
-       0.4,
-       "#F2574C"
-      ],
-      [
-       0.41000000000000003,
-       "#DA4E44"
-      ],
-      [
-       1.0,
-       "#C6473E"
-      ]
-     ],
-     "attrs": {
-      "PressLip": 3
-     }
+     "autoW": 0
     }
    ],
-   "comic": 0,
    "pos": [
     0.5,
     0,
     1,
-    -16
+    -14
    ],
    "anchor": [
     0.5,
     1
    ],
-   "keyline": "#FFFFFF",
-   "depth": 0
+   "stroke": 3
+  },
+  {
+   "type": "frame",
+   "name": "TimingRing",
+   "transparent": true,
+   "size": [
+    0,
+    220,
+    0,
+    220
+   ],
+   "children": [
+    {
+     "type": "frame",
+     "name": "RingBack",
+     "colour": [
+      "#12153A",
+      "#12153A"
+     ],
+     "alpha": 0.55,
+     "outline": false,
+     "corner": 1,
+     "size": [
+      0.62,
+      0,
+      0.62,
+      0
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true
+    },
+    {
+     "type": "ring",
+     "name": "Target",
+     "size": [
+      0,
+      136,
+      0,
+      136
+     ],
+     "ringColour": "#FFC93C",
+     "thick": 8,
+     "children": [],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 2,
+     "overhang": true
+    },
+    {
+     "type": "ring",
+     "name": "Shrink",
+     "size": [
+      1,
+      0,
+      1,
+      0
+     ],
+     "ringColour": "#FFFFFF",
+     "thick": 5,
+     "children": [],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 3,
+     "overhang": true
+    },
+    {
+     "type": "icon",
+     "icon": "IconPowerBig",
+     "name": "RingIcon",
+     "size": [
+      0,
+      56,
+      0,
+      56
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 4,
+     "overhang": true
+    }
+   ],
+   "pos": [
+    0,
+    800,
+    0,
+    340
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "attrs": {
+    "TargetScale": 0.62
+   }
+  },
+  {
+   "type": "label",
+   "text": "<unbound>",
+   "size": [
+    0,
+    420,
+    0,
+    45
+   ],
+   "textColour": "onDark",
+   "align": "center",
+   "textScale": 0.8,
+   "textStroke": 2,
+   "name": "StationTitle",
+   "samples": [
+    "STRIKE DUMMY",
+    "GRAVITY DOJO"
+   ],
+   "font": "display",
+   "pos": [
+    0,
+    800,
+    0,
+    130
+   ],
+   "anchor": [
+    0.5,
+    0
+   ],
+   "maxText": 36
+  },
+  {
+   "type": "label",
+   "text": "TAP IN THE RING!",
+   "size": [
+    0,
+    420,
+    0,
+    35
+   ],
+   "textColour": "onDark",
+   "align": "center",
+   "textScale": 0.8,
+   "textStroke": 2,
+   "name": "TapHint",
+   "font": "display",
+   "pos": [
+    0,
+    800,
+    0,
+    460
+   ],
+   "anchor": [
+    0.5,
+    0
+   ],
+   "maxText": 28
+  },
+  {
+   "type": "label",
+   "text": "PERFECT!",
+   "size": [
+    0,
+    360,
+    0,
+    60
+   ],
+   "textColour": "buy",
+   "align": "center",
+   "textScale": 0.8,
+   "textStroke": 2,
+   "name": "PerfectLabel",
+   "font": "display",
+   "pos": [
+    0,
+    800,
+    0,
+    340
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "z": 6,
+   "maxText": 48,
+   "visible": false,
+   "mockHide": true
+  },
+  {
+   "type": "label",
+   "text": "<unbound>",
+   "size": [
+    0,
+    260,
+    0,
+    40
+   ],
+   "textColour": "power",
+   "align": "left",
+   "textScale": 0.8,
+   "textStroke": 2,
+   "name": "RepPower",
+   "samples": [
+    "+120 POWER",
+    "+11.00K POWER"
+   ],
+   "font": "display",
+   "pos": [
+    0,
+    918,
+    0,
+    270
+   ],
+   "z": 5,
+   "maxText": 32
+  },
+  {
+   "type": "label",
+   "text": "<unbound>",
+   "size": [
+    0,
+    200,
+    0,
+    40
+   ],
+   "textColour": "buy",
+   "align": "right",
+   "textScale": 0.8,
+   "textStroke": 2,
+   "name": "Combo",
+   "samples": [
+    "x3 COMBO",
+    "x12 COMBO"
+   ],
+   "font": "display",
+   "pos": [
+    0,
+    682,
+    0,
+    270
+   ],
+   "anchor": [
+    1,
+    0
+   ],
+   "z": 5,
+   "maxText": 32,
+   "visible": false
+  },
+  {
+   "type": "button",
+   "name": "ExitButton",
+   "colour": "#F2574C",
+   "size": [
+    0,
+    56,
+    0,
+    56
+   ],
+   "corner": 28,
+   "depth": 3,
+   "sizeClass": "X",
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconClose",
+     "name": "Icon",
+     "size": [
+      0,
+      30,
+      0,
+      30
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ]
+    }
+   ],
+   "pos": [
+    0,
+    916,
+    0,
+    176
+   ],
+   "z": 6,
+   "paintable": true,
+   "gloss": true,
+   "stops": [
+    [
+     0.0,
+     "#F2574C"
+    ],
+    [
+     0.49,
+     "#F2574C"
+    ],
+    [
+     0.5,
+     "#D04B41"
+    ],
+    [
+     1.0,
+     "#B34038"
+    ]
+   ],
+   "attrs": {
+    "PressLip": 3,
+    "Rim": 0.5
+   },
+   "stroke": 3,
+   "keyline": "#F8ABA6"
   }
  ],
  "enabled": false

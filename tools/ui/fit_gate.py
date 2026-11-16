@@ -9,12 +9,12 @@ button. This gate uses a deliberately CONSERVATIVE width model instead of the pr
 (display face 0.72 em per character, rounded face 0.60 em, plus the stroke on both sides)
 and checks the geometry rules of the v3 system:
 
-  caption_pad   a caption inside a button keeps >= 0.35 x button height on each side and
-                >= 14% top and bottom (rule 2)
+  caption_pad   a caption inside a button keeps >= 0.28 x button height on each side and
+                >= 9% top and bottom (v4.1: measured on the centred icon+caption group)
   contain       a label never leaves the card / chip / button it belongs to
   text_fit      at the conservative width the text still fits its box at >= MinTextSize 9
   size_cap      every TextScaled label carries a UITextSizeConstraint (emitted model)
-  button_class  a button is no taller than its size class (S 34, M 44, L 56, HUD 64)
+  button_class  a button is no taller than its size class (S 48, M 56, L 68, HUD 72)
   scroll_x      a ScrollingFrame scrolls horizontally
   window_hang   something inside a window leaves the window (ribbon + close button excepted)
 
@@ -38,7 +38,11 @@ ROOT = HERE.parents[1]
 SPEC = ROOT / "design" / "ui"
 UI = ROOT / "src" / "ui"
 SIZES = [(1280, 720), (1345, 611), (844, 390), (1920, 1080)]
-CLASS_H = {"S": 34, "M": 44, "L": 56, "HUD": 72}
+CLASS_H = {"S": 48, "M": 56, "L": 68, "HUD": 72, "X": 56, "Z": 96}   # Z: Hero Index zone cards   # v4.1: bigger, more noticeable buttons (mp4.SIZE_H)
+# v4.1 caption rule: the caption is as wide as its text and centred WITH its icon as one group, so the inset is
+# measured on that group: >= 0.28 x height clear each side, >= 9% top and bottom (the face sits inside a 3 px
+# border and the press lip).
+CAP_PADX, CAP_PADY = 0.28, 0.09
 MIN_TEXT = 9
 # labels that are MEANT to sit outside their parent (named, so the list is reviewable)
 ALLOW_OUTSIDE = {"Caption", "BonusLabel", "PerfectLabel", "ZoneMarkName", "FoodName", "FlavorRow",
@@ -62,7 +66,7 @@ def inside(a, b, tol=1.0):
     return ax >= bx - tol and ay >= by - tol and ax + aw <= bx + bw + tol and ay + ah <= by + bh + tol
 
 
-MIN_TEXT_PX = 13
+MIN_TEXT_PX = 16
 # the ONE scroller allowed to scroll sideways (owner's call, v3.2): name list, model side
 ALLOW_SCROLL_X = {"FoodScroller"}
 CONTROL = ("button", "panel")
@@ -160,19 +164,20 @@ def check_spec(name, spec, theme):
             # the caption rule applies to a label whose nearest container IS the button;
             # a label in a chip/badge inside the button is judged against that chip (contain)
             btn = container if container is not None and container.spec.get("type") == "button" else None
-            if btn is not None and btn.spec.get("sizeClass") == "HUD":
-                btn = None   # HUD side buttons carry a caption BAND on the face's lower edge (v3.2)
+            if btn is not None and btn.spec.get("sizeClass") in ("HUD", "Z"):
+                btn = None   # HUD side buttons carry a caption BAND on the face's lower edge (v3.2); a zone
+                #              card (Z) is a picture card with a name + bar column, not a captioned button
             if btn is not None and not allowed:
                 bx, by, bw, bh = btn.rect
                 x, y, w, h = n.rect
-                padx, pady = 0.35 * bh, 0.14 * bh
+                padx, pady = CAP_PADX * bh, CAP_PADY * bh
                 if x - bx < padx - 1 or bx + bw - (x + w) < padx - 1 or y - by < pady - 1 or by + bh - (y + h) < pady - 1:
                     add("caption_pad", f"{nm} in {btn.spec.get('name')}: inset L{x - bx:.0f} R{bx + bw - x - w:.0f} "
                                        f"T{y - by:.0f} B{by + bh - y - h:.0f}, needs {padx:.0f}/{pady:.0f}")
             w, h = n.rect[2], n.rect[3]
             stroke = s.get("textStroke", theme["textStroke"])
             cap = s.get("maxText") or int(h * s.get("textScale", 0.62))
-            for t in texts(s):
+            for t in ([] if s.get("autoX") else texts(s)):
                 if not t:
                     continue
                 e = em(s)

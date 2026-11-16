@@ -1,0 +1,454 @@
+{
+ "name": "DashHome_Trail",
+ "note": "Hero dashes home (loop until stop).",
+ "duration": 1.3,
+ "camera": {
+  "pos": [
+   16,
+   6,
+   4
+  ],
+  "at": [
+   0,
+   2.5,
+   2
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "game": {
+  "loop": true,
+  "attach": "root",
+  "screen": false,
+  "origin": [
+   0,
+   3,
+   -24
+  ]
+ },
+ "brief": {
+  "category": "dash_teleport",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "speed streak ribbon + dust",
+  "dominant": "#FFFFFF",
+  "accent": "#EADFC2",
+  "signature_beats": [
+   "speed streaks"
+  ],
+  "phases": [
+   {
+    "name": "sustain",
+    "t0": 0,
+    "t1": 1.0
+   },
+   {
+    "name": "residue",
+    "t0": 1.0,
+    "t1": 1.3
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Root",
+   "CFrame": [
+    0,
+    3,
+    -24,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "Hi",
+     "CFrame": [
+      0,
+      2.2,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "Lo",
+     "CFrame": [
+      0,
+      -1.6,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Trail",
+     "name": "Streak",
+     "props": {
+      "Attachment0": {
+       "Ref": "Root.Hi"
+      },
+      "Attachment1": {
+       "Ref": "Root.Lo"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/beams/speed_streaks_cel_02",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.28,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         1,
+         0.7
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.25
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0.3
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Lines",
+       "props": {
+        "Rate": 22,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/specks/streak_soft_00",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityParallel"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Back"
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          12,
+          12
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          10,
+          16
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.18,
+          0.26
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.6
+          ],
+          [
+           1,
+           0.2
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.2
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.4
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Feet",
+   "CFrame": [
+    0,
+    0.4,
+    -24,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Dust",
+       "props": {
+        "Rate": 14,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/flipbooks/smoke/smoke_puff_fb_cel_03_4x4",
+        "FlipbookLayout": {
+         "Enum": "ParticleFlipbookLayout.Grid4x4"
+        },
+        "FlipbookMode": {
+         "Enum": "ParticleFlipbookMode.OneShot"
+        },
+        "FlipbookBlendFrames": false,
+        "FlipbookFramerate": {
+         "NumberRange": [
+          35.55555555555556,
+          35.55555555555556
+         ]
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          50,
+          50
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          2,
+          4
+         ]
+        },
+        "Drag": 3,
+        "Lifetime": {
+         "NumberRange": [
+          0.38,
+          0.48
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.7
+          ],
+          [
+           1,
+           1.3
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.1
+          ],
+          [
+           0.7,
+           0.2
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            0.9176,
+            0.8745,
+            0.7608
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "path",
+   "target": "Root",
+   "points": [
+    [
+     0,
+     3,
+     -24
+    ],
+    [
+     0,
+     3,
+     0
+    ],
+    [
+     0,
+     3,
+     24
+    ]
+   ],
+   "time": 1.0,
+   "style": "Linear",
+   "sim": true,
+   "t": 0.0
+  },
+  {
+   "do": "path",
+   "target": "Feet",
+   "points": [
+    [
+     0,
+     0.4,
+     -24
+    ],
+    [
+     0,
+     0.4,
+     0
+    ],
+    [
+     0,
+     0.4,
+     24
+    ]
+   ],
+   "time": 1.0,
+   "style": "Linear",
+   "sim": true,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.3,
+  0.42,
+  0.5,
+  0.58,
+  0.7,
+  1.05
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

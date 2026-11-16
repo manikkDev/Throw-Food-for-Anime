@@ -15,6 +15,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local World = require(ReplicatedStorage.Shared.Core.World)
+local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 
 local Blockout = {}
 
@@ -138,24 +139,37 @@ local function buildPlot(cfg: any, folder: Instance, index: number)
 	pad.Material = Enum.Material.Neon
 	label(pad, "Hint", "THROW PAD", 7, 8)
 
-	local dojoX, dojoZ = World.dojoPad(w, index, count)
-	local dojo = part(
-		plot,
-		"DojoPad",
-		Vector3.new(w.DojoPadRadius * 2, 0.3, w.DojoPadRadius * 2),
-		Vector3.new(dojoX, y + 0.55, dojoZ),
-		Color3.fromRGB(90, 150, 255)
-	)
-	prompt(dojo, "train", "Train", index, Enum.KeyCode.E)
-	local gear = part(
-		plot,
-		"Gear",
-		Vector3.new(3, 6, 3),
-		Vector3.new(dojoX, y + 3.7, dojoZ + 4),
-		Color3.fromRGB(150, 110, 70)
-	)
-	label(gear, "Title", "Dojo gear", 5, 16)
-	prompt(gear, "gear", "Upgrade gear", index, Enum.KeyCode.F)
+	-- the training stations (a mat with the Train prompt, and the target) on their two courts
+	for i, row in Config.Training.Stations do
+		local tx, tz, sx, sz = World.station(w, Config.Training, index, count, i)
+		local mat = part(
+			plot,
+			"Station" .. i,
+			Vector3.new(w.StationRadius * 2, 0.3, w.StationRadius * 2),
+			Vector3.new(sx, y + 0.55, sz),
+			Color3.fromRGB(90, 150, 255)
+		)
+		mat:SetAttribute("Station", i)
+		prompt(mat, "train", "Train: " .. row.Name, index, Enum.KeyCode.E)
+		local p = mat:FindFirstChildOfClass("ProximityPrompt")
+		if p then
+			p:SetAttribute("Station", i)
+		end
+		local target = part(
+			plot,
+			if row.Prop == "gear_strike"
+				then "Gear"
+				elseif row.Prop == "gear_spirit" then "SpiritGear"
+				else "Target" .. i,
+			Vector3.new(3, 6, 3),
+			Vector3.new(tx, y + 3.7, tz),
+			Color3.fromRGB(150, 110, 70)
+		)
+		if row.Prop == "gear_strike" then
+			label(target, "Title", "Dojo gear", 5, 16)
+			prompt(target, "gear", "Upgrade gear", index, Enum.KeyCode.F)
+		end
+	end
 
 	local signX, signZ = World.slotSign(w, index, count)
 	local sign = part(
@@ -177,20 +191,6 @@ local function buildPlot(cfg: any, folder: Instance, index: number)
 	)
 	label(board, "Title", "Empty plot", 5.5, 26)
 	prompt(board, "equipBest", "Equip best", index, Enum.KeyCode.E)
-
-	-- the reserved training yard: an invisible anchor kept empty for future mini games
-	local yardX, yardZ, yardW, yardD = World.yard(w, index, count)
-	local yard = part(
-		plot,
-		"Yard",
-		Vector3.new(yardW, 0.2, yardD),
-		Vector3.new(yardX, y + 0.5, yardZ),
-		Color3.fromRGB(240, 200, 120)
-	)
-	yard.Transparency = 1
-	yard.CanCollide = false
-	yard.CanQuery = false
-	yard:SetAttribute("Reserved", "minigames")
 
 	local pedestals = Instance.new("Folder")
 	pedestals.Name = "Pedestals"

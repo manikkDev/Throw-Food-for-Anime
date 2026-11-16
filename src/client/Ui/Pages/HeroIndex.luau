@@ -3,11 +3,14 @@
 -- its craving and the chance at the player's luck and food right now, and the
 -- zone reward.
 --
--- A hero not caught yet is an UNKNOWN tile: dark, named "???", with a "?" in
--- its rarity colour where the portrait would be (no model is built for it).
--- A zone the player cannot throw into yet carries a lock on its tab. The
--- tabs live in a scroller: the tree ships six, and a zone beyond that gets a
--- copy of the last one.
+-- A hero not caught yet is an UNKNOWN tile: dark, named "???", showing the
+-- hero's OWN pitch-black silhouette (its real model, ImageColor3 black) with a
+-- "?" in its rarity colour on it; its rarity chip always shows. Every tile's
+-- frame and flare follow its rarity (UiFx.styleCard).
+-- Each zone tab is a picture card: the zone's painted landscape (ZoneBg_<id>)
+-- behind its name and progress bar; the selected one wears a gold frame. A
+-- zone the player cannot throw into yet carries a lock. The tabs live in a
+-- scroller: the tree ships six, and a zone beyond that gets a copy of the last.
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -19,10 +22,12 @@ local Roll = require(ReplicatedStorage.Shared.Core.Roll)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local Screens = require(script.Parent.Parent.Screens)
 local Theme = require(script.Parent.Parent.Theme)
+local UiFx = require(script.Parent.Parent.UiFx)
 local Viewports = require(script.Parent.Parent.Viewports)
 local Types = require(script.Parent.Types)
 
 local MAPS = Lookup.of(Config)
+local TAB_GOLD = Color3.fromHex("FFC93C")
 
 local HeroIndex = { name = "HeroIndex" } :: Types.Page
 
@@ -95,6 +100,22 @@ function HeroIndex.render(state: any)
 		if zone then
 			local have, total = Collection.zoneProgress(state.index, MAPS.zoneCharacters[zone.Id])
 			Screens.setButtonState(tab, if index == selected then "neutral" else "panel")
+			-- the picture card: its zone's landscape, a gold frame and a lighter
+			-- wash when selected
+			local picked = index == selected
+			local bg = Screens.image(tab, "ZoneBg")
+			local key = "ZoneBg_" .. zone.Id
+			if bg:GetAttribute("IconKey") ~= key then
+				bg:SetAttribute("IconKey", key)
+				bg.Image = Screens.icon(key)
+			end
+			bg.ImageColor3 = if picked then Color3.new(1, 1, 1) else Color3.fromRGB(205, 205, 225)
+			Screens.frame(tab, "NameWash").BackgroundTransparency = if picked then 0.82 else 0.62
+			local stroke = tab:FindFirstChildOfClass("UIStroke")
+			if stroke then
+				stroke.Color = if picked then TAB_GOLD else Color3.new(1, 1, 1)
+				stroke.Thickness = if picked then 4 else 3
+			end
 			Screens.label(tab, "ZoneName").Text = zone.Name
 			Screens.label(tab, "ZoneProgress").Text = `{have}/{total}`
 			Screens.fill(Screens.frame(tab, "Fill"), if total > 0 then have / total else 0)
@@ -140,24 +161,30 @@ function HeroIndex.render(state: any)
 		local known = state.index[id] ~= nil
 		local rarity = Theme.rarity(character.Rarity)
 		local portrait = Screens.viewport(tile, "Portrait")
-		local mark = Screens.label(portrait, "UnknownMark")
+		local mark = Screens.label(tile, "UnknownMark")
 		if isNew then
 			Screens.setIcon(Screens.image(tile, "CraveIcon"), "IconFlavor" .. character.Craves)
 			mark.TextColor3 = rarity
+			-- the rarity is always shown, caught or not
+			Screens.label(tile, "RarityText").Text = character.Rarity:upper()
+			Screens.tint(Screens.frame(tile, "RarityTag"), rarity)
+			UiFx.styleCard(tile, character.Rarity)
 		end
 		if tile:GetAttribute("Known") ~= known then
 			tile:SetAttribute("Known", known)
+			-- the whole card face is the rarity colour (v4: no separate stripe)
 			Screens.tint(tile, if known then rarity else Theme.UNKNOWN_TILE)
-			Screens.tint(
-				Screens.frame(tile, "RarityStripe"),
-				if known then rarity else Theme.UNKNOWN_TILE
-			)
 			mark.Visible = not known
 			Screens.label(tile, "HeroName").Text = if known then character.Name else "???"
+			-- v4.3: the portrait sits on its rarity's texture once the hero is caught
+			UiFx.stylePortrait(
+				Screens.frame(tile, "PortraitWell"),
+				if known then character.Rarity else nil
+			)
 		end
 		Screens.label(tile, "ChanceText").Text = Format.percent(chance[id])
-		-- only a caught hero has a portrait; an unknown one is just the "?"
-		Viewports.hero(portrait, if known then id else nil)
+		-- a caught hero in colour; an unknown one as its own black silhouette
+		Viewports.hero(portrait, id, not known)
 	end, true)
 end
 

@@ -1,0 +1,492 @@
+{
+ "name": "PerfectThrow_Flash",
+ "note": "Perfect release at the hand.",
+ "duration": 0.6,
+ "camera": {
+  "pos": [
+   5,
+   5,
+   11
+  ],
+  "at": [
+   0.8,
+   3,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": false,
+  "origin": [
+   1.6,
+   3.4,
+   -0.6
+  ]
+ },
+ "brief": {
+  "category": "ambient_pickup",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "four-point star flash",
+  "dominant": "#FFD23F",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "pop to max in one frame"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.2
+   },
+   {
+    "name": "residue",
+    "t0": 0.2,
+    "t1": 0.45
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Hand",
+   "CFrame": [
+    1.6,
+    3.4,
+    -0.6,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Star",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/stars/star_glow_00",
+        "Lifetime": {
+         "NumberRange": [
+          0.18,
+          0.18
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          -8,
+          8
+         ]
+        },
+        "RotSpeed": {
+         "NumberRange": [
+          90,
+          90
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.1
+          ],
+          [
+           0.15,
+           2.1
+          ],
+          [
+           1,
+           0.3
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           0.4,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.6,
+        "Brightness": 1.6,
+        "ZOffset": 2
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Cross",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/impacts/hit_cross_glow_00",
+        "Lifetime": {
+         "NumberRange": [
+          0.12,
+          0.12
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          45,
+          45
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.75
+          ],
+          [
+           1,
+           2.75
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.7,
+        "ZOffset": 2.5
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Ring",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_glow_00",
+        "Lifetime": {
+         "NumberRange": [
+          0.25,
+          0.25
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.75
+          ],
+          [
+           0.3,
+           2.0
+          ],
+          [
+           1,
+           2.4
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.6,
+        "ZOffset": 1
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Spray",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/stars/star_cel_06",
+        "SpreadAngle": {
+         "Vector2": [
+          180,
+          180
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          12,
+          20
+         ]
+        },
+        "Drag": 4,
+        "Lifetime": {
+         "NumberRange": [
+          0.3,
+          0.45
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "RotSpeed": {
+         "NumberRange": [
+          -300,
+          300
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.45
+          ],
+          [
+           1,
+           0.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 1.5
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Lamp",
+   "CFrame": [
+    1.6,
+    3.4,
+    -0.6,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "PointLight",
+     "name": "L",
+     "props": {
+      "Brightness": 0,
+      "Range": 10,
+      "Color": {
+       "Color3": [
+        1.0,
+        0.8235,
+        0.2471
+       ]
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Hand.A.Star",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hand.A.Cross",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hand.A.Ring",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hand.A.Spray",
+   "count": 10,
+   "t": 0.0
+  },
+  {
+   "do": "set",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "value": 2.5,
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "to": 0,
+   "time": 0.25,
+   "style": "Quad",
+   "dir": "Out",
+   "t": 0.02
+  }
+ ],
+ "strip": [
+  0.0,
+  0.03,
+  0.06,
+  0.1,
+  0.16,
+  0.24,
+  0.34,
+  0.45
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

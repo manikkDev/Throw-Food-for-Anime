@@ -54,7 +54,7 @@
       }
      ],
      "corner": 22,
-     "depth": 3,
+     "depth": 0,
      "pos": [
       0.5,
       0,
@@ -64,7 +64,9 @@
      "anchor": [
       0.5,
       0.5
-     ]
+     ],
+     "stroke": 3,
+     "keyline": "#FFFFFF"
     },
     {
      "type": "panel",
@@ -87,12 +89,12 @@
         0,
         16,
         0,
-        18
+        20
        ],
        "textColour": "onDark",
        "align": "center",
-       "textScale": 0.7222,
-       "textStroke": 3,
+       "textScale": 0.8025,
+       "textStroke": 1.5,
        "name": "BadgeText",
        "font": "display",
        "pos": [
@@ -105,7 +107,7 @@
         0.5,
         0.5
        ],
-       "maxText": 13
+       "maxText": 16
       }
      ],
      "pos": [
@@ -122,7 +124,8 @@
      "z": 4,
      "corner": 11,
      "visible": false,
-     "stroke": 2
+     "stroke": 2,
+     "keyline": "#FFFFFF"
     }
    ],
    "pos": [
@@ -199,9 +202,9 @@
          "colour": "danger",
          "size": [
           0,
-          22,
+          26,
           0,
-          22
+          26
          ],
          "selfFace": true,
          "paintable": true,
@@ -212,14 +215,14 @@
            "text": "!",
            "size": [
             0,
-            16,
+            18,
             0,
-            18
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7222,
-           "textStroke": 3,
+           "textScale": 0.8,
+           "textStroke": 1.5,
            "name": "BadgeText",
            "font": "display",
            "pos": [
@@ -232,7 +235,7 @@
             0.5,
             0.5
            ],
-           "maxText": 13
+           "maxText": 16
           }
          ],
          "pos": [
@@ -247,42 +250,43 @@
          ],
          "overhang": true,
          "z": 4,
-         "corner": 11,
+         "corner": 13,
          "visible": false,
-         "stroke": 2
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         },
         {
          "type": "label",
          "text": "SHOP",
          "size": [
           0,
-          68,
+          70,
           0,
-          20
+          22
          ],
          "textColour": "onDark",
          "align": "center",
-         "textScale": 0.75,
-         "textStroke": 3,
+         "textScale": 0.8182,
+         "textStroke": 1.5,
          "name": "Caption",
          "font": "display",
          "pos": [
           0.5,
           0,
           1,
-          -3
+          -2
          ],
          "anchor": [
           0.5,
           1
          ],
          "z": 4,
-         "maxText": 15,
+         "maxText": 18,
          "overhang": true
         }
        ],
        "opens": "FoodShop",
-       "corner": 18,
+       "corner": 20,
        "sizeClass": "HUD",
        "pos": [
         0.5,
@@ -294,7 +298,12 @@
         0.5,
         0
        ],
-       "depth": 3
+       "depth": 4,
+       "stroke": 3,
+       "keyline": "#FFE49E",
+       "attrs": {
+        "Rim": 0.5
+       }
       }
      ]
     },
@@ -347,9 +356,9 @@
          "colour": "danger",
          "size": [
           0,
-          22,
+          26,
           0,
-          22
+          26
          ],
          "selfFace": true,
          "paintable": true,
@@ -360,14 +369,14 @@
            "text": "!",
            "size": [
             0,
-            16,
+            18,
             0,
-            18
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7222,
-           "textStroke": 3,
+           "textScale": 0.8,
+           "textStroke": 1.5,
            "name": "BadgeText",
            "font": "display",
            "pos": [
@@ -380,7 +389,7 @@
             0.5,
             0.5
            ],
-           "maxText": 13
+           "maxText": 16
           }
          ],
          "pos": [
@@ -395,42 +404,43 @@
          ],
          "overhang": true,
          "z": 4,
-         "corner": 11,
+         "corner": 13,
          "visible": false,
-         "stroke": 2
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         },
         {
          "type": "label",
          "text": "SQUAD",
          "size": [
           0,
-          68,
+          70,
           0,
-          20
+          22
          ],
          "textColour": "onDark",
          "align": "center",
-         "textScale": 0.75,
-         "textStroke": 3,
+         "textScale": 0.8182,
+         "textStroke": 1.5,
          "name": "Caption",
          "font": "display",
          "pos": [
           0.5,
           0,
           1,
-          -3
+          -2
          ],
          "anchor": [
           0.5,
           1
          ],
          "z": 4,
-         "maxText": 15,
+         "maxText": 18,
          "overhang": true
         }
        ],
        "opens": "Squad",
-       "corner": 18,
+       "corner": 20,
        "sizeClass": "HUD",
        "pos": [
         0.5,
@@ -442,7 +452,12 @@
         0.5,
         0
        ],
-       "depth": 3
+       "depth": 4,
+       "stroke": 3,
+       "keyline": "#9CDEFC",
+       "attrs": {
+        "Rim": 0.5
+       }
       }
      ]
     },
@@ -495,9 +510,9 @@
          "colour": "danger",
          "size": [
           0,
-          22,
+          26,
           0,
-          22
+          26
          ],
          "selfFace": true,
          "paintable": true,
@@ -508,14 +523,14 @@
            "text": "!",
            "size": [
             0,
-            16,
+            18,
             0,
-            18
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7222,
-           "textStroke": 3,
+           "textScale": 0.8,
+           "textStroke": 1.5,
            "name": "BadgeText",
            "font": "display",
            "pos": [
@@ -528,7 +543,7 @@
             0.5,
             0.5
            ],
-           "maxText": 13
+           "maxText": 16
           }
          ],
          "pos": [
@@ -543,42 +558,43 @@
          ],
          "overhang": true,
          "z": 4,
-         "corner": 11,
+         "corner": 13,
          "visible": false,
-         "stroke": 2
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         },
         {
          "type": "label",
          "text": "INDEX",
          "size": [
           0,
-          68,
+          70,
           0,
-          20
+          22
          ],
          "textColour": "onDark",
          "align": "center",
-         "textScale": 0.75,
-         "textStroke": 3,
+         "textScale": 0.8182,
+         "textStroke": 1.5,
          "name": "Caption",
          "font": "display",
          "pos": [
           0.5,
           0,
           1,
-          -3
+          -2
          ],
          "anchor": [
           0.5,
           1
          ],
          "z": 4,
-         "maxText": 15,
+         "maxText": 18,
          "overhang": true
         }
        ],
        "opens": "HeroIndex",
-       "corner": 18,
+       "corner": 20,
        "sizeClass": "HUD",
        "pos": [
         0.5,
@@ -590,7 +606,12 @@
         0.5,
         0
        ],
-       "depth": 3
+       "depth": 4,
+       "stroke": 3,
+       "keyline": "#D4AAFB",
+       "attrs": {
+        "Rim": 0.5
+       }
       }
      ]
     }
@@ -668,9 +689,9 @@
          "colour": "danger",
          "size": [
           0,
-          22,
+          26,
           0,
-          22
+          26
          ],
          "selfFace": true,
          "paintable": true,
@@ -681,14 +702,14 @@
            "text": "!",
            "size": [
             0,
-            16,
+            18,
             0,
-            18
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7222,
-           "textStroke": 3,
+           "textScale": 0.8,
+           "textStroke": 1.5,
            "name": "BadgeText",
            "font": "display",
            "pos": [
@@ -701,7 +722,7 @@
             0.5,
             0.5
            ],
-           "maxText": 13
+           "maxText": 16
           }
          ],
          "pos": [
@@ -716,42 +737,43 @@
          ],
          "overhang": true,
          "z": 4,
-         "corner": 11,
+         "corner": 13,
          "visible": false,
-         "stroke": 2
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         },
         {
          "type": "label",
          "text": "STORE",
          "size": [
           0,
-          68,
+          70,
           0,
-          20
+          22
          ],
          "textColour": "onDark",
          "align": "center",
-         "textScale": 0.75,
-         "textStroke": 3,
+         "textScale": 0.8182,
+         "textStroke": 1.5,
          "name": "Caption",
          "font": "display",
          "pos": [
           0.5,
           0,
           1,
-          -3
+          -2
          ],
          "anchor": [
           0.5,
           1
          ],
          "z": 4,
-         "maxText": 15,
+         "maxText": 18,
          "overhang": true
         }
        ],
        "opens": "Store",
-       "corner": 18,
+       "corner": 20,
        "sizeClass": "HUD",
        "pos": [
         0.5,
@@ -763,7 +785,12 @@
         0.5,
         0
        ],
-       "depth": 3
+       "depth": 4,
+       "stroke": 3,
+       "keyline": "#FFA7D1",
+       "attrs": {
+        "Rim": 0.5
+       }
       }
      ]
     },
@@ -816,9 +843,9 @@
          "colour": "danger",
          "size": [
           0,
-          22,
+          26,
           0,
-          22
+          26
          ],
          "selfFace": true,
          "paintable": true,
@@ -829,14 +856,14 @@
            "text": "!",
            "size": [
             0,
-            16,
+            18,
             0,
-            18
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7222,
-           "textStroke": 3,
+           "textScale": 0.8,
+           "textStroke": 1.5,
            "name": "BadgeText",
            "font": "display",
            "pos": [
@@ -849,7 +876,7 @@
             0.5,
             0.5
            ],
-           "maxText": 13
+           "maxText": 16
           }
          ],
          "pos": [
@@ -864,37 +891,38 @@
          ],
          "overhang": true,
          "z": 4,
-         "corner": 11,
+         "corner": 13,
          "visible": false,
-         "stroke": 2
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         },
         {
          "type": "label",
          "text": "GIFTS",
          "size": [
           0,
-          68,
+          70,
           0,
-          20
+          22
          ],
          "textColour": "onDark",
          "align": "center",
-         "textScale": 0.75,
-         "textStroke": 3,
+         "textScale": 0.8182,
+         "textStroke": 1.5,
          "name": "Caption",
          "font": "display",
          "pos": [
           0.5,
           0,
           1,
-          -3
+          -2
          ],
          "anchor": [
           0.5,
           1
          ],
          "z": 4,
-         "maxText": 15,
+         "maxText": 18,
          "overhang": true
         },
         {
@@ -903,9 +931,9 @@
          "colour": "panelDeep",
          "size": [
           0,
-          66,
+          68,
           0,
-          20
+          22
          ],
          "selfFace": true,
          "paintable": true,
@@ -916,14 +944,14 @@
            "text": "<unbound>",
            "size": [
             0,
-            60,
+            62,
             0,
-            18
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.8333,
-           "textStroke": 2,
+           "textScale": 0.8,
+           "textStroke": 1.5,
            "name": "GiftTimer",
            "samples": [
             "12:59",
@@ -940,7 +968,7 @@
             0.5,
             0.5
            ],
-           "maxText": 15
+           "maxText": 16
           }
          ],
          "pos": [
@@ -956,11 +984,12 @@
          "overhang": true,
          "z": 6,
          "visible": false,
-         "stroke": 2
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         }
        ],
        "opens": "PlaytimeGifts",
-       "corner": 18,
+       "corner": 20,
        "sizeClass": "HUD",
        "pos": [
         0.5,
@@ -972,7 +1001,12 @@
         0.5,
         0
        ],
-       "depth": 3
+       "depth": 4,
+       "stroke": 3,
+       "keyline": "#9AE8BC",
+       "attrs": {
+        "Rim": 0.5
+       }
       }
      ]
     },
@@ -1025,9 +1059,9 @@
          "colour": "danger",
          "size": [
           0,
-          22,
+          26,
           0,
-          22
+          26
          ],
          "selfFace": true,
          "paintable": true,
@@ -1038,14 +1072,14 @@
            "text": "!",
            "size": [
             0,
-            16,
+            18,
             0,
-            18
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7222,
-           "textStroke": 3,
+           "textScale": 0.8,
+           "textStroke": 1.5,
            "name": "BadgeText",
            "font": "display",
            "pos": [
@@ -1058,7 +1092,7 @@
             0.5,
             0.5
            ],
-           "maxText": 13
+           "maxText": 16
           }
          ],
          "pos": [
@@ -1073,42 +1107,43 @@
          ],
          "overhang": true,
          "z": 4,
-         "corner": 11,
+         "corner": 13,
          "visible": false,
-         "stroke": 2
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         },
         {
          "type": "label",
          "text": "REBIRTH",
          "size": [
           0,
-          68,
+          70,
           0,
-          20
+          22
          ],
          "textColour": "onDark",
          "align": "center",
-         "textScale": 0.75,
-         "textStroke": 3,
+         "textScale": 0.8182,
+         "textStroke": 1.5,
          "name": "Caption",
          "font": "display",
          "pos": [
           0.5,
           0,
           1,
-          -3
+          -2
          ],
          "anchor": [
           0.5,
           1
          ],
          "z": 4,
-         "maxText": 15,
+         "maxText": 18,
          "overhang": true
         }
        ],
        "opens": "Rebirth",
-       "corner": 18,
+       "corner": 20,
        "sizeClass": "HUD",
        "pos": [
         0.5,
@@ -1120,7 +1155,12 @@
         0.5,
         0
        ],
-       "depth": 3
+       "depth": 4,
+       "stroke": 3,
+       "keyline": "#FFE49E",
+       "attrs": {
+        "Rim": 0.5
+       }
       }
      ]
     }
@@ -1216,14 +1256,14 @@
      "text": "<unbound>",
      "size": [
       0,
-      180,
+      184,
       0,
-      23
+      26
      ],
      "textColour": "onDark",
      "align": "left",
-     "textScale": 0.7391,
-     "textStroke": 3,
+     "textScale": 0.7692,
+     "textStroke": 1.5,
      "name": "FoodName",
      "samples": [
       "Festival Cake",
@@ -1235,7 +1275,7 @@
       0,
       2
      ],
-     "maxText": 17
+     "maxText": 20
     },
     {
      "type": "frame",
@@ -1243,9 +1283,9 @@
      "transparent": true,
      "size": [
       0,
-      170,
+      184,
       0,
-      18
+      22
      ],
      "children": [
       {
@@ -1254,9 +1294,9 @@
        "name": "FlavorIcon",
        "size": [
         0,
-        14,
+        18,
         0,
-        14
+        18
        ]
       },
       {
@@ -1264,21 +1304,21 @@
        "text": "<unbound>",
        "size": [
         0,
-        118,
+        160,
         0,
-        18
+        22
        ],
        "textColour": "soft",
        "align": "left",
-       "textScale": 0.7222,
-       "textStroke": 2,
+       "textScale": 0.8182,
+       "textStroke": 1.5,
        "name": "FoodFlavor",
        "samples": [
         "SEAFOOD",
         "SWEET"
        ],
        "font": "display",
-       "maxText": 13
+       "maxText": 18
       }
      ],
      "layout": {
@@ -1340,7 +1380,7 @@
      "textColour": "power",
      "align": "left",
      "textScale": 0.8947,
-     "textStroke": 3,
+     "textStroke": 2,
      "name": "PowerAmount",
      "samples": [
       "999.99Qi",
@@ -1362,24 +1402,24 @@
       0,
       220,
       0,
-      20
+      22
      ],
      "textColour": "soft",
      "align": "left",
-     "textScale": 0.75,
-     "textStroke": 2,
+     "textScale": 0.8182,
+     "textStroke": 1.5,
      "name": "RankName",
      "samples": [
       "CHAMPION",
       "FIGHTER"
      ],
      "font": "display",
-     "maxText": 15,
+     "maxText": 18,
      "pos": [
       0,
       62,
       0,
-      39
+      38
      ]
     }
    ],
@@ -1434,7 +1474,7 @@
      "textColour": "yen",
      "align": "left",
      "textScale": 0.8947,
-     "textStroke": 3,
+     "textStroke": 2,
      "name": "YenAmount",
      "samples": [
       "999.99Qi",
@@ -1456,23 +1496,23 @@
       0,
       220,
       0,
-      20
+      22
      ],
      "textColour": "soft",
      "align": "left",
-     "textScale": 0.75,
-     "textStroke": 2,
+     "textScale": 0.8182,
+     "textStroke": 1.5,
      "name": "IncomePerSecond",
      "samples": [
       "+999.99Qi/s",
       "+4.55M/s"
      ],
-     "maxText": 15,
+     "maxText": 18,
      "pos": [
       0,
       62,
       0,
-      39
+      38
      ]
     }
    ],
@@ -1527,7 +1567,7 @@
      "textColour": "luck",
      "align": "left",
      "textScale": 0.8947,
-     "textStroke": 3,
+     "textStroke": 2,
      "name": "LuckAmount",
      "samples": [
       "x999.9",
@@ -1562,9 +1602,9 @@
    "corner": 18,
    "size": [
     0,
-    467,
+    572,
     0,
-    36
+    40
    ],
    "pos": [
     0.5,
@@ -1604,14 +1644,14 @@
      "text": "<unbound>",
      "size": [
       0,
-      411,
+      512,
       0,
-      24
+      28
      ],
      "textColour": "onDark",
      "align": "left",
-     "textScale": 0.6667,
-     "textStroke": 2,
+     "textScale": 0.7143,
+     "textStroke": 1.5,
      "name": "ObjectiveLine",
      "samples": [
       "Reach Realm of Legends: train to 40M power",
@@ -1627,10 +1667,11 @@
       0,
       0.5
      ],
-     "maxText": 16,
+     "maxText": 20,
      "autoX": true
     }
-   ]
+   ],
+   "strokePx": 3
   },
   {
    "type": "panel",
@@ -1638,9 +1679,9 @@
    "colour": "panel",
    "size": [
     0,
-    340,
+    400,
     0,
-    104
+    112
    ],
    "children": [
     {
@@ -1669,14 +1710,14 @@
      "text": "<unbound>",
      "size": [
       0,
-      138,
+      200,
       0,
-      20
+      24
      ],
      "textColour": "gold",
      "align": "left",
-     "textScale": 0.7,
-     "textStroke": 2,
+     "textScale": 0.75,
+     "textStroke": 1.5,
      "name": "NoticeTitle",
      "samples": [
       "NEW FOOD UNLOCKED!",
@@ -1685,25 +1726,25 @@
      "font": "display",
      "pos": [
       0,
-      70,
+      76,
       0,
-      10
+      12
      ],
-     "maxText": 14
+     "maxText": 18
     },
     {
      "type": "label",
      "text": "<unbound>",
      "size": [
       0,
-      138,
+      168,
       0,
-      38
+      46
      ],
      "textColour": "onDark",
      "align": "left",
-     "textScale": 0.3684,
-     "textStroke": 2,
+     "textScale": 0.3913,
+     "textStroke": 1.5,
      "name": "NoticeBody",
      "samples": [
       "Dango, 250 yen",
@@ -1712,20 +1753,20 @@
      "wrap": true,
      "pos": [
       0,
-      70,
+      76,
       0,
-      34
+      44
      ],
-     "maxText": 14
+     "maxText": 18
     },
     {
      "type": "button",
      "name": "NoticeButton",
      "size": [
       0,
-      98,
+      128,
       0,
-      34
+      48
      ],
      "children": [
       {
@@ -1734,9 +1775,9 @@
        "name": "Icon",
        "size": [
         0,
-        20,
+        28,
         0,
-        20
+        28
        ]
       },
       {
@@ -1744,13 +1785,13 @@
        "text": "<unbound>",
        "size": [
         0,
-        48,
+        61,
         0,
-        21
+        32
        ],
        "textColour": "onDark",
        "align": "center",
-       "textScale": 0.7143,
+       "textScale": 0.75,
        "textStroke": 2,
        "name": "NoticeButtonText",
        "samples": [
@@ -1758,23 +1799,25 @@
         "BUY"
        ],
        "font": "display",
-       "maxText": 15
+       "maxText": 24,
+       "autoX": true,
+       "capW": 71
       }
      ],
      "layout": {
       "type": "list",
       "dir": "x",
-      "gap": 6,
+      "gap": 7,
       "align": "center"
      },
      "sizeClass": "S",
-     "depth": 3,
-     "corner": 14,
+     "depth": 4,
+     "corner": 16,
      "pos": [
       1,
-      -12,
+      -14,
       1,
-      -12
+      -14
      ],
      "anchor": [
       1,
@@ -1790,21 +1833,25 @@
        "#48D687"
       ],
       [
-       0.4,
+       0.49,
        "#48D687"
       ],
       [
-       0.41000000000000003,
-       "#41C17A"
+       0.5,
+       "#3EB874"
       ],
       [
        1.0,
-       "#3BAF6F"
+       "#359E64"
       ]
      ],
      "attrs": {
-      "PressLip": 3
-     }
+      "PressLip": 4,
+      "AutoShine": true,
+      "Rim": 0.5
+     },
+     "stroke": 3,
+     "keyline": "#A4EAC3"
     },
     {
      "type": "frame",
@@ -1863,7 +1910,8 @@
         0.5,
         0.5
        ],
-       "stroke": 2
+       "stroke": 2,
+       "keyline": "#FFFFFF"
       }
      ],
      "pos": [
@@ -1880,7 +1928,6 @@
      "z": 5
     }
    ],
-   "comic": 4,
    "pos": [
     0.5,
     0,
@@ -1893,67 +1940,102 @@
    ],
    "visible": false,
    "z": 5,
-   "keyline": "#FFFFFF"
+   "keyline": "#5B64C9",
+   "stroke": 3
   },
   {
    "type": "panel",
    "name": "ServerLuckBar",
    "colour": "panel",
+   "keyline": "#5B64C9",
+   "depth": 0,
+   "corner": 16,
    "size": [
     0,
-    250,
+    224,
     0,
-    40
+    56
    ],
    "children": [
     {
      "type": "icon",
-     "icon": "IconLuck",
+     "icon": "IconLuckBig",
      "name": "Icon",
      "size": [
       0,
-      24,
+      34,
       0,
-      24
+      34
      ]
     },
     {
-     "type": "label",
-     "text": "<unbound>",
+     "type": "frame",
+     "name": "EventText",
+     "transparent": true,
      "size": [
       0,
-      80,
+      112,
       0,
-      28
+      46
      ],
-     "textColour": "luck",
-     "align": "center",
-     "textScale": 0.6429,
-     "textStroke": 2,
-     "name": "Multiplier",
-     "samples": [
-      "x8 LUCK",
-      "x2 FEST"
-     ],
-     "font": "display"
-    },
-    {
-     "type": "label",
-     "text": "<unbound>",
-     "size": [
-      0,
-      56,
-      0,
-      26
-     ],
-     "textColour": "onDark",
-     "align": "center",
-     "textScale": 0.6154,
-     "textStroke": 2,
-     "name": "TimeLeft",
-     "samples": [
-      "14:59",
-      "2:59"
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        112,
+        0,
+        25
+       ],
+       "textColour": "luck",
+       "align": "left",
+       "textScale": 0.8,
+       "textStroke": 1.5,
+       "name": "Multiplier",
+       "samples": [
+        "x1.75 LUCK",
+        "FESTIVAL"
+       ],
+       "font": "display",
+       "maxText": 20,
+       "pos": [
+        0,
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        112,
+        0,
+        20
+       ],
+       "textColour": "onDark",
+       "align": "left",
+       "textScale": 0.8,
+       "textStroke": 1.5,
+       "name": "TimeLeft",
+       "samples": [
+        "14:59",
+        "1:02:59"
+       ],
+       "maxText": 16,
+       "pos": [
+        0,
+        0,
+        1,
+        0
+       ],
+       "anchor": [
+        0,
+        1
+       ]
+      }
      ]
     },
     {
@@ -1961,9 +2043,9 @@
      "name": "BoostButton",
      "size": [
       0,
-      34,
+      44,
       0,
-      34
+      48
      ],
      "children": [
       {
@@ -1972,9 +2054,9 @@
        "name": "Icon",
        "size": [
         0,
-        20,
+        28,
         0,
-        20
+        28
        ]
       }
      ],
@@ -1985,8 +2067,8 @@
       "align": "center"
      },
      "sizeClass": "S",
-     "depth": 3,
-     "corner": 14,
+     "depth": 4,
+     "corner": 16,
      "selfFace": true,
      "colour": "#FF61AC",
      "paintable": true,
@@ -1997,26 +2079,27 @@
        "#FF61AC"
       ],
       [
-       0.4,
+       0.49,
        "#FF61AC"
       ],
       [
-       0.41000000000000003,
-       "#E6579B"
+       0.5,
+       "#DB5394"
       ],
       [
        1.0,
-       "#D1508D"
+       "#BD487F"
       ]
      ],
      "attrs": {
-      "PressLip": 3
-     }
+      "PressLip": 4,
+      "AutoShine": true,
+      "Rim": 0.5
+     },
+     "stroke": 3,
+     "keyline": "#FFB0D6"
     }
    ],
-   "comic": 3,
-   "corner": 20,
-   "padding": 4,
    "layout": {
     "type": "list",
     "dir": "x",
@@ -2024,150 +2107,386 @@
     "align": "center"
    },
    "pos": [
-    0.5,
+    1,
+    -108,
     0,
-    0,
-    58
+    236
    ],
-   "keyline": "#FFFFFF",
    "anchor": [
-    0.5,
+    1,
     0
-   ]
+   ],
+   "z": 4,
+   "stroke": 3
   },
   {
-   "type": "panel",
+   "type": "frame",
    "name": "Announcement",
    "colour": [
-    "#FFC93C",
-    "#FF5A5F"
+    "#232866",
+    "#0E1030"
    ],
+   "alpha": 0.06,
+   "corner": 16,
+   "keyline": "#FFFFFF",
+   "keepKeyline": true,
    "size": [
     0,
-    672,
+    760,
     0,
-    44
+    74
    ],
-   "children": [
-    {
-     "type": "icon",
-     "icon": "IconStar",
-     "name": "Icon",
-     "size": [
-      0,
-      26,
-      0,
-      26
-     ]
-    },
-    {
-     "type": "label",
-     "text": "<unbound>",
-     "size": [
-      0,
-      212,
-      0,
-      22
-     ],
-     "textColour": "onDark",
-     "align": "left",
-     "textScale": 0.6364,
-     "textStroke": 2,
-     "name": "PlayerName",
-     "samples": [
-      "xX_SuperLongName_Xx",
-      "Builderman"
-     ]
-    },
-    {
-     "type": "label",
-     "text": "<unbound>",
-     "size": [
-      0,
-      176,
-      0,
-      28
-     ],
-     "textColour": "onDark",
-     "align": "center",
-     "textScale": 0.6786,
-     "textStroke": 3,
-     "name": "HeroName",
-     "samples": [
-      "Heavenly String King",
-      "Copy Ninja"
-     ],
-     "font": "display"
-    },
-    {
-     "type": "label",
-     "text": "<unbound>",
-     "size": [
-      0,
-      88,
-      0,
-      22
-     ],
-     "textColour": "onDark",
-     "align": "center",
-     "textScale": 0.6364,
-     "textStroke": 2,
-     "name": "RarityText",
-     "samples": [
-      "LEGENDARY",
-      "SECRET"
-     ],
-     "font": "display"
-    },
-    {
-     "type": "label",
-     "text": "<unbound>",
-     "size": [
-      0,
-      126,
-      0,
-      22
-     ],
-     "textColour": "onDark",
-     "align": "center",
-     "textScale": 0.6364,
-     "textStroke": 2,
-     "name": "OneInN",
-     "samples": [
-      "1 in 48,400,000",
-      "1 in 250"
-     ]
-    }
-   ],
-   "keyline": "#FFFFFF",
-   "comic": 3,
-   "corner": 10,
-   "rotation": -1,
-   "padding": 4,
-   "layout": {
-    "type": "list",
-    "dir": "x",
-    "gap": 8,
-    "align": "center"
-   },
-   "pattern": {
-    "name": "dots",
-    "colour": "#FFFFFF",
-    "opacity": 0.22,
-    "tile": 26
-   },
    "pos": [
     0.5,
     0,
     0,
-    206
+    62
    ],
    "anchor": [
     0.5,
     0
    ],
    "visible": false,
-   "z": 6
+   "z": 6,
+   "children": [
+    {
+     "type": "sheen",
+     "name": "RarityWash",
+     "size": [
+      1,
+      0,
+      1,
+      0
+     ],
+     "angle": 0,
+     "opacity": 0.3,
+     "bands": [
+      [
+       0.03,
+       0.36
+      ],
+      [
+       0.97,
+       0.36
+      ]
+     ],
+     "corner": 16,
+     "overhang": true,
+     "children": [],
+     "z": 1
+    },
+    {
+     "type": "frame",
+     "name": "AccentLeft",
+     "colour": [
+      "#FFFFFF",
+      "#E8E8E8"
+     ],
+     "outline": false,
+     "corner": 3,
+     "size": [
+      0,
+      5,
+      1,
+      -26
+     ],
+     "pos": [
+      0,
+      8,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ],
+     "z": 3,
+     "children": [],
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "AccentRight",
+     "colour": [
+      "#FFFFFF",
+      "#E8E8E8"
+     ],
+     "outline": false,
+     "corner": 3,
+     "size": [
+      0,
+      5,
+      1,
+      -26
+     ],
+     "pos": [
+      1,
+      -8,
+      0.5,
+      0
+     ],
+     "anchor": [
+      1,
+      0.5
+     ],
+     "z": 3,
+     "children": [],
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "PortraitWell",
+     "colour": [
+      "#2A3088",
+      "#12153A"
+     ],
+     "corner": 1,
+     "keyline": "#FFFFFF",
+     "keepKeyline": true,
+     "size": [
+      0,
+      56,
+      0,
+      56
+     ],
+     "pos": [
+      0,
+      22,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ],
+     "z": 3,
+     "children": [
+      {
+       "type": "icon",
+       "icon": "IconCrownBig",
+       "name": "AnnounceIcon",
+       "size": [
+        0,
+        36,
+        0,
+        36
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 4
+      },
+      {
+       "type": "frame",
+       "name": "AnnouncePortrait",
+       "transparent": true,
+       "cls": "ViewportFrame",
+       "size": [
+        1,
+        0,
+        1,
+        0
+       ],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 5,
+       "children": [],
+       "overhang": true
+      }
+     ],
+     "strokePx": 3
+    },
+    {
+     "type": "frame",
+     "name": "TextColumn",
+     "transparent": true,
+     "size": [
+      0,
+      400,
+      0,
+      62
+     ],
+     "children": [
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        400,
+        0,
+        20
+       ],
+       "textColour": "soft",
+       "align": "left",
+       "textScale": 0.8,
+       "textStroke": 1.5,
+       "name": "PlayerName",
+       "samples": [
+        "CAUGHT BY XX_SUPERLONGNAME_XX",
+        "SERVER LUCK"
+       ],
+       "font": "display",
+       "maxText": 16
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        400,
+        0,
+        38
+       ],
+       "textColour": "onDark",
+       "align": "left",
+       "textScale": 0.7895,
+       "textStroke": 2,
+       "name": "HeroName",
+       "samples": [
+        "Heavenly String King",
+        "x2 LUCK FOR 15 MIN"
+       ],
+       "font": "display",
+       "maxText": 30
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "y",
+      "gap": 4,
+      "align": "start"
+     },
+     "pos": [
+      0,
+      94,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ],
+     "z": 3
+    },
+    {
+     "type": "frame",
+     "name": "MetaRow",
+     "transparent": true,
+     "size": [
+      0,
+      230,
+      0,
+      30
+     ],
+     "children": [
+      {
+       "type": "panel",
+       "name": "RarityChip",
+       "colour": "#A855F7",
+       "size": [
+        0,
+        105,
+        0,
+        28
+       ],
+       "selfFace": true,
+       "paintable": true,
+       "depth": 0,
+       "corner": 14,
+       "children": [
+        {
+         "type": "label",
+         "text": "<unbound>",
+         "size": [
+          0,
+          95,
+          0,
+          22
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.7273,
+         "textStroke": 1.5,
+         "name": "RarityText",
+         "samples": [
+          "LEGENDARY",
+          "SECRET"
+         ],
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          0.5,
+          0
+         ],
+         "anchor": [
+          0.5,
+          0.5
+         ],
+         "maxText": 16
+        }
+       ],
+       "stroke": 2,
+       "keyline": "#FFFFFF"
+      },
+      {
+       "type": "label",
+       "text": "<unbound>",
+       "size": [
+        0,
+        94,
+        0,
+        25
+       ],
+       "textColour": "yen",
+       "align": "center",
+       "textScale": 0.8,
+       "textStroke": 1.5,
+       "name": "OneInN",
+       "samples": [
+        "1 in 48.4M",
+        "1 in 710"
+       ],
+       "font": "display",
+       "maxText": 20,
+       "autoX": true
+      }
+     ],
+     "layout": {
+      "type": "list",
+      "dir": "x",
+      "gap": 10,
+      "align": "end"
+     },
+     "pos": [
+      1,
+      -24,
+      0.5,
+      0
+     ],
+     "anchor": [
+      1,
+      0.5
+     ],
+     "z": 3
+    }
+   ],
+   "strokePx": 3
   },
   {
    "type": "label",
@@ -2181,7 +2500,7 @@
    "textColour": "buy",
    "align": "center",
    "textScale": 0.7857,
-   "textStroke": 4,
+   "textStroke": 2,
    "name": "FlashText",
    "samples": [
     "LUCKY THROW!",
@@ -2192,7 +2511,7 @@
     0.5,
     0,
     0,
-    260
+    300
    ],
    "anchor": [
     0.5,
@@ -2206,62 +2525,133 @@
    "transparent": true,
    "size": [
     0,
-    380,
+    640,
     0,
-    72
+    148
    ],
    "children": [
     {
-     "type": "panel",
+     "type": "frame",
      "name": "ToastSample1",
-     "colour": "panel",
-     "paintable": true,
-     "keyline": "#FFFFFF",
-     "depth": 3,
-     "corner": 16,
+     "transparent": true,
      "size": [
       0,
-      380,
+      374,
       0,
-      32
+      44
      ],
-     "padding": 4,
-     "layout": {
-      "type": "list",
-      "dir": "x",
-      "gap": 8,
-      "align": "start"
-     },
+     "autoW": 0,
      "children": [
       {
-       "type": "icon",
-       "icon": "IconYen",
-       "name": "Icon",
+       "type": "frame",
+       "name": "Face",
+       "colour": [
+        "#262B6E",
+        "#161A48"
+       ],
+       "alpha": 0.04,
+       "corner": 20,
+       "keyline": "#5B64C9",
+       "keepKeyline": true,
        "size": [
         0,
-        22,
+        374,
         0,
-        22
-       ]
-      },
-      {
-       "type": "label",
-       "text": "<unbound>",
-       "size": [
-        0,
-        330,
-        0,
-        22
+        40
        ],
-       "textColour": "onDark",
-       "align": "left",
-       "textScale": 0.6364,
-       "textStroke": 2,
-       "name": "Text",
-       "samples": [
-        "Not enough yen for Festival Cake!"
+       "pos": [
+        0,
+        0,
+        0.5,
+        0
        ],
-       "maxText": 14
+       "anchor": [
+        0,
+        0.5
+       ],
+       "autoW": 6,
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "start"
+       },
+       "children": [
+        {
+         "type": "frame",
+         "name": "IconWell",
+         "colour": [
+          "#F26762",
+          "#F0524D"
+         ],
+         "corner": 1,
+         "outline": false,
+         "size": [
+          0,
+          28,
+          0,
+          28
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconClose",
+           "name": "Icon",
+           "size": [
+            0,
+            18,
+            0,
+            18
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ]
+          }
+         ],
+         "paint": "#F0524D"
+        },
+        {
+         "type": "label",
+         "text": "<unbound>",
+         "size": [
+          0,
+          310,
+          0,
+          23
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.7826,
+         "textStroke": 1.5,
+         "name": "Text",
+         "samples": [
+          "Not enough yen for Festival Cake!"
+         ],
+         "font": "display",
+         "maxText": 18,
+         "autoX": true
+        },
+        {
+         "type": "frame",
+         "name": "Tail",
+         "transparent": true,
+         "size": [
+          0,
+          4,
+          0,
+          10
+         ],
+         "children": []
+        }
+       ],
+       "strokePx": 3
       }
      ],
      "visible": false,
@@ -2270,56 +2660,127 @@
      }
     },
     {
-     "type": "panel",
+     "type": "frame",
      "name": "ToastSample2",
-     "colour": "#1F6E4A",
-     "paintable": true,
-     "keyline": "#FFFFFF",
-     "depth": 3,
-     "corner": 16,
+     "transparent": true,
      "size": [
       0,
-      380,
+      268,
       0,
-      32
+      44
      ],
-     "padding": 4,
-     "layout": {
-      "type": "list",
-      "dir": "x",
-      "gap": 8,
-      "align": "start"
-     },
+     "autoW": 0,
      "children": [
       {
-       "type": "icon",
-       "icon": "IconGift",
-       "name": "Icon",
+       "type": "frame",
+       "name": "Face",
+       "colour": [
+        "#262B6E",
+        "#161A48"
+       ],
+       "alpha": 0.04,
+       "corner": 20,
+       "keyline": "#5B64C9",
+       "keepKeyline": true,
        "size": [
         0,
-        22,
+        268,
         0,
-        22
-       ]
-      },
-      {
-       "type": "label",
-       "text": "<unbound>",
-       "size": [
-        0,
-        330,
-        0,
-        22
+        40
        ],
-       "textColour": "onDark",
-       "align": "left",
-       "textScale": 0.6364,
-       "textStroke": 2,
-       "name": "Text",
-       "samples": [
-        "Gift 3 is ready to claim!"
+       "pos": [
+        0,
+        0,
+        0.5,
+        0
        ],
-       "maxText": 14
+       "anchor": [
+        0,
+        0.5
+       ],
+       "autoW": 6,
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "start"
+       },
+       "children": [
+        {
+         "type": "frame",
+         "name": "IconWell",
+         "colour": [
+          "#F6B03E",
+          "#F5A524"
+         ],
+         "corner": 1,
+         "outline": false,
+         "size": [
+          0,
+          28,
+          0,
+          28
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconGift",
+           "name": "Icon",
+           "size": [
+            0,
+            18,
+            0,
+            18
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ]
+          }
+         ],
+         "paint": "#F5A524"
+        },
+        {
+         "type": "label",
+         "text": "<unbound>",
+         "size": [
+          0,
+          204,
+          0,
+          23
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.7826,
+         "textStroke": 1.5,
+         "name": "Text",
+         "samples": [
+          "Daily reward claimed!"
+         ],
+         "font": "display",
+         "maxText": 18,
+         "autoX": true
+        },
+        {
+         "type": "frame",
+         "name": "Tail",
+         "transparent": true,
+         "size": [
+          0,
+          4,
+          0,
+          10
+         ],
+         "children": []
+        }
+       ],
+       "strokePx": 3
       }
      ],
      "visible": false,
@@ -2332,13 +2793,13 @@
     "type": "list",
     "dir": "y",
     "gap": 8,
-    "align": "end"
+    "align": "center"
    },
    "pos": [
     0.5,
     0,
     0,
-    452
+    146
    ],
    "anchor": [
     0.5,

@@ -1,0 +1,1529 @@
+{
+ "name": "Zone_Unlock",
+ "note": "New zone: sparkle sweep across the gate (tint = zone colour).",
+ "duration": 1.6,
+ "camera": {
+  "pos": [
+   0,
+   10,
+   52
+  ],
+  "at": [
+   0,
+   7,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": false
+ },
+ "brief": {
+  "category": "ambient_pickup",
+  "tier": "skill",
+  "style": "stylised_game",
+  "shape": "sweep of star columns",
+  "dominant": "#FFD23F",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "sweep left to right"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 1.0
+   },
+   {
+    "name": "residue",
+    "t0": 1.0,
+    "t1": 1.6
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Gate",
+   "CFrame": [
+    0,
+    14,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "L",
+     "CFrame": [
+      -26,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "R",
+     "CFrame": [
+      26,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Beam",
+     "name": "Ribbon",
+     "props": {
+      "Attachment0": {
+       "Ref": "Gate.L"
+      },
+      "Attachment1": {
+       "Ref": "Gate.R"
+      },
+      "FaceCamera": true,
+      "Segments": 10,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/beams/sparkle_trail_glow_02",
+      "TextureMode": {
+       "Enum": "TextureMode.Wrap"
+      },
+      "TextureLength": 14,
+      "TextureSpeed": 2,
+      "Width0": 3,
+      "Width1": 3,
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.6,
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         0.1
+        ]
+       ]
+      },
+      "Enabled": false
+     },
+     "attrs": {
+      "Tint": true
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "C0",
+   "CFrame": [
+    -24,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3,
+    0.2,
+    3
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Column",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_cel_06",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        28
+       ]
+      },
+      "Drag": 1.2,
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.8
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -200,
+        200
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.15,
+         1.2
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         0.4,
+         [
+          1.0,
+          0.8764,
+          0.473
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Pop",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.14,
+        0.14
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.5
+        ],
+        [
+         1,
+         2.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5,
+      "ZOffset": 1
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "C1",
+   "CFrame": [
+    -16,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3,
+    0.2,
+    3
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Column",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_cel_06",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        28
+       ]
+      },
+      "Drag": 1.2,
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.8
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -200,
+        200
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.15,
+         1.2
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         0.4,
+         [
+          1.0,
+          0.8764,
+          0.473
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Pop",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.14,
+        0.14
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.5
+        ],
+        [
+         1,
+         2.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5,
+      "ZOffset": 1
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "C2",
+   "CFrame": [
+    -8,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3,
+    0.2,
+    3
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Column",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_cel_06",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        28
+       ]
+      },
+      "Drag": 1.2,
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.8
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -200,
+        200
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.15,
+         1.2
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         0.4,
+         [
+          1.0,
+          0.8764,
+          0.473
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Pop",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.14,
+        0.14
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.5
+        ],
+        [
+         1,
+         2.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5,
+      "ZOffset": 1
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "C3",
+   "CFrame": [
+    0,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3,
+    0.2,
+    3
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Column",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_cel_06",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        28
+       ]
+      },
+      "Drag": 1.2,
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.8
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -200,
+        200
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.15,
+         1.2
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         0.4,
+         [
+          1.0,
+          0.8764,
+          0.473
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Pop",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.14,
+        0.14
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.5
+        ],
+        [
+         1,
+         2.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5,
+      "ZOffset": 1
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "C4",
+   "CFrame": [
+    8,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3,
+    0.2,
+    3
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Column",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_cel_06",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        28
+       ]
+      },
+      "Drag": 1.2,
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.8
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -200,
+        200
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.15,
+         1.2
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         0.4,
+         [
+          1.0,
+          0.8764,
+          0.473
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Pop",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.14,
+        0.14
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.5
+        ],
+        [
+         1,
+         2.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5,
+      "ZOffset": 1
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "C5",
+   "CFrame": [
+    16,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3,
+    0.2,
+    3
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Column",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_cel_06",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        28
+       ]
+      },
+      "Drag": 1.2,
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.8
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -200,
+        200
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.15,
+         1.2
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         0.4,
+         [
+          1.0,
+          0.8764,
+          0.473
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Pop",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.14,
+        0.14
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.5
+        ],
+        [
+         1,
+         2.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5,
+      "ZOffset": 1
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "C6",
+   "CFrame": [
+    24,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3,
+    0.2,
+    3
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Column",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_cel_06",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        28
+       ]
+      },
+      "Drag": 1.2,
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.8
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -200,
+        200
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.15,
+         1.2
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         0.4,
+         [
+          1.0,
+          0.8764,
+          0.473
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Pop",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_glow_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.14,
+        0.14
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.5
+        ],
+        [
+         1,
+         2.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5,
+      "ZOffset": 1
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "C0.Column",
+   "count": 10,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "C0.Pop",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "C1.Column",
+   "count": 10,
+   "t": 0.06
+  },
+  {
+   "do": "emit",
+   "target": "C1.Pop",
+   "count": 1,
+   "t": 0.06
+  },
+  {
+   "do": "emit",
+   "target": "C2.Column",
+   "count": 10,
+   "t": 0.12
+  },
+  {
+   "do": "emit",
+   "target": "C2.Pop",
+   "count": 1,
+   "t": 0.12
+  },
+  {
+   "do": "emit",
+   "target": "C3.Column",
+   "count": 10,
+   "t": 0.18
+  },
+  {
+   "do": "emit",
+   "target": "C3.Pop",
+   "count": 1,
+   "t": 0.18
+  },
+  {
+   "do": "emit",
+   "target": "C4.Column",
+   "count": 10,
+   "t": 0.24
+  },
+  {
+   "do": "emit",
+   "target": "C4.Pop",
+   "count": 1,
+   "t": 0.24
+  },
+  {
+   "do": "emit",
+   "target": "C5.Column",
+   "count": 10,
+   "t": 0.3
+  },
+  {
+   "do": "emit",
+   "target": "C5.Pop",
+   "count": 1,
+   "t": 0.3
+  },
+  {
+   "do": "emit",
+   "target": "C6.Column",
+   "count": 10,
+   "t": 0.36
+  },
+  {
+   "do": "emit",
+   "target": "C6.Pop",
+   "count": 1,
+   "t": 0.36
+  },
+  {
+   "do": "set",
+   "target": "Gate.Ribbon",
+   "prop": "Enabled",
+   "value": true,
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Gate.Ribbon",
+   "prop": "Width0",
+   "from": 0,
+   "to": 3,
+   "time": 0.36,
+   "style": "Quad",
+   "dir": "Out",
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Gate.Ribbon",
+   "prop": "Width0",
+   "to": 0,
+   "time": 0.4,
+   "style": "Quad",
+   "dir": "In",
+   "t": 0.8
+  },
+  {
+   "do": "tween",
+   "target": "Gate.Ribbon",
+   "prop": "Width1",
+   "to": 0,
+   "time": 0.4,
+   "style": "Quad",
+   "dir": "In",
+   "t": 0.8
+  },
+  {
+   "do": "set",
+   "target": "Gate.Ribbon",
+   "prop": "Enabled",
+   "value": false,
+   "t": 1.25
+  }
+ ],
+ "strip": [
+  0.02,
+  0.12,
+  0.24,
+  0.4,
+  0.6,
+  0.9,
+  1.3
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

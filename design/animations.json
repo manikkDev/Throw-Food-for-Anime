@@ -4,29 +4,42 @@
  "priority": {
   "Idle clips": "Core (so default walk and run still show on the legs)",
   "Throw": "Action",
-  "Train clips": "Action",
+  "Train clips": "Action (TrainStrike, TrainPush, TrainLift, TrainMeditate; all looped)",
   "Celebrate": "Action",
   "Eat": "Action",
-  "RevealLand": "Action"
+  "RevealLand": "Action",
+  "HeroWalkIn": "Movement (looped; the game moves the root at 2.1063 studs/s)",
+  "HeroArrive": "Action",
+  "CarryHold": "Action, UPPER BODY ONLY (legs and LowerTorso unkeyed, so the default walk keeps the legs)",
+  "PlaceHero": "Action",
+  "RebirthEvolve": "Action"
  },
  "clips": [
   {
    "name": "Throw",
-   "reference": "baseball-style overhand throw: step, wind-up behind the head, release at full reach, follow-through; 0.9 s, release beat at 0.55 s",
-   "_intent": "the core verb; wind-up and release must read at a glance",
+   "reference": "full-power overhand throw (pitching / javelin phases): pivot step side-on, lead knee up, long stride, hips open before the shoulders, arm cocked and whipped over the top, release high in front of the head, follow-through across the body, back leg swings through, recover to a stand; 1.5 s, Release marker at 0.7667 s (frame 23)",
+   "_intent": "the core verb; must read as maximum effort from the chase camera behind the player",
    "used_by": "player"
   },
   {
    "name": "TrainStrike",
-   "reference": "martial-arts straight punch combo on a makiwara post: left, right, 1.0 s loop, strike beats at 0.3 and 0.7 s",
-   "_intent": "reps on dummy, sandbag and iron dummy",
+   "reference": "boxing heavy-bag combo jab-cross-left hook-right uppercut from an orthodox guard, 2.0 s loop, Hit markers at 0.2/0.6/1.0/1.4 s; every fist lands ON the bag face 2.5 studs in front of the HumanoidRootPart",
+   "_intent": "reps on dummy, sandbag and iron dummy; the player is snapped to a stand point so the target front face is at contact_distance",
    "used_by": "player"
   },
   {
    "name": "TrainPush",
-   "reference": "palm-heel push against a heavy pillar, knees bent, 1.0 s loop, strike beat at 0.5 s",
-   "_intent": "reps on the stone pillar",
+   "reference": "pushing an immovable boulder from a long lunge, both palms flat on its face 2.45 studs in front of the HumanoidRootPart, sink then drive surge, 1.2 s loop, Hit marker at 0.5333 s",
+   "_intent": "reps on the stone pillar; the player is snapped so the pillar face is at contact_distance",
    "used_by": "player"
+  },
+  {
+   "name": "TrainLift",
+   "reference": "alternating standing dumbbell hammer curls, a dumbbell welded in EACH hand (Part0 = RightHand/LeftHand, centred on the hand part, long axis on the hand part's Z), 2.0 s loop, Rep markers at 0.4667 and 1.4667 s",
+   "_intent": "reps at a weights station; looped, Action priority",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
   },
   {
    "name": "TrainMeditate",
@@ -93,20 +106,87 @@
    "reference": "three-point hero landing rising into a pose, 1.0 s",
    "_intent": "hero landing pose at the reveal",
    "used_by": "characters"
+  },
+  {
+   "name": "HeroWalkIn",
+   "reference": "weighty hero-entrance walk cycle, heel strike to toe-off, chest up, counter-turning shoulders, arms swinging with intent; 1.1333 s loop (34 frames), 2 steps, Step markers at 0.2667 (right foot) and 0.8333 (left foot); stride 2.3871 studs per cycle = 2.1063 studs/s, move the HumanoidRootPart at that speed for zero foot slide",
+   "_intent": "the 3D hero walks in during the catch reveal",
+   "used_by": "characters",
+   "priority": "Movement",
+   "looped": true
+  },
+  {
+   "name": "HeroArrive",
+   "reference": "last step into a stomp and a fists-clenched power stance, 0.9 s, Plant marker at 0.4; start it at HeroWalkIn's RIGHT Step (TimePosition 0.2667) and move the root 0.64 studs forward over 0.6077 s with Quad Out; ends near IdlePower's first pose",
+   "_intent": "the hero arrives and plants at the reveal spot",
+   "used_by": "characters",
+   "priority": "Action"
+  },
+  {
+   "name": "CarryHold",
+   "reference": "caught hero (0.55 scale) held up overhead like a trophy, hands gripping its ankles from the sides, palms facing; 1.2 s loop, upper body only (pose_only: UpperTorso, Head, arms, hands); hand centres HRP-space (+-1.05, 2.36, -0.42), hero LowerTorso centre (0, 3.31, -0.42)",
+   "_intent": "the player carries the caught hero to their base",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "PlaceHero",
+   "reference": "squat and set the carried hero onto a 1-stud pedestal in front (pedestal top = ground + 1, its centre 1.85 studs ahead of the HRP), release, right fist pump to the sky and yank down; 1.2 s, Place marker at 0.5333",
+   "_intent": "the player places the hero on a pedestal at the base",
+   "used_by": "player",
+   "priority": "Action"
+  },
+  {
+   "name": "RebirthEvolve",
+   "reference": "power-up: wide crouch with fists drawn in at the waist and a growing tremble (0-1.2 s), explode onto the balls of the feet with arms flung up in a V and head back (Burst marker at 1.3667), hold the V pose with a slow breath to 3.0 s",
+   "_intent": "rebirth / evolve moment",
+   "used_by": "player",
+   "priority": "Action"
+  },
+  {
+   "name": "HeroStalk",
+   "reference": "slow menacing villain stride: heavy heel-to-toe steps, chest a little forward, shoulders rolling, head low, arms loose with a small swing, no bob; 1.6667 s loop (50 frames), 2 steps, Step markers at 0.2667 (right) and 1.1 (left); 2.5 studs per cycle = 1.5 studs/s, move the HumanoidRootPart at that speed",
+   "_intent": "the silhouette stalks up the lane during the catch reveal (owner's review 3: slow, step by step, not hyper)",
+   "used_by": "characters",
+   "priority": "Movement",
+   "looped": true
+  },
+  {
+   "name": "HeroMenace",
+   "reference": "after the stalk: plants, the trailing foot takes one slow step, head comes up to the camera (Look 1.2), shoulders roll back, fists clench at the sides with a chest lift (Power 1.6667); 2.2 s, holds the last pose; start at HeroStalk's right Step and move the root 0.5 studs forward over 0.6667 s with Quad Out",
+   "_intent": "the hero stops in front of the food and powers up before the name",
+   "used_by": "characters",
+   "priority": "Action"
+  },
+  {
+   "name": "RebirthAwaken",
+   "reference": "villain level-up: on one knee, fist on the floor, head bowed (0-1.2), slow trembling rise (Rise 1.2), explodes up with head back and arms wide (Burst 3.5), power stance (Stance 4.4), slow breath to 6.0 s; starts kneeling, so fade it in under a cut",
+   "_intent": "the rebirth cinematic (owner's review 3: longer, like a villain who levels up)",
+   "used_by": "player",
+   "priority": "Action"
+  },
+  {
+   "name": "HeroPickUp",
+   "reference": "from HeroStalk's right Step: settles (root 0.5 studs forward, Quad Out, 0.6667 s), bends with weight, the right fist closes on the top of the food in front of the right foot (Grab 1.2667; food centre (1.01, -2.09, -2.71) in root space, weld (0,-(0.15+r),0) under the RightHand), rises slowly and lifts it out to the right at shoulder height (Lift 2.0333), a confident hold (Hold 2.2333); 2.5 s, holds the last pose",
+   "_intent": "the reveal: the silhouette picks the thrown food up before it is revealed (owner's review 4)",
+   "used_by": "characters",
+   "priority": "Action"
   }
  ],
  "roblox_owned": {
   "walk_run_jump": "default R15 Animate ids read from a playtest character",
   "dash_home": "default run",
   "emotes_for_variety": [
-   3360689775,
-   5915779043,
-   3360692915,
-   3576686446,
-   3576968026,
-   3360686498,
-   3576823880
-  ]
+   3333387824,
+   5915693819,
+   3334538554,
+   3344650532,
+   3334392772,
+   3338055167,
+   3344585679
+  ],
+  "_emotes_note": "ANIMATION ids inside Roblox's free emotes (Salute, Applaud, Tilt, Hello, Shrug, Stadium, Point2), checked with AnimationClipProvider. Never the catalog emote ids (3360689775 ...): those fail with 'AnimationClip loaded is not valid'."
  },
  "note": "roblox-animation. Match a reference by ANGLE and fraction-of-reach, not distance. Search how the pose is really done before authoring and judge the contact sheet against _intent. Clips must be uploaded by the place owner to play in a live server."
 }

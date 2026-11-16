@@ -1,0 +1,17 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_02__vt",
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/beams/laser_soft_04__vt",
+  "sim:lib/flipbooks/shockwaves/shockwave_cel_01_4x4",
+  "sim:lib/sprites/impacts/starburst_cel_02",
+  "sim:lib/sprites/rings/ring_cel_02",
+  "sim:lib/sprites/rings/ring_dashed_cel_02",
+  "sim:lib/sprites/rings/ring_glow_08",
+  "sim:lib/sprites/specks/streak_glow_02",
+  "sim:lib/sprites/stars/star_cel_01",
+  "sim:lib/sprites/stars/star_glow_00",
+  "sim:lib/sprites/stars/star_glow_04"
+ ],
+ "meshes": []
+}

@@ -133,3 +133,7 @@ Mahoraga, Yoriichi). Checked in close-ups: `final/batch3_*.jpg`.
 - Archive: `ServerStorage.CharacterSources.Originals_Batch3` (16, never delete); `R15_Final` holds 59.
 - Sizes on the plot were cut to Big 1.2 / Huge 1.4 / Titan 1.7 (`config.Sizes`): at 2.2 a Titan was
   8.8 studs wide on pedestals 7 studs apart and stood on its neighbours.
+
+## Edits to imported avatars
+
+- 2026-11-15: Copy Ninja (Kakashi Hatake): the accessory `Dragon_Head_Lightning_01_White` (a black dragon round the body) was removed from `R15_Final` and the baked template at the owner's request. The untouched original stays in `R6_Originals`.

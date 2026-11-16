@@ -1,0 +1,490 @@
+{
+ "name": "Slot_Unlock",
+ "note": "Pedestal slot bought: rings rise off it.",
+ "duration": 1.5,
+ "camera": {
+  "pos": [
+   8,
+   6,
+   14
+  ],
+  "at": [
+   0,
+   3,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": false
+ },
+ "brief": {
+  "category": "ambient_pickup",
+  "tier": "skill",
+  "style": "stylised_game",
+  "shape": "stacked rising rings",
+  "dominant": "#FFD23F",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "stacked staggered circles"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.85
+   },
+   {
+    "name": "residue",
+    "t0": 0.85,
+    "t1": 1.5
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Base",
+   "CFrame": [
+    0,
+    0.2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Rings",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_cel_08",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          7,
+          7
+         ]
+        },
+        "Drag": 1.5,
+        "Lifetime": {
+         "NumberRange": [
+          0.9,
+          0.9
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.5
+          ],
+          [
+           0.15,
+           2.6
+          ],
+          [
+           1,
+           1.8
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.6,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           0.25,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.6039,
+            0.2392
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.45,
+        "ZOffset": 0.5
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Flat",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_glow_08",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.5,
+          0.5
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.0
+          ],
+          [
+           0.2,
+           4.0
+          ],
+          [
+           1,
+           4.5
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.55,
+        "ZOffset": 0.2
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Pop",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/stars/star_glow_00",
+        "Lifetime": {
+         "NumberRange": [
+          0.14,
+          0.14
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.75
+          ],
+          [
+           1,
+           2.5
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 2
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Disc",
+   "CFrame": [
+    0,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    4.5,
+    0.2,
+    4.5
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Sparkles",
+     "props": {
+      "Rate": 30,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/stars/star_cel_06",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Disc"
+      },
+      "ShapeStyle": {
+       "Enum": "ParticleEmitterShapeStyle.Volume"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Enabled": false,
+      "Speed": {
+       "NumberRange": [
+        6,
+        10
+       ]
+      },
+      "Drag": 1,
+      "Lifetime": {
+       "NumberRange": [
+        0.5,
+        0.75
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -200,
+        200
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.2,
+         0.5
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.8235,
+          0.2471
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Base.A.Pop",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Base.A.Flat",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Base.A.Rings",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Base.A.Rings",
+   "count": 1,
+   "t": 0.12
+  },
+  {
+   "do": "emit",
+   "target": "Base.A.Rings",
+   "count": 1,
+   "t": 0.24
+  },
+  {
+   "do": "emit",
+   "target": "Base.A.Rings",
+   "count": 1,
+   "t": 0.36
+  },
+  {
+   "do": "enable",
+   "target": "Disc.Sparkles",
+   "duration": 0.6,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.0,
+  0.08,
+  0.2,
+  0.35,
+  0.5,
+  0.7,
+  0.95,
+  1.2
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

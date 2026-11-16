@@ -1,0 +1,9 @@
+{
+ "textures": [
+  "sim:lib/flipbooks/smoke/smoke_puff_fb_cel_03_4x4",
+  "sim:lib/sprites/impacts/starburst_cel_00",
+  "sim:lib/sprites/rings/ring_cel_08",
+  "sim:lib/sprites/stars/star_cel_01"
+ ],
+ "meshes": []
+}

@@ -29,52 +29,177 @@
   {
    "type": "panel",
    "name": "Window",
-   "colour": "panel",
+   "colour": [
+    "#2C3280",
+    "#181B4C"
+   ],
+   "keyline": "#FFFFFF",
+   "depth": 0,
+   "stroke": 4,
+   "corner": 22,
    "size": [
     0,
-    880,
+    1104,
     0,
-    498
+    626
    ],
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "modal": true,
+   "pattern": {
+    "name": "dots",
+    "colour": "#FFFFFF",
+    "opacity": 0.05,
+    "tile": 28
+   },
    "children": [
     {
-     "type": "panel",
+     "type": "frame",
      "name": "Header",
      "colour": [
-      "#FFC93C",
-      "#FF5A5F"
+      "#C27BFF",
+      "#7B3FF2"
      ],
+     "corner": 16,
+     "outline": false,
      "size": [
+      1,
+      -12,
       0,
-      360,
-      0,
-      70
+      68
      ],
-     "rotation": -2,
-     "keyline": "#FFFFFF",
-     "comic": 6,
+     "pos": [
+      0.5,
+      0,
+      0,
+      6
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 2,
      "pattern": {
-      "name": "dots",
+      "name": "stripes",
       "colour": "#FFFFFF",
-      "opacity": 0.28,
-      "tile": 34
+      "opacity": 0.1,
+      "tile": 64
      },
      "children": [
       {
-       "type": "label",
-       "text": "HERO INDEX",
+       "type": "sheen",
+       "name": "Sheen",
+       "size": [
+        1,
+        0,
+        1,
+        0
+       ],
+       "angle": -24,
+       "opacity": 0.24,
+       "bands": [
+        [
+         0.3,
+         0.05
+        ],
+        [
+         0.4,
+         0.1
+        ]
+       ],
+       "corner": 16,
+       "overhang": true,
+       "children": []
+      },
+      {
+       "type": "frame",
+       "name": "HeaderShade",
+       "colour": [
+        "#000000",
+        "#000000"
+       ],
+       "alpha": 0.9,
+       "outline": false,
+       "corner": 16,
+       "size": [
+        1,
+        0,
+        0,
+        18
+       ],
+       "pos": [
+        0,
+        0,
+        1,
+        0
+       ],
+       "anchor": [
+        0,
+        1
+       ],
+       "z": 2,
+       "children": [],
+       "overhang": true
+      },
+      {
+       "type": "frame",
+       "name": "TitleRow",
+       "transparent": true,
        "size": [
         0,
-        320,
+        247,
         0,
         56
        ],
-       "textColour": "onDark",
-       "align": "center",
-       "textScale": 0.6964,
-       "textStroke": 3,
-       "name": "Title",
-       "font": "display",
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconIndexBig",
+         "name": "TitleIcon",
+         "size": [
+          0,
+          44,
+          0,
+          44
+         ]
+        },
+        {
+         "type": "label",
+         "text": "HERO INDEX",
+         "size": [
+          0,
+          193,
+          0,
+          45
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.8,
+         "textStroke": 2,
+         "name": "Title",
+         "font": "display",
+         "maxText": 36,
+         "autoX": true,
+         "textGrad": [
+          "#FFFFFF",
+          "#FFE9A8"
+         ]
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "center"
+       },
        "pos": [
         0.5,
         0,
@@ -84,67 +209,25 @@
        "anchor": [
         0.5,
         0.5
-       ]
+       ],
+       "z": 3,
+       "autoW": 0
       }
-     ],
-     "pos": [
-      0.5,
-      0,
-      0,
-      -36
-     ],
-     "anchor": [
-      0.5,
-      0
-     ],
-     "z": 3,
-     "overhang": true
-    },
-    {
-     "type": "frame",
-     "name": "BodyArt",
-     "colour": [
-      "#2E3488",
-      "#161944"
-     ],
-     "outline": false,
-     "size": [
-      1,
-      -16,
-      1,
-      -16
-     ],
-     "pos": [
-      0.5,
-      0,
-      0.5,
-      0
-     ],
-     "anchor": [
-      0.5,
-      0.5
-     ],
-     "corner": 16,
-     "pattern": {
-      "name": "dots",
-      "colour": "#FFFFFF",
-      "opacity": 0.07,
-      "tile": 28
-     },
-     "overhang": true,
-     "z": -1,
-     "children": []
+     ]
     },
     {
      "type": "button",
      "name": "CloseButton",
-     "colour": "danger",
+     "colour": "#F2574C",
      "size": [
       0,
       56,
       0,
       56
      ],
+     "corner": 28,
+     "depth": 3,
+     "sizeClass": "X",
      "children": [
       {
        "type": "icon",
@@ -170,18 +253,43 @@
      ],
      "pos": [
       1,
-      14,
+      -14,
       0,
-      -18
+      12
      ],
      "anchor": [
       1,
       0
      ],
      "z": 4,
-     "overhang": true,
      "closes": true,
-     "sizeClass": "L"
+     "overhang": true,
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#F2574C"
+      ],
+      [
+       0.49,
+       "#F2574C"
+      ],
+      [
+       0.5,
+       "#D04B41"
+      ],
+      [
+       1.0,
+       "#B34038"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3,
+      "Rim": 0.5
+     },
+     "stroke": 3,
+     "keyline": "#F8ABA6"
     },
     {
      "type": "frame",
@@ -189,9 +297,9 @@
      "transparent": true,
      "size": [
       0,
-      832,
+      1064,
       0,
-      392
+      520
      ],
      "children": [
       {
@@ -202,15 +310,15 @@
        "scroll": "Y",
        "size": [
         0,
-        210,
+        236,
         0,
-        392
+        520
        ],
-       "padding": 4,
+       "padding": 6,
        "layout": {
         "type": "list",
         "dir": "y",
-        "gap": 8,
+        "gap": 10,
         "align": "start"
        },
        "children": [
@@ -220,121 +328,227 @@
          "colour": "info",
          "selfFace": true,
          "paintable": true,
-         "sizeClass": "L",
-         "depth": 3,
-         "corner": 14,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#FFC93C",
+         "keepKeyline": true,
          "size": [
           0,
-          196,
+          222,
           0,
-          56
+          96
          ],
+         "attrs": {
+          "ZoneId": "sakura_schoolyard"
+         },
          "children": [
           {
-           "type": "label",
-           "text": "Sakura Schoolyard",
+           "type": "icon",
+           "icon": "ZoneBg_sakura_schoolyard",
+           "name": "ZoneBg",
            "size": [
+            1,
             0,
-            150,
-            0,
-            19
+            1,
+            0
            ],
-           "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7368,
-           "textStroke": 2,
-           "name": "ZoneName",
-           "font": "display",
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            4
+            0.5,
+            0
            ],
-           "maxText": 14
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
           },
           {
            "type": "frame",
-           "name": "ZoneBar",
+           "name": "NameWash",
            "colour": [
             "#0B0D29",
-            "#12153A"
+            "#0B0D29"
            ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
            "size": [
             0,
-            150,
+            198,
             0,
-            17
+            66
            ],
-           "corner": 9,
            "children": [
             {
-             "type": "frame",
-             "name": "Fill",
-             "colour": [
-              "#FF8FC7",
-              "#DB7BAB"
-             ],
-             "paint": "#FF8FC7",
-             "children": [],
-             "size": [
-              0.7777777777777778,
-              -6,
-              1,
-              -6
-             ],
-             "pos": [
-              0,
-              3,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0,
-              0.5
-             ],
-             "outline": false,
-             "corner": 6,
-             "overhang": true
-            },
-            {
              "type": "label",
-             "text": "<unbound>",
+             "text": "Sakura Schoolyard",
              "size": [
               0,
-              140,
+              198,
               0,
-              18
+              28
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
-             "name": "ZoneProgress",
-             "samples": [
-              "7/9",
-              "8/8"
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
              ],
-             "pos": [
-              0.5,
+             "size": [
               0,
-              0.5,
-              0
+              168,
+              0,
+              24
              ],
-             "anchor": [
-              0.5,
-              0.5
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#FF8FC7",
+                "#DB7BAB"
+               ],
+               "paint": "#FF8FC7",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.7777777777777778,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "7/9",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
              ],
-             "overhang": true,
-             "z": 2
+             "strokePx": 2
             }
            ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            25
-           ]
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
           },
           {
            "type": "icon",
@@ -342,24 +556,27 @@
            "name": "LockIcon",
            "size": [
             0,
-            18,
+            24,
             0,
-            18
+            24
            ],
            "pos": [
             1,
-            -2,
+            -8,
             0,
-            4
+            6
            ],
            "anchor": [
             1,
             0
            ],
+           "z": 3,
+           "overhang": true,
            "visible": false,
            "mockHide": true
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "button",
@@ -367,121 +584,228 @@
          "colour": "panelHi",
          "selfFace": true,
          "paintable": true,
-         "sizeClass": "L",
-         "depth": 3,
-         "corner": 14,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
          "size": [
           0,
-          196,
+          222,
           0,
-          56
+          96
          ],
+         "attrs": {
+          "ZoneId": "pirate_harbor",
+          "Rim": 0.5
+         },
          "children": [
           {
-           "type": "label",
-           "text": "Pirate Harbor",
+           "type": "icon",
+           "icon": "ZoneBg_pirate_harbor",
+           "name": "ZoneBg",
            "size": [
+            1,
             0,
-            150,
-            0,
-            19
+            1,
+            0
            ],
-           "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7368,
-           "textStroke": 2,
-           "name": "ZoneName",
-           "font": "display",
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            4
+            0.5,
+            0
            ],
-           "maxText": 14
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
           },
           {
            "type": "frame",
-           "name": "ZoneBar",
+           "name": "NameWash",
            "colour": [
             "#0B0D29",
-            "#12153A"
+            "#0B0D29"
            ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
            "size": [
             0,
-            150,
+            198,
             0,
-            17
+            66
            ],
-           "corner": 9,
            "children": [
             {
-             "type": "frame",
-             "name": "Fill",
-             "colour": [
-              "#3FA9F5",
-              "#3691D3"
-             ],
-             "paint": "#3FA9F5",
-             "children": [],
-             "size": [
-              0.875,
-              -6,
-              1,
-              -6
-             ],
-             "pos": [
-              0,
-              3,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0,
-              0.5
-             ],
-             "outline": false,
-             "corner": 6,
-             "overhang": true
-            },
-            {
              "type": "label",
-             "text": "<unbound>",
+             "text": "Pirate Harbor",
              "size": [
               0,
-              140,
+              198,
               0,
-              18
+              28
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
-             "name": "ZoneProgress",
-             "samples": [
-              "7/8",
-              "8/8"
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
              ],
-             "pos": [
-              0.5,
+             "size": [
               0,
-              0.5,
-              0
+              168,
+              0,
+              24
              ],
-             "anchor": [
-              0.5,
-              0.5
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#3FA9F5",
+                "#3691D3"
+               ],
+               "paint": "#3FA9F5",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.875,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "7/8",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
              ],
-             "overhang": true,
-             "z": 2
+             "strokePx": 2
             }
            ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            25
-           ]
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
           },
           {
            "type": "icon",
@@ -489,24 +813,27 @@
            "name": "LockIcon",
            "size": [
             0,
-            18,
+            24,
             0,
-            18
+            24
            ],
            "pos": [
             1,
-            -2,
+            -8,
             0,
-            4
+            6
            ],
            "anchor": [
             1,
             0
            ],
+           "z": 3,
+           "overhang": true,
            "visible": false,
            "mockHide": true
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "button",
@@ -514,121 +841,228 @@
          "colour": "panelHi",
          "selfFace": true,
          "paintable": true,
-         "sizeClass": "L",
-         "depth": 3,
-         "corner": 14,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
          "size": [
           0,
-          196,
+          222,
           0,
-          56
+          96
          ],
+         "attrs": {
+          "ZoneId": "ninja_village",
+          "Rim": 0.5
+         },
          "children": [
           {
-           "type": "label",
-           "text": "Ninja Village",
+           "type": "icon",
+           "icon": "ZoneBg_ninja_village",
+           "name": "ZoneBg",
            "size": [
+            1,
             0,
-            150,
-            0,
-            19
+            1,
+            0
            ],
-           "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7368,
-           "textStroke": 2,
-           "name": "ZoneName",
-           "font": "display",
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            4
+            0.5,
+            0
            ],
-           "maxText": 14
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
           },
           {
            "type": "frame",
-           "name": "ZoneBar",
+           "name": "NameWash",
            "colour": [
             "#0B0D29",
-            "#12153A"
+            "#0B0D29"
            ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
            "size": [
             0,
-            150,
+            198,
             0,
-            17
+            66
            ],
-           "corner": 9,
            "children": [
             {
-             "type": "frame",
-             "name": "Fill",
-             "colour": [
-              "#5BD16E",
-              "#4EB45F"
-             ],
-             "paint": "#5BD16E",
-             "children": [],
-             "size": [
-              0.625,
-              -6,
-              1,
-              -6
-             ],
-             "pos": [
-              0,
-              3,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0,
-              0.5
-             ],
-             "outline": false,
-             "corner": 6,
-             "overhang": true
-            },
-            {
              "type": "label",
-             "text": "<unbound>",
+             "text": "Ninja Village",
              "size": [
               0,
-              140,
+              198,
               0,
-              18
+              28
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
-             "name": "ZoneProgress",
-             "samples": [
-              "5/8",
-              "8/8"
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
              ],
-             "pos": [
-              0.5,
+             "size": [
               0,
-              0.5,
-              0
+              168,
+              0,
+              24
              ],
-             "anchor": [
-              0.5,
-              0.5
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#5BD16E",
+                "#4EB45F"
+               ],
+               "paint": "#5BD16E",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.625,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "5/8",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
              ],
-             "overhang": true,
-             "z": 2
+             "strokePx": 2
             }
            ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            25
-           ]
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
           },
           {
            "type": "icon",
@@ -636,24 +1070,27 @@
            "name": "LockIcon",
            "size": [
             0,
-            18,
+            24,
             0,
-            18
+            24
            ],
            "pos": [
             1,
-            -2,
+            -8,
             0,
-            4
+            6
            ],
            "anchor": [
             1,
             0
            ],
+           "z": 3,
+           "overhang": true,
            "visible": false,
            "mockHide": true
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "button",
@@ -661,121 +1098,228 @@
          "colour": "panelHi",
          "selfFace": true,
          "paintable": true,
-         "sizeClass": "L",
-         "depth": 3,
-         "corner": 14,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
          "size": [
           0,
-          196,
+          222,
           0,
-          56
+          96
          ],
+         "attrs": {
+          "ZoneId": "samurai_castle",
+          "Rim": 0.5
+         },
          "children": [
           {
-           "type": "label",
-           "text": "Samurai Castle",
+           "type": "icon",
+           "icon": "ZoneBg_samurai_castle",
+           "name": "ZoneBg",
            "size": [
+            1,
             0,
-            150,
-            0,
-            19
+            1,
+            0
            ],
-           "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7368,
-           "textStroke": 2,
-           "name": "ZoneName",
-           "font": "display",
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            4
+            0.5,
+            0
            ],
-           "maxText": 14
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
           },
           {
            "type": "frame",
-           "name": "ZoneBar",
+           "name": "NameWash",
            "colour": [
             "#0B0D29",
-            "#12153A"
+            "#0B0D29"
            ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
            "size": [
             0,
-            150,
+            198,
             0,
-            17
+            66
            ],
-           "corner": 9,
            "children": [
             {
-             "type": "frame",
-             "name": "Fill",
-             "colour": [
-              "#F25555",
-              "#D04949"
-             ],
-             "paint": "#F25555",
-             "children": [],
-             "size": [
-              0.3333333333333333,
-              -6,
-              1,
-              -6
-             ],
-             "pos": [
-              0,
-              3,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0,
-              0.5
-             ],
-             "outline": false,
-             "corner": 6,
-             "overhang": true
-            },
-            {
              "type": "label",
-             "text": "<unbound>",
+             "text": "Samurai Castle",
              "size": [
               0,
-              140,
+              198,
               0,
-              18
+              28
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
-             "name": "ZoneProgress",
-             "samples": [
-              "3/9",
-              "8/8"
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
              ],
-             "pos": [
-              0.5,
+             "size": [
               0,
-              0.5,
-              0
+              168,
+              0,
+              24
              ],
-             "anchor": [
-              0.5,
-              0.5
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#F25555",
+                "#D04949"
+               ],
+               "paint": "#F25555",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.3333333333333333,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "3/9",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
              ],
-             "overhang": true,
-             "z": 2
+             "strokePx": 2
             }
            ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            25
-           ]
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
           },
           {
            "type": "icon",
@@ -783,24 +1327,27 @@
            "name": "LockIcon",
            "size": [
             0,
-            18,
+            24,
             0,
-            18
+            24
            ],
            "pos": [
             1,
-            -2,
+            -8,
             0,
-            4
+            6
            ],
            "anchor": [
             1,
             0
            ],
+           "z": 3,
+           "overhang": true,
            "visible": false,
            "mockHide": true
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "button",
@@ -808,121 +1355,228 @@
          "colour": "panelHi",
          "selfFace": true,
          "paintable": true,
-         "sizeClass": "L",
-         "depth": 3,
-         "corner": 14,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
          "size": [
           0,
-          196,
+          222,
           0,
-          56
+          96
          ],
+         "attrs": {
+          "ZoneId": "hero_city",
+          "Rim": 0.5
+         },
          "children": [
           {
-           "type": "label",
-           "text": "Hero City",
+           "type": "icon",
+           "icon": "ZoneBg_hero_city",
+           "name": "ZoneBg",
            "size": [
+            1,
             0,
-            150,
-            0,
-            19
+            1,
+            0
            ],
-           "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7368,
-           "textStroke": 2,
-           "name": "ZoneName",
-           "font": "display",
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            4
+            0.5,
+            0
            ],
-           "maxText": 14
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
           },
           {
            "type": "frame",
-           "name": "ZoneBar",
+           "name": "NameWash",
            "colour": [
             "#0B0D29",
-            "#12153A"
+            "#0B0D29"
            ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
            "size": [
             0,
-            150,
+            198,
             0,
-            17
+            66
            ],
-           "corner": 9,
            "children": [
             {
-             "type": "frame",
-             "name": "Fill",
-             "colour": [
-              "#A66CFF",
-              "#8F5DDB"
-             ],
-             "paint": "#A66CFF",
-             "children": [],
-             "size": [
-              0.125,
-              -6,
-              1,
-              -6
-             ],
-             "pos": [
-              0,
-              3,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0,
-              0.5
-             ],
-             "outline": false,
-             "corner": 6,
-             "overhang": true
-            },
-            {
              "type": "label",
-             "text": "<unbound>",
+             "text": "Hero City",
              "size": [
               0,
-              140,
+              198,
               0,
-              18
+              28
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
-             "name": "ZoneProgress",
-             "samples": [
-              "1/8",
-              "8/8"
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
              ],
-             "pos": [
-              0.5,
+             "size": [
               0,
-              0.5,
-              0
+              168,
+              0,
+              24
              ],
-             "anchor": [
-              0.5,
-              0.5
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#A66CFF",
+                "#8F5DDB"
+               ],
+               "paint": "#A66CFF",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.125,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "1/8",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
              ],
-             "overhang": true,
-             "z": 2
+             "strokePx": 2
             }
            ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            25
-           ]
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
           },
           {
            "type": "icon",
@@ -930,24 +1584,27 @@
            "name": "LockIcon",
            "size": [
             0,
-            18,
+            24,
             0,
-            18
+            24
            ],
            "pos": [
             1,
-            -2,
+            -8,
             0,
-            4
+            6
            ],
            "anchor": [
             1,
             0
            ],
+           "z": 3,
+           "overhang": true,
            "visible": false,
            "mockHide": true
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "button",
@@ -955,121 +1612,228 @@
          "colour": "panelHi",
          "selfFace": true,
          "paintable": true,
-         "sizeClass": "L",
-         "depth": 3,
-         "corner": 14,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
          "size": [
           0,
-          196,
+          222,
           0,
-          56
+          96
          ],
+         "attrs": {
+          "ZoneId": "realm_of_legends",
+          "Rim": 0.5
+         },
          "children": [
           {
-           "type": "label",
-           "text": "Realm of Legends",
+           "type": "icon",
+           "icon": "ZoneBg_realm_of_legends",
+           "name": "ZoneBg",
            "size": [
+            1,
             0,
-            150,
-            0,
-            19
+            1,
+            0
            ],
-           "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7368,
-           "textStroke": 2,
-           "name": "ZoneName",
-           "font": "display",
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            4
+            0.5,
+            0
            ],
-           "maxText": 14
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
           },
           {
            "type": "frame",
-           "name": "ZoneBar",
+           "name": "NameWash",
            "colour": [
             "#0B0D29",
-            "#12153A"
+            "#0B0D29"
            ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
            "size": [
             0,
-            150,
+            198,
             0,
-            17
+            66
            ],
-           "corner": 9,
            "children": [
             {
-             "type": "frame",
-             "name": "Fill",
-             "colour": [
-              "#FFD34D",
-              "#DBB542"
-             ],
-             "paint": "#FFD34D",
-             "children": [],
-             "size": [
-              0.5555555555555556,
-              -6,
-              1,
-              -6
-             ],
-             "pos": [
-              0,
-              3,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0,
-              0.5
-             ],
-             "outline": false,
-             "corner": 6,
-             "overhang": true
-            },
-            {
              "type": "label",
-             "text": "<unbound>",
+             "text": "Realm of Legends",
              "size": [
               0,
-              140,
+              198,
               0,
-              18
+              28
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.725,
-             "textStroke": 2,
-             "name": "ZoneProgress",
-             "samples": [
-              "5/9",
-              "8/8"
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
              ],
-             "pos": [
-              0.5,
+             "size": [
               0,
-              0.5,
-              0
+              168,
+              0,
+              24
              ],
-             "anchor": [
-              0.5,
-              0.5
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#FFD34D",
+                "#DBB542"
+               ],
+               "paint": "#FFD34D",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.5555555555555556,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "5/9",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
              ],
-             "overhang": true,
-             "z": 2
+             "strokePx": 2
             }
            ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
            "pos": [
+            0.5,
             0,
-            16,
-            0,
-            25
-           ]
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
           },
           {
            "type": "icon",
@@ -1077,23 +1841,26 @@
            "name": "LockIcon",
            "size": [
             0,
-            18,
+            24,
             0,
-            18
+            24
            ],
            "pos": [
             1,
-            -2,
+            -8,
             0,
-            4
+            6
            ],
            "anchor": [
             1,
             0
            ],
+           "z": 3,
+           "overhang": true,
            "visible": false
           }
-         ]
+         ],
+         "stroke": 3
         }
        ],
        "props": {
@@ -1113,9 +1880,9 @@
        "transparent": true,
        "size": [
         0,
-        610,
+        812,
         0,
-        34
+        48
        ],
        "children": [
         {
@@ -1123,21 +1890,21 @@
          "text": "<unbound>",
          "size": [
           0,
-          200,
+          250,
           0,
-          26
+          35
          ],
          "textColour": "onDark",
          "align": "left",
-         "textScale": 0.7692,
-         "textStroke": 3,
+         "textScale": 0.8,
+         "textStroke": 2,
          "name": "ZoneTitle",
          "samples": [
           "Realm of Legends",
           "Sakura Schoolyard"
          ],
          "font": "display",
-         "maxText": 20
+         "maxText": 28
         },
         {
          "type": "panel",
@@ -1145,27 +1912,28 @@
          "colour": "panelDeep",
          "size": [
           0,
-          110,
+          134,
           0,
-          24
+          34
          ],
          "selfFace": true,
          "paintable": true,
          "depth": 0,
+         "corner": 17,
          "children": [
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            102,
+            124,
             0,
-            20
+            28
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7,
-           "textStroke": 3,
+           "textScale": 0.7143,
+           "textStroke": 1.5,
            "name": "TotalText",
            "samples": [
             "TOTAL 43/51",
@@ -1181,39 +1949,42 @@
            "anchor": [
             0.5,
             0.5
-           ]
+           ],
+           "maxText": 20
           }
          ],
-         "stroke": 2
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         },
         {
          "type": "label",
          "text": "<unbound>",
          "size": [
           0,
-          110,
+          130,
           0,
-          19
+          25
          ],
          "textColour": "luck",
          "align": "center",
-         "textScale": 0.7368,
-         "textStroke": 2,
+         "textScale": 0.8,
+         "textStroke": 1.5,
          "name": "LuckNote",
          "samples": [
           "Luck x999.9",
           "Luck x1.01"
          ],
-         "maxText": 14
+         "font": "display",
+         "maxText": 20
         },
         {
          "type": "button",
          "name": "ZoneRewardClaim",
          "size": [
           0,
-          152,
+          188,
           0,
-          34
+          48
          ],
          "children": [
           {
@@ -1222,9 +1993,9 @@
            "name": "Icon",
            "size": [
             0,
-            20,
+            28,
             0,
-            20
+            28
            ]
           },
           {
@@ -1232,13 +2003,13 @@
            "text": "<unbound>",
            "size": [
             0,
-            102,
+            121,
             0,
-            21
+            32
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7143,
+           "textScale": 0.75,
            "textStroke": 2,
            "name": "ClaimText",
            "samples": [
@@ -1247,18 +2018,20 @@
             "CLAIMED"
            ],
            "font": "display",
-           "maxText": 15
+           "maxText": 24,
+           "autoX": true,
+           "capW": 131
           }
          ],
          "layout": {
           "type": "list",
           "dir": "x",
-          "gap": 6,
+          "gap": 7,
           "align": "center"
          },
          "sizeClass": "S",
-         "depth": 3,
-         "corner": 14,
+         "depth": 4,
+         "corner": 16,
          "selfFace": true,
          "colour": "#48D687",
          "paintable": true,
@@ -1269,32 +2042,36 @@
            "#48D687"
           ],
           [
-           0.4,
+           0.49,
            "#48D687"
           ],
           [
-           0.41000000000000003,
-           "#41C17A"
+           0.5,
+           "#3EB874"
           ],
           [
            1.0,
-           "#3BAF6F"
+           "#359E64"
           ]
          ],
          "attrs": {
-          "PressLip": 3
-         }
+          "PressLip": 4,
+          "AutoShine": true,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#A4EAC3"
         }
        ],
        "layout": {
         "type": "list",
         "dir": "x",
-        "gap": 10,
+        "gap": 12,
         "align": "start"
        },
        "pos": [
         0,
-        222,
+        252,
         0,
         0
        ]
@@ -1307,19 +2084,19 @@
        "scroll": "Y",
        "size": [
         0,
-        610,
+        812,
         0,
-        340
+        460
        ],
        "padding": 6,
        "layout": {
         "type": "grid",
         "cell": [
-         136,
-         158
+         146,
+         214
         ],
-        "gap": 10,
-        "cols": 4
+        "gap": 14,
+        "cols": 5
        },
        "children": [
         {
@@ -1327,31 +2104,101 @@
          "name": "HeroTileSample1",
          "colour": "#B8C0CC",
          "paintable": true,
-         "depth": 4,
-         "corner": 14,
+         "depth": 0,
+         "keyline": "#FFFFFF",
+         "corner": 16,
          "size": [
           0,
-          136,
+          146,
           0,
-          158
+          214
          ],
-         "aspect": 0.8608,
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
           {
            "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
+           "name": "PortraitWell",
            "colour": [
-            "#12153A",
+            "#232866",
             "#12153A"
            ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
            "size": [
             0,
-            124,
+            130,
             0,
-            78
+            104
            ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#B8C0CC",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
             {
              "type": "label",
              "text": "?",
@@ -1359,12 +2206,12 @@
               0,
               60,
               0,
-              45
+              60
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7556,
-             "textStroke": 3,
+             "textScale": 0.8,
+             "textStroke": 2,
              "name": "UnknownMark",
              "font": "display",
              "pos": [
@@ -1377,7 +2224,9 @@
               0.5,
               0.5
              ],
-             "maxText": 34,
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
              "props": {
               "TextColor3": {
                "Color3": [
@@ -1391,86 +2240,134 @@
              "mockHide": true
             }
            ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            2
-           ],
-           "anchor": [
-            0.5,
-            0
-           ]
+           "strokePx": 3
           },
           {
-           "type": "frame",
-           "name": "RarityStripe",
-           "colour": [
-            "#B8C0CC",
-            "#9EA5AF"
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#B8C0CC",
+           "size": [
+            0,
+            105,
+            0,
+            26
            ],
-           "paint": "#B8C0CC",
-           "children": [],
-           "corner": 2,
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "COMMON",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
            "pos": [
             0.5,
             0,
             0,
-            81
+            99
            ],
            "anchor": [
             0.5,
             0
            ],
-           "z": 2,
-           "size": [
-            0,
-            124,
-            0,
-            5
-           ]
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            124,
+            134,
             0,
-            36
+            40
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.3784,
-           "textStroke": 2,
+           "textScale": 0.425,
+           "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
             "First Emperor",
             "Heavenly String King"
            ],
            "wrap": true,
+           "font": "display",
            "pos": [
             0.5,
             0,
             0,
-            88
+            130
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 14
+           "maxText": 17
           },
           {
            "type": "frame",
            "name": "BottomRow",
-           "transparent": true,
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
            "size": [
             0,
-            124,
+            130,
             0,
-            16
+            28
            ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
            "children": [
             {
              "type": "icon",
@@ -1478,9 +2375,9 @@
              "name": "CraveIcon",
              "size": [
               0,
-              16,
+              20,
               0,
-              16
+              20
              ]
             },
             {
@@ -1488,76 +2385,132 @@
              "text": "<unbound>",
              "size": [
               0,
-              80,
+              72,
               0,
-              17
+              23
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
               "41.20%",
               "0.0012%"
              ],
              "font": "display",
-             "maxText": 13
+             "maxText": 18,
+             "autoX": true
             }
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 6,
-            "align": "center"
-           },
-           "pos": [
-            0.5,
-            0,
-            0,
-            126
-           ],
-           "anchor": [
-            0.5,
-            0
            ]
           }
          ],
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "HeroTileSample2",
          "colour": "#4ADE80",
          "paintable": true,
-         "depth": 4,
-         "corner": 14,
+         "depth": 0,
+         "keyline": "#FFFFFF",
+         "corner": 16,
          "size": [
           0,
-          136,
+          146,
           0,
-          158
+          214
          ],
-         "aspect": 0.8608,
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
           {
            "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
+           "name": "PortraitWell",
            "colour": [
-            "#12153A",
+            "#232866",
             "#12153A"
            ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
            "size": [
             0,
-            124,
+            130,
             0,
-            78
+            104
            ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#4ADE80",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
             {
              "type": "label",
              "text": "?",
@@ -1565,12 +2518,12 @@
               0,
               60,
               0,
-              45
+              60
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7556,
-             "textStroke": 3,
+             "textScale": 0.8,
+             "textStroke": 2,
              "name": "UnknownMark",
              "font": "display",
              "pos": [
@@ -1583,7 +2536,9 @@
               0.5,
               0.5
              ],
-             "maxText": 34,
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
              "props": {
               "TextColor3": {
                "Color3": [
@@ -1597,86 +2552,134 @@
              "mockHide": true
             }
            ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            2
-           ],
-           "anchor": [
-            0.5,
-            0
-           ]
+           "strokePx": 3
           },
           {
-           "type": "frame",
-           "name": "RarityStripe",
-           "colour": [
-            "#4ADE80",
-            "#40BF6E"
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#4ADE80",
+           "size": [
+            0,
+            108,
+            0,
+            26
            ],
-           "paint": "#4ADE80",
-           "children": [],
-           "corner": 2,
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              98,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "UNCOMMON",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
            "pos": [
             0.5,
             0,
             0,
-            81
+            99
            ],
            "anchor": [
             0.5,
             0
            ],
-           "z": 2,
-           "size": [
-            0,
-            124,
-            0,
-            5
-           ]
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            124,
+            134,
             0,
-            36
+            40
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.3784,
-           "textStroke": 2,
+           "textScale": 0.425,
+           "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
             "Proud Prince",
             "Heavenly String King"
            ],
            "wrap": true,
+           "font": "display",
            "pos": [
             0.5,
             0,
             0,
-            88
+            130
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 14
+           "maxText": 17
           },
           {
            "type": "frame",
            "name": "BottomRow",
-           "transparent": true,
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
            "size": [
             0,
-            124,
+            130,
             0,
-            16
+            28
            ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
            "children": [
             {
              "type": "icon",
@@ -1684,9 +2687,9 @@
              "name": "CraveIcon",
              "size": [
               0,
-              16,
+              20,
               0,
-              16
+              20
              ]
             },
             {
@@ -1694,76 +2697,132 @@
              "text": "<unbound>",
              "size": [
               0,
-              80,
+              72,
               0,
-              17
+              23
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
               "28.80%",
               "0.0012%"
              ],
              "font": "display",
-             "maxText": 13
+             "maxText": 18,
+             "autoX": true
             }
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 6,
-            "align": "center"
-           },
-           "pos": [
-            0.5,
-            0,
-            0,
-            126
-           ],
-           "anchor": [
-            0.5,
-            0
            ]
           }
          ],
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "HeroTileSample3",
          "colour": "#38BDF8",
          "paintable": true,
-         "depth": 4,
-         "corner": 14,
+         "depth": 0,
+         "keyline": "#FFFFFF",
+         "corner": 16,
          "size": [
           0,
-          136,
+          146,
           0,
-          158
+          214
          ],
-         "aspect": 0.8608,
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
           {
            "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
+           "name": "PortraitWell",
            "colour": [
-            "#12153A",
+            "#232866",
             "#12153A"
            ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
            "size": [
             0,
-            124,
+            130,
             0,
-            78
+            104
            ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#38BDF8",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
             {
              "type": "label",
              "text": "?",
@@ -1771,12 +2830,12 @@
               0,
               60,
               0,
-              45
+              60
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7556,
-             "textStroke": 3,
+             "textScale": 0.8,
+             "textStroke": 2,
              "name": "UnknownMark",
              "font": "display",
              "pos": [
@@ -1789,7 +2848,9 @@
               0.5,
               0.5
              ],
-             "maxText": 34,
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
              "props": {
               "TextColor3": {
                "Color3": [
@@ -1803,86 +2864,134 @@
              "mockHide": true
             }
            ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            2
-           ],
-           "anchor": [
-            0.5,
-            0
-           ]
+           "strokePx": 3
           },
           {
-           "type": "frame",
-           "name": "RarityStripe",
-           "colour": [
-            "#38BDF8",
-            "#30A3D5"
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#38BDF8",
+           "size": [
+            0,
+            105,
+            0,
+            26
            ],
-           "paint": "#38BDF8",
-           "children": [],
-           "corner": 2,
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "RARE",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
            "pos": [
             0.5,
             0,
             0,
-            81
+            99
            ],
            "anchor": [
             0.5,
             0
            ],
-           "z": 2,
-           "size": [
-            0,
-            124,
-            0,
-            5
-           ]
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            124,
+            134,
             0,
-            36
+            40
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.3784,
-           "textStroke": 2,
+           "textScale": 0.425,
+           "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
             "Beast Emperor",
             "Heavenly String King"
            ],
            "wrap": true,
+           "font": "display",
            "pos": [
             0.5,
             0,
             0,
-            88
+            130
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 14
+           "maxText": 17
           },
           {
            "type": "frame",
            "name": "BottomRow",
-           "transparent": true,
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
            "size": [
             0,
-            124,
+            130,
             0,
-            16
+            28
            ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
            "children": [
             {
              "type": "icon",
@@ -1890,9 +2999,9 @@
              "name": "CraveIcon",
              "size": [
               0,
-              16,
+              20,
               0,
-              16
+              20
              ]
             },
             {
@@ -1900,76 +3009,132 @@
              "text": "<unbound>",
              "size": [
               0,
-              80,
+              72,
               0,
-              17
+              23
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
               "14.10%",
               "0.0012%"
              ],
              "font": "display",
-             "maxText": 13
+             "maxText": 18,
+             "autoX": true
             }
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 6,
-            "align": "center"
-           },
-           "pos": [
-            0.5,
-            0,
-            0,
-            126
-           ],
-           "anchor": [
-            0.5,
-            0
            ]
           }
          ],
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "HeroTileSample4",
          "colour": "#A855F7",
          "paintable": true,
-         "depth": 4,
-         "corner": 14,
+         "depth": 0,
+         "keyline": "#FFFFFF",
+         "corner": 16,
          "size": [
           0,
-          136,
+          146,
           0,
-          158
+          214
          ],
-         "aspect": 0.8608,
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
           {
            "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
+           "name": "PortraitWell",
            "colour": [
-            "#12153A",
+            "#232866",
             "#12153A"
            ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
            "size": [
             0,
-            124,
+            130,
             0,
-            78
+            104
            ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#A855F7",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
             {
              "type": "label",
              "text": "?",
@@ -1977,12 +3142,12 @@
               0,
               60,
               0,
-              45
+              60
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7556,
-             "textStroke": 3,
+             "textScale": 0.8,
+             "textStroke": 2,
              "name": "UnknownMark",
              "font": "display",
              "pos": [
@@ -1995,7 +3160,9 @@
               0.5,
               0.5
              ],
-             "maxText": 34,
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
              "props": {
               "TextColor3": {
                "Color3": [
@@ -2009,86 +3176,134 @@
              "mockHide": true
             }
            ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            2
-           ],
-           "anchor": [
-            0.5,
-            0
-           ]
+           "strokePx": 3
           },
           {
-           "type": "frame",
-           "name": "RarityStripe",
-           "colour": [
-            "#A855F7",
-            "#9049D4"
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#A855F7",
+           "size": [
+            0,
+            105,
+            0,
+            26
            ],
-           "paint": "#A855F7",
-           "children": [],
-           "corner": 2,
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "EPIC",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
            "pos": [
             0.5,
             0,
             0,
-            81
+            99
            ],
            "anchor": [
             0.5,
             0
            ],
-           "z": 2,
-           "size": [
-            0,
-            124,
-            0,
-            5
-           ]
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            124,
+            134,
             0,
-            36
+            40
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.3784,
-           "textStroke": 2,
+           "textScale": 0.425,
+           "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
             "Instinct Warrior",
             "Heavenly String King"
            ],
            "wrap": true,
+           "font": "display",
            "pos": [
             0.5,
             0,
             0,
-            88
+            130
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 14
+           "maxText": 17
           },
           {
            "type": "frame",
            "name": "BottomRow",
-           "transparent": true,
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
            "size": [
             0,
-            124,
+            130,
             0,
-            16
+            28
            ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
            "children": [
             {
              "type": "icon",
@@ -2096,9 +3311,9 @@
              "name": "CraveIcon",
              "size": [
               0,
-              16,
+              20,
               0,
-              16
+              20
              ]
             },
             {
@@ -2106,76 +3321,132 @@
              "text": "<unbound>",
              "size": [
               0,
-              80,
+              72,
               0,
-              17
+              23
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
               "6.200%",
               "0.0012%"
              ],
              "font": "display",
-             "maxText": 13
+             "maxText": 18,
+             "autoX": true
             }
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 6,
-            "align": "center"
-           },
-           "pos": [
-            0.5,
-            0,
-            0,
-            126
-           ],
-           "anchor": [
-            0.5,
-            0
            ]
           }
          ],
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "HeroTileSample5",
          "colour": "#23264F",
          "paintable": true,
-         "depth": 4,
-         "corner": 14,
+         "depth": 0,
+         "keyline": "#6F79D8",
+         "corner": 16,
          "size": [
           0,
-          136,
+          146,
           0,
-          158
+          214
          ],
-         "aspect": 0.8608,
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
           {
            "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
+           "name": "PortraitWell",
            "colour": [
-            "#0B0D24",
-            "#0B0D24"
+            "#232866",
+            "#12153A"
            ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
            "size": [
             0,
-            124,
+            130,
             0,
-            78
+            104
            ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#3A3F6B",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
             {
              "type": "label",
              "text": "?",
@@ -2183,12 +3454,12 @@
               0,
               60,
               0,
-              45
+              60
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7556,
-             "textStroke": 3,
+             "textScale": 0.8,
+             "textStroke": 2,
              "name": "UnknownMark",
              "font": "display",
              "pos": [
@@ -2201,7 +3472,9 @@
               0.5,
               0.5
              ],
-             "maxText": 34,
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
              "props": {
               "TextColor3": {
                "Color3": [
@@ -2213,86 +3486,134 @@
              }
             }
            ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            2
-           ],
-           "anchor": [
-            0.5,
-            0
-           ]
+           "strokePx": 3
           },
           {
-           "type": "frame",
-           "name": "RarityStripe",
-           "colour": [
-            "#A855F7",
-            "#9049D4"
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#A855F7",
+           "size": [
+            0,
+            105,
+            0,
+            26
            ],
-           "paint": "#A855F7",
-           "children": [],
-           "corner": 2,
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "EPIC",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
            "pos": [
             0.5,
             0,
             0,
-            81
+            99
            ],
            "anchor": [
             0.5,
             0
            ],
-           "z": 2,
-           "size": [
-            0,
-            124,
-            0,
-            5
-           ]
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            124,
+            134,
             0,
-            36
+            40
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.3784,
-           "textStroke": 2,
+           "textScale": 0.425,
+           "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
             "???",
             "Heavenly String King"
            ],
            "wrap": true,
+           "font": "display",
            "pos": [
             0.5,
             0,
             0,
-            88
+            130
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 14
+           "maxText": 17
           },
           {
            "type": "frame",
            "name": "BottomRow",
-           "transparent": true,
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
            "size": [
             0,
-            124,
+            130,
             0,
-            16
+            28
            ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
            "children": [
             {
              "type": "icon",
@@ -2300,9 +3621,9 @@
              "name": "CraveIcon",
              "size": [
               0,
-              16,
+              20,
               0,
-              16
+              20
              ]
             },
             {
@@ -2310,76 +3631,132 @@
              "text": "<unbound>",
              "size": [
               0,
-              80,
+              72,
               0,
-              17
+              23
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
               "6.200%",
               "0.0012%"
              ],
              "font": "display",
-             "maxText": 13
+             "maxText": 18,
+             "autoX": true
             }
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 6,
-            "align": "center"
-           },
-           "pos": [
-            0.5,
-            0,
-            0,
-            126
-           ],
-           "anchor": [
-            0.5,
-            0
            ]
           }
          ],
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "HeroTileSample6",
          "colour": "#FACC15",
          "paintable": true,
-         "depth": 4,
-         "corner": 14,
+         "depth": 0,
+         "keyline": "#FFFFFF",
+         "corner": 16,
          "size": [
           0,
-          136,
+          146,
           0,
-          158
+          214
          ],
-         "aspect": 0.8608,
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
           {
            "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
+           "name": "PortraitWell",
            "colour": [
-            "#12153A",
+            "#232866",
             "#12153A"
            ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
            "size": [
             0,
-            124,
+            130,
             0,
-            78
+            104
            ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#FACC15",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
             {
              "type": "label",
              "text": "?",
@@ -2387,12 +3764,12 @@
               0,
               60,
               0,
-              45
+              60
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7556,
-             "textStroke": 3,
+             "textScale": 0.8,
+             "textStroke": 2,
              "name": "UnknownMark",
              "font": "display",
              "pos": [
@@ -2405,7 +3782,9 @@
               0.5,
               0.5
              ],
-             "maxText": 34,
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
              "props": {
               "TextColor3": {
                "Color3": [
@@ -2419,86 +3798,134 @@
              "mockHide": true
             }
            ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            2
-           ],
-           "anchor": [
-            0.5,
-            0
-           ]
+           "strokePx": 3
           },
           {
-           "type": "frame",
-           "name": "RarityStripe",
-           "colour": [
-            "#FACC15",
-            "#D7AF12"
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#FACC15",
+           "size": [
+            0,
+            105,
+            0,
+            26
            ],
-           "paint": "#FACC15",
-           "children": [],
-           "corner": 2,
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "LEGENDARY",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
            "pos": [
             0.5,
             0,
             0,
-            81
+            99
            ],
            "anchor": [
             0.5,
             0
            ],
-           "z": 2,
-           "size": [
-            0,
-            124,
-            0,
-            5
-           ]
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            124,
+            134,
             0,
-            36
+            40
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.3784,
-           "textStroke": 2,
+           "textScale": 0.425,
+           "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
             "Curse King",
             "Heavenly String King"
            ],
            "wrap": true,
+           "font": "display",
            "pos": [
             0.5,
             0,
             0,
-            88
+            130
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 14
+           "maxText": 17
           },
           {
            "type": "frame",
            "name": "BottomRow",
-           "transparent": true,
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
            "size": [
             0,
-            124,
+            130,
             0,
-            16
+            28
            ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
            "children": [
             {
              "type": "icon",
@@ -2506,9 +3933,9 @@
              "name": "CraveIcon",
              "size": [
               0,
-              16,
+              20,
               0,
-              16
+              20
              ]
             },
             {
@@ -2516,76 +3943,132 @@
              "text": "<unbound>",
              "size": [
               0,
-              80,
+              72,
               0,
-              17
+              23
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
               "1.420%",
               "0.0012%"
              ],
              "font": "display",
-             "maxText": 13
+             "maxText": 18,
+             "autoX": true
             }
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 6,
-            "align": "center"
-           },
-           "pos": [
-            0.5,
-            0,
-            0,
-            126
-           ],
-           "anchor": [
-            0.5,
-            0
            ]
           }
          ],
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "HeroTileSample7",
          "colour": "#23264F",
          "paintable": true,
-         "depth": 4,
-         "corner": 14,
+         "depth": 0,
+         "keyline": "#6F79D8",
+         "corner": 16,
          "size": [
           0,
-          136,
+          146,
           0,
-          158
+          214
          ],
-         "aspect": 0.8608,
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
           {
            "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
+           "name": "PortraitWell",
            "colour": [
-            "#0B0D24",
-            "#0B0D24"
+            "#232866",
+            "#12153A"
            ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
            "size": [
             0,
-            124,
+            130,
             0,
-            78
+            104
            ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#3A3F6B",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
             {
              "type": "label",
              "text": "?",
@@ -2593,12 +4076,12 @@
               0,
               60,
               0,
-              45
+              60
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7556,
-             "textStroke": 3,
+             "textScale": 0.8,
+             "textStroke": 2,
              "name": "UnknownMark",
              "font": "display",
              "pos": [
@@ -2611,7 +4094,9 @@
               0.5,
               0.5
              ],
-             "maxText": 34,
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
              "props": {
               "TextColor3": {
                "Color3": [
@@ -2623,86 +4108,134 @@
              }
             }
            ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            2
-           ],
-           "anchor": [
-            0.5,
-            0
-           ]
+           "strokePx": 3
           },
           {
-           "type": "frame",
-           "name": "RarityStripe",
-           "colour": [
-            "#FACC15",
-            "#D7AF12"
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#FACC15",
+           "size": [
+            0,
+            105,
+            0,
+            26
            ],
-           "paint": "#FACC15",
-           "children": [],
-           "corner": 2,
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "LEGENDARY",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
            "pos": [
             0.5,
             0,
             0,
-            81
+            99
            ],
            "anchor": [
             0.5,
             0
            ],
-           "z": 2,
-           "size": [
-            0,
-            124,
-            0,
-            5
-           ]
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            124,
+            134,
             0,
-            36
+            40
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.3784,
-           "textStroke": 2,
+           "textScale": 0.425,
+           "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
             "???",
             "Heavenly String King"
            ],
            "wrap": true,
+           "font": "display",
            "pos": [
             0.5,
             0,
             0,
-            88
+            130
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 14
+           "maxText": 17
           },
           {
            "type": "frame",
            "name": "BottomRow",
-           "transparent": true,
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
            "size": [
             0,
-            124,
+            130,
             0,
-            16
+            28
            ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
            "children": [
             {
              "type": "icon",
@@ -2710,9 +4243,9 @@
              "name": "CraveIcon",
              "size": [
               0,
-              16,
+              20,
               0,
-              16
+              20
              ]
             },
             {
@@ -2720,76 +4253,132 @@
              "text": "<unbound>",
              "size": [
               0,
-              80,
+              72,
               0,
-              17
+              23
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
               "1.420%",
               "0.0012%"
              ],
              "font": "display",
-             "maxText": 13
+             "maxText": 18,
+             "autoX": true
             }
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 6,
-            "align": "center"
-           },
-           "pos": [
-            0.5,
-            0,
-            0,
-            126
-           ],
-           "anchor": [
-            0.5,
-            0
            ]
           }
          ],
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "HeroTileSample8",
          "colour": "#23264F",
          "paintable": true,
-         "depth": 4,
-         "corner": 14,
+         "depth": 0,
+         "keyline": "#6F79D8",
+         "corner": 16,
          "size": [
           0,
-          136,
+          146,
           0,
-          158
+          214
          ],
-         "aspect": 0.8608,
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
           {
            "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
+           "name": "PortraitWell",
            "colour": [
-            "#0B0D24",
-            "#0B0D24"
+            "#232866",
+            "#12153A"
            ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
            "size": [
             0,
-            124,
+            130,
             0,
-            78
+            104
            ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
            "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#3A3F6B",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
             {
              "type": "label",
              "text": "?",
@@ -2797,12 +4386,12 @@
               0,
               60,
               0,
-              45
+              60
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7556,
-             "textStroke": 3,
+             "textScale": 0.8,
+             "textStroke": 2,
              "name": "UnknownMark",
              "font": "display",
              "pos": [
@@ -2815,7 +4404,9 @@
               0.5,
               0.5
              ],
-             "maxText": 34,
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
              "props": {
               "TextColor3": {
                "Color3": [
@@ -2827,86 +4418,134 @@
              }
             }
            ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            2
-           ],
-           "anchor": [
-            0.5,
-            0
-           ]
+           "strokePx": 3
           },
           {
-           "type": "frame",
-           "name": "RarityStripe",
-           "colour": [
-            "#FB3B6B",
-            "#D8335C"
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#FB3B6B",
+           "size": [
+            0,
+            105,
+            0,
+            26
            ],
-           "paint": "#FB3B6B",
-           "children": [],
-           "corner": 2,
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "MYTHIC",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
            "pos": [
             0.5,
             0,
             0,
-            81
+            99
            ],
            "anchor": [
             0.5,
             0
            ],
-           "z": 2,
-           "size": [
-            0,
-            124,
-            0,
-            5
-           ]
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "<unbound>",
            "size": [
             0,
-            124,
+            134,
             0,
-            36
+            40
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.3784,
-           "textStroke": 2,
+           "textScale": 0.425,
+           "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
             "???",
             "Heavenly String King"
            ],
            "wrap": true,
+           "font": "display",
            "pos": [
             0.5,
             0,
             0,
-            88
+            130
            ],
            "anchor": [
             0.5,
             0
            ],
-           "maxText": 14
+           "maxText": 17
           },
           {
            "type": "frame",
            "name": "BottomRow",
-           "transparent": true,
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
            "size": [
             0,
-            124,
+            130,
             0,
-            16
+            28
            ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
            "children": [
             {
              "type": "icon",
@@ -2914,9 +4553,9 @@
              "name": "CraveIcon",
              "size": [
               0,
-              16,
+              20,
               0,
-              16
+              20
              ]
             },
             {
@@ -2924,45 +4563,343 @@
              "text": "<unbound>",
              "size": [
               0,
-              80,
+              72,
               0,
-              17
+              23
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.7647,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
               "0.0012%",
               "0.0012%"
              ],
              "font": "display",
-             "maxText": 13
+             "maxText": 18,
+             "autoX": true
             }
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 6,
-            "align": "center"
-           },
-           "pos": [
-            0.5,
-            0,
-            0,
-            126
-           ],
-           "anchor": [
-            0.5,
-            0
            ]
           }
          ],
          "visible": false,
          "attrs": {
           "Sample": true
-         }
+         },
+         "stroke": 3
+        },
+        {
+         "type": "panel",
+         "name": "HeroTileSample9",
+         "colour": "#FB3B6B",
+         "paintable": true,
+         "depth": 0,
+         "keyline": "#FFFFFF",
+         "corner": 16,
+         "size": [
+          0,
+          146,
+          0,
+          214
+         ],
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
+         "children": [
+          {
+           "type": "frame",
+           "name": "PortraitWell",
+           "colour": [
+            "#232866",
+            "#12153A"
+           ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
+           "size": [
+            0,
+            130,
+            0,
+            104
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#FB3B6B",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
+            {
+             "type": "label",
+             "text": "?",
+             "size": [
+              0,
+              60,
+              0,
+              60
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 2,
+             "name": "UnknownMark",
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
+             "props": {
+              "TextColor3": {
+               "Color3": [
+                0.984313725490196,
+                0.23137254901960785,
+                0.4196078431372549
+               ]
+              }
+             },
+             "visible": false,
+             "mockHide": true
+            }
+           ],
+           "strokePx": 3
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#FB3B6B",
+           "size": [
+            0,
+            105,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "MYTHIC",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            99
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            134,
+            0,
+            40
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.425,
+           "textStroke": 1.5,
+           "name": "HeroName",
+           "samples": [
+            "Wheel Guardian",
+            "Heavenly String King"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            130
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 17
+          },
+          {
+           "type": "frame",
+           "name": "BottomRow",
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            0,
+            130,
+            0,
+            28
+           ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconFlavorSpicy",
+             "name": "CraveIcon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              72,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "ChanceText",
+             "samples": [
+              "0.40%",
+              "0.0012%"
+             ],
+             "font": "display",
+             "maxText": 18,
+             "autoX": true
+            }
+           ]
+          }
+         ],
+         "visible": false,
+         "attrs": {
+          "Sample": true
+         },
+         "stroke": 3
         }
        ],
        "props": {
@@ -2971,9 +4908,9 @@
        },
        "pos": [
         0,
-        222,
+        252,
         0,
-        42
+        60
        ]
       }
      ],
@@ -2981,28 +4918,14 @@
       0.5,
       0,
       0,
-      84
+      86
      ],
      "anchor": [
       0.5,
       0
      ]
     }
-   ],
-   "comic": 10,
-   "modal": true,
-   "corner": 22,
-   "pos": [
-    0.5,
-    0,
-    0.5,
-    0
-   ],
-   "anchor": [
-    0.5,
-    0.5
-   ],
-   "keyline": "#FFFFFF"
+   ]
   }
  ]
 }

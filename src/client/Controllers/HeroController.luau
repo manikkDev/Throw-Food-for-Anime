@@ -14,31 +14,33 @@ local RunService = game:GetService("RunService")
 
 local Knit = require(ReplicatedStorage.Packages.Knit)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
-local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local World = require(ReplicatedStorage.Shared.Core.World)
-local Screens = require(script.Parent.Parent.Ui.Screens)
+local Motion = require(script.Parent.Parent.Fx.Motion)
+local Vfx = require(script.Parent.Parent.Fx.Vfx)
+local Nameplate = require(script.Parent.Parent.Ui.Nameplate)
 local Theme = require(script.Parent.Parent.Ui.Theme)
+local Sound = require(script.Parent.SoundController)
 
 local MAPS = Lookup.of(Config)
 local W = Config.World
 local COUNT = Config.Server.PlotCount
 local DASH = Config.Throw.DashSeconds
--- Roblox's own R15 idle: owned by Roblox, so it plays in any experience.
--- Section 4 replaces it with the authored idles named in Config.Characters.
+-- Roblox's own R15 idle and run: owned by Roblox, so they play in any
+-- experience. The idle is only the fallback for a hero whose authored idle
+-- (Config.Characters[].Idle) is not uploaded or registered yet; the run is the
+-- dash home.
 local IDLE_ANIMATION = "rbxassetid://507766388"
+local RUN_ANIMATION = "rbxassetid://913376220"
+-- a random Roblox emote every EMOTE_MIN..EMOTE_MAX seconds on the pedestal
+local EMOTE_MIN, EMOTE_MAX = 20, 40
+local EMOTE_LONGEST = 6
 
 local MUTATION_COLORS = Theme.MUTATION
 
--- The Nameplate tree is authored in pixels (320 x 132). Over a hero it is
--- sized in studs instead, and kept small: a plot can hold 28 heroes, and 28
--- full plates are a wall of text. So a plate is ONE line (name and income),
--- shown only near the camera (PLATE_DISTANCE) and never during a throw
--- sequence; only the plate the camera is aimed at opens up to show its tags
--- and stars.
-local PLATE_STUDS = 6.5
-local PLATE_DISTANCE = 35
-local PLATE_LINE = 48 / 132 -- the name line's share of the plate's height
+-- the plate over each hero is Ui/Nameplate (what it shows); here only which
+-- heroes have one and which is focused (the nearest the camera is aimed at)
+local PLATE_DISTANCE = Nameplate.DISTANCE
 local FOCUS_SECONDS = 0.25
 local FOCUS_AIM = 0.94 -- cosine of how far off the camera's aim still counts
 
@@ -49,27 +51,26 @@ type Record = {
 	model: Model?,
 	thread: thread?,
 	track: AnimationTrack?,
-	plate: Plate?,
+	emote: AnimationTrack?,
+	nextEmote: number,
+	plate: Nameplate.Plate?,
 }
 
-type Plate = {
-	gui: BillboardGui,
-	scale: UIScale,
-	width: number,
-	studsWide: number,
-	studsHigh: number,
-	headTop: number,
-	name: TextLabel,
-	income: TextLabel,
-	focused: boolean,
+type Dash = {
+	model: Model,
+	from: Vector3,
+	goal: CFrame,
+	t0: number,
+	fx: Vfx.Handle,
+	run: AnimationTrack?,
+	own: boolean,
 }
-
-type Dash = { model: Model, from: Vector3, goal: CFrame, t0: number }
 
 local HeroController = Knit.CreateController({
 	Name = "HeroController",
 	_rigs = {} :: { [number]: { [number]: Record } },
 	_dashes = {} :: { [Model]: Dash },
+	_expected = {} :: { [string]: number },
 	_folder = nil :: Folder?,
 	_templates = nil :: Instance?,
 	_state = nil :: any,
@@ -83,11 +84,6 @@ local function rarityColor(id: string): Color3
 		return Color3.fromHex(Config.Rarities[character.Rarity].Color)
 	end
 	return Color3.fromRGB(255, 79, 163) -- premium
-end
-
-local function displayName(id: string): string
-	local row = MAPS.character[id] or MAPS.premium[id]
-	return if row then row.Name else id
 end
 
 -- A stand-in for a hero whose template is not in the place yet (the premium
@@ -158,7 +154,12 @@ end
 
 --- A hero model for (id, mutation, size), not parented. Used for plots and
 --- for the reveal at the landing spot.
-function HeroController:Build(id: string, mut: string?, size: string?): (Model, number)
+function HeroController:Build(
+	id: string,
+	mut: string?,
+	size: string?,
+	bare: boolean?
+): (Model, number)
 	local template = self._templates and self._templates:FindFirstChild("Char_" .. id)
 	local model: Model
 	if template and template:IsA("Model") then
@@ -173,128 +174,93 @@ function HeroController:Build(id: string, mut: string?, size: string?): (Model, 
 		model:ScaleTo(scale)
 	end
 	settle(model, scale)
+	-- the auras: Aura_<Mutation> on a mutated hero, Aura_Titan under a Titan.
+	-- Fx/Vfx decides which are live (the nearest 24 in the world).
+	local auras: { string } = {}
 	if mut and MUTATION_COLORS[mut] then
-		-- placeholder aura: a glowing ring at the feet. Section 4 replaces it
-		-- with the authored Aura_<Mutation> effect.
-		local ring = Instance.new("Part")
-		ring.Name = "AuraRing"
-		ring.Shape = Enum.PartType.Cylinder
-		ring.Size = Vector3.new(0.25, 7 * scale, 7 * scale)
-		ring.CFrame = model:GetPivot() * CFrame.Angles(0, 0, math.rad(90))
-		ring.Anchored = true
-		ring.CanCollide = false
-		ring.CanQuery = false
-		ring.CanTouch = false
-		ring.Material = Enum.Material.Neon
-		ring.Color = MUTATION_COLORS[mut]
-		ring.Transparency = 0.25
-		ring.Parent = model
+		table.insert(auras, "Aura_" .. mut)
+	end
+	if size == "Titan" then
+		table.insert(auras, "Aura_Titan")
+	end
+	-- and the hero's own character aura (design/auras.json, by rarity or hand-matched)
+	local heroKey = if bare then nil else Vfx.heroAuraKey(id)
+	if not bare and (#auras > 0 or heroKey) then
+		Vfx.aura(model, auras, scale, if mut then MUTATION_COLORS[mut] else nil, heroKey)
 	end
 	return model, scale
+end
+
+-- the id a built hero model stands for ("Char_<id>")
+local function idOf(model: Model): string
+	return (model.Name:gsub("^Char_", ""))
 end
 
 --- Start the idle on a model that is now in the world and return its track.
 --- Fails inert (returns nil).
 function HeroController:Animate(model: Model): AnimationTrack?
 	local humanoid = model:FindFirstChildOfClass("Humanoid")
-	local animator = humanoid and humanoid:FindFirstChildOfClass("Animator")
-	if not animator then
+	if not humanoid then
 		return nil
 	end
-	local track: AnimationTrack? = nil
-	local ok, err = pcall(function()
-		local animation = Instance.new("Animation")
-		animation.AnimationId = IDLE_ANIMATION
-		local loaded = animator:LoadAnimation(animation)
-		loaded.Looped = true
-		loaded:Play(0.2)
-		loaded.TimePosition = math.random() * 2
-		track = loaded
-	end)
-	if not ok then
-		warn(`[HeroController] idle failed inert: {err}`)
+	local id = idOf(model)
+	local row = MAPS.character[id] or MAPS.premium[id]
+	local idle = if row and typeof(row.Idle) == "string" then row.Idle else nil
+	-- the hero's own idle at Core priority, else Roblox's
+	local track = if idle then Motion.play(humanoid, idle, { fade = 0.2 }) else nil
+	if not track then
+		track = Motion.playId(
+			humanoid,
+			IDLE_ANIMATION,
+			{ fade = 0.2, looped = true, priority = "Core" }
+		)
+	end
+	if track then
+		local playing = track
+		pcall(function()
+			-- heroes side by side never breathe in step
+			playing.TimePosition = math.random() * math.max(playing.Length, 1)
+		end)
 	end
 	return track
 end
 
--- keep the plate's contents the size of the plate on screen
-local function fitPlate(plate: Plate)
-	local target = math.clamp(plate.gui.AbsoluteSize.X / plate.width, 0.05, 1)
-	if math.abs(plate.scale.Scale - target) > 0.03 * target then
-		plate.scale.Scale = target
-	end
-end
-
--- What a plate says. One line unless it is the plate the camera is aimed at.
-local function writePlate(plate: Plate, entry: any)
-	local gui = plate.gui
-	local focused = plate.focused
-	local name = displayName(entry.id)
-	local income = `+{Format.short(entry.i or 0)}/s`
-	plate.name.Text = if focused then name else `{name}  {income}`
-	plate.income.Text = income
-	Screens.frame(gui, "TagRow").Visible = focused and (entry.z ~= nil or entry.m ~= nil)
-	Screens.frame(gui, "BottomRow").Visible = focused
-	local high = if focused then plate.studsHigh else plate.studsHigh * PLATE_LINE
-	gui.Size = UDim2.fromScale(plate.studsWide, high)
-	gui.StudsOffsetWorldSpace = Vector3.new(0, plate.headTop + 0.4 + high / 2, 0)
-end
-
--- The plate over a hero: name and yen/s; tags and star pips when focused.
-local function makePlate(model: Model, entry: any, scale: number, hidden: boolean): Plate?
-	local root = model.PrimaryPart
-	local gui = Screens.world("Nameplate")
-	if not root or not gui or not gui:IsA("BillboardGui") then
-		return nil
-	end
-	local canvas = Screens.frame(gui, "CanvasFrame")
-	local refWidth = canvas:GetAttribute("RefWidth")
-	local refHeight = canvas:GetAttribute("RefHeight")
-	local width = if typeof(refWidth) == "number" then refWidth else 320
-	local height = if typeof(refHeight) == "number" then refHeight else 132
-	local studsWide = PLATE_STUDS * (1 + (scale - 1) * 0.5)
-	local box, size = model:GetBoundingBox()
-	gui.StudsOffset = Vector3.zero
-	gui.MaxDistance = PLATE_DISTANCE
-	gui.Adornee = root
-	gui.Enabled = not hidden
-	-- the canvas keeps its authored pixel size, hangs from the top of the
-	-- plate, and is scaled to the plate's size on screen
-	canvas.AnchorPoint = Vector2.new(0.5, 0)
-	canvas.Position = UDim2.fromScale(0.5, 0)
-	canvas.Size = UDim2.fromOffset(width, height)
-	local uiScale = Instance.new("UIScale")
-	uiScale.Name = "PlateScale"
-	uiScale.Parent = canvas
-
-	local name = Screens.label(gui, "HeroName")
-	name.TextColor3 = rarityColor(entry.id)
-	Screens.frame(gui, "SizeTagCell").Visible = entry.z ~= nil
-	Screens.label(gui, "SizeText").Text = if entry.z then entry.z:upper() else ""
-	Screens.frame(gui, "MutationTagCell").Visible = entry.m ~= nil
-	Screens.label(gui, "MutationText").Text = if entry.m then entry.m:upper() else ""
-	Screens.tint(Screens.frame(gui, "MutationTag"), Theme.mutation(entry.m))
-	for star = 1, 3 do
-		Screens.image(gui, "Star" .. star).Visible = star <= (entry.st or 0)
-	end
-
-	local made: Plate = {
-		gui = gui,
-		scale = uiScale,
-		width = width,
-		studsWide = studsWide,
-		studsHigh = studsWide * height / width,
-		headTop = box.Position.Y + size.Y / 2 - root.Position.Y,
-		name = name,
-		income = Screens.label(gui, "YenPerSecond"),
-		focused = false,
-	}
-	writePlate(made, entry)
-	gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-		fitPlate(made)
+--- The caught hero's entrance at the final beat of a reveal (`holding`: it already holds the
+--- food, so only the bite): RevealLand
+--- (Land_Impact at the feet on its "Land" marker), then Eat (eat_munch on each
+--- "Bite"), over its idle. Without the clips it simply idles.
+function HeroController:RevealAnimate(model: Model, holding: boolean?)
+	local ok, err = pcall(function()
+		self:Animate(model)
+		local humanoid = model:FindFirstChildOfClass("Humanoid")
+		if holding and humanoid then
+			-- it picked the food up in the suspense (owner's review 4): no landing, a bite of it
+			local eat = Motion.play(humanoid, "Eat", { fade = 0.2 })
+			Motion.onMarker(eat, "Bite", function()
+				Sound:Play("eat_munch", model.PrimaryPart, { pitchVary = 0.08 })
+			end)
+			return
+		end
+		local land = if humanoid then Motion.play(humanoid, "RevealLand", { fade = 0.05 }) else nil
+		if not land then
+			return
+		end
+		Motion.onMarker(land, "Land", function()
+			Vfx.play("Land_Impact", model:GetPivot().Position, { scale = model:GetScale() })
+		end)
+		land.Stopped:Once(function()
+			if not model.Parent then
+				return
+			end
+			local eat = Motion.play(humanoid, "Eat", { fade = 0.1 })
+			Motion.onMarker(eat, "Bite", function()
+				Sound:Play("eat_munch", model.PrimaryPart, { pitchVary = 0.08 })
+			end)
+		end)
 	end)
-	gui.Parent = root
-	return made
+	if not ok then
+		warn(`[HeroController] reveal clips failed inert: {err}`)
+	end
 end
 
 --- Hide every nameplate (a throw sequence is playing) or bring them back.
@@ -345,11 +311,11 @@ function HeroController:_refocus()
 	self._focus = best
 	if was and was.plate then
 		was.plate.focused = false
-		writePlate(was.plate, was.entry)
+		Nameplate.write(was.plate, was.entry)
 	end
 	if best and best.plate then
 		best.plate.focused = true
-		writePlate(best.plate, best.entry)
+		Nameplate.write(best.plate, best.entry)
 	end
 end
 
@@ -359,13 +325,48 @@ function HeroController:_goal(plot: number, slot: number): CFrame
 	return CFrame.new(x, W.GroundY + W.PedestalTop, z) * CFrame.Angles(0, math.pi, 0)
 end
 
+--- The local player is setting hero `uid` on a pedestal (CarryController): when it appears there,
+--- it pops in instead of just standing there.
+function HeroController:ExpectPlace(uid: string)
+	self._expected[uid] = os.clock()
+end
+
+-- a placed hero grows in from small with a little overshoot
+-- (the aura waits for the full size: Vfx skips a model while "Popping" is set)
+local function popIn(model: Model)
+	local target = model:GetScale()
+	model:SetAttribute("Popping", true)
+	model:ScaleTo(target * 0.25)
+	task.spawn(function()
+		local t0 = os.clock()
+		while model.Parent and os.clock() - t0 < 0.4 do
+			local u = (os.clock() - t0) / 0.4
+			local back = 1 + 2.4 * (u - 1) ^ 3 + 1.4 * (u - 1) ^ 2
+			model:ScaleTo(target * math.max(0.25 + 0.75 * back, 0.05))
+			RunService.Heartbeat:Wait()
+		end
+		model:ScaleTo(target)
+		model:SetAttribute("Popping", nil)
+		Vfx.touchAuras()
+	end)
+end
+
 function HeroController:_show(record: Record, dashIn: boolean)
 	if record.model or not self._folder then
 		return
 	end
+	local placed = self._expected[record.entry.u]
+	if placed then
+		self._expected[record.entry.u] = nil
+		if os.clock() - placed < 5 then
+			dashIn = false
+		else
+			placed = nil
+		end
+	end
 	local entry = record.entry
 	local model, scale = self:Build(entry.id, entry.m, entry.z)
-	record.plate = makePlate(model, entry, scale, self._platesHidden)
+	record.plate = Nameplate.make(model, entry, scale, self._platesHidden)
 	local goal = self:_goal(record.plot, entry.s)
 	record.model = model
 	if dashIn then
@@ -376,10 +377,30 @@ function HeroController:_show(record: Record, dashIn: boolean)
 		)
 		model:PivotTo(CFrame.lookAt(from, Vector3.new(goal.X, from.Y, goal.Z)))
 		model.Parent = self._folder
-		self._dashes[model] = { model = model, from = from, goal = goal, t0 = os.clock() }
+		-- the dash home: Roblox's run, a trail, a whoosh
+		local root = model.PrimaryPart
+		local humanoid = model:FindFirstChildOfClass("Humanoid")
+		local state = self._state.State
+		self._dashes[model] = {
+			model = model,
+			from = from,
+			goal = goal,
+			t0 = os.clock(),
+			fx = Vfx.play("DashHome_Trail", root or from, { loop = true }),
+			run = Motion.playId(
+				humanoid,
+				RUN_ANIMATION,
+				{ fade = 0.1, looped = true, speed = 1.5 }
+			),
+			own = state ~= nil and state.plot == record.plot,
+		}
+		Sound:Play("dash_whoosh", root)
 	else
 		model:PivotTo(goal)
 		model.Parent = self._folder
+		if placed then
+			popIn(model)
+		end
 	end
 	self:_budget(record)
 end
@@ -404,19 +425,48 @@ function HeroController:_budget(record: Record)
 	local visible = distance <= viewDistance and (own or not hideOthers)
 	if visible and model.Parent ~= self._folder then
 		model.Parent = self._folder
+		Vfx.touchAuras() -- shown or hidden: the aura budget is re-checked now
 	elseif not visible and model.Parent ~= nil then
 		model.Parent = nil
+		Vfx.touchAuras()
 	end
 	if visible and record.plate then
-		fitPlate(record.plate)
+		Nameplate.fit(record.plate)
 	end
 	local animate = visible and not low and distance <= W.HeroAnimateDistance
 	if animate and not record.track then
 		record.track = self:Animate(model)
+		record.nextEmote = os.clock() + math.random(EMOTE_MIN, EMOTE_MAX)
 	elseif not animate and record.track then
-		record.track:Stop(0)
-		record.track:Destroy()
+		-- only stopped: Fx/Motion keeps one track per clip per rig
+		Motion.stop(record.track, 0)
+		Motion.stop(record.emote, 0)
 		record.track = nil
+		record.emote = nil
+	elseif animate and os.clock() >= record.nextEmote then
+		self:_emote(record, model)
+	end
+end
+
+-- A random Roblox emote on a hero standing on its pedestal, now and then.
+function HeroController:_emote(record: Record, model: Model)
+	record.nextEmote = os.clock() + math.random(EMOTE_MIN, EMOTE_MAX)
+	local emotes = Motion.emotes()
+	if #emotes == 0 then
+		return
+	end
+	local humanoid = model:FindFirstChildOfClass("Humanoid")
+	local track =
+		Motion.playId(humanoid, emotes[math.random(1, #emotes)], { fade = 0.3, looped = false })
+	if track then
+		record.emote = track
+		local length = if track.Length > 0 then math.clamp(track.Length, 1, EMOTE_LONGEST) else 4
+		task.delay(length, function()
+			if record.emote == track then
+				Motion.stop(track, 0.3)
+				record.emote = nil
+			end
+		end)
 	end
 end
 
@@ -432,6 +482,10 @@ function HeroController:_drop(record: Record)
 	end
 	local model = record.model
 	if model then
+		local dash = self._dashes[model]
+		if dash then
+			dash.fx.stop()
+		end
 		self._dashes[model] = nil
 		model:Destroy()
 		record.model = nil
@@ -439,7 +493,7 @@ function HeroController:_drop(record: Record)
 end
 
 function HeroController:_spawn(plot: number, entry: any, key: string): Record
-	local record: Record = { key = key, plot = plot, entry = entry }
+	local record: Record = { key = key, plot = plot, entry = entry, nextEmote = 0 }
 	local wait = if entry.t then entry.t - workspace:GetServerTimeNow() - DASH else 0
 	if wait > 0.05 then
 		record.thread = task.delay(wait, function()
@@ -484,7 +538,7 @@ function HeroController:_render(plot: number, state: any)
 				local income = have.entry.i
 				have.entry = entry
 				if income ~= entry.i and have.plate then
-					writePlate(have.plate, entry)
+					Nameplate.write(have.plate, entry)
 				end
 			else
 				if have then
@@ -531,8 +585,15 @@ function HeroController:KnitStart()
 			local alpha = math.clamp((now - dash.t0) / DASH, 0, 1)
 			if alpha >= 1 or not model.Parent then
 				self._dashes[model] = nil
+				dash.fx.stop()
+				Motion.stop(dash.run, 0.2)
 				if model.Parent then
 					model:PivotTo(dash.goal)
+					if dash.own then
+						-- home: the hero starts earning
+						Vfx.play("Coin_Pop", dash.goal.Position + Vector3.new(0, 3, 0))
+						Sound:Play("coin_tick")
+					end
 				end
 				for _, slots in self._rigs do
 					for _, record in slots do

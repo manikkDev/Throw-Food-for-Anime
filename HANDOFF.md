@@ -1,8 +1,8 @@
-<!-- section: 3 -->
-# HANDOFF: section 3 of 6 closed (World and visuals)
+<!-- section: 4 -->
+# HANDOFF: section 4 of 6 closed (Motion and sound)
 
 Game: `D:\Roblox Studio Games\Throw food for Anime`
-Written: 2026-11-14T20:13:40+05:30
+Written: 2026-11-15T12:44:12+05:30
 
 A cleared session starts from this file alone. Read it in full, then run:
 
@@ -10,211 +10,175 @@ A cleared session starts from this file alone. Read it in full, then run:
 python ~/.claude/skills/create-roblox-game/scripts/section.py resume --dir "D:\Roblox Studio Games\Throw food for Anime"
 ```
 
-## REWORK 4 (2026-11-15): done, awaiting approval
-
-Owner's asks after `s3-v3-03` (logged): HUD side buttons touched; stat pills worse than before, keep it simple like the reference (`work/ui/owner_v32/REFERENCE_real_game_hud.png`); training bar too big; bigger bases with room for future mini games; more gap between bases; walls off the bases; styled lane floors and walls; replace the generated skyline, buildings, robot and cherry trees with ready-made anime/Japanese assets as a town round the hub and along every lane; research first.
-
-- Research: `design/research/06-map-surroundings.md`. Verdict used: a town as a ROOFLINE (facade rows near the wall edges, tall landmarks on the terrace centre line: from the lane everything below about 0.65 x its setback is hidden), a hillside shrine town in layers behind the hub with one big castle, replace rather than add (the map was at its phone budget).
-- UI v3.3 + client, build `s3-v3-04`: plain aligned stat rows (icon column, value column, small line under), 14 px clear between side buttons (the `gap` check now measures the painted box: 93 failures before, 0 after), compact training bar (440 x 86 at 720p). `design/ui/CHANGES-v3.md` v3.3.
-- Store assets: 61 templates. Complete buildings assembled from the free modular pack by `tools/studio/assemble_store_buildings.luau` (castle, keep, 2 pagodas, 2 shrines, 6 houses, 3 halls, stage, dark towers), 3 farmhouses, 2 waterfalls, 2 sakura trees. Tags `design/store_assets.json` (the generator builds every pool from kind + zones), sizes `assets/meshes/manifest-store.json`, sources `ServerStorage.StoreAssets` (never delete).
-- Map v3: config.World PlotPitch 108, PlotWidth 84, PlotBackZ -44 (72 deep), pedestals in the back half (spacing 8), DojoPad -26/12, SlotSign 32/-6, Yard keys (a 28 x 24 court with an invisible `Yard` part, `Reserved = "minigames"`), HubDepth 110; `World.yard()` + 3 specs. Generator = `gen_map.py` + `gen_lane_style.py` + `gen_town.py` + `make_textures.py` (11 tiles, ids in `assets/map/ids_textures.json`). Lane floors patterned per zone with kerbs and distance plaques; walls with base course, pilasters, coping, cloth banners/noren with designs, shoji windows; forecourt with aprons, stepping stones, hedges, lanterns, trees; garden strips between bases; town on the 52-wide terraces and outer tiers; hub backdrop = castle 172 studs tall, pagodas, house rows, sakura, waterfalls.
-- Streaming set in the place: target radius 576, min 256, Opportunistic, PauseOutsideLoadedArea.
-
-Verified in play on `s3-v3-04` (one real client, 1482x673, no script errors):
-
-| What | Result |
-|---|---|
-| Map prover | RESULT PASS; built by 35 chunks, 0 missing models |
-| Parts | 13,298 BaseParts in the spec (first v3 build: 21,560), 6,468 max within 576 studs of a stage; about 8,270 streamed in on the stage in play |
-| Frame rate (Studio confirmed in front, on the throw stage) | 52.4 fps average, worst frame 68 ms (the previous map: 60.0) |
-| Base | spawn on the plot, heroes on the back pedestals, yard text "TRAINING YARD" upright for a player facing the lane, gear on its pad |
-| Throw | throw mode, flight over the town terraces, final beat in Ninja Village (shoji walls, hexagon floor, distance plaque) |
-| HUD | plain stats and spaced buttons as on the sheet |
-| Gates | `tools/gate.py` green |
-
-Not verified this round: the training bar in play (the test tool could not trigger the dojo prompt; it passes the fit gate and the sheet `work/ui/mockups/v33_TrainingBar_3sizes.png`); lane floor zone names by eye; zones 3 to 6 on foot; phones (the frame rate fell from 60 to 52 on the dev PC, so a phone check matters more now).
-
-Licence note told to the owner twice: the modular building pack and the prop pack by BL00MIE say "Imported from Unity"; if Roblox removes them those pieces go blank. Every piece is a tagged template: swapping is a change in `design/store_assets.json`.
-
 ## Where things are
-- Art bible and size table for every model: `design/kit.json`.
-- Models (64): Kiln sources `assets/meshes/src/{kit,gear,foods,zones}/*.kiln.js`, GLBs `assets/meshes/{kit,gear,foods,zones}/*.glb`, worker manifests `assets/meshes/manifest_*.json`, Roblox asset ids `assets/meshes/ids.json`, merged measured manifest `assets/meshes/manifest.json` (64 models + 43 hero rigs).
-- Model tools: `tools/publish_meshes.py` (upload once, by content hash), `tools/studio/install_models.py` (LoadAsset -> clean template: colour from the hex in each part name, pivot at the base), `tools/merge_manifest.py`.
-- Map: spec `design/map.json`; generator and emitter `tools/map/gen_map.py`, `tools/map/emit_chunks.py`, `tools/map/RUN.md`; runner `tools/map/build_in_studio.py`. Generated output (gitignored): `work/map/{report.json, plan.png, terrain/, chunks/*.lua}`. Regenerate with the commands in `tools/map/RUN.md`.
-- UI: specs `design/ui/*.json` + `design/ui/theme.json` + `design/ui/templates/`; shipping trees `src/ui/*.model.json` (18 screens) and `src/ui/Templates/*.model.json` (11), mounted at `ReplicatedStorage.Ui` by `default.project.json`; generated binding list `design/ui/BINDINGS.md`; build tools `tools/ui/{build_ui,mangapop,screens,icons,bindings}.py`; icons `assets/ui/icons/` (39), food icons `assets/ui/food_icons/` (12), patterns `assets/ui/patterns/` (3), uploaded ids `assets/ui/ids_*.json`; `tools/gen_icons.py` -> `src/shared/Config/Icons.luau` (GENERATED); mockups `assets/ui/mockup.png` and `mockup_phone.png`.
-- Client: `src/client/Ui/{Screens,Viewports,Theme,DevPanel}.luau`, `src/client/Ui/Pages/*.luau` (13 pages), controllers rewritten onto the screens: `Hud, Menu, Throw, Hero` + new `WorldUiController`. `DevHud`, `DevMenu`, `ThrowUi` are gone.
-- Server: `PlotService` (gear model on the dojo pad, pedestals in rarity colours), `InteractService` (hub stations no longer act server-side), `DataService` (refuses to start a fresh profile over an unreadable save).
-- Heroes: `tools/studio/build_r15.luau`, `tools/studio/run_bake.py`, `design/characters/README.md` (batch 2), `design/characters/roster.json` (43), `design/characters/final/batch2_*.jpg`. `Core/Roll.heroWeights`: heroes of one rarity share its weight.
-- Pictures of the result: `design/world/*.jpg` (map in Studio, UI in play).
-- Studio (the place, not Rojo): `Workspace.Map` (Plots, Hub, Lanes, Scenery, Barriers + terrain), `ReplicatedStorage.Assets.{Kit (46), Gear (8), Foods (12), Characters (43)}`, `ServerStorage.CharacterSources.{R15_Final (43), R6_Originals (31), Originals_Batch2 (12)}`. Lighting preset applied. Baseplate and the template SpawnLocation are gone.
-- Skills changed (exported and committed in `_RobloxAI`, commit 5472be3): `roblox-ui/scripts/ui_build.py`, `create-roblox-game/scripts/validate.py`.
-
-- REWORK after the owner played s3-03 (same day): reference recording notes `design/research/05-reference-recording.md` + frame sheets `design/research/img/ref_*.jpg`; 37 more models (36 set pieces `zone_props_v2` in `design/kit.json`, the new `Lane_ZoneGate`, `Plot_ThrowStage`; manifests `assets/meshes/manifest_zones_a2.json`, `manifest_zones_b2.json`, updated `manifest_kit.json`); map v2 (`tools/map/zones.json`, `tools/map/post_build.luau`, 20 chunks in `work/map/chunks/`); UI v2 (`tools/ui/screens_v2.py`, 20 glossy icons `assets/ui/icons_v2/` + `assets/ui/ids_icons_v2.json`); client v2 (`src/client/Fx/{ThrowSequence,ThrowPose,Particles}.luau`, `src/client/Ui/RevealUi.luau`); hero batch 3 (`design/characters/final/batch3_*.jpg`, `ServerStorage.CharacterSources.Originals_Batch3`). Pictures of the result: `design/world/v2_*.jpg`.
-- Counts now: 59 heroes (51 lane + 8 premium), 101 world models, `Workspace.Map` = 8,863 MeshParts + 1,506 parts + terrain, `ReplicatedStorage.Assets.{Kit (81), Gear (8), Foods (12), Characters (59)}`.
-
-- REWORK 2 after the owner played s3-v2-05 ("most things face the opposite direction", "button texts out of the box, buttons unnecessarily big and very normal", "try Creator Store anime props"), same day:
-  - Facing: `tools/studio/install_models.py` turns every template half a turn and puts its pivot at the base centre; `tools/map/emit_chunks.py` sign faces (Back on a kit `Face_<hex>` part, Front on a plain anchor). All 101 templates reinstalled, the map rebuilt.
-  - Hub plaza and skyline: `hub_plaza()` in `tools/map/gen_map.py` (giant lucky cat on a plinth, inlaid ring, lanterns, benches, cherry trees in planters, drums, foxes, banners, eight scaled zone landmarks behind a back wall lowered from 30-36 to 15-19 studs). `--meshpart-budget` default is now 9100.
-  - UI v3: `tools/ui/mp3.py` (the button system), `tools/ui/screens_v3.py`, `tools/ui/fit_gate.py` (run by `build_ui.py`), `design/ui/CHANGES-v3.md` (what the client must do), large icons `assets/ui/icons_big/` + `assets/ui/ids_icons_big.json` (27 keys `...Big`), `FxSunburst`. `tools/gen_icons.py` no longer reads `ids_icons_v2.json` (83 images in `Icons.luau`).
-  - Client v3: `Screens.setButtonState` / `Screens.tint` / press feedback / `TouchScale` in `src/client/Ui/Screens.luau`, `Theme.BUTTON` in `Theme.luau`, pages rewritten onto them.
-  - Pictures: `design/world/v3_*.jpg` (game), `work/ui/before_v3/` and `work/ui/after_v3/` (the defects), `work/ui/mockups/` (sheets).
-- Counts now: `Workspace.Map` about 9,015 MeshParts in 2,011 placements + terrain (3.30M triangles, 1.22M within 600 studs of the plots), 101 world models, 59 heroes, 18 screens + 11 templates, 83 images.
-
-- REWORK 3 after the owner played s3-v3-02 ("buttons touching each other", "food shop should scroll horizontally", "HUD texts too small and unstable", "use the free Creator Store assets"), same day:
-  - UI v3.2: spacing and a 13 px text floor are properties of the helpers (`tools/ui/mp3.py`) and two new `fit_gate.py` checks (`gap`, `min_text`); Food Shop is one horizontal row (`FoodScroller`, attribute `WheelScrollsX`); HUD side buttons carry their caption inside the face; stats are three aligned pills. Client: sideways wheel scrolling in `Screens.luau`, scroll-to-NEXT in `Pages/FoodShop.luau`. `design/ui/CHANGES-v3.md` has the v3.1 and v3.2 sections.
-  - Creator Store props: 36 free models, scripts and effects stripped, archived as sources in `ServerStorage.StoreAssets` (attributes `AssetId`, `Creator`; never delete). `python tools/studio/install_store_assets.py` squares each one up and installs `ReplicatedStorage.Assets.Kit.Prop_store_<Name>`, and writes `assets/meshes/manifest-store.json` (read by the map generator, not by the upload tools). Placed by `hub_plaza()` and the zone pools in `tools/map/zones.json`.
-  - Pictures: `design/world/v32_*.jpg`.
-- Counts now: `Workspace.Map` about 10,000 model parts in 2,281 placements (314 of them Creator Store pieces) + terrain, about 3.5M triangles estimated (1.24M within 600 studs of the plots); 101 own models + 36 store templates; 59 heroes; 18 screens + 11 templates; 83 images.
+- Specs (the contract): `design/animations.json` (14 clips), `design/vfx.json` (27 effects), `design/sfx.json` (38 sound roles; 4 added this section: reveal_tick, letter_type, zone_cross, toast_pop). Plan: `design/plan/06-motion-vfx-sound.md`.
+- Animation: specs `assets/animations/specs/<Name>.json` (generated by `tools/anim/clips_player.py`, `tools/anim/clips_hero.py`), renders `assets/animations/renders/<Name>_sheet.png` + `.gif`, manifest `assets/animations/manifest.json`, uploaded ids `assets/animations/ids.json`, runner `tools/anim/run.py` (gen / dry / render / axis / manifest / build), README `assets/animations/README.md`. Studio builder `work/anim/build.lua` (gitignored). Upload work files `work/anim/upload/` (dump, .rbxm per clip, apply_ids.luau).
+- VFX: definitions `assets/vfx/effects/<Name>.json`, parametric builders `assets/vfx/builders/build_*.py`, strips `assets/vfx/strips/<Name>.jpg`, kits `assets/vfx/kits/<Name>.luau` + `.assets.json`, textures to upload `assets/vfx/upload/` (`upload_list.json`), uploaded ids `assets/vfx/ids.json` (+ `ids_flat.json`), tools `assets/vfx/tools/` (`strip.mjs` headless Edge strips, `pack_all.py`, `build_templates.template.luau`, `check_templates.luau`, `serve_tfa.py`, `make_tfa_tex.py`), manifest `assets/vfx/manifest.json`, README and progress files. Studio builder `work/vfx/build_templates.luau` (generated by `pack_all.py`).
+- Sound: picks `assets/sfx/manifest.json` (hand-picked from two measured search rounds), spec copy `assets/sfx/spec.json`; work files `work/sfx/` (candidates, probe/report scripts, Studio reports).
+- Code: `src/shared/Config/SoundBank.luau` (GENERATED by roblox-sfx emit_bank), `src/shared/Sfx.luau` (play by role), `src/shared/Config/Animations.luau` (GENERATED by `tools/gen_anim_ids.py`, a gate step), `src/client/Fx/Motion.luau` (clips by name: uploaded id, else session KeyframeSequence, else nil), `src/client/Fx/VfxKit.luau` (effect runtime), `src/client/Fx/Vfx.luau` (policy wrapper: 24-aura cap, low detail, Particles fallback), `src/client/Controllers/SoundController.luau` (Music/Effects groups following Settings, music + festival crossfade, zone ambience, caps, throttles), `src/client/Controllers/FxController.luau` (moments inferred from state: sell, claim, rank-up, rebirth, slot, buy, server luck, festival). Changed: `HeroController`, `ThrowController`, `HudController`, `Fx/ThrowSequence.luau`, `Ui/Screens.luau` (`Screens.Pressed`), `Ui/Pages/Settings.luau`, `tools/gate.py` (animation table step), `tools/map/gen_lane_style.py` (floor tones). Integration log: `work/integration_s4.md`.
+- Studio (the place): `ReplicatedStorage.Assets.Anims` (14 KeyframeSequences, each with an `AnimationId` attribute), `ReplicatedStorage.Assets.Vfx` (27 effect templates). `Workspace.Map` rebuilt with the deeper floor tones. Streaming settings unchanged.
+- Pictures: `design/world/s4_*.jpg`, rework 1 `s4r_*.jpg`, rework 2 `s4r2_*.jpg`, rework 3 `s4r3_*.jpg`.
+- REWORK 1 (owner's review 2026-11-15, build `s4-02`), where it lives:
+  - Hero auras: `design/auras.json` -> `tools/gen_auras.py` (gate step) -> `src/shared/Config/Auras.luau` + `work/auras/build.luau` (Studio) -> `ReplicatedStorage.Assets.Auras` (28); converter `tools/studio/build_auras.luau`, review stage `tools/studio/review_auras.luau`; runtime `src/client/Fx/HeroAura.luau` (budgeted in `Fx/Vfx.luau`). Owner's packs archived in `ServerStorage.ImportedVfx` (HandPicked 33 / AuraPacksAll / ParticlePacks 121).
+  - Imported one-shots: `tools/studio/build_fx_imports.luau` -> `ReplicatedStorage.Assets.FxImported` (RebirthClock, VoidFlare, LandingImpact), runtime `src/client/Fx/ImportedFx.luau`.
+  - Training: `config.Training.Stations` (4 stations, Contact distances), `src/server/Services/TrainingService.luau` (rewritten: snap + lock + perfect taps, remote `TrainTap`), `src/client/Controllers/TrainingController.luau` (new), map courts in `tools/map/gen_map.py`.
+  - Throw: pad lock + exit in `ThrowController` (`_lock`, `_exitPad`), lane walls (`LaneBlock<i>`), streaming focus (`ThrowService:_focus`), reveal upgrades in `Fx/ThrowSequence.luau`, Studio test command `nextrarity` (AdminService, Studio only).
+  - Animations rev 2: `tools/anim/clips_train.py` (Throw, TrainStrike, TrainPush, TrainLift new), uploads in `assets/animations/ids.json`; dump/upload work `work/anim/upload2/`.
+  - UI v4: `tools/ui/mp4.py`, `tools/ui/screens_v4.py`, `design/ui/CHANGES-v4.md`, mockups `work/ui/mockups/`. Icons v4: Blender renders `tools/ui/icons_v4*.py` -> `assets/ui/icons_v4/` (`ids_icons_v4.json`), fit gate `tools/ui/icon_fit_check.py`; bursts `assets/ui/fx_v4/` (`ids_fx_v4.json`).
+  - Sound: 9 roles added (food_flight, food_impact, rarity_step, suspense_riser, heartbeat, impact_frame, train_lift, train_push, rebirth_clock), all probed in Studio.
+- REWORK 2 (owner's second review 2026-11-16, build `s4-03`), where it lives:
+  - Throw pad: held by the SERVER now (`ThrowService:SetPad`, remote `ThrowPad`, like training: snap, anchor, walk/jump 0; release sets the player down behind the pad). Client `ThrowController:_lock` only turns controls off, fades the HUD (`HudController:SetCinematic("throwpad")`) and keeps throw mode's camera. The old exit's `Humanoid:MoveTo` is gone (it resumed on its own seconds later: the owner's "auto moving out" bug).
+  - Carry and place: `PlotService:SetCarry/ClearCarry/Carrying` (Player attribute `Carrying` = "uid|id|mut|size|stars"; the hero is saved in its slot at the catch and only left off the plot while carried; 150 s timeout puts it down), `SquadService` place/bench/sell/fuse/"drop" clear it, `ThrowService` sets it for a hand throw (Auto Throw seats as before). Client `src/client/Controllers/CarryController.luau` (new): the hero overhead on every carrier, "Place hero"/"Swap here" prompts and a glow on the owner's open pedestals, PlaceHero clip, hero_place + LandingImpact + rarity burst; `HeroController:ExpectPlace` pops the placed hero in.
+  - Reveal: `Fx/ThrowSequence.luau` suspense rebuilt (a striding silhouette with footsteps, dust and camera bumps; shots: feet from the ground, the hero's own eyes toward the food (Rare+), the low front push-in; plant stomp; odds counter ticking higher (odds_tick) and restyled per rarity rung (`RevealUi.oddsTier`), slam at the final beat (odds_slam)); dialogue line typed out in its POV shot (`RevealUi.say`, lines in `config.RevealLines`, a hero's own `Line` field wins); region crossings call `HudController:ZoneCross` with a camera kick; the plot is re-streamed before the camera returns.
+  - Streaming: `Workspace.StreamOutBehavior` = Default (was Opportunistic, which unloaded the base while the reveal held streaming at the lane end: the owner's "map disappears when I come back").
+  - Rebirth: `FxController:_rebirthCinematic` (HUD faded, bars, low orbit while gathering (RebirthEvolve clip), the clock close behind at half size, burst flash + nova + LevelUp banner, rising orbit, flash back).
+  - Base: station name plates (`PlotService:_dress`: compact plate over the station, drawn over props; the offset is in the mat's own axes, which is why the names sat at floor level), court edge = dark wood trim + gold-capped corner posts (`gen_map.py`), the slot sign 1.6x on the forecourt gravel beside the walkway (config `SlotSignX/Z` 13.5 / 48).
+  - Aura showcase: `tools/studio/aura_showcase.py build|sync` + `tools/studio/build_aura_showcase.luau` -> `Workspace.AuraShowcase` (floats at -820, 320, -40; deleted by the server at start, so never shipped): ByHero (every hero wearing its aura) and Auras (every hand-picked aura on a grey dummy; rename a dummy to a hero's name, then `sync`). 6 spare auras added to `design/auras.json` (worn by nobody); 4 of them have no body rig and are shown raw until assigned.
+  - Sound: 19 roles added (ui_hover, toast_good, toast_warn, announce, zone_hype, level_up, fuse_charge, fuse_burst, hero_pickup, hero_place, footstep_heavy, odds_tick, odds_slam, dialogue_blip, rebirth_rise, rebirth_burst, cam_whoosh, pad_enter, train_curl), candidates in `work/sfx/candidates_r2.json`, all 57 probed in Studio. Curls now use train_curl (the Rep markers fire; seen in play).
+- REWORK 3 (owner's third review 2026-11-17, build `s4-04`), where it lives:
+  - Reveal: `Fx/ThrowSequence.luau` SUSPENSE rebuilt as a villain entrance: the silhouette stalks UP the lane toward the food (HeroStalk, 1.5 studs/s, Step markers -> footstep + dust + camera bump) over 5 shots (6 from Rare: emerge (long lens down the lane), feet (low, ahead of it), profile (waist-high tracking), its own eyes + dialogue, over the shoulder, from the ground in front); it stops with HeroMenace (0.5-stud Quad Out settle, head up, Power marker -> villain_power + flare) and turns slowly to camera; the name is only blank slots in the last shot; the odds tremble (`RevealUi.oddsTension`) and climb slower (u^2.1). Reveal seconds lengthened in `config.Rarities[*].RevealSeconds` (Common 6.4 ... Secret 14.0), FINAL_HOLD 3.0. Eerie wind (reveal_wind) under it.
+  - Off the pad with the catch: `ThrowController:_play` releases the pad lock after a hand-thrown catch (the server sets the player down behind the pad, holding the hero). No sparkle on the carried hero (`CarryController`); its aura waits for the pedestal; `Vfx` skips a model while `Popping` (HeroController pop-in), which was what made a placed hero's aura oversized.
+  - Upgrades: `src/client/Controllers/UpgradeController.luau` (new): the gear and slot prompts open `HudController:Confirm` (model, stat from -> to, unlocks, cost); the server no longer buys on the prompt (`InteractService`), CONFIRM fires ShopBuy. A gold "UPGRADE!" marker over the gear stand while affordable and not training (prompt off while training); the new gear pops in on its stand with Slot_Unlock + PowerUp_Burst + upgrade_burst.
+  - One alert per event: server success toasts removed for food / gear / slot (`ShopService`) and rank (`TrainingService`); the client shows the Reward popup (gear, food, slot) or the single top LevelUp banner; the local player's own rebirth announcement is skipped (`HudController`).
+  - Rebirth: `FxController:_rebirthCinematic` ~7.8 s with RebirthAwaken (kneel, trembling rise, burst, power stance): three close shots before the burst (through the clock, profile, from the ground), impact frame + nova + one banner "REBIRTH n / You evolved!", then a rising orbit while `HudController:StatTicks` ticks Rebirth / Income / Luck / Kept one row at a time; the clock 0.95 studs behind at 0.46 scale; plot labels and the UPGRADE! marker hidden during it.
+  - Level-up chevrons: `assets/vfx/effects/PowerUp_Burst.json` Rotation 90 (the sprite points right; -90 pointed them DOWN in the engine), bigger and longer; templates rebuilt (27/27).
+  - Training: trainee sounds are not positioned (the strike sounded in the left ear only: the side camera panned it); the ring no longer repeats the station name; stations are a dais (`gen_map.py`: stone rim + 8 gold studs + gold trim + coloured mat + inner ring); prompts name the thing ("Dumbbell Curls", "Dojo gear", "Plot slots") (`PlotService:_dress`).
+  - Slot sign: on the forecourt gravel right beside the walkway where the player steps out (config `SlotSignX/Z` 11.6 / 36.5); the forecourt stone lanterns removed.
+  - Custom prompts: `src/client/Controllers/PromptController.luau` (UI worker; the card is drawn in a SCREEN layer `PromptLayer` that follows the part: an always-on-top BillboardGui never drew in play, a normal one hides behind the character; flat parts put the card beside the player).
+  - UI v4.2 (UI worker, full list in `design/ui/CHANGES-v4.md` "UI v4.2"): Reward / Confirm / StatTicks API, single top banner, zone banner top centre with an echo slam, hover-only glossy shine + permanent gloss, looped flares (weak-table bug fixed), premium sectioned store with an animated summon hero and UI aura, pages capped at 68 % x 82 % on big screens, borders per element, detailed pedestal plate (`src/client/Ui/Nameplate.luau`), training bar UPGRADE READY chip, slanted shine fixed.
+  - Animations r4: `tools/anim/clips_r4.py` -> HeroStalk 113773708526725, HeroMenace 121112025666488, RebirthAwaken 128371788611919 (`work/anim/upload4/`, ids in `assets/animations/ids.json`, `design/animations.json`).
+  - Sound: 12 roles added (reward_whoosh, reward_pop, confirm_open, confirm_yes, stat_tick, prompt_show, upgrade_ready, banner_slam, upgrade_burst, rebirth_villain, villain_power, reveal_wind), 39 candidates probed in Studio (all loaded, lengths measured), bank 78 roles.
+- REWORK 7 (owner's seventh review 2026-11-16, build `s4-08`), where it lives:
+  - Final reveal shot (`ThrowSequence`): framed from the hero's measured height (it fills about half the frame, aimed a little below its middle) so the whole hero sits between the odds and the info card; the opening low dolly starts further out (6.5 x scale).
+  - Test commands (`AdminService`, Studio only): nextrarity / nextmut / nextsize (the forced next throw now carries rarity, mutation and size: `ThrowService:ForceNext(player, {rarity, mutation, size})`), rebirthready, gear n, slots n, allfoods, rarityhero, fuseset, luckythrows n, resetdaily, clearcarry, announce rarity; the owner's event levers (festival, luck, say, throws) also work for any tester in Studio.
+  - UI v4.6 (UI worker, CHANGES-v4 "UI v4.6"): the reveal's hero card 410x130 (was 640x186) without the odds row; the "1 IN N" back at the top for the final beat (slam, rarity colour, burst, CHANCE chip, shine); the event bar is announced once then becomes a chip left of the right column (x2 LUCK / FESTIVAL, timer, boost button); the TEST panel (`Ui/DevPanel.luau`, F2) rebuilt with tabs (Throw & Reveal, Economy, Heroes, Training & Rebirth, Events, Store, UI moments, World, Danger), a hero picker, number steppers, local previews of every popup and teleports.
+  - Store v5.3 (store worker): narrower price buttons with a 20 px gap above, the flames and blood inside the hero frames above the glass, no frame around the summon hero.
+- REWORK 6 (owner's sixth review 2026-11-16, build `s4-07`), where it lives:
+  - Reveal pacing: the stalk plays at `STALK_PACE` 0.8 (1.2 studs/s), its-eyes shot >= 2.4 s, every walk shot >= 3 s, the shape holds its catch 1.8 s, final beat 5 s. Reveal seconds (`config.Rarities[*].RevealSeconds`) Common 12.0, Uncommon 12.8, Rare 14.6, Epic 16.2, Legendary 18.0, Mythic 19.6, Secret 21.0 (rework 5's lengthening had NOT reached game.json: the patch that carried it stopped early; corrected here).
+  - The name spells itself out a letter at a time (random order) from the end of the eyes shot to the flash, on one line (`RevealUi.name` no longer wraps: wrapped, it broke onto two lines and shrank out of sight); the last letter comes with the hero card.
+  - The food rests ON the ground: its centre at the food model's half height + 0.25 (it sat half underground at the old 0.95).
+  - The reveal name is sized from its length (`RevealUi.name`: TextScaled off, 18-46 px): in play the label came up unscaled at TextSize 8.
+  - Store v5.2 (store worker, CHANGES-v4 "UI v5.2 store"): the three store heroes in framed glass panels over the owner's paintings (throne `BgThrone` 104721066207509 on the summon card), realistic layered flames for the swordsman, drawn blood (BloodSplat 138180682365808, BloodDrip 74310528338938, BloodDrop 87019407382216) plus tinted owner textures for the Blood Fiend, varied showcase clip sequences (`Viewports.heroSequence`), section titles centred without icons, NO size pulsing anywhere (shine + glow instead), a compact SEE ODDS pill.
+  - UI v4.5 (UI worker): the announcement shine runs upright and `UiFx.level` levels every moment when it shows (the "slant" was the diagonal streak on the long bar); hero portraits framed on the head plus everything on it with headroom (`Viewports.hero`).
+  - Map textures: 8 of 11 tile textures had FAILED to fetch since they were uploaded ("No asset content representation found"); re-uploaded as Images (asanoha, brick, checker, kikko, planks, seigaiha, setts, shoji: ids in `assets/map/ids_textures.json`), swapped in the place (1,130 Texture instances) and re-emitted into the chunks. The remaining console line `rbxassetid://203785492` (asset type mismatch) is in none of our content (code, map, assets, UI): it comes from the player's own avatar.
+- REWORK 5 (owner's fifth review 2026-11-17, build `s4-06`), where it lives:
+  - Throw pad: the CLIENT now snaps the player to the pad centre and anchors them the instant they reach its edge (then asks the server, twice); the server's check is R+8 (was R+4) and the ThrowPad remote allows 4 calls per 4 s. Cause: the server refused the lock whenever its copy of a walking player was still short of the pad, and with no control module the player walked straight through (measured: walking in at 16 studs/s now locks at the edge, the server confirms, walk speed 0). The pad's "THROW HERE" sign hides while the player is on it.
+  - Food: tumbles only in flight (`Tumble` attribute, `ThrowController` makeFood); after landing it floats upright with a slow bob, and in a hand it stays upright.
+  - Reveal: no camera closer than `FOOD_CLEAR` = 4.5 studs to the food on the ground (and none with the food between it and the hero near the lens); the feet shot moved to the front-side; the pick-up is filmed from the hero's right (the food's side) unless the lane wall is there; the shape holds its catch `HOLD_LINGER` = 1.4 s after HeroPickUp before the flash; the letterbox slides away for the final beat (it cut the hero's head off). Reveal seconds Common 10.5 ... Secret 18.6 (measured Legendary: ~10 s of suspense + 4.5 s final).
+  - UI v4.4 (UI worker, CHANGES-v4 "UI v4.4"): the announcement is a slim dark bar at the top under the objective pill (rarity accents, hero portrait well, name as the hero of the layout, chip + odds on one baseline); toasts are compact pills stacked at the top centre (`HudController:_placeToasts` keeps them under whatever shows there); the Rebirth page on a strict grid; every window title centred as one icon+title group with a gradient; all windows drawn at `PAGE_SCALE = 0.92` (`Screens.luau`).
+  - Store v5.1 (store worker, CHANGES-v4 "UI v5.1 store"): one smooth centred scale per pulsing chip (the jitter was a scale on the inner plate + whole-pixel auto-fit text); the summon name plate on the stage floor; three equal tiles with smaller price buttons; the owner's paintings as the featured cards' art (`BgRedMoon` 110074599004151 on the limited hero, `BgBloodChains` 98516886373195 on the starter pack; the hero stage drawn above them, z 2); gamepass/product cards on one grid with header bands; section headers with badges.
+- REWORK 4 (owner's fourth review 2026-11-17, build `s4-05`), where it lives:
+  - Reveal order (`Fx/ThrowSequence.luau` SUSPENSE): 1) through the hero's OWN EYES first (>= 1.7 s, its body hidden locally, the line typed, cleared 0.9 s after), 2) slow walk shots of the black silhouette (>= 2 s each: feet from the ground ahead, waist-high profile, from the ground in front, over the shoulder; as many as fit), 3) it stops at the food and PICKS IT UP (HeroPickUp; the food rides in its right hand from "Grab" and shrinks to 0.55), 4) the flash: the real hero still holding the food takes a bite (`HeroController:RevealAnimate(model, holding)`), final beat 4.5 s. The hero now stops right behind the food (`PICK_REACH`/`PICK_SIDE`). Reveal seconds Common 8.5 ... Secret 16.6.
+  - THE "DRAGGED" WALK: the walk clip was loaded before the silhouette was parented to the world, so the track never played (Length 0, weight 0) and the shape slid along. Parented first now; measured in play: the feet swing through the stride.
+  - Throw: the Throw clip is loaded when the player steps on the pad (the wind-up came late on a first throw); gate crossings are announced 0.28 s of flight ahead (`GATE_LEAD`) so the pass-by whoosh peaks and the banner is up as the food passes.
+  - Prompt cards (`PromptController`): 0.74x smaller, ON their object (no side shift), stacked so two never overlap (nearest prompt keeps its place), hidden during any cinematic (pad, reveal, rebirth).
+  - Rebirth: prompt cards hidden; `ImportedFx` loops fade their beams over 0.7 s when stopped, and the rebirth clock starts fading 0.8 s before the end.
+  - Clips are fetched up front (`Motion.preload`, from ThrowController's start: Throw, HeroStalk, HeroPickUp, HeroMenace, Eat, CarryHold, PlaceHero, RebirthAwaken): a first play otherwise waited ~1.2 s for the download.
+  - HeroPickUp (`tools/anim/clips_r5.py`, `work/anim/upload5/`, id 99290478316788): 2.5 s, Grab 1.2667, Lift 2.0333, Hold 2.2333; the food rests at its radius (FOOD_REST 0.95) 2.71 ahead and 1.01 right of the hero's root, held at RightHand * (0, -1.05, 0), shrunk to 0.55. The final shot frames the hero in the top half (the info card covers the bottom third).
+  - UI v4.3 (UI worker, `design/ui/CHANGES-v4.md` "UI v4.3"): coin and burst share one holder; gloss/shine only on painted buttons (the white box on see-through buttons like the food chip); purchase dialog rebuilt (tag chip, stat cards, price panel); reward card (ribbon, name, chips, 4 s, fades); Squad (hover-only 1.5 s shine, tiered animated borders, rarity backgrounds, portraits inset and clipped with the frame redrawn on top); Rebirth page 800x546 rebuilt; zone banner at full opacity from frame one; the reveal's hero info card (`RevealUi.final`). Spec source `tools/ui/screens_v43.py`.
+  - Store v5 (store worker, "UI v5 store" in CHANGES-v4): sections, the summon stage built from 20 of the owner's imported textures (`assets/ui/imported_vfx_textures.json` -> `assets/ui/ids_store_v5.json`, flipbooks slid inside clipping frames), MYTHIC chip / 1% / earns 12x, three price tiles inside the card with counts above and a BEST VALUE ribbon, showcase cards for the starter pack and the limited hero, pass and product descriptions built from config and checked against the server code, one StoreFx loop only while the store is open (`src/client/Ui/StoreFx.luau`, `tools/ui/screens_store_v5.py`).
+- Skills improved (exported, committed in `_RobloxAI` as a82c6d4): `create-roblox-game/scripts/validate.py` (effect lists), `roblox-animation/scripts/to_roblox.py` (repeated marker names), `roblox-animation/references/traps.md` (3 traps).
 
 ## Done this section
-- `python tools/gate.py`: PASS code gates (rojo build, 90 lune specs, selene, stylua), config, server config, contract, pacing (unchanged by the 12 new heroes).
-- `verify_labels.py --ui src/ui --client src/client`: PASS, all 201 dynamic labels are written by client code. `verify_ui.py` (through `tools/ui/build_ui.py`): 0 failures at 1280x720 and 844x390 on all 18 screens and 11 templates.
-- Map prover (`work/map/report.json`): RESULT PASS (grounding, standable surface, enclosure, overlap, clear routes, performance budget; terrain reachability at both tides). Built in Studio by 15 chunks: 4,062 MeshParts, 97 plain parts, 0 missing models. Anchor contract checked by probe: 6 plots x 28 pedestals (tops at 1.00), every prompt with its Action/Plot, 7 spawns.
-- Models: 64 of 64 uploaded (ids on record), installed, sizes within 5% of each manifest row; all under their triangle budgets (measured by the workers' converters).
-- Heroes: 12 new avatars rebuilt to shoulder 4.00 / root 3.00, checked in four close-ups, 43 templates baked with 15 motors each; in Play 12 of 12 new ones loaded and animated.
-- Play test on 2026-11-14 (build `s3-03`, one real client, no script errors in Output in any run):
+Verified in play on build `s4-01` (2026-11-15, one real client, 1482x673, no script errors in Output):
 
 | What | Result |
 |---|---|
-| Boot | 18 screens mounted, 0 visible `<unbound>`, 119 icon slots filled, HUD shows live values |
-| Throw (mouse held on THROW, real input) | meter shown only on the pad; first catch = guaranteed Uncommon, +3 yen/s |
-| Food shop | 12 cards, 3D food models spin in the viewports, prices and "N new heroes" lines |
-| Squad | hero portraits, rarity / size / mutation tags, income, bench and sell |
-| Store | starter pack, passes, items, summon scroll with SEE ODDS |
-| Hero index | 7 tiles in zone 1 with live chances (sum 99.97%) |
-| Welcome back | opened once at join: "away 3m 36s, +492M"; CLAIM paid it |
-| Daily chest (walk up, press E) | opened Daily Rewards; nothing was claimed until the button; then "1 DAY STREAK", TOMORROW |
-| Gifts button | routed to Free Gifts with six timers |
-| Settings -> Codes | typed "welcome", redeemed: "Code redeemed!", Lucky Throws x3 |
-| Training (E on the dojo pad) | training bar shown, Power 10 -> 15, "NEW GEAR: Sandbag 600" |
-| Saving | yen and heroes from the previous session were there at the next join |
-| Frame rate (Studio in front, graphics level 21) | 60.2 fps average, worst frame 18 ms, 3,743 parts streamed in |
-
-- REWORK, verified in play on build `s3-v2-05` (2026-11-14, one real client, no script errors in Output):
-
-| What | Result |
-|---|---|
-| Map v2 prover | RESULT PASS; built by 20 chunks, 0 missing models; a 7-zone variant generated from data alone also passes |
-| Spawn | on the plot (z 12); throw stage 42 studs in front of the base, lane starts at z 96 |
-| Throw mode | HUD buttons hide, vertical meter with sliding marker, "+23 POWER", PERFECT band; T / tap throws |
-| Sequence | letterbox, luck label over the top bar, zone ribbon, chase camera under the gate, food with trail, "1 in N" climbing, black silhouette, name puzzle with one slot per letter |
-| Final beat | whole hero framed between the odds starburst and the name block; rarity ribbon, CRAVING tag, income, "sent to your bench", "tap to continue"; holds 2.6 s |
-| HUD v2 | edge-hugging icon columns with the new icons, stats block bottom-left, slim hint; Welcome Back content visible after the z-order fix |
-| Frame rate (Studio in front, level 21, on the throw stage) | 60.2 fps average, worst frame 18 ms, 6,200 parts streamed in |
-| Gates | `tools/gate.py` green (90 specs), `verify_labels.py` PASS (211 labels), `verify_ui.py` 0 failures at 1280x720, 844x390, 1920x1080 |
-
-- REWORK 2, verified in play on build `s3-v3-02` (2026-11-14, one real client, 1482x673, no script errors in Output):
-
-| What | Result |
-|---|---|
-| Facing | stage arrow and steps point down the lane; gate banners ("SAKURA SCHOOLYARD START HERE") face the thrower; hub stations, cats and boards face the plaza; leaderboards readable from the plaza; heroes face the lane; gear stands on its pad (base 0.75 on a pad top of 0.70) |
-| Map prover | RESULT PASS after the plaza (3,509 parts); built by 19 chunks, 0 missing models |
-| Frame rate (Studio in front, on the throw stage) | 60.0 fps average, worst frame 19 ms, 6,140 parts streamed in |
-| fit gate (new) | 152 failures on the v2 trees, 0 on v3 at 1280x720, 1345x611, 844x390, 1920x1080 |
-| HUD | hint pill hugs its text; gear in the top-right corner; side buttons with their own caption rows; the gift chip takes the caption row; nothing over a window's close button |
-| Food Shop | vertical grid; flavour-tinted art tile with sunburst and a large food; NEXT tag and gold keyline on the first unowned food; one sized price button per card; EQUIPPED state pill |
-| Store | summon panel with head-and-shoulders viewport and two-line price buttons, BEST VALUE above the x10 face; passes and items in one vertical scroll |
-| Squad, Hero Index, Free Gifts, Rebirth, Welcome Back | opened in play and correct (rows right-aligned, unknown heroes as coloured question marks, locks, six tabs inside the window, "2X [robux] 39" in one row) |
-| Throw | T and the THROW button both throw; odds counter below the letterbox; final beat frames the hero |
-| Gates | `tools/gate.py` green (7 steps), `verify_labels.py` 214/214, `verify_ui.py` 0 failures at four sizes |
-
-- REWORK 3, verified in play on build `s3-v3-03` (2026-11-14, one real client, 1482x673, no script errors in Output):
-
-| What | Result |
-|---|---|
-| fit gate | `gap` 37 -> 0, `min_text` 91 -> 0, all other checks 0 at four sizes |
-| HUD | captions inside the side buttons (15 px at 720p), three stat pills with one icon column and one value column, rank chip and yen/s inside their pills, food chip as one pill |
-| Food Shop | one horizontal row, every element on its own row with gaps, large food pictures, mouse wheel scrolls sideways (3 notches = 3 cards), opens scrolled to the NEXT card |
-| Store, Hero Index | reopened after the spacing pass: correct |
-| Map prover | RESULT PASS with the store props |
-| Frame rate (Studio in front, on the throw stage) | 60.0 fps average, worst frame 19 ms, 7,062 parts streamed in |
-| Gates | `tools/gate.py` green, `verify_labels.py` 214/214 |
+| Sound bank | 38/38 roles filled; 438 candidates probed in Studio over two rounds, every pick loaded with a measured length; 0 uploads (all Creator Store by id) |
+| Sound in play (instance level, not heard) | music_home playing in the Music group at join; groups follow the Settings sliders; a throw fired in order: throw_charge, throw_whoosh, zone_cross + the zone's ambience at each gate (Sakura, Harbor, Ninja), food_land, reveal_tick, reveal_drumroll, 7 x letter_type, reveal_common, dash_whoosh, coin_tick |
+| Animation | 14 clips authored in FK, rendered and judged on contact sheets, all pass the axis check; built in Studio (durations and markers exact: Throw Release 0.55, TrainStrike Hit 0.3/0.7, Eat Bite 0.7/0.95, RevealLand Land 0.27, ...); all 14 uploaded through Open Cloud as Animation assets (ids in `assets/animations/ids.json`), so they play on live servers |
+| Animation in play | 16 heroes on the base each playing their configured idle (IdleCheer, IdleCool, IdlePower, IdleBlade); the player's Throw clip caught mid wind-up with the food in the hand; the caught hero's silhouette in the RevealLand crouch |
+| VFX | 27 effects authored in the roblox-vfx sim from the texture library, judged on headless strips; 60 textures uploaded; 27/27 templates built in Studio, 0 PROP_FAILS; peak particles 5 to 77 (budget 220) |
+| VFX in play | every one of the 27 seen firing in the engine: the 7 reveals side by side (rarity pillars, rays, stars), the 6 small one-shots, Rebirth_Nova, Summon_Portal, Zone_Unlock, ServerLuck_Sky, the 5 auras on real heroes on pedestals (second version, readable from about 35 studs), ThrowTrail_Basic on the flying food from the chase camera, Hot and Epic on moving parts, DashHome_Trail, LuckyThrow_Charge |
+| Fixes found in play | food model now flies with its carrier (it hung 175 studs away); Sakura floor no longer blooms white |
+| Rework 1 in play (build `s4-02`, 2026-11-15) | Copy Ninja's dragon accessory gone; 28 hero auras on real heroes, fitted to pedestals (judged in three passes); throw pad lock holds against WASD and releases on the meter's X; zone label single under the meter; full-power Throw clip seen in the wind-up; landing rock impact; map fully streamed behind the reveal (Common, Legendary, Mythic); rarity-colour escalation on the silhouette (Mythic); Legendary and Mythic finals with auras, the purple flare and the trailer dolly; strike, curls and push stations: snapped at contact (strike root at dummy face + 2.47), locked, timing ring live, taps judged, exit restores movement; base: gate space, centred pedestals, mirrored courts, real pillar and waterfall; UI v4 seen in game on Welcome Back, Squad (rarity tile, fuse star), Rebirth, Store (Robux mark), Summon odds (hero cards); 58 fps on the base with all auras |
+| Rework 2 in play (build `s4-03`, 2026-11-16) | throw pad held by the server against S/A/Space for 2.5 s, X sets the player down behind the pad with movement back (no MoveTo); HUD buttons, stats and chips fade on the pad; a forced Legendary: the silhouette strides in on HeroWalkIn (feet shot, its own-eyes shot with the typed line "Who dares summon me with a meal?", front push-in), HeroArrive stomp; ZONE n region banner in the zone colour mid-flight; the catch rides overhead after the reveal, E on a pedestal places it (server cleared the carry, the hero with its aura on the pedestal); curls fire train_curl on every Rep marker; rebirth cinematic (bars, close camera, the clock close behind at the player's size, banner) on rebirths 1-3; UI seen in game: Welcome Back (CLAIM centred with its tick), Squad (framed heads, rarity borders, centred captions), Hero Index (black silhouettes with ?, rarity chips, zone cards with their landscapes), Food Shop (tight pills, centred prices); station name plates over each station; court trim and gold-capped posts; slot sign on the forecourt; aura showcase built (93 stands) |
+| Rework 3 in play (build `s4-04`, 2026-11-17) | forced Legendary: suspense 8.2 s, the silhouette stalks 9.6 studs up the lane on HeroStalk at speed 1.00 (1.5 studs/s, no skating), all 6 shots in order, HeroMenace on arrival, the opening shot with the food at the frame edge; after the catch the player stands off the pad holding the hero (no sparkle), E on a pedestal places it (light column, carry cleared, hero at scale 1.0, aura attached after the pop); gear: gold UPGRADE! marker, F opens the confirm (Stone Pillar, +10 -> +36, unlocks Stone Push, 600K), UPGRADE gives the NEW GEAR reward popup with the turning model; custom prompt card beside the player on a station (TRAIN / Dumbbell Curls); store in sections with the animated summon hero and BEST VALUE on the x10 edge; rebirth: one banner, stat panel ticking rows, clock close behind; zone banner top centre (ZONE 3 / NINJA VILLAGE); training dais and the slot sign on the forecourt seen in edit mode |
+| Rework 4 in play (build `s4-05`, 2026-11-17) | forced Legendary: through its eyes 2 s, two slow walk shots on HeroStalk (feet measured swinging, no slide), HeroPickUp starts on time, the hand reaches the food at Grab (1.05 studs = the weld) and lifts it to shoulder height; final: the hero holding and biting the food, framed above the new hero info card (rarity, name, mutation and craving tags, +480/s, 1 in 710, LUCKY!); prompt cards stacked and smaller at the strike station; rebirth: cards hidden, clock beams fade over 0.7 s; purchase dialog (TIER 2 chip, stat cards, price panel), reward card with chips, Squad portraits inside their frames, the smaller Rebirth page, the v5 store (summon stage, tiles, showcase cards, pass descriptions, OWNED state) |
+| Rework 5 in play (build `s4-06`, 2026-11-17) | walking onto the pad at 16 studs/s locks at the edge (snap to centre, server confirms, walk speed 0), THROW HERE hidden; after a catch the player is behind the pad carrying; the food tumbles in flight only, upright after landing; no reveal camera within 4.5 studs of the food; suspense ~10 s + 4.5 s final for a Legendary; the store with both paintings and heroes, the summon plate and tiles, the pass cards; the Rebirth page grid; a toast at the top centre; the food chip without the white box |
+| Rework 6 in play (build `s4-07`, 2026-11-16) | the store with framed heroes, flames and blood, centred section titles, the compact SEE ODDS; Squad portraits with the whole head inside the frame; the reveal: the stalk at speed 0.8, the name filling in letter by letter through the walk (seen in a capture), the food resting on the ground (bottom 0.1-0.4 above it), the final beat without bars with the hero eating the food above the info card; all 11 map tile textures fetch (8 re-uploaded) |
+| Rework 7 in play (build `s4-08`, 2026-11-16) | the TEST panel with its tabs (F2); a forced Epic: "1 IN 88" + CHANCE at the top, the whole hero centred holding the food, the compact card; the catch announcement level; a Festival Hour shown as a chip beside the right column; the store with the narrower buttons, effects in front of the glass and the frameless summon hero |
+| Gates | `tools/gate.py` green (incl. the new animation-table step); `validate.py --stage-gate` passes; map prover RESULT PASS after the floor-tone change |
 
 ## Decisions and why
-1. Look: "toy-block anime festival" (`design/kit.json`). The owner called the greybox plain; the genre's hits are bright, chunky and readable from far. Everything is code-modelled with Kiln in flat colours, one MeshPart per colour: one hand, no downloads, exact sizes.
-2. No asset packs were downloaded (no explicit permission for downloads): the CC0 route in plan 03 was replaced by Kiln for all 64 models.
-3. The 12 new heroes go two per zone (7 per zone). Heroes of one rarity now SHARE that rarity's weight, so adding heroes never changes a zone's rarity odds or the economy (two new specs).
-4. Hub stations open their screen on the client; the server no longer acts on the food / daily / gift / index / summon / squad prompts. Walking up to a cart must never spend Yen, and it makes Daily Rewards reachable after the claim.
-5. The summon shrine opens the Store (it was wired to Rebirth in the blockout); the sell booth opens the Squad.
-6. HUD shrunk after the first play test (stat chips 190x54, hint a 460x44 pill): the first version covered a third of the screen. The verifier's text floor for the two project sizes is now the plan's 14 px at 720p.
-7. Pedestals wear the rarity colour of the hero on them (premium = store pink); locked ones are dim.
-8. Training gear is placed by the server on the `Gear` anchor from `Assets.Gear.Equip_<name>`; thrown food is the real model riding an invisible carrier part, drawn 1.7x so it reads down the lane.
-9. Icons ship as keys (`IconKey`, `PatternName`), ids live in the generated `Icons.luau`: an image can be re-uploaded without touching a screen file.
-10. The map lives in the place (`Workspace.Map`); `Blockout.ensure` returns it untouched. The map's source of truth is `design/map.json` + `tools/map/`.
-11. Fan-out: six workers (map, four model workers, UI) plus one for the client rewiring. All Studio work, uploads and play tests stayed on one thread.
-12. `DataService` refuses to treat an unreadable stored value as a new player (it kicks instead of starting fresh).
-
-13. (rework) The throw is a TAP on a self-sliding marker, not hold-and-release: it is what the genre's players know, it works with one thumb, and the server contract (`ThrowRequest(charge, lucky)`) did not change.
-14. (rework) The catch is a staged reveal with two moving numbers (luck in flight, odds after landing), a silhouette and a self-solving name, ending on a 2.6 s final beat; the card that covered the hero is gone. Timings come from config (`Throw.Flight*`, `LandPauseSeconds`, `Rarities[*].RevealSeconds` 4.6 to 9.4); the whole sequence ends when the server says the hero arrives. Pacing still passes with `Throw.CycleSeconds` = 7.
-15. (rework) Lanes are 56-wide walled corridors, zones 360 studs long, throw stage out in front of the base (`World.ThrowPadZ` 70, `LaneStartZ` 96). Walls are parts with a built-in material per zone (terrain ridges 12 studs wide render as jagged voxels and fail the prover).
-16. (rework) Set pieces were modelled (Kiln, one style) instead of pulled from the Creator Store: the owner's complaint was sparse and generic surroundings, and mixed-source props would have added a second problem (mixed styles, scripts to vet).
-17. (rework) The map total is 3.25M triangles against the skill's 1.5M guideline, by the map worker's choice and accepted here: about 1.18M sit within 600 studs of the plots and the rest streams by distance; 60 fps measured on the dev PC. Strict version: `gen_map.py --tris-budget 1450000`.
-18. (rework) Premium heroes are 8 of the owner's batch-3 avatars; the premium ids did not change (products and saves refer to them), only names and looks.
-19. (rework) Plot sizes cut to Big 1.2 / Huge 1.4 / Titan 1.7 so every hero fits a pedestal 7 studs from its neighbour.
-20. (rework) Icons: 20 glossy icons generated with Cloudflare Workers AI (owner's key, owner's request) replace glyphs under the same keys; 6 that generated badly keep their glyph.
-
-21. (rework 2) Models are turned once, in the installer, not per placement: Roblox's importer delivers an uploaded glTF model half a turn about Y (measured on `Plot_ThrowStage`: the arrow authored 1.1 toward +Z sat 1.1 toward -Z). The generator's rule stays "front is -Z, yaw turns it".
-22. (rework 2) Creator Store props were tried, as the owner suggested, and not used. Six free packs were inserted into a quarantine folder and audited: three were reuploads carrying scripts and GUI (removed), one forest pack is 9,570 Parts, and the two clean ones (BL00MIE "Low Poly Japanese Prop Pack / Buildings") carry the mesh names of a commercial Unity pack ("SM_Prop_...", "SM_Bld_...", "Imported from Unity") in a dull realistic palette. Putting those in a monetised game risks a takedown that blanks the meshes, and they do not match the toy-block style. Everything was deleted from the place again. The owner can overrule this.
-23. (rework 2) The hub's back wall is low (15-19 studs) so one scaled-up landmark of every zone stands over it; the invisible barrier does the containing.
-24. (rework 2) UI: three button sizes (34 / 44 / 56 at 1280x720), every caption in its own padded box that can only shrink, icon + caption as one centred row, one gloss and lip everywhere, colour means one thing (green afford, slate cannot, blue neutral, pink Robux, red destructive, grey pill = state). These are properties of the helpers in `tools/ui/mp3.py`, checked by `fit_gate.py`, so a screen cannot opt out.
-25. (rework 2) Icons: size decides style. Under 30 px the flat ink-outlined glyph (base key); 40 px and up the glossy family (`...Big` keys), all post-processed the same way (shadow removed, ink outline, white keyline). Auto, Savory and Throw failed generation twice and keep the glyph at large size.
-26. (rework 2) The mockup renderer cannot be trusted for text fit (it does not have Roblox's font metrics): the fit gate uses a conservative width rule, and every UI change is judged in the game before it is called done.
-
-27. (rework 3) Creator Store models ARE used now, at the owner's explicit request (this reverses decision 22). Chosen for fit: 21 single-mesh Japanese props and buildings (BL00MIE packs 3226580409 and 3226471202), 12 bright simulator props (moberyt1 18411844605), a ramen shop (m1crowave2457 2244003427), a ramen cart (Eqbert 3449117633) and a large cherry tree (xxlKittyIxx 2340650385). Rejected after audit: a 14,000-part shrine, a 4,000-part island, a 9,570-part forest, a 1,100-part ramen shop, and three reuploads that carried scripts. Known risk, told to the owner: the BL00MIE packs carry the mesh names of a commercial Unity pack; if Roblox takes them down those props go blank. Every one is a named template, so replacing one is a one-line change in `zones.json` or `hub_plaza()`.
-28. (rework 3) The Food Shop scrolls sideways because the owner asked for it (it was a vertical grid for one round); the client maps the mouse wheel to it.
-29. (rework 3) Spacing rule at 1280x720: 8 px between controls in a row, 10 px between stacked rows in a card, 14 px between cards, 12 px card padding; text never under 13 px; a box grows rather than its text shrinking.
+REWORK 5 (owner's fifth review, logged as an intervention):
+- R21. The pad lock is applied by the client first (snap + local anchor) and confirmed by the server: an unconfirmed lock still holds the player, and the server's own anchor follows.
+REWORK 4 (owner's fourth review, logged as an intervention):
+- R19. The reveal opens from the hero's own eyes and ends with it picking the food up: the owner's order. Every phase has a floor (eyes 1.7 s, each walk shot 2 s, pick-up 2.4 s); a Common has the eyes and the pick-up only.
+- R20. A clip is only ever loaded on a rig that is already in the world (a track loaded outside the DataModel never plays).
+REWORK 3 (owner's third review, logged as an intervention):
+- R15. The reveal is LONGER by design now (Common 6.4 s ... Secret 14 s): the owner asked for a cinematic entry over speed; any tap still skips it, Fast reveal and Auto Throw keep the 1.5 s version.
+- R16. Upgrades and slot purchases go through a confirmation on the client; the server still checks every purchase (ShopBuy), and the prompt itself no longer spends.
+- R17. One alert per event: a celebration (reward popup, top banner) never also toasts; toasts stay for info and errors.
+- R18. Prompt cards in a screen layer that follows the part, not a BillboardGui (always-on-top billboards do not draw in this place; trap in CLAUDE.md).
+REWORK 2 (owner's second review, logged as an intervention):
+- R10. The pad lock moved to the server: a client-only hold can be broken by anything that moves the character on the client, and the old exit walked the character with MoveTo, which Roblox resumes when walking comes back.
+- R11. A caught hero is SAVED at the catch and only carried in presentation: leaving, crashing or never placing it loses nothing (it goes back to its slot after 150 s or on the next catch).
+- R12. StreamOutBehavior Default: content streams out only under memory pressure, so a lane-end reveal no longer unloads the base. Phones under pressure still stream out, and the plot is re-requested before the camera returns.
+- R13. Dialogue is data (`config.RevealLines`, per-hero `Line`), shown from Rare up, speaker "???" until the final beat.
+- R14. The aura showcase is dev-only content in Workspace, deleted by the server on start: the owner sees it in Studio, players never load ~90 particle stands.
+REWORK 1 (owner's review, logged as an intervention):
+- R1. The owner's packs held free-model MALWARE (a Studio-only "Runtime"/"ScreenBuilder" script pair that shows a window asking the developer to paste code into the command bar). All 8 copies deleted; nothing else in the place was planted (every script in a service is ours). Trap recorded in CLAUDE.md.
+- R2. Every imported pack moved OUT of Workspace into `ServerStorage.ImportedVfx` (nothing deleted): ~3,000 live emitters and 30 scripts were running in the world.
+- R3. Auras are converted, not dropped in: each dummy's effects re-expressed in root space, mapped R6 -> R15, stripped to effects, capped per tier (A 90 / B 140 / C 200 / D 260 / E 320 live particles) and footprint-limited (a pedestal is 8 studs from the next), then judged on a real hero in play. Assignment is data (`design/auras.json`): hand-matched by character, else a stable pick from the rarity's pool; Common has none. Runtime: nearest 10 heroes within 110 studs, 2,200 particles; phones and low detail 5 / 70 / 700 at half rate.
+- R4. Training = 4 stations on two mirrored courts (strike / curls / push / meditate), unlocked by gear tier; the server snaps the trainee to the target's real front face + the clip's measured contact distance (2.47 strike, 2.44 push) and locks them; the timing ring pays +50 % on a perfect rep, judged by the server.
+- R5. The throw pad holds the player (controls off, walk/jump 0 on the client) until the meter's X; an invisible wall closes each lane mouth (players only, not queried); the map intent now declares the lanes not walkable and the prover agrees.
+- R6. The reveal: flight whoosh rising in pitch, the owner's rock impact + boom + camera kick on landing, a rarity-colour escalation on the silhouette (one step per rarity), riser (Epic+), heartbeat and darkening grade (Legendary+), an impact frame and the owner's purple flare (Epic/Mythic/Secret), a low-angle dolly-back trailer shot (Rare+). The silhouette is built bare (an aura would give it away).
+- R7. "The map disappears behind the reveal" was streaming: the lane is 2,160 studs, the radius 576. The server now glides the player's ReplicationFocus down the lane with the food and holds it through the reveal.
+- R8. Catalog emote ids (3360689775 ...) replaced by the animation ids inside them (3333387824 ...): the 200+ "AnimationClip loaded is not valid" errors are gone.
+- R9. Icons rendered in Blender (FLUX cut-outs left halos): one glossy family, one outline, framed by a gate; the double outline post-process is retired.
+1. Sound by id from the Creator Store, picked by hand from measured candidates: the automatic pick chose by search score and took a vehicle-seat sound for the food landing, "Evil Wizard" for festival music and three clips ripped from other games (Brawl Stars, Sonic, Mario Kart). Picks prefer Roblox's licensed libraries (ProSoundEffects, APMOfficial, DistrokidOfficial) and never ripped game audio.
+2. Long clips are capped in code (drumroll 6 s or at the reveal, legendary 5.5 s, epic 4.5 s, server luck 3.5 s, with a 0.4 s fade): the right sound was sometimes longer than its moment.
+3. Uncommon reuses reveal_common and Secret reuses reveal_mythic at 0.85 speed: the stings already rise with rarity; seven separate stings added nothing the ear could tell apart.
+4. Animations are uploaded (Open Cloud, assetType Animation), not session-registered: a live server only plays uploaded clips. Motion.luau keeps the session KeyframeSequence as a Studio fallback.
+5. Hero idles at Core priority so the default run still drives the legs on the dash home; idles kept small (breathing, weight shift, head turn) because heroes are read from 30-60 studs.
+6. VFX by the skill's authoring route (own textures and builders), because the harvest library is empty and the owner pre-authorised building where nothing free fits (plan 06). The asset-vfx worker type is harvest-only, so the work ran on a general worker with the skill.
+7. Effects play only through Vfx.luau (pcall-isolated, fallback to the old Particles look, 24 live auras nearest the camera, low detail from Settings): a missing effect can never stop a throw.
+8. Moments without their own remote (sell, claims, rank-up, rebirth, slot, purchases, server luck, festival) are inferred on the client from the state snapshot (FxController): no new remotes, the server stays authoritative.
+9. Reveal_<Rarity> fires at the final beat, not at landing: firing it at landing would show the rarity before the suspense.
+10. Lane floor tones deepened for every zone (6 % and 20 % toward white instead of 22 % and 42 %): the pale Sakura strip bloomed to pure white in play.
 
 ## Unproven
-- Why the owner's Studio test save reads as new: the version history shows it intact (12.3T yen, 49 heroes) about an hour before the first s3 UI test and blank after. Nothing in the logged steps wipes it; the TEST panel's wipe button is the only code path. Asked the owner; the old version is still in the history.
-- A real second player (plots for two, friend luck, gifting, the gift-recipient cycle in the Store).
-- Anything on a phone: touch on THROW (release is read from InputEnded), the HUD at phone size in a running game (only the verifier and mockups saw 844x390), frame rate.
-- Frame rate was measured on the dev PC only, standing at the plot.
-- Rebirth was opened but not performed on the new UI; fuse, place, bench, sell, zone claim and the Store's test purchases were not clicked on the new UI (the remotes are unchanged from section 2).
-- Reveal card, announcement banner, toasts stack, server-luck bar and Festival: seen in mockups; in play only the first reveal ran (not photographed).
-- Nameplates are sized in studs by code, not at the authored pixel size; readability on a full plot not judged.
-- Leaderboard and slot-sign faces (mounted by `WorldUiController` on the anchors): facing not checked in play.
-- Hub station prompts other than the daily chest (food cart, gift box, index board, shrine, sell booth) were rewired but not pressed.
-- Map: the lanes were not walked end to end by a player; barriers not tested by walking into them; zones 2 to 6 only seen from the air.
-- `tools/map/` was copied from `work/map/tools` with its root path changed and three edits (smaller labels, station actions, `max` distance); the generator has not been re-run from the new location.
-- Glow: lamp cores, lantern flames, the chest glow and the shrine altar are flat colour (no Neon, no lights): section 4.
-- Real Robux purchases, a published server, StreamingEnabled on a slow connection: as in section 2.
-
-- (rework) The wind-up throw animation on the player's character was never caught in a frame (captures are about one per second): it is code-driven (`Fx/ThrowPose.luau`) until section 4 authors real clips.
-- (rework) The skip tap, the fast-reveal version, Auto Throw on the new sequence, a Legendary or mutated catch (stamp, burst colour, long reveal), and another player's throw (`ThrowSeen`) were not exercised on client v2.
-- (rework) Map v2: zones 2 to 6 and the hub seen from the air only; lanes not walked; barriers not walked into; two built models are not placed (`Prop_pirate_harbor_TreasurePile`, `Prop_ninja_village_RopeBridge`); `Prop_sakura_schoolyard_SchoolBuilding` is 4,338 triangles against a 4,000 class budget (accepted in the spec).
-- (rework) Phone: nothing on v2 was tried on a phone; the 3.25M-triangle map rests on streaming.
-
-- (rework 2) Not opened in play on UI v3: Daily Rewards, Settings, Codes, Summon Odds, the training bar, a notice card, a toast. They are built from the same helpers and pass the fit gate.
-- (rework 2) Phone: 82 controls are under 44 px physical at 844x390 even with `TouchScale` (list: `fit_gate.py` touch report). A phone layout pass (fewer columns, taller rows) is owed before publish; nothing was tried on a phone.
-- (rework 2) The settings gear sits in the top-right corner, where Roblox's player list opens: with the list open the gear may be under it.
-- (rework 2) Output shows `ContentId: rbxassetid://203785492 failed: Asset type does not match requested type` three times per session. The id is not in `src/`, `tools/` or the contract: most likely an accessory inside one of the owner's avatars. Harmless so far, not traced.
-- (rework 2) A second player, zones 3 to 6 on foot, the skip tap, fast reveal and Auto Throw are still untested (as before).
-
-- (rework 3) Store props: looked at in the hub and at the first lane in play; zones 2 to 6 from the generator's report only. Triangle counts for them are estimates (600 per mesh, 12 per plain part).
-- (rework 3) The 831x526 window the owner plays in was checked by the fit gate and the mockup sheet, not in the game (the test capture is 1482x673).
+REWORK 6:
+- Not seen: the announcement bar on a real catch (level by code, not watched), the store heroes' clip sequences over time (the worker flagged RebirthAwaken / RevealLand might leave the frame), the reveal name at its new size during a reveal (sized by code after the last capture).
+REWORK 5:
+- Not seen in play: the final beat without the bars (captures time out mid-cinematic), the new announcement bar on a real catch, the chips' pulse smoothness (stills only), the title gradients on every window.
+- A toast that arrives while a window is open draws UNDER the window (the HUD is below the pages); it is visible above the window's top edge only.
+REWORK 4:
+- Not watched in play: the eyes shot and walk shots frame by frame (captures time out mid-cinematic; checked by logs), the squad's rarity borders and backgrounds on non-premium heroes (the test profile holds premium heroes only), every store texture (one in moderation would show blank), hover shine, phones.
+- HeroPickUp's probe notes: the torso dips ~0.15 into the thighs at the deepest bend; heel corners dip up to 0.09 under the floor.
+REWORK 3:
+- The 12 new sounds are measured, not heard. RebirthAwaken, HeroStalk and HeroMenace were judged on rendered frames and checked in play by data (speeds, markers, order), but the reveal and rebirth were not watched frame by frame in Studio: screen captures kept timing out or returning stale frames mid-cinematic. The worker flagged RebirthAwaken's kneel (chest 0.2 studs into the thighs) and its burst (upper arms brush the head by 0.16 studs).
+- Not watched: hover shine (the test tool cannot hover), the food and slot Reward popups, the touch prompt card, the store viewport on a phone, the pages' 68 % cap on a 1080p screen (Studio's viewport here is 1257 x 662).
+- One earlier test catch did not reach the hands (Carrying never set; the next catch did): not reproduced, watch for it.
+REWORK 2:
+- The new sounds are picked by fit and measured length, not heard by a person.
+- CarryHold / PlaceHero / HeroWalkIn / HeroArrive / RebirthEvolve: until the animation batch is uploaded the carrier's arms stay down, the walk-in uses Roblox's R15 walk, the rebirth has no pose (code falls back cleanly).
+- Not watched: the fuse animation (needs three identical heroes), toasts by kind, LevelUp on a training rank-up, shine sweeps and hover pops (hover cannot be driven by the test tool), phones.
+- The zone backdrops on the Index cards are painted procedurally (the FLUX quotas were spent): swap with `tools/ui/zone_backdrops.py gen` when the quota resets, if wanted.
+REWORK 1:
+- Not heard by a person: the 9 new sounds (flight, impact, rarity steps, riser, heartbeat, impact frame, curls, push, clock).
+- The rebirth clock and the purple flare on a real rebirth / a real Epic catch: the flare was seen on a forced Mythic, the clock not seen in play.
+- Meditation station: built and reachable, not watched in play; perfect taps judged correctly on the server but a PERFECT was not landed by the test tool (its timing is too coarse); combo not seen.
+- Phones: the aura budget switches to low detail on touch-only devices (code path), not run on a phone; frame rate measured once on this PC (58 fps on the base, ~2,850 live particles, Studio in front).
+- The pacing sim does not model the +50 % perfect-tap bonus (power can grow up to 1.5x faster for a player who hits every ring).
+- No sound has been HEARD by a person: the pipeline verifies that each clip loads, has the measured length and plays at the right moment, not how it sounds. Every role is "heard by the user: UNTESTED". The owner's first listen decides the swaps (one line each in `assets/sfx/manifest.json`, then emit_bank).
+- Training clips (TrainStrike, TrainPush, TrainMeditate) and the Train_Hit / train_hit pairing were not seen in play: the test tool cannot trigger the dojo prompt (also noted in section 3).
+- Celebrate (Rare or better catch), Eat with its bite sounds, a Legendary/Mythic/Secret catch in a real throw (stings, screen flash, shake), a mutated catch's aura in the reveal, Coin_Pop on a real sale, Slot_Unlock, Rebirth_Nova, Summon_Portal and ServerLuck_Sky on their real triggers: effects fired by hand in play, not through their game events.
+- The random Roblox emotes on heroes every 20-40 s, the R15 run (913376220) on the dash home on baked rigs, IdleFloat (it poses the legs, stopped before the dash in code): not watched.
+- Dressed heroes: sleeves against IdleCool's crossed arms and coats against IdleBlade's hand were not checked hero by hero.
+- Auras judged from about 35 studs in captures; the 60-stud brief not measured. Low-detail mode not toggled in play.
+- Festival Hour music swap and the zone ambience volumes against the music: wired, not heard.
+- Other players' throws (trail, landing, short reveal), phones, frame rate with auras and trails live: not measured this section.
+- Content warning `rbxassetid://203785492` still appears 3 times per session (section 3 note).
 
 ## Debts
-- Intervention (logged): the owner imported 12 more avatars and asked for the same rebuild. Healed: 43 heroes baked and in the contract.
-- Healed: the 8 premium heroes now have avatars (owner's batch 3); `stages.meshes` is `done`.
-- Process note: section 3 ran in the same chat as sections 1 and 2, at the owner's request.
-- Fallback: Kiln for every model instead of CC0 packs (decision 2). Nothing owed.
-- Stalls: none over 30 minutes. All six workers hit their turn limit once and were resumed.
-- Defects found and fixed at the source: text outlines drawn as boxes (roblox-ui emitter); 63 grey parts (installer regex); oversized world labels; HUD size.
-- Stray files outside the project that a safety check stopped the workers from deleting: `C:\renders\` (2 PNGs) and `C:\work\models\gear\` (4 PNGs). The owner's to remove.
-- Debt for section 4: glow and lights on the kit; the real reveal, banner and toast motion; `Festival in X` countdown has no slot in the HUD tree.
-- Debt for section 5: gift-recipient picker in the Store; pass and product display names in config; mint passes and products.
-
-- Interventions (logged), all acted on: the owner's play-test feedback with a recording of the reference game (HUD, alerts, page size, reveal, throw feel, map size and borders, big heroes), then the gate ("small and lame") and the throw point being too close to the base, then "no compromises, keep it extensible".
-- Stalls: none over 30 minutes. Defects found in play and fixed at the source: text outlines as boxes (skill emitter); page content hidden behind `BodyArt` and other equal-ZIndex siblings (Rojo does not keep sibling order: explicit `z` everywhere now); stray empty reveal pill; luck label under the letterbox; HUD inset on wide windows; final-beat camera hiding the hero.
-- Debt for section 4: authored throw, catch and idle clips (replace `Fx/ThrowPose.luau`), real VFX for trail, landing, burst and auras (replace `Fx/Particles.luau`), every sound; reveal beats need their ticks and stings.
-- Debt for a later pass: place the treasure pile and rope bridge; re-run the generator end to end from `tools/map/`; trim the school building under budget.
-
-- Intervention (logged), acted on: facing, UI buttons, Creator Store props (rework 2 above).
-- Stalls: none over 30 minutes. Found in play and fixed at the source: sign faces after the turn; two trees hiding the leaderboards; hint pill 439 px wide; gear over the Store's close button; gift chip over its caption; "2X" dropped from the double button; BEST VALUE over "x10"; odds counter under the letterbox; food picture at 40% of its tile; notices raised under an open page.
-- Debt for section 5: the phone layout pass; move the gear if the player list covers it; trace the content warning.
-
-- Intervention (logged), acted on: touching buttons, horizontal food shop, small HUD text, use Creator Store assets (rework 3 above).
-- Found in play and fixed at the source this round: store models arrive at arbitrary angles (the installer squares them up and sets the wide side to the front); the prover's hub variety budget (40 unique models) and one per-model triangle class, met by trimming the hub mix and one stated exception.
+- Process: section 4 ran in the same chat as sections 1-3, at the owner's request; the owner switched the model to Opus 5.5 at the start (logged).
+- Interventions: 7 (the owner's reviews of section 4, logged 2026-11-15, 2026-11-16, three times on 2026-11-17 and on 2026-11-16 (clock)).
+- Fallbacks: none (Tier 2 everywhere: authored clips, authored effects, measured sounds).
+- Stalls: none over 30 minutes.
+- Defects found and fixed at the source: 7 VFX templates rejected because their Color/NumberSequences did not start at 0 and end at 1 (normaliser in `build_templates.template.luau`); auras too faint at base distance (rebuilt with ground disc, halo, rising element shell); trails invisible from the chase camera over pale floors (3-stud cel ribbon with a darker edge); sky luck effect read cyan (green and gold arcs); Sakura floor bloomed white (floor tones); the flying food model was left behind because the carrier moved by Position on a WeldConstraint (CFrame now, comment in `ThrowSequence.luau`); the animation dump exceeded the MCP's 100 KB output cap (dumped in three groups); one texture name too long for Open Cloud (uploaded under a short name, mapped back); validate.py could not read an effect list (skill fixed).
+- Debt for section 5: the owner listens to every role and names swaps; trigger and watch training, a high-rarity catch, a mutated catch, rebirth, summon and server luck in play; two-player check of other players' throws; phone pass (layout and frame rate with auras and trails); trace the content warning.
 
 ## Ledger
 
@@ -225,7 +189,7 @@ python ~/.claude/skills/roblox-build-orchestrator/scripts/run_log.py counter --d
 ```
 
 ## Place
-Published place opened from Roblox with Team Create on. Universe 10776373502, place 106586376894468. `section-2` = place version 57. The place now also holds `Workspace.Map`, the 66 model templates and 43 hero templates. Saved at the first section close as place version 96 (2026-11-14, unlabelled); saved after rework 2 as version 108 and after rework 3 as place version 115 (build `s3-v3-03`), and after rework 4 as place version 121 (2026-11-15, unlabelled, build `s3-v3-04`). The approved snapshot (commit, tag `section-3`, `save_place` with notes "Section 3 approved (git section-3)") happens on approval.
+Published place opened from Roblox with Team Create on. Universe 10776373502, place 106586376894468. `section-3` = place version 121. Saved at the first close as place version 132; after REWORK 1 saved as place version 162 (2026-11-15, unlabelled: archived imported packs in `ServerStorage.ImportedVfx`, `Assets.Auras` (28), `Assets.FxImported` (3), 15 KeyframeSequences, the rebuilt map with courts and lane walls): adds `ReplicatedStorage.Assets.Anims` (14) and `ReplicatedStorage.Assets.Vfx` (27) and the map with the deeper floor tones. After REWORK 2 saved as place version 175 (2026-11-16, unlabelled: map with court trim, posts, the forecourt slot sign; 5 new KeyframeSequences with uploaded ids; 34 aura templates; `Workspace.AuraShowcase`; StreamOutBehavior Default). After REWORK 3 saved as place version 211 (2026-11-17, unlabelled: training dais, slot sign on the forecourt, forecourt lanterns gone, 3 new KeyframeSequences with uploaded ids, PowerUp_Burst template with upward chevrons). After REWORK 4 saved as place version 235 (2026-11-17, unlabelled: HeroPickUp KeyframeSequence with its uploaded id). After REWORK 5 saved as place version 248 (2026-11-17, unlabelled). After REWORK 6 saved as place version 263 (2026-11-16, unlabelled: the 8 re-uploaded map tile textures swapped in). After REWORK 7 saved as place version 271 (2026-11-16, unlabelled). The approved snapshot (commit, tag `section-4`, `save_place` with notes "Section 4 approved (git section-4)") happens on approval.
 
 ## Rules
 
@@ -239,17 +203,16 @@ Published place opened from Roblox with Team Create on. Universe 10776373502, pl
 8. BEFORE CLOSING: save the place, write HANDOFF.md with `section.py handoff N`, replace every placeholder, run `section.py close N`. Then stop and ask the user to approve. Approval is free. If the user asks for changes, make them, log an intervention if they named what was wrong, update HANDOFF.md and close again. When the user approves ("approved", "yes that's all good"), run `section.py approve N` and say it is safe to clear the chat. Do not start the next section.
 
 ## Next section: first step
-Section 4: Motion and sound (7 animation, 8 vfx, 9 sfx).
-Section 4: Motion and sound (7 animation, 8 vfx, 9 sfx). Read `design/plan/06-motion-vfx-sound.md`, `design/animations.json`, `design/vfx.json`, `design/sfx.json`, then:
-
+Section 5: Assembly, playtest and self-correction (9b integration, 10 assembly, 10b wiring, 11 playtest).
 ```bash
+python ~/.claude/skills/create-roblox-game/scripts/section.py resume --game "throw food"
 python tools/gate.py
-python ~/.claude/skills/roblox-build-orchestrator/scripts/run_log.py start --dir "D:\Roblox Studio Games\Throw food for Anime\build-runs" --run "ThrowFoodForAnime" --stage animation
+python ~/.claude/skills/create-roblox-game/scripts/validate.py --stage-gate
 ```
-
-Brief any model or animation worker with the batch routine from the start (4 to 6 items per batch, one contact sheet per batch, manifest written after every batch): each worker in section 3 used its first 40 turns on tooling and one or two items.
+Then start section 5 with the owner's listening pass: play `work/sfx/bank/tour.lua` in Studio (it plays the whole bank in order) and ask the owner which roles to swap. Brief workers with the batch routine from the start (4-6 items per batch, one sheet per batch, a progress file).
 
 ## Earlier handoffs
 
 - `D:\Roblox Studio Games\Throw food for Anime\design\handoffs\HANDOFF-section-1.md`
 - `D:\Roblox Studio Games\Throw food for Anime\design\handoffs\HANDOFF-section-2.md`
+- `D:\Roblox Studio Games\Throw food for Anime\design\handoffs\HANDOFF-section-3.md`

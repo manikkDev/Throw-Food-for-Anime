@@ -29,52 +29,177 @@
   {
    "type": "panel",
    "name": "Window",
-   "colour": "panel",
+   "colour": [
+    "#2C3280",
+    "#181B4C"
+   ],
+   "keyline": "#FFFFFF",
+   "depth": 0,
+   "stroke": 4,
+   "corner": 22,
    "size": [
     0,
-    770,
+    860,
     0,
-    468
+    538
    ],
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "modal": true,
+   "pattern": {
+    "name": "dots",
+    "colour": "#FFFFFF",
+    "opacity": 0.05,
+    "tile": 28
+   },
    "children": [
     {
-     "type": "panel",
+     "type": "frame",
      "name": "Header",
      "colour": [
-      "#FFC93C",
-      "#FF5A5F"
+      "#FFE066",
+      "#FFA41B"
      ],
+     "corner": 16,
+     "outline": false,
      "size": [
+      1,
+      -12,
       0,
-      360,
-      0,
-      70
+      68
      ],
-     "rotation": -2,
-     "keyline": "#FFFFFF",
-     "comic": 6,
+     "pos": [
+      0.5,
+      0,
+      0,
+      6
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 2,
      "pattern": {
-      "name": "dots",
+      "name": "stripes",
       "colour": "#FFFFFF",
-      "opacity": 0.28,
-      "tile": 34
+      "opacity": 0.1,
+      "tile": 64
      },
      "children": [
       {
-       "type": "label",
-       "text": "REBIRTH",
+       "type": "sheen",
+       "name": "Sheen",
+       "size": [
+        1,
+        0,
+        1,
+        0
+       ],
+       "angle": -24,
+       "opacity": 0.24,
+       "bands": [
+        [
+         0.3,
+         0.05
+        ],
+        [
+         0.4,
+         0.1
+        ]
+       ],
+       "corner": 16,
+       "overhang": true,
+       "children": []
+      },
+      {
+       "type": "frame",
+       "name": "HeaderShade",
+       "colour": [
+        "#000000",
+        "#000000"
+       ],
+       "alpha": 0.9,
+       "outline": false,
+       "corner": 16,
+       "size": [
+        1,
+        0,
+        0,
+        18
+       ],
+       "pos": [
+        0,
+        0,
+        1,
+        0
+       ],
+       "anchor": [
+        0,
+        1
+       ],
+       "z": 2,
+       "children": [],
+       "overhang": true
+      },
+      {
+       "type": "frame",
+       "name": "TitleRow",
+       "transparent": true,
        "size": [
         0,
-        320,
+        196,
         0,
         56
        ],
-       "textColour": "onDark",
-       "align": "center",
-       "textScale": 0.6964,
-       "textStroke": 3,
-       "name": "Title",
-       "font": "display",
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconRebirthBig",
+         "name": "TitleIcon",
+         "size": [
+          0,
+          44,
+          0,
+          44
+         ]
+        },
+        {
+         "type": "label",
+         "text": "REBIRTH",
+         "size": [
+          0,
+          142,
+          0,
+          45
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.8,
+         "textStroke": 2,
+         "name": "Title",
+         "font": "display",
+         "maxText": 36,
+         "autoX": true,
+         "textGrad": [
+          "#FFFFFF",
+          "#FFE9A8"
+         ]
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "center"
+       },
        "pos": [
         0.5,
         0,
@@ -84,67 +209,25 @@
        "anchor": [
         0.5,
         0.5
-       ]
+       ],
+       "z": 3,
+       "autoW": 0
       }
-     ],
-     "pos": [
-      0.5,
-      0,
-      0,
-      -36
-     ],
-     "anchor": [
-      0.5,
-      0
-     ],
-     "z": 3,
-     "overhang": true
-    },
-    {
-     "type": "frame",
-     "name": "BodyArt",
-     "colour": [
-      "#2E3488",
-      "#161944"
-     ],
-     "outline": false,
-     "size": [
-      1,
-      -16,
-      1,
-      -16
-     ],
-     "pos": [
-      0.5,
-      0,
-      0.5,
-      0
-     ],
-     "anchor": [
-      0.5,
-      0.5
-     ],
-     "corner": 16,
-     "pattern": {
-      "name": "dots",
-      "colour": "#FFFFFF",
-      "opacity": 0.07,
-      "tile": 28
-     },
-     "overhang": true,
-     "z": -1,
-     "children": []
+     ]
     },
     {
      "type": "button",
      "name": "CloseButton",
-     "colour": "danger",
+     "colour": "#F2574C",
      "size": [
       0,
       56,
       0,
       56
      ],
+     "corner": 28,
+     "depth": 3,
+     "sizeClass": "X",
      "children": [
       {
        "type": "icon",
@@ -170,18 +253,43 @@
      ],
      "pos": [
       1,
-      14,
+      -14,
       0,
-      -18
+      12
      ],
      "anchor": [
       1,
       0
      ],
      "z": 4,
-     "overhang": true,
      "closes": true,
-     "sizeClass": "L"
+     "overhang": true,
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#F2574C"
+      ],
+      [
+       0.49,
+       "#F2574C"
+      ],
+      [
+       0.5,
+       "#D04B41"
+      ],
+      [
+       1.0,
+       "#B34038"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3,
+      "Rim": 0.5
+     },
+     "stroke": 3,
+     "keyline": "#F8ABA6"
     },
     {
      "type": "frame",
@@ -189,126 +297,160 @@
      "transparent": true,
      "size": [
       0,
-      722,
+      820,
       0,
-      362
+      432
      ],
      "children": [
       {
        "type": "panel",
        "name": "Requirements",
        "colour": "panelHi",
+       "keyline": "#5B64C9",
+       "depth": 0,
+       "corner": 16,
        "size": [
         0,
-        440,
+        496,
         0,
-        150
+        196
        ],
        "children": [
         {
          "type": "label",
-         "text": "NEXT REBIRTH",
+         "text": "REQUIREMENTS",
          "size": [
           0,
-          220,
+          260,
           0,
-          21
+          23
          ],
-         "textColour": "onDark",
+         "textColour": "soft",
          "align": "left",
-         "textScale": 0.7619,
-         "textStroke": 2,
+         "textScale": 0.7826,
+         "textStroke": 1.5,
          "name": "ReqTitle",
          "font": "display",
          "pos": [
           0,
-          14,
+          16,
           0,
-          10
+          18
          ],
-         "maxText": 16
+         "maxText": 18
         },
         {
-         "type": "label",
-         "text": "<unbound>",
+         "type": "panel",
+         "name": "NextTierChip",
+         "colour": "#7B3FF2",
          "size": [
           0,
-          180,
+          119,
           0,
-          21
+          30
          ],
-         "textColour": "buy",
-         "align": "right",
-         "textScale": 0.7619,
-         "textStroke": 2,
-         "name": "NextTier",
-         "samples": [
-          "REBIRTH 999",
-          "REBIRTH 1"
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "corner": 15,
+         "children": [
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            109,
+            0,
+            24
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.6667,
+           "textStroke": 1.5,
+           "name": "NextTier",
+           "samples": [
+            "REBIRTH 999",
+            "MAX REBIRTH"
+           ],
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 16
+          }
          ],
-         "font": "display",
          "pos": [
           1,
-          -14,
+          -16,
           0,
-          10
+          14
          ],
          "anchor": [
           1,
           0
          ],
-         "maxText": 16
-        },
-        {
-         "type": "icon",
-         "icon": "IconPower",
-         "name": "PowerIcon",
-         "size": [
-          0,
-          26,
-          0,
-          26
-         ],
-         "pos": [
-          0,
-          14,
-          0,
-          50
-         ]
+         "stroke": 2,
+         "keyline": "#FFFFFF"
         },
         {
          "type": "frame",
-         "name": "PowerBar",
-         "colour": [
-          "#0B0D29",
-          "#12153A"
-         ],
+         "name": "PowerRow",
+         "transparent": true,
          "size": [
           0,
-          370,
+          464,
           0,
-          28
+          60
          ],
-         "corner": 14,
          "children": [
           {
            "type": "frame",
-           "name": "Fill",
+           "name": "PowerWell",
            "colour": [
-            "#38BDF8",
-            "#30A3D5"
+            "#3B4396",
+            "#262C70"
            ],
-           "paint": "#38BDF8",
-           "children": [],
+           "corner": 1,
+           "keyline": "#FFFFFF",
            "size": [
-            0.82,
-            -6,
-            1,
-            -6
+            0,
+            50,
+            0,
+            50
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconPowerBig",
+             "name": "PowerIcon",
+             "size": [
+              0,
+              34,
+              0,
+              34
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ]
+            }
            ],
            "pos": [
             0,
-            3,
+            0,
             0.5,
             0
            ],
@@ -316,99 +458,231 @@
             0,
             0.5
            ],
-           "outline": false,
-           "corner": 11,
-           "overhang": true
+           "strokePx": 3
           },
           {
            "type": "label",
-           "text": "<unbound>",
+           "text": "TOTAL POWER",
            "size": [
             0,
-            354,
+            370,
             0,
-            28
+            20
            ],
-           "textColour": "onDark",
-           "align": "center",
-           "textScale": 0.5714,
-           "textStroke": 3,
-           "name": "PowerReqText",
-           "samples": [
-            "999.99Qi / 999.99Qi",
-            "98.4M / 120M"
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.8,
+           "textStroke": 1.5,
+           "name": "PowerCaption",
+           "font": "display",
+           "pos": [
+            0,
+            64,
+            0,
+            0
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "PowerDone",
+           "size": [
+            0,
+            20,
+            0,
+            20
            ],
            "pos": [
-            0.5,
+            1,
             0,
-            0.5,
+            0,
             0
            ],
            "anchor": [
-            0.5,
-            0.5
+            1,
+            0
            ],
-           "overhang": true,
-           "z": 2
+           "visible": false,
+           "mockHide": true
+          },
+          {
+           "type": "frame",
+           "name": "PowerBar",
+           "colour": [
+            "#0B0D29",
+            "#161A48"
+           ],
+           "size": [
+            0,
+            400,
+            0,
+            32
+           ],
+           "corner": 16,
+           "keyline": "#FFFFFF",
+           "children": [
+            {
+             "type": "frame",
+             "name": "Fill",
+             "colour": [
+              "#38BDF8",
+              "#30A3D5"
+             ],
+             "paint": "#38BDF8",
+             "children": [
+              {
+               "type": "sheen",
+               "name": "Sheen",
+               "size": [
+                1,
+                0,
+                1,
+                0
+               ],
+               "angle": -90,
+               "opacity": 0.3,
+               "bands": [
+                [
+                 0.62,
+                 0.1
+                ],
+                [
+                 0.72,
+                 0.06
+                ]
+               ],
+               "corner": 13,
+               "overhang": true,
+               "children": []
+              }
+             ],
+             "size": [
+              0.62,
+              -6,
+              1,
+              -6
+             ],
+             "pos": [
+              0,
+              3,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0,
+              0.5
+             ],
+             "outline": false,
+             "corner": 13,
+             "overhang": true
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              384,
+              0,
+              32
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.5625,
+             "textStroke": 1.5,
+             "name": "PowerReqText",
+             "samples": [
+              "999.99Qi / 999.99Qi",
+              "6.8B / 600M"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "overhang": true,
+             "z": 3,
+             "maxText": 18
+            }
+           ],
+           "pos": [
+            0,
+            64,
+            1,
+            0
+           ],
+           "anchor": [
+            0,
+            1
+           ],
+           "strokePx": 3
           }
          ],
          "pos": [
           0,
-          52,
+          16,
           0,
-          49
-         ]
-        },
-        {
-         "type": "icon",
-         "icon": "IconYen",
-         "name": "YenIcon",
-         "size": [
-          0,
-          26,
-          0,
-          26
-         ],
-         "pos": [
-          0,
-          14,
-          0,
-          98
+          52
          ]
         },
         {
          "type": "frame",
-         "name": "YenBar",
-         "colour": [
-          "#0B0D29",
-          "#12153A"
-         ],
+         "name": "YenRow",
+         "transparent": true,
          "size": [
           0,
-          370,
+          464,
           0,
-          28
+          60
          ],
-         "corner": 14,
          "children": [
           {
            "type": "frame",
-           "name": "Fill",
+           "name": "YenWell",
            "colour": [
-            "#34D17A",
-            "#2DB469"
+            "#3B4396",
+            "#262C70"
            ],
-           "paint": "#34D17A",
-           "children": [],
+           "corner": 1,
+           "keyline": "#FFFFFF",
            "size": [
-            0.44,
-            -6,
-            1,
-            -6
+            0,
+            50,
+            0,
+            50
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconYenBig",
+             "name": "YenIcon",
+             "size": [
+              0,
+              34,
+              0,
+              34
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ]
+            }
            ],
            "pos": [
             0,
-            3,
+            0,
             0.5,
             0
            ],
@@ -416,185 +690,204 @@
             0,
             0.5
            ],
-           "outline": false,
-           "corner": 11,
-           "overhang": true
+           "strokePx": 3
           },
           {
            "type": "label",
-           "text": "<unbound>",
+           "text": "YEN COST",
            "size": [
             0,
-            354,
+            370,
             0,
-            28
+            20
            ],
-           "textColour": "onDark",
-           "align": "center",
-           "textScale": 0.5714,
-           "textStroke": 3,
-           "name": "YenReqText",
-           "samples": [
-            "999.99Qi / 999.99Qi",
-            "220B / 500B"
+           "textColour": "soft",
+           "align": "left",
+           "textScale": 0.8,
+           "textStroke": 1.5,
+           "name": "YenCaption",
+           "font": "display",
+           "pos": [
+            0,
+            64,
+            0,
+            0
+           ],
+           "maxText": 16
+          },
+          {
+           "type": "icon",
+           "icon": "IconTick",
+           "name": "YenDone",
+           "size": [
+            0,
+            20,
+            0,
+            20
            ],
            "pos": [
-            0.5,
+            1,
             0,
-            0.5,
+            0,
             0
            ],
            "anchor": [
-            0.5,
-            0.5
+            1,
+            0
            ],
-           "overhang": true,
-           "z": 2
+           "visible": false,
+           "mockHide": true
+          },
+          {
+           "type": "frame",
+           "name": "YenBar",
+           "colour": [
+            "#0B0D29",
+            "#161A48"
+           ],
+           "size": [
+            0,
+            400,
+            0,
+            32
+           ],
+           "corner": 16,
+           "keyline": "#FFFFFF",
+           "children": [
+            {
+             "type": "frame",
+             "name": "Fill",
+             "colour": [
+              "#34D17A",
+              "#2DB469"
+             ],
+             "paint": "#34D17A",
+             "children": [
+              {
+               "type": "sheen",
+               "name": "Sheen",
+               "size": [
+                1,
+                0,
+                1,
+                0
+               ],
+               "angle": -90,
+               "opacity": 0.3,
+               "bands": [
+                [
+                 0.62,
+                 0.1
+                ],
+                [
+                 0.72,
+                 0.06
+                ]
+               ],
+               "corner": 13,
+               "overhang": true,
+               "children": []
+              }
+             ],
+             "size": [
+              0.62,
+              -6,
+              1,
+              -6
+             ],
+             "pos": [
+              0,
+              3,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0,
+              0.5
+             ],
+             "outline": false,
+             "corner": 13,
+             "overhang": true
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              384,
+              0,
+              32
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.5625,
+             "textStroke": 1.5,
+             "name": "YenReqText",
+             "samples": [
+              "999.99Qi / 999.99Qi",
+              "220B / 500B"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "overhang": true,
+             "z": 3,
+             "maxText": 18
+            }
+           ],
+           "pos": [
+            0,
+            64,
+            1,
+            0
+           ],
+           "anchor": [
+            0,
+            1
+           ],
+           "strokePx": 3
           }
          ],
          "pos": [
           0,
-          52,
+          16,
           0,
-          97
+          122
          ]
         }
        ],
-       "depth": 3,
-       "corner": 14
+       "pos": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "stroke": 3
       },
       {
        "type": "panel",
        "name": "Rewards",
        "colour": [
-        "#FFE27A",
-        "#FFB020"
+        "#FFD24A",
+        "#FF8A1A"
        ],
+       "keyline": "#FFF1B8",
+       "depth": 0,
+       "corner": 16,
        "size": [
         0,
-        268,
+        310,
         0,
-        150
+        196
        ],
-       "children": [
-        {
-         "type": "label",
-         "text": "REWARD",
-         "size": [
-          0,
-          240,
-          0,
-          26
-         ],
-         "textColour": "onDark",
-         "align": "center",
-         "textScale": 0.7692,
-         "textStroke": 3,
-         "name": "RewardTitle",
-         "font": "display",
-         "pos": [
-          0.5,
-          0,
-          0,
-          10
-         ],
-         "anchor": [
-          0.5,
-          0
-         ],
-         "maxText": 20
-        },
-        {
-         "type": "label",
-         "text": "<unbound>",
-         "size": [
-          0,
-          240,
-          0,
-          26
-         ],
-         "textColour": "confirm",
-         "align": "center",
-         "textScale": 0.7692,
-         "textStroke": 3,
-         "name": "RewardIncome",
-         "samples": [
-          "+50% INCOME",
-          "+150% INCOME"
-         ],
-         "font": "display",
-         "pos": [
-          0.5,
-          0,
-          0,
-          46
-         ],
-         "anchor": [
-          0.5,
-          0
-         ],
-         "maxText": 20
-        },
-        {
-         "type": "label",
-         "text": "<unbound>",
-         "size": [
-          0,
-          240,
-          0,
-          26
-         ],
-         "textColour": "info",
-         "align": "center",
-         "textScale": 0.7692,
-         "textStroke": 3,
-         "name": "RewardLuck",
-         "samples": [
-          "+10% LUCK",
-          "+30% LUCK"
-         ],
-         "font": "display",
-         "pos": [
-          0.5,
-          0,
-          0,
-          80
-         ],
-         "anchor": [
-          0.5,
-          0
-         ],
-         "maxText": 20
-        },
-        {
-         "type": "label",
-         "text": "FOREVER!",
-         "size": [
-          0,
-          240,
-          0,
-          19
-         ],
-         "textColour": "onDark",
-         "align": "center",
-         "textScale": 0.7368,
-         "textStroke": 2,
-         "name": "RewardForever",
-         "font": "display",
-         "pos": [
-          0.5,
-          0,
-          0,
-          116
-         ],
-         "anchor": [
-          0.5,
-          0
-         ],
-         "maxText": 14
-        }
-       ],
-       "comic": 4,
        "pos": [
         1,
         0,
@@ -605,41 +898,404 @@
         1,
         0
        ],
-       "keyline": "#FFFFFF"
+       "pattern": {
+        "name": "stripes",
+        "colour": "#FFFFFF",
+        "opacity": 0.12,
+        "tile": 96
+       },
+       "children": [
+        {
+         "type": "sheen",
+         "name": "Highlight",
+         "size": [
+          1,
+          0,
+          1,
+          0
+         ],
+         "angle": 90,
+         "opacity": 0.22,
+         "bands": [
+          [
+           0.08,
+           0.22
+          ]
+         ],
+         "corner": 16,
+         "overhang": true,
+         "children": [],
+         "z": 1
+        },
+        {
+         "type": "icon",
+         "icon": "FxGlow",
+         "name": "Glow",
+         "size": [
+          0,
+          280,
+          0,
+          170
+         ],
+         "pos": [
+          0.5,
+          0,
+          0.5,
+          6
+         ],
+         "anchor": [
+          0.5,
+          0.5
+         ],
+         "z": 1,
+         "tint": "#FFF6C8",
+         "alphaImg": 0.4,
+         "overhang": true,
+         "centre": false,
+         "attrs": {
+          "FxTurn": 0
+         }
+        },
+        {
+         "type": "label",
+         "text": "REWARD",
+         "size": [
+          0,
+          278,
+          0,
+          23
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.7826,
+         "textStroke": 1.5,
+         "name": "RewardTitle",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          0,
+          18
+         ],
+         "anchor": [
+          0.5,
+          0
+         ],
+         "maxText": 18,
+         "z": 3
+        },
+        {
+         "type": "frame",
+         "name": "IncomeLine",
+         "transparent": true,
+         "size": [
+          0,
+          278,
+          0,
+          40
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconYenBig",
+           "name": "IncomeLineIcon",
+           "size": [
+            0,
+            34,
+            0,
+            34
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            158,
+            0,
+            30
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.8,
+           "textStroke": 2,
+           "name": "RewardIncome",
+           "samples": [
+            "+150% INCOME",
+            "MAX REBIRTH"
+           ],
+           "font": "display",
+           "maxText": 24,
+           "autoX": true
+          }
+         ],
+         "layout": {
+          "type": "list",
+          "dir": "x",
+          "gap": 10,
+          "align": "center"
+         },
+         "pos": [
+          0.5,
+          0,
+          0,
+          54
+         ],
+         "anchor": [
+          0.5,
+          0
+         ],
+         "z": 3
+        },
+        {
+         "type": "frame",
+         "name": "LuckLine",
+         "transparent": true,
+         "size": [
+          0,
+          278,
+          0,
+          40
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconLuckBig",
+           "name": "LuckLineIcon",
+           "size": [
+            0,
+            34,
+            0,
+            34
+           ]
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            120,
+            0,
+            30
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.8,
+           "textStroke": 2,
+           "name": "RewardLuck",
+           "samples": [
+            "+30% LUCK",
+            "+10% LUCK"
+           ],
+           "font": "display",
+           "maxText": 24,
+           "autoX": true
+          }
+         ],
+         "layout": {
+          "type": "list",
+          "dir": "x",
+          "gap": 10,
+          "align": "center"
+         },
+         "pos": [
+          0.5,
+          0,
+          0,
+          104
+         ],
+         "anchor": [
+          0.5,
+          0
+         ],
+         "z": 3
+        },
+        {
+         "type": "panel",
+         "name": "ForeverChip",
+         "colour": "#B4235A",
+         "size": [
+          0,
+          105,
+          0,
+          28
+         ],
+         "selfFace": true,
+         "paintable": true,
+         "depth": 0,
+         "corner": 14,
+         "children": [
+          {
+           "type": "label",
+           "text": "FOREVER",
+           "size": [
+            0,
+            95,
+            0,
+            22
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7273,
+           "textStroke": 1.5,
+           "name": "ForeverText",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "maxText": 16
+          }
+         ],
+         "pos": [
+          0.5,
+          0,
+          0,
+          154
+         ],
+         "anchor": [
+          0.5,
+          0
+         ],
+         "z": 3,
+         "stroke": 2,
+         "keyline": "#FFFFFF"
+        }
+       ],
+       "stroke": 3
       },
       {
        "type": "panel",
        "name": "Keeps",
        "colour": "panelHi",
+       "keyline": "#5B64C9",
+       "depth": 0,
+       "corner": 16,
        "size": [
         0,
-        354,
+        403,
         0,
-        128
+        140
        ],
        "children": [
         {
-         "type": "label",
-         "text": "YOU KEEP",
-         "size": [
-          0,
-          300,
-          0,
-          21
+         "type": "frame",
+         "name": "KeepsHead",
+         "colour": [
+          "#4BE08A",
+          "#14935A"
          ],
-         "textColour": "confirm",
-         "align": "left",
-         "textScale": 0.7619,
-         "textStroke": 2,
-         "name": "Title",
-         "font": "display",
-         "pos": [
+         "corner": 12,
+         "outline": false,
+         "size": [
+          1,
+          -16,
           0,
-          12,
+          38
+         ],
+         "pos": [
+          0.5,
+          0,
           0,
           8
          ],
-         "maxText": 16
+         "anchor": [
+          0.5,
+          0
+         ],
+         "children": [
+          {
+           "type": "sheen",
+           "name": "Sheen",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "angle": -24,
+           "opacity": 0.22,
+           "bands": [
+            [
+             0.3,
+             0.05
+            ],
+            [
+             0.4,
+             0.1
+            ]
+           ],
+           "corner": 12,
+           "overhang": true,
+           "children": []
+          },
+          {
+           "type": "frame",
+           "name": "KeepsTitleRow",
+           "transparent": true,
+           "size": [
+            0,
+            123,
+            0,
+            30
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconTick",
+             "name": "HeadIcon",
+             "size": [
+              0,
+              24,
+              0,
+              24
+             ]
+            },
+            {
+             "type": "label",
+             "text": "YOU KEEP",
+             "size": [
+              0,
+              91,
+              0,
+              25
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "Title",
+             "font": "display",
+             "maxText": 20,
+             "autoX": true
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 3,
+           "autoW": 0
+          }
+         ]
         },
         {
          "type": "frame",
@@ -647,9 +1303,9 @@
          "transparent": true,
          "size": [
           0,
-          330,
+          378,
           0,
-          88
+          70
          ],
          "children": [
           {
@@ -658,20 +1314,20 @@
            "transparent": true,
            "size": [
             0,
-            330,
+            184,
             0,
-            16
+            30
            ],
            "children": [
             {
              "type": "icon",
              "icon": "IconTick",
-             "name": "Icon",
+             "name": "ItemIcon",
              "size": [
               0,
-              16,
+              22,
               0,
-              16
+              22
              ]
             },
             {
@@ -679,16 +1335,17 @@
              "text": "Hero Index",
              "size": [
               0,
-              300,
+              154,
               0,
-              19
+              23
              ],
              "textColour": "onDark",
              "align": "left",
-             "textScale": 0.7368,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "Text",
-             "maxText": 14
+             "font": "display",
+             "maxText": 18
             }
            ],
            "layout": {
@@ -704,20 +1361,20 @@
            "transparent": true,
            "size": [
             0,
-            330,
+            184,
             0,
-            16
+            30
            ],
            "children": [
             {
              "type": "icon",
              "icon": "IconTick",
-             "name": "Icon",
+             "name": "ItemIcon",
              "size": [
               0,
-              16,
+              22,
               0,
-              16
+              22
              ]
             },
             {
@@ -725,16 +1382,17 @@
              "text": "Game passes",
              "size": [
               0,
-              300,
+              154,
               0,
-              19
+              23
              ],
              "textColour": "onDark",
              "align": "left",
-             "textScale": 0.7368,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "Text",
-             "maxText": 14
+             "font": "display",
+             "maxText": 18
             }
            ],
            "layout": {
@@ -750,20 +1408,20 @@
            "transparent": true,
            "size": [
             0,
-            330,
+            184,
             0,
-            16
+            30
            ],
            "children": [
             {
              "type": "icon",
              "icon": "IconTick",
-             "name": "Icon",
+             "name": "ItemIcon",
              "size": [
               0,
-              16,
+              22,
               0,
-              16
+              22
              ]
             },
             {
@@ -771,16 +1429,17 @@
              "text": "Premium heroes",
              "size": [
               0,
-              300,
+              154,
               0,
-              19
+              23
              ],
              "textColour": "onDark",
              "align": "left",
-             "textScale": 0.7368,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "Text",
-             "maxText": 14
+             "font": "display",
+             "maxText": 18
             }
            ],
            "layout": {
@@ -796,20 +1455,20 @@
            "transparent": true,
            "size": [
             0,
-            330,
+            184,
             0,
-            16
+            30
            ],
            "children": [
             {
              "type": "icon",
              "icon": "IconTick",
-             "name": "Icon",
+             "name": "ItemIcon",
              "size": [
               0,
-              16,
+              22,
               0,
-              16
+              22
              ]
             },
             {
@@ -817,16 +1476,17 @@
              "text": "Lucky Throws",
              "size": [
               0,
-              300,
+              154,
               0,
-              19
+              23
              ],
              "textColour": "onDark",
              "align": "left",
-             "textScale": 0.7368,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "Text",
-             "maxText": 14
+             "font": "display",
+             "maxText": 18
             }
            ],
            "layout": {
@@ -838,65 +1498,164 @@
           }
          ],
          "layout": {
-          "type": "list",
-          "dir": "y",
-          "gap": 6,
-          "align": "start"
+          "type": "grid",
+          "cell": [
+           184,
+           30
+          ],
+          "gap": 10,
+          "cols": 2
          },
          "pos": [
+          0.5,
           0,
-          12,
           0,
-          34
+          58
+         ],
+         "anchor": [
+          0.5,
+          0
          ]
         }
        ],
-       "depth": 3,
-       "corner": 14,
        "pos": [
         0,
         0,
         0,
-        164
+        210
        ],
        "anchor": [
         0,
         0
-       ]
+       ],
+       "stroke": 3
       },
       {
        "type": "panel",
        "name": "Resets",
        "colour": "panelHi",
+       "keyline": "#5B64C9",
+       "depth": 0,
+       "corner": 16,
        "size": [
         0,
-        354,
+        403,
         0,
-        128
+        140
        ],
        "children": [
         {
-         "type": "label",
-         "text": "YOU LOSE",
-         "size": [
-          0,
-          300,
-          0,
-          21
+         "type": "frame",
+         "name": "ResetsHead",
+         "colour": [
+          "#FF6B6B",
+          "#C42A3A"
          ],
-         "textColour": "danger",
-         "align": "left",
-         "textScale": 0.7619,
-         "textStroke": 2,
-         "name": "Title",
-         "font": "display",
-         "pos": [
+         "corner": 12,
+         "outline": false,
+         "size": [
+          1,
+          -16,
           0,
-          12,
+          38
+         ],
+         "pos": [
+          0.5,
+          0,
           0,
           8
          ],
-         "maxText": 16
+         "anchor": [
+          0.5,
+          0
+         ],
+         "children": [
+          {
+           "type": "sheen",
+           "name": "Sheen",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "angle": -24,
+           "opacity": 0.22,
+           "bands": [
+            [
+             0.3,
+             0.05
+            ],
+            [
+             0.4,
+             0.1
+            ]
+           ],
+           "corner": 12,
+           "overhang": true,
+           "children": []
+          },
+          {
+           "type": "frame",
+           "name": "ResetsTitleRow",
+           "transparent": true,
+           "size": [
+            0,
+            122,
+            0,
+            30
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconClose",
+             "name": "HeadIcon",
+             "size": [
+              0,
+              24,
+              0,
+              24
+             ]
+            },
+            {
+             "type": "label",
+             "text": "YOU LOSE",
+             "size": [
+              0,
+              90,
+              0,
+              25
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "Title",
+             "font": "display",
+             "maxText": 20,
+             "autoX": true
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 3,
+           "autoW": 0
+          }
+         ]
         },
         {
          "type": "frame",
@@ -904,9 +1663,9 @@
          "transparent": true,
          "size": [
           0,
-          330,
+          378,
           0,
-          88
+          70
          ],
          "children": [
           {
@@ -915,20 +1674,20 @@
            "transparent": true,
            "size": [
             0,
-            330,
+            184,
             0,
-            16
+            30
            ],
            "children": [
             {
              "type": "icon",
              "icon": "IconClose",
-             "name": "Icon",
+             "name": "ItemIcon",
              "size": [
               0,
-              16,
+              22,
               0,
-              16
+              22
              ]
             },
             {
@@ -936,16 +1695,17 @@
              "text": "Yen and power",
              "size": [
               0,
-              300,
+              154,
               0,
-              19
+              23
              ],
              "textColour": "onDark",
              "align": "left",
-             "textScale": 0.7368,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "Text",
-             "maxText": 14
+             "font": "display",
+             "maxText": 18
             }
            ],
            "layout": {
@@ -961,20 +1721,20 @@
            "transparent": true,
            "size": [
             0,
-            330,
+            184,
             0,
-            16
+            30
            ],
            "children": [
             {
              "type": "icon",
              "icon": "IconClose",
-             "name": "Icon",
+             "name": "ItemIcon",
              "size": [
               0,
-              16,
+              22,
               0,
-              16
+              22
              ]
             },
             {
@@ -982,16 +1742,17 @@
              "text": "Foods and gear",
              "size": [
               0,
-              300,
+              154,
               0,
-              19
+              23
              ],
              "textColour": "onDark",
              "align": "left",
-             "textScale": 0.7368,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "Text",
-             "maxText": 14
+             "font": "display",
+             "maxText": 18
             }
            ],
            "layout": {
@@ -1007,20 +1768,20 @@
            "transparent": true,
            "size": [
             0,
-            330,
+            184,
             0,
-            16
+            30
            ],
            "children": [
             {
              "type": "icon",
              "icon": "IconClose",
-             "name": "Icon",
+             "name": "ItemIcon",
              "size": [
               0,
-              16,
+              22,
               0,
-              16
+              22
              ]
             },
             {
@@ -1028,16 +1789,17 @@
              "text": "Plot slots",
              "size": [
               0,
-              300,
+              154,
               0,
-              19
+              23
              ],
              "textColour": "onDark",
              "align": "left",
-             "textScale": 0.7368,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "Text",
-             "maxText": 14
+             "font": "display",
+             "maxText": 18
             }
            ],
            "layout": {
@@ -1053,20 +1815,20 @@
            "transparent": true,
            "size": [
             0,
-            330,
+            184,
             0,
-            16
+            30
            ],
            "children": [
             {
              "type": "icon",
              "icon": "IconClose",
-             "name": "Icon",
+             "name": "ItemIcon",
              "size": [
               0,
-              16,
+              22,
               0,
-              16
+              22
              ]
             },
             {
@@ -1074,16 +1836,17 @@
              "text": "Caught heroes",
              "size": [
               0,
-              300,
+              154,
               0,
-              19
+              23
              ],
              "textColour": "onDark",
              "align": "left",
-             "textScale": 0.7368,
-             "textStroke": 2,
+             "textScale": 0.7826,
+             "textStroke": 1.5,
              "name": "Text",
-             "maxText": 14
+             "font": "display",
+             "maxText": 18
             }
            ],
            "layout": {
@@ -1095,169 +1858,273 @@
           }
          ],
          "layout": {
-          "type": "list",
-          "dir": "y",
-          "gap": 6,
-          "align": "start"
+          "type": "grid",
+          "cell": [
+           184,
+           30
+          ],
+          "gap": 10,
+          "cols": 2
          },
          "pos": [
+          0.5,
           0,
-          12,
           0,
-          34
+          58
+         ],
+         "anchor": [
+          0.5,
+          0
          ]
         }
        ],
-       "depth": 3,
-       "corner": 14,
        "pos": [
         1,
         0,
         0,
-        164
+        210
        ],
        "anchor": [
         1,
         0
-       ]
+       ],
+       "stroke": 3
       },
       {
-       "type": "label",
-       "text": "<unbound>",
+       "type": "frame",
+       "name": "Footer",
+       "transparent": true,
        "size": [
         0,
-        340,
+        820,
         0,
-        21
-       ],
-       "textColour": "soft",
-       "align": "left",
-       "textScale": 0.7619,
-       "textStroke": 2,
-       "name": "CurrentRebirth",
-       "samples": [
-        "You are at Rebirth 999",
-        "You are at Rebirth 0"
-       ],
-       "pos": [
-        0,
-        0,
-        0,
-        326
-       ],
-       "maxText": 16
-      },
-      {
-       "type": "button",
-       "name": "ConfirmButton",
-       "size": [
-        0,
-        227,
-        0,
-        56
+        68
        ],
        "children": [
         {
-         "type": "icon",
-         "icon": "IconRebirth",
-         "name": "Icon",
+         "type": "frame",
+         "name": "CurrentChipCell",
+         "transparent": true,
          "size": [
           0,
-          34,
+          271,
           0,
-          34
+          40
+         ],
+         "autoW": 0,
+         "children": [
+          {
+           "type": "frame",
+           "name": "CurrentChip",
+           "colour": [
+            "#1B1F4B",
+            "#1B1F4B"
+           ],
+           "paint": "#1B1F4B",
+           "corner": 20,
+           "size": [
+            0,
+            271,
+            0,
+            40
+           ],
+           "autoW": 14,
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconRebirth",
+             "name": "CurrentChipIcon",
+             "size": [
+              0,
+              28,
+              0,
+              28
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              207,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "CurrentRebirth",
+             "samples": [
+              "You are at Rebirth 999",
+              "You are at Rebirth 0"
+             ],
+             "font": "display",
+             "maxText": 18,
+             "autoX": true
+            }
+           ],
+           "keyline": "#FFFFFF",
+           "strokePx": 3
+          }
+         ],
+         "pos": [
+          0,
+          0,
+          0.5,
+          0
+         ],
+         "anchor": [
+          0,
+          0.5
          ]
         },
         {
-         "type": "label",
-         "text": "REBIRTH!",
+         "type": "icon",
+         "icon": "FxGlow",
+         "name": "ButtonGlow",
          "size": [
           0,
-          143,
+          300,
           0,
-          35
+          84
          ],
-         "textColour": "onDark",
-         "align": "center",
-         "textScale": 0.6857,
-         "textStroke": 2,
-         "name": "Label",
-         "font": "display",
-         "maxText": 24
+         "pos": [
+          1,
+          -150,
+          0.5,
+          0
+         ],
+         "anchor": [
+          0.5,
+          0.5
+         ],
+         "z": 0,
+         "tint": "#FFE38A",
+         "alphaImg": 0.4,
+         "overhang": true,
+         "centre": false,
+         "attrs": {
+          "FxTurn": 0
+         }
+        },
+        {
+         "type": "button",
+         "name": "ConfirmButton",
+         "size": [
+          0,
+          300,
+          0,
+          68
+         ],
+         "children": [
+          {
+           "type": "icon",
+           "icon": "IconRebirth",
+           "name": "Icon",
+           "size": [
+            0,
+            39,
+            0,
+            39
+           ]
+          },
+          {
+           "type": "label",
+           "text": "REBIRTH!",
+           "size": [
+            0,
+            124,
+            0,
+            47
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.6383,
+           "textStroke": 2,
+           "name": "Label",
+           "font": "display",
+           "maxText": 30,
+           "autoX": true,
+           "capW": 229
+          }
+         ],
+         "layout": {
+          "type": "list",
+          "dir": "x",
+          "gap": 10,
+          "align": "center"
+         },
+         "sizeClass": "L",
+         "depth": 5,
+         "corner": 23,
+         "pos": [
+          1,
+          0,
+          0.5,
+          0
+         ],
+         "anchor": [
+          1,
+          0.5
+         ],
+         "selfFace": true,
+         "colour": "#FFCE50",
+         "paintable": true,
+         "gloss": true,
+         "stops": [
+          [
+           0.0,
+           "#FFCE50"
+          ],
+          [
+           0.49,
+           "#FFCE50"
+          ],
+          [
+           0.5,
+           "#DBB145"
+          ],
+          [
+           1.0,
+           "#BD983B"
+          ]
+         ],
+         "attrs": {
+          "PressLip": 5,
+          "AutoShine": true,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#FFE6A8"
         }
        ],
-       "layout": {
-        "type": "list",
-        "dir": "x",
-        "gap": 10,
-        "align": "center"
-       },
-       "sizeClass": "L",
-       "depth": 5,
-       "corner": 24,
        "pos": [
-        1,
         0,
         0,
-        306
-       ],
-       "anchor": [
-        1,
-        0
-       ],
-       "selfFace": true,
-       "colour": "#FFCE50",
-       "paintable": true,
-       "gloss": true,
-       "stops": [
-        [
-         0.0,
-         "#FFCE50"
-        ],
-        [
-         0.4,
-         "#FFCE50"
-        ],
-        [
-         0.41000000000000003,
-         "#E6B948"
-        ],
-        [
-         1.0,
-         "#D1A942"
-        ]
-       ],
-       "attrs": {
-        "PressLip": 5
-       }
+        0,
+        364
+       ]
       }
      ],
      "pos": [
       0.5,
       0,
       0,
-      84
+      86
      ],
      "anchor": [
       0.5,
       0
      ]
     }
-   ],
-   "comic": 10,
-   "modal": true,
-   "corner": 22,
-   "pos": [
-    0.5,
-    0,
-    0.5,
-    0
-   ],
-   "anchor": [
-    0.5,
-    0.5
-   ],
-   "keyline": "#FFFFFF"
+   ]
   }
  ]
 }

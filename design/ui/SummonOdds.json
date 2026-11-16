@@ -29,52 +29,177 @@
   {
    "type": "panel",
    "name": "Window",
-   "colour": "panel",
+   "colour": [
+    "#2C3280",
+    "#181B4C"
+   ],
+   "keyline": "#FFFFFF",
+   "depth": 0,
+   "stroke": 4,
+   "corner": 22,
    "size": [
     0,
-    648,
+    1104,
     0,
-    506
+    566
    ],
+   "pos": [
+    0.5,
+    0,
+    0.5,
+    0
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "modal": true,
+   "pattern": {
+    "name": "dots",
+    "colour": "#FFFFFF",
+    "opacity": 0.05,
+    "tile": 28
+   },
    "children": [
     {
-     "type": "panel",
+     "type": "frame",
      "name": "Header",
      "colour": [
-      "#FFC93C",
-      "#FF5A5F"
+      "#B07CFF",
+      "#6A2FD6"
      ],
+     "corner": 16,
+     "outline": false,
      "size": [
+      1,
+      -12,
       0,
-      320,
-      0,
-      70
+      68
      ],
-     "rotation": -2,
-     "keyline": "#FFFFFF",
-     "comic": 6,
+     "pos": [
+      0.5,
+      0,
+      0,
+      6
+     ],
+     "anchor": [
+      0.5,
+      0
+     ],
+     "z": 2,
      "pattern": {
-      "name": "dots",
+      "name": "stripes",
       "colour": "#FFFFFF",
-      "opacity": 0.28,
-      "tile": 34
+      "opacity": 0.1,
+      "tile": 64
      },
      "children": [
       {
-       "type": "label",
-       "text": "SUMMON ODDS",
+       "type": "sheen",
+       "name": "Sheen",
+       "size": [
+        1,
+        0,
+        1,
+        0
+       ],
+       "angle": -24,
+       "opacity": 0.24,
+       "bands": [
+        [
+         0.3,
+         0.05
+        ],
+        [
+         0.4,
+         0.1
+        ]
+       ],
+       "corner": 16,
+       "overhang": true,
+       "children": []
+      },
+      {
+       "type": "frame",
+       "name": "HeaderShade",
+       "colour": [
+        "#000000",
+        "#000000"
+       ],
+       "alpha": 0.9,
+       "outline": false,
+       "corner": 16,
+       "size": [
+        1,
+        0,
+        0,
+        18
+       ],
+       "pos": [
+        0,
+        0,
+        1,
+        0
+       ],
+       "anchor": [
+        0,
+        1
+       ],
+       "z": 2,
+       "children": [],
+       "overhang": true
+      },
+      {
+       "type": "frame",
+       "name": "TitleRow",
+       "transparent": true,
        "size": [
         0,
-        280,
+        296,
         0,
         56
        ],
-       "textColour": "onDark",
-       "align": "center",
-       "textScale": 0.6964,
-       "textStroke": 3,
-       "name": "Title",
-       "font": "display",
+       "children": [
+        {
+         "type": "icon",
+         "icon": "IconScrollBig",
+         "name": "TitleIcon",
+         "size": [
+          0,
+          44,
+          0,
+          44
+         ]
+        },
+        {
+         "type": "label",
+         "text": "SUMMON ODDS",
+         "size": [
+          0,
+          242,
+          0,
+          45
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.8,
+         "textStroke": 2,
+         "name": "Title",
+         "font": "display",
+         "maxText": 36,
+         "autoX": true,
+         "textGrad": [
+          "#FFFFFF",
+          "#FFE9A8"
+         ]
+        }
+       ],
+       "layout": {
+        "type": "list",
+        "dir": "x",
+        "gap": 10,
+        "align": "center"
+       },
        "pos": [
         0.5,
         0,
@@ -84,67 +209,25 @@
        "anchor": [
         0.5,
         0.5
-       ]
+       ],
+       "z": 3,
+       "autoW": 0
       }
-     ],
-     "pos": [
-      0.5,
-      0,
-      0,
-      -36
-     ],
-     "anchor": [
-      0.5,
-      0
-     ],
-     "z": 3,
-     "overhang": true
-    },
-    {
-     "type": "frame",
-     "name": "BodyArt",
-     "colour": [
-      "#2E3488",
-      "#161944"
-     ],
-     "outline": false,
-     "size": [
-      1,
-      -16,
-      1,
-      -16
-     ],
-     "pos": [
-      0.5,
-      0,
-      0.5,
-      0
-     ],
-     "anchor": [
-      0.5,
-      0.5
-     ],
-     "corner": 16,
-     "pattern": {
-      "name": "dots",
-      "colour": "#FFFFFF",
-      "opacity": 0.07,
-      "tile": 28
-     },
-     "overhang": true,
-     "z": -1,
-     "children": []
+     ]
     },
     {
      "type": "button",
      "name": "CloseButton",
-     "colour": "danger",
+     "colour": "#F2574C",
      "size": [
       0,
       56,
       0,
       56
      ],
+     "corner": 28,
+     "depth": 3,
+     "sizeClass": "X",
      "children": [
       {
        "type": "icon",
@@ -170,18 +253,43 @@
      ],
      "pos": [
       1,
-      14,
+      -14,
       0,
-      -18
+      12
      ],
      "anchor": [
       1,
       0
      ],
      "z": 4,
-     "overhang": true,
      "closes": true,
-     "sizeClass": "L"
+     "overhang": true,
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#F2574C"
+      ],
+      [
+       0.49,
+       "#F2574C"
+      ],
+      [
+       0.5,
+       "#D04B41"
+      ],
+      [
+       1.0,
+       "#B34038"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3,
+      "Rim": 0.5
+     },
+     "stroke": 3,
+     "keyline": "#F8ABA6"
     },
     {
      "type": "frame",
@@ -189,9 +297,9 @@
      "transparent": true,
      "size": [
       0,
-      600,
+      1064,
       0,
-      400
+      460
      ],
      "children": [
       {
@@ -199,14 +307,14 @@
        "text": "Every Summon Scroll gives ONE of these heroes:",
        "size": [
         0,
-        600,
+        1064,
         0,
-        19
+        25
        ],
        "textColour": "soft",
        "align": "center",
-       "textScale": 0.7368,
-       "textStroke": 2,
+       "textScale": 0.8,
+       "textStroke": 1.5,
        "name": "OddsNote",
        "pos": [
         0.5,
@@ -218,7 +326,7 @@
         0.5,
         0
        ],
-       "maxText": 14
+       "maxText": 20
       },
       {
        "type": "frame",
@@ -226,7 +334,7 @@
        "transparent": true,
        "size": [
         0,
-        600,
+        1064,
         0,
         280
        ],
@@ -234,102 +342,247 @@
         {
          "type": "panel",
          "name": "OddsRow1",
-         "colour": "panelHi",
-         "depth": 3,
-         "corner": 12,
+         "colour": [
+          "#6EE599",
+          "#2E8A4F"
+         ],
+         "keyline": "#FFFFFF",
+         "depth": 0,
+         "corner": 16,
          "size": [
           0,
-          600,
+          164,
           0,
-          40
+          278
          ],
-         "padding": 4,
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 12,
-          "align": "start"
-         },
          "attrs": {
           "HeroId": "starlight_idol"
          },
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
+          {
+           "type": "sheen",
+           "name": "Sheen",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "angle": -24,
+           "opacity": 0.18,
+           "bands": [
+            [
+             0.3,
+             0.05
+            ],
+            [
+             0.4,
+             0.1
+            ]
+           ],
+           "corner": 16,
+           "overhang": true,
+           "children": [],
+           "z": 1
+          },
+          {
+           "type": "icon",
+           "icon": "FxSunburst",
+           "name": "Sunburst",
+           "size": [
+            0,
+            156,
+            0,
+            156
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            98
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 1,
+           "tint": "#FFFFFF",
+           "alphaImg": 0.0,
+           "overhang": true
+          },
           {
            "type": "frame",
            "name": "Portrait",
+           "transparent": true,
            "cls": "ViewportFrame",
-           "colour": [
-            "#34D17A",
-            "#34D17A"
-           ],
            "size": [
             0,
-            32,
+            140,
             0,
-            32
+            118
            ],
-           "children": []
+           "pos": [
+            0.5,
+            0,
+            0,
+            38
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "children": [],
+           "z": 2
           },
           {
            "type": "label",
            "text": "Cosplay Star",
            "size": [
             0,
-            230,
+            150,
             0,
-            21
+            47
            ],
            "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7619,
-           "textStroke": 2,
+           "align": "center",
+           "textScale": 0.4255,
+           "textStroke": 1.5,
            "name": "HeroName",
+           "wrap": true,
            "font": "display",
-           "maxText": 16
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 20
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#349B5A",
+           "size": [
+            0,
+            105,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "COMMON",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            212
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "1.1x your best",
            "size": [
             0,
-            180,
+            150,
             0,
-            17
+            23
            ],
-           "textColour": "soft",
-           "align": "left",
-           "textScale": 0.7647,
-           "textStroke": 2,
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7826,
+           "textStroke": 1.5,
            "name": "OddsEarn",
-           "maxText": 13
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            246
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 18
           },
           {
            "type": "panel",
            "name": "OddsChip",
-           "colour": "#34D17A",
+           "colour": "buy",
            "size": [
             0,
-            70,
+            104,
             0,
-            26
+            40
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 20,
            "children": [
             {
              "type": "label",
              "text": "40%",
              "size": [
               0,
-              62,
+              94,
               0,
-              22
+              34
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.6364,
-             "textStroke": 3,
+             "textScale": 0.7647,
+             "textStroke": 1.5,
              "name": "OddsPercent",
              "font": "display",
              "pos": [
@@ -341,112 +594,272 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 26
             }
            ],
-           "stroke": 2
+           "keyline": "#FFFFFF",
+           "pos": [
+            0.5,
+            0,
+            0,
+            -16
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 8,
+           "overhang": true,
+           "stroke": 3
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "OddsRow2",
-         "colour": "panelHi",
-         "depth": 3,
-         "corner": 12,
+         "colour": [
+          "#60CAF9",
+          "#23759A"
+         ],
+         "keyline": "#FFFFFF",
+         "depth": 0,
+         "corner": 16,
          "size": [
           0,
-          600,
+          164,
           0,
-          40
+          278
          ],
-         "padding": 4,
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 12,
-          "align": "start"
-         },
          "attrs": {
           "HeroId": "clockwork_butler"
          },
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
+          {
+           "type": "sheen",
+           "name": "Sheen",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "angle": -24,
+           "opacity": 0.18,
+           "bands": [
+            [
+             0.3,
+             0.05
+            ],
+            [
+             0.4,
+             0.1
+            ]
+           ],
+           "corner": 16,
+           "overhang": true,
+           "children": [],
+           "z": 1
+          },
+          {
+           "type": "icon",
+           "icon": "FxSunburst",
+           "name": "Sunburst",
+           "size": [
+            0,
+            156,
+            0,
+            156
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            98
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 1,
+           "tint": "#FFFFFF",
+           "alphaImg": 0.0,
+           "overhang": true
+          },
           {
            "type": "frame",
            "name": "Portrait",
+           "transparent": true,
            "cls": "ViewportFrame",
-           "colour": [
-            "#38BDF8",
-            "#38BDF8"
-           ],
            "size": [
             0,
-            32,
+            140,
             0,
-            32
+            118
            ],
-           "children": []
+           "pos": [
+            0.5,
+            0,
+            0,
+            38
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "children": [],
+           "z": 2
           },
           {
            "type": "label",
            "text": "Sweet-Tooth Detective",
            "size": [
             0,
-            230,
+            150,
             0,
-            21
+            47
            ],
            "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7619,
-           "textStroke": 2,
+           "align": "center",
+           "textScale": 0.4255,
+           "textStroke": 1.5,
            "name": "HeroName",
+           "wrap": true,
            "font": "display",
-           "maxText": 16
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 20
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#2784AE",
+           "size": [
+            0,
+            108,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              98,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "UNCOMMON",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            212
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "1.75x your best",
            "size": [
             0,
-            180,
+            150,
             0,
-            17
+            23
            ],
-           "textColour": "soft",
-           "align": "left",
-           "textScale": 0.7647,
-           "textStroke": 2,
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7826,
+           "textStroke": 1.5,
            "name": "OddsEarn",
-           "maxText": 13
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            246
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 18
           },
           {
            "type": "panel",
            "name": "OddsChip",
-           "colour": "#38BDF8",
+           "colour": "buy",
            "size": [
             0,
-            70,
+            104,
             0,
-            26
+            40
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 20,
            "children": [
             {
              "type": "label",
              "text": "27%",
              "size": [
               0,
-              62,
+              94,
               0,
-              22
+              34
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.6364,
-             "textStroke": 3,
+             "textScale": 0.7647,
+             "textStroke": 1.5,
              "name": "OddsPercent",
              "font": "display",
              "pos": [
@@ -458,112 +871,272 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 26
             }
            ],
-           "stroke": 2
+           "keyline": "#FFFFFF",
+           "pos": [
+            0.5,
+            0,
+            0,
+            -16
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 8,
+           "overhang": true,
+           "stroke": 3
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "OddsRow3",
-         "colour": "panelHi",
-         "depth": 3,
-         "corner": 12,
+         "colour": [
+          "#B977F9",
+          "#683599"
+         ],
+         "keyline": "#FFFFFF",
+         "depth": 0,
+         "corner": 16,
          "size": [
           0,
-          600,
+          164,
           0,
-          40
+          278
          ],
-         "padding": 4,
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 12,
-          "align": "start"
-         },
          "attrs": {
           "HeroId": "phantom_thief"
          },
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
+          {
+           "type": "sheen",
+           "name": "Sheen",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "angle": -24,
+           "opacity": 0.18,
+           "bands": [
+            [
+             0.3,
+             0.05
+            ],
+            [
+             0.4,
+             0.1
+            ]
+           ],
+           "corner": 16,
+           "overhang": true,
+           "children": [],
+           "z": 1
+          },
+          {
+           "type": "icon",
+           "icon": "FxSunburst",
+           "name": "Sunburst",
+           "size": [
+            0,
+            156,
+            0,
+            156
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            98
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 1,
+           "tint": "#FFFFFF",
+           "alphaImg": 0.0,
+           "overhang": true
+          },
           {
            "type": "frame",
            "name": "Portrait",
+           "transparent": true,
            "cls": "ViewportFrame",
-           "colour": [
-            "#A855F7",
-            "#A855F7"
-           ],
            "size": [
             0,
-            32,
+            140,
             0,
-            32
+            118
            ],
-           "children": []
+           "pos": [
+            0.5,
+            0,
+            0,
+            38
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "children": [],
+           "z": 2
           },
           {
            "type": "label",
            "text": "One-Eyed Ghoul",
            "size": [
             0,
-            230,
+            150,
             0,
-            21
+            47
            ],
            "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7619,
-           "textStroke": 2,
+           "align": "center",
+           "textScale": 0.4255,
+           "textStroke": 1.5,
            "name": "HeroName",
+           "wrap": true,
            "font": "display",
-           "maxText": 16
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 20
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#763BAD",
+           "size": [
+            0,
+            105,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "RARE",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            212
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "2.5x your best",
            "size": [
             0,
-            180,
+            150,
             0,
-            17
+            23
            ],
-           "textColour": "soft",
-           "align": "left",
-           "textScale": 0.7647,
-           "textStroke": 2,
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7826,
+           "textStroke": 1.5,
            "name": "OddsEarn",
-           "maxText": 13
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            246
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 18
           },
           {
            "type": "panel",
            "name": "OddsChip",
-           "colour": "#A855F7",
+           "colour": "buy",
            "size": [
             0,
-            70,
+            104,
             0,
-            26
+            40
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 20,
            "children": [
             {
              "type": "label",
              "text": "18%",
              "size": [
               0,
-              62,
+              94,
               0,
-              22
+              34
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.6364,
-             "textStroke": 3,
+             "textScale": 0.7647,
+             "textStroke": 1.5,
              "name": "OddsPercent",
              "font": "display",
              "pos": [
@@ -575,112 +1148,272 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 26
             }
            ],
-           "stroke": 2
+           "keyline": "#FFFFFF",
+           "pos": [
+            0.5,
+            0,
+            0,
+            -16
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 8,
+           "overhang": true,
+           "stroke": 3
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "OddsRow4",
-         "colour": "panelHi",
-         "depth": 3,
-         "corner": 12,
+         "colour": [
+          "#FF72B5",
+          "#9E3165"
+         ],
+         "keyline": "#FFFFFF",
+         "depth": 0,
+         "corner": 16,
          "size": [
           0,
-          600,
+          164,
           0,
-          40
+          278
          ],
-         "padding": 4,
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 12,
-          "align": "start"
-         },
          "attrs": {
           "HeroId": "demon_lord_heir"
          },
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
+          {
+           "type": "sheen",
+           "name": "Sheen",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "angle": -24,
+           "opacity": 0.18,
+           "bands": [
+            [
+             0.3,
+             0.05
+            ],
+            [
+             0.4,
+             0.1
+            ]
+           ],
+           "corner": 16,
+           "overhang": true,
+           "children": [],
+           "z": 1
+          },
+          {
+           "type": "icon",
+           "icon": "FxSunburst",
+           "name": "Sunburst",
+           "size": [
+            0,
+            156,
+            0,
+            156
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            98
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 1,
+           "tint": "#FFFFFF",
+           "alphaImg": 0.0,
+           "overhang": true
+          },
           {
            "type": "frame",
            "name": "Portrait",
+           "transparent": true,
            "cls": "ViewportFrame",
-           "colour": [
-            "#FF4FA3",
-            "#FF4FA3"
-           ],
            "size": [
             0,
-            32,
+            140,
             0,
-            32
+            118
            ],
-           "children": []
+           "pos": [
+            0.5,
+            0,
+            0,
+            38
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "children": [],
+           "z": 2
           },
           {
            "type": "label",
            "text": "Control Devil",
            "size": [
             0,
-            230,
+            150,
             0,
-            21
+            47
            ],
            "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7619,
-           "textStroke": 2,
+           "align": "center",
+           "textScale": 0.4255,
+           "textStroke": 1.5,
            "name": "HeroName",
+           "wrap": true,
            "font": "display",
-           "maxText": 16
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 20
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#B23772",
+           "size": [
+            0,
+            105,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "EPIC",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            212
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "3.5x your best",
            "size": [
             0,
-            180,
+            150,
             0,
-            17
+            23
            ],
-           "textColour": "soft",
-           "align": "left",
-           "textScale": 0.7647,
-           "textStroke": 2,
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7826,
+           "textStroke": 1.5,
            "name": "OddsEarn",
-           "maxText": 13
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            246
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 18
           },
           {
            "type": "panel",
            "name": "OddsChip",
-           "colour": "#FF4FA3",
+           "colour": "buy",
            "size": [
             0,
-            70,
+            104,
             0,
-            26
+            40
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 20,
            "children": [
             {
              "type": "label",
              "text": "10%",
              "size": [
               0,
-              62,
+              94,
               0,
-              22
+              34
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.6364,
-             "textStroke": 3,
+             "textScale": 0.7647,
+             "textStroke": 1.5,
              "name": "OddsPercent",
              "font": "display",
              "pos": [
@@ -692,112 +1425,272 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 26
             }
            ],
-           "stroke": 2
+           "keyline": "#FFFFFF",
+           "pos": [
+            0.5,
+            0,
+            0,
+            -16
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 8,
+           "overhang": true,
+           "stroke": 3
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "OddsRow5",
-         "colour": "panelHi",
-         "depth": 3,
-         "corner": 12,
+         "colour": [
+          "#FFC04D",
+          "#9E6D14"
+         ],
+         "keyline": "#FFFFFF",
+         "depth": 0,
+         "corner": 16,
          "size": [
           0,
-          600,
+          164,
           0,
-          40
+          278
          ],
-         "padding": 4,
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 12,
-          "align": "start"
-         },
          "attrs": {
           "HeroId": "angel_commander"
          },
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
          "children": [
+          {
+           "type": "sheen",
+           "name": "Sheen",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "angle": -24,
+           "opacity": 0.18,
+           "bands": [
+            [
+             0.3,
+             0.05
+            ],
+            [
+             0.4,
+             0.1
+            ]
+           ],
+           "corner": 16,
+           "overhang": true,
+           "children": [],
+           "z": 1
+          },
+          {
+           "type": "icon",
+           "icon": "FxSunburst",
+           "name": "Sunburst",
+           "size": [
+            0,
+            156,
+            0,
+            156
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            98
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 1,
+           "tint": "#FFFFFF",
+           "alphaImg": 0.0,
+           "overhang": true
+          },
           {
            "type": "frame",
            "name": "Portrait",
+           "transparent": true,
            "cls": "ViewportFrame",
-           "colour": [
-            "#FACC15",
-            "#FACC15"
-           ],
            "size": [
             0,
-            32,
+            140,
             0,
-            32
+            118
            ],
-           "children": []
+           "pos": [
+            0.5,
+            0,
+            0,
+            38
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "children": [],
+           "z": 2
           },
           {
            "type": "label",
            "text": "Elf Archmage",
            "size": [
             0,
-            230,
+            150,
             0,
-            21
+            47
            ],
            "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7619,
-           "textStroke": 2,
+           "align": "center",
+           "textScale": 0.4255,
+           "textStroke": 1.5,
            "name": "HeroName",
+           "wrap": true,
            "font": "display",
-           "maxText": 16
+           "pos": [
+            0.5,
+            0,
+            0,
+            160
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 20
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#B27B16",
+           "size": [
+            0,
+            105,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "LEGENDARY",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            212
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "stroke": 2,
+           "keyline": "#FFFFFF"
           },
           {
            "type": "label",
            "text": "5.5x your best",
            "size": [
             0,
-            180,
+            150,
             0,
-            17
+            23
            ],
-           "textColour": "soft",
-           "align": "left",
-           "textScale": 0.7647,
-           "textStroke": 2,
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7826,
+           "textStroke": 1.5,
            "name": "OddsEarn",
-           "maxText": 13
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            246
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 18
           },
           {
            "type": "panel",
            "name": "OddsChip",
-           "colour": "#FACC15",
+           "colour": "buy",
            "size": [
             0,
-            70,
+            104,
             0,
-            26
+            40
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 20,
            "children": [
             {
              "type": "label",
              "text": "4%",
              "size": [
               0,
-              62,
+              94,
               0,
-              22
+              34
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.6364,
-             "textStroke": 3,
+             "textScale": 0.7647,
+             "textStroke": 1.5,
              "name": "OddsPercent",
              "font": "display",
              "pos": [
@@ -809,112 +1702,273 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 26
             }
            ],
-           "stroke": 2
+           "keyline": "#FFFFFF",
+           "pos": [
+            0.5,
+            0,
+            0,
+            -16
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 8,
+           "overhang": true,
+           "stroke": 3
           }
-         ]
+         ],
+         "stroke": 3
         },
         {
          "type": "panel",
          "name": "OddsRow6",
-         "colour": "panelHi",
-         "depth": 3,
-         "corner": 12,
+         "colour": [
+          "#FC6289",
+          "#9C2542"
+         ],
+         "keyline": "#FFFFFF",
+         "depth": 0,
+         "corner": 16,
          "size": [
           0,
-          600,
+          164,
           0,
-          40
+          278
          ],
-         "padding": 4,
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 12,
-          "align": "start"
-         },
          "attrs": {
-          "HeroId": "void_empress"
+          "HeroId": "void_empress",
+          "Rarest": true
+         },
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
          },
          "children": [
           {
-           "type": "frame",
-           "name": "Portrait",
-           "cls": "ViewportFrame",
-           "colour": [
-            "#FB3B6B",
-            "#FB3B6B"
+           "type": "sheen",
+           "name": "Sheen",
+           "size": [
+            1,
+            0,
+            1,
+            0
            ],
+           "angle": -24,
+           "opacity": 0.18,
+           "bands": [
+            [
+             0.3,
+             0.05
+            ],
+            [
+             0.4,
+             0.1
+            ]
+           ],
+           "corner": 16,
+           "overhang": true,
+           "children": [],
+           "z": 1
+          },
+          {
+           "type": "icon",
+           "icon": "FxSunburst",
+           "name": "Sunburst",
            "size": [
             0,
-            32,
+            156,
             0,
-            32
+            156
            ],
-           "children": []
+           "pos": [
+            0.5,
+            0,
+            0,
+            98
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 1,
+           "tint": "#FFFFFF",
+           "alphaImg": 0.0,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "Portrait",
+           "transparent": true,
+           "cls": "ViewportFrame",
+           "size": [
+            0,
+            140,
+            0,
+            118
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            38
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "children": [],
+           "z": 2
           },
           {
            "type": "label",
            "text": "Illusion Overlord",
            "size": [
             0,
-            230,
+            150,
             0,
-            21
+            47
            ],
            "textColour": "onDark",
-           "align": "left",
-           "textScale": 0.7619,
-           "textStroke": 2,
+           "align": "center",
+           "textScale": 0.4255,
+           "textStroke": 1.5,
            "name": "HeroName",
+           "wrap": true,
            "font": "display",
-           "maxText": 16
-          },
-          {
-           "type": "label",
-           "text": "12x your best",
-           "size": [
+           "pos": [
+            0.5,
             0,
-            180,
             0,
-            17
+            160
            ],
-           "textColour": "soft",
-           "align": "left",
-           "textScale": 0.7647,
-           "textStroke": 2,
-           "name": "OddsEarn",
-           "maxText": 13
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 20
           },
           {
            "type": "panel",
-           "name": "OddsChip",
-           "colour": "#FB3B6B",
+           "name": "RarityTag",
+           "colour": "#B0294B",
            "size": [
             0,
-            70,
+            105,
             0,
             26
            ],
            "selfFace": true,
            "paintable": true,
            "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "MYTHIC",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            212
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "stroke": 2,
+           "keyline": "#FFFFFF"
+          },
+          {
+           "type": "label",
+           "text": "12x your best",
+           "size": [
+            0,
+            150,
+            0,
+            23
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.7826,
+           "textStroke": 1.5,
+           "name": "OddsEarn",
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            246
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 18
+          },
+          {
+           "type": "panel",
+           "name": "OddsChip",
+           "colour": "danger",
+           "size": [
+            0,
+            104,
+            0,
+            40
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 20,
            "children": [
             {
              "type": "label",
              "text": "1%",
              "size": [
               0,
-              62,
+              94,
               0,
-              22
+              34
              ],
              "textColour": "onDark",
              "align": "center",
-             "textScale": 0.6364,
-             "textStroke": 3,
+             "textScale": 0.7647,
+             "textStroke": 1.5,
              "name": "OddsPercent",
              "font": "display",
              "pos": [
@@ -926,25 +1980,119 @@
              "anchor": [
               0.5,
               0.5
-             ]
+             ],
+             "maxText": 26
             }
            ],
-           "stroke": 2
+           "keyline": "#FFFFFF",
+           "pos": [
+            0.5,
+            0,
+            0,
+            -16
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 8,
+           "overhang": true,
+           "stroke": 3
+          },
+          {
+           "type": "icon",
+           "icon": "IconStar",
+           "name": "Sparkle1",
+           "size": [
+            0,
+            26,
+            0,
+            26
+           ],
+           "pos": [
+            0,
+            14,
+            0,
+            40
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 4,
+           "overhang": true
+          },
+          {
+           "type": "icon",
+           "icon": "IconStar",
+           "name": "Sparkle2",
+           "size": [
+            0,
+            18,
+            0,
+            18
+           ],
+           "pos": [
+            1,
+            -16,
+            0,
+            60
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 4,
+           "overhang": true
+          },
+          {
+           "type": "icon",
+           "icon": "IconStar",
+           "name": "Sparkle3",
+           "size": [
+            0,
+            22,
+            0,
+            22
+           ],
+           "pos": [
+            1,
+            -20,
+            0,
+            150
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 4,
+           "overhang": true
           }
-         ]
+         ],
+         "strokeGrad": [
+          "#FF4D6D",
+          "#FFB020",
+          "#FFE14D",
+          "#4ADE80",
+          "#38BDF8",
+          "#A855F7",
+          "#FF4D6D"
+         ],
+         "strokeW": 4,
+         "stroke": 3
         }
        ],
        "layout": {
         "type": "list",
-        "dir": "y",
-        "gap": 8,
-        "align": "start"
+        "dir": "x",
+        "gap": 14,
+        "align": "center"
        },
        "pos": [
         0.5,
         0,
         0,
-        26
+        46
        ],
        "anchor": [
         0.5,
@@ -958,11 +2106,11 @@
         0,
         300,
         0,
-        21
+        30
        ],
        "textColour": "buy",
        "align": "center",
-       "textScale": 0.7619,
+       "textScale": 0.8,
        "textStroke": 2,
        "name": "Total",
        "font": "display",
@@ -970,13 +2118,13 @@
         0.5,
         0,
         0,
-        314
+        338
        ],
        "anchor": [
         0.5,
         0
        ],
-       "maxText": 16
+       "maxText": 24
       },
       {
        "type": "frame",
@@ -984,9 +2132,9 @@
        "transparent": true,
        "size": [
         0,
-        600,
+        568,
         0,
-        56
+        64
        ],
        "children": [
         {
@@ -994,49 +2142,96 @@
          "name": "OddsBuy1",
          "size": [
           0,
-          153,
+          176,
           0,
-          44
+          68
          ],
+         "sizeClass": "L",
+         "depth": 5,
+         "corner": 23,
+         "layout": {
+          "type": "list",
+          "dir": "y",
+          "gap": 0,
+          "align": "center"
+         },
          "children": [
           {
-           "type": "icon",
-           "icon": "IconRobux",
-           "name": "Icon",
-           "size": [
-            0,
-            26,
-            0,
-            26
-           ]
-          },
-          {
            "type": "label",
-           "text": "x1  79",
+           "text": "<unbound>",
            "size": [
             0,
-            87,
+            79,
             0,
-            26
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7308,
-           "textStroke": 2,
-           "name": "Label",
+           "textScale": 0.9,
+           "textStroke": 1.5,
+           "name": "Count",
+           "samples": [
+            "BUY x1",
+            "BUY x10"
+           ],
            "font": "display",
-           "maxText": 19
+           "maxText": 18
+          },
+          {
+           "type": "frame",
+           "name": "PriceRow",
+           "transparent": true,
+           "size": [
+            0,
+            79,
+            0,
+            31
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconRobux",
+             "name": "Icon",
+             "size": [
+              0,
+              29,
+              0,
+              29
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              46,
+              0,
+              31
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8387,
+             "textStroke": 2,
+             "name": "Price",
+             "samples": [
+              "79",
+              "999"
+             ],
+             "font": "display",
+             "maxText": 26,
+             "autoX": true,
+             "capW": 46
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 4,
+            "align": "center"
+           },
+           "autoW": 0
           }
          ],
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 8,
-          "align": "center"
-         },
-         "sizeClass": "M",
-         "depth": 4,
-         "corner": 18,
          "colour": "#FF61AC",
          "paintable": true,
          "gloss": true,
@@ -1046,70 +2241,121 @@
            "#FF61AC"
           ],
           [
-           0.4,
+           0.49,
            "#FF61AC"
           ],
           [
-           0.41000000000000003,
-           "#E6579B"
+           0.5,
+           "#DB5394"
           ],
           [
            1.0,
-           "#D1508D"
+           "#BD487F"
           ]
          ],
          "attrs": {
-          "PressLip": 4
-         }
+          "PressLip": 5,
+          "AutoShine": true,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#FFB0D6"
         },
         {
          "type": "button",
          "name": "OddsBuy3",
          "size": [
           0,
-          166,
+          176,
           0,
-          44
+          68
          ],
+         "sizeClass": "L",
+         "depth": 5,
+         "corner": 23,
+         "layout": {
+          "type": "list",
+          "dir": "y",
+          "gap": 0,
+          "align": "center"
+         },
          "children": [
           {
-           "type": "icon",
-           "icon": "IconRobux",
-           "name": "Icon",
-           "size": [
-            0,
-            26,
-            0,
-            26
-           ]
-          },
-          {
            "type": "label",
-           "text": "x3  199",
+           "text": "<unbound>",
            "size": [
             0,
-            100,
+            79,
             0,
-            26
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.7308,
-           "textStroke": 2,
-           "name": "Label",
+           "textScale": 0.9,
+           "textStroke": 1.5,
+           "name": "Count",
+           "samples": [
+            "BUY x3",
+            "BUY x10"
+           ],
            "font": "display",
-           "maxText": 19
+           "maxText": 18
+          },
+          {
+           "type": "frame",
+           "name": "PriceRow",
+           "transparent": true,
+           "size": [
+            0,
+            79,
+            0,
+            31
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconRobux",
+             "name": "Icon",
+             "size": [
+              0,
+              29,
+              0,
+              29
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              46,
+              0,
+              31
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8387,
+             "textStroke": 2,
+             "name": "Price",
+             "samples": [
+              "199",
+              "999"
+             ],
+             "font": "display",
+             "maxText": 26,
+             "autoX": true,
+             "capW": 46
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 4,
+            "align": "center"
+           },
+           "autoW": 0
           }
          ],
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 8,
-          "align": "center"
-         },
-         "sizeClass": "M",
-         "depth": 4,
-         "corner": 18,
          "colour": "#FF61AC",
          "paintable": true,
          "gloss": true,
@@ -1119,70 +2365,121 @@
            "#FF61AC"
           ],
           [
-           0.4,
+           0.49,
            "#FF61AC"
           ],
           [
-           0.41000000000000003,
-           "#E6579B"
+           0.5,
+           "#DB5394"
           ],
           [
            1.0,
-           "#D1508D"
+           "#BD487F"
           ]
          ],
          "attrs": {
-          "PressLip": 4
-         }
+          "PressLip": 5,
+          "AutoShine": true,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#FFB0D6"
         },
         {
          "type": "button",
          "name": "OddsBuy10",
          "size": [
           0,
-          227,
+          176,
           0,
-          56
+          68
          ],
+         "sizeClass": "L",
+         "depth": 5,
+         "corner": 23,
+         "layout": {
+          "type": "list",
+          "dir": "y",
+          "gap": 0,
+          "align": "center"
+         },
          "children": [
           {
-           "type": "icon",
-           "icon": "IconRobux",
-           "name": "Icon",
-           "size": [
-            0,
-            34,
-            0,
-            34
-           ]
-          },
-          {
            "type": "label",
-           "text": "x10  599",
+           "text": "<unbound>",
            "size": [
             0,
-            143,
+            79,
             0,
-            35
+            20
            ],
            "textColour": "onDark",
            "align": "center",
-           "textScale": 0.6857,
-           "textStroke": 2,
-           "name": "Label",
+           "textScale": 0.9,
+           "textStroke": 1.5,
+           "name": "Count",
+           "samples": [
+            "BUY x10",
+            "BUY x10"
+           ],
            "font": "display",
-           "maxText": 24
+           "maxText": 18
+          },
+          {
+           "type": "frame",
+           "name": "PriceRow",
+           "transparent": true,
+           "size": [
+            0,
+            79,
+            0,
+            31
+           ],
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconRobux",
+             "name": "Icon",
+             "size": [
+              0,
+              29,
+              0,
+              29
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              46,
+              0,
+              31
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8387,
+             "textStroke": 2,
+             "name": "Price",
+             "samples": [
+              "599",
+              "999"
+             ],
+             "font": "display",
+             "maxText": 26,
+             "autoX": true,
+             "capW": 46
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 4,
+            "align": "center"
+           },
+           "autoW": 0
           }
          ],
-         "layout": {
-          "type": "list",
-          "dir": "x",
-          "gap": 10,
-          "align": "center"
-         },
-         "sizeClass": "L",
-         "depth": 5,
-         "corner": 24,
          "colour": "#48D687",
          "paintable": true,
          "gloss": true,
@@ -1192,67 +2489,140 @@
            "#48D687"
           ],
           [
-           0.4,
+           0.49,
            "#48D687"
           ],
           [
-           0.41000000000000003,
-           "#41C17A"
+           0.5,
+           "#3EB874"
           ],
           [
            1.0,
-           "#3BAF6F"
+           "#359E64"
           ]
          ],
          "attrs": {
-          "PressLip": 5
-         }
+          "PressLip": 5,
+          "AutoShine": true,
+          "Rim": 0.5
+         },
+         "stroke": 3,
+         "keyline": "#A4EAC3"
         }
        ],
        "layout": {
         "type": "list",
         "dir": "x",
-        "gap": 12,
+        "gap": 20,
         "align": "center"
        },
        "pos": [
         0.5,
         0,
         0,
-        344
+        392
        ],
        "anchor": [
         0.5,
         0
        ]
+      },
+      {
+       "type": "panel",
+       "name": "OddsBestValue",
+       "colour": "buy",
+       "size": [
+        0,
+        156,
+        0,
+        30
+       ],
+       "corner": 15,
+       "depth": 0,
+       "keyline": "#FFFFFF",
+       "selfFace": true,
+       "paintable": true,
+       "pos": [
+        0,
+        728,
+        0,
+        366
+       ],
+       "anchor": [
+        0.5,
+        0
+       ],
+       "z": 8,
+       "overhang": true,
+       "children": [
+        {
+         "type": "label",
+         "text": "BEST VALUE",
+         "size": [
+          0,
+          144,
+          0,
+          24
+         ],
+         "textColour": "onDark",
+         "align": "center",
+         "textScale": 0.75,
+         "textStroke": 1.5,
+         "name": "OddsBestValueText",
+         "font": "display",
+         "pos": [
+          0.5,
+          0,
+          0.5,
+          0
+         ],
+         "anchor": [
+          0.5,
+          0.5
+         ],
+         "maxText": 18
+        },
+        {
+         "type": "sheen",
+         "name": "Sheen",
+         "size": [
+          1,
+          0,
+          1,
+          0
+         ],
+         "angle": -24,
+         "opacity": 0.25,
+         "bands": [
+          [
+           0.3,
+           0.05
+          ],
+          [
+           0.4,
+           0.1
+          ]
+         ],
+         "corner": 15,
+         "overhang": true,
+         "children": []
+        }
+       ],
+       "stroke": 2
       }
      ],
      "pos": [
       0.5,
       0,
       0,
-      84
+      86
      ],
      "anchor": [
       0.5,
       0
      ]
     }
-   ],
-   "comic": 10,
-   "modal": true,
-   "corner": 22,
-   "pos": [
-    0.5,
-    0,
-    0.5,
-    0
-   ],
-   "anchor": [
-    0.5,
-    0.5
-   ],
-   "keyline": "#FFFFFF"
+   ]
   }
  ],
  "displayOrder": 12

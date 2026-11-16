@@ -1,0 +1,485 @@
+{
+ "name": "CarryHold",
+ "rbx_name": "CarryHold",
+ "priority": "Action",
+ "loop": true,
+ "fps": 30,
+ "duration": 1.2,
+ "_intent": "A caught hero held up overhead like a trophy: both arms up and slightly forward, hands gripping the hero's ankles from the sides (palms facing), chest leaning back a little under the weight, head up to look at it; a small settle twice a loop. Upper body only: the default walk keeps the legs.",
+ "_reference": "overhead trophy lift of a small figure held upright by the ankles (a trophy by its base)",
+ "markers": [],
+ "w": 300,
+ "h": 300,
+ "margin": 1.08,
+ "plain": true,
+ "preview": false,
+ "views": {
+  "front34": [
+   0.7,
+   1.0,
+   0.3
+  ],
+  "side": [
+   1.0,
+   0.08,
+   0.1
+  ]
+ },
+ "properties": {
+  "ARM_IK_FK.L": 0.0,
+  "ARM_IK_FK.R": 0.0,
+  "LEG_IK_FK.L": 0.0,
+  "LEG_IK_FK.R": 0.0
+ },
+ "keyframes": [
+  {
+   "t": 0.0,
+   "ease": "smooth",
+   "_note": "held high, chest leaning back a touch under the weight",
+   "bones": {
+    "UpTorso": {
+     "rot": [
+      5,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      10,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -155.6,
+      -5.88,
+      15.69
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -0.0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -19.64,
+      0,
+      16.42
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -155.6,
+      5.88,
+      -15.69
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -0.0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -19.64,
+      0,
+      -16.42
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.3,
+   "ease": "smooth",
+   "_note": "the weight settles: elbows give, chest sinks",
+   "bones": {
+    "UpTorso": {
+     "rot": [
+      3,
+      0,
+      -2
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      8,
+      0,
+      2
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -136.74,
+      1.25,
+      23.67
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -35.23,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -4.02,
+      0,
+      21.1
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -124.68,
+      -7.97,
+      -20.17
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -50.21,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      1.07,
+      0,
+      -20.21
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.6,
+   "ease": "smooth",
+   "_note": "pressed back up",
+   "bones": {
+    "UpTorso": {
+     "rot": [
+      5,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      10,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -155.6,
+      -5.88,
+      15.69
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -0.0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -19.64,
+      0,
+      16.42
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -155.6,
+      5.88,
+      -15.69
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -0.0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -19.64,
+      0,
+      -16.42
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.9,
+   "ease": "smooth",
+   "_note": "settles again, other side",
+   "bones": {
+    "UpTorso": {
+     "rot": [
+      3,
+      0,
+      2
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      8,
+      0,
+      -2
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -124.68,
+      7.97,
+      20.17
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -50.21,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      1.07,
+      0,
+      20.21
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -136.74,
+      -1.25,
+      -23.67
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -35.23,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -4.02,
+      0,
+      -21.1
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.2,
+   "ease": "smooth",
+   "_note": "loop",
+   "bones": {
+    "UpTorso": {
+     "rot": [
+      5,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      10,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -155.6,
+      -5.88,
+      15.69
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -0.0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -19.64,
+      0,
+      16.42
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -155.6,
+      5.88,
+      -15.69
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -0.0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -19.64,
+      0,
+      -16.42
+     ]
+    }
+   }
+  }
+ ],
+ "pose_only": [
+  "UpperTorso",
+  "Head",
+  "RightUpperArm",
+  "RightLowerArm",
+  "RightHand",
+  "LeftUpperArm",
+  "LeftLowerArm",
+  "LeftHand"
+ ],
+ "_attach": [
+  {
+   "pos": [
+    0.4611,
+    0.0234,
+    -1.8122
+   ],
+   "size": [
+    1.1,
+    0.55,
+    0.22000000000000003
+   ],
+   "colour": [
+    0.9,
+    0.5,
+    0.15
+   ],
+   "bone": "RightHand",
+   "rot": [
+    -179.604,
+    -0.67,
+    -1.093
+   ]
+  },
+  {
+   "pos": [
+    0.4677,
+    0.0271,
+    -2.3621
+   ],
+   "size": [
+    1.1,
+    0.55,
+    0.8800000000000001
+   ],
+   "colour": [
+    0.9,
+    0.5,
+    0.15
+   ],
+   "bone": "RightHand",
+   "rot": [
+    -179.604,
+    -0.67,
+    -1.093
+   ]
+  },
+  {
+   "pos": [
+    0.4761,
+    0.0319,
+    -3.0771
+   ],
+   "size": [
+    0.66,
+    0.66,
+    0.66
+   ],
+   "colour": [
+    0.9,
+    0.5,
+    0.15
+   ],
+   "bone": "RightHand",
+   "rot": [
+    -179.604,
+    -0.67,
+    -1.093
+   ]
+  },
+  {
+   "pos": [
+    0.7283,
+    0.0137,
+    -1.149
+   ],
+   "size": [
+    0.55,
+    0.55,
+    1.1
+   ],
+   "colour": [
+    0.9,
+    0.5,
+    0.15
+   ],
+   "bone": "RightHand",
+   "rot": [
+    -179.604,
+    -0.67,
+    -1.093
+   ]
+  },
+  {
+   "pos": [
+    0.1784,
+    0.0242,
+    -1.1555
+   ],
+   "size": [
+    0.55,
+    0.55,
+    1.1
+   ],
+   "colour": [
+    0.9,
+    0.5,
+    0.15
+   ],
+   "bone": "RightHand",
+   "rot": [
+    -179.604,
+    -0.67,
+    -1.093
+   ]
+  }
+ ],
+ "_carry": {
+  "hero_lowertorso_centre_rig": [
+   0.0,
+   0.421,
+   3.306
+  ]
+ }
+}

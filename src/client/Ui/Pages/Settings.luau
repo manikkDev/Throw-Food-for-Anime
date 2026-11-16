@@ -5,6 +5,7 @@
 
 local UserInputService = game:GetService("UserInputService")
 
+local Sound = require(script.Parent.Parent.Parent.Controllers.SoundController)
 local Screens = require(script.Parent.Parent.Screens)
 local Types = require(script.Parent.Types)
 
@@ -64,7 +65,10 @@ local function startDrag(slider: Slider)
 	local function follow(input: InputObject)
 		local width = slider.bar.AbsoluteSize.X
 		if width > 0 then
-			show(slider, (input.Position.X - slider.bar.AbsolutePosition.X) / width)
+			local fraction = (input.Position.X - slider.bar.AbsolutePosition.X) / width
+			show(slider, fraction)
+			-- the volume follows the knob live; the server hears it on release
+			Sound:Preview(slider.key, math.clamp(fraction, 0, 1))
 		end
 	end
 	table.insert(

@@ -1,0 +1,755 @@
+{
+ "name": "RevealLand",
+ "rbx_name": "RevealLand",
+ "priority": "Action",
+ "loop": false,
+ "fps": 30,
+ "duration": 1.0,
+ "_intent": "Hero drops in from above (first frames read as falling), slams into a three-point landing (one knee, one foot, one fist down) at 0.27 s, holds, then rises into a proud pose.",
+ "_reference": "three-point superhero landing rising into a pose, 1.0 s",
+ "markers": [
+  {
+   "name": "Land",
+   "time": 0.27
+  }
+ ],
+ "w": 300,
+ "h": 300,
+ "margin": 1.08,
+ "plain": true,
+ "preview": false,
+ "views": {
+  "front": [
+   0.18,
+   1.0,
+   0.12
+  ],
+  "side": [
+   1.0,
+   0.12,
+   0.08
+  ]
+ },
+ "properties": {
+  "ARM_IK_FK.L": 0.0,
+  "ARM_IK_FK.R": 0.0,
+  "LEG_IK_FK.L": 0.0,
+  "LEG_IK_FK.R": 0.0
+ },
+ "keyframes": [
+  {
+   "t": 0.0,
+   "ease": "in",
+   "_note": "falling in from above: tucked, arms up",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -10,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -20,
+      0,
+      140
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -20,
+      0,
+      -140
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -50.0,
+      0,
+      0.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      90,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      20,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -70.0,
+      0,
+      -0.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      110,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      20,
+      0,
+      0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      2.4
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.2,
+   "ease": "in",
+   "_note": "legs reach for the ground",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      -10,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -30,
+      0,
+      70
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -30,
+      0,
+      -70
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -10.0,
+      0,
+      0.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      40,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      10,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -40.0,
+      0,
+      -0.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      50,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      10,
+      0,
+      0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      0.5
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.27,
+   "ease": "out",
+   "_note": "LAND: three-point landing, knee and fist on the ground",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -22,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      -22,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      28,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -25,
+      -12,
+      -8
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -10,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      20,
+      0,
+      -55
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -22,
+      0,
+      6
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      92,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      40,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -94,
+      0,
+      -10
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      4.42,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      67.58,
+      0,
+      10
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -1.15
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.5,
+   "ease": "in",
+   "_note": "hold the landing",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -22,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      -24,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      30,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -25,
+      -12,
+      -8
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -10,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      20,
+      0,
+      -50
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -22,
+      0,
+      6
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      94,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      40,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -94,
+      0,
+      -10
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      2.4,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      69.6,
+      0,
+      10
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -1.18
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.75,
+   "ease": "out",
+   "_note": "rise",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      2,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      4,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -30,
+      -60,
+      0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -70,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      10,
+      0,
+      -20
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      6,
+      0,
+      10
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.17,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -45.17,
+      0,
+      -10
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -32,
+      0,
+      -10
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      65.38,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -33.38,
+      0,
+      10
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.3
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.0,
+   "ease": "smooth",
+   "_note": "hero pose: chest out, fist at the chest",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4,
+      0,
+      0
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      4,
+      -8,
+      0
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -40,
+      -70,
+      0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -95,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      8,
+      0,
+      -22
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30,
+      0,
+      0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      6,
+      0,
+      10
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      19.53,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      -25.53,
+      0,
+      -10
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -16,
+      0,
+      -10
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      37.26,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      -21.26,
+      0,
+      10
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0,
+      0,
+      -0.12
+     ]
+    }
+   }
+  }
+ ]
+}

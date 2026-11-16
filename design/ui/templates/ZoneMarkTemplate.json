@@ -21,14 +21,14 @@
      "text": "Pirate Harbor",
      "size": [
       0,
-      176,
+      220,
       0,
-      22
+      26
      ],
      "textColour": "onDark",
      "align": "right",
-     "textScale": 0.7273,
-     "textStroke": 3,
+     "textScale": 0.7692,
+     "textStroke": 1.5,
      "name": "ZoneMarkName",
      "pos": [
       0,
@@ -40,7 +40,9 @@
       1,
       0.5
      ],
-     "overhang": true
+     "overhang": true,
+     "maxText": 20,
+     "font": "display"
     }
    ],
    "pos": [

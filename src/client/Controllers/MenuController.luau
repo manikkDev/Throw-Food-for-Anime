@@ -301,6 +301,12 @@ function MenuController:KnitStart()
 		banner = function(text: string)
 			hud:Banner(text)
 		end,
+		levelUp = function(title: string, sub: string, color: Color3?)
+			hud:LevelUp(title, sub, color)
+		end,
+		reward = function(info: any)
+			hud:Reward(info)
+		end,
 		ticked = function(handler: (yen: number, power: number) -> ())
 			self._state.Ticked:Connect(handler)
 		end,
@@ -350,7 +356,12 @@ function MenuController:KnitStart()
 		self._stateAt = os.clock()
 		DevPanel.update(state, function(command: string, arg: any)
 			self:_fire("AdminCommand", command, arg)
-		end)
+		end, {
+			fire = function(remote: string, ...: any)
+				self:_fire(remote, ...)
+			end,
+			hud = hud,
+		})
 		if state.offline and not self._offlineShown then
 			-- welcome back: the offline earnings page, once per session
 			self._offlineShown = true

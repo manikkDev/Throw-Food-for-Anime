@@ -1,0 +1,560 @@
+{
+ "clips": [
+  {
+   "name": "Throw",
+   "priority": "Action",
+   "loop": false,
+   "duration": 1.5,
+   "markers": [
+    {
+     "name": "Release",
+     "time": 0.7667
+    }
+   ],
+   "spec": "assets/animations/specs/Throw.json",
+   "sheet": "assets/animations/renders/Throw_sheet.png",
+   "gif": "assets/animations/renders/Throw.gif",
+   "axis_check": "pass",
+   "upload": "NOT YET UPLOADED (rev 2, 2026-11-15): build in Studio and upload; ids.json still holds the old clip's id"
+  },
+  {
+   "name": "TrainStrike",
+   "priority": "Action",
+   "loop": true,
+   "duration": 2.0,
+   "markers": [
+    {
+     "name": "Hit",
+     "time": 0.2
+    },
+    {
+     "name": "Hit",
+     "time": 0.6
+    },
+    {
+     "name": "Hit",
+     "time": 1.0
+    },
+    {
+     "name": "Hit",
+     "time": 1.4
+    }
+   ],
+   "spec": "assets/animations/specs/TrainStrike.json",
+   "sheet": "assets/animations/renders/TrainStrike_sheet.png",
+   "gif": "assets/animations/renders/TrainStrike.gif",
+   "axis_check": "pass",
+   "upload": "NOT YET UPLOADED (rev 2, 2026-11-15): build in Studio and upload; ids.json still holds the old clip's id",
+   "contact": {
+    "contact_distance": 2.47,
+    "solved_plane": 2.5,
+    "measured_blender": [
+     2.481,
+     2.472,
+     2.475,
+     2.45
+    ],
+    "plane": "y = contact_distance (rig +Y = facing)",
+    "what": "frontmost corner of the striking hand box at each Hit"
+   }
+  },
+  {
+   "name": "TrainPush",
+   "priority": "Action",
+   "loop": true,
+   "duration": 1.2,
+   "markers": [
+    {
+     "name": "Hit",
+     "time": 0.5333
+    }
+   ],
+   "spec": "assets/animations/specs/TrainPush.json",
+   "sheet": "assets/animations/renders/TrainPush_sheet.png",
+   "gif": "assets/animations/renders/TrainPush.gif",
+   "axis_check": "pass",
+   "upload": "NOT YET UPLOADED (rev 2, 2026-11-15): build in Studio and upload; ids.json still holds the old clip's id",
+   "contact": {
+    "contact_distance": 2.44,
+    "solved_plane": 2.45,
+    "measured_blender": [
+     2.442,
+     2.441
+    ],
+    "plane": "y = contact_distance",
+    "palm_centres": [
+     [
+      1.4,
+      2.45,
+      -0.05
+     ],
+     [
+      -1.4,
+      2.45,
+      -0.05
+     ]
+    ],
+    "what": "the hands' flat end faces lie on the plane all loop"
+   }
+  },
+  {
+   "name": "TrainLift",
+   "priority": "Action",
+   "loop": true,
+   "duration": 2.0,
+   "markers": [
+    {
+     "name": "Rep",
+     "time": 0.4667
+    },
+    {
+     "name": "Rep",
+     "time": 1.4667
+    }
+   ],
+   "spec": "assets/animations/specs/TrainLift.json",
+   "sheet": "assets/animations/renders/TrainLift_sheet.png",
+   "gif": "assets/animations/renders/TrainLift.gif",
+   "axis_check": "pass",
+   "upload": "NOT YET UPLOADED (rev 2, 2026-11-15): build in Studio and upload; ids.json still holds the old clip's id",
+   "grip": {
+    "hands": [
+     "RightHand",
+     "LeftHand"
+    ],
+    "grip": "hammer (neutral)",
+    "weld_C0_hand_space": [
+     0,
+     0,
+     0
+    ],
+    "long_axis_hand_space": "Z (front-back of the hand part at rest)",
+    "dumbbell_size_studs": {
+     "bar": [
+      0.2,
+      1.7,
+      0.2
+     ],
+     "plate": [
+      0.78,
+      0.3,
+      0.78
+     ],
+     "plate_offset": 0.68
+    }
+   }
+  },
+  {
+   "name": "TrainMeditate",
+   "priority": "Action",
+   "loop": true,
+   "duration": 1.0,
+   "markers": [
+    {
+     "name": "Pulse",
+     "time": 0.5
+    }
+   ],
+   "spec": "assets/animations/specs/TrainMeditate.json",
+   "sheet": "assets/animations/renders/TrainMeditate_sheet.png",
+   "gif": "assets/animations/renders/TrainMeditate.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "Celebrate",
+   "priority": "Action",
+   "loop": false,
+   "duration": 1.2,
+   "markers": [
+    {
+     "name": "Peak",
+     "time": 0.5
+    }
+   ],
+   "spec": "assets/animations/specs/Celebrate.json",
+   "sheet": "assets/animations/renders/Celebrate_sheet.png",
+   "gif": "assets/animations/renders/Celebrate.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "IdleCool",
+   "priority": "Core",
+   "loop": true,
+   "duration": 3.0,
+   "markers": [],
+   "spec": "assets/animations/specs/IdleCool.json",
+   "sheet": "assets/animations/renders/IdleCool_sheet.png",
+   "gif": "assets/animations/renders/IdleCool.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "IdleCheer",
+   "priority": "Core",
+   "loop": true,
+   "duration": 2.0,
+   "markers": [],
+   "spec": "assets/animations/specs/IdleCheer.json",
+   "sheet": "assets/animations/renders/IdleCheer_sheet.png",
+   "gif": "assets/animations/renders/IdleCheer.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "IdleBlade",
+   "priority": "Core",
+   "loop": true,
+   "duration": 3.0,
+   "markers": [],
+   "spec": "assets/animations/specs/IdleBlade.json",
+   "sheet": "assets/animations/renders/IdleBlade_sheet.png",
+   "gif": "assets/animations/renders/IdleBlade.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "IdleNinja",
+   "priority": "Core",
+   "loop": true,
+   "duration": 3.0,
+   "markers": [],
+   "spec": "assets/animations/specs/IdleNinja.json",
+   "sheet": "assets/animations/renders/IdleNinja_sheet.png",
+   "gif": "assets/animations/renders/IdleNinja.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "IdlePower",
+   "priority": "Core",
+   "loop": true,
+   "duration": 2.0,
+   "markers": [],
+   "spec": "assets/animations/specs/IdlePower.json",
+   "sheet": "assets/animations/renders/IdlePower_sheet.png",
+   "gif": "assets/animations/renders/IdlePower.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "IdleShy",
+   "priority": "Core",
+   "loop": true,
+   "duration": 3.0,
+   "markers": [],
+   "spec": "assets/animations/specs/IdleShy.json",
+   "sheet": "assets/animations/renders/IdleShy_sheet.png",
+   "gif": "assets/animations/renders/IdleShy.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "IdleFloat",
+   "priority": "Core",
+   "loop": true,
+   "duration": 4.0,
+   "markers": [],
+   "spec": "assets/animations/specs/IdleFloat.json",
+   "sheet": "assets/animations/renders/IdleFloat_sheet.png",
+   "gif": "assets/animations/renders/IdleFloat.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "Eat",
+   "priority": "Action",
+   "loop": false,
+   "duration": 1.6,
+   "markers": [
+    {
+     "name": "Bite",
+     "time": 0.7
+    },
+    {
+     "name": "Bite",
+     "time": 0.95
+    }
+   ],
+   "spec": "assets/animations/specs/Eat.json",
+   "sheet": "assets/animations/renders/Eat_sheet.png",
+   "gif": "assets/animations/renders/Eat.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "RevealLand",
+   "priority": "Action",
+   "loop": false,
+   "duration": 1.0,
+   "markers": [
+    {
+     "name": "Land",
+     "time": 0.27
+    }
+   ],
+   "spec": "assets/animations/specs/RevealLand.json",
+   "sheet": "assets/animations/renders/RevealLand_sheet.png",
+   "gif": "assets/animations/renders/RevealLand.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "HeroWalkIn",
+   "priority": "Movement",
+   "loop": true,
+   "duration": 1.1333,
+   "markers": [
+    {
+     "name": "Step",
+     "time": 0.2667
+    },
+    {
+     "name": "Step",
+     "time": 0.8333
+    }
+   ],
+   "spec": "assets/animations/specs/HeroWalkIn.json",
+   "sheet": "work/anim/r3/HeroWalkIn_sheet.png",
+   "gif": "work/anim/r3/HeroWalkIn.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "HeroArrive",
+   "priority": "Action",
+   "loop": false,
+   "duration": 0.9,
+   "markers": [
+    {
+     "name": "Plant",
+     "time": 0.4
+    }
+   ],
+   "spec": "assets/animations/specs/HeroArrive.json",
+   "sheet": "work/anim/r3/HeroArrive_sheet.png",
+   "gif": "work/anim/r3/HeroArrive.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "CarryHold",
+   "priority": "Action",
+   "loop": true,
+   "duration": 1.2,
+   "markers": [],
+   "spec": "assets/animations/specs/CarryHold.json",
+   "sheet": "work/anim/r3/CarryHold_sheet.png",
+   "gif": "work/anim/r3/CarryHold.gif",
+   "axis_check": "pass (keyed joints worst 0.55 deg; --mid flags only the UNKEYED legs, which pose_only keeps out of the export)"
+  },
+  {
+   "name": "PlaceHero",
+   "priority": "Action",
+   "loop": false,
+   "duration": 1.2,
+   "markers": [
+    {
+     "name": "Place",
+     "time": 0.5333
+    }
+   ],
+   "spec": "assets/animations/specs/PlaceHero.json",
+   "sheet": "work/anim/r3/PlaceHero_sheet.png",
+   "gif": "work/anim/r3/PlaceHero.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "RebirthEvolve",
+   "priority": "Action",
+   "loop": false,
+   "duration": 3.0,
+   "markers": [
+    {
+     "name": "Burst",
+     "time": 1.3667
+    }
+   ],
+   "spec": "assets/animations/specs/RebirthEvolve.json",
+   "sheet": "work/anim/r3/RebirthEvolve_sheet.png",
+   "gif": "work/anim/r3/RebirthEvolve.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "HeroStalk",
+   "priority": "Movement",
+   "loop": true,
+   "duration": 1.6667,
+   "markers": [
+    {
+     "name": "Step",
+     "time": 0.2667
+    },
+    {
+     "name": "Step",
+     "time": 1.1
+    }
+   ],
+   "spec": "assets/animations/specs/HeroStalk.json",
+   "sheet": "assets/animations/renders/HeroStalk_sheet.png",
+   "gif": "assets/animations/renders/HeroStalk.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "HeroMenace",
+   "priority": "Action",
+   "loop": false,
+   "duration": 2.2,
+   "markers": [
+    {
+     "name": "Look",
+     "time": 1.2
+    },
+    {
+     "name": "Power",
+     "time": 1.6667
+    }
+   ],
+   "spec": "assets/animations/specs/HeroMenace.json",
+   "sheet": "assets/animations/renders/HeroMenace_sheet.png",
+   "gif": "assets/animations/renders/HeroMenace.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "RebirthAwaken",
+   "priority": "Action",
+   "loop": false,
+   "duration": 6.0,
+   "markers": [
+    {
+     "name": "Rise",
+     "time": 1.2
+    },
+    {
+     "name": "Burst",
+     "time": 3.5
+    },
+    {
+     "name": "Stance",
+     "time": 4.4
+    }
+   ],
+   "spec": "assets/animations/specs/RebirthAwaken.json",
+   "sheet": "assets/animations/renders/RebirthAwaken_sheet.png",
+   "gif": "assets/animations/renders/RebirthAwaken.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "HeroPickUp",
+   "priority": "Action",
+   "loop": false,
+   "duration": 2.5,
+   "markers": [
+    {
+     "name": "Grab",
+     "time": 1.2667
+    },
+    {
+     "name": "Lift",
+     "time": 2.0333
+    },
+    {
+     "name": "Hold",
+     "time": 2.2333
+    }
+   ],
+   "spec": "assets/animations/specs/HeroPickUp.json",
+   "sheet": "assets/animations/renders/HeroPickUp_sheet.png",
+   "gif": "assets/animations/renders/HeroPickUp.gif",
+   "axis_check": "pass",
+   "grip": {
+    "bone": "RightHand",
+    "food_radius": 0.9,
+    "weld_C0": "CFrame.new(0, -(0.15 + radius), 0) on RightHand = CFrame.new(0, -1.05, 0) for the authored 0.9 food (the knuckle face points along the hand's -Y)",
+    "food_rest_centre": [
+     1.012,
+     -2.086,
+     -2.708
+    ],
+    "grab": {
+     "hand_pos": [
+      1.054,
+      -1.194,
+      -2.155
+     ],
+     "hand_rot_matrix": [
+      [
+       0.689,
+       0.04,
+       0.7237
+      ],
+      [
+       0.3584,
+       0.849,
+       -0.3882
+      ],
+      [
+       -0.63,
+       0.5268,
+       0.5706
+      ]
+     ],
+     "food_centre": [
+      1.012,
+      -2.086,
+      -2.708
+     ],
+     "food_bottom_y": -2.986
+    },
+    "lift": {
+     "hand_pos": [
+      1.62,
+      0.081,
+      -0.8
+     ],
+     "hand_rot_matrix": [
+      [
+       0.9545,
+       -0.1773,
+       0.2399
+      ],
+      [
+       0.031,
+       -0.7409,
+       -0.6709
+      ],
+      [
+       0.2966,
+       0.6478,
+       -0.7016
+      ]
+     ],
+     "food_centre": [
+      1.806,
+      0.859,
+      -1.48
+     ],
+     "food_bottom_y": -0.041
+    },
+    "hold": {
+     "hand_pos": [
+      1.7,
+      0.161,
+      -0.66
+     ],
+     "hand_rot_matrix": [
+      [
+       0.9246,
+       -0.2398,
+       0.2961
+      ],
+      [
+       -0.002,
+       -0.7801,
+       -0.6256
+      ],
+      [
+       0.381,
+       0.5778,
+       -0.7217
+      ]
+     ],
+     "food_centre": [
+      1.952,
+      0.98,
+      -1.267
+     ],
+     "food_bottom_y": 0.08
+    }
+   }
+  }
+ ]
+}

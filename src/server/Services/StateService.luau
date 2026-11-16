@@ -144,6 +144,7 @@ function StateService:_view(player: Player, profile: any): any
 	view.offline = self._economy:PendingOffline(player)
 	view.benchSlots = self._squad:BenchSlots(player)
 	view.training = self._training:IsTraining(player)
+	view.trainSession = self._training:View(player)
 	view.randomRestricted = self._store:RandomItemsRestricted(player)
 	view.sessionSeconds = self:SessionSeconds(player)
 	view.serverNow = workspace:GetServerTimeNow()
