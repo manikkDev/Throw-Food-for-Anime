@@ -8,7 +8,9 @@ export type Clip = { id: string, priority: string, looped: boolean }
 
 local Animations: { Clips: { [string]: Clip }, Emotes: { string } } = {
 	Clips = {
+		CarriedRide = { id = "rbxassetid://129171837155585", priority = "Action", looped = true },
 		CarryHold = { id = "rbxassetid://123151573991982", priority = "Action", looped = true },
+		CarryShoulder = { id = "rbxassetid://92687348195038", priority = "Action", looped = true },
 		Celebrate = { id = "rbxassetid://76710208383938", priority = "Action", looped = false },
 		Eat = { id = "rbxassetid://130105520151450", priority = "Action", looped = false },
 		HeroArrive = { id = "rbxassetid://79905936733587", priority = "Action", looped = false },
@@ -23,7 +25,7 @@ local Animations: { Clips: { [string]: Clip }, Emotes: { string } } = {
 		IdleNinja = { id = "rbxassetid://79047369672478", priority = "Core", looped = true },
 		IdlePower = { id = "rbxassetid://90410459126519", priority = "Core", looped = true },
 		IdleShy = { id = "rbxassetid://77216879621963", priority = "Core", looped = true },
-		PlaceHero = { id = "rbxassetid://90759279130507", priority = "Action", looped = false },
+		PlaceHero = { id = "rbxassetid://77773650101040", priority = "Action", looped = false },
 		RebirthAwaken = { id = "rbxassetid://128371788611919", priority = "Action", looped = false },
 		RebirthEvolve = { id = "rbxassetid://116897390479380", priority = "Action", looped = false },
 		RevealLand = { id = "rbxassetid://122474403767673", priority = "Action", looped = false },

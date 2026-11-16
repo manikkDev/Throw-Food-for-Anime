@@ -23,6 +23,8 @@ python tools/anim/run.py manifest               # manifest.json
 python tools/anim/run.py build                  # work/anim/build.lua -> ReplicatedStorage.Assets.Anims
 python tools/anim/run.py build4                 # batch r4 only -> work/anim/upload4/build_r4.lua (see its README)
 python tools/anim/run.py build5                 # batch r5 only -> work/anim/upload5/build_r5.lua (see its README)
+python tools/anim/run.py build6                 # batch r6 only -> work/anim/upload6/build_r6.lua (see its README)
+python tools/anim/duo_run.py ride|place [--dry] # r6: carrier + 0.55 hero rendered together, real-mesh clash report
 python tools/anim/run.py probe <Name> [--frames] # mesh_probe.py: floor, world foot slip (incl. game root travel), part overlaps on the real meshes
 python tools/anim/look.py <Name> out.png 0 30 60 # judging renders: chosen frames, bigger, side/front/front34
 ```
@@ -63,6 +65,9 @@ KeyframeSequences with the skill's `scripts/upload_animation.py`.
 | HeroStalk | hero | Movement | yes | 1.6667 | Step 0.2667 (R), Step 1.1 (L) | **r4, NOT YET UPLOADED.** Villain stalk: slow heavy heel-to-toe steps, 0.012 bob, chest forward, shoulders rolling, head low. **2.5 studs per cycle = 1.5 studs/s** ground speed |
 | HeroMenace | hero | Action | no | 2.2 | Look 1.2, Power 1.6667 | **r4, NOT YET UPLOADED.** From the stalk's right Step: plant, one slow step, head comes up to the camera, shoulders roll back, fists clench and flex out with a chest lift; held. Root 0.5 studs Quad Out over 0.6667 s |
 | RebirthAwaken | player | Action | no | 6.0 | Rise 1.2, Burst 3.5, Stance 4.4 | **r4, NOT YET UPLOADED.** Villain level-up: one knee down, fist on the ground, trembling rise, burst (head back, arms up and wide), power stance; held |
+| CarryShoulder | player | Action | yes | 1.6 | - | **r6** (`clips_r6.py`, hand-off `work/anim/upload6`). Hero sits on the RIGHT shoulder (seat: hero LowerTorso `CFrame.new(1.25, 1.4345, -0.34)` in HRP space); right forearm level under its feet; upper body only, left arm and legs left to the walk. Replaces CarryHold in the game |
+| CarriedRide | carried hero | Action | yes | 1.6 | - | **r6** seated on the carrier's shoulder, left hand on its head, right arm waving, hip bounce; start together with CarryShoulder |
+| PlaceHero (v2) | player | Action | no | 1.3 | Hop 0.2, Grab 0.4333, Place 0.8 | **r6**, replaces r3's: hero hops off the shoulder, caught under the arms, set on the pedestal; hero path `work/anim/upload6/placehero_path.json` |
 | HeroPickUp | hero | Action | no | 2.5 | Grab 1.2667, Lift 2.0333, Hold 2.2333 | **r5, NOT YET UPLOADED** (`clips_r5.py`, hand-off `work/anim/upload5`). From the stalk's right Step: plant, rear foot steps back, hip-hinge bend, right fist onto the top of the food (2.71 ahead, 1.01 right), slow rise, food held out at shoulder height to his right, head turned to it; held. Root 0.5 studs Quad Out over 0.6667 s. Food weld `CFrame.new(0, -(0.15 + r), 0)` on RightHand from Grab |
 
 ## Contact and props (rev 2) - what the main thread places

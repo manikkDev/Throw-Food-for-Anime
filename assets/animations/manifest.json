@@ -340,16 +340,24 @@
    "name": "PlaceHero",
    "priority": "Action",
    "loop": false,
-   "duration": 1.2,
+   "duration": 1.3,
    "markers": [
     {
+     "name": "Hop",
+     "time": 0.2
+    },
+    {
+     "name": "Grab",
+     "time": 0.4333
+    },
+    {
      "name": "Place",
-     "time": 0.5333
+     "time": 0.8
     }
    ],
    "spec": "assets/animations/specs/PlaceHero.json",
-   "sheet": "work/anim/r3/PlaceHero_sheet.png",
-   "gif": "work/anim/r3/PlaceHero.gif",
+   "sheet": "assets/animations/renders/PlaceHero_sheet.png",
+   "gif": "assets/animations/renders/PlaceHero.gif",
    "axis_check": "pass"
   },
   {
@@ -555,6 +563,28 @@
      "food_bottom_y": 0.08
     }
    }
+  },
+  {
+   "name": "CarryShoulder",
+   "priority": "Action",
+   "loop": true,
+   "duration": 1.6,
+   "markers": [],
+   "spec": "assets/animations/specs/CarryShoulder.json",
+   "sheet": "assets/animations/renders/CarryShoulder_sheet.png",
+   "gif": "assets/animations/renders/CarryShoulder.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "CarriedRide",
+   "priority": "Action",
+   "loop": true,
+   "duration": 1.6,
+   "markers": [],
+   "spec": "assets/animations/specs/CarriedRide.json",
+   "sheet": "assets/animations/renders/CarriedRide_sheet.png",
+   "gif": "assets/animations/renders/CarriedRide.gif",
+   "axis_check": "pass"
   }
  ]
 }

@@ -175,6 +175,7 @@ function AdminService:_dev(player: Player, command: string, arg: any): boolean
 		profile.grantedPasses[arg] = if profile.grantedPasses[arg] then nil else true
 		if profile.grantedPasses[arg] then
 			self._store:ApplyPass(player, arg)
+			self._store:ShowPurchase(player, { kind = "pass", key = arg })
 		end
 		self._plots:Refresh(player)
 	elseif command == "wipe" then

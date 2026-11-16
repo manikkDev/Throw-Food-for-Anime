@@ -23,7 +23,6 @@ local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Collection = require(ReplicatedStorage.Shared.Core.Collection)
-local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Roll = require(ReplicatedStorage.Shared.Core.Roll)
 local Guard = require(script.Parent.Parent.Logic.Guard)
@@ -49,6 +48,13 @@ local StoreService = Knit.CreateService({
 
 function StoreService:KnitInit()
 	self._giftRemote = Net.server("StoreGiftTarget")
+	self._purchased = Net.server("Purchased")
+end
+
+--- Celebrate a purchase on `player`'s screen (Ui/Celebrate). The receipt and pass paths call it;
+--- the Studio TEST panel's pass toggle does too, so the moment can be seen without buying.
+function StoreService:ShowPurchase(player: Player, shown: { [string]: any })
+	self._purchased:FireClient(player, shown)
 end
 
 --- Does the player have pass `key`, bought or gifted?
@@ -113,15 +119,20 @@ function StoreService:GrantProduct(player: Player, product: any): Player?
 	assert(profile, "no profile")
 	local also: Player? = nil
 	local kind = product.Kind
+	-- what the buyer is shown (Ui/Celebrate): the facts; the client words them
+	local shown: { [string]: any } = { kind = "product", key = product.Key }
 	if kind == "lucky" then
 		profile.luckyThrows += product.Amount
+		shown.amount = product.Amount
+		shown.total = profile.luckyThrows
 	elseif kind == "serverluck" then
-		self._events:AddLuckStep(player.DisplayName)
+		shown.luck = self._events:AddLuckStep(player.DisplayName)
 	elseif kind == "yen" then
 		local amount = self._economy:MinutesOfIncome(player, product.Minutes)
 		self._economy:Add(player, amount, "yenpack")
+		shown.yen = amount
 	elseif kind == "train" then
-		self._training:GrantMinutes(player, product.Minutes)
+		shown.power = self._training:GrantMinutes(player, product.Minutes)
 	elseif kind == "offline2x" then
 		local claimed = self._economy:ClaimOffline(player, 2)
 		if claimed == 0 then
@@ -129,22 +140,27 @@ function StoreService:GrantProduct(player: Player, product: any): Player?
 			claimed = self._economy:MinutesOfIncome(player, 30)
 			self._economy:Add(player, claimed, "yenpack")
 		end
-		self._state:Toast(player, `Doubled! +{Format.short(claimed)} yen`, "good")
+		shown.yen = claimed
 	elseif kind == "summon" then
+		shown.heroes = {}
 		for _ = 1, product.Amount do
 			local hero = Roll.byPercent(SUMMON_ODDS, self._random:NextNumber())
-			self._squad:GrantAndShow(player, hero.Id, nil, nil, "summon")
+			local grant = self._squad:GrantAndShow(player, hero.Id, nil, nil, "summon")
+			table.insert(shown.heroes, self:_heroShown(hero.Id, grant))
 		end
 	elseif kind == "starter" then
+		shown.heroes = {}
 		if not profile.starterPack then
 			profile.starterPack = true
-			self._squad:GrantAndShow(player, product.Hero, nil, nil, "starter")
+			local grant = self._squad:GrantAndShow(player, product.Hero, nil, nil, "starter")
+			table.insert(shown.heroes, self:_heroShown(product.Hero, grant))
 		end
 		profile.luckyThrows += Config.Rewards.StarterPackLuckyThrows
 		local seconds = Config.Rewards.StarterPackDoubleYenMinutes * 60
 		profile.doubleYenUntil = math.max(profile.doubleYenUntil, os.time()) + seconds
 	elseif kind == "character" then
-		self._squad:GrantAndShow(player, product.Hero, nil, nil, "store")
+		local grant = self._squad:GrantAndShow(player, product.Hero, nil, nil, "store")
+		shown.heroes = { self:_heroShown(product.Hero, grant) }
 	elseif kind == "gift" then
 		local target = self._giftTarget[player]
 		assert(target and target.key == product.Key, "no gift target chosen")
@@ -156,15 +172,32 @@ function StoreService:GrantProduct(player: Player, product: any): Player?
 		self._giftTarget[player] = nil
 		self:ApplyPass(receiver, passKey)
 		also = receiver
-		self._state:Toast(receiver, `{player.DisplayName} gifted you a pass!`, "good")
-		self._state:Toast(player, `Gift sent to {receiver.DisplayName}`, "good")
+		shown.kind = "gift"
+		shown.key = passKey
+		shown.to = receiver.DisplayName
+		self._purchased:FireClient(
+			receiver,
+			{ kind = "giftReceived", key = passKey, from = player.DisplayName }
+		)
 	else
 		error(`unknown product kind {kind}`)
 	end
 	self._state:MarkDirty(player)
 	self._plots:Refresh(player)
 	self._telemetry:Custom(player, "Purchase", product.Robux, product.Key)
+	self._purchased:FireClient(player, shown)
 	return also
+end
+
+-- one bought hero as the celebration shows it
+function StoreService:_heroShown(id: string, grant: any): { [string]: any }
+	local row = MAPS.character[id] or MAPS.premium[id]
+	return {
+		id = id,
+		rarity = if row and row.Rarity then row.Rarity else "Premium",
+		isNew = grant ~= nil and grant.isNew == true,
+		action = if grant then grant.action else nil,
+	}
 end
 
 -- Save what a receipt changed. True once it is on disk (or there is nothing
@@ -262,6 +295,9 @@ end
 -- turns the pass on for THIS session only; nothing is written to the save,
 -- and the next join's check is what makes it permanent.
 function StoreService:_passBought(player: Player, pass: any)
+	-- the buyer sees the celebration as soon as the prompt says "bought"; what is saved
+	-- waits for Roblox to confirm it (below)
+	self._purchased:FireClient(player, { kind = "pass", key = pass.Key })
 	for attempt = 1, 3 do
 		if ownsPass(player, pass.ProductId) == true then
 			self:_confirmPass(player, pass)

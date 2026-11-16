@@ -1,0 +1,86 @@
+{
+ "className": "Frame",
+ "properties": {
+  "Size": {
+   "UDim2": [
+    [
+     0,
+     10
+    ],
+    [
+     0,
+     18
+    ]
+   ]
+  },
+  "Position": {
+   "UDim2": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  "AnchorPoint": {
+   "Vector2": [
+    0,
+    0
+   ]
+  },
+  "ZIndex": 0,
+  "BackgroundColor3": {
+   "Color3": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "children": [
+  {
+   "className": "UICorner",
+   "name": "Corner",
+   "properties": {
+    "CornerRadius": {
+     "UDim": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "className": "UIGradient",
+   "name": "Gradient",
+   "properties": {
+    "Rotation": -90,
+    "Color": {
+     "ColorSequence": {
+      "keypoints": [
+       {
+        "time": 0,
+        "color": [
+         1.0,
+         1.0,
+         1.0
+        ]
+       },
+       {
+        "time": 1,
+        "color": [
+         1.0,
+         1.0,
+         1.0
+        ]
+       }
+      ]
+     }
+    }
+   }
+  }
+ ]
+}

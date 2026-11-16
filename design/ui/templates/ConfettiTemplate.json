@@ -1,0 +1,38 @@
+{
+ "name": "ConfettiTemplate",
+ "theme": "theme.json",
+ "resolution": [
+  34,
+  42
+ ],
+ "kind": "world",
+ "children": [
+  {
+   "type": "frame",
+   "name": "ConfettiTemplate",
+   "colour": [
+    "#FFFFFF",
+    "#FFFFFF"
+   ],
+   "outline": false,
+   "corner": 2,
+   "size": [
+    0,
+    10,
+    0,
+    18
+   ],
+   "children": [],
+   "pos": [
+    0,
+    12,
+    0,
+    12
+   ],
+   "anchor": [
+    0,
+    0
+   ]
+  }
+ ]
+}

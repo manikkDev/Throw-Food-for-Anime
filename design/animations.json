@@ -11,6 +11,8 @@
   "HeroWalkIn": "Movement (looped; the game moves the root at 2.1063 studs/s)",
   "HeroArrive": "Action",
   "CarryHold": "Action, UPPER BODY ONLY (legs and LowerTorso unkeyed, so the default walk keeps the legs)",
+  "CarryShoulder": "Action, looped, UPPER BODY ONLY (UpperTorso, Head, right arm; LowerTorso weight-0, legs and LEFT arm unkeyed so the default walk / idle drive them)",
+  "CarriedRide": "Action, looped (on the carried hero, full body)",
   "PlaceHero": "Action",
   "RebirthEvolve": "Action"
  },
@@ -131,11 +133,28 @@
    "looped": true
   },
   {
-   "name": "PlaceHero",
-   "reference": "squat and set the carried hero onto a 1-stud pedestal in front (pedestal top = ground + 1, its centre 1.85 studs ahead of the HRP), release, right fist pump to the sky and yank down; 1.2 s, Place marker at 0.5333",
-   "_intent": "the player places the hero on a pedestal at the base",
+   "name": "CarryShoulder",
+   "reference": "caught hero (0.55 scale) sitting on the player's RIGHT shoulder: chest a touch forward, head forward and tilted a little away from the hero, right upper arm hanging with the forearm level and forward under the hero's feet (a footrest); breathing settle twice a loop; 1.6 s loop, upper body only (pose_only: UpperTorso, Head, right arm). Hero seat: its LowerTorso centre at CFrame.new(1.25, 1.4345, -0.34) in the player's HRP space, unrotated (work/anim/upload6/ride.json)",
+   "_intent": "the player carries the caught hero to their base on the shoulder (replaces CarryHold)",
    "used_by": "player",
-   "priority": "Action"
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "CarriedRide",
+   "reference": "the carried hero seated on the carrier's right shoulder: hips flexed ~86 deg, thighs forward beside the carrier's head, shins hanging in front of the right side of its chest, left hand palm-down on the carrier's head, right arm raised and waving out/in, small hip bounce (0.07 rig = 0.0385 studs) at 0.4 s and 1.2 s; 1.6 s loop, same length and key times as CarryShoulder (start both together)",
+   "_intent": "the caught hero rides the player's shoulder, alive and cheering, not a stiff statue",
+   "used_by": "hero (carried, scale 0.55)",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "PlaceHero",
+   "reference": "v2 from the shoulder carry: dip while the right forearm boosts the hero's feet, the hero hops forward off the shoulder (Hop 0.2) and is caught under the arms in front of the face (Grab 0.4333), squat and set it standing on the 1-stud pedestal centred 1.85 ahead (Place 0.8: hero LowerTorso centre HRP-space (0, -0.791, -1.852), soles at Y -2.0), release, right fist pump, settle; 1.3 s. Hero path per frame: work/anim/upload6/placehero_path.json",
+   "_intent": "the player places the hero carried on the shoulder onto a pedestal at the base",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": false
   },
   {
    "name": "RebirthEvolve",

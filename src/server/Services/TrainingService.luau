@@ -214,14 +214,17 @@ end
 
 --- The Power of `minutes` of training on the player's current gear (the
 --- training-skip products).
-function TrainingService:GrantMinutes(player: Player, minutes: number)
+--- Power for `minutes` of training, paid now. Returns the Power given.
+function TrainingService:GrantMinutes(player: Player, minutes: number): number
 	local profile = self._data:Get(player)
 	if not profile then
-		return
+		return 0
 	end
 	local double = self._store:Has(player, "DoubleTraining")
 	local reps = Progress.repsIn(Config, minutes * 60)
-	self:AddPower(player, reps * Progress.powerPerRep(Config, profile.gear, double))
+	local power = reps * Progress.powerPerRep(Config, profile.gear, double)
+	self:AddPower(player, power)
+	return power
 end
 
 -- the timing game: is this tap inside the perfect window of a rep not yet made perfect?

@@ -11,6 +11,7 @@
   python tools/anim/run.py build3                   batch r3 only -> work/anim/upload3/build_r3.lua
   python tools/anim/run.py build4                   batch r4 only -> work/anim/upload4/build_r4.lua
   python tools/anim/run.py build5                   batch r5 only -> work/anim/upload5/build_r5.lua
+  python tools/anim/run.py build6                   batch r6 only -> work/anim/upload6/build_r6.lua
   python tools/anim/run.py probe A B ... [--frames]  mesh_probe.py: floor, foot slip, part overlaps (real meshes)
 """
 import concurrent.futures as cf
@@ -41,13 +42,15 @@ R4 = ["HeroStalk", "HeroMenace", "RebirthAwaken"]   # clips_r4.py, batch r4 (ren
 ORDER += R4
 R5 = ["HeroPickUp"]   # clips_r5.py, batch r5
 ORDER += R5
+R6 = ["CarryShoulder", "CarriedRide", "PlaceHero"]   # clips_r6.py, batch r6 (PlaceHero v2 replaces r3's)
+ORDER += [n for n in R6 if n not in ORDER]
 R3_RENDERS = os.path.join(WORK, "r3")       # batch r3 keeps its sheets / GIFs here
 
 
 def all_clips():
     import clips_player
     out = dict(clips_player.CLIPS)
-    for mod in ("clips_hero", "clips_r3", "clips_r4", "clips_r5"):
+    for mod in ("clips_hero", "clips_r3", "clips_r4", "clips_r5", "clips_r6"):
         try:
             out.update(__import__(mod).CLIPS)
         except ImportError:
@@ -98,7 +101,7 @@ def dry(names):
 
 
 def renders_for(n):
-    return R3_RENDERS if n in R3 else RENDERS
+    return R3_RENDERS if (n in R3 and n not in R6) else RENDERS
 
 
 def sheet_and_gif(n, frames, views):
@@ -275,6 +278,9 @@ if __name__ == "__main__":
             print(f"--- {n} (exit {code})")
             print("\n".join(ln for ln in lines[i:] if ln.startswith(("===", "  "))) if code == 0
                   else "\n".join(lines[-20:]))
+    elif cmd == "build6":
+        os.makedirs(os.path.join(WORK, "upload6"), exist_ok=True)
+        build(R6, os.path.join(WORK, "upload6", "build_r6.lua"))
     elif cmd == "build5":
         os.makedirs(os.path.join(WORK, "upload5"), exist_ok=True)
         build(R5, os.path.join(WORK, "upload5", "build_r5.lua"))

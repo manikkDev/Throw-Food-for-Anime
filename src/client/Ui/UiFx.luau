@@ -78,7 +78,14 @@ local acc = 0
 local BURST_NAMES = { Sunburst = true, Glow = true, Burst = true, Rays = true, Halo = true }
 
 local function kindOf(name: string): string?
-	if BURST_NAMES[name] or name:match("^Glow%d+$") or name:match("^Rays%d+$") then
+	-- RaysBack / RaysFront and CardGlow: the purchase celebration's layers (Ui/Celebrate)
+	if
+		BURST_NAMES[name]
+		or name:match("^Glow%d+$")
+		or name:match("^Rays%d+$")
+		or name:match("^Rays%u%l+$")
+		or name == "CardGlow"
+	then
 		return "burst"
 	elseif name:match("^Sparkle%d*$") or name:match("^Twinkle%d*$") then
 		return "sparkle"

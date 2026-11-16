@@ -102,6 +102,10 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `python tools/studio/aura_showcase.py sync` records it in `design/auras.json` and rebuilds.
 - Caught heroes are carried (Player attr `Carrying`, `PlotService:SetCarry`, client `Controllers/CarryController`) and set
   on a pedestal with E; the hero is saved in its slot at the catch, so nothing is lost if never placed (150 s timeout).
+- Robux purchases: server `StoreService:ShowPurchase` -> remote `Purchased` -> client `Ui/Celebrate` (closes the Store, waits
+  for Roblox's purchase dialog to close) + `Ui/CardReveal` (tap-to-reveal card, one tier per tap; a single item then slides
+  aside for the PerkList details panel). Card art: `tools/ui/cards_art.py` -> `assets/ui/cards/` + `assets/ui/ids_cards.json`
+  (`--upload-only`, then `tools/gen_icons.py`). Screens are now `tools/ui/screens_v50.py` (imported by `build_ui.py`).
 - Gear and slot purchases go through a client confirmation (`Controllers/UpgradeController`, `HudController:Confirm`); prompts never spend. Prompts are drawn by `Controllers/PromptController` (Style Custom).
 - The throw pad is held by the server (`ThrowService:SetPad`, remote `ThrowPad`), like training.
 - Training: 4 stations on two mirrored courts (`config.Training.Stations`); the server snaps and locks the trainee,

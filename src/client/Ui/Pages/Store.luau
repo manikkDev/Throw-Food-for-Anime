@@ -28,6 +28,7 @@ local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Screens = require(script.Parent.Parent.Screens)
 local StoreFx = require(script.Parent.Parent.StoreFx)
+local StoreText = require(script.Parent.Parent.StoreText)
 local Viewports = require(script.Parent.Parent.Viewports)
 local Types = require(script.Parent.Types)
 
@@ -46,14 +47,7 @@ local SECTIONS: { [string]: { face: Color3, rim: Color3, bg: string } } = {
 	boosts = { face = Color3.fromHex("2FC48A"), rim = Color3.fromHex("B9F5DD"), bg = "BgSakura" },
 	yen = { face = Color3.fromHex("FFB52E"), rim = Color3.fromHex("FFEFB8"), bg = "BgClouds" },
 }
-local PASS_ICONS: { [string]: string } = {
-	DoubleYen = "IconYen",
-	DoubleTraining = "IconTrain",
-	Vip = "IconCrown",
-	AutoThrow = "IconAuto",
-	LuckyAura = "IconLuck",
-	BigBench = "IconBench",
-}
+local PASS_ICONS = StoreText.PASS_ICONS
 local KIND_ICONS: { [string]: string } = {
 	lucky = "IconLuckyThrow",
 	serverluck = "IconLuck",
@@ -154,77 +148,15 @@ local limitedHero: any = nil -- the "character" product of a Limited hero
 local featured: any = nil -- the rarest scroll hero
 local shows: { Viewports.Showcase } = {}
 
--- 12 -> "12", 1.75 -> "1.75", 1.5 -> "1.5"
-local function fmt(n: number): string
-	return (string.format("%.2f", n):gsub("%.?0+$", ""))
-end
+local fmt = StoreText.fmt
 
-local function passName(key: string): string
-	if key == "Vip" then
-		return "VIP"
-	end
-	local spaced = key:gsub("(%l)(%u)", "%1 %2")
-	return (spaced:gsub("^Double ", "2x "))
-end
+local passName = StoreText.passName
 
--- exactly what each pass grants (see the header)
-local function passDesc(pass: any): string
-	local key = pass.Key
-	if key == "DoubleYen" then
-		return "Every hero earns double yen, forever."
-	elseif key == "DoubleTraining" then
-		return "2x Power from every rep, perfect tap and boost."
-	elseif key == "Vip" then
-		return `+{math.floor(C.Luck.VipBonus * 100 + 0.5)}% luck on every throw and +{C.Plot.VipBonusSlots} hero slots.`
-	elseif key == "AutoThrow" then
-		return "Adds AUTO to your throw pad: it throws for you."
-	elseif key == "LuckyAura" then
-		return `x{fmt(pass.Luck or 1)} luck on every throw, forever.`
-	elseif key == "BigBench" then
-		return `Your bench holds {pass.BenchSlots} heroes instead of {C.Plot.BenchSlots}.`
-	end
-	return ""
-end
+local passDesc = StoreText.passDesc
 
-local function duration(minutes: number): string
-	if minutes >= 60 then
-		local hours = minutes // 60
-		return `{hours} hour{if hours == 1 then "" else "s"}`
-	end
-	return `{minutes} min`
-end
+local productName = StoreText.productName
 
-local function productName(product: any): string
-	if product.Kind == "lucky" then
-		return `{product.Amount} Lucky Throw{if product.Amount == 1 then "" else "s"}`
-	elseif product.Kind == "serverluck" then
-		return "Server Luck"
-	elseif product.Kind == "yen" then
-		local minutes = product.Minutes
-		return if minutes >= 60 then `{minutes // 60} hour Yen` else `{minutes} min Yen`
-	elseif product.Kind == "train" then
-		return `{product.Minutes} min Training`
-	elseif product.Kind == "character" then
-		local hero = MAPS.premium[product.Hero]
-		return if hero then hero.Name else product.Key
-	end
-	return (product.Key:gsub("(%l)(%u)", "%1 %2"))
-end
-
--- what one purchase of a product does (StoreService:GrantProduct)
-local function productDesc(product: any): string
-	if product.Kind == "lucky" then
-		local throws = if product.Amount == 1 then "one throw" else `{product.Amount} throws`
-		return `x{fmt(C.Throw.LuckyThrowLuck)} luck on {throws}`
-	elseif product.Kind == "serverluck" then
-		return `Server luck up for {C.Luck.ServerStepMinutes} min`
-	elseif product.Kind == "train" then
-		return `{product.Minutes} min of training Power`
-	elseif product.Kind == "yen" then
-		return `{duration(product.Minutes)} of your income`
-	end
-	return ""
-end
+local productDesc = StoreText.productDesc
 
 local function units(product: any): number?
 	if product.Kind == "lucky" or product.Kind == "summon" then

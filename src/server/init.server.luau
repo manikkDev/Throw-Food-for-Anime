@@ -21,6 +21,6 @@ Knit.Start()
 		-- running the code on disk. Check the Rojo plugin is actually CONNECTED
 		-- and syncing before debugging anything else - an established connection
 		-- is not the same as an accepted one.
-		print("[Throw Food for Anime] Server started - BUILD s5-04")
+		print("[Throw Food for Anime] Server started - BUILD s6-04")
 	end)
 	:catch(warn)

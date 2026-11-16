@@ -84,3 +84,8 @@ contact distances and the Throw's root travel.
   build time, above).
 - ffmpeg 9 removed -vsync (use -fps_mode passthrough).
 - Bash heredocs containing an apostrophe fail in this harness: write Python edits to a file with the Write tool.
+
+## Batch r6 (shoulder carry) - DONE and UPLOADED 2026-11-16
+CarryShoulder 92687348195038, CarriedRide 129171837155585, PlaceHero v2 77773650101040. See work/anim/upload6/README.md.
+- A 0.55 hero cannot straddle a 1.2-stud block head (hips at +-0.275, leg < 1 stud): one-shoulder seat instead, measured with tools/anim/duo.py.
+- New tooling: duo.py (two rigs as oriented part boxes, SAT depth), duo_blender.py / duo_run.py (hero = copies of the rig's real part meshes keyed per frame; renders + real-mesh clash report). The shipped CarryHold measured 0.10 of hero foot inside the player's head on most frames.

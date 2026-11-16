@@ -70,6 +70,11 @@ export type EventName =
 	-- server -> ONE client: heroes granted outside a throw (store, gifts), so
 	-- the client can play a reveal for each.
 	| "HeroGranted"
+	-- server -> client: a Robux purchase was granted (StoreService): { kind = "product" | "pass" |
+	-- "gift" | "giftReceived", key, amount?, yen?, power?, luck?, heroes? = { { id, rarity, isNew,
+	-- mut, size } }, from? / to? (display names) }. The client celebrates it over every screen
+	-- (Ui/Celebrate).
+	| "Purchased"
 	-- server -> ONE client: (text: string, kind: string) a short notice.
 	| "Toast"
 	-- server -> ALL clients: a rare-catch banner or an event message.

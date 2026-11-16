@@ -289,6 +289,16 @@ local function frameBust(camera: Camera, bust: Bust, aspect: number)
 	camera.CFrame = cf
 end
 
+--- Light `frame` like a studio portrait: a bright key from in front and above the camera and a high
+--- ambient, so a hero's face and clothes read in full colour on a card (owner's review: the card
+--- portraits looked dark under the ViewportFrame defaults, ambient 200 / light 140 from the back left).
+function Viewports.bright(frame: ViewportFrame)
+	frame.Ambient = Color3.fromRGB(225, 225, 232)
+	frame.LightColor = Color3.fromRGB(255, 248, 238)
+	-- heroes face -Z and the camera sits on that side: the light travels toward +Z, down a little
+	frame.LightDirection = Vector3.new(0.35, -0.55, 1)
+end
+
 --- Show hero `id` in `frame`, head and shoulders. `silhouette` draws it as a
 --- black shape (the index, before the hero is discovered). nil clears.
 function Viewports.hero(frame: ViewportFrame, id: string?, silhouette: boolean?)

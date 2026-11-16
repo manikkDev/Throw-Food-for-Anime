@@ -66,6 +66,7 @@ def fk(bones, root=0.0):
     out = {"D_tor": Dt, "D_up": Du}
     piv = PIVOT + off
     out["neck"] = piv + Du @ (NECK - PIVOT)
+    out["D_head"] = Du @ local_delta(B_BODY, _g(bones, "head"))
     for s in ("R", "L"):
         sf = s.lower()
         hip = piv + Dt @ (HIP[s] - PIVOT)
@@ -74,7 +75,8 @@ def fk(bones, root=0.0):
         Dll = Dul @ local_delta(B_LIMB, _g(bones, "ll" + sf))
         ankle = knee + Dll @ SHIN
         Df = Dll @ local_delta(B_LIMB, _g(bones, "f" + sf))
-        out.update({f"hip{s}": hip, f"knee{s}": knee, f"ankle{s}": ankle, f"Dfoot{s}": Df})
+        out.update({f"hip{s}": hip, f"knee{s}": knee, f"ankle{s}": ankle, f"Dfoot{s}": Df,
+                    f"Dthigh{s}": Dul, f"Dshin{s}": Dll})
         sh = piv + Du @ (SHOULDER[s] - PIVOT)
         Dua = Du @ local_delta(B_LIMB, _g(bones, "ua" + sf))
         elbow = sh + Dua @ UPPER[s]
@@ -83,7 +85,7 @@ def fk(bones, root=0.0):
         Dh = Dla @ local_delta(B_LIMB, _g(bones, "ha" + sf))
         fist = wrist + Dh @ np.array([0, 0, -HAND_LEN])
         out.update({f"shoulder{s}": sh, f"elbow{s}": elbow, f"wrist{s}": wrist, f"fist{s}": fist,
-                    f"Dhand{s}": Dh, f"Dfore{s}": Dla})
+                    f"Dhand{s}": Dh, f"Dfore{s}": Dla, f"Dupper{s}": Dua})
     return out
 
 

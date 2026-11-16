@@ -36,6 +36,7 @@ local Vfx = require(script.Parent.Parent.Fx.Vfx)
 local RevealUi = require(script.Parent.Parent.Ui.RevealUi)
 local Screens = require(script.Parent.Parent.Ui.Screens)
 local HudMoments = require(script.Parent.Parent.Ui.HudMoments)
+local Celebrate = require(script.Parent.Parent.Ui.Celebrate)
 local Moments = require(script.Parent.Parent.Ui.Moments)
 local Theme = require(script.Parent.Parent.Ui.Theme)
 local Viewports = require(script.Parent.Parent.Ui.Viewports)
@@ -1037,6 +1038,25 @@ function HudController:KnitStart()
 			self:Toast(text, kind)
 		end)
 	end
+	-- a Robux purchase: the celebration over every screen (Ui/Celebrate)
+	local purchased = Net.client("Purchased")
+	if purchased then
+		Celebrate.bind()
+		purchased.OnClientEvent:Connect(function(payload: any)
+			if typeof(payload) == "table" then
+				-- the shop steps away once something is bought (owner's review): the celebration
+				-- then has the whole screen, and the player is back in the game after it
+				for _ = 1, 3 do
+					local open = Screens.current()
+					if open ~= "Store" and open ~= "SummonOdds" then
+						break
+					end
+					Screens.close()
+				end
+				Celebrate.show(payload)
+			end
+		end)
+	end
 	local announce = Net.client("Announce")
 	if announce then
 		announce.OnClientEvent:Connect(function(payload: any)
@@ -1050,7 +1070,13 @@ function HudController:KnitStart()
 		-- heroes from the store or a gift: a short card each, one after another
 		local queue: { any } = {}
 		local running = false
+		-- heroes BOUGHT with Robux are presented by the purchase celebration (Ui/Celebrate,
+		-- the "Purchased" event), above the Store page; the Reveal screen sits under it
+		local BOUGHT = { summon = true, starter = true, store = true }
 		granted.OnClientEvent:Connect(function(payload: any)
+			if typeof(payload) == "table" and BOUGHT[payload.reason] then
+				return
+			end
 			table.insert(queue, payload)
 			if running then
 				return

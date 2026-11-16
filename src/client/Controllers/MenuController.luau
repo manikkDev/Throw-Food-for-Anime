@@ -27,6 +27,7 @@ local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Ui = script.Parent.Parent.Ui
 local DevPanel = require(Ui.DevPanel)
 local Screens = require(Ui.Screens)
+local Celebrate = require(script.Parent.Parent.Ui.Celebrate)
 local Types = require(Ui.Pages.Types)
 
 local MAPS = Lookup.of(Config)
@@ -96,6 +97,8 @@ function MenuController:Prompt(item: any, isPass: boolean)
 		return
 	end
 	if item.ProductId ~= 0 then
+		-- the purchase celebration waits for Roblox's dialog to close (Ui/Celebrate)
+		Celebrate.promptOpened()
 		if isPass then
 			MarketplaceService:PromptGamePassPurchase(player, item.ProductId)
 		else
