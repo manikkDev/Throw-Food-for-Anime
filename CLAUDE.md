@@ -53,7 +53,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
    `--follow-tags` skips these lightweight tags).
    Roll back: `git checkout section-<N>` + Creator Hub > place > Version History > restore that version.
    Baseline: tag `setup-baseline` = place version 6. Tag `section-1` = place version 34.
-   Tag `section-2` = place version 57. Tag `section-3` = place version 121. Tag `section-4` = place version 271. Tag `section-5` = place version 284.
+   Tag `section-2` = place version 57. Tag `section-3` = place version 121. Tag `section-4` = place version 271. Tag `section-5` = place version 284. Tag `section-6` = place version 284 too (published, private; section 6 changed no place content).
 
 ## Where the game's pieces live (since section 2)
 
