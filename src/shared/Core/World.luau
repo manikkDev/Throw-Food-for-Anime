@@ -3,15 +3,19 @@
 --
 -- One function per "where is X" so the server (validation), the client
 -- (rendering) and the blockout builder cannot disagree. Plots sit in a row
--- along X; every plot faces its own lane, which runs along +Z.
+-- along X; ONE lane, centred on x = 0, runs along +Z (since 2026-11-21). Every
+-- player has a track in it (LanePitch apart) and a throw spot on the stage at
+-- the lane mouth: stepping on the pad in front of the base takes them there.
 --
 --   z = PlotBackZ ...... hub side
 --       pedestal grid   (back half; heroes face +Z, toward the lane)
 --       slot sign       (beside the pedestals)
 --       front yard      (spawn, dojo pad on -X, reserved training yard on +X)
 --   z = PlotFrontZ ..... plot edge
---   z = ThrowPadZ ...... throw stage, out in front of the plot
---   z = LaneStartZ ..... first zone band begins
+--   z = ThrowPadZ ...... the base's own pad: the way to the throw stage
+--   z = StageZ ......... the throw stage: a ledge at the end of the forecourt
+--   z = LaneStartZ ..... the ledge's edge; the lane begins BELOW it, at y = LaneY
+--                        (the hub stands at GroundY: players throw down into the lane)
 
 local World = {}
 
@@ -52,9 +56,21 @@ function World.pedestal(
 	return World.plotX(world, plotIndex, count) + dx, z
 end
 
---- World (x, z) of the throw pad.
+--- World (x, z) of the throw pad: in front of the player's own base. Stepping
+--- on it takes the player to their throw spot.
 function World.throwPad(world: any, plotIndex: number, count: number): (number, number)
 	return World.plotX(world, plotIndex, count), world.ThrowPadZ
+end
+
+--- Centre X of the player's track in the shared lane.
+function World.laneX(world: any, plotIndex: number, count: number): number
+	return (plotIndex - (count + 1) / 2) * world.LanePitch
+end
+
+--- World (x, z) of the player's spot on the throw stage, at the head of their track:
+--- where they are held while they throw.
+function World.throwSpot(world: any, plotIndex: number, count: number): (number, number)
+	return World.laneX(world, plotIndex, count), world.StageZ
 end
 
 --- World (x, z) of the slot sign.
@@ -89,9 +105,9 @@ function World.court(
 		world.CourtDepth
 end
 
---- World X of a landing: the plot's lane centre plus jitter in [-1, 1].
+--- World X of a landing: the centre of the player's track plus jitter in [-1, 1].
 function World.landingX(world: any, plotIndex: number, count: number, jitter: number): number
-	return World.plotX(world, plotIndex, count) + math.clamp(jitter, -1, 1) * world.LandingJitterX
+	return World.laneX(world, plotIndex, count) + math.clamp(jitter, -1, 1) * world.LandingJitterX
 end
 
 --- Total lane length for a zone list.

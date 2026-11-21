@@ -289,6 +289,7 @@ local function buildLanes(cfg: any, folder: Instance)
 	)
 
 	local z = w.LaneStartZ
+	y = w.LaneY -- the lane lies below the hub
 	for i, zone in cfg.Zones do
 		local color = ZONE_COLORS[((i - 1) % #ZONE_COLORS) + 1]
 		local ground = part(
@@ -303,8 +304,8 @@ local function buildLanes(cfg: any, folder: Instance)
 			part(
 				lanes,
 				"Strip_" .. zone.Id .. "_" .. plot,
-				Vector3.new(w.LaneWidth, 0.2, zone.LengthStuds - 2),
-				Vector3.new(World.plotX(w, plot, count), y + 0.1, z + zone.LengthStuds / 2),
+				Vector3.new(w.LanePitch - 4, 0.2, zone.LengthStuds - 2),
+				Vector3.new(World.laneX(w, plot, count), y + 0.1, z + zone.LengthStuds / 2),
 				color
 			)
 		end

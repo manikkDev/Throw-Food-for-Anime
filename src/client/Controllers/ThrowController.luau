@@ -459,7 +459,8 @@ function ThrowController:_lock(on: boolean)
 	-- server's own snap and anchor follow (asked twice, in case the first ask arrives early).
 	local state = self._state.State
 	if on and root and state and state.plot then
-		local x, z = World.throwPad(W, state.plot, COUNT)
+		-- the pad in front of the base takes the player to their spot on the middle throw stage
+		local x, z = World.throwSpot(W, state.plot, COUNT)
 		local at = Vector3.new(x, root.Position.Y, z)
 		root.AssemblyLinearVelocity = Vector3.zero
 		root.CFrame = CFrame.lookAt(at, at + Vector3.zAxis)
@@ -763,14 +764,14 @@ function ThrowController:_throwerPosition(plot: number): Vector3
 	if root and root:IsA("BasePart") then
 		return root.Position + Vector3.new(0, 2.5, 3)
 	end
-	local x, z = World.throwPad(W, plot, COUNT)
+	local x, z = World.throwSpot(W, plot, COUNT)
 	return Vector3.new(x, W.GroundY + 8, z + 3)
 end
 
 -- another player's throw: only the food flying and a small burst, no camera
 function ThrowController:_watch(seen: any)
 	local from = self:_throwerPosition(seen.plot)
-	local target = Vector3.new(seen.x, W.GroundY + 2, seen.z)
+	local target = Vector3.new(seen.x, W.LaneY + 2, seen.z)
 	local ball = makeFood(seen.food)
 	local trailName, tint = ThrowSequence.trailFor(seen.food)
 	local trailFx = Vfx.play(trailName, ball, { loop = true, tint = tint })
@@ -791,7 +792,7 @@ function ThrowController:_watch(seen: any)
 		trailFx.stop()
 		Vfx.play(
 			"Land_Impact",
-			Vector3.new(seen.x, W.GroundY + 0.15, seen.z),
+			Vector3.new(seen.x, W.LaneY + 0.15, seen.z),
 			{ scale = 0.7, mult = 0.5 }
 		)
 		task.wait(seen.reveal + T.LandPauseSeconds)
@@ -920,6 +921,9 @@ function ThrowController:KnitStart()
 		if state and state.plot and root then
 			local x, z = World.throwPad(W, state.plot, COUNT)
 			local distance = World.distance(root.Position.X, root.Position.Z, x, z)
+			-- held, the player stands on the throw stage, not on the pad
+			local sx, sz = World.throwSpot(W, state.plot, COUNT)
+			local held = World.distance(root.Position.X, root.Position.Z, sx, sz)
 			-- locked, the player IS on the pad (the server holds them there); unlocked, stepping
 			-- well onto it locks them
 			self._onPad = self._locked or distance <= W.ThrowPadRadius + 1.5
@@ -946,7 +950,7 @@ function ThrowController:KnitStart()
 				self:_lock(true)
 			elseif
 				self._locked
-				and distance > W.ThrowPadRadius + 8
+				and held > W.ThrowPadRadius + 8
 				and os.clock() - self._lockedAt > 2
 			then
 				-- moved off by something else (a teleport, a respawn): let go

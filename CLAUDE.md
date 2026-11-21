@@ -75,8 +75,13 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `tools/studio/rework_hub_v2.luau` (rebuilds a copy `Workspace.MapV2` from the old map) + `tools/studio/swap_hub_v2.luau`
   (one-off: installs it, re-lays the old zones for five tracks). The old 6-base map is archived in
   `ServerStorage.MapArchive.Map_v1_6lanes`: never delete. **Do NOT run `python tools/map/build_in_studio.py`**: the old
-  generator (`design/map.json` + `tools/map/`) still describes the 6-base map and would overwrite the hub. The lanes are
-  the OLD zones for now; the anime zones replace them 3 at a time (`design/plan/09-single-lane-rework.md`,
+  generator (`design/map.json` + `tools/map/`) still describes the 6-base map and would overwrite the hub. There is ONE lane
+  (`tools/studio/single_lane.luau`, one-off): 320 wide, centred on x = 0, five tracks 56 apart (`World.LanePitch`,
+  `World.laneX`), walls only at its two edges. The lane lies 24 studs BELOW the hub (`World.LaneY`) from z 160 (`World.LaneStartZ`;
+  `tools/studio/lane_ledge.luau`, one-off): a paved funnel forecourt runs from the bases to a ledge, one 247-tall gate
+  stands at the start of every zone, and anything placed in the lane uses `LaneY`, not `GroundY`. Everyone throws from the middle: the pad in front of a base takes the player
+  to their spot on `Map.HubV2.ThrowStage` (`World.throwSpot`, `World.StageZ` 148) and letting go puts them back behind
+  their pad. The zone CONTENT is still the old six zones; the anime zones replace them 3 at a time (`design/plan/09-single-lane-rework.md`,
   `design/zones/anime_zones.json`). `Blockout.luau` only builds a grey fallback when the place has no `Workspace.Map`.
 - Creator Store models (free, the owner's request): cleaned sources in `ServerStorage.StoreAssets` (61, never delete; buildings assembled by `tools/studio/assemble_store_buildings.luau`; tags `design/store_assets.json` feed the map generator's pools) ->
   `python tools/studio/install_store_assets.py` -> `ReplicatedStorage.Assets.Kit.Prop_store_<Name>` and
@@ -116,7 +121,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - The throw pad is held by the server (`ThrowService:SetPad`, remote `ThrowPad`), like training.
 - Training: 4 stations on two mirrored courts (`config.Training.Stations`); the server snaps and locks the trainee,
   judges perfect taps (`TrainTap`); client `Controllers/TrainingController`. The throw pad locks the player too
-  (`ThrowController:_lock`, exit by the meter's X / Backspace); an invisible wall closes each lane mouth.
+  (`ThrowController:_lock`, exit by the meter's X / Backspace); one invisible wall (`Map.Barriers.LaneBlock`) closes the lane mouth behind the throw stage.
 - Studio sessions use their own stores (`Profiles_Dev`, `LB_*_Dev`); test commands are the TEST menu.
 - Hub v2 store models (cherry trees, dragon, summoning circle, horned shrine, torii, stone lantern, pagoda) are kept clean in
   `ServerStorage.StoreAssets.HubV2` (never delete). Servers hold 5 players (`config.Server.MaxPlayers`); the place's own

@@ -294,8 +294,8 @@ function ThrowSequence.play(deps: Deps): boolean
 	local tFinal = if deps.fast then revealStart else math.max(revealStart + 0.3, tEnd - FINAL_HOLD)
 	local windup = math.min(WINDUP, (flightEnd - t0) * 0.4)
 
-	local laneX = World.plotX(W, deps.plot, COUNT)
-	local ground = W.GroundY
+	local laneX = World.laneX(W, deps.plot, COUNT) -- the centre of this player's track
+	local ground = W.LaneY -- the lane lies below the hub: everything at the landing stands on this
 	local target = Vector3.new(result.x, ground + FOOD_REST, result.z)
 	-- the hero stands on the side of the food with more lane, and walks in
 	-- from that side
@@ -410,7 +410,7 @@ function ThrowSequence.play(deps: Deps): boolean
 		-- WIND-UP: a close shot from the lane side, the food in the hand
 		-- everything starts from where the character really stands (the pad is
 		-- a raised stage); the fallback is only for a character that is gone
-		local stand = if root then root.Position else Vector3.new(laneX, ground + 6, W.ThrowPadZ)
+		local stand = if root then root.Position else Vector3.new(laneX, W.GroundY + 6, W.StageZ)
 		if root then
 			root.CFrame = CFrame.lookAt(stand, stand + Vector3.zAxis)
 		end
@@ -582,7 +582,7 @@ function ThrowSequence.play(deps: Deps): boolean
 			local camSide = perp * side -- the lane-centre side: room for the camera
 			-- the pick-up is filmed from its RIGHT (the food is by its right hand) unless the lane
 			-- wall is too close on that side
-			local pickSide = if target.X + 9 <= laneX + W.LaneWidth / 2 - 2 then perp else -perp
+			local pickSide = if target.X + 9 <= W.LaneWidth / 2 - 2 then perp else -perp -- the lane is centred on x = 0
 			-- the phases: its own eyes, the walk shots, the pick-up
 			local pickupTime = math.min(PICKUP_SECONDS + HOLD_LINGER, span * 0.42)
 			local povTime = math.max(POV_MIN, span * 0.24)

@@ -282,7 +282,7 @@ function ThrowService:_focus(player: Player, x: number, z: number, flight: numbe
 	focus.CFrame = CFrame.new(root.Position)
 	player.ReplicationFocus = focus
 	TweenService:Create(focus, TweenInfo.new(math.max(flight, 0.1), Enum.EasingStyle.Linear), {
-		CFrame = CFrame.new(x, 6, z),
+		CFrame = CFrame.new(x, Config.World.LaneY + 6, z),
 	}):Play()
 	local token = (self._focusToken[player] or 0) + 1
 	self._focusToken[player] = token
@@ -334,9 +334,12 @@ function ThrowService:SetPad(player: Player, on: boolean)
 		humanoid.WalkSpeed = 0
 		humanoid.JumpHeight = 0
 		humanoid.JumpPower = 0
-		local y = floorAt(x, z, root.Position.Y, character) + lift
+		-- everyone throws from the middle: the pad in front of the base takes the player to their
+		-- spot on the throw stage (owner, 2026-11-21); letting go puts them back behind their pad
+		local sx, sz = World.throwSpot(Config.World, index, COUNT)
+		local y = floorAt(sx, sz, root.Position.Y, character) + lift
 		root.AssemblyLinearVelocity = Vector3.zero
-		root.CFrame = CFrame.lookAt(Vector3.new(x, y, z), Vector3.new(x, y, z + 10))
+		root.CFrame = CFrame.lookAt(Vector3.new(sx, y, sz), Vector3.new(sx, y, sz + 10))
 		root.Anchored = true
 	else
 		local saved = self._pad[player]

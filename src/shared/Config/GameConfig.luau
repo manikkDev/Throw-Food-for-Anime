@@ -1339,8 +1339,11 @@ local GameConfig = {
 	},
 	World = {
 		GroundY = 0,
-		LaneStartZ = 96,
-		LaneWidth = 56,
+		LaneStartZ = 160,
+		LaneY = -24,
+		LaneWidth = 320,
+		LanePitch = 56,
+		StageZ = 148,
 		LandingJitterX = 18,
 		PlotPitch = 108,
 		PlotWidth = 84,

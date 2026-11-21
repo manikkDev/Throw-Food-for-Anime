@@ -126,18 +126,40 @@ return {
 		)
 	end,
 
-	["a landing stays inside its own lane"] = function()
+	["a landing stays inside its own track, and inside the lane"] = function()
 		for plot = 1, COUNT do
 			for _, jitter in { -1, 0, 1, 5 } do
 				local x = World.landingX(W, plot, COUNT, jitter)
-				local off = math.abs(x - World.plotX(W, plot, COUNT))
-				assert(off <= W.LaneWidth / 2, `plot {plot} landing leaves the lane`)
+				local off = math.abs(x - World.laneX(W, plot, COUNT))
+				assert(off < W.LanePitch / 2, `plot {plot} landing leaves its track`)
+				assert(math.abs(x) <= W.LaneWidth / 2 - 10, `plot {plot} landing is at the lane wall`)
 			end
 		end
 	end,
 
-	["lanes do not overlap their neighbours"] = function()
-		assert(W.LaneWidth < W.PlotPitch, "lane strips would overlap")
+	["one lane: the tracks fit side by side, centred, narrower than the row of bases"] = function()
+		assert(COUNT * W.LanePitch <= W.LaneWidth, "the tracks are wider than the lane")
+		assert(World.laneX(W, 1, COUNT) == -World.laneX(W, COUNT, COUNT), "the lane is off centre")
+		assert(W.LaneWidth < COUNT * W.PlotPitch, "the lane is as wide as the row of bases")
+	end,
+
+	["the lane lies below the hub: players throw down into it from a ledge"] = function()
+		assert(W.LaneY <= W.GroundY - 12, `the lane is only {W.GroundY - W.LaneY} studs below the hub`)
+		assert(W.LaneStartZ - W.ThrowPadZ >= 60, "the lane starts right in front of the bases")
+		assert(W.LaneStartZ - W.StageZ <= 16, "the throw stage is far from the ledge's edge")
+	end,
+
+	["everyone throws from the middle: a spot on the stage at the head of their own track"] = function()
+		for plot = 1, COUNT do
+			local x, z = World.throwSpot(W, plot, COUNT)
+			local _, padZ = World.throwPad(W, plot, COUNT)
+			assert(x == World.laneX(W, plot, COUNT), `plot {plot} throws from beside its track`)
+			assert(z > padZ and z < W.LaneStartZ, `plot {plot} spot (z = {z}) is not at the lane mouth`)
+			if plot > 1 then
+				local before = World.throwSpot(W, plot - 1, COUNT)
+				assert(x - before >= 2 * W.ThrowPadRadius, "two throwers would stand in each other")
+			end
+		end
 	end,
 
 	["a free or own lock can be taken, a live foreign one cannot"] = function()
