@@ -77,7 +77,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `ServerStorage.MapArchive.Map_v1_6lanes`: never delete. **Do NOT run `python tools/map/build_in_studio.py`**: the old
   generator (`design/map.json` + `tools/map/`) still describes the 6-base map and would overwrite the hub. There is ONE lane
   (`tools/studio/single_lane.luau`, one-off): 320 wide, centred on x = 0, five tracks 56 apart (`World.LanePitch`,
-  `World.laneX`), walls only at its two edges. The lane lies 24 studs BELOW the hub (`World.LaneY`) from z 160 (`World.LaneStartZ`;
+  `World.laneX`), walls only at its two edges. The lane lies 48 studs BELOW the hub (`World.LaneY` -48: 24 from `lane_ledge.luau`, 24 more from `tools/studio/lane_deeper.luau`, both one-off) from z 160 (`World.LaneStartZ`;
   `tools/studio/lane_ledge.luau`, one-off): a paved funnel forecourt runs from the bases to a ledge, one 247-tall gate
   stands at the start of every zone, and anything placed in the lane uses `LaneY`, not `GroundY`. Everyone throws from the middle: the pad in front of a base takes the player
   to their spot on `Map.HubV2.ThrowStage` (`World.throwSpot`, `World.StageZ` 148) and letting go puts them back behind
@@ -127,7 +127,42 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `ServerStorage.StoreAssets.HubV2` (never delete). Servers hold 5 players (`config.Server.MaxPlayers`); the place's own
   max-players setting in Game Settings must be set to 5 by the owner before the next publish.
 
+- Anime zones (since 2026-11-22): one builder per zone in `tools/studio/zones/`, run in Studio edit mode and safe to run
+  again. `zone_01_naruto.luau` = zone 1 "Hidden Leaf Village": it rebuilds `Map.Scenery.Zone_sakura_schoolyard` (643 parts:
+  a BUILT entrance of great wall + two gate keeps round the torii, the gate leaves on their own posts, the Hokage Rock,
+  the village), the terrain canyon walls either side of z 160..520 (56 and 80 studs above the lobby), restyles that zone's
+  floor kit and gate, and the lobby's two funnel walls. Its templates live in `ServerStorage.StoreAssets.Zone01_Naruto`
+  (never delete): buildings from `harvest_naruto.luau` + `harvest_naruto_store.luau` (quarantined store packs); the stone
+  heads, trees, bush, gate keep and rock outcrop are Studio `generate_mesh` results. The old zone-1 dressing is in
+  `ServerStorage.MapArchive.Zone1_sakura_schoolyard_v1` (never delete). The game's zone DATA (ids, names, heroes per zone)
+  is still the old six: only the look of zones 1 to 3 changed.
+  `zone_02_demon_slayer.luau` = zone 2 "Demon Slayer Corps" (z 520..880, config id still `pirate_harbor`): checkered
+  floor, the Mugen Train, a Taisho mansion, wisteria; templates in `ServerStorage.StoreAssets.Zone02_DemonSlayer` (never
+  delete, all `generate_mesh`), old dressing in `MapArchive.Zone2_pirate_harbor_v1`. A zone's walls JOIN the previous
+  zone's at its start (its `PREV` table holds the neighbour's numbers) and fall to the lobby's level at its far end until
+  the next zone is built: when zone N+1 lands, remove zone N's end fall and rerun zone N first.
+  `zone_03_one_piece.luau` = zone 3 "Grand Line" (z 880..1240, config id still `ninja_village`): the lane as the sea,
+  real terrain WATER either side between quays and cliffs, a lion-headed pirate ship, a navy ship, a tavern on stilts,
+  a lighthouse, a giant straw hat; templates in `StoreAssets.Zone03_OnePiece`, old dressing in
+  `MapArchive.Zone3_ninja_village_v1`. Batch 1 (zones 1-3) is built; zones 4-6 are still the old dressing. Owner's bar for a zone (2026-11-22): the entrance must be built
+  architecture, never terrain mounds; walls must not tower over the lobby; no lollipop trees.
+
 ## Known traps on this machine
+
+- A `GeometryService:UnionAsync` result keeps its FIRST part's CFrame: its Position and Size do not say where the geometry
+  is. Measure a model BEFORE merging (attribute `TrueSize`, pivot at the base centre) and place it by its pivot, never by
+  its parts' boxes (the zone-1 houses floated 8 studs until this was fixed).
+- Studio's `generate_mesh` is the best source of hero props here (keeps, trees, statues beat every free store model
+  tried) but it makes one OBJECT, not scenery: ask for one stone head, not "a cliff with five faces" (that came
+  back as a pillar ringed with heads). The word "ninja" tripped its moderation filter.
+- `generate_mesh` inserts its model TURNED TO FACE THE CAMERA: a template stored as it comes carries that yaw (zone 2's
+  were 15 degrees off: a skewed mansion, carriages pointing off the rails). After storing generated meshes run
+  `tools/studio/zones/square_templates.luau`; squared, a generated mesh fronts to -Z. Two meshes generated apart do not
+  share a scale either (the locomotive's and the carriage's wheel gauges differed): measure, do not assume.
+- Every zone's floor kit stops 6 studs short of the next (`tools/studio/lane_thresholds.luau` lays a stone threshold in
+  each slot); anything that deepens the trench exposes such slots as void.
+- Terrain written from a height map comes out as stairs on anything steeper than 45 degrees: fill each voxel by its
+  distance to the surface, not its depth under it (see `zone_01_naruto.luau`).
 
 - FREE MODELS CAN CARRY MALWARE. The owner's aura/VFX packs held a hidden `Runtime` Script +
   `ScreenBuilder` LocalScript (deep under `RuntimeInput.RuntimeInputContext...`) that runs only in Studio

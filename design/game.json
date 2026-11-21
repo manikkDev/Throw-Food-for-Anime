@@ -1541,7 +1541,7 @@
     "World": {
       "GroundY": 0,
       "LaneStartZ": 160,
-      "LaneY": -24,
+      "LaneY": -48,
       "LaneWidth": 320,
       "LanePitch": 56,
       "StageZ": 148,
