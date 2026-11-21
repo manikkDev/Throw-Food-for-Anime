@@ -125,7 +125,7 @@ local function buildPlot(cfg: any, folder: Instance, index: number)
 	spawn.Transparency = 1
 	spawn.CanCollide = false
 	spawn.Size = Vector3.new(6, 1, 6)
-	spawn.Position = Vector3.new(x0, y + 0.9, w.PlotFrontZ - 16)
+	spawn.Position = Vector3.new(x0, y + 0.9, w.PlotFrontZ - 8)
 	spawn.Parent = plot
 
 	local padX, padZ = World.throwPad(w, index, count)

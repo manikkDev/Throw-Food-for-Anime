@@ -59,16 +59,17 @@ return {
 		)
 	end,
 
-	["pedestals fill the back half and leave room after the gate"] = function()
-		local mid = (W.PlotFrontZ + W.PlotBackZ) / 2
+	["pedestals fill the base and leave an entrance court behind the front gate"] = function()
+		-- bases hold heroes only (2026-11-21): the grid runs from the back gate to an entrance
+		-- court 12 studs deep, where the player spawns
 		for slot = 1, World.pedestalCount(W) do
 			local _, z = World.pedestalOffset(W, slot)
-			assert(z + 2.5 < mid + 4, `slot {slot} (z = {z}) reaches into the training courts`)
+			assert(z + 2.5 <= W.PlotFrontZ - 12, `slot {slot} (z = {z}) stands in the entrance court`)
 			assert(z - 2.5 >= W.PlotBackZ + 8, `slot {slot} (z = {z}) crowds the gate`)
 		end
 	end,
 
-	["training stations: inside their court, in front of the pedestals, mirrored, clear of the spawn"] = function()
+	["training stations: inside their court on the forecourt lawn, mirrored, clear of the walkway"] = function()
 		local x0 = World.plotX(W, 1, COUNT)
 		local stations = C.Training.Stations
 		assert(#stations % 2 == 0, "stations come in mirrored pairs")
@@ -80,9 +81,12 @@ return {
 				`{row.Id} pokes out of its court`
 			)
 			assert(z - cz >= -cd / 2 and sz <= cz + cd / 2, `{row.Id} pokes out of its court (z)`)
-			assert(math.abs(cx - x0) + cw / 2 <= W.PlotWidth / 2, "a court pokes out of the plot")
-			-- the spawn (6 x 6 at the plot centre, PlotFrontZ - 16) stays clear
-			assert(math.abs(sx - x0) > 6, `{row.Id} stands on the spawn`)
+			-- the courts stand on the lawn in front of the base: clear of the walkway (16 wide), short
+			-- of the neighbour's court, between the base's front edge and the throw stage
+			assert(math.abs(cx - x0) - cw / 2 >= 8 + 2, "a court covers the walkway")
+			assert(math.abs(cx - x0) + cw / 2 <= W.PlotPitch / 2 - 4, "a court reaches the neighbour's lawn")
+			assert(cz - cd / 2 >= W.PlotFrontZ + 2, "a court reaches into the base")
+			assert(cz + cd / 2 <= W.ThrowPadZ - W.ThrowPadRadius, "a court reaches the throw stage")
 			-- its mirror twin
 			local twin = false
 			for _, other in stations do

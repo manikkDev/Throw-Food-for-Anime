@@ -69,9 +69,15 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `.Originals_Batch2` (12) and `.Originals_Batch3` (16): never delete. New avatars: `tools/studio/build_r15.luau` rebuilds them to
   the standard rig, `python tools/studio/run_bake.py` bakes the whole roster (59 heroes today: 51 lane + 8 premium).
   Roster map: `design/characters/roster.json`; rules and traps: `design/characters/README.md`.
-- The map is `Workspace.Map` in the place (terrain + about 13,300 parts: bases 84 x 72 on a 108 pitch, styled lanes, a store-asset town on the wall terraces and behind the hub; generator = `gen_map.py` + `gen_lane_style.py` + `gen_town.py`, textures `tools/map/make_textures.py` -> `assets/map/ids_textures.json`). Source: `design/map.json` + `tools/map/`
-  (generator, emitter, `RUN.md`); build it with `python tools/map/build_in_studio.py`. `Blockout.luau` only
-  builds a grey fallback when the place has no `Workspace.Map`.
+- The map is `Workspace.Map` in the place: **hub v2 since 2026-11-21** (about 12,800 parts): FIVE bases 84 x 72 on the
+  same 108 pitch (x -216..216), heroes-only bases with 6 rows of 7 pedestals, training courts on the forecourt lawns, a
+  food cart and sell booth at every throw pad, a plaza in five districts, store models in `Map.HubV2`. It was made by
+  `tools/studio/rework_hub_v2.luau` (rebuilds a copy `Workspace.MapV2` from the old map) + `tools/studio/swap_hub_v2.luau`
+  (one-off: installs it, re-lays the old zones for five tracks). The old 6-base map is archived in
+  `ServerStorage.MapArchive.Map_v1_6lanes`: never delete. **Do NOT run `python tools/map/build_in_studio.py`**: the old
+  generator (`design/map.json` + `tools/map/`) still describes the 6-base map and would overwrite the hub. The lanes are
+  the OLD zones for now; the anime zones replace them 3 at a time (`design/plan/09-single-lane-rework.md`,
+  `design/zones/anime_zones.json`). `Blockout.luau` only builds a grey fallback when the place has no `Workspace.Map`.
 - Creator Store models (free, the owner's request): cleaned sources in `ServerStorage.StoreAssets` (61, never delete; buildings assembled by `tools/studio/assemble_store_buildings.luau`; tags `design/store_assets.json` feed the map generator's pools) ->
   `python tools/studio/install_store_assets.py` -> `ReplicatedStorage.Assets.Kit.Prop_store_<Name>` and
   `assets/meshes/manifest-store.json`. Take a new one in through a quarantine folder: strip every script, GUI, sound,
@@ -112,6 +118,9 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   judges perfect taps (`TrainTap`); client `Controllers/TrainingController`. The throw pad locks the player too
   (`ThrowController:_lock`, exit by the meter's X / Backspace); an invisible wall closes each lane mouth.
 - Studio sessions use their own stores (`Profiles_Dev`, `LB_*_Dev`); test commands are the TEST menu.
+- Hub v2 store models (cherry trees, dragon, summoning circle, horned shrine, torii, stone lantern, pagoda) are kept clean in
+  `ServerStorage.StoreAssets.HubV2` (never delete). Servers hold 5 players (`config.Server.MaxPlayers`); the place's own
+  max-players setting in Game Settings must be set to 5 by the owner before the next publish.
 
 ## Known traps on this machine
 
