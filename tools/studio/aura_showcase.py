@@ -26,7 +26,6 @@ BUILDER = ROOT / "tools" / "studio" / "build_aura_showcase.luau"
 WORK = ROOT / "work" / "auras"
 MCP = Path.home() / ".claude" / "skills" / "create-roblox-game" / "scripts" / "studio_mcp.py"
 ORIGIN = (-820, 320, -40)
-ORDER = ["Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Secret"]
 
 sys.path.insert(0, str(ROOT / "tools"))
 from gen_auras import assignments  # noqa: E402
@@ -65,21 +64,15 @@ def build() -> None:
     cfg = game["config"]
     colours = {name: "#" + row["Color"].lstrip("#") for name, row in cfg["Rarities"].items()}
     given = assignments(spec, game)
-    heroes = []
-    for c in cfg["Characters"]:
-        heroes.append({"id": c["Id"], "name": c["Name"], "rarity": c["Rarity"], "aura": given.get(c["Id"]),
-                       "color": colours.get(c["Rarity"], "#FFFFFF")})
-    heroes.sort(key=lambda h: (ORDER.index(h["rarity"]) if h["rarity"] in ORDER else 99, h["name"]))
-    for p in cfg["PremiumCharacters"]:
-        heroes.append({"id": p["Id"], "name": p["Name"], "rarity": "Premium", "aura": given.get(p["Id"]),
-                       "color": "#FF4FA3"})
-    users: dict[str, int] = {}
-    for key in given.values():
-        users[key] = users.get(key, 0) + 1
+    names = {c["Id"]: c["Name"] for c in cfg["Characters"] + cfg["PremiumCharacters"]}
+    users: dict[str, list[tuple[str, str]]] = {}
+    for hid, key in given.items():
+        users.setdefault(key, []).append((names.get(hid, hid), hid))
     tiers = {"A": "#9AA4B8", "B": "#4FD18B", "C": "#3FB6FF", "D": "#B266FF", "E": "#FFC83D"}
     auras = []
     for key, row in sorted(spec["templates"].items(), key=lambda kv: (kv[1]["tier"], kv[0])):
-        auras.append({"key": key, "source": row["source"], "users": users.get(key, 0),
+        auras.append({"key": key, "source": row["source"], "heroes": [n for n, _ in sorted(users.get(key, []))],
+                      "ids": [i for _, i in sorted(users.get(key, []))],
                       "template": True, "color": tiers.get(row["tier"], "#FFFFFF")})
     dummy = next(c["Id"] for c in cfg["Characters"] if c["Rarity"] == "Common")
     # templates that did not convert (a pack with no body rig) are shown raw
@@ -95,8 +88,22 @@ def build() -> None:
         if a["key"] in missing:
             a["template"] = False
     header = "_G.SHOWCASE = " + lua_value({"origin": list(ORIGIN), "dummy": dummy}) + "\n"
-    header += "_G.SHOWCASE.heroes = " + lua_value(heroes) + "\n"
     header += "_G.SHOWCASE.auras = " + lua_value(auras) + "\n"
+    # every hero, in ranking order: lane heroes by rarity (Common first), then the premium heroes from
+    # most to least likely; each wears its aura or none. Auras nobody wears follow, on mannequins.
+    rank = {name: row["Order"] for name, row in cfg["Rarities"].items()}
+    lane = sorted(enumerate(cfg["Characters"]), key=lambda ic: (rank.get(ic[1]["Rarity"], 99), ic[0]))
+    entries = []
+    for _, c in lane:
+        entries.append({"id": c["Id"], "name": c["Name"], "key": given.get(c["Id"], ""),
+                        "rank": c["Rarity"], "color": colours.get(c["Rarity"], "#FFFFFF")})
+    for c in sorted(cfg["PremiumCharacters"], key=lambda c: -c.get("OddsPercent", 0)):
+        entries.append({"id": c["Id"], "name": c["Name"], "key": given.get(c["Id"], ""),
+                        "rank": "Premium", "color": "#FF5FA2"})
+    for a in auras:
+        if not a["heroes"]:
+            entries.append({"id": "", "name": "", "key": a["key"], "rank": "", "color": a["color"]})
+    header += "_G.SHOWCASE.entries = " + lua_value(entries) + "\n"
     out = WORK / "showcase.luau"
     out.write_text(header + BUILDER.read_text(encoding="utf-8"), encoding="utf-8")
     print(luau(out))
@@ -118,7 +125,8 @@ def sync() -> None:
         "local f = s and s:FindFirstChild('Auras')\nif not f then return 'NONE' end\n"
         "local out = {}\nfor _, m in f:GetChildren() do\n"
         "  local k = m:GetAttribute('AuraKey')\n"
-        "  if k and m.Name ~= k then table.insert(out, k .. '=' .. m.Name) end\nend\n"
+        "  local was = m:GetAttribute('Label') or k\n"
+        "  if k and m.Name ~= was then table.insert(out, k .. '=' .. m.Name) end\nend\n"
         "return 'RENAMED ' .. table.concat(out, ';')", encoding="utf-8")
     line = luau(read, 120).splitlines()[-1]
     if line == "NONE":
@@ -129,13 +137,17 @@ def sync() -> None:
         return
     changed, unknown = [], []
     for pair in pairs:
-        key, _, name = pair.partition("=")
-        hero = by_name.get(name.strip().lower())
-        if not hero:
-            unknown.append(name)
+        key, _, label = pair.partition("=")
+        if not key:  # a hero stand with no aura: nothing to give
             continue
-        spec["heroes"][hero] = key
-        changed.append(f"{hero} -> {key}")
+        # one dummy may carry several heroes: "Hero A, Hero B" (or "Hero A + Hero B")
+        for name in [n for n in label.replace("+", ",").split(",") if n.strip()]:
+            hero = by_name.get(name.strip().lower())
+            if not hero:
+                unknown.append(name.strip())
+                continue
+            spec["heroes"][hero] = key
+            changed.append(f"{hero} -> {key}")
     SPEC.write_text(json.dumps(spec, indent=1, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     print("recorded:", *changed, sep="\n  ")
     if unknown:

@@ -85,6 +85,61 @@ for _, row in ROSTER do
 		end
 	end
 
+	-- Rigid accessories become plain Models held by their own weld. While they are Accessories, the
+	-- engine re-attaches them every time the hero enters a world and, for some (waist katanas, suits),
+	-- adds a legacy "HeadWeld" tying the HEAD to that piece: an animation then drags the head down to
+	-- the waist (Yoriichi and Aizen in the store, 2026-11-21). Layered clothing stays an Accessory: it
+	-- only wraps the body as one.
+	local function bodyAttachment(name: string): Attachment?
+		for _, part in rig:GetChildren() do
+			local found = part:IsA("BasePart") and part:FindFirstChild(name)
+			if found and found:IsA("Attachment") then
+				return found
+			end
+		end
+		return nil
+	end
+	for _, acc in rig:GetChildren() do
+		if not acc:IsA("Accessory") or acc:FindFirstChildWhichIsA("WrapLayer", true) then
+			continue
+		end
+		local handle = acc:FindFirstChild("Handle")
+		if not handle then
+			continue
+		end
+		for _, joint in rig.Head:GetChildren() do
+			if joint:IsA("Weld") and joint.Name == "HeadWeld" and (joint.Part0 == handle or joint.Part1 == handle) then
+				joint:Destroy()
+			end
+		end
+		local held = false
+		for _, joint in handle:GetChildren() do
+			if joint:IsA("Weld") and joint.Part0 and joint.Part1 then
+				held = true
+			end
+		end
+		if not held then
+			local att = handle:FindFirstChildOfClass("Attachment")
+			local body = att and bodyAttachment(att.Name)
+			if body then
+				local weld = Instance.new("Weld")
+				weld.Name = "AccessoryWeld"
+				weld.Part0 = handle
+				weld.Part1 = body.Parent
+				weld.C0 = att.CFrame
+				weld.C1 = body.CFrame
+				weld.Parent = handle
+			end
+		end
+		local model = Instance.new("Model")
+		model.Name = acc.Name
+		for _, child in acc:GetChildren() do
+			child.Parent = model
+		end
+		model.Parent = rig
+		acc:Destroy()
+	end
+
 	local hum = rig:FindFirstChildOfClass("Humanoid")
 	hum.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
 	hum.HealthDisplayType = Enum.HumanoidHealthDisplayType.AlwaysOff

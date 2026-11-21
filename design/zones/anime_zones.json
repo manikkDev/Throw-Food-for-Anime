@@ -1,0 +1,600 @@
+{
+ "_what": "PLAN (2026-11-21, not in the game yet): the lane re-cut into one zone per anime. Built into Workspace.ZoneLab by tools/studio/zone_lab.py for the owner to review. Rarity is the PROPOSED rarity inside the zone (the live game keeps config.Characters until this plan is approved). Premium heroes stay premium (summon / shop) and are shown in their anime's column for reference. 'suggest' = popular characters to import next (Roblox players must know them).",
+ "_order_logic": "Zones 1-3 open on three huge, fully stocked anime so the first minutes already hand out names every player knows. Zones 4-7 bring the big Roblox-native fandoms (MHA, Blue Lock, Black Clover, HxH). The two crossover zones are breathers in the middle that hold strong single characters. The last five are the 'power fantasy' anime kids grind for: One Punch Man, Bleach, Solo Leveling, Jujutsu Kaisen, and Dragon Ball last (gods of destruction at the end of the lane).",
+ "rarities": [
+  "Common",
+  "Uncommon",
+  "Rare",
+  "Epic",
+  "Legendary",
+  "Mythic"
+ ],
+ "zones": [
+  {
+   "n": 1,
+   "anime": "Naruto",
+   "title": "Hidden Leaf Village",
+   "characters": [
+    {
+     "source": "Naruto Uzumaki",
+     "rarity": "Common"
+    },
+    {
+     "source": "Sasuke Uchiha",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Kakashi Hatake",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Minato",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Itachi Uchiha",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Obito Uchiha",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Madara Uchiha",
+     "rarity": "Mythic"
+    }
+   ],
+   "suggest": [
+    "Rock Lee",
+    "Hinata",
+    "Gaara",
+    "Jiraiya",
+    "Pain"
+   ]
+  },
+  {
+   "n": 2,
+   "anime": "Demon Slayer",
+   "title": "Demon Slayer Corps",
+   "characters": [
+    {
+     "source": "Tanjiro",
+     "rarity": "Common"
+    },
+    {
+     "source": "Nezuko",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Zenitsu Agatsuma",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Rengoku",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Tengen Uzui",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Muzan",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Kokushibo",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Yoriichi Tsugikuni",
+     "rarity": "Premium"
+    }
+   ],
+   "suggest": [
+    "Inosuke",
+    "Giyu Tomioka",
+    "Shinobu Kocho",
+    "Akaza",
+    "Douma"
+   ]
+  },
+  {
+   "n": 3,
+   "anime": "One Piece",
+   "title": "Grand Line",
+   "characters": [
+    {
+     "source": "Luffy",
+     "rarity": "Common"
+    },
+    {
+     "source": "Nami",
+     "rarity": "Common"
+    },
+    {
+     "source": "Sanji",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Zoro",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Trafalgar Law",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Doflamingo",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Mihawk",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Shanks",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Kaido",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Whitebeard",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Luffy Wano",
+     "rarity": "Mythic"
+    }
+   ],
+   "suggest": [
+    "Ace",
+    "Usopp",
+    "Boa Hancock",
+    "Blackbeard"
+   ]
+  },
+  {
+   "n": 4,
+   "anime": "My Hero Academia",
+   "title": "Hero Academy",
+   "characters": [
+    {
+     "source": "Deku",
+     "rarity": "Common"
+    }
+   ],
+   "suggest": [
+    "Uraraka",
+    "Bakugo",
+    "Todoroki",
+    "Toga",
+    "Hawks",
+    "Dabi",
+    "Endeavor",
+    "All Might",
+    "Shigaraki"
+   ]
+  },
+  {
+   "n": 5,
+   "anime": "Blue Lock",
+   "title": "Blue Lock Facility",
+   "characters": [
+    {
+     "source": "Sae Itoshi",
+     "rarity": "Epic"
+    }
+   ],
+   "suggest": [
+    "Isagi",
+    "Bachira",
+    "Chigiri",
+    "Reo",
+    "Nagi",
+    "Barou",
+    "Rin Itoshi",
+    "Kaiser"
+   ]
+  },
+  {
+   "n": 6,
+   "anime": "Black Clover",
+   "title": "Clover Kingdom",
+   "characters": [
+    {
+     "source": "Asta",
+     "rarity": "Common"
+    },
+    {
+     "source": "Yuno",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Luck Voltia",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Julius Novachrono",
+     "rarity": "Mythic"
+    },
+    {
+     "source": "Nacht",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Magna",
+     "rarity": "Rare"
+    }
+   ],
+   "suggest": [
+    "Noelle",
+    "Yami Sukehiro",
+    "Mereoleona",
+    "Liebe"
+   ]
+  },
+  {
+   "n": 7,
+   "anime": "Hunter x Hunter",
+   "title": "Hunter Exam",
+   "characters": [
+    {
+     "source": "Killua",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Hisoka",
+     "rarity": "Epic"
+    }
+   ],
+   "suggest": [
+    "Gon",
+    "Leorio",
+    "Kurapika",
+    "Illumi",
+    "Chrollo",
+    "Netero",
+    "Meruem"
+   ]
+  },
+  {
+   "n": 8,
+   "anime": "Crossover: Other Worlds",
+   "title": "Isekai Crossroads",
+   "mixed": true,
+   "characters": [
+    {
+     "source": "Subaru Natsuki",
+     "rarity": "Common"
+    },
+    {
+     "source": "Qin Shi Huang",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Esdeath",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Meliodas",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Escanor",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Rimuru",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Marin Kitagawa",
+     "rarity": "Premium"
+    },
+    {
+     "source": "Frieren",
+     "rarity": "Premium"
+    }
+   ],
+   "suggest": [
+    "Anya Forger",
+    "Loid Forger",
+    "Kirito",
+    "Ban",
+    "Ainz Ooal Gown"
+   ]
+  },
+  {
+   "n": 9,
+   "anime": "Attack on Titan",
+   "title": "Wall Maria",
+   "characters": [
+    {
+     "source": "Eren Yeager",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Levi Ackerman",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Eren Titan",
+     "rarity": "Legendary"
+    }
+   ],
+   "suggest": [
+    "Armin",
+    "Mikasa",
+    "Erwin",
+    "Armored Titan",
+    "Colossal Titan",
+    "Zeke"
+   ]
+  },
+  {
+   "n": 10,
+   "anime": "Chainsaw Man",
+   "title": "Public Safety HQ",
+   "characters": [
+    {
+     "source": "Denji",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Power",
+     "rarity": "Premium"
+    },
+    {
+     "source": "Makima",
+     "rarity": "Premium"
+    }
+   ],
+   "suggest": [
+    "Pochita",
+    "Kobeni",
+    "Aki Hayakawa",
+    "Reze",
+    "Kishibe"
+   ]
+  },
+  {
+   "n": 11,
+   "anime": "JoJo's Bizarre Adventure",
+   "title": "Bizarre Streets",
+   "characters": [
+    {
+     "source": "Joseph Joestar",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Jotaro Joestar",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Diavolo",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Dio Brando",
+     "rarity": "Legendary"
+    }
+   ],
+   "suggest": [
+    "Jonathan Joestar",
+    "Josuke",
+    "Giorno",
+    "Kira",
+    "Pucci"
+   ]
+  },
+  {
+   "n": 12,
+   "anime": "Crossover: Masterminds",
+   "title": "Shadow Council",
+   "mixed": true,
+   "characters": [
+    {
+     "source": "Ayanokoji",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Light Yagami",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Ryuk",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Lelouch",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Cid Kagenou",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Guts",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Lawliet",
+     "rarity": "Premium"
+    },
+    {
+     "source": "Ken Kaneki",
+     "rarity": "Premium"
+    }
+   ],
+   "suggest": [
+    "Mob",
+    "Shinra Kusakabe",
+    "Thorfinn",
+    "Anos Voldigoad"
+   ]
+  },
+  {
+   "n": 13,
+   "anime": "One Punch Man",
+   "title": "City Z",
+   "characters": [
+    {
+     "source": "Garou",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Saitama",
+     "rarity": "Mythic"
+    }
+   ],
+   "suggest": [
+    "Mumen Rider",
+    "Genos",
+    "Speed-o'-Sound Sonic",
+    "King",
+    "Bang",
+    "Tatsumaki",
+    "Boros"
+   ]
+  },
+  {
+   "n": 14,
+   "anime": "Bleach",
+   "title": "Soul Society",
+   "characters": [
+    {
+     "source": "Ichigo Kurosaki",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Grimmjow",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Ulquiorra",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Yhwach",
+     "rarity": "Mythic"
+    },
+    {
+     "source": "Aizen Sosuke",
+     "rarity": "Premium"
+    }
+   ],
+   "suggest": [
+    "Rukia",
+    "Toshiro Hitsugaya",
+    "Byakuya",
+    "Urahara",
+    "Yoruichi",
+    "Kenpachi"
+   ]
+  },
+  {
+   "n": 15,
+   "anime": "Solo Leveling",
+   "title": "Gate of Shadows",
+   "characters": [
+    {
+     "source": "Sung Jinwoo",
+     "rarity": "Legendary"
+    }
+   ],
+   "suggest": [
+    "Cha Hae-In",
+    "Igris",
+    "Beru",
+    "Thomas Andre",
+    "Go Gunhee",
+    "Antares",
+    "Ashborn"
+   ]
+  },
+  {
+   "n": 16,
+   "anime": "Jujutsu Kaisen",
+   "title": "Shibuya",
+   "characters": [
+    {
+     "source": "Yuji",
+     "rarity": "Common"
+    },
+    {
+     "source": "Megumi Fushiguro",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Naoya Zenin",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Toji Fushiguro",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Mahoraga",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Gojo",
+     "rarity": "Mythic"
+    },
+    {
+     "source": "Sukuna",
+     "rarity": "Mythic"
+    }
+   ],
+   "suggest": [
+    "Nobara",
+    "Todo",
+    "Maki",
+    "Yuta Okkotsu",
+    "Geto"
+   ]
+  },
+  {
+   "n": 17,
+   "anime": "Dragon Ball",
+   "title": "Planet of the Gods",
+   "characters": [
+    {
+     "source": "Piccolo",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Gohan",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Vegeta",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Frieza",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Goku",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Beerus",
+     "rarity": "Mythic"
+    }
+   ],
+   "suggest": [
+    "Trunks",
+    "Cell",
+    "Majin Buu",
+    "Broly",
+    "Goku Black",
+    "Jiren",
+    "Whis"
+   ]
+  }
+ ]
+}

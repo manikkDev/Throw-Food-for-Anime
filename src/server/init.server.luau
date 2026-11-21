@@ -12,6 +12,12 @@ local showcase = workspace:FindFirstChild("AuraShowcase")
 if showcase then
 	showcase:Destroy()
 end
+for _, name in { "AuraPackBrowser", "ZoneLab" } do
+	local dev = workspace:FindFirstChild(name)
+	if dev then
+		dev:Destroy()
+	end
+end
 
 Knit.AddServices(script.Services)
 

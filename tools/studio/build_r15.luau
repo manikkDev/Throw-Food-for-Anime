@@ -30,22 +30,7 @@
 
 -- { source model name in Workspace, name to give the result }
 local LIST = {
-	{ "Tengen Uzui", "Tengen Uzui" },
-	{ "Aizen Sosuke", "Aizen Sosuke" },
-	{ "Ken Kaneki", "Ken Kaneki" },
-	{ "Frieren", "Frieren" },
-	{ "Lawliet", "Lawliet" },
-	{ "Denji", "Denji" },
-	{ "Power", "Power" },
-	{ "Naoya Zenin", "Naoya Zenin" },
-	{ "Makima", "Makima" },
-	{ "Megumi Fushiguro", "Megumi Fushiguro" },
-	{ "Marin Kitagawa", "Marin Kitagawa" },
-	{ "Ayanokoji", "Ayanokoji" },
-	{ "Subaru Natsuki", "Subaru Natsuki" },
-	{ "Mahoraga", "Mahoraga" },
-	{ "Zenitsu Agatsuma", "Zenitsu Agatsuma" },
-	{ "Yoriichi Tsugikuni", "Yoriichi Tsugikuni" },
+	{ "Topchik_Aleksey", "Magna" },
 }
 local ROW_Z = 40 -- where the review row stands
 local SPACING = 7

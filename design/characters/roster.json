@@ -360,5 +360,178 @@
   "Source": "Yoriichi Tsugikuni",
   "Rig": "ServerStorage.CharacterSources.R15_Final/Yoriichi Tsugikuni (R15)",
   "Premium": true
+ },
+ {
+  "Id": "apple_reaper",
+  "Name": "Apple Reaper",
+  "Source": "Ryuk",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Ryuk (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "hollow_bat",
+  "Name": "Hollow Bat",
+  "Source": "Ulquiorra",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Ulquiorra (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "slime_lord",
+  "Name": "Slime Lord",
+  "Source": "Rimuru",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Rimuru (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "destroyer_cat",
+  "Name": "Destroyer Cat",
+  "Source": "Beerus",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Beerus (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "blood_war_king",
+  "Name": "Blood War King",
+  "Source": "Yhwach",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Yhwach (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "hawkeye_swordsman",
+  "Name": "Hawk-Eye Swordsman",
+  "Source": "Mihawk",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Mihawk (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "frost_tyrant",
+  "Name": "Frost Tyrant",
+  "Source": "Frieza",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Frieza (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "limitless_teacher",
+  "Name": "Limitless Teacher",
+  "Source": "Gojo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Gojo (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "quake_captain",
+  "Name": "Quake Captain",
+  "Source": "Whitebeard",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Whitebeard (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "weather_navigator",
+  "Name": "Weather Navigator",
+  "Source": "Nami",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Nami (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "green_mentor",
+  "Name": "Green Mentor",
+  "Source": "Piccolo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Piccolo (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "blade_captain",
+  "Name": "Blade Captain",
+  "Source": "Levi Ackerman",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Levi Ackerman (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "dragon_sin",
+  "Name": "Dragon Sin",
+  "Source": "Meliodas",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Meliodas (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "noon_lion",
+  "Name": "Noon Lion",
+  "Source": "Escanor",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Escanor (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "beast_scholar",
+  "Name": "Beast Scholar",
+  "Source": "Gohan",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Gohan (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "panther_espada",
+  "Name": "Panther Espada",
+  "Source": "Grimmjow",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Grimmjow (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "yellow_flash",
+  "Name": "Yellow Flash",
+  "Source": "Minato",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Minato (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "card_magician",
+  "Name": "Card Magician",
+  "Source": "Hisoka",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Hisoka (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "flame_pillar",
+  "Name": "Flame Pillar",
+  "Source": "Rengoku",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Rengoku (R15)",
+  "Planned": true
+ },
+ {
+  "Id": "wind_prodigy",
+  "Name": "Wind Prodigy",
+  "Source": "Yuno",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Yuno (R15)",
+  "Planned": true,
+  "Items": "design/characters/item_avatars.json"
+ },
+ {
+  "Id": "smiling_thunder",
+  "Name": "Smiling Thunder",
+  "Source": "Luck Voltia",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Luck Voltia (R15)",
+  "Planned": true,
+  "Items": "design/characters/item_avatars.json"
+ },
+ {
+  "Id": "time_wizard_king",
+  "Name": "Time Wizard King",
+  "Source": "Julius Novachrono",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Julius Novachrono (R15)",
+  "Planned": true,
+  "Items": "design/characters/item_avatars.json"
+ },
+ {
+  "Id": "demon_union_knight",
+  "Name": "Demon Union Knight",
+  "Source": "Nacht",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Nacht (R15)",
+  "Planned": true,
+  "Items": "design/characters/item_avatars.json"
+ },
+ {
+  "Id": "curse_chain_brawler",
+  "Name": "Cursed Chain Brawler",
+  "Source": "Magna",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Magna (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Topchik_Aleksey + catalog accessory 83962631686646 (Front)"
  }
 ]

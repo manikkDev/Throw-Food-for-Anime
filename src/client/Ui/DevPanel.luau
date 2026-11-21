@@ -26,6 +26,7 @@
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TextService = game:GetService("TextService")
 local UserInputService = game:GetService("UserInputService")
 
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
@@ -155,17 +156,27 @@ local function button(
 	onClick: () -> (),
 	props: Make.Props?
 ): TextButton
+	-- fixed size, never AutomaticSize: an auto-sized button collapsed to a thin bar
+	-- (its text measured as zero), so a click had nothing to hit. Width fits the text.
+	local width = 150
+	local ok, measured = pcall(function()
+		return TextService:GetTextSize(label, TEXT, Enum.Font.FredokaOne, Vector2.new(1000, 40)).X
+	end)
+	if ok then
+		width = math.max(96, math.ceil(measured) + 28)
+	end
 	local b = Make.button(parent, label, color, {
 		TextScaled = false,
 		TextSize = TEXT,
-		Size = UDim2.fromOffset(150, 40),
-		AutomaticSize = Enum.AutomaticSize.X,
+		Size = UDim2.fromOffset(width, 40),
+		AutomaticSize = Enum.AutomaticSize.None,
 	})
 	if props then
 		for key, v in props do
 			(b :: any)[key] = v
 		end
 	end
+	b.AutomaticSize = Enum.AutomaticSize.None
 	b.Activated:Connect(onClick)
 	return b
 end
