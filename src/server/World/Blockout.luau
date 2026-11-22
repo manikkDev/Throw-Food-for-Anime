@@ -300,12 +300,17 @@ local function buildLanes(cfg: any, folder: Instance)
 			color:Lerp(Color3.new(0, 0, 0), 0.35)
 		)
 		ground:SetAttribute("Zone", zone.Id)
-		for plot = 1, count do
+		local tracks = w.TrackCount or count
+		for track = 1, tracks do
 			part(
 				lanes,
-				"Strip_" .. zone.Id .. "_" .. plot,
+				"Strip_" .. zone.Id .. "_" .. track,
 				Vector3.new(w.LanePitch - 4, 0.2, zone.LengthStuds - 2),
-				Vector3.new(World.laneX(w, plot, count), y + 0.1, z + zone.LengthStuds / 2),
+				Vector3.new(
+					(track - (tracks + 1) / 2) * w.LanePitch,
+					y + 0.1,
+					z + zone.LengthStuds / 2
+				),
 				color
 			)
 		end

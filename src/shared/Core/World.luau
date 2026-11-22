@@ -4,14 +4,14 @@
 -- One function per "where is X" so the server (validation), the client
 -- (rendering) and the blockout builder cannot disagree. Plots sit in a row
 -- along X; ONE lane, centred on x = 0, runs along +Z (since 2026-11-21). Every
--- player has a track in it (LanePitch apart) and a throw spot on the stage at
+-- player throws down a track in it (LanePitch apart; two bases share each outer track, each on its
+-- own half, since 2026-11-22) from a throw spot of their own on the stage at
 -- the lane mouth: stepping on the pad in front of the base takes them there.
 --
 --   z = PlotBackZ ...... hub side
 --       pedestal grid   (back half; heroes face +Z, toward the lane)
---       slot sign       (beside the pedestals)
---       front yard      (spawn, dojo pad on -X, reserved training yard on +X)
---   z = PlotFrontZ ..... plot edge
+--   z = PlotFrontZ ..... the deck's edge: an even border all round the pedestals
+--       front yard      (spawn and slot sign, then one training court each side of the walk)
 --   z = ThrowPadZ ...... the base's own pad: the way to the throw stage
 --   z = StageZ ......... the throw stage: a ledge at the end of the forecourt
 --   z = LaneStartZ ..... the ledge's edge; the lane begins BELOW it, at y = LaneY
@@ -41,8 +41,10 @@ function World.pedestalOffset(world: any, slot: number): (number, number)
 	local step = (k + 1) // 2
 	local side = if k % 2 == 1 then -1 else 1
 	local dx = step * side * world.PedestalSpacing
-	local frontZ = world.PedestalCenterZ + (rows - 1) / 2 * world.PedestalSpacing
-	return dx, frontZ - row * world.PedestalSpacing
+	-- rows can stand further apart than columns: 7 x 6 pedestals make a square grid (2026-11-22)
+	local spacingZ = world.PedestalSpacingZ or world.PedestalSpacing
+	local frontZ = world.PedestalCenterZ + (rows - 1) / 2 * spacingZ
+	return dx, frontZ - row * spacingZ
 end
 
 --- World (x, z) of pedestal `slot` on plot `plotIndex`.
@@ -62,9 +64,21 @@ function World.throwPad(world: any, plotIndex: number, count: number): (number, 
 	return World.plotX(world, plotIndex, count), world.ThrowPadZ
 end
 
---- Centre X of the player's track in the shared lane.
+--- Centre X of the track plot `plotIndex` throws down. Since 2026-11-22 the lane has fewer tracks
+--- than there are bases (config PlotTrack: bases 1-2 share the left track, 4-5 the right);
+--- without PlotTrack every base has its own track.
+function World.trackX(world: any, plotIndex: number, count: number): number
+	local track, tracks = plotIndex, count
+	if world.PlotTrack then
+		track, tracks = world.PlotTrack[plotIndex], world.TrackCount
+	end
+	return (track - (tracks + 1) / 2) * world.LanePitch
+end
+
+--- Centre X of the player's own part of the lane: its track, or its half of a shared track.
 function World.laneX(world: any, plotIndex: number, count: number): number
-	return (plotIndex - (count + 1) / 2) * world.LanePitch
+	local side = if world.PlotTrackSide then world.PlotTrackSide[plotIndex] else 0
+	return World.trackX(world, plotIndex, count) + side * (world.TrackSideOffset or 0)
 end
 
 --- World (x, z) of the player's spot on the throw stage, at the head of their track:

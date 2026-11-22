@@ -10,7 +10,9 @@ for _, f in lanes:GetChildren() do
 	if f.Name:sub(1, 5) == "Zone_" then
 		local lo, hi, top = math.huge, -math.huge, 0
 		for _, c in f:GetChildren() do
-			if c:IsA("BasePart") and (c.Name:sub(1, 6) == "Paving" or c.Name:sub(1, 5) == "Strip") then
+			if
+				c:IsA("BasePart") and (c.Name:sub(1, 6) == "Paving" or c.Name:sub(1, 5) == "Strip")
+			then
 				lo = math.min(lo, c.Position.Z - c.Size.Z / 2)
 				hi = math.max(hi, c.Position.Z + c.Size.Z / 2)
 				if c.Name:sub(1, 6) == "Paving" then
@@ -35,7 +37,11 @@ for i = 1, #spans - 1 do
 	if gap > 0.05 then
 		local p = Instance.new("Part")
 		p.Name = "Threshold"
-		p.Size = Vector3.new(320, 4, gap)
+		p.Size = Vector3.new(
+			require(game:GetService("ReplicatedStorage").Shared.Config.GameConfig:Clone()).World.LaneWidth, -- a fresh copy: Studio caches requires
+			4,
+			gap
+		)
 		p.CFrame = CFrame.new(0, b.top - 2, (a.hi + b.lo) / 2)
 		p.Anchored = true
 		p.Color = Color3.fromRGB(96, 98, 108)

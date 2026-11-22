@@ -165,6 +165,7 @@ for zi, z in zones do
 			local h = template:Clone()
 			h.Name = c.id
 			h.LevelOfDetail = Enum.ModelLevelOfDetail.Disabled -- full model at any distance, never a far-away stand-in
+			h.ModelStreamingMode = Enum.ModelStreamingMode.Persistent -- streaming never drops a hero's parts in Edit mode
 			h:PivotTo(CFrame.new(at + Vector3.new(0, 0.5, 0)))
 			for _, d in h:GetDescendants() do
 				if d:IsA("BasePart") then

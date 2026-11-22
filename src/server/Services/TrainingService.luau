@@ -1,6 +1,6 @@
 --!strict
--- TrainingService - Power, from the four training stations on the player's own plot
--- (config Training.Stations: strike, lift, push, meditate; two mirrored courts).
+-- TrainingService - Power, from the training stations on the player's own plot
+-- (config Training.Stations: strike and meditate since 2026-11-22, one on each mirrored court).
 --
 -- A session belongs to ONE station:
 --   * Start(player, i): the plot is theirs, the station is unlocked (gear tier >= Unlock). The

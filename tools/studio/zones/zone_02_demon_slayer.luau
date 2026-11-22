@@ -1,30 +1,27 @@
--- zone_02_demon_slayer.luau - Studio EDIT mode. Builds zone 2, "Demon Slayer Corps", in the single
--- lane: z 520..880, lane floor y -48 (config World.LaneY), lane edges x = +-160. Safe to run again:
--- it clears what it made (Map.Scenery.Zone_<id>) and rebuilds; the first run archives the old pirate
--- harbor dressing in ServerStorage.MapArchive.Zone2_pirate_harbor_v1 (never delete).
+-- LIB: side_lib
+-- zone_02_demon_slayer.luau - zone 2, "Demon Slayer Corps", on the slim lane (v2, 2026-11-22).
+-- z 520..880 (config id still pirate_harbor), lane floor y -48, lane edges x +-100. Run with
+--   python tools/studio/zones/run_zone.py build 2
+-- then lane_border.luau. Safe to run again: it clears Map.Scenery.Zone_pirate_harbor and rebuilds.
 --
--- The picture: a mountain pass. Dark mossy rock either side, wisteria spilling over its ledges.
+-- v1 stood in a dark clay canyon on the 320-wide lane (archived once in MapArchive.Zone2_v1_canyon).
+-- Now, on side_lib's cross-section: a mountain pass in dark blue-grey stone with mossy caps, wisteria
+-- spilling from the shelves.
 --   * the floor is Tanjiro's haori: green and black checks, crimson kerbs
---   * +X (left from the throw stage): the Mugen Train, a locomotive and two carriages on rails
---     under the cliff, smoke at the stack, a wooden platform with its station board
---   * -X: a Taisho mansion (the Butterfly Estate), a sword monument, and the zone's
---     landmark, one giant wisteria on the ledge at the far end
--- The walls join zone 1's at z 520 (same heights there) and run on into zone 3's at 880.
---
--- Needs ServerStorage.StoreAssets.Zone02_DemonSlayer: Locomotive, Carriage, Mansion, Cedar, MossRock,
--- Wisteria, all made with Studio's mesh generator ("..., anime game art style, hand painted texture"),
--- then squared with square_templates.luau: they front to -Z.
--- Run: python ~/.claude/skills/create-roblox-game/scripts/studio_mcp.py luau --dm Edit --file <this file>
+--   * +X: the Mugen Train (a locomotive and two carriages) on its rails along the terrace, smoke at the
+--     stack, a wooden platform on the lane side with its station board and lamps
+--   * -X: the Butterfly Estate (a Taisho mansion), the Corps' banners, a sword monument, and the
+--     zone's landmark at its far end, one great wisteria
+-- Needs ServerStorage.StoreAssets.Zone02_DemonSlayer (Locomotive, Carriage, Mansion, Cedar, MossRock,
+-- Wisteria: generated, squared, front to -Z).
 local SS = game:GetService("ServerStorage")
 local RS = game:GetService("ReplicatedStorage")
-local T = workspace.Terrain
 local map = workspace.Map
 local KIT = RS.Assets.Kit
 local SRC = SS.StoreAssets.Zone02_DemonSlayer
 local ID = "pirate_harbor" -- the zone's id in config until the anime zone data lands
 local TITLE = "DEMON SLAYER CORPS"
-local LY, HALF, Z0, Z1 = -48, 160, 520, 880
-local DO_TERRAIN = true
+local LY, HALF, Z0, Z1 = P.LY, P.HALF, 520, 880
 local rng = Random.new(2207)
 
 local CHECK_GREEN = Color3.fromRGB(47, 163, 107)
@@ -34,257 +31,169 @@ local WISTERIA = Color3.fromRGB(155, 107, 223)
 local WOOD = Color3.fromRGB(122, 84, 56)
 local WOOD_DARK = Color3.fromRGB(74, 50, 38)
 local IRON = Color3.fromRGB(52, 54, 62)
+local PASS = Color3.fromRGB(98, 106, 102) -- the pass's stone: dark, mossy grey (a blue-grey read as a flat blue wall)
+local PASS_DARK = Color3.fromRGB(66, 72, 70)
+local MOSS = Color3.fromRGB(84, 122, 72)
+local STREET = Color3.fromRGB(112, 116, 128)
 
--- ---------------------------------------------------------------------------------- helpers
-local function partsOf(inst: Instance): { BasePart }
-	local list = {}
-	if inst:IsA("BasePart") then
-		table.insert(list, inst)
-	end
-	for _, d in inst:GetDescendants() do
-		if d:IsA("BasePart") then
-			table.insert(list, d)
-		end
-	end
-	return list
-end
-local function smooth(t: number): number
-	t = math.clamp(t, 0, 1)
-	return t * t * (3 - 2 * t)
-end
-local function lerp(a: number, b: number, t: number): number
-	return a + (b - a) * t
-end
-local function still(inst: Instance, shadow: boolean?)
-	for _, p in partsOf(inst) do
-		p.Anchored = true
-		p.CanCollide = false
-		p.CanQuery = false
-		p.CanTouch = false
-		p.Massless = true
-		if shadow ~= nil then
-			p.CastShadow = shadow
-		end
-	end
-end
-local function folder(parent: Instance, name: string): Folder
-	local f = Instance.new("Folder")
-	f.Name = name
-	f.Parent = parent
-	return f
-end
-local function block(parent: Instance, name: string, size: Vector3, cf: CFrame, color: Color3, material: Enum.Material?): Part
-	local p = Instance.new("Part")
-	p.Name = name
-	p.Size = size
-	p.CFrame = cf
-	p.Color = color
-	p.Material = material or Enum.Material.SmoothPlastic
-	p.TopSurface = Enum.SurfaceType.Smooth
-	p.BottomSurface = Enum.SurfaceType.Smooth
-	p.Anchored = true
-	p.CanCollide = false
-	p.CanQuery = false
-	p.CanTouch = false
-	p.CastShadow = size.Magnitude > 14
-	p.Parent = parent
-	return p
-end
--- every template's pivot is the middle of its base: a thing is placed by its pivot
-local function make(parent: Instance, template: Instance, scale: number, yaw: number, at: Vector3): Model
-	local m = template:Clone() :: Model
-	m:ScaleTo(m:GetScale() * scale)
-	m:PivotTo(CFrame.new(at) * CFrame.Angles(0, math.rad(yaw), 0))
-	still(m)
-	m.Parent = parent
-	return m
+local function facing(side: number): number
+	return if side > 0 then 90 else -90 -- a squared template fronts to -Z: turn it to the lane
 end
 
--- ---------------------------------------------------------------------------------- the old dressing
-local lanes, scenery = map.Lanes, map.Scenery
+-- a tiled gable roof: at's X axis is the ridge, its origin the middle of the eave line
+local function gable(
+	parent: Instance,
+	at: CFrame,
+	length: number,
+	half: number,
+	height: number,
+	color: Color3
+)
+	for _, sd in { -1, 1 } do
+		local turn = if sd > 0 then CFrame.Angles(0, math.pi, 0) else CFrame.new()
+		block(
+			parent,
+			"Roof",
+			Vector3.new(length, height, half),
+			at * CFrame.new(0, height / 2, sd * half / 2) * turn,
+			color,
+			Enum.Material.ClayRoofTiles,
+			"WedgePart"
+		).CastShadow =
+			true
+	end
+	block(
+		parent,
+		"Ridge",
+		Vector3.new(length + 1, 1.2, 1.6),
+		at * CFrame.new(0, height + 0.3, 0),
+		WOOD_DARK,
+		Enum.Material.Wood
+	)
+end
+
+-- ---------------------------------------------------------------------------------- the zone's folder
+local scenery = map.Scenery
 local archive = SS:FindFirstChild("MapArchive") or folder(SS, "MapArchive")
-if not archive:FindFirstChild("Zone2_pirate_harbor_v1") then
-	local old = folder(archive, "Zone2_pirate_harbor_v1")
-	old:SetAttribute("Note", "Zone 2 before the Demon Slayer rework (2026-11-22). Never delete.")
-	for _, f in { lanes["Walls_" .. ID], lanes["Facade_" .. ID], scenery["Zone_" .. ID], scenery["Town_" .. ID] } do
-		f:Clone().Parent = old
-	end
-	local hills = folder(old, "Hills")
-	for _, u in scenery.Hills:GetDescendants() do
-		if u:IsA("Model") and u.Parent and u.Name:sub(1, 5) == "Prop_" then
-			local p = u:GetPivot().Position
-			if math.abs(p.X) < 372 and p.Z > Z0 - 4 and p.Z < Z1 + 14 then
-				u.Parent = hills
-			end
-		end
-	end
-end
-for _, f in { lanes["Walls_" .. ID], lanes["Facade_" .. ID], scenery["Town_" .. ID], scenery["Zone_" .. ID] } do
-	f:ClearAllChildren()
+if not archive:FindFirstChild("Zone2_v1_canyon") then
+	local keep = scenery["Zone_" .. ID]:Clone()
+	keep.Name = "Zone2_v1_canyon"
+	keep:SetAttribute(
+		"Note",
+		"Zone 2 (Demon Slayer) v1, in its canyon, before the slim-lane rebuild (2026-11-22). Never delete."
+	)
+	keep.Parent = archive
 end
 local root = scenery["Zone_" .. ID]
-root:SetAttribute("Theme", "Demon Slayer Corps, zone_02_demon_slayer.luau")
-
--- ---------------------------------------------------------------------------------- the canyon
--- The same shape either side: terrace, a rise, a ledge, a rise, the top. NOW is this zone's numbers,
--- PREV is zone 1's at z 520 (its far end): the first 44 studs blend from one to the other so the
--- walls run on without a step.
-local NOW = {
-	face = { [-1] = 236, [1] = 234 },
-	rise = { [-1] = 6, [1] = 6 },
-	ledgeW = { [-1] = 26, [1] = 30 },
-	ledgeY = { [-1] = 6, [1] = 12 },
-	top = { [-1] = 68, [1] = 60 },
-}
-local PREV = {
-	face = { [-1] = 240, [1] = 228 },
-	rise = { [-1] = 5, [1] = 6 },
-	ledgeW = { [-1] = 9, [1] = 34 },
-	ledgeY = { [-1] = -18, [1] = 8 },
-	top = { [-1] = 80, [1] = 56 },
-}
-local OUTER = 368
-local function profile(side: number, ax: number, z: number, outerH: number): (number, string)
-	local t = smooth((z - Z0) / 44)
-	local function v(key: string): number
-		return lerp(PREV[key][side], NOW[key][side], t)
-	end
-	local wobble = (6 * math.noise(z / 46, side * 3.1, 0.5) + 3 * math.noise(z / 13, side * 9.7, 0.2)) * t
-	local d = ax - (v("face") + wobble)
-	if d < 0 then
-		return LY, "terrace"
-	end
-	local riseW, ledgeW = v("rise"), v("ledgeW")
-	local ledge = v("ledgeY") + 1.2 * math.noise(ax / 9, z / 9, 3.3)
-	local edge = v("top") + 6 * math.noise(z / 50, side * 5.5, 1.7)
-	local h: number
-	local kind = "face"
-	if d < riseW then
-		h = LY + (ledge - LY) * smooth(d / riseW)
-	elseif d < riseW + ledgeW then
-		h = ledge
-		kind = "level"
-	else
-		h = ledge + (edge - ledge) * smooth((d - riseW - ledgeW) / 10)
-	end
-	local topStart = riseW + ledgeW + 10
-	if d > topStart then
-		kind = "level"
-		h += 4 * math.noise(ax / 28, z / 28, 4.4) + 6 * math.min((d - topStart) / 60, 1)
-	end
-	-- (no fall at the far end: zone 3's walls carry on from z 880)
-	local outerStart = OUTER - 72
-	if ax > outerStart then
-		h += (outerH - h) * smooth((ax - outerStart) / 72)
-	end
-	return h, kind
-end
-local outerCache = { [-1] = {}, [1] = {} }
-local function outerHeight(side: number, z: number): number
-	local key = math.floor(z / 4)
-	local cached = outerCache[side][key]
-	if cached then
-		return cached
-	end
-	local x = if side > 0 then OUTER else -OUTER - 4
-	local _, occ = T:ReadVoxels(Region3.new(Vector3.new(x, -32, key * 4), Vector3.new(x + 4, 100, key * 4 + 4)), 4)
-	local top = -2
-	for y = 1, occ.Size.Y do
-		if occ[1][y][1] > 0.1 then
-			top = -32 + (y - 1) * 4 + occ[1][y][1] * 4
-		end
-	end
-	top = math.clamp(top, -2, 40)
-	outerCache[side][key] = top
-	return top
-end
-local function ground(side: number, ax: number, z: number): number
-	return (profile(side, ax, z, outerHeight(side, z)))
-end
-
-if DO_TERRAIN then
-	T:SetMaterialColor(Enum.Material.Basalt, Color3.fromRGB(96, 102, 124)) -- the pass's rock: dark, blue-grey
-	local Y0, Y1 = -56, 124
-	local ny = (Y1 - Y0) / 4
-	for _, side in { -1, 1 } do
-		for z0 = Z0, Z1 - 4, 60 do
-			local z1 = math.min(z0 + 60, Z1)
-			local nx, nz = (OUTER - HALF) / 4, (z1 - z0) / 4
-			local mats, occs = table.create(nx), table.create(nx)
-			for ix = 1, nx do
-				local ax = HALF + (ix - 1) * 4 + 2
-				local mcol, ocol = table.create(ny), table.create(ny)
-				for iy = 1, ny do
-					mcol[iy] = table.create(nz, Enum.Material.Air)
-					ocol[iy] = table.create(nz, 0)
-				end
-				for iz = 1, nz do
-					local z = z0 + (iz - 1) * 4 + 2
-					local outer = outerHeight(side, z)
-					local h, kind = profile(side, ax, z, outer)
-					-- a voxel's fill is its distance to the surface: steep ground stays smooth
-					local gx = (profile(side, ax + 2, z, outer) - profile(side, ax - 2, z, outer)) / 4
-					local gz = (profile(side, ax, z + 2, outerHeight(side, z + 2)) - profile(side, ax, z - 2, outerHeight(side, z - 2))) / 4
-					local steep = gx * gx + gz * gz
-					local spread = 4 * math.sqrt(1 + math.min(steep, 30))
-					for iy = 1, ny do
-						local yb = Y0 + (iy - 1) * 4
-						local o = math.clamp(0.5 + (h - (yb + 2)) / spread, 0, 1)
-						if o > 0.02 then
-							-- zone 1's tan rock gives way to this zone's dark rock over the first 28 studs
-							local mine = (z - Z0) / 28 + 0.6 * math.noise(z / 7, yb / 7, ax / 7) > 0.5
-							local m = if mine then Enum.Material.Basalt else Enum.Material.Slate
-							if kind == "terrace" and yb < h + 1 then
-								m = if mine then Enum.Material.LeafyGrass else Enum.Material.Ground
-							elseif kind == "level" and steep < 0.5 and yb + 4 > h - 6 then
-								m = Enum.Material.LeafyGrass
-							end
-							mcol[iy][iz] = m
-							ocol[iy][iz] = o
-						end
-					end
-				end
-				local slot = if side > 0 then ix else nx - ix + 1
-				mats[slot] = mcol
-				occs[slot] = ocol
-			end
-			local xa = if side > 0 then HALF else -OUTER
-			T:WriteVoxels(Region3.new(Vector3.new(xa, Y0, z0), Vector3.new(xa + (OUTER - HALF), Y1, z1)), 4, mats, occs)
-		end
-	end
-end
-
+root:ClearAllChildren()
+root:SetAttribute("Theme", "Demon Slayer Corps, zone_02_demon_slayer.luau v2 on side_lib")
+local ground = folder(root, "Ground")
 local buildings = folder(root, "Buildings")
 local train = folder(root, "Train")
 local props = folder(root, "Props")
 local trees = folder(root, "Trees")
-local function ledgeAx(side: number): number
-	return NOW.face[side] + NOW.rise[side] + NOW.ledgeW[side] / 2
+
+-- ---------------------------------------------------------------------------------- the ground
+local STYLE = {
+	stone = PASS,
+	material = Enum.Material.Cobblestone,
+	band = PASS_DARK,
+	cap = MOSS,
+	capMaterial = Enum.Material.Grass,
+	rail = WOOD_DARK,
+}
+if DO_TERRAIN then
+	sideGround(Z0, Z1)
 end
-local function rimAx(side: number): number
-	return NOW.face[side] + NOW.rise[side] + NOW.ledgeW[side] + 26
+claimGates(Z0, Z1)
+for _, s in { -1, 1 } do
+	box(
+		ground,
+		"Kerb",
+		s * HALF,
+		s * P.KERB_OUT,
+		LY - 2,
+		LY + 3,
+		Z0,
+		Z1,
+		CRIMSON,
+		Enum.Material.Slate
+	)
+	pave(
+		ground,
+		s * P.KERB_OUT,
+		s * P.STREET_OUT,
+		Z0,
+		Z1,
+		P.TERRACE_Y + 0.4,
+		STREET,
+		Enum.Material.Cobblestone,
+		"Street"
+	)
+	table.insert(claims, rect(s * HALF, s * P.STREET_OUT, Z0, Z1, "Street"))
+	revetment(ground, s, Z0, Z1, STYLE)
+	-- a pier of the pass's stone where zone 1's revetment meets this one
+	box(
+		ground,
+		"SeamPier",
+		s * (P.TERRACE_OUT - P.BATTER - 1.5),
+		s * (P.REVET_OUT + 0.5),
+		P.TERRACE_Y - 1,
+		P.SHELF_Y + 3,
+		Z0 - 2.5,
+		Z0 + 2.5,
+		PASS_DARK,
+		Enum.Material.Slate
+	)
 end
 
 -- ---------------------------------------------------------------------------------- the Mugen Train (+X)
-local TX = 199 -- the track's centre line
+-- the platform on the lane side, the rails behind it; the train heads for the throw stage
+local PLAT0, PLAT1 = P.STREET_OUT + 1, P.STREET_OUT + 14 -- the platform (x 117..130)
+local TX = PLAT1 + 18 -- the track's centre line (148): the rail bed 36 wide, to x 166
 local BED = LY + 2.4
--- The locomotive and the carriage were generated apart, so their wheels are not one gauge:
--- measured from the meshes, the wheels stand 4.4 from the centre line on a 14.2-wide locomotive and
--- 2.7 on an 11.9-wide carriage. These two scales bring both to about 8.4, and a 2.4-wide rail there
--- carries both (and covers the short rails modelled under the carriage).
+local RZ0, RZ1 = 596, 836
+-- The locomotive and the carriage were generated apart, so their wheels are not one gauge: these two
+-- scales bring both to about 8.4 from the centre line, and a rail there carries both
 local LOCO, CAR = 2.2, 2.8
-block(train, "RailBed", Vector3.new(36, 2.4, 240), CFrame.new(TX, LY + 1.2, 716), Color3.fromRGB(104, 100, 98), Enum.Material.Slate)
+box(
+	train,
+	"RailBed",
+	TX - 18,
+	TX + 18,
+	LY,
+	LY + 2.4,
+	RZ0,
+	RZ1,
+	Color3.fromRGB(104, 100, 98),
+	Enum.Material.Slate
+)
 for _, dx in { -8.4, 8.4 } do
-	block(train, "Rail", Vector3.new(2.4, 1.5, 240), CFrame.new(TX + dx, BED + 0.75, 716), IRON, Enum.Material.Metal)
+	block(
+		train,
+		"Rail",
+		Vector3.new(2.4, 1.5, RZ1 - RZ0),
+		CFrame.new(TX + dx, BED + 0.75, (RZ0 + RZ1) / 2),
+		IRON,
+		Enum.Material.Metal
+	)
 end
-for z = 600, 832, 8 do
-	block(train, "Sleeper", Vector3.new(26, 0.7, 2.6), CFrame.new(TX, BED + 0.3, z), WOOD_DARK, Enum.Material.Wood).CastShadow = false
+for z = RZ0 + 4, RZ1 - 4, 8 do
+	block(
+		train,
+		"Sleeper",
+		Vector3.new(26, 0.7, 2.6),
+		CFrame.new(TX, BED + 0.3, z),
+		WOOD_DARK,
+		Enum.Material.Wood
+	).CastShadow =
+		false
 end
--- squared templates front to -Z: no turn, and the train heads for the throw stage
 still(make(train, SRC.Locomotive, LOCO, 0, Vector3.new(TX, BED + 1.4, 632)), true)
 for _, z in { 705, 787 } do
 	still(make(train, SRC.Carriage, CAR, 0, Vector3.new(TX, BED + 0.1, z)), true)
 end
+table.insert(claims, rect(PLAT0, TX + 18, RZ0, RZ1, "MugenTrain"))
 local stack = block(train, "Stack", Vector3.new(2, 2, 2), CFrame.new(TX, BED + 46, 612), IRON)
 stack.Transparency = 1
 stack.CastShadow = false
@@ -292,8 +201,13 @@ local smoke = Instance.new("ParticleEmitter")
 smoke.Name = "Smoke"
 smoke.Texture = "rbxasset://textures/particles/smoke_main.dds"
 smoke.Color = ColorSequence.new(Color3.fromRGB(236, 236, 240), Color3.fromRGB(150, 150, 160))
-smoke.Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 3), NumberSequenceKeypoint.new(1, 13) })
-smoke.Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.35), NumberSequenceKeypoint.new(0.7, 0.6), NumberSequenceKeypoint.new(1, 1) })
+smoke.Size =
+	NumberSequence.new({ NumberSequenceKeypoint.new(0, 3), NumberSequenceKeypoint.new(1, 13) })
+smoke.Transparency = NumberSequence.new({
+	NumberSequenceKeypoint.new(0, 0.35),
+	NumberSequenceKeypoint.new(0.7, 0.6),
+	NumberSequenceKeypoint.new(1, 1),
+})
 smoke.Lifetime = NumberRange.new(4, 6)
 smoke.Rate = 7
 smoke.Speed = NumberRange.new(7, 10)
@@ -302,17 +216,42 @@ smoke.SpreadAngle = Vector2.new(10, 10)
 smoke.Acceleration = Vector3.new(0, 1, 5)
 smoke.RotSpeed = NumberRange.new(-30, 30)
 smoke.Parent = stack
--- the platform and its station board
-block(train, "Platform", Vector3.new(13, 5, 170), CFrame.new(172.5, LY + 2.5, 728), WOOD, Enum.Material.WoodPlanks)
-block(train, "PlatformEdge", Vector3.new(1.4, 5.4, 170), CFrame.new(179.6, LY + 2.7, 728), Color3.fromRGB(232, 222, 200), Enum.Material.Concrete)
+-- the platform, its edge, lamps and the station board
+box(train, "Platform", PLAT0, PLAT1, LY, LY + 5, RZ0 + 30, RZ1 - 6, WOOD, Enum.Material.WoodPlanks)
+box(
+	train,
+	"PlatformEdge",
+	PLAT1 - 0.4,
+	PLAT1 + 1,
+	LY,
+	LY + 5.4,
+	RZ0 + 30,
+	RZ1 - 6,
+	Color3.fromRGB(232, 222, 200),
+	Enum.Material.Concrete
+)
 for _, z in { 660, 796 } do
-	local m = make(props, KIT.Prop_store_LampPost, 1.9, -90, Vector3.new(172, LY + 5, z))
-	still(m, false)
+	still(make(props, KIT.Prop_store_LampPost, 1.9, -90, Vector3.new(PLAT0 + 6, LY + 5, z)), false)
 end
+local BX = PLAT0 + 3 -- the board's line, on the platform's lane side
 for _, z in { 714, 742 } do
-	block(train, "SignPost", Vector3.new(1.2, 16, 1.2), CFrame.new(170, LY + 13, z), WOOD_DARK, Enum.Material.Wood)
+	block(
+		train,
+		"SignPost",
+		Vector3.new(1.2, 16, 1.2),
+		CFrame.new(BX, LY + 13, z),
+		WOOD_DARK,
+		Enum.Material.Wood
+	)
 end
-local board = block(train, "StationBoard", Vector3.new(0.8, 9, 30), CFrame.new(170, LY + 18, 728), Color3.fromRGB(244, 236, 214), Enum.Material.Wood)
+local board = block(
+	train,
+	"StationBoard",
+	Vector3.new(0.8, 9, 30),
+	CFrame.new(BX, LY + 18, 728),
+	Color3.fromRGB(244, 236, 214),
+	Enum.Material.Wood
+)
 local gui = Instance.new("SurfaceGui")
 gui.Face = Enum.NormalId.Left -- the lane's side
 gui.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
@@ -327,27 +266,158 @@ label.TextScaled = true
 label.Font = Enum.Font.SourceSansBold
 label.TextColor3 = Color3.fromRGB(34, 30, 30)
 label.Parent = gui
-block(train, "BoardFrame", Vector3.new(1.2, 10.4, 31.4), CFrame.new(170.3, LY + 18, 728), WOOD_DARK, Enum.Material.Wood)
-
--- ---------------------------------------------------------------------------------- the estate (-X)
--- squared templates front to -Z: a quarter turn puts the mansion's steps to the lane
-local MANSION = 1.5
-still(make(buildings, SRC.Mansion, MANSION, -90, Vector3.new(-(170 + 42 * MANSION / 2), LY, 700)), true)
-local function kit(name: string, scale: number, x: number, z: number, yaw: number, y: number?)
-	local template = KIT:FindFirstChild(name)
-	if template then
-		make(props, template, scale, yaw, Vector3.new(x, y or LY, z))
+block(
+	train,
+	"BoardFrame",
+	Vector3.new(1.2, 10.4, 31.4),
+	CFrame.new(BX + 0.3, LY + 18, 728),
+	WOOD_DARK,
+	Enum.Material.Wood
+)
+-- the station's canopy over the platform: posts on both edges, a dark tile roof (its eave above the board)
+local CZ0, CZ1 = 640, 816
+local ROOF_Y = LY + 25
+for z = CZ0, CZ1, 22 do
+	for _, x in { PLAT0 + 1, PLAT1 - 1.5 } do
+		block(
+			train,
+			"CanopyPost",
+			Vector3.new(1.2, ROOF_Y - LY - 5, 1.2),
+			CFrame.new(x, (ROOF_Y + LY + 5) / 2, z),
+			WOOD_DARK,
+			Enum.Material.Wood
+		)
 	end
 end
-for _, z in { 630, 770 } do -- clear of the banners beside them
-	kit("Prop_store_StoneLantern", 1.7, -166, z, 0)
+box(
+	train,
+	"CanopyBeam",
+	PLAT0 + 0.2,
+	PLAT1 - 0.6,
+	ROOF_Y - 1,
+	ROOF_Y,
+	CZ0 - 1,
+	CZ1 + 1,
+	WOOD_DARK,
+	Enum.Material.Wood
+)
+gable(
+	train,
+	CFrame.new((PLAT0 + PLAT1) / 2, ROOF_Y, (CZ0 + CZ1) / 2) * CFrame.Angles(0, math.pi / 2, 0),
+	CZ1 - CZ0 + 4,
+	7.5,
+	4,
+	Color3.fromRGB(66, 60, 66)
+)
+
+-- ---------------------------------------------------------------------------------- the estate (-X)
+front(buildings, SRC.Mansion, -1, 1.15, P.STREET_OUT + 3, 700)
+local function kit(name: string, scale: number, x: number, z: number, yaw: number): Model?
+	local template = KIT:FindFirstChild(name)
+	if not template then
+		table.insert(refused, name .. " is not in the kit")
+		return nil
+	end
+	return put(props, template, scale, yaw, x, z)
 end
--- the Corps' banner, white on black, read from the lane
-local function corps(x: number, z: number)
-	local side = if x > 0 then 1 else -1
-	block(props, "BannerPole", Vector3.new(1, 30, 1), CFrame.new(x, LY + 15, z), WOOD_DARK, Enum.Material.Wood)
-	block(props, "BannerArm", Vector3.new(1, 1, 10), CFrame.new(x, LY + 29, z + 4.5), WOOD_DARK, Enum.Material.Wood)
-	local cloth = block(props, "CorpsBanner", Vector3.new(0.3, 20, 8), CFrame.new(x, LY + 18.4, z + 5), Color3.fromRGB(26, 26, 32), Enum.Material.Fabric)
+-- wisteria trellises (fuji-dana) along the estate's street: posts, beams, slats, hanging flowers
+local function trellis(z0: number, z1: number)
+	local xa, xb = -(P.STREET_OUT + 4), -(P.STREET_OUT + 26)
+	if not claim(rect(xa + 1, xb - 1, z0 - 1, z1 + 1, "Trellis")) then
+		return
+	end
+	local m = Instance.new("Model")
+	m.Name = "WisteriaTrellis"
+	local top = LY + 17
+	for z = z0, z1, 10 do
+		for _, x in { xa, xb } do
+			block(
+				m,
+				"Post",
+				Vector3.new(1.4, top - LY, 1.4),
+				CFrame.new(x, (top + LY) / 2, z),
+				WOOD_DARK,
+				Enum.Material.Wood
+			)
+		end
+	end
+	for _, x in { xa, xb } do
+		box(
+			m,
+			"Beam",
+			x - 0.8,
+			x + 0.8,
+			top,
+			top + 1.4,
+			z0 - 2,
+			z1 + 2,
+			WOOD_DARK,
+			Enum.Material.Wood
+		)
+	end
+	local tones = { WISTERIA, Color3.fromRGB(184, 140, 236), Color3.fromRGB(132, 88, 204) }
+	for z = z0 - 1, z1 + 1, 3 do
+		box(
+			m,
+			"Slat",
+			xb - 1,
+			xa + 1,
+			top + 1.4,
+			top + 2,
+			z - 0.4,
+			z + 0.4,
+			WOOD,
+			Enum.Material.Wood
+		)
+		for _ = 1, 3 do
+			local x = rng:NextNumber(xb + 1, xa - 1)
+			local h = rng:NextNumber(3, 7.5)
+			local p = block(
+				m,
+				"Bloom",
+				Vector3.new(1.6, h, 1.6),
+				CFrame.new(x, top + 1.4 - h / 2, z + rng:NextNumber(-1, 1)),
+				tones[rng:NextInteger(1, #tones)],
+				Enum.Material.SmoothPlastic
+			)
+			p.CastShadow = false
+		end
+	end
+	m.Parent = props
+end
+trellis(586, 656)
+trellis(744, 792)
+
+-- the Corps' banner, white on black, read from the lane, at the terrace's back edge
+local function corps(side: number, z: number)
+	local x = side * (P.TERRACE_OUT - P.BATTER - 3)
+	if not claim(rect(x - 2, x + 2, z - 1, z + 10, "CorpsBanner")) then
+		return
+	end
+	block(
+		props,
+		"BannerPole",
+		Vector3.new(1, 30, 1),
+		CFrame.new(x, LY + 15, z),
+		WOOD_DARK,
+		Enum.Material.Wood
+	)
+	block(
+		props,
+		"BannerArm",
+		Vector3.new(1, 1, 10),
+		CFrame.new(x, LY + 29, z + 4.5),
+		WOOD_DARK,
+		Enum.Material.Wood
+	)
+	local cloth = block(
+		props,
+		"CorpsBanner",
+		Vector3.new(0.3, 20, 8),
+		CFrame.new(x, LY + 18.4, z + 5),
+		Color3.fromRGB(26, 26, 32),
+		Enum.Material.Fabric
+	)
 	local g = Instance.new("SurfaceGui")
 	g.Face = if side > 0 then Enum.NormalId.Left else Enum.NormalId.Right
 	g.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
@@ -362,56 +432,98 @@ local function corps(x: number, z: number)
 	t.TextColor3 = Color3.fromRGB(245, 245, 245)
 	t.Parent = g
 end
-corps(-164, 644) -- clear of the mansion's front (it spans z 659..741)
-corps(-164, 746)
-corps(164, 608)
-corps(164, 838)
-kit("Prop_samurai_castle_KatanaMonument", 2.6, -178, 790, 0)
-kit("Prop_store_StoneLantern", 1.7, 166, 600, 0)
-kit("Prop_store_StoneLantern", 1.7, 166, 836, 0)
+corps(-1, 640)
+corps(-1, 748)
+corps(1, 576)
+corps(1, 846)
+kit("Prop_store_StoneLantern", 1.7, -150, 622, 0)
+kit("Prop_store_StoneLantern", 1.7, -150, 778, 0)
+kit("Prop_store_StoneLantern", 1.7, 150, 586, 0)
+kit("Prop_store_StoneLantern", 1.7, 150, 856, 0)
+kit("Prop_samurai_castle_KatanaMonument", 2.4, -152, 800, 0)
 
 -- ---------------------------------------------------------------------------------- wisteria, cedars, rock
-local function plant(template: Instance, side: number, ax: number, z: number, scale: number, y: number?): Model
-	local m = make(trees, template, scale, rng:NextInteger(0, 359), Vector3.new(side * ax, y or (ground(side, ax, z) - 0.8), z))
-	still(m, scale > 1.2)
+local function plant(template: Instance, x: number, z: number, scale: number, soft: number?): Model?
+	local m =
+		put(trees, template, scale, rng:NextInteger(0, 3) * 90, x, z, { soft = soft or 4 * scale })
+	if m then
+		still(m, scale > 1.2)
+	end
 	return m
 end
--- the landmark: one giant wisteria on the far ledge of the estate's side
-plant(SRC.Wisteria, -1, ledgeAx(-1) + 2, 826, 2.6)
-for _, side in { -1, 1 } do
-	-- wisteria along the ledges, cedars on the rims
-	for z = 566, 850, 48 do
-		if not (side < 0 and z > 790) then
-			plant(SRC.Wisteria, side, ledgeAx(side) + rng:NextNumber(-3, 3), z + rng:NextNumber(-8, 8), rng:NextNumber(1.0, 1.35))
-		end
-	end
-	for z = 548, 860, 32 do
-		plant(SRC.Cedar, side, rimAx(side) + rng:NextNumber(0, 22), z + rng:NextNumber(-8, 8), rng:NextNumber(1.4, 2.0))
-	end
-	-- mossy rock at the cliff's foot
-	for _, z in { 572, 618, 846 } do
-		plant(SRC.MossRock, side, NOW.face[side] - 3, z + rng:NextNumber(-6, 6), rng:NextNumber(0.9, 1.5), LY - 2)
+-- the landmark: one great wisteria at the estate side's far end
+plant(SRC.Wisteria, -(P.STREET_OUT + 26), 840, 1.85, 10)
+-- the shelves: +X a mountain village behind the train (farmhouses), -X shrines and bamboo behind the
+-- estate; wisteria spilling over the edge, a few cedars (owner: not too many trees)
+local SHELF = P.REVET_OUT + 1.5
+local function shelfKit(name: string, side: number, scale: number, z: number)
+	local template = KIT:FindFirstChild(name)
+	if template then
+		front(buildings, template, side, scale, SHELF, z)
 	end
 end
-plant(SRC.MossRock, -1, 232, 752, 1.2, LY - 2)
-plant(SRC.MossRock, 1, 222, 840, 1.3, LY - 2)
--- street level, either end of the estate and beyond the train
-plant(SRC.Wisteria, -1, 204, 628, 1.2, LY)
-plant(SRC.Wisteria, -1, 206, 772, 1.2, LY)
-plant(SRC.Wisteria, 1, 180, 852, 1.1, LY)
-plant(SRC.Cedar, 1, 216, 596, 1.0, LY)
+shelfKit("Prop_store_FarmHouseA", 1, 0.8, 600)
+shelfKit("Prop_store_FarmHouseC", 1, 0.85, 690)
+shelfKit("Prop_store_FarmHouseB", 1, 0.8, 790)
+shelfKit("Prop_store_ShrineA", -1, 0.9, 610)
+shelfKit("Prop_store_ShrineB", -1, 0.9, 790)
+for _, t in
+	{
+		{ 192, 645, "W" },
+		{ 192, 740, "C" },
+		{ 192, 840, "W" },
+		{ -192, 575, "C" },
+		{ -192, 664, "W" },
+		{ -192, 700, "C" },
+		{ -192, 752, "W" },
+		{ -192, 832, "C" },
+	}
+do
+	if t[3] == "W" then
+		plant(SRC.Wisteria, t[1], t[2], 1.05)
+	else
+		plant(SRC.Cedar, t[1], t[2], 1.4)
+	end
+end
+for _, z in { 638, 726, 862 } do
+	local m = put(
+		trees,
+		KIT.Prop_ninja_village_BambooCluster,
+		1.4,
+		rng:NextInteger(0, 3) * 90,
+		-192,
+		z,
+		{ soft = 1 }
+	)
+	if m then
+		still(m, false)
+	end
+end
+-- mossy rocks at the revetment's foot
+for _, r in { { -156, 594, 0.85 }, { 156, 572, 0.8 } } do
+	plant(SRC.MossRock, r[1], r[2], r[3], 0)
+end
 
 -- petals on the wind
 local fx = folder(root, "Fx")
 for _, z in { 590, 680, 770, 850 } do
-	local source = block(fx, "PetalSource", Vector3.new(300, 1, 70), CFrame.new(0, LY + 84, z), Color3.new(1, 1, 1))
+	local source = block(
+		fx,
+		"PetalSource",
+		Vector3.new(2 * HALF - 8, 1, 70),
+		CFrame.new(0, LY + 84, z),
+		Color3.new(1, 1, 1)
+	)
 	source.Transparency = 1
 	source.CastShadow = false
 	local e = Instance.new("ParticleEmitter")
 	e.Name = "Petals"
 	e.Texture = "rbxassetid://5057182105"
 	e.Color = ColorSequence.new(Color3.fromRGB(226, 180, 255), Color3.fromRGB(190, 140, 255))
-	e.Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 1.1), NumberSequenceKeypoint.new(1, 1.6) })
+	e.Size = NumberSequence.new({
+		NumberSequenceKeypoint.new(0, 1.1),
+		NumberSequenceKeypoint.new(1, 1.6),
+	})
 	e.Transparency = NumberSequence.new({
 		NumberSequenceKeypoint.new(0, 1),
 		NumberSequenceKeypoint.new(0.1, 0),
@@ -419,7 +531,7 @@ for _, z in { 590, 680, 770, 850 } do
 		NumberSequenceKeypoint.new(1, 1),
 	})
 	e.Lifetime = NumberRange.new(9, 13)
-	e.Rate = 6
+	e.Rate = 5
 	e.Speed = NumberRange.new(5, 9)
 	e.EmissionDirection = Enum.NormalId.Bottom
 	e.SpreadAngle = Vector2.new(25, 25)
@@ -431,7 +543,7 @@ for _, z in { 590, 680, 770, 850 } do
 end
 
 -- ---------------------------------------------------------------------------------- floor and gate
-for _, c in lanes["Zone_" .. ID]:GetChildren() do
+for _, c in map.Lanes["Zone_" .. ID]:GetChildren() do
 	local n = c.Name
 	if c:IsA("BasePart") then
 		if n:sub(1, 5) == "Strip" then
@@ -442,7 +554,9 @@ for _, c in lanes["Zone_" .. ID]:GetChildren() do
 			c.Color = if green then CHECK_GREEN else CHECK_BLACK
 			local tex = c:FindFirstChildWhichIsA("Texture")
 			if tex then
-				tex.Color3 = if green then Color3.fromRGB(120, 214, 164) else Color3.fromRGB(78, 84, 96)
+				tex.Color3 = if green
+					then Color3.fromRGB(120, 214, 164)
+					else Color3.fromRGB(78, 84, 96)
 			end
 		elseif n:sub(1, 4) == "Kerb" then
 			c.Color = CRIMSON
@@ -467,4 +581,5 @@ for _, c in lanes["Zone_" .. ID]:GetChildren() do
 	end
 end
 
-return string.format("zone 2 Demon Slayer: %d parts in Scenery.Zone_%s (%d train, %d trees and rocks)", #partsOf(root), ID, #partsOf(train), #trees:GetChildren())
+markSlim(root, Z0, Z1)
+return string.format("zone 2 Demon Slayer v2: %d parts\n%s", #partsOf(root), sideReport(root))

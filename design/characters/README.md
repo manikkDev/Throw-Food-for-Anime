@@ -137,3 +137,61 @@ Mahoraga, Yoriichi). Checked in close-ups: `final/batch3_*.jpg`.
 ## Edits to imported avatars
 
 - 2026-11-15: Copy Ninja (Kakashi Hatake): the accessory `Dragon_Head_Lightning_01_White` (a black dragon round the body) was removed from `R15_Final` and the baked template at the owner's request. The untouched original stays in `R6_Originals`.
+
+## Batch 4: 97 more heroes (2026-11-22)
+
+All the owner's remaining imports plus the heroes built from catalog items (`tools/studio/build_from_items.py`),
+now 180 in `roster.json` (172 lane + 8 premium). Names, zones and rarities: `tools/register_new_heroes.py`
+(the table in that file is the source; it writes `roster.json` and `design/zones/anime_zones.json`).
+
+- **In-game names** are aliases, recognisable but not the franchise's name (`Rain God`, `Tide Swordsman`,
+  `Blood-Stalker Girl`). `Source` (the real character) is for design files and the lab pads only.
+- **Normalising** (`python tools/studio/normalize_heroes.py <json>`, `normalize_heroes.luau`): the Insert Avatar plugin
+  leaves NO HumanoidDescription behind (so `build_r15.luau` says MISSING). `Humanoid:GetAppliedDescription()` gives it
+  back: scales reset (1,1,1,1,0,0), fresh rig, then anything the description did not bring (hand-added accessories,
+  layered clothing via `Humanoid:AddAccessory`) is carried across. Caveat: the applied description is the AVATAR's, not the
+  live children: a piece deleted by hand (Igris's aura) comes back, delete it again in `R15_Final`.
+  Rigs already built to the standard take `mode: inplace` (head rule + clean-up only).
+- **Head rule** is automatic now: default head mesh (123480233606534) + a FaceCenter/FaceFront accessory at least 1.1 x 1.1 x 1.0
+  hides the head; custom heads stay. Checked by eye in close-ups (5 per picture) on every rig: no forehead dots.
+- **Layered clothing needs WrapTarget cages** on the body parts, or it balloons (Yoriichi's haori, 2026-11-22): rigs from
+  `CreateHumanoidModelFromDescription` have them; an old hand-made rig does not (copy them from a working rig, same meshes).
+- **Not wired into the game yet**: `config.Characters`/`config.Zones` in `design/game.json` still describe the old six zones.
+  Batch 4 is in the roster, the baked templates (`Char_<id>`, 180) and the ZoneLab only.
+- Rarity plan: 7 tiers exist in the game (`config.Rarities`, Secret included). Per zone every tier from Common to Legendary
+  has at least one hero (the odds share a rarity's weight), Mythic in 12 zones, Secret on two heroes (Saitama, Whis).
+- Archive: originals in `ServerStorage.CharacterSources.Originals_Batch4` (never delete), finals in `R15_Final` (180).
+  Two heroes were named from the avatar alone and need the owner's confirmation: `Gin Ichimaru` (avatar DAVIDDDB2009) and
+  `Don Lorenzo` (Blue Lock, alias `Number One Striker`).
+
+### Standard body parts (2026-11-22, second pass)
+
+Rigs rebuilt from an avatar's description kept that avatar's torso/arm/leg MESHES (Rthro, slim, bulky or whole-body
+bundles): 34 heroes read as "lego" next to the rest. `python tools/studio/restandardize_bodies.py` finds every rig in
+`R15_Final` whose body parts are not the standard R15 (torso 2 x 1.6 x 1, legs 1.22 / 1.19, ...) and rebuilds it with
+torso/arms/legs = 0 in the description and every scale 1. Its head, face, clothes, body colours and every accessory
+come from the OLD rig (hand edits survive); the old rig is archived in `ServerStorage.CharacterSources.R15_Prev`
+(never delete). Check after any new import: all 180 templates must have the standard sizes (`work/norm/audit2.luau`).
+Traps found on the way: a layered accessory's handle is not moved with the rig (reposition it from its attachment);
+`Beru` was a whole-body avatar, now a dark standard body; `Nacht`'s Faust Cape was removed (the bell hid his arms and
+body; the cape is kept in `R15_Prev`). `build_zone_lab.luau` now sets heroes to `ModelStreamingMode.Persistent`.
+
+Layered clothing in Edit mode (2026-11-22): a layered garment (WrapLayer) can render floating or unfitted in Studio's
+Edit mode (owner saw Nacht's cloak hover off his body). 22 layered garments were converted to plain welded accessories
+(raw authored mesh on the standard body) and all looked right; Minato, Hinata and Genos stay layered because their
+raw meshes sit hidden inside the body. The pre-conversion rigs are in `ServerStorage.CharacterSources.R15_PrevLayered`
+(never delete). A converted garment needs no cage fitting, so it looks the same in Edit, Play and on every device.
+
+## Frieren outfit swap (2026-11-22)
+Owner supplied three catalog accessories (85968976647742 coat on BodyBack, 79448655086849 / 133247210652779 sleeve pieces on the
+shoulders; loaded with `InsertService:LoadAsset`, not `insert_asset`, which 404s on catalog ids). They replaced the old collar,
+front piece and skirt of `Frieren (R15)` (hero `angel_commander`). Kept: butterflies (`Spiritflies aura`), the staff on the back
+(`Accessory (MeshPartAccessory)`; the owner said "sword"), and the elf hair and face (the new set has none). Old rig archived in `R15_Prev`.
+
+## Geto outfit (2026-11-22)
+The converted-to-rigid kimono (`Accessory (OutFit)`, 6.37 wide) ballooned past the arms. Restored the layered original from
+`R15_PrevLayered` and scaled its handle to X 0.72, Z 0.9 so the sleeves sit on the arms (`R15_Final/Geto (R15)`), then re-baked.
+Geto's forearm blocks (shirt-textured, wider than the mesh sleeve) read as flaps: `LeftLowerArm`/`RightLowerArm` are Transparency 1 in the rig.
+Mahoraga (`wheel_guardian`): his full-body mesh sat 1.4 studs too high as a rigid accessory (the default head showed as a blob on his belly).
+Weld lowered 1.38, Shirt/Pants removed, body recoloured white / black legs, default head hidden (HeadHidden). Rule for any layered-to-rigid
+conversion: check the baked result next to the head, and remove clothing templates that the mesh replaces.

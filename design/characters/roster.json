@@ -533,5 +533,878 @@
   "Rig": "ServerStorage.CharacterSources.R15_Final/Magna (R15)",
   "Planned": true,
   "Notes": "imported avatar Topchik_Aleksey + catalog accessory 83962631686646 (Front)"
+ },
+ {
+  "Id": "next_gen_ninja",
+  "Name": "Next-Gen Ninja",
+  "Source": "Boruto",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Boruto (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Boruto",
+  "WorkspaceRig": "Boruto"
+ },
+ {
+  "Id": "bowl_cut_brawler",
+  "Name": "Bowl Cut Brawler",
+  "Source": "Rock Lee",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Rock Lee (R15)",
+  "Planned": true,
+  "Notes": "imported avatar rockleeoftheleaf8",
+  "WorkspaceRig": "Rock Lee"
+ },
+ {
+  "Id": "pale_eyed_princess",
+  "Name": "Pale-Eyed Princess",
+  "Source": "Hinata",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Hinata (R15)",
+  "Planned": true,
+  "Notes": "imported avatar hinata_001319",
+  "WorkspaceRig": "Hinata"
+ },
+ {
+  "Id": "sand_guardian",
+  "Name": "Sand Guardian",
+  "Source": "Gaara",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Gaara (R15)",
+  "Planned": true,
+  "Notes": "imported avatar pvryou",
+  "WorkspaceRig": "Gaara"
+ },
+ {
+  "Id": "toad_sage",
+  "Name": "Toad Sage",
+  "Source": "Jiraiya",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Jiraiya (R15)",
+  "Planned": true,
+  "Notes": "imported avatar XxXfoxNathanXxX",
+  "WorkspaceRig": "Jiraiya"
+ },
+ {
+  "Id": "rain_god",
+  "Name": "Rain God",
+  "Source": "Pain",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Pain (R15)",
+  "Planned": true,
+  "Notes": "imported avatar noobtopro112276 + Akatsuki robe 74818563474159",
+  "WorkspaceRig": "Pain"
+ },
+ {
+  "Id": "boar_mask_brawler",
+  "Name": "Boar Mask Brawler",
+  "Source": "Inosuke",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Inosuke (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Inosuke"
+ },
+ {
+  "Id": "tide_swordsman",
+  "Name": "Tide Swordsman",
+  "Source": "Giyu Tomioka",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Giyu Tomioka (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Mightcat9559 + haori + katana",
+  "WorkspaceRig": "Giyu Tomioka"
+ },
+ {
+  "Id": "butterfly_swordswoman",
+  "Name": "Butterfly Swordswoman",
+  "Source": "Shinobu Kocho",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Shinobu Kocho (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Shinobu Kocho"
+ },
+ {
+  "Id": "crimson_fist_demon",
+  "Name": "Crimson Fist Demon",
+  "Source": "Akaza",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Akaza (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Akaza"
+ },
+ {
+  "Id": "crystal_cult_leader",
+  "Name": "Crystal Cult Leader",
+  "Source": "Douma",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Douma (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Douma"
+ },
+ {
+  "Id": "blazing_pirate",
+  "Name": "Blazing Pirate",
+  "Source": "Ace",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Ace (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Ace"
+ },
+ {
+  "Id": "long_nose_sniper",
+  "Name": "Long-Nose Sniper",
+  "Source": "Usopp",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Usopp (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Usopp"
+ },
+ {
+  "Id": "serpent_empress",
+  "Name": "Serpent Empress",
+  "Source": "Boa Hancock",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Boa Hancock (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Boa Hancock"
+ },
+ {
+  "Id": "shadow_pirate_captain",
+  "Name": "Shadow Pirate Captain",
+  "Source": "Blackbeard",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Blackbeard (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Blackbeard"
+ },
+ {
+  "Id": "zero_gravity_girl",
+  "Name": "Zero-Gravity Girl",
+  "Source": "Uraraka",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Uraraka (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Tkmathias7654",
+  "WorkspaceRig": "Uraraka"
+ },
+ {
+  "Id": "blast_prodigy",
+  "Name": "Blast Prodigy",
+  "Source": "Bakugo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Bakugo (R15)",
+  "Planned": true,
+  "Notes": "imported avatar bakugoexplosionkingw",
+  "WorkspaceRig": "Bakugo"
+ },
+ {
+  "Id": "frostflame_hero",
+  "Name": "Frostflame Hero",
+  "Source": "Todoroki",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Todoroki (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Shoto Todorokii",
+  "WorkspaceRig": "Todoroki"
+ },
+ {
+  "Id": "blood_stalker_girl",
+  "Name": "Blood-Stalker Girl",
+  "Source": "Toga",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Toga (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Toga"
+ },
+ {
+  "Id": "crimson_wing_hero",
+  "Name": "Crimson-Wing Hero",
+  "Source": "Hawks",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Hawks (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Hawks"
+ },
+ {
+  "Id": "blue_flame_villain",
+  "Name": "Blue Flame Villain",
+  "Source": "Dabi",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Dabi (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Dabi"
+ },
+ {
+  "Id": "inferno_hero",
+  "Name": "Inferno Hero",
+  "Source": "Endeavor",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Endeavor (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Endeavor"
+ },
+ {
+  "Id": "golden_age_hero",
+  "Name": "Golden Age Hero",
+  "Source": "All Might",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/All Might (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "All Might"
+ },
+ {
+  "Id": "decay_villain",
+  "Name": "Decay Villain",
+  "Source": "Shigaraki",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Shigaraki (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Shigaraki"
+ },
+ {
+  "Id": "egoist_striker",
+  "Name": "Egoist Striker",
+  "Source": "Isagi",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Isagi (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Yoichi Isagi",
+  "WorkspaceRig": "Isagi"
+ },
+ {
+  "Id": "dribble_monster",
+  "Name": "Dribble Monster",
+  "Source": "Bachira",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Bachira (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Meguru Bachira",
+  "WorkspaceRig": "Bachira"
+ },
+ {
+  "Id": "lightning_winger",
+  "Name": "Lightning Winger",
+  "Source": "Chigiri",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Chigiri (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Nagiri_bllk",
+  "WorkspaceRig": "Chigiri"
+ },
+ {
+  "Id": "chameleon_playmaker",
+  "Name": "Chameleon Playmaker",
+  "Source": "Reo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Reo (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Reo",
+  "WorkspaceRig": "Reo"
+ },
+ {
+  "Id": "lazy_genius_striker",
+  "Name": "Lazy Genius Striker",
+  "Source": "Nagi",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Nagi (R15)",
+  "Planned": true,
+  "Notes": "imported avatar nagi",
+  "WorkspaceRig": "Nagi"
+ },
+ {
+  "Id": "king_striker",
+  "Name": "King Striker",
+  "Source": "Barou",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Barou (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Shoei Barou",
+  "WorkspaceRig": "Barou"
+ },
+ {
+  "Id": "cold_prodigy_winger",
+  "Name": "Cold Prodigy Winger",
+  "Source": "Rin Itoshi",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Rin Itoshi (R15)",
+  "Planned": true,
+  "Notes": "imported avatar rin itoshi",
+  "WorkspaceRig": "Rin Itoshi"
+ },
+ {
+  "Id": "emperor_striker",
+  "Name": "Emperor Striker",
+  "Source": "Kaiser",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Kaiser (R15)",
+  "Planned": true,
+  "Notes": "imported avatar kaiser",
+  "WorkspaceRig": "Kaiser"
+ },
+ {
+  "Id": "number_one_striker",
+  "Name": "Number One Striker",
+  "Source": "Don Lorenzo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Don Lorenzo (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Don Lorenzo (owner to confirm which character)",
+  "WorkspaceRig": "Don Lorenzo"
+ },
+ {
+  "Id": "water_princess",
+  "Name": "Water Princess",
+  "Source": "Noelle",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Noelle (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Noelle",
+  "WorkspaceRig": "Noelle"
+ },
+ {
+  "Id": "dark_slash_captain",
+  "Name": "Dark Slash Captain",
+  "Source": "Yami Sukehiro",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Yami Sukehiro (R15)",
+  "Planned": true,
+  "Notes": "imported avatar yami_skhr",
+  "WorkspaceRig": "Yami Sukehiro"
+ },
+ {
+  "Id": "crimson_lioness",
+  "Name": "Crimson Lioness",
+  "Source": "Mereoleona",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Mereoleona (R15)",
+  "Planned": true,
+  "Notes": "imported avatar lady_mereoleona",
+  "WorkspaceRig": "Mereoleona"
+ },
+ {
+  "Id": "devil_knight",
+  "Name": "Devil Knight",
+  "Source": "Liebe",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Liebe (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Liebe",
+  "WorkspaceRig": "Liebe"
+ },
+ {
+  "Id": "rod_fisher_boy",
+  "Name": "Rod Fisher Boy",
+  "Source": "Gon",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Gon (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Gon + shirt 127036637888189",
+  "WorkspaceRig": "Gon"
+ },
+ {
+  "Id": "suit_and_briefcase_doc",
+  "Name": "Suit-and-Briefcase Doc",
+  "Source": "Leorio",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Leorio (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Leoreo + face 131049169866571",
+  "WorkspaceRig": "Leorio"
+ },
+ {
+  "Id": "chain_avenger",
+  "Name": "Chain Avenger",
+  "Source": "Kurapika",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Kurapika (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Kurapika + chains",
+  "WorkspaceRig": "Kurapika"
+ },
+ {
+  "Id": "needle_assassin",
+  "Name": "Needle Assassin",
+  "Source": "Illumi",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Illumi (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items + hair 135595723492190",
+  "WorkspaceRig": "Illumi"
+ },
+ {
+  "Id": "spider_thief_boss",
+  "Name": "Spider Thief Boss",
+  "Source": "Chrollo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Chrollo (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Chrollo",
+  "WorkspaceRig": "Chrollo"
+ },
+ {
+  "Id": "prayer_master",
+  "Name": "Prayer Master",
+  "Source": "Netero",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Netero (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Netero",
+  "WorkspaceRig": "Netero"
+ },
+ {
+  "Id": "ant_monarch",
+  "Name": "Ant Monarch",
+  "Source": "Meruem",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Meruem (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Meruem",
+  "WorkspaceRig": "Meruem"
+ },
+ {
+  "Id": "telepath_girl",
+  "Name": "Telepath Girl",
+  "Source": "Anya Forger",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Anya Forger (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Anya"
+ },
+ {
+  "Id": "master_spy_dad",
+  "Name": "Master Spy Dad",
+  "Source": "Loid Forger",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Loid Forger (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Loid"
+ },
+ {
+  "Id": "dual_blade_gamer",
+  "Name": "Dual-Blade Gamer",
+  "Source": "Kirito",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Kirito (R15)",
+  "Planned": true,
+  "Notes": "imported avatar kirito100082",
+  "WorkspaceRig": "Kirito"
+ },
+ {
+  "Id": "colossus_strategist",
+  "Name": "Colossus Strategist",
+  "Source": "Armin",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Armin (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Armin_Arlert1128",
+  "WorkspaceRig": "Armin"
+ },
+ {
+  "Id": "scarf_blade_soldier",
+  "Name": "Scarf Blade Soldier",
+  "Source": "Mikasa",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Mikasa (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items + Scout jacket",
+  "WorkspaceRig": "Mikasa"
+ },
+ {
+  "Id": "commander_tactician",
+  "Name": "Commander Tactician",
+  "Source": "Erwin",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Erwin (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items + Scout jacket",
+  "WorkspaceRig": "Erwin"
+ },
+ {
+  "Id": "armored_giant",
+  "Name": "Armored Giant",
+  "Source": "Armored Titan",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Armored Titan (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Reiner_Braun211",
+  "WorkspaceRig": "Armored Titan"
+ },
+ {
+  "Id": "beast_giant_prince",
+  "Name": "Beast Giant Prince",
+  "Source": "Zeke",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Zeke (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Zeke"
+ },
+ {
+  "Id": "panicking_rookie",
+  "Name": "Panicking Rookie",
+  "Source": "Kobeni",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Kobeni (R15)",
+  "Planned": true,
+  "Notes": "imported avatar pauly_2018",
+  "WorkspaceRig": "Kobeni"
+ },
+ {
+  "Id": "contract_hunter",
+  "Name": "Contract Hunter",
+  "Source": "Aki Hayakawa",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Aki Hayakawa (R15)",
+  "Planned": true,
+  "Notes": "imported avatar aki_hayakawa0805",
+  "WorkspaceRig": "Aki Hayakawa"
+ },
+ {
+  "Id": "bomb_girl",
+  "Name": "Bomb Girl",
+  "Source": "Reze",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Reze (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Pranxww",
+  "WorkspaceRig": "Reze"
+ },
+ {
+  "Id": "one_eyed_instructor",
+  "Name": "One-Eyed Instructor",
+  "Source": "Kishibe",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Kishibe (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Adominusraptor",
+  "WorkspaceRig": "Kishibe"
+ },
+ {
+  "Id": "gentleman_hero",
+  "Name": "Gentleman Hero",
+  "Source": "Jonathan Joestar",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Jonathan Joestar (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Jonathan Joestar"
+ },
+ {
+  "Id": "pompadour_guardian",
+  "Name": "Pompadour Guardian",
+  "Source": "Josuke",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Josuke (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Josuke73632",
+  "WorkspaceRig": "Josuke"
+ },
+ {
+  "Id": "gold_gang_boss",
+  "Name": "Gold Gang Boss",
+  "Source": "Giorno",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Giorno (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Giorno_Giovanna1777",
+  "WorkspaceRig": "Giorno"
+ },
+ {
+  "Id": "quiet_bomber",
+  "Name": "Quiet Bomber",
+  "Source": "Kira",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Kira (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Kira Yoshikage"
+ },
+ {
+  "Id": "gravity_priest",
+  "Name": "Gravity Priest",
+  "Source": "Pucci",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Pucci (R15)",
+  "Planned": true,
+  "Notes": "imported avatar chestpixel1",
+  "WorkspaceRig": "Pucci"
+ },
+ {
+  "Id": "psychic_student",
+  "Name": "Psychic Student",
+  "Source": "Mob",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Mob (R15)",
+  "Planned": true,
+  "Notes": "imported avatar ShigeoKsageyama",
+  "WorkspaceRig": "Mob"
+ },
+ {
+  "Id": "viking_wanderer",
+  "Name": "Viking Wanderer",
+  "Source": "Thorfinn",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Thorfinn (R15)",
+  "Planned": true,
+  "Notes": "imported avatar EXzinXc_FF",
+  "WorkspaceRig": "Thorfinn"
+ },
+ {
+  "Id": "tyrant_demon_lord",
+  "Name": "Tyrant Demon Lord",
+  "Source": "Anos Voldigoad",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Anos Voldigoad (R15)",
+  "Planned": true,
+  "Notes": "imported avatar antivenomfamous66 + jacket/arms",
+  "WorkspaceRig": "Anos Voldigoad"
+ },
+ {
+  "Id": "bicycle_hero",
+  "Name": "Bicycle Hero",
+  "Source": "Mumen Rider",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Mumen Rider (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Mumen Rider"
+ },
+ {
+  "Id": "cyborg_disciple",
+  "Name": "Cyborg Disciple",
+  "Source": "Genos",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Genos (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Genosfan312",
+  "WorkspaceRig": "Genos"
+ },
+ {
+  "Id": "ninja_speedster",
+  "Name": "Ninja Speedster",
+  "Source": "Speed-o'-Sound Sonic",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Speed-o'-Sound Sonic (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Speed-o-Sound Sonic"
+ },
+ {
+  "Id": "strongest_bluffer",
+  "Name": "Strongest Bluffer",
+  "Source": "King",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/King (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "King"
+ },
+ {
+  "Id": "silver_fist_master",
+  "Name": "Silver Fist Master",
+  "Source": "Bang",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Bang (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Bang"
+ },
+ {
+  "Id": "tornado_psychic",
+  "Name": "Tornado Psychic",
+  "Source": "Tatsumaki",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Tatsumaki (R15)",
+  "Planned": true,
+  "Notes": "imported avatar TsarcraZy666",
+  "WorkspaceRig": "Tatsumaki"
+ },
+ {
+  "Id": "alien_conqueror",
+  "Name": "Alien Conqueror",
+  "Source": "Boros",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Boros (R15)",
+  "Planned": true,
+  "Notes": "imported avatar ABOBUSEK_228",
+  "WorkspaceRig": "Boros"
+ },
+ {
+  "Id": "ice_blade_girl",
+  "Name": "Ice Blade Girl",
+  "Source": "Rukia",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Rukia (R15)",
+  "Planned": true,
+  "Notes": "imported avatar DecayRoses",
+  "WorkspaceRig": "Rukia"
+ },
+ {
+  "Id": "ice_dragon_captain",
+  "Name": "Ice Dragon Captain",
+  "Source": "Toshiro Hitsugaya",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Toshiro Hitsugaya (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Toshiro23121",
+  "WorkspaceRig": "Toshiro Hitsugaya"
+ },
+ {
+  "Id": "petal_noble",
+  "Name": "Petal Noble",
+  "Source": "Byakuya",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Byakuya (R15)",
+  "Planned": true,
+  "Notes": "imported avatar byakuya + katana 12779081947",
+  "WorkspaceRig": "Byakuya"
+ },
+ {
+  "Id": "bucket_hat_shopkeeper",
+  "Name": "Bucket-Hat Shopkeeper",
+  "Source": "Urahara",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Urahara (R15)",
+  "Planned": true,
+  "Notes": "imported avatar king_derbi228",
+  "WorkspaceRig": "Urahara"
+ },
+ {
+  "Id": "flash_cat_goddess",
+  "Name": "Flash Cat Goddess",
+  "Source": "Yoruichi",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Yoruichi (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Fgahdjajdfkaifhafjaf",
+  "WorkspaceRig": "Yoruichi"
+ },
+ {
+  "Id": "battle_maniac_captain",
+  "Name": "Battle Maniac Captain",
+  "Source": "Kenpachi",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Kenpachi (R15)",
+  "Planned": true,
+  "Notes": "imported avatar thethreeblindmice3",
+  "WorkspaceRig": "Kenpachi"
+ },
+ {
+  "Id": "fox_smile_traitor",
+  "Name": "Fox Smile Traitor",
+  "Source": "Gin Ichimaru",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Gin Ichimaru (R15)",
+  "Planned": true,
+  "Notes": "imported avatar DAVIDDDB2009 (owner to confirm which character)",
+  "WorkspaceRig": "DAVIDDDB2009"
+ },
+ {
+  "Id": "hunter_swordswoman",
+  "Name": "Hunter Swordswoman",
+  "Source": "Cha Hae-In",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Cha Hae-In (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Cha Hae-In"
+ },
+ {
+  "Id": "crimson_knight_shade",
+  "Name": "Crimson Knight Shade",
+  "Source": "Igris",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Igris (R15)",
+  "Planned": true,
+  "Notes": "imported avatar igris_shadow012 (aura piece removed)",
+  "WorkspaceRig": "Igris"
+ },
+ {
+  "Id": "ant_king_shade",
+  "Name": "Ant King Shade",
+  "Source": "Beru",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Beru (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Beru",
+  "WorkspaceRig": "Beru"
+ },
+ {
+  "Id": "goliath_hunter",
+  "Name": "Goliath Hunter",
+  "Source": "Thomas Andre",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Thomas Andre (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Thomas Andre"
+ },
+ {
+  "Id": "dragon_monarch",
+  "Name": "Dragon Monarch",
+  "Source": "Antares",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Antares (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Antares"
+ },
+ {
+  "Id": "shadow_sovereign",
+  "Name": "Shadow Sovereign",
+  "Source": "Ashborn",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Ashborn (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Ashborn"
+ },
+ {
+  "Id": "hammer_and_nails_girl",
+  "Name": "Hammer-and-Nails Girl",
+  "Source": "Nobara",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Nobara (R15)",
+  "Planned": true,
+  "Notes": "imported avatar RRbestiep",
+  "WorkspaceRig": "Nobara"
+ },
+ {
+  "Id": "clap_brother",
+  "Name": "Clap Brother",
+  "Source": "Todo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Todo (R15)",
+  "Planned": true,
+  "Notes": "imported avatar TodoBoogieWoogieSwap",
+  "WorkspaceRig": "Todo"
+ },
+ {
+  "Id": "cursed_tool_fighter",
+  "Name": "Cursed Tool Fighter",
+  "Source": "Maki",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Maki (R15)",
+  "Planned": true,
+  "Notes": "built from catalog items",
+  "WorkspaceRig": "Maki"
+ },
+ {
+  "Id": "special_grade_rookie",
+  "Name": "Special-Grade Rookie",
+  "Source": "Yuta Okkotsu",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Yuta Okkotsu (R15)",
+  "Planned": true,
+  "Notes": "imported avatar yuta_senpai5",
+  "WorkspaceRig": "Yuta Okkotsu"
+ },
+ {
+  "Id": "curse_manipulator",
+  "Name": "Curse Manipulator",
+  "Source": "Geto",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Geto (R15)",
+  "Planned": true,
+  "Notes": "rebuilt from catalog items + original face/hair",
+  "WorkspaceRig": "Geto"
+ },
+ {
+  "Id": "lightning_duelist",
+  "Name": "Lightning Duelist",
+  "Source": "Kashimo",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Kashimo (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Kashimo + staff 107739917538649",
+  "WorkspaceRig": "Kashimo"
+ },
+ {
+  "Id": "sword_time_prince",
+  "Name": "Sword Time Prince",
+  "Source": "Trunks",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Trunks (R15)",
+  "Planned": true,
+  "Notes": "imported avatar ice_skull67",
+  "WorkspaceRig": "Trunks"
+ },
+ {
+  "Id": "perfect_bio_android",
+  "Name": "Perfect Bio-Android",
+  "Source": "Cell",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Cell (R15)",
+  "Planned": true,
+  "Notes": "imported avatar CellBurst",
+  "WorkspaceRig": "Cell"
+ },
+ {
+  "Id": "pink_candy_monster",
+  "Name": "Pink Candy Monster",
+  "Source": "Majin Buu",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Majin Buu (R15)",
+  "Planned": true,
+  "Notes": "imported avatar MajinxBuux",
+  "WorkspaceRig": "Majin Buu"
+ },
+ {
+  "Id": "legendary_berserker",
+  "Name": "Legendary Berserker",
+  "Source": "Broly",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Broly (R15)",
+  "Planned": true,
+  "Notes": "imported avatar BrolyCrak344",
+  "WorkspaceRig": "Broly"
+ },
+ {
+  "Id": "rose_dark_fighter",
+  "Name": "Rose Dark Fighter",
+  "Source": "Goku Black",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Goku Black (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Gokublack_alt123",
+  "WorkspaceRig": "Goku Black"
+ },
+ {
+  "Id": "gray_pride_warrior",
+  "Name": "Gray Pride Warrior",
+  "Source": "Jiren",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Jiren (R15)",
+  "Planned": true,
+  "Notes": "imported avatar deadrailsfan816_2",
+  "WorkspaceRig": "Jiren"
+ },
+ {
+  "Id": "staff_angel_mentor",
+  "Name": "Staff Angel Mentor",
+  "Source": "Whis",
+  "Rig": "ServerStorage.CharacterSources.R15_Final/Whis (R15)",
+  "Planned": true,
+  "Notes": "imported avatar Oskarol55",
+  "WorkspaceRig": "Whis"
  }
 ]

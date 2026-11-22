@@ -7,7 +7,8 @@
   "Rare",
   "Epic",
   "Legendary",
-  "Mythic"
+  "Mythic",
+  "Secret"
  ],
  "zones": [
   {
@@ -42,15 +43,33 @@
     {
      "source": "Madara Uchiha",
      "rarity": "Mythic"
+    },
+    {
+     "source": "Boruto",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Rock Lee",
+     "rarity": "Common"
+    },
+    {
+     "source": "Hinata",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Gaara",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Jiraiya",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Pain",
+     "rarity": "Legendary"
     }
    ],
-   "suggest": [
-    "Rock Lee",
-    "Hinata",
-    "Gaara",
-    "Jiraiya",
-    "Pain"
-   ]
+   "suggest": []
   },
   {
    "n": 2,
@@ -79,7 +98,7 @@
     },
     {
      "source": "Muzan",
-     "rarity": "Legendary"
+     "rarity": "Mythic"
     },
     {
      "source": "Kokushibo",
@@ -88,15 +107,29 @@
     {
      "source": "Yoriichi Tsugikuni",
      "rarity": "Premium"
+    },
+    {
+     "source": "Inosuke",
+     "rarity": "Common"
+    },
+    {
+     "source": "Giyu Tomioka",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Shinobu Kocho",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Akaza",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Douma",
+     "rarity": "Epic"
     }
    ],
-   "suggest": [
-    "Inosuke",
-    "Giyu Tomioka",
-    "Shinobu Kocho",
-    "Akaza",
-    "Douma"
-   ]
+   "suggest": []
   },
   {
    "n": 3,
@@ -146,14 +179,25 @@
     {
      "source": "Luffy Wano",
      "rarity": "Mythic"
+    },
+    {
+     "source": "Ace",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Usopp",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Boa Hancock",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Blackbeard",
+     "rarity": "Epic"
     }
    ],
-   "suggest": [
-    "Ace",
-    "Usopp",
-    "Boa Hancock",
-    "Blackbeard"
-   ]
+   "suggest": []
   },
   {
    "n": 4,
@@ -163,19 +207,45 @@
     {
      "source": "Deku",
      "rarity": "Common"
+    },
+    {
+     "source": "Uraraka",
+     "rarity": "Common"
+    },
+    {
+     "source": "Bakugo",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Todoroki",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Toga",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Hawks",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Dabi",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Endeavor",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "All Might",
+     "rarity": "Mythic"
+    },
+    {
+     "source": "Shigaraki",
+     "rarity": "Legendary"
     }
    ],
-   "suggest": [
-    "Uraraka",
-    "Bakugo",
-    "Todoroki",
-    "Toga",
-    "Hawks",
-    "Dabi",
-    "Endeavor",
-    "All Might",
-    "Shigaraki"
-   ]
+   "suggest": []
   },
   {
    "n": 5,
@@ -185,18 +255,45 @@
     {
      "source": "Sae Itoshi",
      "rarity": "Epic"
+    },
+    {
+     "source": "Isagi",
+     "rarity": "Common"
+    },
+    {
+     "source": "Bachira",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Chigiri",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Reo",
+     "rarity": "Common"
+    },
+    {
+     "source": "Nagi",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Barou",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Rin Itoshi",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Kaiser",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Don Lorenzo",
+     "rarity": "Legendary"
     }
    ],
-   "suggest": [
-    "Isagi",
-    "Bachira",
-    "Chigiri",
-    "Reo",
-    "Nagi",
-    "Barou",
-    "Rin Itoshi",
-    "Kaiser"
-   ]
+   "suggest": []
   },
   {
    "n": 6,
@@ -226,14 +323,25 @@
     {
      "source": "Magna",
      "rarity": "Rare"
+    },
+    {
+     "source": "Noelle",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Yami Sukehiro",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Mereoleona",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Liebe",
+     "rarity": "Legendary"
     }
    ],
-   "suggest": [
-    "Noelle",
-    "Yami Sukehiro",
-    "Mereoleona",
-    "Liebe"
-   ]
+   "suggest": []
   },
   {
    "n": 7,
@@ -247,17 +355,37 @@
     {
      "source": "Hisoka",
      "rarity": "Epic"
+    },
+    {
+     "source": "Gon",
+     "rarity": "Common"
+    },
+    {
+     "source": "Leorio",
+     "rarity": "Common"
+    },
+    {
+     "source": "Kurapika",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Illumi",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Chrollo",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Netero",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Meruem",
+     "rarity": "Mythic"
     }
    ],
-   "suggest": [
-    "Gon",
-    "Leorio",
-    "Kurapika",
-    "Illumi",
-    "Chrollo",
-    "Netero",
-    "Meruem"
-   ]
+   "suggest": []
   },
   {
    "n": 8,
@@ -296,12 +424,21 @@
     {
      "source": "Frieren",
      "rarity": "Premium"
+    },
+    {
+     "source": "Anya Forger",
+     "rarity": "Common"
+    },
+    {
+     "source": "Loid Forger",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Kirito",
+     "rarity": "Rare"
     }
    ],
    "suggest": [
-    "Anya Forger",
-    "Loid Forger",
-    "Kirito",
     "Ban",
     "Ainz Ooal Gown"
    ]
@@ -322,15 +459,30 @@
     {
      "source": "Eren Titan",
      "rarity": "Legendary"
+    },
+    {
+     "source": "Armin",
+     "rarity": "Common"
+    },
+    {
+     "source": "Mikasa",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Erwin",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Armored Titan",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Zeke",
+     "rarity": "Epic"
     }
    ],
    "suggest": [
-    "Armin",
-    "Mikasa",
-    "Erwin",
-    "Armored Titan",
-    "Colossal Titan",
-    "Zeke"
+    "Colossal Titan"
    ]
   },
   {
@@ -349,14 +501,26 @@
     {
      "source": "Makima",
      "rarity": "Premium"
+    },
+    {
+     "source": "Kobeni",
+     "rarity": "Common"
+    },
+    {
+     "source": "Aki Hayakawa",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Reze",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Kishibe",
+     "rarity": "Legendary"
     }
    ],
    "suggest": [
-    "Pochita",
-    "Kobeni",
-    "Aki Hayakawa",
-    "Reze",
-    "Kishibe"
+    "Pochita"
    ]
   },
   {
@@ -379,15 +543,29 @@
     {
      "source": "Dio Brando",
      "rarity": "Legendary"
+    },
+    {
+     "source": "Jonathan Joestar",
+     "rarity": "Common"
+    },
+    {
+     "source": "Josuke",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Giorno",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Kira",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Pucci",
+     "rarity": "Rare"
     }
    ],
-   "suggest": [
-    "Jonathan Joestar",
-    "Josuke",
-    "Giorno",
-    "Kira",
-    "Pucci"
-   ]
+   "suggest": []
   },
   {
    "n": 12,
@@ -426,13 +604,22 @@
     {
      "source": "Ken Kaneki",
      "rarity": "Premium"
+    },
+    {
+     "source": "Mob",
+     "rarity": "Common"
+    },
+    {
+     "source": "Thorfinn",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Anos Voldigoad",
+     "rarity": "Mythic"
     }
    ],
    "suggest": [
-    "Mob",
-    "Shinra Kusakabe",
-    "Thorfinn",
-    "Anos Voldigoad"
+    "Shinra Kusakabe"
    ]
   },
   {
@@ -446,18 +633,38 @@
     },
     {
      "source": "Saitama",
+     "rarity": "Secret"
+    },
+    {
+     "source": "Mumen Rider",
+     "rarity": "Common"
+    },
+    {
+     "source": "Genos",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Speed-o'-Sound Sonic",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "King",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Bang",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Tatsumaki",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Boros",
      "rarity": "Mythic"
     }
    ],
-   "suggest": [
-    "Mumen Rider",
-    "Genos",
-    "Speed-o'-Sound Sonic",
-    "King",
-    "Bang",
-    "Tatsumaki",
-    "Boros"
-   ]
+   "suggest": []
   },
   {
    "n": 14,
@@ -474,7 +681,7 @@
     },
     {
      "source": "Ulquiorra",
-     "rarity": "Epic"
+     "rarity": "Legendary"
     },
     {
      "source": "Yhwach",
@@ -483,16 +690,37 @@
     {
      "source": "Aizen Sosuke",
      "rarity": "Premium"
+    },
+    {
+     "source": "Rukia",
+     "rarity": "Common"
+    },
+    {
+     "source": "Toshiro Hitsugaya",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Byakuya",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Urahara",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Yoruichi",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Kenpachi",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Gin Ichimaru",
+     "rarity": "Epic"
     }
    ],
-   "suggest": [
-    "Rukia",
-    "Toshiro Hitsugaya",
-    "Byakuya",
-    "Urahara",
-    "Yoruichi",
-    "Kenpachi"
-   ]
+   "suggest": []
   },
   {
    "n": 15,
@@ -502,16 +730,34 @@
     {
      "source": "Sung Jinwoo",
      "rarity": "Legendary"
+    },
+    {
+     "source": "Cha Hae-In",
+     "rarity": "Common"
+    },
+    {
+     "source": "Igris",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Beru",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Thomas Andre",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Antares",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Ashborn",
+     "rarity": "Mythic"
     }
    ],
    "suggest": [
-    "Cha Hae-In",
-    "Igris",
-    "Beru",
-    "Thomas Andre",
-    "Go Gunhee",
-    "Antares",
-    "Ashborn"
+    "Go Gunhee"
    ]
   },
   {
@@ -546,15 +792,33 @@
     {
      "source": "Sukuna",
      "rarity": "Mythic"
+    },
+    {
+     "source": "Nobara",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Todo",
+     "rarity": "Rare"
+    },
+    {
+     "source": "Maki",
+     "rarity": "Uncommon"
+    },
+    {
+     "source": "Yuta Okkotsu",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Geto",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Kashimo",
+     "rarity": "Epic"
     }
    ],
-   "suggest": [
-    "Nobara",
-    "Todo",
-    "Maki",
-    "Yuta Okkotsu",
-    "Geto"
-   ]
+   "suggest": []
   },
   {
    "n": 17,
@@ -563,11 +827,11 @@
    "characters": [
     {
      "source": "Piccolo",
-     "rarity": "Rare"
+     "rarity": "Uncommon"
     },
     {
      "source": "Gohan",
-     "rarity": "Epic"
+     "rarity": "Rare"
     },
     {
      "source": "Vegeta",
@@ -584,17 +848,37 @@
     {
      "source": "Beerus",
      "rarity": "Mythic"
+    },
+    {
+     "source": "Trunks",
+     "rarity": "Common"
+    },
+    {
+     "source": "Cell",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Majin Buu",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Broly",
+     "rarity": "Legendary"
+    },
+    {
+     "source": "Goku Black",
+     "rarity": "Mythic"
+    },
+    {
+     "source": "Jiren",
+     "rarity": "Epic"
+    },
+    {
+     "source": "Whis",
+     "rarity": "Secret"
     }
    ],
-   "suggest": [
-    "Trunks",
-    "Cell",
-    "Majin Buu",
-    "Broly",
-    "Goku Black",
-    "Jiren",
-    "Whis"
-   ]
+   "suggest": []
   }
  ]
 }

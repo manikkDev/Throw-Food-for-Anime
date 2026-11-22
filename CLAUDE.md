@@ -67,17 +67,26 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   Rebuilt from `ServerStorage.CharacterSources.R15_Final` by `tools/studio/bake_characters.luau`.
   The user's imports are archived in `ServerStorage.CharacterSources.R6_Originals` (31) and
   `.Originals_Batch2` (12) and `.Originals_Batch3` (16): never delete. New avatars: `tools/studio/build_r15.luau` rebuilds them to
-  the standard rig, `python tools/studio/run_bake.py` bakes the whole roster (59 heroes today: 51 lane + 8 premium).
+  the standard rig, `python tools/studio/run_bake.py` bakes the whole roster (180 heroes today: 172 lane + 8 premium; the 97 of batch 4, 2026-11-22, are in the roster and templates but not yet in `config.Characters`: see the README).
   Roster map: `design/characters/roster.json`; rules and traps: `design/characters/README.md`.
-- The map is `Workspace.Map` in the place: **hub v2 since 2026-11-21** (about 12,800 parts): FIVE bases 84 x 72 on the
-  same 108 pitch (x -216..216), heroes-only bases with 6 rows of 7 pedestals, training courts on the forecourt lawns, a
-  food cart and sell booth at every throw pad, a plaza in five districts, store models in `Map.HubV2`. It was made by
+- The map is `Workspace.Map` in the place: **hub v2 since 2026-11-21** (about 12,800 parts): FIVE bases (since
+  2026-11-22, `tools/studio/base_layout.luau`, rerunnable, reads the synced config: a config edit + a rerun re-lays them)
+  65 x 65 square decks with an even 6-stud border round 6 rows of 7 pedestals (`PedestalSpacingZ` 9.6 makes the grid
+  square), 92 apart (x -184..184), the spawn and slot sign on the walk in front of the deck, one training court each side
+  of the walk, no bushes along the sides (archived in `MapArchive.BaseLayout_v1`), ONE
+  shared food cart (`Hub.FoodCart`, before the RAMEN ALLEY sign) and squad booth (`Hub.SellBooth`, before HALL OF LEGENDS)
+  since `tools/studio/base_cleanup.luau` (owner: one per base was unnecessary; it also took away the bases' small torii,
+  koi windsocks, lantern strings and the props in their back gates, all in `MapArchive.BaseDressing_v1`), a plaza in five districts, store models in `Map.HubV2`. It was made by
   `tools/studio/rework_hub_v2.luau` (rebuilds a copy `Workspace.MapV2` from the old map) + `tools/studio/swap_hub_v2.luau`
   (one-off: installs it, re-lays the old zones for five tracks). The old 6-base map is archived in
   `ServerStorage.MapArchive.Map_v1_6lanes`: never delete. **Do NOT run `python tools/map/build_in_studio.py`**: the old
   generator (`design/map.json` + `tools/map/`) still describes the 6-base map and would overwrite the hub. There is ONE lane
-  (`tools/studio/single_lane.luau`, one-off): 320 wide, centred on x = 0, five tracks 56 apart (`World.LanePitch`,
-  `World.laneX`), walls only at its two edges. The lane lies 48 studs BELOW the hub (`World.LaneY` -48: 24 from `lane_ledge.luau`, 24 more from `tools/studio/lane_deeper.luau`, both one-off) from z 160 (`World.LaneStartZ`;
+  (`tools/studio/single_lane.luau`, one-off), centred on x = 0: since 2026-11-22 (`tools/studio/lane_slim.luau`, one-off,
+  attribute `LaneSlim` 60 on `Workspace.Map`) 200 wide with THREE tracks 56 apart (x -56, 0, 56). Two bases share each
+  outer track, each on its own half: config `World.PlotTrack` {1,1,2,3,3}, `PlotTrackSide` {-1,1,0,-1,1},
+  `TrackSideOffset` 10, so the stage spots and landings are x -66, -46, 0, 46, 66 (+- `LandingJitterX` 6)
+  (`World.trackX`, `World.laneX`). The zones' sides, terrain and the ledge's parapets came in 60 with it; the torii,
+  lane border and finale were rebuilt narrower by their own scripts. The lane lies 48 studs BELOW the hub (`World.LaneY` -48: 24 from `lane_ledge.luau`, 24 more from `tools/studio/lane_deeper.luau`, both one-off) from z 160 (`World.LaneStartZ`;
   `tools/studio/lane_ledge.luau`, one-off): a paved funnel forecourt runs from the bases to a ledge, one 247-tall gate
   stands at the start of every zone, and anything placed in the lane uses `LaneY`, not `GroundY`. Everyone throws from the middle: the pad in front of a base takes the player
   to their spot on `Map.HubV2.ThrowStage` (`World.throwSpot`, `World.StageZ` 148) and letting go puts them back behind
@@ -119,7 +128,9 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   (`--upload-only`, then `tools/gen_icons.py`). Screens are now `tools/ui/screens_v50.py` (imported by `build_ui.py`).
 - Gear and slot purchases go through a client confirmation (`Controllers/UpgradeController`, `HudController:Confirm`); prompts never spend. Prompts are drawn by `Controllers/PromptController` (Style Custom).
 - The throw pad is held by the server (`ThrowService:SetPad`, remote `ThrowPad`), like training.
-- Training: 4 stations on two mirrored courts (`config.Training.Stations`); the server snaps and locks the trainee,
+- Training: 2 stations since 2026-11-22, Strike Dummy on the left court (dojo gear, tiers 1-3) and Waterfall Focus on the
+  right (spirit gear, opens at gear 2); curls and stone push were removed (owner: one per side, mini-games come later).
+  Power per rep is the gear's, not the station's (`config.Training.Stations`); the server snaps and locks the trainee,
   judges perfect taps (`TrainTap`); client `Controllers/TrainingController`. The throw pad locks the player too
   (`ThrowController:_lock`, exit by the meter's X / Backspace); one invisible wall (`Map.Barriers.LaneBlock`) closes the lane mouth behind the throw stage.
 - Studio sessions use their own stores (`Profiles_Dev`, `LB_*_Dev`); test commands are the TEST menu.
@@ -127,6 +138,29 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `ServerStorage.StoreAssets.HubV2` (never delete). Servers hold 5 players (`config.Server.MaxPlayers`); the place's own
   max-players setting in Game Settings must be set to 5 by the owner before the next publish.
 
+- LOBBY WALL (2026-11-22, owner: the map felt too big, "remove the outer part of the lobby completely", little space
+  between the outer bases and the wall): `tools/studio/lobby_wall.luau` (rerunnable, run after base_layout.luau and lane_slim.luau) builds
+  `Map.Hub.Walls.Lobby`: ONE wall in zone 1's great-wall dress (top 44, foot down to -44 in the sea), inner faces x +-248
+  and z -156, outer x +-262 and z -170: the MAP'S END. The sides run straight on into zone 1's great wall (z 192; between the wall and zone 1's gate
+  tower a lawn corner): one line from the back corner to the lane. Keeps at the corners, z -40, z 86 and x +-120 on the back; stone lanterns on
+  the lawn strip beside the outer bases. Outside: the sea (water to -4 on a sand bed) out to x 560 and z -660. The back
+  districts moved in with it (attribute `ShiftX` on each district folder: Hall of Legends and Ramen Alley 90, Rewards and
+  Rankings 14, with their decks, statues, stations and boards). Zone 1's great wall (z 189..203) and turret got a stone
+  foot to the sea bed. The walled town (`Scenery.LobbyTown`), its town wall, the old lobby and entrance walls and the side
+  lawns' props are in `MapArchive.LobbyTown_v1` (never delete); its builder is retired to
+  `tools/studio/retired/lobby_town_v1.luau` (do NOT run it: it would rebuild the town). The `LedgeParapet`s (x 164..233,
+  top 15, a `LedgePost` at each end) still close the lawn beside the throw stage.
+  zone_01_naruto.luau restyles HubV2 funnel walls only if they exist, so a rerun of it is safe.
+- LANE BORDER (2026-11-22, owner: the lane's sides looked "weird", "keep the map minimal"): `tools/studio/lane_border.luau`
+  (rerunnable; run AFTER lobby_wall.luau and after any zone builder) builds `Map.Scenery.LaneBorder`: the town's outer
+  wall (same dress, top 52) down both sides of the lane at x +-306..320 (`SLIM` 60 in the script; +-366..380 before) from zone 1's turret (z 213) to an end wall
+  behind the finale (z 6380..6394), a keep at every zone gate (z 205 + 360 k); the end wall and its corners are finale.luau's. Outside it there
+  is no land: terrain from x 372 out is cleared and the sea laid (sand bed, water to -4) to x 548; inside the end walls
+  the lane ends in water at zone 17's level (-49.5). The zone builders only write x 160..368, so a zone rebuild keeps
+  this. Zones' content ends by x 360; the old hill props outside went to `ServerStorage.MapArchive.LaneHills_v1`. Mirrored about x 0, placed by footprint with a claim registry that refuses overlaps; the run ends
+  with a built-clash check. Old walls, `HubBackdrop` and hill props: `ServerStorage.MapArchive.Lobby_v1` (never delete).
+  `Zone14_Bleach.Pine` is a POTTED pine (courtyards only, never on a hill); `HubV2.DojoGate` (torii) and `HubV2.SakuraSoft`
+  have their pivots mid-height (`make` stands any non-TrueSize template on its feet).
 - Anime zones (since 2026-11-22): one builder per zone in `tools/studio/zones/`, run in Studio edit mode and safe to run
   again. `zone_01_naruto.luau` = zone 1 "Hidden Leaf Village": it rebuilds `Map.Scenery.Zone_sakura_schoolyard` (643 parts:
   a BUILT entrance of great wall + two gate keeps round the torii, the gate leaves on their own posts, the Hokage Rock,
@@ -142,10 +176,102 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   zone's at its start (its `PREV` table holds the neighbour's numbers) and fall to the lobby's level at its far end until
   the next zone is built: when zone N+1 lands, remove zone N's end fall and rerun zone N first.
   `zone_03_one_piece.luau` = zone 3 "Grand Line" (z 880..1240, config id still `ninja_village`): the lane as the sea,
-  real terrain WATER either side between quays and cliffs, a lion-headed pirate ship, a navy ship, a tavern on stilts,
-  a lighthouse, a giant straw hat; templates in `StoreAssets.Zone03_OnePiece`, old dressing in
-  `MapArchive.Zone3_ninja_village_v1`. Batch 1 (zones 1-3) is built; zones 4-6 are still the old dressing. Owner's bar for a zone (2026-11-22): the entrance must be built
+  real terrain WATER either side between quays and cliffs, ships, piers, a town on stilts; rewritten on `zone_lib` in the
+  rework below. Templates in `StoreAssets.Zone03_OnePiece`, old dressing in `MapArchive.Zone3_ninja_village_v1`. Owner's bar for a zone (2026-11-22): the entrance must be built
   architecture, never terrain mounds; walls must not tower over the lobby; no lollipop trees.
+- PLAZA DISTRICTS (2026-11-22, owner: stalls, gifts, boards "look ass", make them flashy and professional):
+  `tools/studio/plaza_districts.luau` (rerunnable) builds `Map.Hub.Districts`: a lit gateway per district (top 30, sign in
+  the district's colour) and RAMEN ALLEY (the food cart as a yatai: wheels, steaming pot, noren, striped awning; noodle
+  shop, sweet shop, market stall, vending row, lantern strings), HALL OF LEGENDS (hall front with 英雄殿, the six hub
+  statues on lit pedestals with gold name plates, the squad booth as a hero registry with glowing cards), REWARDS (daily
+  chest = zone 3's chest on a lit altar with a light beam and coins, a gift stack with confetti, the hero index as a
+  framed board of glowing cards, star-ball pedestals), RANKINGS (boards raised to y 13 in black/gold frames with crests,
+  the trophy on the middle frame, a low podium, red carpet, searchlights). Station anchors (Hub.FoodCart, SellBooth,
+  DailyChest, GiftBox, IndexBoard) were MOVED into the new pieces with their prompts; each Title is now a coloured pill
+  (label still named Text). Leaderboard anchors keep names/sizes/faces. Old props and signs: `MapArchive.Plaza_v1`.
+- SANCTUARY (2026-11-22, owner: make the summon plaza "even better"): `tools/studio/sanctuary.luau` (rerunnable) builds
+  `Map.Hub.Sanctuary` round the untouched prompt anchor `Hub.Shrine` (summon prompt, reach raised to 16, title lifted
+  to +28): a gold-rimmed stone dais (d 50, top 0.2, level with HubSpawn's edge), a magic circle of gold/cyan light with a
+  hexagram, runes and rising motes, an ornate pavilion (scaled 1.35: red pillars, corner-wedge pyramid roof with gold hips,
+  a floating violet orb in halos), four pylons with light orbs, two burning braziers by the wish dragon. The old rings,
+  decal, benches, two lanterns and kit shrine: `MapArchive.Sanctuary_v1`.
+- FINALE (2026-11-22, owner: make the lane's end anime and professional; the reference game has no ending, its lane just
+  grows): `tools/studio/finale.luau` (rerunnable; run after lane_border.luau) rebuilds `Map.Scenery.Finale` as THE SEALED
+  GATE: a pier over the end bay from the lane's end (z 6278) with a small torii and glowing stone lanterns, two zone-17
+  guardian dragons on plinths, and the END ITSELF (owner: "bigger and majestic"): a two-storey end wall (stone foot,
+  plaster storeys with lattice windows, two tile roofs, top ~106, red 龍 banners), four towers to y 122 with large keeps,
+  and the sealed gate (doors 128 x 111, black and gold, chained in an X behind a glowing seal with the kanji 封, a "TO BE
+  CONTINUED" arrow banner, a two-tier gate roof). Behind it a layered light pillar (core + two faint sheaths, a ray
+  burst on the water, five tilted halo rings, rising spark particles) with the hub's golden wish dragon coiled round it
+  (the StoreAssets copy is Glass: the script recolours it gold). lane_border.luau no longer builds the end wall or its
+  corner keeps. Its corner towers stand on the slim border (`CORNER_X` 213), the end wall 104..193. New zones "unseal" it. Old finale props: `MapArchive.Finale_v1`.
+- ZONE GATES (2026-11-22, owner: the old torii mesh was "too big and fat", no detail): `tools/studio/zone_gates.luau`
+  (rerunnable) builds a part-made myojin torii (`Torii`) in every `Map.Lanes.Zone_*.Gate_*` model: slim vermilion pillars
+  at x +-115 (`PX`; +-175 before the lane slimmed: just outside the lane's kerb; owner: it must span the lane, not
+  beyond) on black bases, a stone komainu on a pedestal beside each (x +-142, z gate-18), gold rings, nuki/shimaki/curved kasagi with gold
+  caps, a framed plaque front and back, a sagging shimenawa with shide, two glowing lanterns; top about y 125 (was 198).
+  Parts named `Accent` (plaque frame, lantern bands) and the plaque's TextLabel keep the zone builders' recolour/retitle
+  working. Deleting a gate model's old mesh reset its pivot: the script reads and restores `WorldPivot`. Old meshes:
+  `MapArchive.ZoneGates_v1`.
+- ALL 17 ZONES ARE BUILT (2026-11-22), the lane runs z 160..6280. `tools/studio/lane_extend.luau` (one-off, run) cloned
+  zone 6's floor kit eleven times; `tools/studio/lane_thresholds.luau` (rerunnable) lays the stone slot between kits.
+  **SLIM ZONES (phase 3 of design/plan/10-slim-map.md, one zone at a time):** a rewritten zone's file starts with
+  `-- LIB: side_lib`; `run_zone.py build <n>` then joins `tools/studio/zones/side_lib.luau` (not zone_lib) and runs one
+  pass. side_lib's table `P` IS the cross-section (change a number, rebuild the slim zones): kerb x 100..104, terrace
+  y -46 to x 172 (street 104..116, buildings facing the lane), a battered stone revetment 168..178 up to the shelf
+  y -14 (178..206), the border wall 206..220 (lane_border.luau, top 26), the sea outside. Ground: thin flat terrain lawn;
+  streets, kerbs, walls are parts. Placement by `front`/`put` with a claim registry (refusals and anything in the lane
+  are reported). A slim zone sets attributes SlimZ0/SlimZ1/SlimWall* on its Scenery folder; lane_border.luau reads them,
+  stands the wall on the zone's edge there and steps out to the old line (a cross wall) where it meets an old zone.
+  After a slim zone: run lane_border.luau, and for zone 1 lobby_wall.luau. DONE: zone 1 (v2, 2026-11-22; v1 archived in
+  `MapArchive.Zone1_v1_canyon`), zone 2 (v2: train with a station canopy, estate with wisteria trellises, farmhouses,
+  shrines and bamboo on the shelves; v1 in `MapArchive.Zone2_v1_canyon`), zone 3 (v2: the terrace is a HARBOUR of real
+  water behind a stone quay, ships at 1.45-1.5 scale, piers, a town on a deck, waterfalls; v1 in `MapArchive.Zone3_v1_canyon`,
+  its zone_lib builder in `tools/studio/retired/`), zone 4 (v2: campus +X, city -X, towers and billboards on the shelves;
+  everything resized to the terrace and under the wall), zone 5 (v2: touchline and two grandstands against the
+  revetment, end plazas with the trophy and the striker, name boards and floodlights on the shelves), zone 6 (v2: the
+  capital on cobbles +X, the village by a dirt road -X, floating grimoires, cottages on the shelves), zone 7 (v2: the
+  exam +X with the testing gate across its end, the wild -X with the world tree and a pond; a light forest floor),
+  zone 8 (v2: ice-blue Glacier walls, the starting town +X with the portal across its end, the monsters -X), zone 9
+  (v2: the revetment IS the Wall: masonry, merlons, cannons and banners on the shelf; the Colossus over a -X bastion).
+  Zone 10 (v2: a Tokyo street each side, road with parked cars, poles and wires; the chainsaw and the dog on plinths).
+  Zone 11 (v2: an Italian town on cobbles, limestone walls with terracotta caps, the menacing katakana over the shelves).
+  Zone 12 (v2: chessboard terraces, basalt walls with neon ember seams, a back rank of giant pieces -X, the throne +X).
+  Zone 13 (v2: the standing city +X, the ghost town -X with the meteor, the crab monster, wrecks and rubble).
+  Zone 14 (v2: the court +X, the outer town -X, the white city wall with an orange cap down both shelves, butterflies).
+  Zone 15 (v2: purple basalt walls with neon rune seams, dark flagstones with rune lines, the hunters +X, the dungeon -X).
+  Zone 16 (v2: the Shibuya crossing +X, the sorcerers -X, roads with zebra crossings and signals, neon screens).
+  Zone 17 (v2, the last: a harbour with islands like zone 3, the arena, lookout and star balls +X, the corporation, dragon
+  and fighter -X; its sides run on past the lane's end to the end wall, opening into the finale's bay). ALL 17 ZONES ARE SLIM
+  (phase 3 complete, place version 683): the border wall stands at x +-206..220 the whole way.
+  After a Studio restart generated meshes load late: a capture can show them grey or missing; wait and look again. The retired zone_lib builders of rebuilt zones are in
+  `tools/studio/retired/` (content and numbers to port). side_lib also has deck, afloat, sheetFall, floorKit, words, sign, paint, fence, scatter, and revetment
+  options buttress (spacing) and wet (waterline). zone_lib (below) is now used by no zone; its numbers (x 160..368, terraces, gate
+  pillars) are the OLD layout and the place is 60 in.
+  Zones 3 to 17 share `tools/studio/zones/zone_lib.luau` (terrain profile, placement helpers, `floor{}`, `words`) and are
+  driven by `python tools/studio/zones/run_zone.py`: `build <n> [--no-terrain]`, `store <Folder> "Key=prompt prefix" ...`
+  (squares the generated models lying in Workspace and files them under `StoreAssets.<Folder>` with `TrueSize`),
+  `inspect <Folder>` (mesh numbers), `check <map id>` (scripts), `audit <map id>` (overlaps, ground faults, anything in
+  the lane), `look x y z tx ty tz` (parks the camera for a screenshot). Each `zone_NN_*.luau` is a `begin{}` spec
+  (its `prev` table = the previous zone's `now`), placements, `floor{}`, `return finish()`; only zone 17 has `fall`.
+  Map ids: 4 samurai_castle (Hero Academy), 5 hero_city (Blue Lock), 6 realm_of_legends (Clover Kingdom), 7 hunter_exam,
+  8 isekai_crossroads, 9 wall_maria, 10 public_safety, 11 bizarre_streets, 12 shadow_council, 13 city_z, 14 soul_society,
+  15 gate_of_shadows, 16 shibuya, 17 planet_of_gods (real water, like zone 3). Templates: `StoreAssets.Zone04_MHA` ..
+  `Zone17_DragonBall` (never delete, all `generate_mesh`); old dressing of zones 4-6 in `MapArchive.Zone<n>_<id>_v1`.
+  Terrain material colours are GLOBAL and every zone owns some: before recolouring one, grep the zone files for it.
+  STILL THE OLD SIX in the game's DATA (`config.Zones`: names, heroes per zone, power gates, economy): zones 7-17 are
+  scenery with "COMING SOON" gates, no throw lands past z 2320, and the new heroes are not catchable yet.
+- ZONE REWORK (2026-11-22): the owner rejected the first, fast build of zones 3-17 ("too vague without any details",
+  "poorly made", buildings "not even placed properly") and ordered them redone ONE BY ONE, quality over speed. Zones 3 to
+  17 were each rewritten: 12 to 20 unique generated models, paved streets and plazas, a set piece on a plinth facing the
+  throw stage at each terrace's far end, dressed ledges and rims, and `audit` at 0 overlaps / 0 ground faults / 0 in the
+  lane. The standard, the per-zone log and every lesson are in `design/zones/REWORK_PROGRESS.md`: READ IT before touching
+  a zone. Zones 1 and 2 are the owner-approved bar and were not touched. Rules that came out of it:
+  the gates' pillars stand IN the terraces (x 171..236, 35 either side of the gate's pivot, 45 studs into its zone), so a
+  terrace is usable from Z0+82 to Z1+10; place with `place` / `try` / `row{}` / `scatter{}` / `plant` (they claim ground and
+  report crossings), never by hand; a terrace's real ground is `TERRACE` = LY + 2 (-46), not LY; `pave` IS the ground (it
+  cuts the terrain away under its slab), so rebuild WITH terrain after changing a paving layout; `floor{}` lays a kerbstone
+  down the lane's edge of every non-sea zone; wait for `store` to print a model's real size before writing a row.
 
 ## Known traps on this machine
 
@@ -178,6 +304,12 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - Studio MCP drops every 5-15 min and its "Enable Studio as MCP server" toggle can turn off after a
   Studio update: re-enable it (Assistant > ... > Manage MCP Servers), don't debug your code.
 - `execute_luau` output is capped at 100 KB: dump big data in groups.
+- `require` in execute_luau is CACHED for the whole Studio session: a config edited and synced by Rojo after the
+  first require is NOT seen (lane_slim's first run read the old lane width: stage, spots, margins wrong). Builders
+  that read config require a clone: `require(module:Clone())`.
+- An endless loop in a builder freezes Studio until it CRASHES (2026-11-22: a `while z < limit` whose step
+  `z = zz - 1` never passed the limit, twice: the request seemed to run again when Studio came back). Every
+  `while` in a builder must provably end (break on the last step); after a crash, send one trivial call first.
 - `execute_luau` drops all output if the script yields: split the call or use `task.delay`.
 - Direct Studio calls without the client: `python ~/.claude/skills/create-roblox-game/scripts/studio_mcp.py`
   (`luau --code ...`, `--dm Server` reaches the running playtest server).
@@ -190,7 +322,30 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - Studio renders at about 15 fps whenever its window is not in front: a frame-rate reading is only valid with
   Studio focused (measured: 15 fps with the whole world hidden, 60 fps a minute later in front).
 - A locked or sleeping screen stops Studio rendering: `screen_capture` times out and a RenderStepped probe never returns.
-  Check `Get-Process LogonUI`; building the map still works.
+  Check `Get-Process LogonUI`; building the map still works. The same happens when Windows blanks the display (its
+  timeout was 1 minute): a key tap wakes it, so run `tools/studio/front.ps1` (Alt tap + foreground) before each batch
+  of captures. `screen_capture` takes `camera_position` / `look_at_position`: no camera script needed.
+- A scaled TextLabel stops growing at 100 px: on a SurfaceGui size the canvas so 100 px is the face's short side
+  (`zone_lib.words`), or a glyph on a 24-stud board comes out 5 studs tall.
+- Workspace is itself a Model: `FindFirstAncestorWhichIsA("Model")` is always true. Filter on the parent's class.
+- `screen_capture` WITH a camera position is taken at once, while the terrain is still in its coarse far-away form: flat
+  ground then shows as raised blocks that swallow paving and plinths. For anything about the ground, park the camera
+  first (`python tools/studio/zones/run_zone.py look ...`, which also wakes the display) and capture with NO position.
+- NEVER leave the edit camera Scriptable (`run_zone.py look` sets it). Studio's execute_luau records the camera type at
+  the start of each call and RESTORES it afterwards, so once it is Scriptable it cannot be fixed over MCP and the owner
+  loses right-click rotate. Fix: Command Bar (Window > Script > Command Bar):
+  `workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed` (Fixed is Studio's normal edit camera).
+  It CAN be fixed over MCP with a delayed task that runs after the restore:
+  `task.delay(1, function() workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed end)` (worked 2026-11-22).
+  `screen_capture` with a camera position also leaves the camera Scriptable: after a batch of such shots, run that.
+- Level smooth terrain shows (and collides) 2 studs above the height it was written at; grass is drawn swollen higher
+  still and comes up through a thin part laid on it. Lay paving with `zone_lib.pave`.
+- Two terrain materials banded on a cliff face render as blotches; Asphalt tinted navy renders olive-brown. One rock
+  material per wall. Studio's `generate_material` gave noisy small-tile textures (rejected).
+- `generate_mesh` moderation refuses prompts with injuries or weapons on a creature (a blade "out of its forehead", a
+  target "on its neck"); reword tamely. Meshes often have a flat unfinished BACK: stand them against a wall or pillar.
+- A `generate_mesh` result can come back with the wrong proportions (a squat box for a tall request) or a broken part
+  (a tree with a flat slab for a canopy): `run_zone.py inspect` catches the first, only a look catches the second.
 - A UIStroke under a TextLabel must be `Contextual` to outline the letters; `Border` draws a box round the label.
 - Roblox's importer delivers an uploaded glTF model turned half a turn about Y (front authored at -Z arrives at +Z).
   `tools/studio/install_models.py` turns every template back and puts its pivot at the base centre; a GUI adorned to a

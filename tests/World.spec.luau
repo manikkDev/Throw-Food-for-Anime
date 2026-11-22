@@ -59,13 +59,20 @@ return {
 		)
 	end,
 
-	["pedestals fill the base and leave an entrance court behind the front gate"] = function()
-		-- bases hold heroes only (2026-11-21): the grid runs from the back gate to an entrance
-		-- court 12 studs deep, where the player spawns
+	["the deck is square with an even border round the pedestals"] = function()
+		-- owner (2026-11-22): a perfect square, the same border on all four sides
+		local depth = W.PlotFrontZ - W.PlotBackZ
+		assert(math.abs(depth - W.PlotWidth) < 0.01, `the deck is {W.PlotWidth} x {depth}`)
+		local x0, x1, z0, z1 = math.huge, -math.huge, math.huge, -math.huge
 		for slot = 1, World.pedestalCount(W) do
-			local _, z = World.pedestalOffset(W, slot)
-			assert(z + 2.5 <= W.PlotFrontZ - 12, `slot {slot} (z = {z}) stands in the entrance court`)
-			assert(z - 2.5 >= W.PlotBackZ + 8, `slot {slot} (z = {z}) crowds the gate`)
+			local dx, z = World.pedestalOffset(W, slot)
+			x0, x1, z0, z1 = math.min(x0, dx), math.max(x1, dx), math.min(z0, z), math.max(z1, z)
+		end
+		local borders =
+			{ x0 + W.PlotWidth / 2, W.PlotWidth / 2 - x1, z0 - W.PlotBackZ, W.PlotFrontZ - z1 }
+		for _, b in borders do
+			assert(math.abs(b - borders[1]) < 0.01, `uneven border: {table.concat(borders, ", ")}`)
+			assert(b >= 2.5 + 3, `a border of {b} leaves no walkway round the pedestals`)
 		end
 	end,
 
@@ -84,7 +91,10 @@ return {
 			-- the courts stand on the lawn in front of the base: clear of the walkway (16 wide), short
 			-- of the neighbour's court, between the base's front edge and the throw stage
 			assert(math.abs(cx - x0) - cw / 2 >= 8 + 2, "a court covers the walkway")
-			assert(math.abs(cx - x0) + cw / 2 <= W.PlotPitch / 2 - 4, "a court reaches the neighbour's lawn")
+			assert(
+				math.abs(cx - x0) + cw / 2 <= W.PlotPitch / 2 - 4,
+				"a court reaches the neighbour's lawn"
+			)
 			assert(cz - cd / 2 >= W.PlotFrontZ + 2, "a court reaches into the base")
 			assert(cz + cd / 2 <= W.ThrowPadZ - W.ThrowPadRadius, "a court reaches the throw stage")
 			-- its mirror twin
@@ -130,21 +140,43 @@ return {
 		for plot = 1, COUNT do
 			for _, jitter in { -1, 0, 1, 5 } do
 				local x = World.landingX(W, plot, COUNT, jitter)
-				local off = math.abs(x - World.laneX(W, plot, COUNT))
-				assert(off < W.LanePitch / 2, `plot {plot} landing leaves its track`)
-				assert(math.abs(x) <= W.LaneWidth / 2 - 10, `plot {plot} landing is at the lane wall`)
+				local track = World.trackX(W, plot, COUNT)
+				assert(
+					math.abs(x - track) <= W.LanePitch / 2 - 4,
+					`plot {plot} landing leaves its track`
+				)
+				assert(
+					math.abs(x) <= W.LaneWidth / 2 - 10,
+					`plot {plot} landing is at the lane wall`
+				)
+				-- two bases on one track: each lands on its own half
+				local side = W.PlotTrackSide[plot]
+				assert(
+					side == 0 or (x - track) * side >= 2,
+					`plot {plot} lands on its neighbour's half`
+				)
 			end
 		end
 	end,
 
-	["one lane: the tracks fit side by side, centred, narrower than the row of bases"] = function()
-		assert(COUNT * W.LanePitch <= W.LaneWidth, "the tracks are wider than the lane")
+	["one lane: the tracks fit side by side, centred, narrower than the row of bases, one for every base"] = function()
+		assert(W.TrackCount * W.LanePitch <= W.LaneWidth, "the tracks are wider than the lane")
+		assert(#W.PlotTrack == COUNT and #W.PlotTrackSide == COUNT, "a base has no track")
+		for plot = 1, COUNT do
+			assert(
+				W.PlotTrack[plot] >= 1 and W.PlotTrack[plot] <= W.TrackCount,
+				`plot {plot} track`
+			)
+		end
 		assert(World.laneX(W, 1, COUNT) == -World.laneX(W, COUNT, COUNT), "the lane is off centre")
 		assert(W.LaneWidth < COUNT * W.PlotPitch, "the lane is as wide as the row of bases")
 	end,
 
 	["the lane lies below the hub: players throw down into it from a ledge"] = function()
-		assert(W.LaneY <= W.GroundY - 12, `the lane is only {W.GroundY - W.LaneY} studs below the hub`)
+		assert(
+			W.LaneY <= W.GroundY - 12,
+			`the lane is only {W.GroundY - W.LaneY} studs below the hub`
+		)
 		assert(W.LaneStartZ - W.ThrowPadZ >= 60, "the lane starts right in front of the bases")
 		assert(W.LaneStartZ - W.StageZ <= 16, "the throw stage is far from the ledge's edge")
 	end,
@@ -154,7 +186,10 @@ return {
 			local x, z = World.throwSpot(W, plot, COUNT)
 			local _, padZ = World.throwPad(W, plot, COUNT)
 			assert(x == World.laneX(W, plot, COUNT), `plot {plot} throws from beside its track`)
-			assert(z > padZ and z < W.LaneStartZ, `plot {plot} spot (z = {z}) is not at the lane mouth`)
+			assert(
+				z > padZ and z < W.LaneStartZ,
+				`plot {plot} spot (z = {z}) is not at the lane mouth`
+			)
 			if plot > 1 then
 				local before = World.throwSpot(W, plot - 1, COUNT)
 				assert(x - before >= 2 * W.ThrowPadRadius, "two throwers would stand in each other")

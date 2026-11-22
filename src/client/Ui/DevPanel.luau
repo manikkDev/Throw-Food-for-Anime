@@ -249,7 +249,7 @@ local function chips(
 			if onPick then
 				onPick(value)
 			end
-		end, { LayoutOrder = i, Size = UDim2.fromOffset(96, 40) })
+		end, { LayoutOrder = i }) -- width comes from the label: a fixed 96 cut "Uncommon" and "Legendary"
 	end
 	paint()
 	return function(): string
