@@ -5,11 +5,25 @@
 -- threshold in each slot, level with the paving, under the next zone's gate.
 -- Run: python ~/.claude/skills/create-roblox-game/scripts/studio_mcp.py luau --dm Edit --file <this file>
 local lanes = workspace.Map.Lanes
+-- a kit's pieces, also those lod_chunks.luau grouped into LodChunk models (for SLIM)
+local function kitItems(kit: Instance): { Instance }
+	local list = {}
+	for _, c in kit:GetChildren() do
+		if c:IsA("Model") and c.Name == "LodChunk" then
+			for _, d in c:GetChildren() do
+				table.insert(list, d)
+			end
+		else
+			table.insert(list, c)
+		end
+	end
+	return list
+end
 local spans = {}
 for _, f in lanes:GetChildren() do
 	if f.Name:sub(1, 5) == "Zone_" then
 		local lo, hi, top = math.huge, -math.huge, 0
-		for _, c in f:GetChildren() do
+		for _, c in kitItems(f) do
 			if
 				c:IsA("BasePart") and (c.Name:sub(1, 6) == "Paving" or c.Name:sub(1, 5) == "Strip")
 			then
@@ -30,7 +44,7 @@ local made = 0
 for i = 1, #spans - 1 do
 	local a, b = spans[i], spans[i + 1]
 	local gap = b.lo - a.hi
-	local old = b.folder:FindFirstChild("Threshold")
+	local old = b.folder:FindFirstChild("Threshold", true)
 	if old then
 		old:Destroy()
 	end

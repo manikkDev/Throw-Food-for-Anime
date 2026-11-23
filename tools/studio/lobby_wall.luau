@@ -29,12 +29,13 @@ local DO_TERRAIN = true
 
 -- ---------------------------------------------------------------------------------- the plan
 local TH = 14 -- the wall's thickness
-local IN_X, IN_Z = 248, -156 -- the inner faces: the lobby is inside these
-local FACE_X, FACE_Z = IN_X + TH, IN_Z - TH -- the outer faces (262, -170): the map ends here
-local WX, WZ = IN_X + TH / 2, IN_Z - TH / 2 -- the centre lines (255, -163)
-local SIDE_END = 192 -- the sides end inside zone 1's great wall (x 217..262, z 189..203: zone_01_naruto.luau)
-local TOWER_IN, TOWER_OUT = 160, 217 -- zone 1's gate tower plinths (zone_01_naruto.luau v2)
-local STAGE_HALF = 100 -- the throw stage's half width (config World.LaneWidth / 2)
+-- the back came in 40 with the hub (2026-11-23, hub_forward.luau; -156 before)
+local IN_X, IN_Z = 248, -116 -- the inner faces: the lobby is inside these
+local FACE_X, FACE_Z = IN_X + TH, IN_Z - TH -- the outer faces (262, -130): the map ends here
+local WX, WZ = IN_X + TH / 2, IN_Z - TH / 2 -- the centre lines (255, -123)
+local SIDE_END = 192 -- the sides end inside zone 1's great wall (x 189..262, z 189..203: zone_01_naruto.luau)
+local TOWER_IN, TOWER_OUT = 132, 189 -- zone 1's gate tower plinths (zone_01_naruto.luau v2, two tracks)
+local STAGE_HALF = 72 -- the throw stage's half width (config World.LaneWidth / 2)
 local G = 0 -- the lobby's ground
 local BOTTOM = -44 -- the wall's foot goes down into the sea
 local SEA_Y = -4
@@ -375,7 +376,7 @@ if DO_TERRAIN then
 		-- the lawn strip along the side: the base row's paving ends short of the wall
 		local l0, l1 = math.min(s * 228, s * IN_X), math.max(s * 228, s * IN_X)
 		T:ReplaceMaterial(
-			Region3.new(Vector3.new(l0, -12, -54), Vector3.new(l1, 8, 30)):ExpandToGrid(4),
+			Region3.new(Vector3.new(l0, -12, -14), Vector3.new(l1, 8, 70)):ExpandToGrid(4),
 			4,
 			Enum.Material.Cobblestone,
 			Enum.Material.Grass
@@ -524,13 +525,13 @@ for _, s in { -1, 1 } do
 		IN_Z,
 		SIDE_END,
 		Vector3.new(-s, 0, 0),
-		{ -100, 20, 130 }
+		{ -72, 34, 138 }
 	)
 end
 for _, s in { -1, 1 } do
 	local across = if s > 0 then 90 else -90 -- the keep's front looks across the lobby
 	keep(s * WX, WZ, 28, 40, 0.66, 180, "CornerKeep")
-	keep(s * WX, -40, 26, 38, 0.58, across, "SideKeep")
+	keep(s * WX, -20, 26, 38, 0.58, across, "SideKeep")
 	keep(s * WX, 86, 26, 38, 0.58, across, "FrontKeep")
 	keep(s * 120, WZ, 26, 38, 0.58, 180, "BackKeep")
 end
@@ -622,7 +623,7 @@ end
 -- stone lanterns on the lawn strip beside the outer bases
 local fProps = folder(fWall, "Lanterns")
 for _, s in { -1, 1 } do
-	for _, z in { -20, 50, 120 } do
+	for _, z in { 20, 70, 120 } do
 		local x = s * (IN_X - 10)
 		make(
 			fProps,

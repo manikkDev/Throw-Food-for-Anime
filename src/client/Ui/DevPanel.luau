@@ -1064,9 +1064,18 @@ local function build(state: any, run: (command: string, arg: any) -> (), tools: 
 		local p = page("World")
 		heading(p, "Teleport", 1, "Moves only your character (client side).")
 		local tpRow = flow(p, 2)
-		button(tpRow, "My throw pad", Make.INFO, function()
+		button(tpRow, "My throw spot", Make.INFO, function()
 			local plot = myPlot()
-			say(teleport(plot and plot:FindFirstChild("ThrowPad"), "my throw pad"))
+			local stage = workspace:FindFirstChild("Map")
+			stage = stage and stage:FindFirstChild("HubV2")
+			stage = stage and stage:FindFirstChild("ThrowStage")
+			local index = plot and plot:GetAttribute("Plot")
+			say(
+				teleport(
+					stage and index and stage:FindFirstChild("ThrowSpot" .. index),
+					"my throw spot"
+				)
+			)
 		end, { Size = UDim2.fromOffset(160, 44) })
 		button(tpRow, "My plot", Make.INFO, function()
 			local plot = myPlot()

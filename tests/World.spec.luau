@@ -37,10 +37,7 @@ return {
 			assert(not seen[key], `slot {slot} overlaps slot {seen[key]}`)
 			seen[key] = slot
 			assert(math.abs(dx) <= W.PlotWidth / 2 - 2, `slot {slot} is outside the plot width`)
-			assert(
-				z > W.PlotBackZ + 2 and z < W.ThrowPadZ - W.ThrowPadRadius,
-				`slot {slot} z = {z}`
-			)
+			assert(z > W.PlotBackZ + 2 and z < W.PlotFrontZ - 2, `slot {slot} z = {z}`)
 		end
 	end,
 
@@ -96,7 +93,7 @@ return {
 				"a court reaches the neighbour's lawn"
 			)
 			assert(cz - cd / 2 >= W.PlotFrontZ + 2, "a court reaches into the base")
-			assert(cz + cd / 2 <= W.ThrowPadZ - W.ThrowPadRadius, "a court reaches the throw stage")
+			assert(cz + cd / 2 <= W.StageZ - 14 - 20, "a court is crowding the throw stage")
 			-- its mirror twin
 			local twin = false
 			for _, other in stations do
@@ -177,17 +174,19 @@ return {
 			W.LaneY <= W.GroundY - 12,
 			`the lane is only {W.GroundY - W.LaneY} studs below the hub`
 		)
-		assert(W.LaneStartZ - W.ThrowPadZ >= 60, "the lane starts right in front of the bases")
+		assert(W.LaneStartZ - W.PlotFrontZ >= 60, "the lane starts right in front of the bases")
 		assert(W.LaneStartZ - W.StageZ <= 16, "the throw stage is far from the ledge's edge")
 	end,
 
 	["everyone throws from the middle: a spot on the stage at the head of their own track"] = function()
 		for plot = 1, COUNT do
 			local x, z = World.throwSpot(W, plot, COUNT)
-			local _, padZ = World.throwPad(W, plot, COUNT)
+			local padX, padZ = World.throwPad(W, plot, COUNT)
 			assert(x == World.laneX(W, plot, COUNT), `plot {plot} throws from beside its track`)
+			-- no pad at the bases (2026-11-23): the pad IS the spot on the stage
+			assert(padX == x and padZ == z, `plot {plot} has a pad away from its spot`)
 			assert(
-				z > padZ and z < W.LaneStartZ,
+				z > W.PlotFrontZ + 40 and z < W.LaneStartZ,
 				`plot {plot} spot (z = {z}) is not at the lane mouth`
 			)
 			if plot > 1 then

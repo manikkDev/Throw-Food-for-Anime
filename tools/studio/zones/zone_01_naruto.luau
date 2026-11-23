@@ -27,7 +27,9 @@ local LY, HALF, Z0, Z1 = P.LY, P.HALF, 160, 520
 local TOWER_IN, TW, TD, PLINTH = 160, 57, 66, 14 -- the gate towers: x 160..217, z 167..233
 local TOWER_OUT = TOWER_IN + TW
 local BACK = 234 -- the towers' backs: the terrace's buildings and the shelf start here
-local LOBBY_OUT = 262 -- the lobby wall's outer face: the great wall runs from the tower to it
+-- the lobby wall's outer face (world x 262): the great wall runs from the tower to it. The lobby kept
+-- its width when the lane went to two tracks, so in this file's frame it is SHIFT further out
+local LOBBY_OUT = 262 + P.SHIFT
 local rng = Random.new(1107)
 
 local DECAL_A = "rbxassetid://3768467328" -- the gate's kana
@@ -266,7 +268,8 @@ if ledgeWall and ledgeWall:IsA("BasePart") then
 	ledgeWall.Material = STONE_M
 end
 -- seen from the lane, the ledge is one long wall under the throw stage: piers, and the emblem
-for _, x in { -90, -30, 30, 90 } do
+-- (world x: inside the old lane nothing is moved; the two-track ledge is 148 wide)
+for _, x in { -68, -30, 30, 68 } do
 	-- they stop 5 below the lip: any higher and the thrower sees their tops past the stage's edge
 	block(
 		entrance,
@@ -278,7 +281,7 @@ for _, x in { -90, -30, 30, 90 } do
 	)
 end
 banner(entrance, CFrame.new(0, -20, 166.2) * CFrame.Angles(0, math.pi, 0), 44, 36)
-for _, x in { -60, 60 } do
+for _, x in { -49, 49 } do
 	banner(entrance, CFrame.new(x, -22, 166.2) * CFrame.Angles(0, math.pi, 0), 20, 28)
 end
 
@@ -736,7 +739,7 @@ end
 -- ---------------------------------------------------------------------------------- floor and gate
 local lanes = map.Lanes
 local SAND_A, SAND_B = Color3.fromRGB(246, 214, 144), Color3.fromRGB(238, 198, 120)
-for _, c in lanes["Zone_" .. ID]:GetChildren() do
+for _, c in kitItems(lanes["Zone_" .. ID]) do
 	local n = c.Name
 	if c:IsA("BasePart") then
 		if n:sub(1, 5) == "Strip" then

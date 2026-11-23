@@ -139,22 +139,10 @@ if DO_TERRAIN then
 			local a, b =
 				math.min(s * seg[1], s * (P.TERRACE_OUT + 1)),
 				math.max(s * seg[1], s * (P.TERRACE_OUT + 1))
-			local cz, dz = (seg[2] + seg[3]) / 2, seg[3] - seg[2]
-			workspace.Terrain:FillBlock(
-				CFrame.new((a + b) / 2, LY - 4, cz),
-				Vector3.new(b - a, 40, dz),
-				Enum.Material.Air
-			)
-			workspace.Terrain:FillBlock(
-				CFrame.new((a + b) / 2, LY - 17, cz),
-				Vector3.new(b - a, 6, dz),
-				Enum.Material.Sand
-			)
-			workspace.Terrain:FillBlock(
-				CFrame.new((a + b) / 2, (LY - 14 + SURFACE) / 2, cz),
-				Vector3.new(b - a, SURFACE - LY + 14, dz),
-				Enum.Material.Water
-			)
+			-- through side_lib's fill: it moves the x to the two-track lane
+			fill(a, b, LY - 24, LY + 16, seg[2], seg[3], Enum.Material.Air)
+			fill(a, b, LY - 20, LY - 14, seg[2], seg[3], Enum.Material.Sand)
+			fill(a, b, LY - 14, SURFACE, seg[2], seg[3], Enum.Material.Water)
 		end
 	end
 end

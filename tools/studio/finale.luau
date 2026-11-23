@@ -296,8 +296,8 @@ do
 			end
 		end
 		local _, size = t:GetBoundingBox()
-		-- scaled to the pier from the zone gates' torii (pillars at x +-115)
-		t:ScaleTo(t:GetScale() * ((PIER_X * 2 + 18) / (115 * 2 + 16)))
+		-- scaled to the pier from the zone gates' torii (pillars at x +-87)
+		t:ScaleTo(t:GetScale() * ((PIER_X * 2 + 18) / (87 * 2 + 16)))
 		local box, s2 = t:GetBoundingBox()
 		t:PivotTo(
 			t:GetPivot()
@@ -315,7 +315,7 @@ end
 
 -- ---------------------------------------------------------------------------------- 2. the guardians
 for _, s in { -1, 1 } do
-	local x, z = s * 64, 6326
+	local x, z = s * 47, 6326 -- in the bay, between the pier (x +-22) and the lane's edge (+-72)
 	column(finale, "DragonPlinth", 38, 18, Vector3.new(x, WATER - 4, z), STONE, Enum.Material.Slate)
 	column(
 		finale,
@@ -343,7 +343,7 @@ end
 -- about y 106, twice the border's), tall red banners on the stonework, and a tower at each corner.
 local FACE_Z = 6380 -- the end wall's front face
 local KEEP_HALF = 20 -- the gate keeps' and corner towers' feet are 40 wide
-local CORNER_X = 213 -- on the slim border (x +-206..220; 313 on the old line, 373 with five tracks)
+local CORNER_X = 185 -- on the border (x +-178..192 since two tracks; 213 with three, 373 with five)
 local TOWER_TOP = 122
 local wallF = Instance.new("Model")
 wallF.Name = "EndWall"

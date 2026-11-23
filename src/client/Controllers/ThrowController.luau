@@ -437,7 +437,20 @@ local function getControls(): any
 	return controls
 end
 
--- Hold the player on the throw spot. The SERVER snaps them to the pad centre facing the lane and
+-- The "YOUR SPOT" sign over the player's own circle on the stage (Map.HubV2.ThrowStage.SpotHint<i>):
+-- every sign starts hidden; each client shows only its own, and only while it is not standing on it.
+-- nil while the stage is not streamed in.
+function ThrowController:_spotHint(): BillboardGui?
+	local state = self._state.State
+	local stage = workspace:FindFirstChild("Map")
+	stage = stage and stage:FindFirstChild("HubV2")
+	stage = stage and stage:FindFirstChild("ThrowStage")
+	local anchor = stage and state and state.plot and stage:FindFirstChild("SpotHint" .. state.plot)
+	local hint = anchor and anchor:FindFirstChild("Hint")
+	return if hint and hint:IsA("BillboardGui") then hint else nil
+end
+
+-- Hold the player on the throw spot. The SERVER snaps them to the spot's centre facing the lane and
 -- anchors them (ThrowService:SetPad, like training); here the controls go off, the HUD fades out
 -- and the camera is throw mode's. Released by the Exit button (or X) only. Found in play
 -- 2026-11-16: the client-only hold leaked (the player still walked off the pad), and the old exit
@@ -459,7 +472,6 @@ function ThrowController:_lock(on: boolean)
 	-- server's own snap and anchor follow (asked twice, in case the first ask arrives early).
 	local state = self._state.State
 	if on and root and state and state.plot then
-		-- the pad in front of the base takes the player to their spot on the middle throw stage
 		local x, z = World.throwSpot(W, state.plot, COUNT)
 		local at = Vector3.new(x, root.Position.Y, z)
 		root.AssemblyLinearVelocity = Vector3.zero
@@ -479,17 +491,9 @@ function ThrowController:_lock(on: boolean)
 			end)
 		end
 	end
-	-- the pad's own "THROW HERE" sign is pointless while standing on it
-	local pads = workspace:FindFirstChild("Map")
-	pads = pads and pads:FindFirstChild("Plots")
-	local plotModel = if pads
-			and state
-			and state.plot
-		then pads:FindFirstChild("Plot" .. state.plot)
-		else nil
-	local pad = plotModel and plotModel:FindFirstChild("ThrowPad")
-	local hint = pad and pad:FindFirstChild("Hint", true)
-	if hint and hint:IsA("BillboardGui") then
+	-- the spot's own "YOUR SPOT" sign is pointless while standing on it
+	local hint = self:_spotHint()
+	if hint then
 		hint.Enabled = not on
 	end
 	if humanoid then
@@ -915,13 +919,22 @@ function ThrowController:KnitStart()
 	end)
 
 	local lastAuto = 0
+	local lastHint = 0
 	RunService.RenderStepped:Connect(function(dt: number)
 		local state = self._state.State
 		local root = rootPart()
+		if os.clock() - lastHint > 0.5 then
+			-- the stage streams in after the player spawns: show the sign once it is there
+			lastHint = os.clock()
+			local hint = self:_spotHint()
+			if hint then
+				hint.Enabled = not self._locked
+			end
+		end
 		if state and state.plot and root then
 			local x, z = World.throwPad(W, state.plot, COUNT)
 			local distance = World.distance(root.Position.X, root.Position.Z, x, z)
-			-- held, the player stands on the throw stage, not on the pad
+			-- the pad IS the spot on the stage since 2026-11-23 (no pad at the bases)
 			local sx, sz = World.throwSpot(W, state.plot, COUNT)
 			local held = World.distance(root.Position.X, root.Position.Z, sx, sz)
 			-- locked, the player IS on the pad (the server holds them there); unlocked, stepping

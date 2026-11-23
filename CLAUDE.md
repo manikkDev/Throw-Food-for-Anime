@@ -82,15 +82,18 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `ServerStorage.MapArchive.Map_v1_6lanes`: never delete. **Do NOT run `python tools/map/build_in_studio.py`**: the old
   generator (`design/map.json` + `tools/map/`) still describes the 6-base map and would overwrite the hub. There is ONE lane
   (`tools/studio/single_lane.luau`, one-off), centred on x = 0: since 2026-11-22 (`tools/studio/lane_slim.luau`, one-off,
-  attribute `LaneSlim` 60 on `Workspace.Map`) 200 wide with THREE tracks 56 apart (x -56, 0, 56). Two bases share each
-  outer track, each on its own half: config `World.PlotTrack` {1,1,2,3,3}, `PlotTrackSide` {-1,1,0,-1,1},
-  `TrackSideOffset` 10, so the stage spots and landings are x -66, -46, 0, 46, 66 (+- `LandingJitterX` 6)
-  (`World.trackX`, `World.laneX`). The zones' sides, terrain and the ledge's parapets came in 60 with it; the torii,
-  lane border and finale were rebuilt narrower by their own scripts. The lane lies 48 studs BELOW the hub (`World.LaneY` -48: 24 from `lane_ledge.luau`, 24 more from `tools/studio/lane_deeper.luau`, both one-off) from z 160 (`World.LaneStartZ`;
+  attribute `LaneSlim` 60) three tracks, and since 2026-11-23 (`tools/studio/lane_two.luau`, one-off, attribute
+  `LaneTwo` 28; design/plan/11 phase 3) 144 wide (x +-72) with TWO tracks at x -28 and 28. Bases 1-2 share the left
+  track, 4-5 the right (each on its own half), base 3 throws down the seam: config `World.PlotTrack` {1,1,1.5,2,2},
+  `PlotTrackSide` {-1,1,0,-1,1}, `TrackSideOffset` 12, so the stage spots and landings are x -40, -16, 0, 16, 40
+  (+- `LandingJitterX` 6) (`World.trackX`, `World.laneX`). The zones' sides were REBUILT 28 in (side_lib's `SHIFT`, below);
+  the torii, lane border, finale and the ledge's parapets were rebuilt narrower by their own scripts. The lane lies 48 studs BELOW the hub (`World.LaneY` -48: 24 from `lane_ledge.luau`, 24 more from `tools/studio/lane_deeper.luau`, both one-off) from z 160 (`World.LaneStartZ`;
   `tools/studio/lane_ledge.luau`, one-off): a paved funnel forecourt runs from the bases to a ledge, one 247-tall gate
-  stands at the start of every zone, and anything placed in the lane uses `LaneY`, not `GroundY`. Everyone throws from the middle: the pad in front of a base takes the player
-  to their spot on `Map.HubV2.ThrowStage` (`World.throwSpot`, `World.StageZ` 148) and letting go puts them back behind
-  their pad. The zone CONTENT is still the old six zones; the anime zones replace them 3 at a time (`design/plan/09-single-lane-rework.md`,
+  stands at the start of every zone, and anything placed in the lane uses `LaneY`, not `GroundY`. Everyone throws from the middle: since 2026-11-23 there is NO pad at the bases (archived in
+  `MapArchive.ThrowPads_v1`); the player walks to their own coloured circle on `Map.HubV2.ThrowStage` (`World.throwPad`
+  = `World.throwSpot`, `World.StageZ` 148) and is held there; letting go sets them down on the lawn behind the stage.
+  `tools/studio/throw_spots.luau` (rerunnable) places the spots from config and the hidden "YOUR SPOT" signs
+  (`ThrowStage.SpotHint<i>`); ThrowController shows only the player's own. The zone CONTENT is still the old six zones; the anime zones replace them 3 at a time (`design/plan/09-single-lane-rework.md`,
   `design/zones/anime_zones.json`). `Blockout.luau` only builds a grey fallback when the place has no `Workspace.Map`.
 - Creator Store models (free, the owner's request): cleaned sources in `ServerStorage.StoreAssets` (61, never delete; buildings assembled by `tools/studio/assemble_store_buildings.luau`; tags `design/store_assets.json` feed the map generator's pools) ->
   `python tools/studio/install_store_assets.py` -> `ReplicatedStorage.Assets.Kit.Prop_store_<Name>` and
@@ -127,7 +130,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   aside for the PerkList details panel). Card art: `tools/ui/cards_art.py` -> `assets/ui/cards/` + `assets/ui/ids_cards.json`
   (`--upload-only`, then `tools/gen_icons.py`). Screens are now `tools/ui/screens_v50.py` (imported by `build_ui.py`).
 - Gear and slot purchases go through a client confirmation (`Controllers/UpgradeController`, `HudController:Confirm`); prompts never spend. Prompts are drawn by `Controllers/PromptController` (Style Custom).
-- The throw pad is held by the server (`ThrowService:SetPad`, remote `ThrowPad`), like training.
+- The throw spot (the old pad's code and names) is held by the server (`ThrowService:SetPad`, remote `ThrowPad`), like training.
 - Training: 2 stations since 2026-11-22, Strike Dummy on the left court (dojo gear, tiers 1-3) and Waterfall Focus on the
   right (spirit gear, opens at gear 2); curls and stone push were removed (owner: one per side, mini-games come later).
   Power per rep is the gear's, not the station's (`config.Training.Stations`); the server snaps and locks the trainee,
@@ -141,15 +144,15 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - LOBBY WALL (2026-11-22, owner: the map felt too big, "remove the outer part of the lobby completely", little space
   between the outer bases and the wall): `tools/studio/lobby_wall.luau` (rerunnable, run after base_layout.luau and lane_slim.luau) builds
   `Map.Hub.Walls.Lobby`: ONE wall in zone 1's great-wall dress (top 44, foot down to -44 in the sea), inner faces x +-248
-  and z -156, outer x +-262 and z -170: the MAP'S END. The sides run straight on into zone 1's great wall (z 192; between the wall and zone 1's gate
+  and z -116, outer x +-262 and z -130: the MAP'S END (the back was -156/-170 until the hub moved 40 forward, below). The sides run straight on into zone 1's great wall (z 192; between the wall and zone 1's gate
   tower a lawn corner): one line from the back corner to the lane. Keeps at the corners, z -40, z 86 and x +-120 on the back; stone lanterns on
   the lawn strip beside the outer bases. Outside: the sea (water to -4 on a sand bed) out to x 560 and z -660. The back
   districts moved in with it (attribute `ShiftX` on each district folder: Hall of Legends and Ramen Alley 90, Rewards and
   Rankings 14, with their decks, statues, stations and boards). Zone 1's great wall (z 189..203) and turret got a stone
   foot to the sea bed. The walled town (`Scenery.LobbyTown`), its town wall, the old lobby and entrance walls and the side
   lawns' props are in `MapArchive.LobbyTown_v1` (never delete); its builder is retired to
-  `tools/studio/retired/lobby_town_v1.luau` (do NOT run it: it would rebuild the town). The `LedgeParapet`s (x 164..233,
-  top 15, a `LedgePost` at each end) still close the lawn beside the throw stage.
+  `tools/studio/retired/lobby_town_v1.luau` (do NOT run it: it would rebuild the town). The `LedgeParapet`s (x 76..129,
+  top 15, a `LedgePost` at each end; lobby_wall.luau's `STAGE_HALF` 72 and `TOWER_IN` 132) close the lawn beside the throw stage.
   zone_01_naruto.luau restyles HubV2 funnel walls only if they exist, so a rerun of it is safe.
 - LANE BORDER (2026-11-22, owner: the lane's sides looked "weird", "keep the map minimal"): `tools/studio/lane_border.luau`
   (rerunnable; run AFTER lobby_wall.luau and after any zone builder) builds `Map.Scenery.LaneBorder`: the town's outer
@@ -179,6 +182,13 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   real terrain WATER either side between quays and cliffs, ships, piers, a town on stilts; rewritten on `zone_lib` in the
   rework below. Templates in `StoreAssets.Zone03_OnePiece`, old dressing in `MapArchive.Zone3_ninja_village_v1`. Owner's bar for a zone (2026-11-22): the entrance must be built
   architecture, never terrain mounds; walls must not tower over the lobby; no lollipop trees.
+- HUB FORWARD (2026-11-23, owner: less space between the bases and the zone entrance, not congested): the whole hub
+  (bases, yards, courts, lanterns, sakura, spawn, plaza, districts, sanctuary, statues, dragon, hub barrier, its terrain)
+  is 40 studs closer to the lane; the stage, ledge and lane did not move. `tools/studio/hub_forward.luau` (rerunnable:
+  each piece remembers where it left it, attribute `HubZAt`; the terrain copy runs once, attribute `HubForwardTerrain`).
+  plaza_districts.luau and sanctuary.luau still build at their OLD fixed positions: after rerunning either, rerun
+  lobby_wall.luau (district x moves) and then hub_forward.luau. Config's hub z numbers (PlotBackZ -4, PlotFrontZ 61,
+  PedestalCenterZ 28.5, SlotSignZ 66, CourtZ 85, stations Z 80) moved with it. Bases z -4..61, courts 74..96, stage 135.
 - PLAZA DISTRICTS (2026-11-22, owner: stalls, gifts, boards "look ass", make them flashy and professional):
   `tools/studio/plaza_districts.luau` (rerunnable) builds `Map.Hub.Districts`: a lit gateway per district (top 30, sign in
   the district's colour) and RAMEN ALLEY (the food cart as a yatai: wheels, steaming pot, noren, striped awning; noodle
@@ -204,11 +214,11 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   CONTINUED" arrow banner, a two-tier gate roof). Behind it a layered light pillar (core + two faint sheaths, a ray
   burst on the water, five tilted halo rings, rising spark particles) with the hub's golden wish dragon coiled round it
   (the StoreAssets copy is Glass: the script recolours it gold). lane_border.luau no longer builds the end wall or its
-  corner keeps. Its corner towers stand on the slim border (`CORNER_X` 213), the end wall 104..193. New zones "unseal" it. Old finale props: `MapArchive.Finale_v1`.
+  corner keeps. Its corner towers stand on the border (`CORNER_X` 185), the end wall 104..165; the guardian dragons at x +-47 in the bay. New zones "unseal" it. Old finale props: `MapArchive.Finale_v1`.
 - ZONE GATES (2026-11-22, owner: the old torii mesh was "too big and fat", no detail): `tools/studio/zone_gates.luau`
   (rerunnable) builds a part-made myojin torii (`Torii`) in every `Map.Lanes.Zone_*.Gate_*` model: slim vermilion pillars
-  at x +-115 (`PX`; +-175 before the lane slimmed: just outside the lane's kerb; owner: it must span the lane, not
-  beyond) on black bases, a stone komainu on a pedestal beside each (x +-142, z gate-18), gold rings, nuki/shimaki/curved kasagi with gold
+  at x +-87 (`PX`; 115 with three tracks, 175 with five: just outside the lane's kerb; owner: it must span the lane, not
+  beyond) on black bases, a stone komainu on a pedestal beside each (x +-114, z gate-18), gold rings, nuki/shimaki/curved kasagi with gold
   caps, a framed plaque front and back, a sagging shimenawa with shide, two glowing lanterns; top about y 125 (was 198).
   Parts named `Accent` (plaque frame, lantern bands) and the plaque's TextLabel keep the zone builders' recolour/retitle
   working. Deleting a gate model's old mesh reset its pivot: the script reads and restores `WorldPivot`. Old meshes:
@@ -217,9 +227,14 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   zone 6's floor kit eleven times; `tools/studio/lane_thresholds.luau` (rerunnable) lays the stone slot between kits.
   **SLIM ZONES (phase 3 of design/plan/10-slim-map.md, one zone at a time):** a rewritten zone's file starts with
   `-- LIB: side_lib`; `run_zone.py build <n>` then joins `tools/studio/zones/side_lib.luau` (not zone_lib) and runs one
-  pass. side_lib's table `P` IS the cross-section (change a number, rebuild the slim zones): kerb x 100..104, terrace
-  y -46 to x 172 (street 104..116, buildings facing the lane), a battered stone revetment 168..178 up to the shelf
-  y -14 (178..206), the border wall 206..220 (lane_border.luau, top 26), the sea outside. Ground: thin flat terrain lawn;
+  pass. side_lib's table `P` IS the cross-section (change a number, rebuild the slim zones), written in the
+  THREE-track frame (lane edge 100) like every zone file: kerb x 100..104, terrace y -46 to x 172 (street 104..116,
+  buildings facing the lane), a battered stone revetment 168..178 up to the shelf y -14 (178..206), the border wall
+  206..220. **`P.SHIFT` 28 (two tracks, 2026-11-23): side_lib moves everything a zone builds 28 toward the lane** (terrain
+  in `fill`, parts in `markSlim`; whatever stands inside the old lane stays, particle boxes are cut to the lane), so in
+  the WORLD: kerb 72..76, terrace to 144, revetment 140..150, shelf 150..178, border wall 178..192 (lane_border.luau,
+  top 26), the sea outside. A zone file's x numbers are 28 off the world's; never write `workspace.Terrain` in a zone
+  file (use `fill`, which shifts). Zone 1's great wall reaches the lobby wall by `LOBBY_OUT = 262 + P.SHIFT`. Ground: thin flat terrain lawn;
   streets, kerbs, walls are parts. Placement by `front`/`put` with a claim registry (refusals and anything in the lane
   are reported). A slim zone sets attributes SlimZ0/SlimZ1/SlimWall* on its Scenery folder; lane_border.luau reads them,
   stands the wall on the zone's edge there and steps out to the old line (a cross wall) where it meets an old zone.
@@ -243,7 +258,8 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   Zone 16 (v2: the Shibuya crossing +X, the sorcerers -X, roads with zebra crossings and signals, neon screens).
   Zone 17 (v2, the last: a harbour with islands like zone 3, the arena, lookout and star balls +X, the corporation, dragon
   and fighter -X; its sides run on past the lane's end to the end wall, opening into the finale's bay). ALL 17 ZONES ARE SLIM
-  (phase 3 complete, place version 683): the border wall stands at x +-206..220 the whole way.
+  (phase 3 complete, place version 683); since two tracks (plan 11 phase 3, place version 690) the border wall stands
+  at x +-178..192 the whole way.
   After a Studio restart generated meshes load late: a capture can show them grey or missing; wait and look again. The retired zone_lib builders of rebuilt zones are in
   `tools/studio/retired/` (content and numbers to port). side_lib also has deck, afloat, sheetFall, floorKit, words, sign, paint, fence, scatter, and revetment
   options buttress (spacing) and wet (waterline). zone_lib (below) is now used by no zone; its numbers (x 160..368, terraces, gate
@@ -295,8 +311,15 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   and shows an "overlay window" asking the developer to paste code into the command bar (a backdoor
   installer). Removed 2026-11-15 (8 copies). Before using any imported model: list every LuaSourceContainer
   in it, delete anything you did not write, and never run code a model's UI tells you to.
-- The live game's lane is 2,160 studs and streaming radius 576: anything shown far down the lane needs the
-  server's `ReplicationFocus` moved there (ThrowService `_focus`), or the map behind it is half missing.
+- The lane is 6,120 studs; streaming radius 1024 (min 64, `StreamOutBehavior` Opportunistic, since plan 11 phase 4):
+  anything shown far down the lane needs the server's `ReplicationFocus` moved there (ThrowService `_focus`), or the
+  map behind it is half missing.
+- LOAD / SLIM (plan 11 phase 4): `tools/studio/lod_chunks.luau` (rerunnable; RERUN IT after any zone, lane_border,
+  finale or lane_thresholds run) groups the loose parts of `Map.Scenery` and `Map.Lanes` into 64-stud `LodChunk`
+  models and sets `LevelOfDetail = SLIM` on every static model there (models over 100 across are opened up, merged
+  meshes and `Gate_*` stay whole), turns light shadows off and sets the streaming numbers. Tools that read a floor kit
+  use `kitItems` (side_lib, lane_thresholds) to see inside the chunks. The Hub, HubV2 and Plots are NOT chunked: runtime
+  code finds anchors there by name. SLIM copies are built in Roblox's cloud from a SAVED place (Team Create).
 
 - This Roblox build has NO `PlayerModule` in `PlayerScripts`: never `WaitForChild` it (a 5 s stall per call, which delayed the pad lock and the rebirth). Hold a character by its humanoid (WalkSpeed/JumpHeight 0) or, better, on the server (anchor), like training and the throw pad.
 - `BillboardGui.StudsOffsetWorldSpace` is in the ADORNEE's axes: on a cylinder lying on its side (station mats, stands) "up" goes sideways. Hang labels from an unrotated invisible anchor part. An always-on-top BillboardGui did not draw at all in play (on the mats, and again for the custom prompt card on any part): draw world labels with AlwaysOnTop off, and anything that must stay on top (prompt cards) in a ScreenGui placed with WorldToViewportPoint (`PromptController`).
@@ -319,6 +342,9 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - During Play, `execute_luau` cannot see the game's Knit services or controllers (its `require` is a
   separate copy). Read state through instances and GUI text, fire remotes from the Client datamodel,
   and hook remotes to log what the server answered.
+- `tools/studio/front.ps1` can bring a ROBLOX PLAYER window to the front instead of Studio when the owner has the game
+  open (2026-11-23): check the foreground process before trusting an fps reading. To test SLIM, park the play camera
+  over a zone ~3000 studs from the player and count that zone's parts on the client: 0 parts and the zone drawn = SLIM.
 - Studio renders at about 15 fps whenever its window is not in front: a frame-rate reading is only valid with
   Studio focused (measured: 15 fps with the whole world hidden, 60 fps a minute later in front).
 - A locked or sleeping screen stops Studio rendering: `screen_capture` times out and a RenderStepped probe never returns.

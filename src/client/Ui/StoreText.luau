@@ -60,7 +60,7 @@ function StoreText.passDesc(pass: any): string
 	elseif key == "Vip" then
 		return `+{math.floor(C.Luck.VipBonus * 100 + 0.5)}% luck on every throw and +{C.Plot.VipBonusSlots} hero slots.`
 	elseif key == "AutoThrow" then
-		return "Adds AUTO to your throw pad: it throws for you."
+		return "Adds AUTO to your throw spot: it throws for you."
 	elseif key == "LuckyAura" then
 		return `x{StoreText.fmt(pass.Luck or 1)} luck on every throw, forever.`
 	elseif key == "BigBench" then

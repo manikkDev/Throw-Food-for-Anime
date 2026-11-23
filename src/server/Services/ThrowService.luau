@@ -303,8 +303,9 @@ local function floorAt(x: number, z: number, fromY: number, ignore: Instance?): 
 	return if hit then hit.Position.Y else Config.World.GroundY
 end
 
---- Hold `player` on their throw pad (snapped to its centre facing down the lane, anchored, no
---- walking or jumping) or let them off it (set down just behind the pad, facing their plot).
+--- Hold `player` on their throw spot, the coloured circle on the stage (snapped to its centre facing
+--- down the lane, anchored, no walking or jumping) or let them off it (set down just behind the
+--- stage, facing their plot). There is no pad at the bases since 2026-11-23: the spot is the pad.
 --- The client asks; the server does it, so nothing on the client can drift the character off.
 function ThrowService:SetPad(player: Player, on: boolean)
 	local index = self._plots:IndexOf(player)
@@ -334,8 +335,7 @@ function ThrowService:SetPad(player: Player, on: boolean)
 		humanoid.WalkSpeed = 0
 		humanoid.JumpHeight = 0
 		humanoid.JumpPower = 0
-		-- everyone throws from the middle: the pad in front of the base takes the player to their
-		-- spot on the throw stage (owner, 2026-11-21); letting go puts them back behind their pad
+		-- everyone throws from the middle (owner, 2026-11-21): the player walked onto their own spot
 		local sx, sz = World.throwSpot(Config.World, index, COUNT)
 		local y = floorAt(sx, sz, root.Position.Y, character) + lift
 		root.AssemblyLinearVelocity = Vector3.zero
@@ -347,7 +347,7 @@ function ThrowService:SetPad(player: Player, on: boolean)
 			return
 		end
 		self._pad[player] = nil
-		local backZ = z - (Config.World.ThrowPadRadius + 6)
+		local backZ = z - (Config.World.ThrowPadRadius + 9) -- off the stage's back edge, on the lawn
 		local y = floorAt(x, backZ, root.Position.Y, character) + lift
 		root.Anchored = false
 		root.AssemblyLinearVelocity = Vector3.zero

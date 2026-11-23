@@ -29,7 +29,8 @@ local ROOF_DARK = Color3.fromRGB(142, 56, 44)
 local STONE_M, PLASTER_M = Enum.Material.Brick, Enum.Material.Plaster
 
 local G = 8 -- the walls' ground: the town's (top at G + 44 = 52 all round the map)
-local SLIM = 60 -- how far the lane's sides came in when the lane went from 5 tracks to 3 (2026-11-22)
+local SLIM = 88 -- how far the lane's sides came in: 60 from 5 tracks to 3 (2026-11-22), 28 more to 2 (2026-11-23)
+local HALF = 72 -- the lane's edge (config World.LaneWidth / 2)
 local IN_X, OUT_X = 366 - SLIM, 380 - SLIM -- the lane walls' faces
 local Z_START = 213 -- the north face of zone 1's corner turret
 local END_Z0, END_Z1 = 6380, 6394 -- the end wall, behind the finale (its last prop reaches z 6372)
@@ -216,8 +217,8 @@ if DO_TERRAIN then
 	-- past the lane's end: the end walls' bay in water at zone 17's level, then the sea (a slim
 	-- zone 17 runs its own harbour on to the end wall either side, so the bay is then the lane's width)
 	local slimEnd = lineAt(LANE_END + 1) ~= IN_X
-	local bayAir = if slimEnd then 100 else IN_X + 6
-	local bayW = if slimEnd then 100 else IN_X
+	local bayAir = if slimEnd then HALF else IN_X + 6
+	local bayW = if slimEnd then HALF else IN_X
 	fillBox(-bayAir, bayAir, -70, 220, LANE_END, END_Z0, Enum.Material.Air)
 	fillBox(-(IN_X + 6), IN_X + 6, -70, 220, END_Z0, SEA_END, Enum.Material.Air)
 	fillBox(-bayW, bayW, -64, -56, LANE_END, END_Z0, Enum.Material.Sand)

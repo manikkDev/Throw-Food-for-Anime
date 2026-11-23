@@ -70,7 +70,7 @@ function PlotService:Near(player: Player, x: number, z: number, radius: number):
 	return World.distance(root.Position.X, root.Position.Z, x, z) <= radius
 end
 
---- Is the player standing on their own throw pad (with a little slack)?
+--- Is the player standing on their own throw spot on the stage (with a little slack)?
 function PlotService:OnThrowPad(player: Player): boolean
 	local index = self._index[player]
 	if not index then

@@ -31,7 +31,7 @@ function TutorialController:KnitStart()
 
 	local steps: { Step } = {
 		{
-			text = "Step onto the glowing THROW PAD",
+			text = "Walk to YOUR SPOT on the throw stage",
 			done = function(): boolean
 				return throw:OnPad()
 			end,

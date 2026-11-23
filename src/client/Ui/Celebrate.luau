@@ -219,7 +219,7 @@ local function compose(p: any): Card?
 		card.perks = {
 			StoreText.productDesc(product),
 			`You have {tonumber(p.total) or product.Amount} Lucky Throws`,
-			"Switch LUCKY on at your throw pad",
+			"Switch LUCKY on at your throw spot",
 		}
 	elseif kind == "serverluck" then
 		card.color = Color3.fromHex("4ADE80")

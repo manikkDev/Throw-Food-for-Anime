@@ -6,14 +6,15 @@
 -- along X; ONE lane, centred on x = 0, runs along +Z (since 2026-11-21). Every
 -- player throws down a track in it (LanePitch apart; two bases share each outer track, each on its
 -- own half, since 2026-11-22) from a throw spot of their own on the stage at
--- the lane mouth: stepping on the pad in front of the base takes them there.
+-- the lane mouth: they walk onto their own coloured circle there (no pad at the bases since
+-- 2026-11-23).
 --
 --   z = PlotBackZ ...... hub side
 --       pedestal grid   (back half; heroes face +Z, toward the lane)
 --   z = PlotFrontZ ..... the deck's edge: an even border all round the pedestals
 --       front yard      (spawn and slot sign, then one training court each side of the walk)
---   z = ThrowPadZ ...... the base's own pad: the way to the throw stage
---   z = StageZ ......... the throw stage: a ledge at the end of the forecourt
+--   z = StageZ ......... the throw stage: a ledge at the end of the forecourt, one coloured
+--                        circle per base (the throw spot; stepping on it holds the player there)
 --   z = LaneStartZ ..... the ledge's edge; the lane begins BELOW it, at y = LaneY
 --                        (the hub stands at GroundY: players throw down into the lane)
 
@@ -58,10 +59,10 @@ function World.pedestal(
 	return World.plotX(world, plotIndex, count) + dx, z
 end
 
---- World (x, z) of the throw pad: in front of the player's own base. Stepping
---- on it takes the player to their throw spot.
+--- World (x, z) of the throw pad: since 2026-11-23 (owner: no pad at the bases) it IS the throw
+--- spot, the player's coloured circle on the stage; stepping on it holds them there.
 function World.throwPad(world: any, plotIndex: number, count: number): (number, number)
-	return World.plotX(world, plotIndex, count), world.ThrowPadZ
+	return World.throwSpot(world, plotIndex, count)
 end
 
 --- Centre X of the track plot `plotIndex` throws down. Since 2026-11-22 the lane has fewer tracks

@@ -16,10 +16,18 @@
 --
 -- Change a number in P and rebuild the zones: everything below reads P. The ground is terrain only
 -- where it is lawn (thin, flat); streets, kerbs and walls are parts with real materials.
+--
+-- TWO TRACKS (2026-11-23, design/plan/11 phase 3): the lane is 144 wide (edges x +-72). The numbers
+-- above, P and every zone file are still written for the three-track lane (edge 100): side_lib moves
+-- what a zone builds SHIFT (28) toward the lane, terrain as it is written (`fill`), parts when the
+-- zone is finished (`markSlim`). So in the WORLD: kerb 72..76, terrace to 144, revetment 140..150,
+-- shelf 150..178, border wall 178..192. Anything a zone builds inside the old lane (|x| < 100: the
+-- particle boxes, the ledge's piers) is not moved; the particle boxes are cut to the new lane.
 
 local P = {
+	SHIFT = 28, -- the sides' move toward the lane since the lane lost its third track
 	LY = -48, -- the lane's floor (config World.LaneY)
-	HALF = 100, -- the lane's edge (config World.LaneWidth / 2)
+	HALF = 100, -- the lane's edge IN THE ZONE FILES' FRAME (the world's: HALF - SHIFT = config LaneWidth / 2)
 	KERB_OUT = 104,
 	STREET_OUT = 116,
 	TERRACE_Y = -46,
@@ -153,6 +161,11 @@ local function fill(
 	z1: number,
 	mat: Enum.Material
 )
+	-- the zone files' frame to the world's: a side's x moves SHIFT toward the lane, the old lane's inside stays
+	local function sx(x: number): number
+		return if math.abs(x) >= P.HALF - 0.5 then x - math.sign(x) * P.SHIFT else x
+	end
+	x0, x1 = sx(x0), sx(x1)
 	x0, x1 = math.min(x0, x1), math.max(x0, x1)
 	if x1 - x0 < 0.5 or y1 - y0 < 0.5 or z1 - z0 < 0.5 then
 		return
@@ -595,13 +608,72 @@ local function claimGates(z0: number, z1: number)
 		end
 	end
 end
--- the zone tells lane_border.luau where its border wall stands
+-- the finished zone's parts from the zone files' frame to the world's: everything on a side moves
+-- SHIFT toward the lane; a model reaching across the lane is opened up; what stands inside the old
+-- lane stays, and a particle box wider than the new lane is cut to it
+local function settle(root: Instance)
+	local half = P.HALF - P.SHIFT
+	local function worldBox(inst: Instance): (number, number)
+		local lo, hi = math.huge, -math.huge
+		for _, p in partsOf(inst) do
+			local cf, h = p.CFrame, p.Size / 2
+			for _, a in { -1, 1 } do
+				for _, b in { -1, 1 } do
+					for _, c in { -1, 1 } do
+						local x = (cf * CFrame.new(h.X * a, h.Y * b, h.Z * c)).X
+						lo, hi = math.min(lo, x), math.max(hi, x)
+					end
+				end
+			end
+		end
+		return lo, hi
+	end
+	local function move(inst: Instance, dx: number)
+		local d = Vector3.new(dx, 0, 0)
+		if inst:IsA("Model") then
+			inst:PivotTo(inst:GetPivot() + d)
+			return
+		end
+		for _, p in partsOf(inst) do
+			p.CFrame += d
+		end
+	end
+	local function walk(inst: Instance)
+		for _, c in inst:GetChildren() do
+			if c:IsA("Folder") then
+				walk(c)
+			elseif c:IsA("Model") or c:IsA("BasePart") then
+				local x
+				if c:IsA("Model") and c:GetAttribute("TrueSize") then
+					x = c:GetPivot().Position.X -- a merged mesh's parts do not say where it is
+				else
+					local lo, hi = worldBox(c)
+					if c:IsA("Model") and lo < -40 and hi > 40 then
+						walk(c)
+						continue
+					end
+					x = (lo + hi) / 2
+				end
+				if math.abs(x) >= P.HALF - 0.5 then
+					move(c, -math.sign(x) * P.SHIFT)
+				elseif c:IsA("BasePart") and c.Name:match("Source$") and c.Size.X > 2 * half then
+					c.Size = Vector3.new(2 * half - 8, c.Size.Y, c.Size.Z)
+				end
+			end
+		end
+	end
+	walk(root)
+end
+-- the zone is finished: its parts go to the world's frame, and it tells lane_border.luau where its
+-- border wall stands (world x)
 local function markSlim(root: Instance, z0: number, z1: number)
+	settle(root)
 	root:SetAttribute("SlimZ0", z0)
 	root:SetAttribute("SlimZ1", z1)
-	root:SetAttribute("SlimWallIn", P.WALL_IN)
-	root:SetAttribute("SlimWallOut", P.WALL_OUT)
+	root:SetAttribute("SlimWallIn", P.WALL_IN - P.SHIFT)
+	root:SetAttribute("SlimWallOut", P.WALL_OUT - P.SHIFT)
 	root:SetAttribute("SlimWallG", P.WALL_G)
+	root:SetAttribute("SlimShift", P.SHIFT)
 end
 -- what the run refused, and anything of the zone's that reaches into the lane
 local function sideReport(root: Instance): string
@@ -615,8 +687,8 @@ local function sideReport(root: Instance): string
 			if
 				not merged
 				and not d:GetAttribute("LaneOk")
-				and x1 > -P.HALF + 0.5
-				and x0 < P.HALF - 0.5
+				and x1 > -(P.HALF - P.SHIFT) + 0.5 -- after markSlim: the world's lane
+				and x0 < (P.HALF - P.SHIFT) - 0.5
 			then
 				table.insert(inLane, string.format("%s @%.0f,%.0f", d.Name, cf.X, cf.Z))
 			end
@@ -841,18 +913,32 @@ local function paint(
 end
 
 -- ---------------------------------------------------------------------------------- the lane's floor
+-- a floor kit's pieces, also those lod_chunks.luau grouped into LodChunk models (for SLIM)
+local function kitItems(kit: Instance): { Instance }
+	local list = {}
+	for _, c in kit:GetChildren() do
+		if c:IsA("Model") and c.Name == "LodChunk" then
+			for _, d in c:GetChildren() do
+				table.insert(list, d)
+			end
+		else
+			table.insert(list, c)
+		end
+	end
+	return list
+end
 -- recolours this zone's floor kit (Map.Lanes.Zone_<id>) and retitles its gate (the "needs" line kept).
 -- f: { id, title, accent, strip = function(tile, track) -> color, texColor; kerb, paving, pavingTex, band }
 local function floorKit(f: any)
 	local kit = workspace.Map.Lanes:FindFirstChild("Zone_" .. f.id)
 	assert(kit, "no floor kit for " .. f.id)
 	local z0 = math.huge
-	for _, c in kit:GetChildren() do
+	for _, c in kitItems(kit) do
 		if c:IsA("BasePart") and c.Name:sub(1, 5) == "Strip" then
 			z0 = math.min(z0, c.Position.Z - c.Size.Z / 2)
 		end
 	end
-	for _, c in kit:GetChildren() do
+	for _, c in kitItems(kit) do
 		local n = c.Name
 		if c:IsA("BasePart") then
 			local tex = c:FindFirstChildWhichIsA("Texture")
@@ -900,6 +986,7 @@ local _ = {
 	afloat,
 	sheetFall,
 	floorKit,
+	kitItems,
 	folder,
 	words,
 	sign,

@@ -31,8 +31,8 @@ local CREAM = Color3.fromRGB(255, 246, 222)
 local INK = Color3.fromRGB(24, 22, 44)
 local LANTERN = Color3.fromRGB(214, 44, 34)
 
-local PX = 115 -- the pillars' centres (x +-): just outside the lane's kerb (x 100..104; 175 before
--- the lane went from five tracks to three, 2026-11-22)
+local PX = 87 -- the pillars' centres (x +-): just outside the lane's kerb (x 72..76; 115 with three
+-- tracks, 175 with five)
 local NUKI_Y, SHIMAKI_Y, KASAGI_Y = 82, 100, 108.5
 local PILLAR_D = 16
 

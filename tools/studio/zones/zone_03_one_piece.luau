@@ -81,21 +81,10 @@ if DO_TERRAIN then
 		-- the harbour: the terrace's ground cut away, a sand bed and water up to the surface
 		local a, b =
 			math.min(s * QUAY, s * (P.TERRACE_OUT + 1)), math.max(s * QUAY, s * (P.TERRACE_OUT + 1))
-		workspace.Terrain:FillBlock(
-			CFrame.new((a + b) / 2, LY - 4, (HARBOUR_Z0 + Z1) / 2),
-			Vector3.new(b - a, 40, Z1 - HARBOUR_Z0),
-			Enum.Material.Air
-		)
-		workspace.Terrain:FillBlock(
-			CFrame.new((a + b) / 2, LY - 17, (HARBOUR_Z0 + Z1) / 2),
-			Vector3.new(b - a, 6, Z1 - HARBOUR_Z0),
-			Enum.Material.Sand
-		)
-		workspace.Terrain:FillBlock(
-			CFrame.new((a + b) / 2, (LY - 14 + SURFACE) / 2, (HARBOUR_Z0 + Z1) / 2),
-			Vector3.new(b - a, SURFACE - LY + 14, Z1 - HARBOUR_Z0),
-			Enum.Material.Water
-		)
+		-- through side_lib's fill: it moves the x to the two-track lane
+		fill(a, b, LY - 24, LY + 16, HARBOUR_Z0, Z1, Enum.Material.Air)
+		fill(a, b, LY - 20, LY - 14, HARBOUR_Z0, Z1, Enum.Material.Sand)
+		fill(a, b, LY - 14, SURFACE, HARBOUR_Z0, Z1, Enum.Material.Water)
 	end
 end
 claimGates(Z0, Z1)

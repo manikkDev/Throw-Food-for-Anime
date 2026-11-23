@@ -137,7 +137,7 @@ local function buildPlot(cfg: any, folder: Instance, index: number)
 		Color3.fromRGB(255, 220, 60)
 	)
 	pad.Material = Enum.Material.Neon
-	label(pad, "Hint", "THROW PAD", 7, 8)
+	label(pad, "Hint", "THROW SPOT", 7, 8) -- the fallback has no stage: a plain spot where it stands
 
 	-- the training stations (a mat with the Train prompt, and the target) on their two courts
 	for i, row in Config.Training.Stations do

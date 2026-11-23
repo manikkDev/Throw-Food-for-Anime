@@ -543,7 +543,7 @@ for _, z in { 590, 680, 770, 850 } do
 end
 
 -- ---------------------------------------------------------------------------------- floor and gate
-for _, c in map.Lanes["Zone_" .. ID]:GetChildren() do
+for _, c in kitItems(map.Lanes["Zone_" .. ID]) do
 	local n = c.Name
 	if c:IsA("BasePart") then
 		if n:sub(1, 5) == "Strip" then
