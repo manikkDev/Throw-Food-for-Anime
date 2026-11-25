@@ -193,6 +193,10 @@
   "SkillHunter": {
    "custom": "tools/studio/auras/build_skill_hunter.luau",
    "tier": "D"
+  },
+  "DemonsExtract": {
+   "custom": "tools/studio/auras/build_demons_extract.luau",
+   "tier": "C"
   }
  },
  "by_rarity": {
@@ -264,7 +268,8 @@
   "void_empress": "Hogyoku",
   "lucky_cat_mascot": "BloodBubble",
   "sakura_shogun": "SunHalo",
-  "spider_thief_boss": "SkillHunter"
+  "spider_thief_boss": "SkillHunter",
+  "ice_general": "DemonsExtract"
  },
  "budget": {
   "_note": "runtime (src/client/Fx/HeroAura.luau via Fx/Vfx): nearest heroes first; an aura beyond the range or the count is not built at all",

@@ -9,6 +9,7 @@ roblox-vfx skill's authoring route: own textures, its own Studio builder, judged
 | `StarPlatinum` | Jotaro Kujo (`star_delinquent`) | `tools/auras/star_platinum/make_tex.py` -> `assets/auras/star_platinum/` (`upload.py`) | `tools/studio/auras/build_star_platinum.luau` |
 | `Hogyoku` | Sosuke Aizen (`void_empress`, Premium) | `tools/auras/hogyoku/make_tex.py` -> `assets/auras/hogyoku/` (`upload.py`) | `tools/studio/auras/build_hogyoku.luau` |
 | `SkillHunter` | Chrollo Lucilfer (`spider_thief_boss`, Legendary) | `tools/auras/skill_hunter/make_tex.py` -> `assets/auras/skill_hunter/` (`upload.py`) | `tools/studio/auras/build_skill_hunter.luau` (assembled by hand from build_hogyoku's scaffolding) |
+| `DemonsExtract` | Esdeath (`ice_general`, Epic) | `tools/auras/demons_extract/make_tex.py` -> `assets/auras/demons_extract/` (`upload.py`) | `tools/studio/auras/build_demons_extract.luau` (assembled from build_hogyoku's scaffolding) |
 
 ## Pipeline (one aura)
 
@@ -78,3 +79,15 @@ lines born inside him, drawn behind; a low charcoal mist) · cold white light. A
 Lessons: pages round the whole body crowded his face: emit props from volumes beside a hero. A capture helper that
 hides a stand's sign must skip billboards inside the hero model (it hid the grimoire, which looked like a broken
 texture).
+
+## DemonsExtract layers (Esdeath, Epic tier C; Akame ga Kill!: her Teigu makes ice out of thin air)
+
+HOARFROST (ground seal: frost ferns in six-fold symmetry round an ice crest; a ring of outward ice crystals spreads
+across the ground every ~3.5 s) · ERUPTIONS (eight points
+round her, none in front: an ice cluster bursts up, glints, cracks and shatters, a 16-frame one-shot with its base at
+0.94 of the frame; each point has its own rate so they roll round her) · HAGELSPRUNG (ice shards falling, point
+first) · SNOW (three snowflake designs, diamond dust) · COLD (pale blue ground mist, cyan light). About 72 live
+particles (cap 200).
+
+Lessons: ice reads on the dark floor by itself (bright cyan/white), unlike dark auras. v1 had a glacier crown of ice spires
+behind her: removed (owner).

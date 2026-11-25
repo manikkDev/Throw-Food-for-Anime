@@ -37,7 +37,7 @@ local Auras: {
 			ghost_of_the_clan = "NightWings",
 			golden_vampire = "SaiyanGold",
 			heart_surgeon = "SlimeStorm",
-			ice_general = "InfinityBlue",
+			ice_general = "DemonsExtract",
 			instinct_warrior = "SunHalo",
 			lightning_assassin = "ElectricBlue",
 			lightning_avenger = "VioletWisp",
