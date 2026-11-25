@@ -8,6 +8,7 @@ roblox-vfx skill's authoring route: own textures, its own Studio builder, judged
 |---|---|---|---|
 | `StarPlatinum` | Jotaro Kujo (`star_delinquent`) | `tools/auras/star_platinum/make_tex.py` -> `assets/auras/star_platinum/` (`upload.py`) | `tools/studio/auras/build_star_platinum.luau` |
 | `Hogyoku` | Sosuke Aizen (`void_empress`, Premium) | `tools/auras/hogyoku/make_tex.py` -> `assets/auras/hogyoku/` (`upload.py`) | `tools/studio/auras/build_hogyoku.luau` |
+| `SkillHunter` | Chrollo Lucilfer (`spider_thief_boss`, Legendary) | `tools/auras/skill_hunter/make_tex.py` -> `assets/auras/skill_hunter/` (`upload.py`) | `tools/studio/auras/build_skill_hunter.luau` (assembled by hand from build_hogyoku's scaffolding) |
 
 ## Pipeline (one aura)
 
@@ -60,3 +61,20 @@ Lessons: streaks emitted under the hero blew out his whole lower half (and hid t
 round him, never in front. v1-v2 had butterfly wings (the fusion's form): the owner wanted something of Aizen's
 own, not a butterfly. A halo must carry its own light: black blades and a night-sky mirror vanished against the
 yard's dark floor (the camera looks down at a hero), and at 8.8 studs it hid behind his coat and the pillars: 12.6.
+
+## SkillHunter layers (Chrollo, Legendary tier D; Hunter x Hunter: the Phantom Troupe's leader, Skill Hunter)
+
+BANDIT'S SECRET (his grimoire as a 2.3-stud self-lit billboard on RightHand, held up at chest height: dark leather,
+gold corners, the crimson handprint, a glyph page; a cold glow and Nen motes off the pages; v1-v2 turned a page over
+it every second: removed, owner) · STOLEN PAGES (torn pages with the handprint and an
+ability's mark: Sun and Moon, Black Voice's antenna, the order stamp; drifting in two volumes BESIDE him, never in
+front) · WEB (a 10.6-stud silver web behind him, TWELVE spokes = the twelve Spiders; MOVEMENT that also shows on the
+edit-mode yard: a beam per spoke scrolling an upright pulse tile, so cold light runs out along the threads at twelve
+speeds, dew winking on and off, a slow glow breathing behind; turns slowly in game) · SIGIL (the Troupe's twelve-legged
+spider in a real top view, FACING FRONT (a Top-face image's top lies toward +Z: the disc is turned half round), no
+spin, four inverted crosses, 幻影旅団 / 盗賊の極意) · GYO (thin cold aura
+lines born inside him, drawn behind; a low charcoal mist) · cold white light. About 50 live particles (cap 260).
+
+Lessons: pages round the whole body crowded his face: emit props from volumes beside a hero. A capture helper that
+hides a stand's sign must skip billboards inside the hero model (it hid the grimoire, which looked like a broken
+texture).

@@ -189,6 +189,10 @@
   "Hogyoku": {
    "custom": "tools/studio/auras/build_hogyoku.luau",
    "tier": "E"
+  },
+  "SkillHunter": {
+   "custom": "tools/studio/auras/build_skill_hunter.luau",
+   "tier": "D"
   }
  },
  "by_rarity": {
@@ -259,7 +263,8 @@
   "angel_commander": "TitanBolt",
   "void_empress": "Hogyoku",
   "lucky_cat_mascot": "BloodBubble",
-  "sakura_shogun": "SunHalo"
+  "sakura_shogun": "SunHalo",
+  "spider_thief_boss": "SkillHunter"
  },
  "budget": {
   "_note": "runtime (src/client/Fx/HeroAura.luau via Fx/Vfx): nearest heroes first; an aura beyond the range or the count is not built at all",
