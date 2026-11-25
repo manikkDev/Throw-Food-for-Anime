@@ -181,6 +181,14 @@
   "TorsoBlaze": {
    "source": "Torso",
    "tier": "B"
+  },
+  "StarPlatinum": {
+   "custom": "tools/studio/auras/build_star_platinum.luau",
+   "tier": "C"
+  },
+  "Hogyoku": {
+   "custom": "tools/studio/auras/build_hogyoku.luau",
+   "tier": "E"
   }
  },
  "by_rarity": {
@@ -236,7 +244,7 @@
   "sorcerer_hunter": "InkShadow",
   "classroom_mastermind": "SilverLightning",
   "red_haired_emperor": "FieryRitual",
-  "star_delinquent": "UltraInstinct",
+  "star_delinquent": "StarPlatinum",
   "ghost_of_the_clan": "NightWings",
   "demon_progenitor": "BloodMoon",
   "black_swordsman": "ShadowMonarch",
@@ -249,7 +257,7 @@
   "phantom_thief": "CrimsonFlame",
   "demon_lord_heir": "CrimsonSigil",
   "angel_commander": "TitanBolt",
-  "void_empress": "ChromaticVoid",
+  "void_empress": "Hogyoku",
   "lucky_cat_mascot": "BloodBubble",
   "sakura_shogun": "SunHalo"
  },

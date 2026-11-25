@@ -99,6 +99,9 @@ def render(spec: dict, game: dict) -> str:
 def build_script(spec: dict) -> str:
     rows = []
     for key, row in sorted(spec["templates"].items()):
+        if "custom" in row:
+            # hand-authored aura (own textures): built by its own Studio script, row["custom"]
+            continue
         tier = spec["tiers"][row["tier"]]
         size = row.get("size", tier.get("size", 6))
         reach = row.get("reach", tier.get("reach", 6))

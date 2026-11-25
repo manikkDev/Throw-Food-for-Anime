@@ -98,7 +98,10 @@ Joestar, Diavolo, Dio Brando, Jotaro Joestar. Roster is now 43 (7 per zone, plus
   Jotaro. Kept (the custom head IS the face): Sung Jinwoo, Eren Yeager, Eren Titan. Checked in four
   close-up pictures: `final/batch2_*.jpg`, one face each, no dots.
 - Jotaro's saved outfit carries one item the import did not show (his stand figure on the shoulder,
-  8 accessories against 7). Kept, like Kakashi's and Light Yagami's extras in batch 1.
+  8 accessories against 7). REMOVED 2026-11-25 (owner: no stands in the game): moved out of his R15_Final rig and
+  his template to `ServerStorage.CharacterSources.RemovedStands` (never delete). Josuke's (`pompadour_guardian`)
+  Crazy Diamond went the same way (rig "Josuke (R15)" + template), and both were taken off the ZoneLab display. NO
+  STANDS on any hero: the copies left in the archives (Originals_Batch4, R15_Prev, R15_PrevLayered) are not used.
 - Three rigs have one layered-clothing item (Sung Jinwoo's coat, Cid, Jotaro); the bake keeps their
   WrapTargets.
 - Archive: the finished rigs are in `ServerStorage.CharacterSources.R15_Final` (43); the owner's 12
