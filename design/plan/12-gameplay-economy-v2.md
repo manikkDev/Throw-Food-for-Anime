@@ -612,3 +612,8 @@ branch are removed. `tools/gen_auras.py` rerun in main (155 heroes with an aura)
   animation; nothing was listened to.
 - Still in the place, flagged and not removed: the free-model Tool "IQ 1 Gazillion" in Workspace runs scripts
   at server start (prints "IQ 1 Gazillion was been summon!" and errors on a bad Font) and would ship.
+
+**Snapshot (2026-11-26), on the owner's sign-off ("Remove IQ tool, snapshot").** The free-model Tool
+"IQ 1 Gazillion" (197 parts, 7 scripts: music, a weld, a rainbow, a name label; no require, loadstring or
+HTTP) was deleted from Workspace; Workspace now holds no scripts. Gates green, commit 637aa02, tag
+`economy-v2`, place version 903 ("Economy v2 approved (git economy-v2)"). Not pushed, not published.

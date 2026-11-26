@@ -54,6 +54,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
    Roll back: `git checkout section-<N>` + Creator Hub > place > Version History > restore that version.
    Baseline: tag `setup-baseline` = place version 6. Tag `section-1` = place version 34.
    Tag `section-2` = place version 57. Tag `section-3` = place version 121. Tag `section-4` = place version 271. Tag `section-5` = place version 284. Tag `section-6` = place version 284 too (published, private; section 6 changed no place content).
+   Tag `economy-v2` = place version 903 (plan 12 phases A to F, owner-approved 2026-11-26; NOT published).
 
 ## Where the game's pieces live (since section 2)
 
@@ -314,8 +315,8 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `tools/studio/zone_gate_plaques.luau` (rerun after a gate's Power moves); the SEAL on a closed zone is a
   client-local clone of `ReplicatedStorage.Assets.World.ZoneSeal` (`tools/studio/zone_seal.luau`,
   `Controllers/SealController`), never part of the map. Index zone pictures: `tools/ui/zone_shots.py`.
-  Phases A to F are in main (F = the playtest through all ten rebirths, log in section 15), uncommitted, the place
-  unsaved; only the snapshot is left, on the owner's sign-off. Phones are landscape-only (`init.client.luau` +
+  Phases A to F are done (F = the playtest through all ten rebirths, log in section 15) and snapshotted: git tag
+  `economy-v2` = place version 903. Not published: that needs the owner's word (and Game Settings max players 5). Phones are landscape-only (`init.client.luau` +
   `StarterGui.ScreenOrientation` LandscapeSensor). On the stage the HUD is hidden: anything the player must know
   there goes through a toast from ThrowController (`_sealHint` is the example), and a toast holds ~48 characters.
 - Driving a playtest over MCP: move the character on the SERVER datamodel (a client-side teleport does not
