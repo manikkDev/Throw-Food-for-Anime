@@ -22,6 +22,12 @@
     "sheep_feast": {"size": 2.9, "throw": "heave", "look": "silver platter piled with roast chicken, pancakes, sausages, cheese, fruit and cotton-ball cream puffs"},
     "choco_robot": {"size": 2.2, "throw": "pitch", "look": "yellow and red candy box with a toy robot face, chocolate balls spilling out"},
     "exam_sushi": {"size": 2.7, "throw": "heave", "look": "wooden sushi board with four nigiri (salmon, tuna, shrimp, egg), wasabi and ginger"},
-    "boar_roast": {"size": 2.9, "throw": "heave", "look": "whole golden roast pig on a wooden platter, apple in its mouth, lettuce around"}
+    "boar_roast": {"size": 2.9, "throw": "heave", "look": "whole golden roast pig on a wooden platter, apple in its mouth, lettuce around"},
+    "isekai_apple": {"size": 2.0, "throw": "pitch", "look": "big shiny red apple with a leaf, a wedge cut out, golden sparkles"},
+    "flying_cabbage": {"size": 2.7, "throw": "heave", "look": "wok of cabbage stir-fry with a small winged cabbage on top"},
+    "floor_boss_stew": {"size": 2.5, "throw": "heave", "look": "iron pot of brown stew with meat and vegetables, a ladle, blue crystal trim"},
+    "steamed_potato": {"size": 2.1, "throw": "pitch", "look": "golden baked potato cut open, fluffy yellow inside, butter and chives"},
+    "scout_bread": {"size": 2.3, "throw": "pitch", "look": "tall crusty loaf with score cuts, tied with a green cloth bow"},
+    "officers_ham": {"size": 2.7, "throw": "heave", "look": "glazed ham joint scored in diamonds on a wooden board, slices fanned out, string tied"}
   }
 }

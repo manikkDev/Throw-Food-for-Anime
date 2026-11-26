@@ -20,6 +20,12 @@
   "Food_exam_sushi": 115307039298948,
   "Food_sheep_feast": 82664309261521,
   "Food_tatoes": 82987367338876,
+  "Food_floor_boss_stew": 92740853345696,
+  "Food_flying_cabbage": 128361915679952,
+  "Food_isekai_apple": 108021781217914,
+  "Food_officers_ham": 135732232245740,
+  "Food_scout_bread": 115037124089174,
+  "Food_steamed_potato": 84579674384938,
   "_hashes": {
     "Food_flame_bento": "0c49ffc7c8d39098",
     "Food_legend_ramen": "f8252f0e70088999",
@@ -41,6 +47,12 @@
     "Food_clover_cake": "f155810f53799df1",
     "Food_exam_sushi": "a99de4740e2854fb",
     "Food_sheep_feast": "503d7e7102287167",
-    "Food_tatoes": "365478cb8878d23f"
+    "Food_tatoes": "365478cb8878d23f",
+    "Food_floor_boss_stew": "7ddabaa43e0daeda",
+    "Food_flying_cabbage": "e40461ca04f8abdb",
+    "Food_isekai_apple": "c0ebb4160da6a995",
+    "Food_officers_ham": "a46cb2695c4e056c",
+    "Food_scout_bread": "1581ce59e83ee7b8",
+    "Food_steamed_potato": "17a2a7ec0cedeb97"
   }
 }
