@@ -809,6 +809,25 @@ local function build(state: any, run: (command: string, arg: any) -> (), tools: 
 		button(rebirthRow, "REBIRTH NOW", Color3.fromRGB(168, 85, 247), function()
 			fire("ProgressAction", "rebirth")
 		end, { Size = UDim2.fromOffset(180, 44) })
+		button(rebirthRow, "Ready + rebirth", Make.BUY, function()
+			send("rebirthnow", nil)
+		end, { Size = UDim2.fromOffset(180, 44) })
+		heading(
+			p,
+			"Reach a zone",
+			7,
+			"Gives the Power to throw into that zone. A sealed zone needs its rebirth first."
+		)
+		local reachRow = flow(p, 8)
+		for i in (Config :: any).Zones do
+			button(reachRow, `{i}`, Make.PANEL, function()
+				send("zone", i)
+			end, {
+				LayoutOrder = i,
+				Size = UDim2.fromOffset(48, 40),
+				AutomaticSize = Enum.AutomaticSize.None,
+			})
+		end
 	end
 
 	-- -------------------------------------------------------- Events --

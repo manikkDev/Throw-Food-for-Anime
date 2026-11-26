@@ -144,11 +144,19 @@ function WorldUiController:_paintSign()
 	if not made or not state then
 		return
 	end
-	local cost = Progress.nextSlotCost(Config, state.slots - (state.bonusSlots or 0))
+	local bonus = state.bonusSlots or 0
+	local cost = Progress.nextSlotCost(Config, state.slots, bonus)
+	-- the next slot opens with a zone: until then the sign names the zone, not a price
+	local lock = Progress.lock(
+		{ Zone = Progress.nextSlotZone(Config, state.slots, bonus) },
+		state.bestZone or 1,
+		state.rebirth or 0
+	)
 	for _, gui in made.guis do
-		Screens.label(gui, "FromTo").Text = if cost
-			then `SLOT {state.slots} -> {state.slots + 1}`
-			else `ALL {state.slots} SLOTS OPEN`
+		Screens.label(gui, "FromTo").Text = if not cost
+			then `ALL {state.slots} SLOTS OPEN`
+			elseif lock and lock.zone then `REACH {Config.Zones[lock.zone].Name:upper()}`
+			else `SLOT {state.slots} -> {state.slots + 1}`
 		Screens.label(gui, "Price").Text = if cost then Format.short(cost) else "MAX"
 		Screens.label(gui, "BuyPrompt").Text = if not cost
 			then ""

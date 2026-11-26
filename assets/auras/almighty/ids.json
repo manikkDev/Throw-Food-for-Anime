@@ -1,0 +1,12 @@
+{
+ "_what": "Open Cloud Image ids of tools/auras/almighty/make_tex.py's textures (uploaded 2026-11-25); glint/glow are ButterflyDance's; cloak_model is the uploaded FBX (Model), cloak_mesh the MeshId inside it (ServerStorage.AuraSources.TheAlmighty.Cloak)",
+ "eye_a_4x4": 132759754108958,
+ "eye_b_4x4": 92647888339199,
+ "ink_4x4": 138449614819949,
+ "tongue_4x4": 126502278128211,
+ "pool": 119586224102134,
+ "cloak_model": 92421412223123,
+ "cloak_mesh": 90879600800484,
+ "cloak_tex": 74478118536275,
+ "strand_4x4": 99549266272852
+}

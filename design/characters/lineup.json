@@ -1,0 +1,923 @@
+{
+ "_what": "Gameplay lineup (plan 12): each thrown hero's zone (1..17) and rarity, and the premium heroes. Edit here, then run tools/gen_characters.py. Seeded from HERO_LIST_BY_RARITY.md on 2026-11-26 with the owner's two moves (Goku -> Starter Pack, Power -> zone 10 Legendary).",
+ "lane": [
+  {
+   "Id": "bowl_cut_brawler",
+   "Zone": 1,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "fox_ninja",
+   "Zone": 1,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "lightning_avenger",
+   "Zone": 1,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "pale_eyed_princess",
+   "Zone": 1,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "copy_ninja",
+   "Zone": 1,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "next_gen_ninja",
+   "Zone": 1,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "sand_guardian",
+   "Zone": 1,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "crow_illusionist",
+   "Zone": 1,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "toad_sage",
+   "Zone": 1,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "yellow_flash",
+   "Zone": 1,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "masked_phantom",
+   "Zone": 1,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "rain_god",
+   "Zone": 1,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "ghost_of_the_clan",
+   "Zone": 1,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "boar_mask_brawler",
+   "Zone": 2,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "sun_breather",
+   "Zone": 2,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "bamboo_demon_girl",
+   "Zone": 2,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "thunder_sleeper",
+   "Zone": 2,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "flame_pillar",
+   "Zone": 2,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "tide_swordsman",
+   "Zone": 2,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "butterfly_swordswoman",
+   "Zone": 2,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "crystal_cult_leader",
+   "Zone": 2,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "flashy_shinobi",
+   "Zone": 2,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "crimson_fist_demon",
+   "Zone": 2,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "six_eyed_moon",
+   "Zone": 2,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "demon_progenitor",
+   "Zone": 2,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "straw_hat_rookie",
+   "Zone": 3,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "weather_navigator",
+   "Zone": 3,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "black_leg_cook",
+   "Zone": 3,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "long_nose_sniper",
+   "Zone": 3,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "heart_surgeon",
+   "Zone": 3,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "serpent_empress",
+   "Zone": 3,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "three_sword_hunter",
+   "Zone": 3,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "blazing_pirate",
+   "Zone": 3,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "hawkeye_swordsman",
+   "Zone": 3,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "shadow_pirate_captain",
+   "Zone": 3,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "string_king",
+   "Zone": 3,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "beast_emperor",
+   "Zone": 3,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "quake_captain",
+   "Zone": 3,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "red_haired_emperor",
+   "Zone": 3,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "sun_god_captain",
+   "Zone": 3,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "emerald_hero",
+   "Zone": 4,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "zero_gravity_girl",
+   "Zone": 4,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "blood_stalker_girl",
+   "Zone": 4,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "blue_flame_villain",
+   "Zone": 4,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "frostflame_hero",
+   "Zone": 4,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "blast_prodigy",
+   "Zone": 4,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "crimson_wing_hero",
+   "Zone": 4,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "decay_villain",
+   "Zone": 4,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "inferno_hero",
+   "Zone": 4,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "golden_age_hero",
+   "Zone": 4,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "chameleon_playmaker",
+   "Zone": 5,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "egoist_striker",
+   "Zone": 5,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "dribble_monster",
+   "Zone": 5,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "lightning_winger",
+   "Zone": 5,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "king_striker",
+   "Zone": 5,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "lazy_genius_striker",
+   "Zone": 5,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "cold_prodigy_winger",
+   "Zone": 5,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "midfield_genius",
+   "Zone": 5,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "emperor_striker",
+   "Zone": 5,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "number_one_striker",
+   "Zone": 5,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "anti_magic_knight",
+   "Zone": 6,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "smiling_thunder",
+   "Zone": 6,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "water_princess",
+   "Zone": 6,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "curse_chain_brawler",
+   "Zone": 6,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "wind_prodigy",
+   "Zone": 6,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "crimson_lioness",
+   "Zone": 6,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "demon_union_knight",
+   "Zone": 6,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "dark_slash_captain",
+   "Zone": 6,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "devil_knight",
+   "Zone": 6,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "time_wizard_king",
+   "Zone": 6,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "rod_fisher_boy",
+   "Zone": 7,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "suit_and_briefcase_doc",
+   "Zone": 7,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "lightning_assassin",
+   "Zone": 7,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "chain_avenger",
+   "Zone": 7,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "card_magician",
+   "Zone": 7,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "needle_assassin",
+   "Zone": 7,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "prayer_master",
+   "Zone": 7,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "spider_thief_boss",
+   "Zone": 7,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "ant_monarch",
+   "Zone": 7,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "return_runner",
+   "Zone": 8,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "telepath_girl",
+   "Zone": 8,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "master_spy_dad",
+   "Zone": 8,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "dual_blade_gamer",
+   "Zone": 8,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "first_emperor",
+   "Zone": 8,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "dragon_sin",
+   "Zone": 8,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "ice_general",
+   "Zone": 8,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "noon_lion",
+   "Zone": 8,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "slime_lord",
+   "Zone": 8,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "colossus_strategist",
+   "Zone": 9,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "freedom_seeker",
+   "Zone": 9,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "commander_tactician",
+   "Zone": 9,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "scarf_blade_soldier",
+   "Zone": 9,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "beast_giant_prince",
+   "Zone": 9,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "blade_captain",
+   "Zone": 9,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "armored_giant",
+   "Zone": 9,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "attack_giant",
+   "Zone": 9,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "panicking_rookie",
+   "Zone": 10,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "chainsaw_kid",
+   "Zone": 10,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "contract_hunter",
+   "Zone": 10,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "bomb_girl",
+   "Zone": 10,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "lucky_cat_mascot",
+   "Zone": 10,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "one_eyed_instructor",
+   "Zone": 10,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "gentleman_hero",
+   "Zone": 11,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "pompadour_guardian",
+   "Zone": 11,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "ripple_trickster",
+   "Zone": 11,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "gravity_priest",
+   "Zone": 11,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "crimson_boss",
+   "Zone": 11,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "quiet_bomber",
+   "Zone": 11,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "star_delinquent",
+   "Zone": 11,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "gold_gang_boss",
+   "Zone": 11,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "golden_vampire",
+   "Zone": 11,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "psychic_student",
+   "Zone": 12,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "viking_wanderer",
+   "Zone": 12,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "classroom_mastermind",
+   "Zone": 12,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "apple_reaper",
+   "Zone": 12,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "notebook_mastermind",
+   "Zone": 12,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "rebel_emperor",
+   "Zone": 12,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "black_swordsman",
+   "Zone": 12,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "shadow_mastermind",
+   "Zone": 12,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "tyrant_demon_lord",
+   "Zone": 12,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "bicycle_hero",
+   "Zone": 13,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "ninja_speedster",
+   "Zone": 13,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "strongest_bluffer",
+   "Zone": 13,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "cyborg_disciple",
+   "Zone": 13,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "silver_fist_master",
+   "Zone": 13,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "hero_hunter",
+   "Zone": 13,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "tornado_psychic",
+   "Zone": 13,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "alien_conqueror",
+   "Zone": 13,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "bald_cape_hero",
+   "Zone": 13,
+   "Rarity": "Secret"
+  },
+  {
+   "Id": "ice_blade_girl",
+   "Zone": 14,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "bucket_hat_shopkeeper",
+   "Zone": 14,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "flash_cat_goddess",
+   "Zone": 14,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "ice_dragon_captain",
+   "Zone": 14,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "substitute_reaper",
+   "Zone": 14,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "fox_smile_traitor",
+   "Zone": 14,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "panther_espada",
+   "Zone": 14,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "petal_noble",
+   "Zone": 14,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "battle_maniac_captain",
+   "Zone": 14,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "hollow_bat",
+   "Zone": 14,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "blood_war_king",
+   "Zone": 14,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "hunter_swordswoman",
+   "Zone": 15,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "goliath_hunter",
+   "Zone": 15,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "crimson_knight_shade",
+   "Zone": 15,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "ant_king_shade",
+   "Zone": 15,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "dragon_monarch",
+   "Zone": 15,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "shadow_monarch",
+   "Zone": 15,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "shadow_sovereign",
+   "Zone": 15,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "cursed_vessel",
+   "Zone": 16,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "cursed_tool_fighter",
+   "Zone": 16,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "hammer_and_nails_girl",
+   "Zone": 16,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "clap_brother",
+   "Zone": 16,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "shadow_summoner",
+   "Zone": 16,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "speed_heir",
+   "Zone": 16,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "lightning_duelist",
+   "Zone": 16,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "special_grade_rookie",
+   "Zone": 16,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "curse_manipulator",
+   "Zone": 16,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "sorcerer_hunter",
+   "Zone": 16,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "wheel_guardian",
+   "Zone": 16,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "curse_king",
+   "Zone": 16,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "limitless_teacher",
+   "Zone": 16,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "sword_time_prince",
+   "Zone": 17,
+   "Rarity": "Common"
+  },
+  {
+   "Id": "green_mentor",
+   "Zone": 17,
+   "Rarity": "Uncommon"
+  },
+  {
+   "Id": "beast_scholar",
+   "Zone": 17,
+   "Rarity": "Rare"
+  },
+  {
+   "Id": "gray_pride_warrior",
+   "Zone": 17,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "pink_candy_monster",
+   "Zone": 17,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "proud_prince",
+   "Zone": 17,
+   "Rarity": "Epic"
+  },
+  {
+   "Id": "frost_tyrant",
+   "Zone": 17,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "legendary_berserker",
+   "Zone": 17,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "perfect_bio_android",
+   "Zone": 17,
+   "Rarity": "Legendary"
+  },
+  {
+   "Id": "destroyer_cat",
+   "Zone": 17,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "rose_dark_fighter",
+   "Zone": 17,
+   "Rarity": "Mythic"
+  },
+  {
+   "Id": "staff_angel_mentor",
+   "Zone": 17,
+   "Rarity": "Secret"
+  }
+ ],
+ "premium": [
+  {
+   "Id": "starlight_idol",
+   "Zone": 8,
+   "Source": "Summon",
+   "BestIncomeMult": 1.1,
+   "OddsPercent": 40
+  },
+  {
+   "Id": "clockwork_butler",
+   "Zone": 12,
+   "Source": "Summon",
+   "BestIncomeMult": 1.75,
+   "OddsPercent": 27
+  },
+  {
+   "Id": "phantom_thief",
+   "Zone": 12,
+   "Source": "Summon",
+   "BestIncomeMult": 2.5,
+   "OddsPercent": 18
+  },
+  {
+   "Id": "demon_lord_heir",
+   "Zone": 10,
+   "Source": "Summon",
+   "BestIncomeMult": 3.5,
+   "OddsPercent": 10
+  },
+  {
+   "Id": "angel_commander",
+   "Zone": 8,
+   "Source": "Summon",
+   "BestIncomeMult": 5.5,
+   "OddsPercent": 4
+  },
+  {
+   "Id": "void_empress",
+   "Zone": 14,
+   "Source": "Summon",
+   "BestIncomeMult": 12.0,
+   "OddsPercent": 1
+  },
+  {
+   "Id": "instinct_warrior",
+   "Zone": 17,
+   "Source": "StarterPack",
+   "BestIncomeMult": 1.5,
+   "OddsPercent": 0
+  },
+  {
+   "Id": "sakura_shogun",
+   "Zone": 2,
+   "Source": "Limited",
+   "BestIncomeMult": 3.0,
+   "OddsPercent": 0
+  }
+ ]
+}

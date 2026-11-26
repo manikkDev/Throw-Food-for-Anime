@@ -4,9 +4,11 @@
 -- lands in, the luck, the roll, and the grant.
 --
 -- What the server trusts from the client: the charge value, inside
--- [MinCharge, 1]. A cheater can therefore always send a perfect charge, which
--- is worth PerfectLuckBonus and nothing more. Everything of value (zone,
--- rarity, mutation, size, placement) is computed here.
+-- [MinCharge, 1], and the zone the player AIMS at. A cheater can therefore
+-- always send a perfect charge, which is worth PerfectLuckBonus and the full
+-- depth and nothing more; an aim past the player's reach is the reach.
+-- Everything of value (zone, rarity, mutation, size, placement) is computed
+-- here.
 
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
@@ -17,6 +19,7 @@ local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Luck = require(ReplicatedStorage.Shared.Core.Luck)
+local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Roll = require(ReplicatedStorage.Shared.Core.Roll)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local World = require(ReplicatedStorage.Shared.Core.World)
@@ -80,14 +83,20 @@ function ThrowService:_firstCatch(zoneCharacters: { any }, luck: number): Roll.R
 				pHero = row.chance,
 				pMutation = 1,
 				pSize = 1,
-				oneInN = 1 / math.max(row.chance, 1e-9),
+				oneInN = Roll.score(Config, MAPS, zoneCharacters, row.rarity, nil, nil),
 			}
 		end
 	end
 	return nil
 end
 
-function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown, auto: unknown)
+function ThrowService:_handle(
+	player: Player,
+	charge: unknown,
+	lucky: unknown,
+	auto: unknown,
+	aim: unknown
+)
 	local profile = self._data:Get(player)
 	local index = self._plots:IndexOf(player)
 	if not profile or not index then
@@ -118,17 +127,31 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown, a
 	self._training:Stop(player)
 
 	local useLucky = lucky == true and profile.luckyThrows > 0
-	local eff = Throw.effectivePower(profile.power, food.PowerMult, charge :: number)
-	local zoneIndex = Throw.zoneIndex(Config.Zones, eff)
+	-- the aim is remembered; 0 (or anything that is not a zone) = as far as the Power reaches
+	if typeof(aim) == "number" and aim == aim and aim >= 0 and aim <= #Config.Zones then
+		profile.aim = math.floor(aim :: number)
+	end
+	local full = profile.power * food.PowerMult
+	Progress.touch(profile, Throw.reach(Config.Zones, full, profile.rebirth))
+	local zoneIndex, depth = Throw.landing(
+		T,
+		Config.Zones,
+		full,
+		profile.rebirth,
+		if profile.aim > 0 then profile.aim else nil,
+		charge :: number
+	)
 	local zone = Config.Zones[zoneIndex]
-	local depth = Throw.depth(Config.Zones, zoneIndex, eff)
 	local perfect = Throw.isPerfect(T, charge :: number)
+	-- a Lucky Throw is never below its floor rarity
+	local floor: string? = if useLucky then T.LuckyFloor else nil
 
 	local sources = self._state:LuckSources(player)
 	sources.foodLuck = food.Luck
 	sources.depth = depth
 	sources.perfect = perfect
 	sources.luckyThrow = useLucky
+	sources.dry = profile.dry
 	local luck = Luck.total(Config, sources)
 
 	local zoneCharacters = MAPS.zoneCharacters[zone.Id]
@@ -138,9 +161,9 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown, a
 		result = self:_firstCatch(MAPS.zoneCharacters[Config.Zones[1].Id], luck)
 	end
 	if not result then
-		result = Roll.throw(Config, zoneCharacters, luck, food.Flavor, function(): number
+		result = Roll.throw(Config, MAPS, zoneCharacters, luck, food.Flavor, function(): number
 			return self._random:NextNumber()
-		end, self._events:MutationMult())
+		end, self._events:MutationMult(), floor)
 		-- Studio test (AdminService "nextrarity"): re-roll until the forced rarity comes up
 		local forced = self._forced[player]
 		if forced then
@@ -152,13 +175,15 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown, a
 				end
 				result = Roll.throw(
 					Config,
+					MAPS,
 					zoneCharacters,
-					luck * 50,
+					Config.Luck.Max,
 					food.Flavor,
 					function(): number
 						return self._random:NextNumber()
 					end,
-					self._events:MutationMult()
+					self._events:MutationMult(),
+					forced.rarity
 				)
 			end
 		end
@@ -174,8 +199,20 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown, a
 			roll.size = if forcedLook.size == "none" then nil else forcedLook.size
 		end
 	end
+	if forcedLook then
+		-- a forced look changes the catch: its score is what it now is
+		roll.oneInN =
+			Roll.score(Config, MAPS, zoneCharacters, roll.rarity, roll.mutation, roll.size)
+	end
 	if useLucky then
 		profile.luckyThrows -= 1
+	end
+	-- the dry streak: every throw without the reset rarity (or better) adds a little luck
+	local resetOrder = Config.Rarities[T.DryStreakResetRarity].Order
+	if Config.Rarities[roll.rarity].Order >= resetOrder then
+		profile.dry = 0
+	else
+		profile.dry += 1
 	end
 
 	local flight = Throw.flightSeconds(T, zoneIndex, #Config.Zones)
@@ -215,6 +252,10 @@ function ThrowService:_handle(player: Player, charge: unknown, lucky: unknown, a
 		mut = roll.mutation,
 		size = roll.size,
 		oneInN = roll.oneInN,
+		stamp = Roll.stamp(Config, roll.oneInN),
+		depth = depth,
+		-- the Power would carry past the sealed gate: time to offer the rebirth
+		sealed = Throw.atSeal(Config.Zones, full, profile.rebirth),
 		luck = luck,
 		perfect = perfect,
 		lucky = useLucky,
@@ -388,11 +429,11 @@ function ThrowService:KnitStart()
 	self._telemetry = Knit.GetService("TelemetryService")
 
 	self._request.OnServerEvent:Connect(
-		function(player: Player, charge: unknown, lucky: unknown, auto: unknown)
+		function(player: Player, charge: unknown, lucky: unknown, auto: unknown, aim: unknown)
 			if not Guard.allow(player, "ThrowRequest", 2, 3) then
 				return
 			end
-			self:_handle(player, charge, lucky, auto)
+			self:_handle(player, charge, lucky, auto, aim)
 		end
 	)
 	self._padRemote = Net.server("ThrowPad")

@@ -409,7 +409,7 @@
            "children": [
             {
              "type": "label",
-             "text": "Sakura Schoolyard",
+             "text": "Hidden Leaf Village",
              "size": [
               0,
               198,
@@ -444,10 +444,10 @@
                "type": "frame",
                "name": "Fill",
                "colour": [
-                "#FF8FC7",
-                "#DB7BAB"
+                "#FF9A3C",
+                "#DB8434"
                ],
-               "paint": "#FF8FC7",
+               "paint": "#FF9A3C",
                "children": [
                 {
                  "type": "sheen",
@@ -476,7 +476,7 @@
                 }
                ],
                "size": [
-                0.7777777777777778,
+                0.5384615384615384,
                 -6,
                 1,
                 -6
@@ -510,7 +510,7 @@
                "textStroke": 1.5,
                "name": "ZoneProgress",
                "samples": [
-                "7/9",
+                "7/13",
                 "8/8"
                ],
                "font": "display",
@@ -666,7 +666,7 @@
            "children": [
             {
              "type": "label",
-             "text": "Pirate Harbor",
+             "text": "Demon Slayer Corps",
              "size": [
               0,
               198,
@@ -701,10 +701,10 @@
                "type": "frame",
                "name": "Fill",
                "colour": [
-                "#3FA9F5",
-                "#3691D3"
+                "#5BD6B0",
+                "#4EB897"
                ],
-               "paint": "#3FA9F5",
+               "paint": "#5BD6B0",
                "children": [
                 {
                  "type": "sheen",
@@ -733,7 +733,7 @@
                 }
                ],
                "size": [
-                0.875,
+                0.5833333333333334,
                 -6,
                 1,
                 -6
@@ -767,7 +767,7 @@
                "textStroke": 1.5,
                "name": "ZoneProgress",
                "samples": [
-                "7/8",
+                "7/12",
                 "8/8"
                ],
                "font": "display",
@@ -923,7 +923,7 @@
            "children": [
             {
              "type": "label",
-             "text": "Ninja Village",
+             "text": "Grand Line",
              "size": [
               0,
               198,
@@ -958,10 +958,10 @@
                "type": "frame",
                "name": "Fill",
                "colour": [
-                "#5BD16E",
-                "#4EB45F"
+                "#3FB6FF",
+                "#369DDB"
                ],
-               "paint": "#5BD16E",
+               "paint": "#3FB6FF",
                "children": [
                 {
                  "type": "sheen",
@@ -990,7 +990,7 @@
                 }
                ],
                "size": [
-                0.625,
+                0.3333333333333333,
                 -6,
                 1,
                 -6
@@ -1024,7 +1024,7 @@
                "textStroke": 1.5,
                "name": "ZoneProgress",
                "samples": [
-                "5/8",
+                "5/15",
                 "8/8"
                ],
                "font": "display",
@@ -1180,7 +1180,7 @@
            "children": [
             {
              "type": "label",
-             "text": "Samurai Castle",
+             "text": "Hero Academy",
              "size": [
               0,
               198,
@@ -1215,10 +1215,10 @@
                "type": "frame",
                "name": "Fill",
                "colour": [
-                "#F25555",
-                "#D04949"
+                "#5BE38A",
+                "#4EC377"
                ],
-               "paint": "#F25555",
+               "paint": "#5BE38A",
                "children": [
                 {
                  "type": "sheen",
@@ -1247,7 +1247,7 @@
                 }
                ],
                "size": [
-                0.3333333333333333,
+                0.3,
                 -6,
                 1,
                 -6
@@ -1281,7 +1281,7 @@
                "textStroke": 1.5,
                "name": "ZoneProgress",
                "samples": [
-                "3/9",
+                "3/10",
                 "8/8"
                ],
                "font": "display",
@@ -1343,8 +1343,7 @@
            ],
            "z": 3,
            "overhang": true,
-           "visible": false,
-           "mockHide": true
+           "visible": false
           }
          ],
          "stroke": 3
@@ -1437,7 +1436,7 @@
            "children": [
             {
              "type": "label",
-             "text": "Hero City",
+             "text": "Blue Lock Facility",
              "size": [
               0,
               198,
@@ -1472,10 +1471,10 @@
                "type": "frame",
                "name": "Fill",
                "colour": [
-                "#A66CFF",
-                "#8F5DDB"
+                "#3D7BFF",
+                "#346ADB"
                ],
-               "paint": "#A66CFF",
+               "paint": "#3D7BFF",
                "children": [
                 {
                  "type": "sheen",
@@ -1504,7 +1503,7 @@
                 }
                ],
                "size": [
-                0.125,
+                0.1,
                 -6,
                 1,
                 -6
@@ -1538,7 +1537,7 @@
                "textStroke": 1.5,
                "name": "ZoneProgress",
                "samples": [
-                "1/8",
+                "1/10",
                 "8/8"
                ],
                "font": "display",
@@ -1600,8 +1599,7 @@
            ],
            "z": 3,
            "overhang": true,
-           "visible": false,
-           "mockHide": true
+           "visible": false
           }
          ],
          "stroke": 3
@@ -1694,7 +1692,7 @@
            "children": [
             {
              "type": "label",
-             "text": "Realm of Legends",
+             "text": "Clover Kingdom",
              "size": [
               0,
               198,
@@ -1729,10 +1727,1546 @@
                "type": "frame",
                "name": "Fill",
                "colour": [
-                "#FFD34D",
-                "#DBB542"
+                "#8BD94A",
+                "#78BB40"
                ],
-               "paint": "#FFD34D",
+               "paint": "#8BD94A",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.5,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "5/10",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab7",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "hunter_exam",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_hunter_exam",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Hunter Exam",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#FFB03C",
+                "#DB9734"
+               ],
+               "paint": "#FFB03C",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.7777777777777778,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "7/9",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab8",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "isekai_crossroads",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_isekai_crossroads",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Isekai Crossroads",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#C084FF",
+                "#A572DB"
+               ],
+               "paint": "#C084FF",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.7777777777777778,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "7/9",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab9",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "wall_maria",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_wall_maria",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Wall Maria",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#C9B28A",
+                "#AD9977"
+               ],
+               "paint": "#C9B28A",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.625,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "5/8",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab10",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "public_safety",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_public_safety",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Public Safety HQ",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#FF6A3C",
+                "#DB5B34"
+               ],
+               "paint": "#FF6A3C",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.5,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "3/6",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab11",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "bizarre_streets",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_bizarre_streets",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Bizarre Streets",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#FFD23F",
+                "#DBB536"
+               ],
+               "paint": "#FFD23F",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.1111111111111111,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "1/9",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab12",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "shadow_council",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_shadow_council",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Shadow Council",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#9B6BFF",
+                "#855CDB"
+               ],
+               "paint": "#9B6BFF",
                "children": [
                 {
                  "type": "sheen",
@@ -1796,6 +3330,1286 @@
                "name": "ZoneProgress",
                "samples": [
                 "5/9",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab13",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "city_z",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_city_z",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "City Z",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#FFE14A",
+                "#DBC240"
+               ],
+               "paint": "#FFE14A",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.7777777777777778,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "7/9",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab14",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "soul_society",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_soul_society",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Soul Society",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#FF8FC8",
+                "#DB7BAC"
+               ],
+               "paint": "#FF8FC8",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.6363636363636364,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "7/11",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab15",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "gate_of_shadows",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_gate_of_shadows",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Gate of Shadows",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#7A5CFF",
+                "#694FDB"
+               ],
+               "paint": "#7A5CFF",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.7142857142857143,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "5/7",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab16",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "shibuya",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_shibuya",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Shibuya",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#6FA8FF",
+                "#5F90DB"
+               ],
+               "paint": "#6FA8FF",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.23076923076923078,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "3/13",
+                "8/8"
+               ],
+               "font": "display",
+               "pos": [
+                0.5,
+                0,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0.5,
+                0.5
+               ],
+               "overhang": true,
+               "z": 3,
+               "maxText": 17
+              }
+             ],
+             "strokePx": 2
+            }
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "y",
+            "gap": 8,
+            "align": "center"
+           },
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 2
+          },
+          {
+           "type": "icon",
+           "icon": "IconLock",
+           "name": "LockIcon",
+           "size": [
+            0,
+            24,
+            0,
+            24
+           ],
+           "pos": [
+            1,
+            -8,
+            0,
+            6
+           ],
+           "anchor": [
+            1,
+            0
+           ],
+           "z": 3,
+           "overhang": true,
+           "visible": false
+          }
+         ],
+         "stroke": 3
+        },
+        {
+         "type": "button",
+         "name": "ZoneTab17",
+         "colour": "panelHi",
+         "selfFace": true,
+         "paintable": true,
+         "sizeClass": "Z",
+         "depth": 4,
+         "corner": 16,
+         "keyline": "#9598BA",
+         "keepKeyline": false,
+         "size": [
+          0,
+          222,
+          0,
+          96
+         ],
+         "attrs": {
+          "ZoneId": "planet_of_gods",
+          "Rim": 0.5
+         },
+         "children": [
+          {
+           "type": "icon",
+           "icon": "ZoneBg_planet_of_gods",
+           "name": "ZoneBg",
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "pos": [
+            0.5,
+            0,
+            0.5,
+            0
+           ],
+           "anchor": [
+            0.5,
+            0.5
+           ],
+           "z": 0,
+           "props": {
+            "ScaleType": "Crop"
+           },
+           "corner": 13,
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "NameWash",
+           "colour": [
+            "#0B0D29",
+            "#0B0D29"
+           ],
+           "alpha": 0.72,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            1,
+            0,
+            1,
+            0
+           ],
+           "z": 1,
+           "children": [],
+           "pos": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "overhang": true
+          },
+          {
+           "type": "frame",
+           "name": "ZoneColumn",
+           "transparent": true,
+           "size": [
+            0,
+            198,
+            0,
+            66
+           ],
+           "children": [
+            {
+             "type": "label",
+             "text": "Planet of the Gods",
+             "size": [
+              0,
+              198,
+              0,
+              28
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7857,
+             "textStroke": 1.5,
+             "name": "ZoneName",
+             "font": "display",
+             "maxText": 22
+            },
+            {
+             "type": "frame",
+             "name": "ZoneBar",
+             "colour": [
+              "#0B0D29",
+              "#161A48"
+             ],
+             "size": [
+              0,
+              168,
+              0,
+              24
+             ],
+             "corner": 12,
+             "keyline": "#FFFFFF",
+             "children": [
+              {
+               "type": "frame",
+               "name": "Fill",
+               "colour": [
+                "#FFC83C",
+                "#DBAC34"
+               ],
+               "paint": "#FFC83C",
+               "children": [
+                {
+                 "type": "sheen",
+                 "name": "Sheen",
+                 "size": [
+                  1,
+                  0,
+                  1,
+                  0
+                 ],
+                 "angle": -90,
+                 "opacity": 0.3,
+                 "bands": [
+                  [
+                   0.62,
+                   0.1
+                  ],
+                  [
+                   0.72,
+                   0.06
+                  ]
+                 ],
+                 "corner": 9,
+                 "overhang": true,
+                 "children": []
+                }
+               ],
+               "size": [
+                0.08333333333333333,
+                -6,
+                1,
+                -6
+               ],
+               "pos": [
+                0,
+                3,
+                0.5,
+                0
+               ],
+               "anchor": [
+                0,
+                0.5
+               ],
+               "outline": false,
+               "corner": 9,
+               "overhang": true
+              },
+              {
+               "type": "label",
+               "text": "<unbound>",
+               "size": [
+                0,
+                152,
+                0,
+                24
+               ],
+               "textColour": "onDark",
+               "align": "center",
+               "textScale": 0.7083,
+               "textStroke": 1.5,
+               "name": "ZoneProgress",
+               "samples": [
+                "1/12",
                 "8/8"
                ],
                "font": "display",
@@ -2319,7 +5133,7 @@
            "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
-            "First Emperor",
+            "Anti-Magic Knight",
             "Heavenly String King"
            ],
            "wrap": true,
@@ -2371,7 +5185,7 @@
            "children": [
             {
              "type": "icon",
-             "icon": "IconFlavorSweet",
+             "icon": "IconFlavorSpicy",
              "name": "CraveIcon",
              "size": [
               0,
@@ -2631,7 +5445,7 @@
            "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
-            "Proud Prince",
+            "Smiling Thunder",
             "Heavenly String King"
            ],
            "wrap": true,
@@ -2683,7 +5497,7 @@
            "children": [
             {
              "type": "icon",
-             "icon": "IconFlavorSpicy",
+             "icon": "IconFlavorSweet",
              "name": "CraveIcon",
              "size": [
               0,
@@ -2726,6 +5540,318 @@
         {
          "type": "panel",
          "name": "HeroTileSample3",
+         "colour": "#4ADE80",
+         "paintable": true,
+         "depth": 0,
+         "keyline": "#FFFFFF",
+         "corner": 16,
+         "size": [
+          0,
+          146,
+          0,
+          214
+         ],
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
+         "children": [
+          {
+           "type": "frame",
+           "name": "PortraitWell",
+           "colour": [
+            "#232866",
+            "#12153A"
+           ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
+           "size": [
+            0,
+            130,
+            0,
+            104
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#4ADE80",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
+            {
+             "type": "label",
+             "text": "?",
+             "size": [
+              0,
+              60,
+              0,
+              60
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 2,
+             "name": "UnknownMark",
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
+             "props": {
+              "TextColor3": {
+               "Color3": [
+                0.2901960784313726,
+                0.8705882352941177,
+                0.5019607843137255
+               ]
+              }
+             },
+             "visible": false,
+             "mockHide": true
+            }
+           ],
+           "strokePx": 3
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#4ADE80",
+           "size": [
+            0,
+            108,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              98,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "UNCOMMON",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            99
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            134,
+            0,
+            40
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.425,
+           "textStroke": 1.5,
+           "name": "HeroName",
+           "samples": [
+            "Water Princess",
+            "Heavenly String King"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            130
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 17
+          },
+          {
+           "type": "frame",
+           "name": "BottomRow",
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            0,
+            130,
+            0,
+            28
+           ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconFlavorSavory",
+             "name": "CraveIcon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              72,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "ChanceText",
+             "samples": [
+              "14.10%",
+              "0.0012%"
+             ],
+             "font": "display",
+             "maxText": 18,
+             "autoX": true
+            }
+           ]
+          }
+         ],
+         "visible": false,
+         "attrs": {
+          "Sample": true
+         },
+         "stroke": 3
+        },
+        {
+         "type": "panel",
+         "name": "HeroTileSample4",
          "colour": "#38BDF8",
          "paintable": true,
          "depth": 0,
@@ -2943,7 +6069,7 @@
            "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
-            "Beast Emperor",
+            "Cursed Chain Brawler",
             "Heavenly String King"
            ],
            "wrap": true,
@@ -3019,7 +6145,7 @@
              "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
-              "14.10%",
+              "6.200%",
               "0.0012%"
              ],
              "font": "display",
@@ -3037,7 +6163,317 @@
         },
         {
          "type": "panel",
-         "name": "HeroTileSample4",
+         "name": "HeroTileSample5",
+         "colour": "#23264F",
+         "paintable": true,
+         "depth": 0,
+         "keyline": "#6F79D8",
+         "corner": 16,
+         "size": [
+          0,
+          146,
+          0,
+          214
+         ],
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
+         "children": [
+          {
+           "type": "frame",
+           "name": "PortraitWell",
+           "colour": [
+            "#232866",
+            "#12153A"
+           ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
+           "size": [
+            0,
+            130,
+            0,
+            104
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#3A3F6B",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
+            {
+             "type": "label",
+             "text": "?",
+             "size": [
+              0,
+              60,
+              0,
+              60
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 2,
+             "name": "UnknownMark",
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
+             "props": {
+              "TextColor3": {
+               "Color3": [
+                0.2196078431372549,
+                0.7411764705882353,
+                0.9725490196078431
+               ]
+              }
+             }
+            }
+           ],
+           "strokePx": 3
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#38BDF8",
+           "size": [
+            0,
+            105,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "RARE",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            99
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            134,
+            0,
+            40
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.425,
+           "textStroke": 1.5,
+           "name": "HeroName",
+           "samples": [
+            "???",
+            "Heavenly String King"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            130
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 17
+          },
+          {
+           "type": "frame",
+           "name": "BottomRow",
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            0,
+            130,
+            0,
+            28
+           ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconFlavorSeafood",
+             "name": "CraveIcon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              72,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "ChanceText",
+             "samples": [
+              "6.200%",
+              "0.0012%"
+             ],
+             "font": "display",
+             "maxText": 18,
+             "autoX": true
+            }
+           ]
+          }
+         ],
+         "visible": false,
+         "attrs": {
+          "Sample": true
+         },
+         "stroke": 3
+        },
+        {
+         "type": "panel",
+         "name": "HeroTileSample6",
          "colour": "#A855F7",
          "paintable": true,
          "depth": 0,
@@ -3255,7 +6691,7 @@
            "textStroke": 1.5,
            "name": "HeroName",
            "samples": [
-            "Instinct Warrior",
+            "Crimson Lioness",
             "Heavenly String King"
            ],
            "wrap": true,
@@ -3331,7 +6767,7 @@
              "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
-              "6.200%",
+              "1.420%",
               "0.0012%"
              ],
              "font": "display",
@@ -3349,7 +6785,7 @@
         },
         {
          "type": "panel",
-         "name": "HeroTileSample5",
+         "name": "HeroTileSample7",
          "colour": "#23264F",
          "paintable": true,
          "depth": 0,
@@ -3641,318 +7077,6 @@
              "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
-              "6.200%",
-              "0.0012%"
-             ],
-             "font": "display",
-             "maxText": 18,
-             "autoX": true
-            }
-           ]
-          }
-         ],
-         "visible": false,
-         "attrs": {
-          "Sample": true
-         },
-         "stroke": 3
-        },
-        {
-         "type": "panel",
-         "name": "HeroTileSample6",
-         "colour": "#FACC15",
-         "paintable": true,
-         "depth": 0,
-         "keyline": "#FFFFFF",
-         "corner": 16,
-         "size": [
-          0,
-          146,
-          0,
-          214
-         ],
-         "aspect": 0.6822,
-         "pattern": {
-          "name": "dots",
-          "colour": "#FFFFFF",
-          "opacity": 0.12,
-          "tile": 22
-         },
-         "children": [
-          {
-           "type": "frame",
-           "name": "PortraitWell",
-           "colour": [
-            "#232866",
-            "#12153A"
-           ],
-           "corner": 12,
-           "keyline": "#FFFFFF",
-           "size": [
-            0,
-            130,
-            0,
-            104
-           ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            8
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "props": {
-            "ClipsDescendants": true
-           },
-           "children": [
-            {
-             "type": "icon",
-             "icon": "FxSunburst",
-             "name": "Sunburst",
-             "size": [
-              0,
-              150,
-              0,
-              150
-             ],
-             "pos": [
-              0.5,
-              0,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0.5,
-              0.5
-             ],
-             "z": 1,
-             "tint": "#FACC15",
-             "alphaImg": 0.0,
-             "overhang": true
-            },
-            {
-             "type": "frame",
-             "name": "Portrait",
-             "transparent": true,
-             "cls": "ViewportFrame",
-             "size": [
-              0,
-              126,
-              0,
-              100
-             ],
-             "pos": [
-              0.5,
-              0,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0.5,
-              0.5
-             ],
-             "z": 2,
-             "children": []
-            },
-            {
-             "type": "label",
-             "text": "?",
-             "size": [
-              0,
-              60,
-              0,
-              60
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.8,
-             "textStroke": 2,
-             "name": "UnknownMark",
-             "font": "display",
-             "pos": [
-              0.5,
-              0,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0.5,
-              0.5
-             ],
-             "z": 4,
-             "maxText": 48,
-             "overhang": true,
-             "props": {
-              "TextColor3": {
-               "Color3": [
-                0.9803921568627451,
-                0.8,
-                0.08235294117647059
-               ]
-              }
-             },
-             "visible": false,
-             "mockHide": true
-            }
-           ],
-           "strokePx": 3
-          },
-          {
-           "type": "panel",
-           "name": "RarityTag",
-           "colour": "#FACC15",
-           "size": [
-            0,
-            105,
-            0,
-            26
-           ],
-           "selfFace": true,
-           "paintable": true,
-           "depth": 0,
-           "corner": 13,
-           "children": [
-            {
-             "type": "label",
-             "text": "<unbound>",
-             "size": [
-              0,
-              95,
-              0,
-              20
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.8,
-             "textStroke": 1.5,
-             "name": "RarityText",
-             "samples": [
-              "LEGENDARY",
-              "LEGENDARY"
-             ],
-             "font": "display",
-             "pos": [
-              0.5,
-              0,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0.5,
-              0.5
-             ],
-             "maxText": 16
-            }
-           ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            99
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "z": 5,
-           "overhang": true,
-           "stroke": 2,
-           "keyline": "#FFFFFF"
-          },
-          {
-           "type": "label",
-           "text": "<unbound>",
-           "size": [
-            0,
-            134,
-            0,
-            40
-           ],
-           "textColour": "onDark",
-           "align": "center",
-           "textScale": 0.425,
-           "textStroke": 1.5,
-           "name": "HeroName",
-           "samples": [
-            "Curse King",
-            "Heavenly String King"
-           ],
-           "wrap": true,
-           "font": "display",
-           "pos": [
-            0.5,
-            0,
-            0,
-            130
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "maxText": 17
-          },
-          {
-           "type": "frame",
-           "name": "BottomRow",
-           "colour": [
-            "#12153A",
-            "#12153A"
-           ],
-           "alpha": 0.25,
-           "outline": false,
-           "corner": 13,
-           "size": [
-            0,
-            130,
-            0,
-            28
-           ],
-           "pos": [
-            0.5,
-            0,
-            1,
-            -8
-           ],
-           "anchor": [
-            0.5,
-            1
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 8,
-            "align": "center"
-           },
-           "children": [
-            {
-             "type": "icon",
-             "icon": "IconFlavorSpicy",
-             "name": "CraveIcon",
-             "size": [
-              0,
-              20,
-              0,
-              20
-             ]
-            },
-            {
-             "type": "label",
-             "text": "<unbound>",
-             "size": [
-              0,
-              72,
-              0,
-              23
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.7826,
-             "textStroke": 1.5,
-             "name": "ChanceText",
-             "samples": [
               "1.420%",
               "0.0012%"
              ],
@@ -3971,7 +7095,7 @@
         },
         {
          "type": "panel",
-         "name": "HeroTileSample7",
+         "name": "HeroTileSample8",
          "colour": "#23264F",
          "paintable": true,
          "depth": 0,
@@ -4239,7 +7363,7 @@
            "children": [
             {
              "type": "icon",
-             "icon": "IconFlavorSweet",
+             "icon": "IconFlavorSpicy",
              "name": "CraveIcon",
              "size": [
               0,
@@ -4263,7 +7387,7 @@
              "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
-              "1.420%",
+              "0.0012%",
               "0.0012%"
              ],
              "font": "display",
@@ -4281,7 +7405,319 @@
         },
         {
          "type": "panel",
-         "name": "HeroTileSample8",
+         "name": "HeroTileSample9",
+         "colour": "#FACC15",
+         "paintable": true,
+         "depth": 0,
+         "keyline": "#FFFFFF",
+         "corner": 16,
+         "size": [
+          0,
+          146,
+          0,
+          214
+         ],
+         "aspect": 0.6822,
+         "pattern": {
+          "name": "dots",
+          "colour": "#FFFFFF",
+          "opacity": 0.12,
+          "tile": 22
+         },
+         "children": [
+          {
+           "type": "frame",
+           "name": "PortraitWell",
+           "colour": [
+            "#232866",
+            "#12153A"
+           ],
+           "corner": 12,
+           "keyline": "#FFFFFF",
+           "size": [
+            0,
+            130,
+            0,
+            104
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            8
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "props": {
+            "ClipsDescendants": true
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "FxSunburst",
+             "name": "Sunburst",
+             "size": [
+              0,
+              150,
+              0,
+              150
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 1,
+             "tint": "#FACC15",
+             "alphaImg": 0.0,
+             "overhang": true
+            },
+            {
+             "type": "frame",
+             "name": "Portrait",
+             "transparent": true,
+             "cls": "ViewportFrame",
+             "size": [
+              0,
+              126,
+              0,
+              100
+             ],
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 2,
+             "children": []
+            },
+            {
+             "type": "label",
+             "text": "?",
+             "size": [
+              0,
+              60,
+              0,
+              60
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 2,
+             "name": "UnknownMark",
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "z": 4,
+             "maxText": 48,
+             "overhang": true,
+             "props": {
+              "TextColor3": {
+               "Color3": [
+                0.9803921568627451,
+                0.8,
+                0.08235294117647059
+               ]
+              }
+             },
+             "visible": false,
+             "mockHide": true
+            }
+           ],
+           "strokePx": 3
+          },
+          {
+           "type": "panel",
+           "name": "RarityTag",
+           "colour": "#FACC15",
+           "size": [
+            0,
+            105,
+            0,
+            26
+           ],
+           "selfFace": true,
+           "paintable": true,
+           "depth": 0,
+           "corner": 13,
+           "children": [
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              95,
+              0,
+              20
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.8,
+             "textStroke": 1.5,
+             "name": "RarityText",
+             "samples": [
+              "LEGENDARY",
+              "LEGENDARY"
+             ],
+             "font": "display",
+             "pos": [
+              0.5,
+              0,
+              0.5,
+              0
+             ],
+             "anchor": [
+              0.5,
+              0.5
+             ],
+             "maxText": 16
+            }
+           ],
+           "pos": [
+            0.5,
+            0,
+            0,
+            99
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "z": 5,
+           "overhang": true,
+           "stroke": 2,
+           "keyline": "#FFFFFF"
+          },
+          {
+           "type": "label",
+           "text": "<unbound>",
+           "size": [
+            0,
+            134,
+            0,
+            40
+           ],
+           "textColour": "onDark",
+           "align": "center",
+           "textScale": 0.425,
+           "textStroke": 1.5,
+           "name": "HeroName",
+           "samples": [
+            "Devil Knight",
+            "Heavenly String King"
+           ],
+           "wrap": true,
+           "font": "display",
+           "pos": [
+            0.5,
+            0,
+            0,
+            130
+           ],
+           "anchor": [
+            0.5,
+            0
+           ],
+           "maxText": 17
+          },
+          {
+           "type": "frame",
+           "name": "BottomRow",
+           "colour": [
+            "#12153A",
+            "#12153A"
+           ],
+           "alpha": 0.25,
+           "outline": false,
+           "corner": 13,
+           "size": [
+            0,
+            130,
+            0,
+            28
+           ],
+           "pos": [
+            0.5,
+            0,
+            1,
+            -8
+           ],
+           "anchor": [
+            0.5,
+            1
+           ],
+           "layout": {
+            "type": "list",
+            "dir": "x",
+            "gap": 8,
+            "align": "center"
+           },
+           "children": [
+            {
+             "type": "icon",
+             "icon": "IconFlavorSavory",
+             "name": "CraveIcon",
+             "size": [
+              0,
+              20,
+              0,
+              20
+             ]
+            },
+            {
+             "type": "label",
+             "text": "<unbound>",
+             "size": [
+              0,
+              72,
+              0,
+              23
+             ],
+             "textColour": "onDark",
+             "align": "center",
+             "textScale": 0.7826,
+             "textStroke": 1.5,
+             "name": "ChanceText",
+             "samples": [
+              "0.40%",
+              "0.0012%"
+             ],
+             "font": "display",
+             "maxText": 18,
+             "autoX": true
+            }
+           ]
+          }
+         ],
+         "visible": false,
+         "attrs": {
+          "Sample": true
+         },
+         "stroke": 3
+        },
+        {
+         "type": "panel",
+         "name": "HeroTileSample10",
          "colour": "#23264F",
          "paintable": true,
          "depth": 0,
@@ -4573,319 +8009,7 @@
              "textStroke": 1.5,
              "name": "ChanceText",
              "samples": [
-              "0.0012%",
-              "0.0012%"
-             ],
-             "font": "display",
-             "maxText": 18,
-             "autoX": true
-            }
-           ]
-          }
-         ],
-         "visible": false,
-         "attrs": {
-          "Sample": true
-         },
-         "stroke": 3
-        },
-        {
-         "type": "panel",
-         "name": "HeroTileSample9",
-         "colour": "#FB3B6B",
-         "paintable": true,
-         "depth": 0,
-         "keyline": "#FFFFFF",
-         "corner": 16,
-         "size": [
-          0,
-          146,
-          0,
-          214
-         ],
-         "aspect": 0.6822,
-         "pattern": {
-          "name": "dots",
-          "colour": "#FFFFFF",
-          "opacity": 0.12,
-          "tile": 22
-         },
-         "children": [
-          {
-           "type": "frame",
-           "name": "PortraitWell",
-           "colour": [
-            "#232866",
-            "#12153A"
-           ],
-           "corner": 12,
-           "keyline": "#FFFFFF",
-           "size": [
-            0,
-            130,
-            0,
-            104
-           ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            8
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "props": {
-            "ClipsDescendants": true
-           },
-           "children": [
-            {
-             "type": "icon",
-             "icon": "FxSunburst",
-             "name": "Sunburst",
-             "size": [
-              0,
-              150,
-              0,
-              150
-             ],
-             "pos": [
-              0.5,
-              0,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0.5,
-              0.5
-             ],
-             "z": 1,
-             "tint": "#FB3B6B",
-             "alphaImg": 0.0,
-             "overhang": true
-            },
-            {
-             "type": "frame",
-             "name": "Portrait",
-             "transparent": true,
-             "cls": "ViewportFrame",
-             "size": [
-              0,
-              126,
-              0,
-              100
-             ],
-             "pos": [
-              0.5,
-              0,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0.5,
-              0.5
-             ],
-             "z": 2,
-             "children": []
-            },
-            {
-             "type": "label",
-             "text": "?",
-             "size": [
-              0,
-              60,
-              0,
-              60
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.8,
-             "textStroke": 2,
-             "name": "UnknownMark",
-             "font": "display",
-             "pos": [
-              0.5,
-              0,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0.5,
-              0.5
-             ],
-             "z": 4,
-             "maxText": 48,
-             "overhang": true,
-             "props": {
-              "TextColor3": {
-               "Color3": [
-                0.984313725490196,
-                0.23137254901960785,
-                0.4196078431372549
-               ]
-              }
-             },
-             "visible": false,
-             "mockHide": true
-            }
-           ],
-           "strokePx": 3
-          },
-          {
-           "type": "panel",
-           "name": "RarityTag",
-           "colour": "#FB3B6B",
-           "size": [
-            0,
-            105,
-            0,
-            26
-           ],
-           "selfFace": true,
-           "paintable": true,
-           "depth": 0,
-           "corner": 13,
-           "children": [
-            {
-             "type": "label",
-             "text": "<unbound>",
-             "size": [
-              0,
-              95,
-              0,
-              20
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.8,
-             "textStroke": 1.5,
-             "name": "RarityText",
-             "samples": [
-              "MYTHIC",
-              "LEGENDARY"
-             ],
-             "font": "display",
-             "pos": [
-              0.5,
-              0,
-              0.5,
-              0
-             ],
-             "anchor": [
-              0.5,
-              0.5
-             ],
-             "maxText": 16
-            }
-           ],
-           "pos": [
-            0.5,
-            0,
-            0,
-            99
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "z": 5,
-           "overhang": true,
-           "stroke": 2,
-           "keyline": "#FFFFFF"
-          },
-          {
-           "type": "label",
-           "text": "<unbound>",
-           "size": [
-            0,
-            134,
-            0,
-            40
-           ],
-           "textColour": "onDark",
-           "align": "center",
-           "textScale": 0.425,
-           "textStroke": 1.5,
-           "name": "HeroName",
-           "samples": [
-            "Wheel Guardian",
-            "Heavenly String King"
-           ],
-           "wrap": true,
-           "font": "display",
-           "pos": [
-            0.5,
-            0,
-            0,
-            130
-           ],
-           "anchor": [
-            0.5,
-            0
-           ],
-           "maxText": 17
-          },
-          {
-           "type": "frame",
-           "name": "BottomRow",
-           "colour": [
-            "#12153A",
-            "#12153A"
-           ],
-           "alpha": 0.25,
-           "outline": false,
-           "corner": 13,
-           "size": [
-            0,
-            130,
-            0,
-            28
-           ],
-           "pos": [
-            0.5,
-            0,
-            1,
-            -8
-           ],
-           "anchor": [
-            0.5,
-            1
-           ],
-           "layout": {
-            "type": "list",
-            "dir": "x",
-            "gap": 8,
-            "align": "center"
-           },
-           "children": [
-            {
-             "type": "icon",
-             "icon": "IconFlavorSpicy",
-             "name": "CraveIcon",
-             "size": [
-              0,
-              20,
-              0,
-              20
-             ]
-            },
-            {
-             "type": "label",
-             "text": "<unbound>",
-             "size": [
-              0,
-              72,
-              0,
-              23
-             ],
-             "textColour": "onDark",
-             "align": "center",
-             "textScale": 0.7826,
-             "textStroke": 1.5,
-             "name": "ChanceText",
-             "samples": [
-              "0.40%",
+              "0.10%",
               "0.0012%"
              ],
              "font": "display",

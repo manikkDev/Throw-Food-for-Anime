@@ -119,14 +119,9 @@ function HeroIndex.render(state: any)
 			Screens.label(tab, "ZoneName").Text = zone.Name
 			Screens.label(tab, "ZoneProgress").Text = `{have}/{total}`
 			Screens.fill(Screens.frame(tab, "Fill"), if total > 0 then have / total else 0)
-			-- locked: a full-charge throw with the equipped food cannot reach it
-			Screens.image(tab, "LockIcon").Visible = Throw.chargeForZone(
-				Config.Throw,
-				Config.Zones,
-				state.power,
-				powerMult,
-				index
-			) == nil
+			-- locked: the throw cannot reach it (not enough Power, or its gate is sealed)
+			Screens.image(tab, "LockIcon").Visible = index
+				> Throw.reach(Config.Zones, state.power * powerMult, state.rebirth or 0)
 		end
 	end
 
@@ -134,7 +129,9 @@ function HeroIndex.render(state: any)
 	local zoneCharacters = MAPS.zoneCharacters[zone.Id]
 	local have, total = Collection.zoneProgress(state.index, zoneCharacters)
 	local allHave, allTotal = Collection.total(Config, state.index)
-	Screens.label(gui, "ZoneTitle").Text = zone.Name
+	Screens.label(gui, "ZoneTitle").Text = if (zone.RebirthReq or 0) > (state.rebirth or 0)
+		then `{zone.Name}  (REBIRTH {zone.RebirthReq})`
+		else zone.Name
 	Screens.label(gui, "TotalText").Text = `TOTAL {allHave}/{allTotal}`
 	Screens.label(gui, "LuckNote").Text = `Luck {Format.mult(luck)}`
 	local claim = Screens.button(gui, "ZoneRewardClaim")

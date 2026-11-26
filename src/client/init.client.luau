@@ -11,6 +11,14 @@ pcall(function()
 	StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 end)
 
+-- Phones turn the screen, landscape only: every screen is a 16:9 canvas, and held upright the HUD
+-- shrank to a strip of 15-pixel buttons (phase F playtest on an iPhone 17 Pro in portrait). The
+-- place's StarterGui.ScreenOrientation says the same; this keeps it true whatever the place says.
+pcall(function()
+	local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+	playerGui.ScreenOrientation = Enum.ScreenOrientation.LandscapeSensor
+end)
+
 local Knit = require(ReplicatedStorage.Packages.Knit)
 
 Knit.AddControllers(script.Controllers)

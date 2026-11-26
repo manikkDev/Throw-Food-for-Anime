@@ -34,7 +34,7 @@
    "text": "<unbound>",
    "size": [
     0,
-    440,
+    340,
     0,
     36
    ],
@@ -44,12 +44,12 @@
    "textStroke": 2,
    "name": "ZonePreviewLabel",
    "samples": [
-    "Lands in: Realm of Legends",
-    "Lands in: Pirate Harbor"
+    "Lands in: Planet of the Gods",
+    "Lands in: Grand Line"
    ],
    "pos": [
     0,
-    602,
+    652,
     0,
     80
    ],
@@ -455,14 +455,14 @@
        "type": "frame",
        "name": "ZoneMarkSample1",
        "colour": [
-        "#FF8FC7",
-        "#DB7BAB"
+        "#FF9A3C",
+        "#DB8434"
        ],
-       "paint": "#FF8FC7",
+       "paint": "#FF9A3C",
        "children": [
         {
          "type": "label",
-         "text": "Sakura Schoolyard",
+         "text": "Hidden Leaf Village",
          "size": [
           0,
           220,
@@ -516,14 +516,14 @@
        "type": "frame",
        "name": "ZoneMarkSample2",
        "colour": [
-        "#3FA9F5",
-        "#3691D3"
+        "#5BD6B0",
+        "#4EB897"
        ],
-       "paint": "#3FA9F5",
+       "paint": "#5BD6B0",
        "children": [
         {
          "type": "label",
-         "text": "Pirate Harbor",
+         "text": "Demon Slayer Corps",
          "size": [
           0,
           220,
@@ -577,14 +577,14 @@
        "type": "frame",
        "name": "ZoneMarkSample3",
        "colour": [
-        "#5BD16E",
-        "#4EB45F"
+        "#3FB6FF",
+        "#369DDB"
        ],
-       "paint": "#5BD16E",
+       "paint": "#3FB6FF",
        "children": [
         {
          "type": "label",
-         "text": "Ninja Village",
+         "text": "Grand Line",
          "size": [
           0,
           220,
@@ -638,14 +638,14 @@
        "type": "frame",
        "name": "ZoneMarkSample4",
        "colour": [
-        "#F25555",
-        "#D04949"
+        "#5BE38A",
+        "#4EC377"
        ],
-       "paint": "#F25555",
+       "paint": "#5BE38A",
        "children": [
         {
          "type": "label",
-         "text": "Samurai Castle",
+         "text": "Hero Academy",
          "size": [
           0,
           220,
@@ -739,8 +739,8 @@
        "textStroke": 2,
        "name": "BonusLabel",
        "samples": [
-        "+12 POWER",
-        "+1.2K POWER"
+        "+25% LUCK",
+        "+0% LUCK"
        ],
        "font": "display",
        "pos": [
@@ -1227,7 +1227,258 @@
    },
    "stroke": 3,
    "keyline": "#F8ABA6"
+  },
+  {
+   "type": "button",
+   "name": "AimBack",
+   "size": [
+    0,
+    48,
+    0,
+    48
+   ],
+   "children": [
+    {
+     "type": "label",
+     "text": "<",
+     "size": [
+      0,
+      18,
+      0,
+      32
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.9375,
+     "textStroke": 2,
+     "name": "Label",
+     "font": "display",
+     "maxText": 30,
+     "autoX": true,
+     "capW": 26
+    }
+   ],
+   "layout": {
+    "type": "list",
+    "dir": "x",
+    "gap": 0,
+    "align": "center"
+   },
+   "sizeClass": "S",
+   "depth": 4,
+   "corner": 16,
+   "pos": [
+    0,
+    644,
+    0,
+    98
+   ],
+   "anchor": [
+    1,
+    0.5
+   ],
+   "z": 6,
+   "selfFace": true,
+   "colour": "#B166F8",
+   "paintable": true,
+   "gloss": true,
+   "stops": [
+    [
+     0.0,
+     "#B166F8"
+    ],
+    [
+     0.49,
+     "#B166F8"
+    ],
+    [
+     0.5,
+     "#9858D5"
+    ],
+    [
+     1.0,
+     "#834BB8"
+    ]
+   ],
+   "attrs": {
+    "PressLip": 4,
+    "Rim": 0.5
+   },
+   "stroke": 3,
+   "keyline": "#D8B2FC"
+  },
+  {
+   "type": "button",
+   "name": "AimFurther",
+   "size": [
+    0,
+    48,
+    0,
+    48
+   ],
+   "children": [
+    {
+     "type": "label",
+     "text": ">",
+     "size": [
+      0,
+      18,
+      0,
+      32
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.9375,
+     "textStroke": 2,
+     "name": "Label",
+     "font": "display",
+     "maxText": 30,
+     "autoX": true,
+     "capW": 26
+    }
+   ],
+   "layout": {
+    "type": "list",
+    "dir": "x",
+    "gap": 0,
+    "align": "center"
+   },
+   "sizeClass": "S",
+   "depth": 4,
+   "corner": 16,
+   "pos": [
+    0,
+    1000,
+    0,
+    98
+   ],
+   "anchor": [
+    0,
+    0.5
+   ],
+   "z": 6,
+   "selfFace": true,
+   "colour": "#B166F8",
+   "paintable": true,
+   "gloss": true,
+   "stops": [
+    [
+     0.0,
+     "#B166F8"
+    ],
+    [
+     0.49,
+     "#B166F8"
+    ],
+    [
+     0.5,
+     "#9858D5"
+    ],
+    [
+     1.0,
+     "#834BB8"
+    ]
+   ],
+   "attrs": {
+    "PressLip": 4,
+    "Rim": 0.5
+   },
+   "stroke": 3,
+   "keyline": "#D8B2FC"
+  },
+  {
+   "type": "button",
+   "name": "OddsButton",
+   "size": [
+    0,
+    127,
+    0,
+    48
+   ],
+   "children": [
+    {
+     "type": "icon",
+     "icon": "IconLuck",
+     "name": "Icon",
+     "size": [
+      0,
+      28,
+      0,
+      28
+     ]
+    },
+    {
+     "type": "label",
+     "text": "ODDS",
+     "size": [
+      0,
+      60,
+      0,
+      32
+     ],
+     "textColour": "onDark",
+     "align": "center",
+     "textScale": 0.75,
+     "textStroke": 2,
+     "name": "Label",
+     "font": "display",
+     "maxText": 24,
+     "autoX": true,
+     "capW": 70
+    }
+   ],
+   "layout": {
+    "type": "list",
+    "dir": "x",
+    "gap": 7,
+    "align": "center"
+   },
+   "sizeClass": "S",
+   "depth": 4,
+   "corner": 16,
+   "pos": [
+    0,
+    760,
+    0,
+    470
+   ],
+   "anchor": [
+    1,
+    0.5
+   ],
+   "z": 6,
+   "selfFace": true,
+   "colour": "#B166F8",
+   "paintable": true,
+   "gloss": true,
+   "stops": [
+    [
+     0.0,
+     "#B166F8"
+    ],
+    [
+     0.49,
+     "#B166F8"
+    ],
+    [
+     0.5,
+     "#9858D5"
+    ],
+    [
+     1.0,
+     "#834BB8"
+    ]
+   ],
+   "attrs": {
+    "PressLip": 4,
+    "Rim": 0.5
+   },
+   "stroke": 3,
+   "keyline": "#D8B2FC"
   }
  ],
- "enabled": false
+ "enabled": false,
+ "coreGui": {
+  "playerList": false
+ }
 }

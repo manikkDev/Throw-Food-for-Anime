@@ -2455,7 +2455,7 @@
              "textStroke": 2,
              "name": "PriceText",
              "samples": [
-              "3K",
+              "85K",
               "999.99Qi"
              ],
              "font": "display",
@@ -3078,7 +3078,7 @@
              "textStroke": 2,
              "name": "PriceText",
              "samples": [
-              "40K",
+              "1.8M",
               "999.99Qi"
              ],
              "font": "display",

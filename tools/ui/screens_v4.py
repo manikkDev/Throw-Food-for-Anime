@@ -278,9 +278,9 @@ def zone_tab(i, z, have, tot, selected=False, locked=False):
 def hero_index():
     tabs = []
     for i, z in enumerate(v1.ZONES, start=1):
-        have = [7, 7, 5, 3, 1, 5][i - 1]
+        have = [7, 7, 5, 3, 1, 5][(i - 1) % 6]
         tot = max(1, sum(1 for c in v1.CHARS if c["Zone"] == z["Id"]))
-        tabs.append(zone_tab(i, z, have, tot, selected=i == 1, locked=i == 6))
+        tabs.append(zone_tab(i, z, have, tot, selected=i == 1, locked=i > 3))
     zone_tabs = mp3_vscroll("ZoneTabs", 236, 520, tabs, col(10, "start"), pad=6, pos=[0, 0, 0, 0])
     header = frame("ZoneHeader", 812, mp4.SIZE_H["S"], [
         T("ZoneTitle", None, 250, 28, font="display", align="left", samples=["Realm of Legends", "Sakura Schoolyard"]),

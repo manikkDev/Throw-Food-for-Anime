@@ -10,13 +10,17 @@
 
 local Schema = {}
 
-Schema.VERSION = 1
+Schema.VERSION = 2
 
 export type Profile = {
 	v: number,
 	yen: number,
 	yenLifetime: number,
 	power: number,
+	powerRecord: number,
+	bestZone: number,
+	dry: number,
+	aim: number,
 	rebirth: number,
 	foods: { [string]: boolean },
 	food: string,
@@ -51,6 +55,14 @@ function Schema.default(cfg: any): Profile
 		yen = 0,
 		yenLifetime = 0,
 		power = cfg.Training.StartPower,
+		-- the highest Power ever held: training is faster below it (muscle memory)
+		powerRecord = cfg.Training.StartPower,
+		-- the furthest zone ever reached: gear, foods and plot slots unlock by it
+		bestZone = 1,
+		-- throws in a row without an Epic or better (the dry-streak luck)
+		dry = 0,
+		-- the zone the player aims at; 0 = as far as their Power reaches
+		aim = 0,
 		rebirth = 0,
 		foods = { [starter] = true },
 		food = starter,
@@ -76,6 +88,7 @@ function Schema.default(cfg: any): Profile
 			hideOthers = false,
 			autoSellCommon = false,
 			autoSellUncommon = false,
+			autoSellRare = false,
 		},
 		stats = { caught = 0, rarestOneIn = 0, rarestId = "" },
 		lastSeen = 0,
@@ -118,6 +131,15 @@ end
 -- migrations[v] upgrades a save FROM version v to v + 1.
 local migrations: { [number]: (any) -> () } = {}
 
+-- v1 -> v2 (economy v2, plan 12): a rebirth no longer wipes anything but Power
+-- and Yen, so the new fields only need sane starts. `powerRecord` and
+-- `bestZone` are raised to what the save already shows in `upgrade` below
+-- (they need the config).
+migrations[1] = function(data: any)
+	data.dry = 0
+	data.aim = 0
+end
+
 --- Bring any stored table up to the current shape, in place, and return it.
 --- Unknown keys are kept (a newer server may have written them).
 function Schema.upgrade(data: any, cfg: any): Profile
@@ -142,6 +164,27 @@ function Schema.upgrade(data: any, cfg: any): Profile
 	end
 	if data.gear < 1 then
 		data.gear = 1
+	end
+	if data.gear > #cfg.Training.Equipment then
+		data.gear = #cfg.Training.Equipment
+	end
+	if data.powerRecord < data.power then
+		data.powerRecord = data.power
+	end
+	-- the furthest zone the save can show it reached: by its record Power and
+	-- the zones its rebirth tier has opened
+	for i, zone in cfg.Zones do
+		if
+			i > data.bestZone
+			and data.powerRecord >= zone.PowerReq
+			and (zone.RebirthReq or 0) <= data.rebirth
+		then
+			data.bestZone = i
+		end
+	end
+	data.bestZone = math.clamp(data.bestZone, 1, #cfg.Zones)
+	if data.aim < 0 or data.aim > #cfg.Zones then
+		data.aim = 0
 	end
 	if not data.foods[data.food] then
 		data.food = cfg.Foods[1].Id

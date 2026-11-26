@@ -89,6 +89,18 @@ function UpgradeController:_training(): boolean
 	return training ~= nil and training.IsTraining ~= nil and training:IsTraining()
 end
 
+-- "unlocks when you reach <zone>" / "unlocks at Rebirth N", or nil when the row is open
+local function lockText(row: any, state: any): string?
+	local lock = Progress.lock(row, state.bestZone or 1, state.rebirth or 0)
+	if not lock then
+		return nil
+	end
+	if lock.rebirth then
+		return `unlocks at Rebirth {lock.rebirth}`
+	end
+	return `unlocks when you reach {Config.Zones[lock.zone :: number].Name}`
+end
+
 -- --------------------------------------------------------------- dialogs --
 
 function UpgradeController:_confirmGear()
@@ -100,6 +112,11 @@ function UpgradeController:_confirmGear()
 	local cost = Progress.nextGearCost(Config, state.gear)
 	if not cost then
 		hud:Toast("Your dojo gear is maxed", "info")
+		return
+	end
+	local locked = lockText(TR.Equipment[state.gear + 1], state)
+	if locked then
+		hud:Toast(`{TR.Equipment[state.gear + 1].Name} {locked}`, "bad")
 		return
 	end
 	local now = TR.Equipment[state.gear]
@@ -148,9 +165,17 @@ function UpgradeController:_confirmSlot()
 	if not state or not hud then
 		return
 	end
-	local cost = Progress.nextSlotCost(Config, state.slots - (state.bonusSlots or 0))
+	local cost = Progress.nextSlotCost(Config, state.slots, state.bonusSlots or 0)
 	if not cost then
 		hud:Toast("Your plot is at its maximum", "info")
+		return
+	end
+	local locked = lockText(
+		{ Zone = Progress.nextSlotZone(Config, state.slots, state.bonusSlots or 0) },
+		state
+	)
+	if locked then
+		hud:Toast(`The next slot {locked}`, "bad")
 		return
 	end
 	if not hud.Confirm then
@@ -262,6 +287,7 @@ function UpgradeController:_paintMarker()
 	local ready = state ~= nil
 		and cost ~= nil
 		and state.yen >= cost
+		and lockText(TR.Equipment[state.gear + 1], state) == nil
 		and not self:_training()
 		and not cinematic
 	local stand = if model then model:FindFirstChild("Gear") else nil

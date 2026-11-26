@@ -535,10 +535,15 @@ function RevealUi.final(result: any)
 		show("FinalOdds", false)
 	end
 
-	local stamp = if result.isBest
-		then "NEW BEST!"
+	-- the server's stamp follows the score (Roll.stamp: LUCKY from 1 in 100, SUPER LUCKY from
+	-- 1 in 10,000, INSANE LUCK from 1 in a million, GODLY from 1 in 100 million). A big one
+	-- outranks NEW; a plain LUCKY gives way to it.
+	local earned = if typeof(result.stamp) == "string" then result.stamp else nil
+	local stamp = if earned and earned ~= "LUCKY"
+		then earned .. "!"
+		elseif result.isBest then "NEW BEST!"
 		elseif result.isNew then "NEW!"
-		elseif mut or size then "LUCKY!"
+		elseif earned or mut or size then "LUCKY!"
 		else nil
 	show("Stamp", stamp ~= nil)
 	if stamp then

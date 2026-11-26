@@ -21,8 +21,10 @@ local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Collection = require(ReplicatedStorage.Shared.Core.Collection)
+local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
+local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 
 local Ui = script.Parent.Parent.Ui
 local DevPanel = require(Ui.DevPanel)
@@ -39,6 +41,7 @@ local PAGES: { Types.Page } = {
 	require(Ui.Pages.HeroIndex),
 	require(Ui.Pages.Store),
 	require(Ui.Pages.SummonOdds),
+	require(Ui.Pages.ThrowOdds),
 	require(Ui.Pages.OfflineEarnings),
 	require(Ui.Pages.Rebirth),
 	require(Ui.Pages.DailyRewards),
@@ -180,13 +183,32 @@ function MenuController:_refreshBadges()
 		end
 		hud:ClearNotice(notice)
 	end
-	flags.BtnRebirth = Progress.canRebirth(Config, state.rebirth, state.power, state.yen)
+	local equipped = MAPS.food[state.food]
+	local powerMult = if equipped then equipped.PowerMult else 1
+	flags.BtnRebirth = Progress.canRebirth(Config, state.rebirth, state.power, state.yen, powerMult)
+	local nextTier = Progress.nextRebirth(Config, state.rebirth)
 	if flags.BtnRebirth and not quiet then
 		hud:Notice("rebirth:" .. state.rebirth, {
 			icon = "IconRebirth",
 			title = "REBIRTH READY!",
-			body = "A bonus that lasts forever",
+			body = if nextTier and #nextTier.Unseals > 0
+				then `Opens {Config.Zones[nextTier.Unseals[1]].Name}`
+				else "A bonus that lasts forever",
 			button = "GO",
+			buttonIcon = "IconRebirth",
+			page = "Rebirth",
+		})
+	elseif
+		nextTier
+		and not quiet
+		and Throw.atSeal(Config.Zones, state.power * powerMult, state.rebirth)
+	then
+		-- the throw reaches the sealed gate but the fee is short
+		hud:Notice("seal:" .. state.rebirth, {
+			icon = "IconRebirth",
+			title = "SEALED GATE!",
+			body = `Rebirth opens it: save {Format.short(nextTier.YenCost)} yen`,
+			button = "SEE",
 			buttonIcon = "IconRebirth",
 			page = "Rebirth",
 		})

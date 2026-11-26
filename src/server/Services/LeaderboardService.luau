@@ -71,7 +71,7 @@ local BOARDS: { Board } = {
 		key = "rarest",
 		anchor = "BoardRarest",
 		title = "RAREST CATCH",
-		store = "LB_Rarest_v1",
+		store = "LB_Rarest_v2",
 		value = function(profile: any): number
 			return encode(profile.stats.rarestOneIn)
 		end,

@@ -18,6 +18,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
+local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Screens = require(script.Parent.Parent.Screens)
 local Theme = require(script.Parent.Parent.Theme)
 local Viewports = require(script.Parent.Parent.Viewports)
@@ -119,13 +120,20 @@ function FoodShop.render(state: any)
 			price.Text = "EQUIP"
 			Screens.setButtonState(buy, "neutral", nil, "IconTick")
 		else
-			price.Text = Format.short(food.Cost)
-			Screens.setButtonState(
-				buy,
-				if state.yen >= food.Cost then "afford" else "cannot",
-				nil,
-				"IconYen"
-			)
+			-- a food opens with its zone: until then the button names the zone
+			local lock = Progress.lock(food, state.bestZone or 1, state.rebirth or 0)
+			if lock and lock.zone then
+				price.Text = `ZONE {lock.zone}`
+				Screens.setButtonState(buy, "cannot", nil, "IconLock")
+			else
+				price.Text = Format.short(food.Cost)
+				Screens.setButtonState(
+					buy,
+					if state.yen >= food.Cost then "afford" else "cannot",
+					nil,
+					"IconYen"
+				)
+			end
 		end
 	end, true)
 end

@@ -70,10 +70,13 @@ function ProgressService:Rebirth(player: Player)
 		self._state:Toast(player, "You are at the highest rebirth", "info")
 		return
 	end
-	if not Progress.canRebirth(Config, profile.rebirth, profile.power, profile.yen) then
+	-- the throw must reach the sealed gate: Power x the equipped food's PowerMult
+	local food = MAPS.food[profile.food]
+	local powerMult = if food then food.PowerMult else 1
+	if not Progress.canRebirth(Config, profile.rebirth, profile.power, profile.yen, powerMult) then
 		self._state:Toast(
 			player,
-			`Rebirth needs {Format.short(nextTier.PowerReq)} power`
+			`Rebirth needs a throw of {Format.short(nextTier.PowerReq)} power`
 				.. ` and {Format.short(nextTier.YenCost)} yen`,
 			"bad"
 		)
@@ -81,13 +84,10 @@ function ProgressService:Rebirth(player: Player)
 	end
 	self._training:Stop(player)
 	self._telemetry:Economy(player, "sink", "rebirth", nextTier.YenCost, 0)
-	Progress.applyRebirth(Config, MAPS, profile)
-	-- a hero in the player's hands that the rebirth took is gone too (found in the section 5
-	-- playtest: the hands kept a hero the data no longer had, until the carry timed out)
-	local carried = self._plots:Carrying(player)
-	if carried and not profile.heroes[carried] then
-		self._plots:ClearCarry(player, true)
-	end
+	-- resets Power and Yen only: heroes, slots, gear, foods and the Index stay (plan 12)
+	Progress.applyRebirth(Config, profile)
+	-- the aim goes back to "as far as I reach": the old aim is out of reach now
+	profile.aim = 0
 	self._plots:Refresh(player)
 	self._state:MarkDirty(player)
 	self._state:Tick(player)

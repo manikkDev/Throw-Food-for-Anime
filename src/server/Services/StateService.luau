@@ -55,6 +55,7 @@ local SETTINGS: { [string]: string } = {
 	hideOthers = "boolean",
 	autoSellCommon = "boolean",
 	autoSellUncommon = "boolean",
+	autoSellRare = "boolean",
 }
 
 local StateService = Knit.CreateService({
@@ -127,6 +128,7 @@ function StateService:LuckSources(player: Player): Luck.Sources
 		rebirthTier = if profile then profile.rebirth else 0,
 		streakBonus = Luck.streakBonus(Config, streak),
 		luckyThrow = false,
+		dry = if profile then profile.dry else 0,
 	}
 end
 

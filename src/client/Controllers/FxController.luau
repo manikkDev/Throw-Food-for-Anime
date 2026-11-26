@@ -337,12 +337,21 @@ function FxController:_rebirthCinematic(rebirth: number)
 							icon = "IconYen",
 						},
 						{
+							label = "Training",
+							from = `+{math.floor(
+								(rebirth - 1) * (tier.TrainBonus or 0) * 100 + 0.5
+							)}%`,
+							to = `+{math.floor(rebirth * (tier.TrainBonus or 0) * 100 + 0.5)}%`,
+							icon = "IconPower",
+						},
+						{
 							label = "Luck",
 							from = `+{math.floor((rebirth - 1) * tier.LuckBonus * 100 + 0.5)}%`,
 							to = `+{math.floor(rebirth * tier.LuckBonus * 100 + 0.5)}%`,
 							icon = "IconLuck",
 						},
-						{ label = "Index & passes", to = "KEPT", icon = "IconIndex" },
+						-- economy v2: a rebirth resets Power and Yen only (plan 12)
+						{ label = "Heroes, gear & food", to = "KEPT", icon = "IconIndex" },
 					},
 				})
 			end

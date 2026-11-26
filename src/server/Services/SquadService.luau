@@ -105,6 +105,7 @@ function SquadService:Grant(
 		and (
 			(character.Rarity == "Common" and settings.autoSellCommon)
 			or (character.Rarity == "Uncommon" and settings.autoSellUncommon)
+			or (character.Rarity == "Rare" and settings.autoSellRare)
 		)
 
 	local placement: Squad.Placement

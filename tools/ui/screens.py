@@ -20,7 +20,9 @@ CFG = json.loads((ROOT / "design" / "game.json").read_text(encoding="utf-8"))["c
 
 RARITY = {k: "#" + v["Color"] for k, v in CFG["Rarities"].items()}
 FLAVOR_HEX = {"Savory": "#FF9F43", "Sweet": "#FF7EC8", "Spicy": "#FF4D4D", "Seafood": "#2DD4BF"}
-ZONE_HEX = ["#FF8FC7", "#3FA9F5", "#5BD16E", "#F25555", "#A66CFF", "#FFD34D"]
+# one key colour per zone, in lane order (17 since economy v2); the client's zone banner uses the same
+ZONE_HEX = ["#FF9A3C", "#5BD6B0", "#3FB6FF", "#5BE38A", "#3D7BFF", "#8BD94A", "#FFB03C", "#C084FF", "#C9B28A",
+            "#FF6A3C", "#FFD23F", "#9B6BFF", "#FFE14A", "#FF8FC8", "#7A5CFF", "#6FA8FF", "#FFC83C"]
 MUT_HEX = {"Galaxy": "#7C3AED", "Lightning": "#38BDF8", "Flame": "#FF6B2C", "Golden": "#F5B70A"}
 LONG_NUM = "999.99Qi"
 REF = [1280, 720]

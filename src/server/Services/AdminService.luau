@@ -7,7 +7,8 @@
 --       broadcast a message, hand everyone Lucky Throws.
 --   DEV (Studio sessions only): yen, power, hero, product, pass, wipe, away, nextrarity,
 --     nextmut, nextsize, rebirthready, gear, slots, allfoods, rarityhero, fuseset, luckythrows,
---     resetdaily, clearcarry, announce (the TEST panel, Ui/DevPanel, drives all of them)
+--     resetdaily, clearcarry, announce, zone, rebirthnow (the TEST panel, Ui/DevPanel, drives
+--     all of them)
 --     - shortcuts so every system can be tested without playing fifteen hours.
 --       These refuse outright in a live server, owner or not.
 
@@ -95,7 +96,7 @@ function AdminService:_dev(player: Player, command: string, arg: any): boolean
 		-- enough power and yen for the next rebirth
 		local tier = Config.Rebirth.Tiers[profile.rebirth + 1]
 		if tier then
-			profile.power = math.max(profile.power, tier.PowerReq)
+			self._training:AddPower(player, math.max(0, tier.PowerReq - profile.power))
 			self._economy:Add(player, tier.YenCost, "dev")
 		end
 	elseif command == "gear" and Guard.integer(arg, 1, #Config.Training.Equipment) then
@@ -106,6 +107,20 @@ function AdminService:_dev(player: Player, command: string, arg: any): boolean
 	then
 		profile.slots = arg
 		self._plots:Refresh(player)
+	elseif command == "zone" and Guard.integer(arg, 1, #Config.Zones) then
+		-- enough Power to reach zone `arg` with the equipped food (a sealed zone still needs its
+		-- rebirth: use "rebirthnow" first)
+		local food = MAPS.food[profile.food]
+		local need = Config.Zones[arg].PowerReq / (if food then food.PowerMult else 1)
+		self._training:AddPower(player, math.max(0, need * 1.01 - profile.power))
+	elseif command == "rebirthnow" then
+		-- the next rebirth at once: its Power and its fee, then the rebirth itself
+		local tier = Config.Rebirth.Tiers[profile.rebirth + 1]
+		if tier then
+			self._training:AddPower(player, math.max(0, tier.PowerReq - profile.power))
+			self._economy:Add(player, tier.YenCost, "dev")
+			Knit.GetService("ProgressService"):Rebirth(player)
+		end
 	elseif command == "allfoods" then
 		for _, food in Config.Foods do
 			profile.foods[food.Id] = true

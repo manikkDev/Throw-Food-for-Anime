@@ -206,8 +206,12 @@ function TrainingBar.render(state: any)
 	Screens.label(gui, "ProgressText").Text = if rank.nextPower and nextRank
 		then `{Format.short(state.power)} / {Format.short(rank.nextPower)}  ->  {nextRank.Name:upper()}`
 		else `{Format.short(state.power)}  -  TOP RANK`
-	Screens.label(gui, "PowerPerRep").Text =
-		`+{Format.short(Progress.powerPerRep(Config, state.gear, double))} power per rep`
+	-- muscle memory: x4 while below the player's own record (after a rebirth)
+	local catchingUp = Progress.catchingUp(state.power, state.powerRecord or state.power)
+	local perRep = Progress.powerPerRep(Config, state.gear, double, state.rebirth or 0, catchingUp)
+	Screens.label(gui, "PowerPerRep").Text = if catchingUp
+		then `+{Format.short(perRep)} power per rep  (MUSCLE MEMORY x{Config.Training.MuscleMemory})`
+		else `+{Format.short(perRep)} power per rep`
 
 	local cost = Progress.nextGearCost(Config, state.gear)
 	local ready = cost ~= nil and state.yen >= cost

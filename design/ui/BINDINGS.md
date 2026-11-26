@@ -11,6 +11,153 @@ Page ScreenGuis carry `OpenStyle/OpenFrom/OpenTime`; buttons carry `HoverScale/P
 `OpensPage`/`ClosesPage` for the skill's UIController. Each ScreenGui's `CanvasFrame` is 1280x720
 offset with a `Scale` UIScale: set `Scale.Scale = min(vw/1280, vh/720)` on ViewportSize change.
 
+## Celebrate
+
+Root: `Celebrate` (ScreenGui), file `src/ui/Celebrate.model.json`
+
+
+**Dynamic labels** (ship `<unbound>`)
+
+| Path | Shows | Samples |
+|---|---|---|
+| `TitleRibbon.CelebrateTitle` | ? | PURCHASE COMPLETE! / PASS UNLOCKED! / SUMMON! / THANK YOU! |
+| `CelebrateSub` | ? | You unlocked 2x Yen forever / 10 heroes joined your squad |
+| `PerkList.ItemName` | ? | First Sun Swordsman / 25 Lucky Throws / VIP |
+| `PerkList.RarityChip.RarityText` | rarity name | LEGENDARY / GAME PASS / BOOST / PREMIUM |
+| `PerkList.PerkRows.Perk1.PerkText` | ? | x12 luck on one throw / +15% luck on every throw and +2 hero slots |
+| `PerkList.PerkRows.Perk2.PerkText` | ? | You have 6 Lucky Throws / Active right now |
+| `PerkList.PerkRows.Perk3.PerkText` | ? | Switch Lucky on at your throw pad / Yours on every server, forever |
+| `RevealCard.RevealFront.RevealBannerArt.RevealTierText` | ? | LEGENDARY / UNCOMMON / PREMIUM |
+| `RevealCard.RevealFront.RevealName` | ? | First Sun Swordsman / 25 Lucky Throws / Copy Ninja |
+| `RevealCounter` | ? | 1 / 10 / 10 / 10 |
+| `SummonGrid.SummonCard1.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard1.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard2.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard2.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard3.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard3.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard4.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard4.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard5.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard5.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard6.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard6.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard7.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard7.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard8.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard8.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard9.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard9.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+| `SummonGrid.SummonCard10.CardFront.CardName` | ? | First Sun Swordsman / Copy Ninja |
+| `SummonGrid.SummonCard10.CardFront.CardBannerArt.CardRarity.CardRarityText` | ? | LEGENDARY / UNCOMMON / SECRET |
+
+**Buttons**
+
+| Path | Does | Attributes |
+|---|---|---|
+| `SkipButton` | ? |  |
+| `CelebrateButton` | ? |  |
+
+**Other named instances** (shown, hidden, tweened or recoloured by code)
+
+| Path | Class |
+|---|---|
+| `TapHint` | TextLabel |
+| `Scrim` | Frame |
+
+**IconKey slots** (ImageLabel, Image empty)
+
+| Path | IconKey |
+|---|---|
+| `Burst.RaysBack` | FxRays |
+| `Burst.RaysFront` | FxSunburst |
+| `Burst.Glow` | FxGlow |
+| `Burst.Halo` | FxRing |
+| `Burst.Twinkle1` | FxTwinkle |
+| `Burst.Twinkle2` | FxTwinkle |
+| `Burst.Twinkle3` | FxTwinkle |
+| `Burst.Twinkle4` | FxTwinkle |
+| `Burst.Twinkle5` | FxTwinkle |
+| `Burst.Twinkle6` | FxTwinkle |
+| `TitleRibbon` | CelebrateBanner |
+| `StageDisc` | FxGlow |
+| `ItemIcon` | IconLuckyThrowBig |
+| `PerkList.PerkRows.Perk1.PerkBadge.PerkIcon` | IconTick |
+| `PerkList.PerkRows.Perk2.PerkBadge.PerkIcon` | IconTick |
+| `PerkList.PerkRows.Perk3.PerkBadge.PerkIcon` | IconTick |
+| `RevealCard.RevealRays` | FxRays |
+| `RevealCard.RevealGlow` | FxGlow |
+| `RevealCard.RevealShadow` | FxGlow |
+| `RevealCard.RevealBack` | CardBack |
+| `RevealCard.RevealFront.RevealPortraitBg` | CardPortraitBg |
+| `RevealCard.RevealFront.RevealIcon` | IconLuckyThrowBig |
+| `RevealCard.RevealFront.RevealShade` | CardWindowShade |
+| `RevealCard.RevealFront.RevealFrameArt` | CardFrame_Legendary |
+| `RevealCard.RevealFront.RevealBannerArt` | CardBanner_Legendary |
+| `RevealCard.RevealFront.RevealFoil` | CardFoil |
+| `SummonGrid.SummonCard1.CardBack` | CardBack |
+| `SummonGrid.SummonCard1.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard1.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard1.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard1.CardFront.CardFrameArt` | CardFrame_Epic |
+| `SummonGrid.SummonCard1.CardFront.CardBannerArt` | CardBanner_Epic |
+| `SummonGrid.SummonCard2.CardBack` | CardBack |
+| `SummonGrid.SummonCard2.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard2.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard2.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard2.CardFront.CardFrameArt` | CardFrame_Secret |
+| `SummonGrid.SummonCard2.CardFront.CardBannerArt` | CardBanner_Secret |
+| `SummonGrid.SummonCard3.CardBack` | CardBack |
+| `SummonGrid.SummonCard3.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard3.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard3.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard3.CardFront.CardFrameArt` | CardFrame_Rare |
+| `SummonGrid.SummonCard3.CardFront.CardBannerArt` | CardBanner_Rare |
+| `SummonGrid.SummonCard4.CardBack` | CardBack |
+| `SummonGrid.SummonCard4.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard4.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard4.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard4.CardFront.CardFrameArt` | CardFrame_Mythic |
+| `SummonGrid.SummonCard4.CardFront.CardBannerArt` | CardBanner_Mythic |
+| `SummonGrid.SummonCard5.CardBack` | CardBack |
+| `SummonGrid.SummonCard5.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard5.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard5.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard5.CardFront.CardFrameArt` | CardFrame_Uncommon |
+| `SummonGrid.SummonCard5.CardFront.CardBannerArt` | CardBanner_Uncommon |
+| `SummonGrid.SummonCard6.CardBack` | CardBack |
+| `SummonGrid.SummonCard6.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard6.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard6.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard6.CardFront.CardFrameArt` | CardFrame_Legendary |
+| `SummonGrid.SummonCard6.CardFront.CardBannerArt` | CardBanner_Legendary |
+| `SummonGrid.SummonCard7.CardBack` | CardBack |
+| `SummonGrid.SummonCard7.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard7.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard7.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard7.CardFront.CardFrameArt` | CardFrame_Common |
+| `SummonGrid.SummonCard7.CardFront.CardBannerArt` | CardBanner_Common |
+| `SummonGrid.SummonCard8.CardBack` | CardBack |
+| `SummonGrid.SummonCard8.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard8.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard8.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard8.CardFront.CardFrameArt` | CardFrame_Epic |
+| `SummonGrid.SummonCard8.CardFront.CardBannerArt` | CardBanner_Epic |
+| `SummonGrid.SummonCard9.CardBack` | CardBack |
+| `SummonGrid.SummonCard9.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard9.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard9.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard9.CardFront.CardFrameArt` | CardFrame_Secret |
+| `SummonGrid.SummonCard9.CardFront.CardBannerArt` | CardBanner_Secret |
+| `SummonGrid.SummonCard10.CardBack` | CardBack |
+| `SummonGrid.SummonCard10.CardFront.CardGlow` | FxGlow |
+| `SummonGrid.SummonCard10.CardFront.CardPortraitBg` | CardPortraitBg |
+| `SummonGrid.SummonCard10.CardFront.CardShade` | CardWindowShade |
+| `SummonGrid.SummonCard10.CardFront.CardFrameArt` | CardFrame_Rare |
+| `SummonGrid.SummonCard10.CardFront.CardBannerArt` | CardBanner_Rare |
+| `CelebrateButton.Icon` | IconTick |
+| `Backdrop` | CelebrateBackdrop |
+
 ## Codes
 
 Root: `Codes` (ScreenGui), file `src/ui/Codes.model.json`
@@ -45,6 +192,63 @@ Root: `Codes` (ScreenGui), file `src/ui/Codes.model.json`
 | `Window.CloseButton.Icon` | IconClose |
 | `Window.Body.CodeRow.CodeField.Icon` | IconCodes |
 | `Window.Body.CodeRow.RedeemButton.Icon` | IconTick |
+
+## Confirm
+
+Root: `Confirm` (ScreenGui), file `src/ui/Confirm.model.json`
+
+
+**Dynamic labels** (ship `<unbound>`)
+
+| Path | Shows | Samples |
+|---|---|---|
+| `ConfirmWindow.ConfirmHeader.ConfirmTitle` | ? | UPGRADE GEAR / NEW HERO SLOT |
+| `ConfirmWindow.Details.ConfirmName` | ? | Dragon Shrine / Slot 24 |
+| `ConfirmWindow.Details.ConfirmTag.ConfirmTagText` | ? | TIER 12 / LEGENDARY / SLOT 28 |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow1.RowLabel` | ? | Power per rep / Hero slots / Unlocks |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow1.RowFrom` | ? | +560 / 999.9K |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow1.RowTo` | ? | +2.4K / Meditate |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow2.RowLabel` | ? | Power per rep / Hero slots / Unlocks |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow2.RowFrom` | ? | +560 / 999.9K |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow2.RowTo` | ? | +2.4K / Meditate |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow3.RowLabel` | ? | Power per rep / Hero slots / Unlocks |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow3.RowFrom` | ? | +560 / 999.9K |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow3.RowTo` | ? | +2.4K / Meditate |
+| `ConfirmWindow.CostWell.CostRow.CostText` | ? | 999.99Qi / 28B |
+| `ConfirmWindow.ConfirmButtons.ConfirmYes.YesText` | ? | CONFIRM / UPGRADE / NEED MORE YEN |
+
+**Buttons**
+
+| Path | Does | Attributes |
+|---|---|---|
+| `ConfirmWindow.ConfirmClose` | ? |  |
+| `ConfirmWindow.ConfirmButtons.ConfirmNo` | ? |  |
+| `ConfirmWindow.ConfirmButtons.ConfirmYes` | ? |  |
+
+**Other named instances** (shown, hidden, tweened or recoloured by code)
+
+| Path | Class |
+|---|---|
+| `Scrim` | Frame |
+
+**IconKey slots** (ImageLabel, Image empty)
+
+| Path | IconKey |
+|---|---|
+| `ConfirmWindow.ConfirmClose.Icon` | IconClose |
+| `ConfirmWindow.StageWell.StageBg` | BgRays |
+| `ConfirmWindow.StageWell.Glow` | FxGlow |
+| `ConfirmWindow.StageWell.ConfirmIcon` | IconTrainBig |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow1.RowIconWell.RowIcon` | IconPower |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow1.RowArrow` | IconArrow |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow2.RowIconWell.RowIcon` | IconPower |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow2.RowArrow` | IconArrow |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow3.RowIconWell.RowIcon` | IconPower |
+| `ConfirmWindow.Details.ConfirmRows.ConfirmRow3.RowArrow` | IconArrow |
+| `ConfirmWindow.CostWell.CostBadge.CostBadgeIcon` | IconYen |
+| `ConfirmWindow.CostWell.CostRow.CostIcon` | IconYen |
+| `ConfirmWindow.ConfirmButtons.ConfirmNo.Icon` | IconClose |
+| `ConfirmWindow.ConfirmButtons.ConfirmYes.Icon` | IconTick |
 
 ## DailyRewards
 
@@ -240,33 +444,44 @@ Root: `HeroIndex` (ScreenGui), file `src/ui/HeroIndex.model.json`
 
 | Path | Shows | Samples |
 |---|---|---|
-| `Window.Body.ZoneTabs.ZoneTab1.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/9 / 8/8 |
-| `Window.Body.ZoneTabs.ZoneTab2.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/9 / 8/8 |
-| `Window.Body.ZoneTabs.ZoneTab3.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/9 / 8/8 |
-| `Window.Body.ZoneTabs.ZoneTab4.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/9 / 8/8 |
-| `Window.Body.ZoneTabs.ZoneTab5.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/9 / 8/8 |
-| `Window.Body.ZoneTabs.ZoneTab6.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/9 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab1.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab2.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab3.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab4.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab5.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab6.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab7.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab8.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab9.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab10.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab11.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab12.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab13.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab14.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab15.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab16.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
+| `Window.Body.ZoneTabs.ZoneTab17.ZoneColumn.ZoneBar.ZoneProgress` | found/total in zone | 7/13 / 8/8 |
 | `Window.Body.ZoneHeader.ZoneTitle` | selected zone name (HeroIndex) / crossed zone name (HudFx.ZoneCross) | Realm of Legends / Sakura Schoolyard |
 | `Window.Body.ZoneHeader.TotalProgress.TotalText` | index total found | TOTAL 43/51 / TOTAL 8/51 |
 | `Window.Body.ZoneHeader.LuckNote` | luck the chances are computed at | Luck x999.9 / Luck x1.01 |
 | `Window.Body.ZoneHeader.ZoneRewardClaim.ClaimText` | claim button state text | CLAIM! / 5/8 FOUND / CLAIMED |
 | `Window.Body.HeroGrid.HeroTileSample1.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
-| `Window.Body.HeroGrid.HeroTileSample1.HeroName` | hero name (??? when undiscovered) | First Emperor / Heavenly String King |
+| `Window.Body.HeroGrid.HeroTileSample1.HeroName` | hero name (??? when undiscovered) | Anti-Magic Knight / Heavenly String King |
 | `Window.Body.HeroGrid.HeroTileSample1.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
 | `Window.Body.HeroGrid.HeroTileSample2.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
-| `Window.Body.HeroGrid.HeroTileSample2.HeroName` | hero name (??? when undiscovered) | Proud Prince / Heavenly String King |
+| `Window.Body.HeroGrid.HeroTileSample2.HeroName` | hero name (??? when undiscovered) | Smiling Thunder / Heavenly String King |
 | `Window.Body.HeroGrid.HeroTileSample2.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
 | `Window.Body.HeroGrid.HeroTileSample3.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
-| `Window.Body.HeroGrid.HeroTileSample3.HeroName` | hero name (??? when undiscovered) | Beast Emperor / Heavenly String King |
+| `Window.Body.HeroGrid.HeroTileSample3.HeroName` | hero name (??? when undiscovered) | Water Princess / Heavenly String King |
 | `Window.Body.HeroGrid.HeroTileSample3.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
 | `Window.Body.HeroGrid.HeroTileSample4.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
-| `Window.Body.HeroGrid.HeroTileSample4.HeroName` | hero name (??? when undiscovered) | Instinct Warrior / Heavenly String King |
+| `Window.Body.HeroGrid.HeroTileSample4.HeroName` | hero name (??? when undiscovered) | Cursed Chain Brawler / Heavenly String King |
 | `Window.Body.HeroGrid.HeroTileSample4.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
 | `Window.Body.HeroGrid.HeroTileSample5.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
 | `Window.Body.HeroGrid.HeroTileSample5.HeroName` | hero name (??? when undiscovered) | ??? / Heavenly String King |
 | `Window.Body.HeroGrid.HeroTileSample5.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
 | `Window.Body.HeroGrid.HeroTileSample6.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
-| `Window.Body.HeroGrid.HeroTileSample6.HeroName` | hero name (??? when undiscovered) | Curse King / Heavenly String King |
+| `Window.Body.HeroGrid.HeroTileSample6.HeroName` | hero name (??? when undiscovered) | Crimson Lioness / Heavenly String King |
 | `Window.Body.HeroGrid.HeroTileSample6.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
 | `Window.Body.HeroGrid.HeroTileSample7.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
 | `Window.Body.HeroGrid.HeroTileSample7.HeroName` | hero name (??? when undiscovered) | ??? / Heavenly String King |
@@ -275,8 +490,11 @@ Root: `HeroIndex` (ScreenGui), file `src/ui/HeroIndex.model.json`
 | `Window.Body.HeroGrid.HeroTileSample8.HeroName` | hero name (??? when undiscovered) | ??? / Heavenly String King |
 | `Window.Body.HeroGrid.HeroTileSample8.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
 | `Window.Body.HeroGrid.HeroTileSample9.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
-| `Window.Body.HeroGrid.HeroTileSample9.HeroName` | hero name (??? when undiscovered) | Wheel Guardian / Heavenly String King |
+| `Window.Body.HeroGrid.HeroTileSample9.HeroName` | hero name (??? when undiscovered) | Devil Knight / Heavenly String King |
 | `Window.Body.HeroGrid.HeroTileSample9.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
+| `Window.Body.HeroGrid.HeroTileSample10.RarityTag.RarityText` | rarity name | COMMON / LEGENDARY |
+| `Window.Body.HeroGrid.HeroTileSample10.HeroName` | hero name (??? when undiscovered) | ??? / Heavenly String King |
+| `Window.Body.HeroGrid.HeroTileSample10.BottomRow.ChanceText` | chance at current luck and food | 41.20% / 0.0012% |
 
 **Buttons**
 
@@ -289,6 +507,17 @@ Root: `HeroIndex` (ScreenGui), file `src/ui/HeroIndex.model.json`
 | `Window.Body.ZoneTabs.ZoneTab4` | select zone 4 in the index (recolour face when active; LockIcon when locked) |  |
 | `Window.Body.ZoneTabs.ZoneTab5` | select zone 5 in the index (recolour face when active; LockIcon when locked) |  |
 | `Window.Body.ZoneTabs.ZoneTab6` | select zone 6 in the index (recolour face when active; LockIcon when locked) |  |
+| `Window.Body.ZoneTabs.ZoneTab7` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab8` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab9` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab10` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab11` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab12` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab13` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab14` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab15` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab16` | ? |  |
+| `Window.Body.ZoneTabs.ZoneTab17` | ? |  |
 | `Window.Body.ZoneHeader.ZoneRewardClaim` | ProgressAction claimZone |  |
 
 **List containers**
@@ -321,6 +550,8 @@ Root: `HeroIndex` (ScreenGui), file `src/ui/HeroIndex.model.json`
 | `Window.Body.HeroGrid.HeroTileSample8.PortraitWell.UnknownMark` | TextLabel |
 | `Window.Body.HeroGrid.HeroTileSample9.PortraitWell.Sunburst` | ImageLabel |
 | `Window.Body.HeroGrid.HeroTileSample9.PortraitWell.UnknownMark` | TextLabel |
+| `Window.Body.HeroGrid.HeroTileSample10.PortraitWell.Sunburst` | ImageLabel |
+| `Window.Body.HeroGrid.HeroTileSample10.PortraitWell.UnknownMark` | TextLabel |
 
 **IconKey slots** (ImageLabel, Image empty)
 
@@ -340,25 +571,49 @@ Root: `HeroIndex` (ScreenGui), file `src/ui/HeroIndex.model.json`
 | `Window.Body.ZoneTabs.ZoneTab5.LockIcon` | IconLock |
 | `Window.Body.ZoneTabs.ZoneTab6.ZoneBg` | ZoneBg_realm_of_legends |
 | `Window.Body.ZoneTabs.ZoneTab6.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab7.ZoneBg` | ZoneBg_hunter_exam |
+| `Window.Body.ZoneTabs.ZoneTab7.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab8.ZoneBg` | ZoneBg_isekai_crossroads |
+| `Window.Body.ZoneTabs.ZoneTab8.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab9.ZoneBg` | ZoneBg_wall_maria |
+| `Window.Body.ZoneTabs.ZoneTab9.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab10.ZoneBg` | ZoneBg_public_safety |
+| `Window.Body.ZoneTabs.ZoneTab10.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab11.ZoneBg` | ZoneBg_bizarre_streets |
+| `Window.Body.ZoneTabs.ZoneTab11.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab12.ZoneBg` | ZoneBg_shadow_council |
+| `Window.Body.ZoneTabs.ZoneTab12.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab13.ZoneBg` | ZoneBg_city_z |
+| `Window.Body.ZoneTabs.ZoneTab13.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab14.ZoneBg` | ZoneBg_soul_society |
+| `Window.Body.ZoneTabs.ZoneTab14.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab15.ZoneBg` | ZoneBg_gate_of_shadows |
+| `Window.Body.ZoneTabs.ZoneTab15.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab16.ZoneBg` | ZoneBg_shibuya |
+| `Window.Body.ZoneTabs.ZoneTab16.LockIcon` | IconLock |
+| `Window.Body.ZoneTabs.ZoneTab17.ZoneBg` | ZoneBg_planet_of_gods |
+| `Window.Body.ZoneTabs.ZoneTab17.LockIcon` | IconLock |
 | `Window.Body.ZoneHeader.ZoneRewardClaim.Icon` | IconGift |
 | `Window.Body.HeroGrid.HeroTileSample1.PortraitWell.Sunburst` | FxSunburst |
-| `Window.Body.HeroGrid.HeroTileSample1.BottomRow.CraveIcon` | IconFlavorSweet |
+| `Window.Body.HeroGrid.HeroTileSample1.BottomRow.CraveIcon` | IconFlavorSpicy |
 | `Window.Body.HeroGrid.HeroTileSample2.PortraitWell.Sunburst` | FxSunburst |
-| `Window.Body.HeroGrid.HeroTileSample2.BottomRow.CraveIcon` | IconFlavorSpicy |
+| `Window.Body.HeroGrid.HeroTileSample2.BottomRow.CraveIcon` | IconFlavorSweet |
 | `Window.Body.HeroGrid.HeroTileSample3.PortraitWell.Sunburst` | FxSunburst |
-| `Window.Body.HeroGrid.HeroTileSample3.BottomRow.CraveIcon` | IconFlavorSeafood |
+| `Window.Body.HeroGrid.HeroTileSample3.BottomRow.CraveIcon` | IconFlavorSavory |
 | `Window.Body.HeroGrid.HeroTileSample4.PortraitWell.Sunburst` | FxSunburst |
-| `Window.Body.HeroGrid.HeroTileSample4.BottomRow.CraveIcon` | IconFlavorSavory |
+| `Window.Body.HeroGrid.HeroTileSample4.BottomRow.CraveIcon` | IconFlavorSeafood |
 | `Window.Body.HeroGrid.HeroTileSample5.PortraitWell.Sunburst` | FxSunburst |
 | `Window.Body.HeroGrid.HeroTileSample5.BottomRow.CraveIcon` | IconFlavorSeafood |
 | `Window.Body.HeroGrid.HeroTileSample6.PortraitWell.Sunburst` | FxSunburst |
-| `Window.Body.HeroGrid.HeroTileSample6.BottomRow.CraveIcon` | IconFlavorSpicy |
+| `Window.Body.HeroGrid.HeroTileSample6.BottomRow.CraveIcon` | IconFlavorSavory |
 | `Window.Body.HeroGrid.HeroTileSample7.PortraitWell.Sunburst` | FxSunburst |
-| `Window.Body.HeroGrid.HeroTileSample7.BottomRow.CraveIcon` | IconFlavorSweet |
+| `Window.Body.HeroGrid.HeroTileSample7.BottomRow.CraveIcon` | IconFlavorSeafood |
 | `Window.Body.HeroGrid.HeroTileSample8.PortraitWell.Sunburst` | FxSunburst |
-| `Window.Body.HeroGrid.HeroTileSample8.BottomRow.CraveIcon` | IconFlavorSavory |
+| `Window.Body.HeroGrid.HeroTileSample8.BottomRow.CraveIcon` | IconFlavorSpicy |
 | `Window.Body.HeroGrid.HeroTileSample9.PortraitWell.Sunburst` | FxSunburst |
-| `Window.Body.HeroGrid.HeroTileSample9.BottomRow.CraveIcon` | IconFlavorSpicy |
+| `Window.Body.HeroGrid.HeroTileSample9.BottomRow.CraveIcon` | IconFlavorSavory |
+| `Window.Body.HeroGrid.HeroTileSample10.PortraitWell.Sunburst` | FxSunburst |
+| `Window.Body.HeroGrid.HeroTileSample10.BottomRow.CraveIcon` | IconFlavorSavory |
 
 ## HUD
 
@@ -381,15 +636,22 @@ Root: `HUD` (ScreenGui), file `src/ui/HUD.model.json`
 | `NoticeCard.NoticeTitle` | notice title | NEW FOOD UNLOCKED! / NEW GEAR! |
 | `NoticeCard.NoticeBody` | notice detail line | Dango, 250 yen / Iron Dummy, 20K yen |
 | `NoticeCard.NoticeButton.NoticeButtonText` | notice action caption | SHOP / BUY |
-| `ServerLuckBar.Multiplier` | server luck or festival multiplier | x8 LUCK / x2 FEST |
-| `ServerLuckBar.TimeLeft` | time left on server luck / festival | 14:59 / 2:59 |
-| `Announcement.TextColumn.PlayerName` | player name | xX_SuperLongName_Xx caught / FESTIVAL HOUR |
+| `BuffTray.BuffToggle.BuffHead.BuffCount.BuffCountText` | ? | 4 / 1 |
+| `BuffTray.BuffRows.BuffServerLuck.BuffServerLuckText.BuffServerLuckValue` | ? | x8 LUCK / x2 LUCK |
+| `BuffTray.BuffRows.BuffServerLuck.BuffServerLuckTime` | ? | 14:59 / 1:02:59 |
+| `BuffTray.BuffRows.BuffFestival.BuffFestivalText.BuffFestivalValue` | ? | 2x MUTATIONS |
+| `BuffTray.BuffRows.BuffFestival.BuffFestivalTime` | ? | 59:59 |
+| `BuffTray.BuffRows.BuffDoubleYen.BuffDoubleYenText.BuffDoubleYenValue` | ? | x2 INCOME |
+| `BuffTray.BuffRows.BuffDoubleYen.BuffDoubleYenTime` | ? | 29:59 / 1:59:59 |
+| `BuffTray.BuffRows.BuffLucky.BuffLuckyText.BuffLuckyValue` | ? | 25 LEFT / 1 LEFT |
+| `BuffTray.BuffRows.BuffLucky.BuffLuckyTime` | ? |  |
+| `Announcement.TextColumn.PlayerName` | player name | CAUGHT BY XX_SUPERLONGNAME_XX / SERVER LUCK |
 | `Announcement.TextColumn.HeroName` | hero name (??? when undiscovered) | Heavenly String King / x2 LUCK FOR 15 MIN |
-| `Announcement.TextColumn.InfoRow.RarityChip.RarityText` | rarity name | LEGENDARY / SECRET |
-| `Announcement.TextColumn.InfoRow.OneInN` | Format.oneIn of the catch | 1 in 48,400,000 / 1 in 250 |
+| `Announcement.MetaRow.RarityChip.RarityText` | rarity name | LEGENDARY / SECRET |
+| `Announcement.MetaRow.OneInN` | Format.oneIn of the catch | 1 in 48.4M / 1 in 710 |
 | `FlashText` | PERFECT! / LUCKY THROW! flash | LUCKY THROW! / PERFECT! |
 | `Toasts.ToastSample1.Text` | toast message | Not enough yen for Festival Cake! |
-| `Toasts.ToastSample2.Text` | toast message | Gift 3 is ready to claim! |
+| `Toasts.ToastSample2.Text` | toast message | Not enough yen for Festival Cake! |
 
 **Buttons**
 
@@ -400,12 +662,13 @@ Root: `HUD` (ScreenGui), file `src/ui/HUD.model.json`
 | `LeftColumn.BtnSquad` | open Squad | OpensPage=Squad |
 | `LeftColumn.BtnIndex` | open HeroIndex (badge: zone claim) | OpensPage=HeroIndex |
 | `RightColumn.BtnStore` | open Store | OpensPage=Store |
+| `RightColumn.BtnDaily` | ? | OpensPage=DailyRewards |
 | `RightColumn.BtnGift` | open PlaytimeGifts (badge: reward ready) | OpensPage=PlaytimeGifts |
 | `RightColumn.BtnRebirth` | open Rebirth (badge: can rebirth) | OpensPage=Rebirth |
 | `FoodChip` | open FoodShop | OpensPage=FoodShop |
 | `NoticeCard.NoticeButton` | notice action (open shop / buy gear) |  |
 | `NoticeCard.NoticeClose` | dismiss the notice |  |
-| `ServerLuckBar.BoostButton` | buy ServerLuck product |  |
+| `BuffTray.BuffToggle` | ? |  |
 
 **List containers**
 
@@ -423,14 +686,13 @@ Root: `HUD` (ScreenGui), file `src/ui/HUD.model.json`
 | `LeftColumn.BtnSquad.Badge` | Frame |
 | `LeftColumn.BtnIndex.Badge` | Frame |
 | `RightColumn.BtnStore.Badge` | Frame |
+| `RightColumn.BtnDaily.Badge` | Frame |
 | `RightColumn.BtnGift.Badge` | Frame |
 | `RightColumn.BtnGift.GiftTimerBadge` | Frame |
 | `RightColumn.BtnRebirth.Badge` | Frame |
 | `TutorialHint` | Frame |
 | `NoticeCard` | Frame |
-| `ServerLuckBar` | Frame |
 | `Announcement` | Frame |
-| `Announcement.Sunburst` | ImageLabel |
 
 **IconKey slots** (ImageLabel, Image empty)
 
@@ -441,6 +703,7 @@ Root: `HUD` (ScreenGui), file `src/ui/HUD.model.json`
 | `LeftColumn.BtnSquad.Icon` | IconSquadBig |
 | `LeftColumn.BtnIndex.Icon` | IconIndexBig |
 | `RightColumn.BtnStore.Icon` | IconStoreBig |
+| `RightColumn.BtnDaily.Icon` | IconDailyBig |
 | `RightColumn.BtnGift.Icon` | IconGiftBig |
 | `RightColumn.BtnRebirth.Icon` | IconRebirthBig |
 | `FoodChip.FoodRing.Icon` | FoodIcon_onigiri |
@@ -452,14 +715,15 @@ Root: `HUD` (ScreenGui), file `src/ui/HUD.model.json`
 | `NoticeCard.NoticeIcon` | FoodIcon_dango |
 | `NoticeCard.NoticeButton.Icon` | IconShop |
 | `NoticeCard.NoticeClose.CloseFace.Icon` | IconClose |
-| `ServerLuckBar.Icon` | IconLuck |
-| `ServerLuckBar.BoostButton.Icon` | IconRobux |
-| `Announcement.Sunburst` | FxSunburst |
-| `Announcement.AnnounceIcon` | IconCrownBig |
-| `Announcement.Sparkle1` | IconStar |
-| `Announcement.Sparkle2` | IconStar |
-| `Toasts.ToastSample1.IconWell.Icon` | IconInfo |
-| `Toasts.ToastSample2.IconWell.Icon` | IconInfo |
+| `BuffTray.BuffToggle.BuffHead.Icon` | IconLuckBig |
+| `BuffTray.BuffToggle.BuffHead.Chevron` | IconArrow |
+| `BuffTray.BuffRows.BuffServerLuck.Icon` | IconLuckBig |
+| `BuffTray.BuffRows.BuffFestival.Icon` | IconGiftBig |
+| `BuffTray.BuffRows.BuffDoubleYen.Icon` | IconYenBig |
+| `BuffTray.BuffRows.BuffLucky.Icon` | IconLuckyThrowBig |
+| `Announcement.PortraitWell.AnnounceIcon` | IconCrownBig |
+| `Toasts.ToastSample1.IconWell.Icon` | IconClose |
+| `Toasts.ToastSample2.IconWell.Icon` | IconGift |
 
 ## HudFx
 
@@ -470,21 +734,85 @@ Root: `HudFx` (ScreenGui), file `src/ui/HudFx.model.json`
 
 | Path | Shows | Samples |
 |---|---|---|
+| `LevelUp.LevelPlate.LevelTitle` | LEVEL UP banner title (HudController:LevelUp) | NEW GEAR! / RANK UP! / REBIRTH 12 |
+| `LevelUp.LevelPlate.LevelSub` | LEVEL UP banner sub line | Dragon Shrine / CHAMPION / You evolved! |
+| `ZoneCross.ZonePlate.ZoneGhost` | ? | Sakura Schoolyard / Realm of Legends |
 | `ZoneCross.ZonePlate.ZoneTitle` | selected zone name (HeroIndex) / crossed zone name (HudFx.ZoneCross) | Sakura Schoolyard / Realm of Legends |
 | `ZoneCross.ZoneNumber.ZoneNumberText` | ZONE n on the zone-cross label | ZONE 3 / ZONE 6 |
-| `LevelUp.LevelPlate.LevelTitle` | LEVEL UP banner title (HudController:LevelUp) | RANK UP! / NEW GEAR! |
-| `LevelUp.LevelSubPlate.LevelSub` | LEVEL UP banner sub line | CHAMPION / Gravity Dojo |
+| `Reward.RewardCard.RewardTitlePlate.RewardTitle` | ? | NEW GEAR! / NEW FOOD! / NEW SLOT! |
+| `Reward.RewardCard.RewardName` | ? | Dragon Shrine / Festival Cake / Slot 11 |
+| `Reward.RewardCard.RewardChips.RewardChip1.RewardChipText1` | ? | +2.4K Power per rep / Luck x5.50 |
+| `Reward.RewardCard.RewardChips.RewardChip2.RewardChipText2` | ? | Slot 11 of 28 / Power x5.00 |
+| `Reward.RewardCard.RewardChips.RewardChip3.RewardChipText3` | ? | SWEET / SEAFOOD |
+| `Reward.RewardCard.RewardSub` | ? | One more hero on your plot / +2.4K Power per rep |
+| `StatPanel.StatHeader.StatTitle` | ? | REBIRTH 12 / REBIRTH 1 |
+| `StatPanel.StatRows.StatRow1.StatLabel` | ? | Income / Index & passes |
+| `StatPanel.StatRows.StatRow1.StatFrom` | ? | x1.50 / 1.2M |
+| `StatPanel.StatRows.StatRow1.StatTo` | ? | x2.00 / KEPT |
+| `StatPanel.StatRows.StatRow2.StatLabel` | ? | Income / Index & passes |
+| `StatPanel.StatRows.StatRow2.StatFrom` | ? | x1.50 / 1.2M |
+| `StatPanel.StatRows.StatRow2.StatTo` | ? | x2.00 / KEPT |
+| `StatPanel.StatRows.StatRow3.StatLabel` | ? | Income / Index & passes |
+| `StatPanel.StatRows.StatRow3.StatFrom` | ? | x1.50 / 1.2M |
+| `StatPanel.StatRows.StatRow3.StatTo` | ? | x2.00 / KEPT |
+| `StatPanel.StatRows.StatRow4.StatLabel` | ? | Income / Index & passes |
+| `StatPanel.StatRows.StatRow4.StatFrom` | ? | x1.50 / 1.2M |
+| `StatPanel.StatRows.StatRow4.StatTo` | ? | x2.00 / KEPT |
+| `StatPanel.StatRows.StatRow5.StatLabel` | ? | Income / Index & passes |
+| `StatPanel.StatRows.StatRow5.StatFrom` | ? | x1.50 / 1.2M |
+| `StatPanel.StatRows.StatRow5.StatTo` | ? | x2.00 / KEPT |
+| `StatPanel.StatRows.StatRow6.StatLabel` | ? | Income / Index & passes |
+| `StatPanel.StatRows.StatRow6.StatFrom` | ? | x1.50 / 1.2M |
+| `StatPanel.StatRows.StatRow6.StatTo` | ? | x2.00 / KEPT |
+
+**Other named instances** (shown, hidden, tweened or recoloured by code)
+
+| Path | Class |
+|---|---|
+| `Scrim` | Frame |
 
 **IconKey slots** (ImageLabel, Image empty)
 
 | Path | IconKey |
 |---|---|
-| `ZoneCross.Burst` | FxSunburst |
-| `LevelUp.Burst` | FxSunburst |
-| `LevelUp.Sparkle1` | IconStar |
-| `LevelUp.Sparkle2` | IconStar |
-| `LevelUp.Sparkle3` | IconStar |
-| `LevelUp.Sparkle4` | IconStar |
+| `LevelUp.Rays` | FxRays |
+| `LevelUp.Glow` | FxGlow |
+| `LevelUp.LevelMedal.LevelIcon` | IconStar |
+| `LevelUp.Twinkle1` | FxTwinkle |
+| `LevelUp.Twinkle2` | FxTwinkle |
+| `LevelUp.Twinkle3` | FxTwinkle |
+| `LevelUp.Twinkle4` | FxTwinkle |
+| `ZoneCross.Rays` | FxRays |
+| `ZoneCross.Glow` | FxGlow |
+| `ZoneCross.Twinkle1` | FxTwinkle |
+| `ZoneCross.Twinkle2` | FxTwinkle |
+| `Reward.Rays` | FxRays |
+| `Reward.Rays2` | FxSunburst |
+| `Reward.Glow` | FxGlow |
+| `Reward.Halo` | FxRing |
+| `Reward.RewardIcon` | IconStar |
+| `Reward.RewardCard.RewardChips.RewardChip1.RewardChip1Icon` | IconPower |
+| `Reward.RewardCard.RewardChips.RewardChip2.RewardChip2Icon` | IconPlace |
+| `Reward.RewardCard.RewardChips.RewardChip3.RewardChip3Icon` | IconFlavorSweet |
+| `Reward.Twinkle1` | FxTwinkle |
+| `Reward.Twinkle2` | FxTwinkle |
+| `Reward.Twinkle3` | FxTwinkle |
+| `Reward.Twinkle4` | FxTwinkle |
+| `Reward.Twinkle5` | FxTwinkle |
+| `Reward.Twinkle6` | FxTwinkle |
+| `StatPanel.Glow` | FxGlow |
+| `StatPanel.StatRows.StatRow1.StatIcon` | IconPower |
+| `StatPanel.StatRows.StatRow1.StatArrow` | IconArrow |
+| `StatPanel.StatRows.StatRow2.StatIcon` | IconPower |
+| `StatPanel.StatRows.StatRow2.StatArrow` | IconArrow |
+| `StatPanel.StatRows.StatRow3.StatIcon` | IconPower |
+| `StatPanel.StatRows.StatRow3.StatArrow` | IconArrow |
+| `StatPanel.StatRows.StatRow4.StatIcon` | IconPower |
+| `StatPanel.StatRows.StatRow4.StatArrow` | IconArrow |
+| `StatPanel.StatRows.StatRow5.StatIcon` | IconPower |
+| `StatPanel.StatRows.StatRow5.StatArrow` | IconArrow |
+| `StatPanel.StatRows.StatRow6.StatIcon` | IconPower |
+| `StatPanel.StatRows.StatRow6.StatArrow` | IconArrow |
 
 ## Leaderboard
 
@@ -570,19 +898,20 @@ Root: `Nameplate` (BillboardGui), file `src/ui/Nameplate.model.json`
 
 | Path | Shows | Samples |
 |---|---|---|
+| `RarityText` | rarity name | LEGENDARY / COMMON |
 | `HeroName` | hero name (??? when undiscovered) | Heavenly String King / Copy Ninja |
 | `TagRow.SizeTag.SizeText` | size tag (TITAN/HUGE/BIG) | TITAN / BIG |
 | `TagRow.MutationTag.MutationText` | mutation tag | LIGHTNING / GOLDEN |
-| `BottomRow.YenPerSecond` | hero income per second | +999.99Qi/s / +1.26K/s |
+| `BottomRow.YenPerSecond` | hero income per second | +999.99Qi/s / +1.2K/s |
 
 **IconKey slots** (ImageLabel, Image empty)
 
 | Path | IconKey |
 |---|---|
-| `BottomRow.YenIcon` | IconYen |
-| `BottomRow.Stars.Star1` | IconStar |
-| `BottomRow.Stars.Star2` | IconStar |
-| `BottomRow.Stars.Star3` | IconStar |
+| `TagRow.Stars.Star1` | IconStar |
+| `TagRow.Stars.Star2` | IconStar |
+| `TagRow.Stars.Star3` | IconStar |
+| `BottomRow.YenIcon` | IconYenBig |
 
 ## OfflineEarnings
 
@@ -611,7 +940,7 @@ Root: `OfflineEarnings` (ScreenGui), file `src/ui/OfflineEarnings.model.json`
 |---|---|
 | `Scrim` | Frame |
 | `Window` | Frame |
-| `Window.Body.EarnedWell.Sunburst` | ImageLabel |
+| `Window.Body.EarnedWell.EarnedRow.CoinHolder.Sunburst` | ImageLabel |
 
 **IconKey slots** (ImageLabel, Image empty)
 
@@ -619,8 +948,8 @@ Root: `OfflineEarnings` (ScreenGui), file `src/ui/OfflineEarnings.model.json`
 |---|---|
 | `Window.Header.TitleRow.TitleIcon` | IconYenBig |
 | `Window.CloseButton.Icon` | IconClose |
-| `Window.Body.EarnedWell.Sunburst` | FxSunburst |
-| `Window.Body.EarnedWell.EarnedRow.Icon` | IconYenBig |
+| `Window.Body.EarnedWell.EarnedRow.CoinHolder.Sunburst` | FxSunburst |
+| `Window.Body.EarnedWell.EarnedRow.CoinHolder.Icon` | IconYenBig |
 | `Window.Body.Buttons.ClaimButton.Icon` | IconTick |
 | `Window.Body.Buttons.DoubleButton.Icon` | IconRobux |
 
@@ -695,6 +1024,26 @@ Root: `PlaytimeGifts` (ScreenGui), file `src/ui/PlaytimeGifts.model.json`
 | `Window.Body.GiftGrid.GiftCell6.Icon` | IconGiftBig |
 | `Window.Body.GiftGrid.GiftCell6.GiftButton.Icon` | IconTimer |
 
+## PromptCard
+
+Root: `PromptCard` (BillboardGui), file `src/ui/PromptCard.model.json`
+
+
+**Dynamic labels** (ship `<unbound>`)
+
+| Path | Shows | Samples |
+|---|---|---|
+| `Card.KeyCap.KeyText` | ? | E / F / B |
+| `Card.ActionText` | ? | Upgrade gear / Place hero / Train |
+| `Card.ObjectText` | ? | Dragon Shrine 28B / Strike Dummy |
+
+**IconKey slots** (ImageLabel, Image empty)
+
+| Path | IconKey |
+|---|---|
+| `Card.Glow` | FxGlow |
+| `Card.KeyCap.KeyIcon` | FxTap |
+
 ## Rebirth
 
 Root: `Rebirth` (ScreenGui), file `src/ui/Rebirth.model.json`
@@ -704,19 +1053,19 @@ Root: `Rebirth` (ScreenGui), file `src/ui/Rebirth.model.json`
 
 | Path | Shows | Samples |
 |---|---|---|
-| `Window.Body.Requirements.NextTier` | next rebirth tier | REBIRTH 999 / REBIRTH 1 |
-| `Window.Body.Requirements.PowerBar.PowerReqText` | power / required | 999.99Qi / 999.99Qi / 6.8B / 600M |
-| `Window.Body.Requirements.YenBar.YenReqText` | yen / cost | 999.99Qi / 999.99Qi / 220B / 500B |
-| `Window.Body.Rewards.RewardIncome` | income bonus of next tier | +50% INCOME / +150% INCOME |
-| `Window.Body.Rewards.RewardLuck` | luck bonus of next tier | +10% LUCK / +30% LUCK |
-| `Window.Body.CurrentRebirth` | current rebirth count | You are at Rebirth 999 / You are at Rebirth 0 |
+| `Window.Body.Requirements.NextTierChip.NextTier` | next rebirth tier | REBIRTH 999 / MAX REBIRTH |
+| `Window.Body.Requirements.PowerRow.PowerBar.PowerReqText` | power / required | 999.99Qi / 999.99Qi / 6.8B / 600M |
+| `Window.Body.Requirements.YenRow.YenBar.YenReqText` | yen / cost | 999.99Qi / 999.99Qi / 220B / 500B |
+| `Window.Body.Rewards.IncomeLine.RewardIncome` | income bonus of next tier | +150% INCOME / MAX REBIRTH |
+| `Window.Body.Rewards.LuckLine.RewardLuck` | luck bonus of next tier | +30% LUCK / +10% LUCK |
+| `Window.Body.Footer.CurrentChip.CurrentRebirth` | current rebirth count | You are at Rebirth 999 / You are at Rebirth 0 |
 
 **Buttons**
 
 | Path | Does | Attributes |
 |---|---|---|
 | `Window.CloseButton` | close page (ClosesPage attr) | ClosesPage=True |
-| `Window.Body.ConfirmButton` | ProgressAction rebirth |  |
+| `Window.Body.Footer.ConfirmButton` | ProgressAction rebirth |  |
 
 **Other named instances** (shown, hidden, tweened or recoloured by code)
 
@@ -724,7 +1073,6 @@ Root: `Rebirth` (ScreenGui), file `src/ui/Rebirth.model.json`
 |---|---|
 | `Scrim` | Frame |
 | `Window` | Frame |
-| `Window.Body.Rewards.Sunburst` | ImageLabel |
 
 **IconKey slots** (ImageLabel, Image empty)
 
@@ -732,18 +1080,26 @@ Root: `Rebirth` (ScreenGui), file `src/ui/Rebirth.model.json`
 |---|---|
 | `Window.Header.TitleRow.TitleIcon` | IconRebirthBig |
 | `Window.CloseButton.Icon` | IconClose |
-| `Window.Body.Requirements.PowerIcon` | IconPowerBig |
-| `Window.Body.Requirements.YenIcon` | IconYenBig |
-| `Window.Body.Rewards.Sunburst` | FxSunburst |
-| `Window.Body.Keeps.List.Item1.Icon` | IconTick |
-| `Window.Body.Keeps.List.Item2.Icon` | IconTick |
-| `Window.Body.Keeps.List.Item3.Icon` | IconTick |
-| `Window.Body.Keeps.List.Item4.Icon` | IconTick |
-| `Window.Body.Resets.List.Item1.Icon` | IconClose |
-| `Window.Body.Resets.List.Item2.Icon` | IconClose |
-| `Window.Body.Resets.List.Item3.Icon` | IconClose |
-| `Window.Body.Resets.List.Item4.Icon` | IconClose |
-| `Window.Body.ConfirmButton.Icon` | IconRebirth |
+| `Window.Body.Requirements.PowerRow.PowerWell.PowerIcon` | IconPowerBig |
+| `Window.Body.Requirements.PowerRow.PowerDone` | IconTick |
+| `Window.Body.Requirements.YenRow.YenWell.YenIcon` | IconYenBig |
+| `Window.Body.Requirements.YenRow.YenDone` | IconTick |
+| `Window.Body.Rewards.Glow` | FxGlow |
+| `Window.Body.Rewards.IncomeLine.IncomeLineIcon` | IconYenBig |
+| `Window.Body.Rewards.LuckLine.LuckLineIcon` | IconLuckBig |
+| `Window.Body.Keeps.KeepsHead.KeepsTitleRow.HeadIcon` | IconTick |
+| `Window.Body.Keeps.List.Item1.ItemIcon` | IconTick |
+| `Window.Body.Keeps.List.Item2.ItemIcon` | IconTick |
+| `Window.Body.Keeps.List.Item3.ItemIcon` | IconTick |
+| `Window.Body.Keeps.List.Item4.ItemIcon` | IconTick |
+| `Window.Body.Resets.ResetsHead.ResetsTitleRow.HeadIcon` | IconClose |
+| `Window.Body.Resets.List.Item1.ItemIcon` | IconClose |
+| `Window.Body.Resets.List.Item2.ItemIcon` | IconClose |
+| `Window.Body.Resets.List.Item3.ItemIcon` | IconClose |
+| `Window.Body.Resets.List.Item4.ItemIcon` | IconClose |
+| `Window.Body.Footer.CurrentChip.CurrentChipIcon` | IconRebirth |
+| `Window.Body.Footer.ButtonGlow` | FxGlow |
+| `Window.Body.Footer.ConfirmButton.Icon` | IconRebirth |
 
 ## Reveal
 
@@ -757,12 +1113,16 @@ Root: `Reveal` (ScreenGui), file `src/ui/Reveal.model.json`
 | `LuckLabel` | luck multiplier during the flight | 999.9x LUCK / 2.36x LUCK |
 | `ZoneBanner.ZoneBannerText` | zone the food is flying over | Realm of Legends / Pirate Harbor |
 | `OddsLabel` | 1 in N counter (climbs, then lands) | 1 in 48,400,000 / 1 in 31 |
-| `StampLabel` | LUCKY! / NEW! / NEW BEST! | NEW BEST! / LUCKY! / NEW! |
-| `RarityRibbon.RarityText` | rarity name | LEGENDARY / UNCOMMON |
-| `VariantLabel` | mutation and size, small caps | LIGHTNING  TITAN / GOLDEN  HUGE |
 | `NameLabel` | hero name spelling itself out from underscores | HEAVENLY STRING KING / H_A_E_L_ S_R_N_ K_N_ |
-| `IncomeRow.IncomeLabel` | hero income per second (+24/s) | +999.99Qi/s / +24/s |
-| `SoldLabel` | sold for N / sent to bench | sold for 999.99Qi yen / sent to your bench |
+| `FinalOdds.FinalOddsText` | ? | 1 IN 999.99Qi / 1 IN 48,400,000 / 1 IN 2,500 |
+| `HeroCard.CardPanel.RarityRibbon.RarityText` | rarity name | LEGENDARY / UNCOMMON / SECRET |
+| `HeroCard.CardPanel.Stamp.StampLabel` | LUCKY! / NEW! / NEW BEST! | NEW BEST! / LUCKY! / NEW! / NEW! |
+| `HeroCard.CardPanel.CardName` | ? | Heavenly String King / Copy Ninja |
+| `HeroCard.CardPanel.TagRow.SizeTag.SizeText` | size tag (TITAN/HUGE/BIG) | TITAN / HUGE |
+| `HeroCard.CardPanel.TagRow.MutationTag.MutationText` | mutation tag | LIGHTNING / GALAXY |
+| `HeroCard.CardPanel.TagRow.CraveTag.CraveText` | ? | CRAVING! / CRAVES SEAFOOD |
+| `HeroCard.CardPanel.StatsRow.IncomeRow.IncomeLabel` | hero income per second (+24/s) | +999.99Qi/s / +1.2K/s |
+| `HeroCard.CardPanel.SoldTag.SoldLabel` | sold for N / sent to bench | sold for 999.99Qi yen / sent to your bench |
 
 **Other named instances** (shown, hidden, tweened or recoloured by code)
 
@@ -770,7 +1130,8 @@ Root: `Reveal` (ScreenGui), file `src/ui/Reveal.model.json`
 |---|---|
 | `ZoneBanner` | Frame |
 | `OddsBurst` | ImageLabel |
-| `RarityRibbon` | Frame |
+| `FinalOdds.Sunburst` | ImageLabel |
+| `HeroCard.CardPanel.RarityRibbon` | Frame |
 | `LetterboxTop` | Frame |
 | `LetterboxBottom` | Frame |
 | `FlashFrame` | Frame |
@@ -780,7 +1141,18 @@ Root: `Reveal` (ScreenGui), file `src/ui/Reveal.model.json`
 | Path | IconKey |
 |---|---|
 | `OddsBurst` | FxStarburst |
-| `IncomeRow.YenIcon` | IconYen |
+| `FinalOdds.Glow` | FxGlow |
+| `FinalOdds.Sunburst` | FxSunburst |
+| `FinalOdds.Twinkle1` | FxTwinkle |
+| `FinalOdds.Twinkle2` | FxTwinkle |
+| `HeroCard.Glow` | FxGlow |
+| `HeroCard.CardPanel.TagRow.CraveTag.CraveTagIcon` | IconFlavorSavory |
+| `HeroCard.CardPanel.TagRow.Stars.Star1` | IconStar |
+| `HeroCard.CardPanel.TagRow.Stars.Star2` | IconStar |
+| `HeroCard.CardPanel.TagRow.Stars.Star3` | IconStar |
+| `HeroCard.CardPanel.StatsRow.IncomeRow.YenIcon` | IconYenBig |
+| `HeroCard.Twinkle1` | FxTwinkle |
+| `HeroCard.Twinkle2` | FxTwinkle |
 
 ## Settings
 
@@ -1003,30 +1375,92 @@ Root: `Store` (ScreenGui), file `src/ui/Store.model.json`
 | Path | Shows | Samples |
 |---|---|---|
 | `Window.GiftTarget.GiftTargetText` | gift recipient or GIFT A FRIEND | GIFT A FRIEND / FOR: Builderman |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy1.PriceRow.Price` | next slot price | 79 / 999 |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy3.PriceRow.Price` | next slot price | 79 / 999 |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy10.PriceRow.Price` | next slot price | 79 / 999 |
-| `Window.Body.StoreScroll.StarterPackBanner.StarterBuyButton.StarterPrice` | starter pack Robux price / OWNED | 49 / OWNED |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample1.PassName` | pass display name | 2x Yen / 2x Training |
+| `Window.Body.SummonBanner.PoolChip.SummonPoolText` | ? | 6 EXCLUSIVE HEROES / 12 EXCLUSIVE HEROES |
+| `Window.Body.SummonBanner.StageWell.SummonRarity.SummonRarityText` | ? | MYTHIC / LEGENDARY |
+| `Window.Body.SummonBanner.StageWell.SummonChance.SummonChanceText` | ? | 1% / 0.25% |
+| `Window.Body.SummonBanner.StageWell.SummonHeroTag.SummonHeroName` | ? | Illusion Overlord / Sweet-Tooth Detective |
+| `Window.Body.SummonBanner.StageWell.SummonHeroTag.SummonPerkChip.SummonHeroPerk` | ? | EARNS 12x YOUR BEST / EARNS 1.75x YOUR BEST |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile1.ScrollCount` | ? | x1 / x10 |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile1.ScrollNote` | ? | 79 EACH / SAVE 24% |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile1.SummonBuy1.Price` | next slot price | 79 / 999 |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile3.ScrollCount` | ? | x3 / x10 |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile3.ScrollNote` | ? | 79 EACH / SAVE 24% |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile3.SummonBuy3.Price` | next slot price | 199 / 999 |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile10.ScrollCount` | ? | x10 / x10 |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile10.ScrollNote` | ? | 79 EACH / SAVE 24% |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile10.SummonBuy10.Price` | next slot price | 599 / 999 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterTitle` | ? | STARTER PACK |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterPerks.StarterPerk1.PerkText` | ? | Blood Fiend hero / Cosplay Star hero |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterPerks.StarterPerk2.PerkText` | ? | 5 Lucky Throws / 25 Lucky Throws |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterPerks.StarterPerk3.PerkText` | ? | 30 min 2x Yen / 120 min 2x Yen |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterBuyButton.StarterPrice` | starter pack Robux price / OWNED | 49 / OWNED / 9999 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterSticker.StarterStickerText` | ? | ONE-TIME OFFER / LIMITED HERO / NEW HERO / ONE-TIME OFFER |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedHeroName` | ? | FIRST SUN SWORDSMAN / SWEET-TOOTH DETECTIVE |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedPerks.LimitedPerk1.PerkText` | ? | Earns 3x your best / Earns 12x your best |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedPerks.LimitedPerk2.PerkText` | ? | Store exclusive |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedPerks.LimitedPerk3.PerkText` | ? | Not in any scroll |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedHeroBuy.LimitedHeroPrice` | ? | 399 / OWNED / 9999 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedSticker.LimitedStickerText` | ? | LIMITED HERO / ONE-TIME OFFER / NEW HERO / LIMITED HERO |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample1.HeaderBand.PassName` | pass display name | 2x Yen / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample1.PassDesc` | ? | Every hero earns double yen, forever. / Every hero earns double yen, forever. |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample1.PassBuyButton.PassPrice` | pass Robux price / OWNED | OWNED |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample2.PassName` | pass display name | 2x Training / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample1.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample2.HeaderBand.PassName` | pass display name | 2x Yen / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample2.PassDesc` | ? | Every hero earns double yen, forever. / 2x Power from every rep, perfect tap and boost. |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample2.PassBuyButton.PassPrice` | pass Robux price / OWNED | OWNED |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample3.PassName` | pass display name | Auto Throw / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample2.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample3.HeaderBand.PassName` | pass display name | 2x Yen / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample3.PassDesc` | ? | Every hero earns double yen, forever. / +15% luck on every throw and +2 hero slots. |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample3.PassBuyButton.PassPrice` | pass Robux price / OWNED | OWNED |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample4.PassName` | pass display name | Lucky Aura / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample3.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample4.HeaderBand.PassName` | pass display name | 2x Yen / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample4.PassDesc` | ? | Every hero earns double yen, forever. / Adds AUTO to your throw pad: it throws for you. |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample4.PassBuyButton.PassPrice` | pass Robux price / OWNED | OWNED |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.ProductName` | product display name | 5 Lucky Throws / 30 min Training |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.ProductBuyButton.ProductPrice` | Robux price | 39 / 599 |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / LIMITED / BEST VALUE |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.ProductName` | product display name | Server Luck / 30 min Training |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.ProductBuyButton.ProductPrice` | Robux price | 39 / 599 |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / LIMITED / BEST VALUE |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.ProductName` | product display name | 12 hour Yen / 30 min Training |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.ProductBuyButton.ProductPrice` | Robux price | 39 / 599 |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / LIMITED / BEST VALUE |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.ProductName` | product display name | 30 min Training / 30 min Training |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.ProductBuyButton.ProductPrice` | Robux price | 39 / 599 |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / LIMITED / BEST VALUE |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample4.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.HeaderBand.PassName` | pass display name | 2x Yen / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.PassDesc` | ? | Every hero earns double yen, forever. / x1.5 luck on every throw, forever. |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.PassBuyButton.PassPrice` | pass Robux price / OWNED | OWNED |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.HeaderBand.PassName` | pass display name | 2x Yen / 2x Training |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.PassDesc` | ? | Every hero earns double yen, forever. / Your bench holds 60 heroes instead of 30. |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.PassBuyButton.PassPrice` | pass Robux price / OWNED | OWNED |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.ProductDesc` | ? | x12 luck on one throw / Server luck up for 15 min |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.ProductDesc` | ? | x12 luck on 5 throws / Server luck up for 15 min |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.ProductDesc` | ? | x12 luck on 25 throws / Server luck up for 15 min |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.ProductDesc` | ? | Server luck up for 15 min / Server luck up for 15 min |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.ProductDesc` | ? | 5 min of training Power / Server luck up for 15 min |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.ProductDesc` | ? | 30 min of training Power / Server luck up for 15 min |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.ProductDesc` | ? | x12 luck on one throw / Server luck up for 15 min |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.ProductDesc` | ? | x12 luck on 5 throws / Server luck up for 15 min |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.HeaderBand.ProductName` | product display name | 1 Lucky Throw / 30 min Training |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.ProductDesc` | ? | x12 luck on 25 throws / Server luck up for 15 min |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.ProductBuyButton.ProductPrice` | Robux price | 9 / 999 |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
 
 **Buttons**
 
@@ -1034,18 +1468,26 @@ Root: `Store` (ScreenGui), file `src/ui/Store.model.json`
 |---|---|---|
 | `Window.CloseButton` | close page (ClosesPage attr) | ClosesPage=True |
 | `Window.GiftTarget` | pick a gift recipient |  |
-| `Window.Body.SummonBanner.OddsButton` | open SummonOdds (no purchase) | OpensPage=SummonOdds |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy1` | prompt SummonScroll1 |  |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy3` | prompt SummonScroll3 |  |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy10` | prompt SummonScroll10 |  |
-| `Window.Body.StoreScroll.StarterPackBanner.StarterBuyButton` | prompt StarterPack |  |
+| `Window.Body.SummonBanner.StageWell.OddsButton` | open SummonOdds (no purchase) | OpensPage=SummonOdds |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile1.SummonBuy1` | prompt SummonScroll1 |  |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile3.SummonBuy3` | prompt SummonScroll3 |  |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile10.SummonBuy10` | prompt SummonScroll10 |  |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterBuyButton` | prompt StarterPack |  |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedHeroBuy` | ? |  |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample2.PassBuyButton` | prompt the card's pass (PassKey attr) |  |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample3.PassBuyButton` | prompt the card's pass (PassKey attr) |  |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample4.PassBuyButton` | prompt the card's pass (PassKey attr) |  |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.PassBuyButton` | prompt the card's pass (PassKey attr) |  |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.PassBuyButton` | prompt the card's pass (PassKey attr) |  |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.ProductBuyButton` | prompt the card's product (ProductKey attr) |  |
 
 **List containers**
 
@@ -1060,32 +1502,39 @@ Root: `Store` (ScreenGui), file `src/ui/Store.model.json`
 |---|---|
 | `Scrim` | Frame |
 | `Window` | Frame |
-| `Window.Body.SummonBanner.StageWell.Sunburst` | ImageLabel |
-| `Window.Body.SummonBanner.BestValueSticker` | Frame |
-| `Window.Body.SummonBanner.NewSticker` | Frame |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile10.BestValueSticker` | Frame |
 | `Window.Body.StoreScroll` | ScrollingFrame |
-| `Window.Body.StoreScroll.StarterPackBanner.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.StarterPackBanner.LimitedSticker` | Frame |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample1.IconTile.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample1.CardIcon` | ImageLabel |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample2.IconTile.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample2.CardIcon` | ImageLabel |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample3.IconTile.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample3.CardIcon` | ImageLabel |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample4.IconTile.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample4.CardIcon` | ImageLabel |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.IconTile.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedSticker` | Frame |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample1.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample1.Sticker` | Frame |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample2.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample2.Sticker` | Frame |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample3.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample3.Sticker` | Frame |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample4.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample4.Sticker` | Frame |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.Sticker` | Frame |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.Sticker` | Frame |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.IconSlot.CardIcon` | ImageLabel |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.Sticker` | Frame |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.IconTile.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.IconSlot.CardIcon` | ImageLabel |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.Sticker` | Frame |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.IconTile.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.IconSlot.CardIcon` | ImageLabel |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.Sticker` | Frame |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.IconTile.Sunburst` | ImageLabel |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.IconSlot.CardIcon` | ImageLabel |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.Sticker` | Frame |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.Sticker` | Frame |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.Sticker` | Frame |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.Sticker` | Frame |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.Sticker` | Frame |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.IconSlot.CardIcon` | ImageLabel |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.Sticker` | Frame |
 
 **IconKey slots** (ImageLabel, Image empty)
 
@@ -1094,41 +1543,164 @@ Root: `Store` (ScreenGui), file `src/ui/Store.model.json`
 | `Window.Header.TitleRow.TitleIcon` | IconStoreBig |
 | `Window.CloseButton.Icon` | IconClose |
 | `Window.GiftTarget.Icon` | IconGift |
-| `Window.Body.SummonBanner.StageWell.Sunburst` | FxSunburst |
-| `Window.Body.SummonBanner.StageWell.Sparkle1` | IconStar |
-| `Window.Body.SummonBanner.StageWell.Sparkle2` | IconStar |
-| `Window.Body.SummonBanner.StageWell.Sparkle3` | IconStar |
-| `Window.Body.SummonBanner.OddsButton.Icon` | IconInfo |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy1.PriceRow.Icon` | IconRobux |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy3.PriceRow.Icon` | IconRobux |
-| `Window.Body.SummonBanner.BuyRow.SummonBuy10.PriceRow.Icon` | IconRobux |
-| `Window.Body.StoreScroll.StarterPackBanner.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.StarterPackBanner.Icon` | IconGiftBig |
-| `Window.Body.StoreScroll.StarterPackBanner.StarterBuyButton.Icon` | IconRobux |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample1.IconTile.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample1.CardIcon` | IconYenBig |
+| `Window.Body.SummonBanner.VfxCardBg` | Vfx_10716751908 |
+| `Window.Body.SummonBanner.PoolChip.PoolIcon` | IconScroll |
+| `Window.Body.SummonBanner.StageWell.VfxBackdrop` | Vfx_104721066207509 |
+| `Window.Body.SummonBanner.StageWell.VfxSigil` | Vfx_12389948201 |
+| `Window.Body.SummonBanner.StageWell.VfxRunes` | Vfx_2152222413 |
+| `Window.Body.SummonBanner.StageWell.VfxSpeedRays` | Vfx_1084975295 |
+| `Window.Body.SummonBanner.StageWell.VfxLine1` | Vfx_241876428 |
+| `Window.Body.SummonBanner.StageWell.VfxLine2` | Vfx_241876428 |
+| `Window.Body.SummonBanner.StageWell.VfxLine3` | Vfx_241876428 |
+| `Window.Body.SummonBanner.StageWell.VfxLine4` | Vfx_241876428 |
+| `Window.Body.SummonBanner.StageWell.VfxLine5` | Vfx_241876428 |
+| `Window.Body.SummonBanner.StageWell.VfxLine6` | Vfx_241876428 |
+| `Window.Body.SummonBanner.StageWell.VfxFlameL.Sheet` | Vfx_16860267787_f0 |
+| `Window.Body.SummonBanner.StageWell.VfxFlameR.Sheet` | Vfx_16860267787_f0 |
+| `Window.Body.SummonBanner.StageWell.VfxCoreGlow` | Vfx_10435576555 |
+| `Window.Body.SummonBanner.StageWell.VfxAura.Sheet` | Vfx_17612127081_f0 |
+| `Window.Body.SummonBanner.StageWell.VfxSmoke.Sheet` | Vfx_15410021685_f0 |
+| `Window.Body.SummonBanner.StageWell.VfxZap.Sheet` | Vfx_11492870634_f0 |
+| `Window.Body.SummonBanner.StageWell.VfxBolt.Sheet` | Vfx_14068947349_f0 |
+| `Window.Body.SummonBanner.StageWell.VfxGlint.Sheet` | Vfx_17062426399_f0 |
+| `Window.Body.SummonBanner.StageWell.VfxSpark1` | Vfx_448862775 |
+| `Window.Body.SummonBanner.StageWell.VfxSpark2` | Vfx_448862775 |
+| `Window.Body.SummonBanner.StageWell.VfxSpark3` | Vfx_448862775 |
+| `Window.Body.SummonBanner.StageWell.VfxSpark4` | Vfx_448862775 |
+| `Window.Body.SummonBanner.StageWell.VfxSpark5` | Vfx_448862775 |
+| `Window.Body.SummonBanner.StageWell.VfxSpark6` | Vfx_448862775 |
+| `Window.Body.SummonBanner.StageWell.VfxSpark7` | Vfx_448862775 |
+| `Window.Body.SummonBanner.StageWell.VfxSpark8` | Vfx_448862775 |
+| `Window.Body.SummonBanner.StageWell.SummonHeroTag.SummonPerkChip.PerkIcon` | IconYen |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile1.SummonBuy1.Icon` | IconRobux |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile3.SummonBuy3.Icon` | IconRobux |
+| `Window.Body.SummonBanner.BuyRow.ScrollTile10.SummonBuy10.Icon` | IconRobux |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.CardArt` | Vfx_98516886373195 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxBloodGlow` | Vfx_1280736246 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxBloodRing` | Vfx_10372847108 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpearTL` | Vfx_7451697448 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpearTR` | Vfx_7451697448 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpearBL` | Vfx_7451697448 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpearBR` | Vfx_7451697448 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.GlassPattern` | BgStars |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.CoreGlow` | Vfx_10435576555 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxInnerRing` | Vfx_10372847108 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxBurstL.Sheet` | Vfx_16843151641_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxBurstR.Sheet` | Vfx_16843151641_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxWisp.Sheet` | Vfx_16867567145_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxSlashSpray.Sheet` | Vfx_11852978685_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxDrip3.Run` | Vfx_74310528338938 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxDrip3Drop` | Vfx_87019407382216 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxDrip4.Run` | Vfx_74310528338938 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxDrip4Drop` | Vfx_87019407382216 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxDrip5.Run` | Vfx_74310528338938 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxDrip5Drop` | Vfx_87019407382216 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxDrip6.Run` | Vfx_74310528338938 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterFrame.VfxDrip6Drop` | Vfx_87019407382216 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSplatTL` | Vfx_138180682365808 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSplatBR` | Vfx_138180682365808 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxDrip1.Run` | Vfx_74310528338938 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxDrip1Drop` | Vfx_87019407382216 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxDrip2.Run` | Vfx_74310528338938 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxDrip2Drop` | Vfx_87019407382216 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpark1` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpark2` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpark3` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpark4` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpark5` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.VfxSpark6` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.TitleGlow` | Vfx_10435576555 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterPerks.StarterPerk1.PerkWell.PerkIcon` | IconStar |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterPerks.StarterPerk2.PerkWell.PerkIcon` | IconLuckyThrow |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterPerks.StarterPerk3.PerkWell.PerkIcon` | IconYen |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.BuyGlow` | Vfx_10435576555 |
+| `Window.Body.StoreScroll.FeaturedRow.StarterPackBanner.StarterBuyButton.Icon` | IconRobux |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.CardArt` | Vfx_110074599004151 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxHeat` | Vfx_10435576555 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSunRing` | Vfx_2152222413 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxFlameArc` | Vfx_4543893907 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedFrame.GlassPattern` | BgRays |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedFrame.CoreGlow` | Vfx_10435576555 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedFrame.VfxFlameRing` | Vfx_10365549270 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedFrame.VfxFeetFire.Sheet` | Vfx_11843575561_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedFrame.VfxFireA.Sheet` | Vfx_11534281007_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedFrame.VfxFireB.Sheet` | Vfx_16841991986_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedFrame.VfxFireC.Sheet` | Vfx_16860424478_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedFrame.VfxFireD.Sheet` | Vfx_12656840930_f0 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSpark1` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSpark2` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSpark3` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSpark4` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSpark5` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSpark6` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSpark7` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.VfxSpark8` | Vfx_448862775 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.TitleGlow` | Vfx_10435576555 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedPerks.LimitedPerk1.PerkWell.PerkIcon` | IconYen |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedPerks.LimitedPerk2.PerkWell.PerkIcon` | IconLock |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedPerks.LimitedPerk3.PerkWell.PerkIcon` | IconScroll |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.BuyGlow` | Vfx_10435576555 |
+| `Window.Body.StoreScroll.FeaturedRow.LimitedHeroBanner.LimitedHeroBuy.Icon` | IconRobux |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample1.CardBg` | BgStars |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample1.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample1.IconSlot.CardIcon` | IconYenBig |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample1.PassBuyButton.Icon` | IconTick |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample2.IconTile.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample2.CardIcon` | IconTrainBig |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample2.CardBg` | BgStars |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample2.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample2.IconSlot.CardIcon` | IconTrainBig |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample2.PassBuyButton.Icon` | IconRobux |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample3.IconTile.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample3.CardIcon` | IconAutoBig |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample3.CardBg` | BgStars |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample3.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample3.IconSlot.CardIcon` | IconCrownBig |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample3.PassBuyButton.Icon` | IconRobux |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample4.IconTile.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.PassScroller.PassCardSample4.CardIcon` | IconLuckBig |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample4.CardBg` | BgStars |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample4.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample4.IconSlot.CardIcon` | IconAutoBig |
 | `Window.Body.StoreScroll.PassScroller.PassCardSample4.PassBuyButton.Icon` | IconRobux |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.IconTile.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.CardIcon` | IconLuckyThrowBig |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.CardBg` | BgStars |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.IconSlot.CardIcon` | IconLuckBig |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample5.PassBuyButton.Icon` | IconRobux |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.CardBg` | BgStars |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.IconSlot.CardIcon` | IconBenchBig |
+| `Window.Body.StoreScroll.PassScroller.PassCardSample6.PassBuyButton.Icon` | IconRobux |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.CardBg` | BgSakura |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.IconSlot.CardIcon` | IconLuckyThrowBig |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample1.ProductBuyButton.Icon` | IconRobux |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.IconTile.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.CardIcon` | IconLuckBig |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.CardBg` | BgSakura |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.IconSlot.CardIcon` | IconLuckyThrowBig |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample2.ProductBuyButton.Icon` | IconRobux |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.IconTile.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.CardIcon` | IconYenBig |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.CardBg` | BgSakura |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.IconSlot.CardIcon` | IconLuckyThrowBig |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample3.ProductBuyButton.Icon` | IconRobux |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.IconTile.Sunburst` | FxSunburst |
-| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.CardIcon` | IconTrainBig |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.CardBg` | BgSakura |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.IconSlot.CardIcon` | IconLuckBig |
 | `Window.Body.StoreScroll.ProductScroller.ProductCardSample4.ProductBuyButton.Icon` | IconRobux |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.CardBg` | BgSakura |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.IconSlot.CardIcon` | IconTrainBig |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample5.ProductBuyButton.Icon` | IconRobux |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.CardBg` | BgSakura |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.IconSlot.CardIcon` | IconTrainBig |
+| `Window.Body.StoreScroll.ProductScroller.ProductCardSample6.ProductBuyButton.Icon` | IconRobux |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.CardBg` | BgClouds |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.IconSlot.CardIcon` | IconYenBig |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample1.ProductBuyButton.Icon` | IconRobux |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.CardBg` | BgClouds |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.IconSlot.CardIcon` | IconYenBig |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample2.ProductBuyButton.Icon` | IconRobux |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.CardBg` | BgClouds |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.IconSlot.SlotGlow` | FxGlow |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.IconSlot.CardIcon` | IconYenBig |
+| `Window.Body.StoreScroll.YenScroller.ProductCardSample3.ProductBuyButton.Icon` | IconRobux |
 
 ## SummonOdds
 
@@ -1210,8 +1782,8 @@ Root: `ThrowMeter` (ScreenGui), file `src/ui/ThrowMeter.model.json`
 
 | Path | Shows | Samples |
 |---|---|---|
-| `ZonePreviewLabel` | 'Lands in: <zone>' while charging, idle hint otherwise | Lands in: Realm of Legends / Lands in: Pirate Harbor |
-| `MeterBar.MeterMarker.BonusLabel` | bonus riding beside the marker (+12) | +12 POWER / +1.2K POWER |
+| `ZonePreviewLabel` | 'Lands in: <zone>' while charging, idle hint otherwise | Lands in: Planet of the Gods / Lands in: Grand Line |
+| `MeterBar.MeterMarker.BonusLabel` | bonus riding beside the marker (+12) | +25% LUCK / +0% LUCK |
 | `LuckyThrowToggle.PriceRow.LuckyCount` | lucky throws owned | x99 / x3 |
 | `AutoToggle.PriceRow.AutoState` | ON / OFF | OFF / ON |
 
@@ -1224,6 +1796,9 @@ Root: `ThrowMeter` (ScreenGui), file `src/ui/ThrowMeter.model.json`
 | `LuckyThrowToggle` | toggle lucky throw (recolour face) |  |
 | `AutoToggle` | toggle Auto Throw pass |  |
 | `ExitButton` | leave the throw spot / training station |  |
+| `AimBack` | ? |  |
+| `AimFurther` | ? |  |
+| `OddsButton` | open SummonOdds (no purchase) |  |
 
 **List containers**
 
@@ -1250,6 +1825,64 @@ Root: `ThrowMeter` (ScreenGui), file `src/ui/ThrowMeter.model.json`
 | `LuckyThrowToggle.PriceRow.Icon` | IconLuckyThrow |
 | `AutoToggle.PriceRow.Icon` | IconAuto |
 | `ExitButton.Icon` | IconClose |
+| `OddsButton.Icon` | IconLuck |
+
+## ThrowOdds
+
+Root: `ThrowOdds` (ScreenGui), file `src/ui/ThrowOdds.model.json`
+
+
+**Dynamic labels** (ship `<unbound>`)
+
+| Path | Shows | Samples |
+|---|---|---|
+| `Window.Body.OddsHead.OddsZone` | ? | Planet of the Gods / Hidden Leaf Village |
+| `Window.Body.OddsHead.OddsLuck` | ? | Your luck x999.9 / Your luck x1.00 |
+| `Window.Body.OddsLines.ThrowOddsRowSample1.Name` | ? | HEROES IN THIS ZONE / INSANE LUCK |
+| `Window.Body.OddsLines.ThrowOddsRowSample1.Percent` | ? |  / 100.00% |
+| `Window.Body.OddsLines.ThrowOddsRowSample1.OneIn` | ? |  / 1 in 1,000,000 |
+| `Window.Body.OddsLines.ThrowOddsRowSample2.Name` | ? | Common / INSANE LUCK |
+| `Window.Body.OddsLines.ThrowOddsRowSample2.Percent` | ? | 49.20% / 100.00% |
+| `Window.Body.OddsLines.ThrowOddsRowSample2.OneIn` | ? | 1 in 2.0 / 1 in 1,000,000 |
+| `Window.Body.OddsLines.ThrowOddsRowSample3.Name` | ? | Uncommon / INSANE LUCK |
+| `Window.Body.OddsLines.ThrowOddsRowSample3.Percent` | ? | 26.49% / 100.00% |
+| `Window.Body.OddsLines.ThrowOddsRowSample3.OneIn` | ? | 1 in 3.8 / 1 in 1,000,000 |
+| `Window.Body.OddsLines.ThrowOddsRowSample4.Name` | ? | Rare / INSANE LUCK |
+| `Window.Body.OddsLines.ThrowOddsRowSample4.Percent` | ? | 18.36% / 100.00% |
+| `Window.Body.OddsLines.ThrowOddsRowSample4.OneIn` | ? | 1 in 5.4 / 1 in 1,000,000 |
+| `Window.Body.OddsLines.ThrowOddsRowSample5.Name` | ? | Epic / INSANE LUCK |
+| `Window.Body.OddsLines.ThrowOddsRowSample5.Percent` | ? | 5.00% / 100.00% |
+| `Window.Body.OddsLines.ThrowOddsRowSample5.OneIn` | ? | 1 in 20 / 1 in 1,000,000 |
+| `Window.Body.OddsLines.ThrowOddsRowSample6.Name` | ? | Legendary / INSANE LUCK |
+| `Window.Body.OddsLines.ThrowOddsRowSample6.Percent` | ? | 0.63% / 100.00% |
+| `Window.Body.OddsLines.ThrowOddsRowSample6.OneIn` | ? | 1 in 160 / 1 in 1,000,000 |
+| `Window.Body.OddsLines.ThrowOddsRowSample7.Name` | ? | Mythic / INSANE LUCK |
+| `Window.Body.OddsLines.ThrowOddsRowSample7.Percent` | ? | 0.03% / 100.00% |
+| `Window.Body.OddsLines.ThrowOddsRowSample7.OneIn` | ? | 1 in 4,000 / 1 in 1,000,000 |
+| `Window.Body.OddsLines.ThrowOddsRowSample8.Name` | ? | MUTATIONS / INSANE LUCK |
+| `Window.Body.OddsLines.ThrowOddsRowSample8.Percent` | ? |  / 100.00% |
+| `Window.Body.OddsLines.ThrowOddsRowSample8.OneIn` | ? |  / 1 in 1,000,000 |
+| `Window.Body.OddsNote` | ? | A Lucky Throw: x12 luck, never below Epic / Luck divides every 1 in N |
+
+**Buttons**
+
+| Path | Does | Attributes |
+|---|---|---|
+| `Window.CloseButton` | close page (ClosesPage attr) | ClosesPage=True |
+
+**Other named instances** (shown, hidden, tweened or recoloured by code)
+
+| Path | Class |
+|---|---|
+| `Scrim` | Frame |
+| `Window` | Frame |
+
+**IconKey slots** (ImageLabel, Image empty)
+
+| Path | IconKey |
+|---|---|
+| `Window.Header.TitleRow.TitleIcon` | IconLuckBig |
+| `Window.CloseButton.Icon` | IconClose |
 
 ## TrainingBar
 
@@ -1260,9 +1893,8 @@ Root: `TrainingBar` (ScreenGui), file `src/ui/TrainingBar.model.json`
 
 | Path | Shows | Samples |
 |---|---|---|
-| `UpgradePrompt.UpgradeText` | next affordable gear and price | NEW GEAR: Dragon Shrine 28B / NEW GEAR: Sandbag 600 |
+| `UpgradeReady.UpgradeText` | next affordable gear and price | Leave training, press F at the gear stand / Leave training, tap the gear stand |
 | `TrainingPanel.HeadRow.RankName` | rank name | CHAMPION / ROOKIE |
-| `TrainingPanel.HeadRow.GearName` | current training gear | on Gravity Dojo / on Wooden Dummy |
 | `TrainingPanel.ProgressBar.ProgressText` | power / next rank power -> next rank | 999.99Qi / 999.99Qi -> LEGEND / 9.01K / 70K -> ELITE |
 | `TrainingPanel.RepRow.PowerPerRep` | power gained per rep | +11.00K power per rep / +560 power per rep |
 | `StationTitle` | training station name | STRIKE DUMMY / GRAVITY DOJO |
@@ -1273,7 +1905,6 @@ Root: `TrainingBar` (ScreenGui), file `src/ui/TrainingBar.model.json`
 
 | Path | Does | Attributes |
 |---|---|---|
-| `UpgradePrompt` | buy the next gear |  |
 | `ExitButton` | leave the throw spot / training station |  |
 
 **Other named instances** (shown, hidden, tweened or recoloured by code)
@@ -1290,12 +1921,23 @@ Root: `TrainingBar` (ScreenGui), file `src/ui/TrainingBar.model.json`
 
 | Path | IconKey |
 |---|---|
-| `UpgradePrompt.Icon` | IconTrain |
+| `UpgradeReady.Glow` | FxGlow |
+| `UpgradeReady.ReadyIcon` | IconTrainBig |
 | `TrainingPanel.RepRow.PowerIcon` | IconPower |
 | `TimingRing.RingIcon` | IconPowerBig |
 | `ExitButton.Icon` | IconClose |
 
 # Templates
+
+## ConfettiStarTemplate
+
+Root: `ConfettiStarTemplate` (ImageLabel), file `src/ui/ConfettiStarTemplate.model.json`
+
+
+## ConfettiTemplate
+
+Root: `ConfettiTemplate` (Frame), file `src/ui/ConfettiTemplate.model.json`
+
 
 ## DailyCellTemplate
 
@@ -1336,7 +1978,7 @@ Root: `FoodCardTemplate` (Frame), file `src/ui/FoodCardTemplate.model.json`
 | `FoodName` | equipped / card food name | Sushi / Festival Cake |
 | `StatRow.PowerStat.PowerText` | food power multiplier | POWER x1.3 / POWER x5.00 |
 | `StatRow.LuckStat.LuckText` | food luck multiplier | LUCK x1.25 / LUCK x5.50 |
-| `BuyButton.PriceText` | price / EQUIP / EQUIPPED | 3K / 999.99Qi |
+| `BuyButton.PriceText` | price / EQUIP / EQUIPPED | 85K / 999.99Qi |
 
 **Buttons**
 
@@ -1521,8 +2163,10 @@ Root: `PassCardTemplate` (Frame), file `src/ui/PassCardTemplate.model.json`
 
 | Path | Shows | Samples |
 |---|---|---|
-| `PassName` | pass display name | 2x Training / 2x Training |
-| `PassBuyButton.PassPrice` | pass Robux price / OWNED | 149 / 999 |
+| `HeaderBand.PassName` | pass display name | 2x Training / 2x Training |
+| `PassDesc` | ? | Every hero earns double yen, forever. / 2x Power from every rep, perfect tap and boost. |
+| `PassBuyButton.PassPrice` | pass Robux price / OWNED | 149 / 999 / GIFT 149 |
+| `Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
 
 **Buttons**
 
@@ -1534,15 +2178,16 @@ Root: `PassCardTemplate` (Frame), file `src/ui/PassCardTemplate.model.json`
 
 | Path | Class |
 |---|---|
-| `IconTile.Sunburst` | ImageLabel |
-| `CardIcon` | ImageLabel |
+| `IconSlot.CardIcon` | ImageLabel |
+| `Sticker` | Frame |
 
 **IconKey slots** (ImageLabel, Image empty)
 
 | Path | IconKey |
 |---|---|
-| `IconTile.Sunburst` | FxSunburst |
-| `CardIcon` | IconTrainBig |
+| `CardBg` | BgStars |
+| `IconSlot.SlotGlow` | FxGlow |
+| `IconSlot.CardIcon` | IconTrainBig |
 | `PassBuyButton.Icon` | IconRobux |
 
 ## ProductCardTemplate
@@ -1554,9 +2199,10 @@ Root: `ProductCardTemplate` (Frame), file `src/ui/ProductCardTemplate.model.json
 
 | Path | Shows | Samples |
 |---|---|---|
-| `ProductName` | product display name | 25 Lucky Throws / 30 min Training |
-| `ProductBuyButton.ProductPrice` | Robux price | 149 / 599 |
-| `Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / LIMITED / BEST VALUE |
+| `HeaderBand.ProductName` | product display name | 25 Lucky Throws / 30 min Training |
+| `ProductDesc` | ? | x12 luck on 25 throws / Server luck up for 15 min |
+| `ProductBuyButton.ProductPrice` | Robux price | 149 / 999 |
+| `Sticker.StickerText` | store sticker (BEST VALUE / NEW / LIMITED) | BEST VALUE / MOST VALUE / GOOD VALUE / LIMITED / NEW! / BEST VALUE |
 
 **Buttons**
 
@@ -1568,17 +2214,30 @@ Root: `ProductCardTemplate` (Frame), file `src/ui/ProductCardTemplate.model.json
 
 | Path | Class |
 |---|---|
-| `IconTile.Sunburst` | ImageLabel |
-| `CardIcon` | ImageLabel |
+| `IconSlot.CardIcon` | ImageLabel |
 | `Sticker` | Frame |
 
 **IconKey slots** (ImageLabel, Image empty)
 
 | Path | IconKey |
 |---|---|
-| `IconTile.Sunburst` | FxSunburst |
-| `CardIcon` | IconLuckyThrowBig |
+| `CardBg` | BgSakura |
+| `IconSlot.SlotGlow` | FxGlow |
+| `IconSlot.CardIcon` | IconLuckyThrowBig |
 | `ProductBuyButton.Icon` | IconRobux |
+
+## ThrowOddsRowTemplate
+
+Root: `ThrowOddsRowTemplate` (Frame), file `src/ui/ThrowOddsRowTemplate.model.json`
+
+
+**Dynamic labels** (ship `<unbound>`)
+
+| Path | Shows | Samples |
+|---|---|---|
+| `Name` | ? | Legendary / INSANE LUCK |
+| `Percent` | ? | 0.75% / 100.00% |
+| `OneIn` | ? | 1 in 133 / 1 in 1,000,000 |
 
 ## ToastTemplate
 

@@ -6,6 +6,7 @@
 -- reason to stay in a server. Festival Hour runs on the wall clock, so every
 -- server starts it at the same moment and a creator can announce it.
 
+local MessagingService = game:GetService("MessagingService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Knit = require(ReplicatedStorage.Packages.Knit)
@@ -19,7 +20,10 @@ local MAPS = Lookup.of(Config)
 local STEPS = Config.Luck.ServerSteps
 local E = Config.Events
 -- a catch this unlikely gets a banner even if its rarity alone would not
-local ANNOUNCE_ONE_IN = 2500
+local ANNOUNCE_ONE_IN = Config.Roll.AnnounceOneIn
+-- a catch this unlikely (or any Secret) is told to EVERY server
+local GLOBAL_ONE_IN = Config.Roll.GlobalAnnounceOneIn
+local GLOBAL_TOPIC = "TFA_Catch_v1"
 
 local EventService = Knit.CreateService({
 	Name = "EventService",
@@ -118,10 +122,19 @@ function EventService:CatchAnnounce(player: Player, roll: any, delay: number)
 			table.insert(tags, roll.mutation:upper())
 		end
 		table.insert(tags, character.Name)
-		self:Announce("catch", {
-			text = `{name} caught {table.concat(tags, " ")}  ({Format.oneIn(roll.oneInN)})`,
-			rarity = roll.rarity,
-		})
+		local text = `{name} caught {table.concat(tags, " ")}  ({Format.oneIn(roll.oneInN)})`
+		self:Announce("catch", { text = text, rarity = roll.rarity })
+		if roll.rarity == "Secret" or roll.oneInN >= GLOBAL_ONE_IN then
+			-- best effort: a failed publish only loses a banner
+			task.spawn(function()
+				pcall(function()
+					MessagingService:PublishAsync(
+						GLOBAL_TOPIC,
+						{ text = text, rarity = roll.rarity, job = game.JobId }
+					)
+				end)
+			end)
+		end
 	end)
 end
 
@@ -130,6 +143,28 @@ function EventService:KnitStart()
 		if Guard.allow(player, "EnvSnapshot", 0.2, 2) then
 			self._env:FireClient(player, self:_state())
 		end
+	end)
+
+	-- catches told to every server (a Secret, or a score past GlobalAnnounceOneIn)
+	task.spawn(function()
+		pcall(function()
+			MessagingService:SubscribeAsync(GLOBAL_TOPIC, function(message: any)
+				local data = message.Data
+				if
+					typeof(data) ~= "table"
+					or typeof(data.text) ~= "string"
+					or #data.text > 200
+					or data.job == game.JobId
+				then
+					return
+				end
+				self:Announce("catch", {
+					text = data.text,
+					rarity = if typeof(data.rarity) == "string" then data.rarity else nil,
+					global = true,
+				})
+			end)
+		end)
 	end)
 
 	task.spawn(function()

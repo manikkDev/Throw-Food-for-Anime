@@ -20,6 +20,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Particles = require(script.Parent.Particles)
 local HeroAura = require(script.Parent.HeroAura)
 local AuraConfig = require(ReplicatedStorage.Shared.Config.Auras)
+local AuraDensity = require(ReplicatedStorage.Shared.Core.AuraDensity)
 
 export type Opts = {
 	--- 1 = authored size.
@@ -49,6 +50,8 @@ local INERT: Handle = { authored = false, stop = function() end }
 local kit: any = nil
 local kitTried = false
 local lowDetail = false
+-- the graphics bars (1..10) the hero auras were last fitted for
+local auraBars = 0
 
 -- The kit, once it exists. Looked for again on every call until found (the
 -- module may arrive with a later sync); required once.
@@ -388,6 +391,29 @@ local function heroOn(aura: Aura, rate: number)
 	end
 end
 
+-- touch only, no keyboard: a phone or a tablet
+local function isPhone(): boolean
+	return UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
+end
+
+-- The player's graphics bars (1..10). On Automatic the game cannot read what the engine picked:
+-- Core/AuraDensity says what to assume.
+local function graphicsBars(): number
+	local ok, saved = pcall(function()
+		return UserSettings():GetService("UserGameSettings").SavedQualityLevel
+	end)
+	if ok and typeof(saved) == "EnumItem" and saved ~= Enum.SavedQualitySetting.Automatic then
+		return saved.Value
+	end
+	return if isPhone() then AuraDensity.AutomaticBars.phone else AuraDensity.AutomaticBars.desktop
+end
+
+-- A hot aura (Config/Auras.Hot) is thinned on high graphics, where the engine draws every particle
+-- and adds bloom: see Core/AuraDensity.
+local function auraRate(key: string, bars: number): number
+	return AuraDensity.rate(AuraConfig.Hot[key], bars)
+end
+
 local function evaluate()
 	evalQueued = false
 	local camera = workspace.CurrentCamera
@@ -408,8 +434,15 @@ local function evaluate()
 		return a.d < b.d
 	end)
 	-- phones get the low-detail aura budget whatever the setting says (no lag on any device)
-	local phone = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
-	local budget = if lowDetail or phone then AuraConfig.LowDetail else AuraConfig.Budget
+	local budget = if lowDetail or isPhone() then AuraConfig.LowDetail else AuraConfig.Budget
+	-- the graphics setting moved: every character aura is refitted at its new rate
+	local bars = graphicsBars()
+	if bars ~= auraBars then
+		auraBars = bars
+		for _, entry in ranked do
+			heroOff(entry.aura)
+		end
+	end
 	local heroes, particles = 0, 0
 	for index, entry in ranked do
 		local aura = entry.aura
@@ -424,7 +457,8 @@ local function evaluate()
 		-- A hero still popping in (HeroController sets "Popping" while it scales up) waits: an aura
 		-- fitted to it mid-scale stayed oversized once it reached full size (owner's review 3).
 		if aura.heroKey then
-			local cost = HeroAura.cost(aura.heroKey) * budget.RateScale
+			local rate = budget.RateScale * auraRate(aura.heroKey, bars)
+			local cost = HeroAura.cost(aura.heroKey) * rate
 			if
 				aura.model:GetAttribute("Popping") ~= true
 				and entry.d <= budget.Range
@@ -433,7 +467,7 @@ local function evaluate()
 			then
 				heroes += 1
 				particles += cost
-				heroOn(aura, budget.RateScale)
+				heroOn(aura, rate)
 			else
 				heroOff(aura)
 			end

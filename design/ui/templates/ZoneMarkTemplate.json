@@ -11,10 +11,10 @@
    "type": "frame",
    "name": "ZoneMarkTemplate",
    "colour": [
-    "#3FA9F5",
-    "#3691D3"
+    "#5BD6B0",
+    "#4EB897"
    ],
-   "paint": "#3FA9F5",
+   "paint": "#5BD6B0",
    "children": [
     {
      "type": "label",

@@ -1,0 +1,9094 @@
+{
+ "_what": "PREVIEW of the owner's aura naming pass (2026-11-25); NOT wired into the game. Made by tools/aura_assign.py; shown on Workspace.AuraAssignPreview.",
+ "rules": "Common/Uncommon none; Rare = 'All Rare Characters' recoloured; Epic+ = named, else nickname aura, else a pick",
+ "notes": [
+  "Gojo was named on 3 stands (Mutants Rage, Crimson Moon, Infinite Reality): kept Crimson Moon",
+  "Ulquiorra was named on 2 stands (RedOutline, TorsoBlaze): kept TorsoBlaze",
+  "Broly was named on 2 stands (SaiyanGold, Green power): kept Green power",
+  "Levi Ackerman was named on 2 stands (Dummy, Midnight Blues): kept Midnight Blues",
+  "Barou is Rare: named on RedOutline; given the Rare aura instead (owner's rule)",
+  "Nagi is Rare: named on Blue Heat; given the Rare aura instead (owner's rule)",
+  "Yuno is Rare: named on Green power; given the Rare aura instead (owner's rule)",
+  "Aki Hayakawa is Rare: named on s; given the Rare aura instead (owner's rule)",
+  "Megumi Fushiguro is Rare: named on Pure Vessel; given the Rare aura instead (owner's rule)",
+  "Piccolo is Uncommon: named on Dutchman, but Uncommon wears no aura",
+  "Asta is Common: named on NightWings, but Common wears no aura"
+ ],
+ "auras": [
+  {
+   "ref": "S:ElectricBlue",
+   "kind": "key",
+   "key": "ElectricBlue",
+   "label": "ElectricBlue",
+   "source": "electric aura",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Lawliet",
+    "Kashimo"
+   ]
+  },
+  {
+   "ref": "S:TitanBolt",
+   "kind": "key",
+   "key": "TitanBolt",
+   "label": "TitanBolt",
+   "source": "Aot Aura Pack",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Minato"
+   ]
+  },
+  {
+   "ref": "S:SlimeStorm",
+   "kind": "key",
+   "key": "SlimeStorm",
+   "label": "SlimeStorm",
+   "source": "Rimuru",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Goku Black"
+   ]
+  },
+  {
+   "ref": "S:LoveStruck",
+   "kind": "key",
+   "key": "LoveStruck",
+   "label": "LoveStruck",
+   "source": "Love Vfx Pack",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Byakuya"
+   ]
+  },
+  {
+   "ref": "S:Purity",
+   "kind": "key",
+   "key": "Purity",
+   "label": "Purity",
+   "source": "Purity",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Doflamingo"
+   ]
+  },
+  {
+   "ref": "S:InkShadow",
+   "kind": "key",
+   "key": "InkShadow",
+   "label": "InkShadow",
+   "source": "Model",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Light Yagami"
+   ]
+  },
+  {
+   "ref": "S:SaiyanGold",
+   "kind": "key",
+   "key": "SaiyanGold",
+   "label": "SaiyanGold",
+   "source": "Goku - SSJ2 Aura",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Dio Brando",
+    "Kenpachi",
+    "Goku"
+   ]
+  },
+  {
+   "ref": "S:RedOutline",
+   "kind": "key",
+   "key": "RedOutline",
+   "label": "RedOutline",
+   "source": "Test Reversal Red Aura",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Kokushibo"
+   ]
+  },
+  {
+   "ref": "S:TorsoBlaze",
+   "kind": "key",
+   "key": "TorsoBlaze",
+   "label": "TorsoBlaze",
+   "source": "Torso",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Ulquiorra"
+   ]
+  },
+  {
+   "ref": "S:CyanStorm",
+   "kind": "key",
+   "key": "CyanStorm",
+   "label": "CyanStorm",
+   "source": "Model",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Kaido"
+   ]
+  },
+  {
+   "ref": "S:ShadowMonarch",
+   "kind": "key",
+   "key": "ShadowMonarch",
+   "label": "ShadowMonarch",
+   "source": "Sung Jinwoo",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Diavolo"
+   ]
+  },
+  {
+   "ref": "S:SunHalo",
+   "kind": "key",
+   "key": "SunHalo",
+   "label": "SunHalo",
+   "source": "POF:RE AURA: Sun Necromancer",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Netero"
+   ]
+  },
+  {
+   "ref": "S:BloodBubble",
+   "kind": "key",
+   "key": "BloodBubble",
+   "label": "BloodBubble",
+   "source": "aura (4)",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Power"
+   ]
+  },
+  {
+   "ref": "S:CrimsonFlame",
+   "kind": "key",
+   "key": "CrimsonFlame",
+   "label": "CrimsonFlame",
+   "source": "aura (2)",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Ken Kaneki",
+    "Obito Uchiha"
+   ]
+  },
+  {
+   "ref": "S:HeartFlame",
+   "kind": "key",
+   "key": "HeartFlame",
+   "label": "HeartFlame",
+   "source": "Aura_RedHeartFire",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Marin Kitagawa"
+   ]
+  },
+  {
+   "ref": "S:JackpotGreen",
+   "kind": "key",
+   "key": "JackpotGreen",
+   "label": "JackpotGreen",
+   "source": "Hakari Emote",
+   "tier": "B",
+   "cap": 140,
+   "size": 4.5,
+   "reach": 5,
+   "wearers": [
+    "Kakashi Hatake",
+    "Boruto",
+    "Gaara",
+    "Rengoku",
+    "Giyu Tomioka",
+    "Trafalgar Law",
+    "Boa Hancock",
+    "Zoro",
+    "Dabi",
+    "Todoroki",
+    "Barou",
+    "Nagi",
+    "Magna",
+    "Yuno",
+    "Kurapika",
+    "Kirito",
+    "Qin Shi Huang",
+    "Erwin",
+    "Mikasa",
+    "Aki Hayakawa",
+    "Pucci",
+    "Ayanokoji",
+    "Genos",
+    "Toshiro Hitsugaya",
+    "Ichigo Kurosaki",
+    "Igris",
+    "Todo",
+    "Megumi Fushiguro",
+    "Naoya Zenin",
+    "Gohan"
+   ]
+  },
+  {
+   "ref": "S:Atomic",
+   "kind": "key",
+   "key": "Atomic",
+   "label": "Atomic",
+   "source": "Atomic",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Frieza"
+   ]
+  },
+  {
+   "ref": "S:VinnFlow",
+   "kind": "key",
+   "key": "VinnFlow",
+   "label": "VinnFlow",
+   "source": "Animation Aura by Vinn",
+   "anchor": "ground",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Julius Novachrono"
+   ]
+  },
+  {
+   "ref": "S:SolarBurst",
+   "kind": "key",
+   "key": "SolarBurst",
+   "label": "SolarBurst",
+   "source": "SSJ",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Luffy Wano"
+   ]
+  },
+  {
+   "ref": "P:87",
+   "kind": "pack",
+   "index": 87,
+   "pack": "Pack7",
+   "unit": "POF:RE AURA: Wano",
+   "label": "Wano",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Beru"
+   ]
+  },
+  {
+   "ref": "P:42",
+   "kind": "pack",
+   "index": 42,
+   "pack": "Pack3",
+   "unit": "POF:RE AURA PSYCHIC ",
+   "label": "Psychic",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Saitama",
+    "Pain"
+   ]
+  },
+  {
+   "ref": "P:3",
+   "kind": "pack",
+   "index": 3,
+   "pack": "Pack9",
+   "unit": "pof:re aura fart",
+   "label": "fart",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Meruem"
+   ]
+  },
+  {
+   "ref": "P:67",
+   "kind": "pack",
+   "index": 67,
+   "pack": "Pack5",
+   "unit": "POF:RE AURA: Psychic Orbs",
+   "label": "Psychic Orbs",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Beerus",
+    "Meliodas"
+   ]
+  },
+  {
+   "ref": "P:33",
+   "kind": "pack",
+   "index": 33,
+   "pack": "Pack2",
+   "unit": "POF:RE AURA: Crystal determination",
+   "label": "Crystal determination",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Whitebeard"
+   ]
+  },
+  {
+   "ref": "P:65",
+   "kind": "pack",
+   "index": 65,
+   "pack": "Pack5",
+   "unit": "POF:RE AURA ULTIMATE EVIL",
+   "label": "Ultimate Evil",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Mahoraga"
+   ]
+  },
+  {
+   "ref": "P:43",
+   "kind": "pack",
+   "index": 43,
+   "pack": "Pack3",
+   "unit": "POF:RE AURA MUI",
+   "label": "Mui",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Jiraiya"
+   ]
+  },
+  {
+   "ref": "P:64",
+   "kind": "pack",
+   "index": 64,
+   "pack": "Pack5",
+   "unit": "POF:RE AURA CRYOGEN",
+   "label": "Cryogen",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Douma"
+   ]
+  },
+  {
+   "ref": "P:35",
+   "kind": "pack",
+   "index": 35,
+   "pack": "Pack2",
+   "unit": "Pure Vessel",
+   "label": "Pure Vessel",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Shigaraki",
+    "Guts"
+   ]
+  },
+  {
+   "ref": "P:68",
+   "kind": "pack",
+   "index": 68,
+   "pack": "Pack5",
+   "unit": "POF:RE AURA: Cloak of Lightning",
+   "label": "Cloak of Lightning",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Armored Titan"
+   ]
+  },
+  {
+   "ref": "P:6",
+   "kind": "pack",
+   "index": 6,
+   "pack": "Pack9",
+   "unit": "Omega",
+   "label": "Omega",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Majin Buu"
+   ]
+  },
+  {
+   "ref": "P:46",
+   "kind": "pack",
+   "index": 46,
+   "pack": "Pack3",
+   "unit": "aura",
+   "label": "aura",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Madara Uchiha"
+   ]
+  },
+  {
+   "ref": "P:5",
+   "kind": "pack",
+   "index": 5,
+   "pack": "Pack9",
+   "unit": "POF:RE AURA ULTRA EGO",
+   "label": "Ultra Ego",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Vegeta"
+   ]
+  },
+  {
+   "ref": "P:32",
+   "kind": "pack",
+   "index": 32,
+   "pack": "Pack2",
+   "unit": "POF:RE AURA: Green power",
+   "label": "Green power",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Broly"
+   ]
+  },
+  {
+   "ref": "P:30",
+   "kind": "pack",
+   "index": 30,
+   "pack": "Pack2",
+   "unit": "POF:RE AURA: Chain God",
+   "label": "Chain God",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Illumi"
+   ]
+  },
+  {
+   "ref": "P:82",
+   "kind": "pack",
+   "index": 82,
+   "pack": "Pack7",
+   "unit": "POF:RE AURA: Crimson Moon",
+   "label": "Crimson Moon",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Gojo"
+   ]
+  },
+  {
+   "ref": "P:80",
+   "kind": "pack",
+   "index": 80,
+   "pack": "Pack6",
+   "unit": "POF:RE AURA: Galactic Center",
+   "label": "Galactic Center",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Ashborn"
+   ]
+  },
+  {
+   "ref": "P:27",
+   "kind": "pack",
+   "index": 27,
+   "pack": "Pack1",
+   "unit": "POF:RE AURA DUTCHMAN",
+   "label": "Dutchman",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Tatsumaki",
+    "Rin Itoshi"
+   ]
+  },
+  {
+   "ref": "P:45",
+   "kind": "pack",
+   "index": 45,
+   "pack": "Pack3",
+   "unit": "Dummy",
+   "label": "Dummy",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Kishibe"
+   ]
+  },
+  {
+   "ref": "P:40",
+   "kind": "pack",
+   "index": 40,
+   "pack": "Pack2",
+   "unit": "s",
+   "label": "s",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Blackbeard"
+   ]
+  },
+  {
+   "ref": "P:17",
+   "kind": "pack",
+   "index": 17,
+   "pack": "Pack1",
+   "unit": "POF:RE AURA  CELESTIAL BODY",
+   "label": "Celestial Body",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Zeke"
+   ]
+  },
+  {
+   "ref": "P:63",
+   "kind": "pack",
+   "index": 63,
+   "pack": "Pack5",
+   "unit": "POF:RE AURA ARMAGEDDON",
+   "label": "Armageddon",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Kira"
+   ]
+  },
+  {
+   "ref": "P:14",
+   "kind": "pack",
+   "index": 14,
+   "pack": "Pack9",
+   "unit": "POF:RE AURA: Daemon of Cards",
+   "label": "Daemon of Cards",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Hisoka"
+   ]
+  },
+  {
+   "ref": "P:52",
+   "kind": "pack",
+   "index": 52,
+   "pack": "Pack4",
+   "unit": "Infinite Reality",
+   "label": "Infinite Reality",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Gojo"
+   ]
+  },
+  {
+   "ref": "P:53",
+   "kind": "pack",
+   "index": 53,
+   "pack": "Pack4",
+   "unit": "POF:RE AURA  BEAST",
+   "label": "Beast",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Boros"
+   ]
+  },
+  {
+   "ref": "P:20",
+   "kind": "pack",
+   "index": 20,
+   "pack": "Pack1",
+   "unit": "POF:RE AURA COOL VAPOR",
+   "label": "Cool Vapor",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Tengen Uzui"
+   ]
+  },
+  {
+   "ref": "P:55",
+   "kind": "pack",
+   "index": 55,
+   "pack": "Pack4",
+   "unit": "POF:RE AURA SSJG By ZironTheDerg",
+   "label": "SSJG By ZironTheDerg",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Endeavor",
+    "Ace",
+    "Mereoleona"
+   ]
+  },
+  {
+   "ref": "P:8",
+   "kind": "pack",
+   "index": 8,
+   "pack": "Pack9",
+   "unit": "one winged angel",
+   "label": "one winged angel",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Hawks"
+   ]
+  },
+  {
+   "ref": "P:48",
+   "kind": "pack",
+   "index": 48,
+   "pack": "Pack3",
+   "unit": "POF:RE AURA: Gravity God",
+   "label": "Gravity God",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Cid Kagenou"
+   ]
+  },
+  {
+   "ref": "P:59",
+   "kind": "pack",
+   "index": 59,
+   "pack": "Pack4",
+   "unit": "POF:RE AURA: Blue Heat",
+   "label": "Blue Heat",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Bang",
+    "Gin Ichimaru",
+    "Jiren"
+   ]
+  },
+  {
+   "ref": "P:99",
+   "kind": "pack",
+   "index": 99,
+   "pack": "Pack8",
+   "unit": "POF:RE AURA SOLAR FLARE",
+   "label": "Solar Flare",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Escanor"
+   ]
+  },
+  {
+   "ref": "P:62",
+   "kind": "pack",
+   "index": 62,
+   "pack": "Pack5",
+   "unit": "POF:RE AURA HANMA",
+   "label": "Hanma",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Reze"
+   ]
+  },
+  {
+   "ref": "P:61",
+   "kind": "pack",
+   "index": 61,
+   "pack": "Pack4",
+   "unit": "POF:RE AURA Pure Darkness (REVAMP)",
+   "label": "Pure Darkness (REVAMP)",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Nacht",
+    "Ryuk"
+   ]
+  },
+  {
+   "ref": "P:39",
+   "kind": "pack",
+   "index": 39,
+   "pack": "Pack2",
+   "unit": "POF:RE AURA: Red Ring of Death",
+   "label": "Red Ring of Death",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Sae Itoshi",
+    "Yuta Okkotsu"
+   ]
+  },
+  {
+   "ref": "P:56",
+   "kind": "pack",
+   "index": 56,
+   "pack": "Pack4",
+   "unit": "North Star",
+   "label": "North Star",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Bakugo"
+   ]
+  },
+  {
+   "ref": "P:23",
+   "kind": "pack",
+   "index": 23,
+   "pack": "Pack1",
+   "unit": "POF:RE AURA SPEED STATE",
+   "label": "Speed State",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Eren Titan"
+   ]
+  },
+  {
+   "ref": "P:95",
+   "kind": "pack",
+   "index": 95,
+   "pack": "Pack8",
+   "unit": "PoF:Re Aura Submission: Wormhole",
+   "label": "Submission: Wormhole",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Rimuru"
+   ]
+  },
+  {
+   "ref": "P:92",
+   "kind": "pack",
+   "index": 92,
+   "pack": "Pack8",
+   "unit": "POF:RE AURA RADIANCE",
+   "label": "Radiance",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "All Might"
+   ]
+  },
+  {
+   "ref": "P:77",
+   "kind": "pack",
+   "index": 77,
+   "pack": "Pack6",
+   "unit": "POF:RE AURA: Midnight Blues",
+   "label": "Midnight Blues",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Levi Ackerman"
+   ]
+  },
+  {
+   "ref": "P:47",
+   "kind": "pack",
+   "index": 47,
+   "pack": "Pack3",
+   "unit": "POF:RE AURA SSJB",
+   "label": "Ssjb",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Garou",
+    "Grimmjow"
+   ]
+  },
+  {
+   "ref": "P:97",
+   "kind": "pack",
+   "index": 97,
+   "pack": "Pack8",
+   "unit": "POF:RE AURA ANGEL",
+   "label": "Angel",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Whis"
+   ]
+  },
+  {
+   "ref": "P:94",
+   "kind": "pack",
+   "index": 94,
+   "pack": "Pack8",
+   "unit": "POF:RE AURA: Stardust Fragment",
+   "label": "Stardust Fragment",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Frieren"
+   ]
+  },
+  {
+   "ref": "P:50",
+   "kind": "pack",
+   "index": 50,
+   "pack": "Pack3",
+   "unit": "Electrical Charge",
+   "label": "Electrical Charge",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Cell"
+   ]
+  },
+  {
+   "ref": "S:SunBreathing",
+   "kind": "key",
+   "key": "SunBreathing",
+   "label": "SunBreathing",
+   "source": "custom: tools/studio/auras/build_sun_breathing.luau",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Yoriichi Tsugikuni"
+   ]
+  },
+  {
+   "ref": "S:ControlDevil",
+   "kind": "key",
+   "key": "ControlDevil",
+   "label": "ControlDevil",
+   "source": "custom: tools/studio/auras/build_control_devil.luau",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Makima"
+   ]
+  },
+  {
+   "ref": "S:Hogyoku",
+   "kind": "key",
+   "key": "Hogyoku",
+   "label": "Hogyoku",
+   "source": "custom: tools/studio/auras/build_hogyoku.luau",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Aizen Sosuke"
+   ]
+  },
+  {
+   "ref": "S:DemonKing",
+   "kind": "key",
+   "key": "DemonKing",
+   "label": "DemonKing",
+   "source": "custom: tools/studio/auras/build_demon_king.luau",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Muzan"
+   ]
+  },
+  {
+   "ref": "S:DemonCircle",
+   "kind": "key",
+   "key": "DemonCircle",
+   "label": "DemonCircle",
+   "source": "custom: tools/studio/auras/build_demon_circle.luau",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Anos Voldigoad"
+   ]
+  },
+  {
+   "ref": "S:TheAlmighty",
+   "kind": "key",
+   "key": "TheAlmighty",
+   "label": "TheAlmighty",
+   "source": "custom: tools/studio/auras/build_almighty.luau",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Yhwach"
+   ]
+  },
+  {
+   "ref": "S:MalevolentShrine",
+   "kind": "key",
+   "key": "MalevolentShrine",
+   "label": "MalevolentShrine",
+   "source": "custom: tools/studio/auras/build_malevolent_shrine.luau",
+   "tier": "E",
+   "cap": 320,
+   "size": 7.5,
+   "reach": 7,
+   "wearers": [
+    "Sukuna"
+   ]
+  },
+  {
+   "ref": "S:CompassNeedle",
+   "kind": "key",
+   "key": "CompassNeedle",
+   "label": "CompassNeedle",
+   "source": "custom: tools/studio/auras/build_compass_needle.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Akaza"
+   ]
+  },
+  {
+   "ref": "S:ConquerorsHaki",
+   "kind": "key",
+   "key": "ConquerorsHaki",
+   "label": "ConquerorsHaki",
+   "source": "custom: tools/studio/auras/build_conquerors_haki.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Shanks"
+   ]
+  },
+  {
+   "ref": "S:EmperorThorns",
+   "kind": "key",
+   "key": "EmperorThorns",
+   "label": "EmperorThorns",
+   "source": "custom: tools/studio/auras/build_emperor_thorns.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Kaiser"
+   ]
+  },
+  {
+   "ref": "S:AceEater",
+   "kind": "key",
+   "key": "AceEater",
+   "label": "AceEater",
+   "source": "custom: tools/studio/auras/build_ace_eater.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Don Lorenzo"
+   ]
+  },
+  {
+   "ref": "S:DarkSlash",
+   "kind": "key",
+   "key": "DarkSlash",
+   "label": "DarkSlash",
+   "source": "custom: tools/studio/auras/build_dark_slash.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Yami Sukehiro"
+   ]
+  },
+  {
+   "ref": "S:AntiMagic",
+   "kind": "key",
+   "key": "AntiMagic",
+   "label": "AntiMagic",
+   "source": "custom: tools/studio/auras/build_anti_magic.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Liebe"
+   ]
+  },
+  {
+   "ref": "S:SkillHunter",
+   "kind": "key",
+   "key": "SkillHunter",
+   "label": "SkillHunter",
+   "source": "custom: tools/studio/auras/build_skill_hunter.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Chrollo"
+   ]
+  },
+  {
+   "ref": "S:GoldExperience",
+   "kind": "key",
+   "key": "GoldExperience",
+   "label": "GoldExperience",
+   "source": "custom: tools/studio/auras/build_gold_experience.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Giorno"
+   ]
+  },
+  {
+   "ref": "S:DragonMonarch",
+   "kind": "key",
+   "key": "DragonMonarch",
+   "label": "DragonMonarch",
+   "source": "custom: tools/studio/auras/build_dragon_monarch.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Antares"
+   ]
+  },
+  {
+   "ref": "S:ShadowArise",
+   "kind": "key",
+   "key": "ShadowArise",
+   "label": "ShadowArise",
+   "source": "custom: tools/studio/auras/build_shadow_monarch.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Sung Jinwoo"
+   ]
+  },
+  {
+   "ref": "S:CurseManipulation",
+   "kind": "key",
+   "key": "CurseManipulation",
+   "label": "CurseManipulation",
+   "source": "custom: tools/studio/auras/build_curse_manipulation.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Geto"
+   ]
+  },
+  {
+   "ref": "S:HeavenlyRestriction",
+   "kind": "key",
+   "key": "HeavenlyRestriction",
+   "label": "HeavenlyRestriction",
+   "source": "custom: tools/studio/auras/build_heavenly_restriction.luau",
+   "tier": "D",
+   "cap": 260,
+   "size": 6.5,
+   "reach": 6.5,
+   "wearers": [
+    "Toji Fushiguro"
+   ]
+  },
+  {
+   "ref": "S:CrowGenjutsu",
+   "kind": "key",
+   "key": "CrowGenjutsu",
+   "label": "CrowGenjutsu",
+   "source": "custom: tools/studio/auras/build_crow_genjutsu.luau",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Itachi Uchiha"
+   ]
+  },
+  {
+   "ref": "S:ButterflyDance",
+   "kind": "key",
+   "key": "ButterflyDance",
+   "label": "ButterflyDance",
+   "source": "custom: tools/studio/auras/build_butterfly_dance.luau",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Shinobu Kocho"
+   ]
+  },
+  {
+   "ref": "S:HawkEye",
+   "kind": "key",
+   "key": "HawkEye",
+   "label": "HawkEye",
+   "source": "custom: tools/studio/auras/build_hawk_eye.luau",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Mihawk"
+   ]
+  },
+  {
+   "ref": "S:DemonsExtract",
+   "kind": "key",
+   "key": "DemonsExtract",
+   "label": "DemonsExtract",
+   "source": "custom: tools/studio/auras/build_demons_extract.luau",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Esdeath"
+   ]
+  },
+  {
+   "ref": "S:StarPlatinum",
+   "kind": "key",
+   "key": "StarPlatinum",
+   "label": "StarPlatinum",
+   "source": "custom: tools/studio/auras/build_star_platinum.luau",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Jotaro Joestar"
+   ]
+  },
+  {
+   "ref": "S:Geass",
+   "kind": "key",
+   "key": "Geass",
+   "label": "Geass",
+   "source": "custom: tools/studio/auras/build_geass.luau",
+   "tier": "C",
+   "cap": 200,
+   "size": 5.5,
+   "reach": 5.5,
+   "wearers": [
+    "Lelouch"
+   ]
+  }
+ ],
+ "heroes": [
+  {
+   "id": "bald_cape_hero",
+   "name": "Bald Cape Hero",
+   "character": "Saitama",
+   "rarity": "Secret",
+   "zone": 13,
+   "aura": "P:42",
+   "why": "named by the owner"
+  },
+  {
+   "id": "staff_angel_mentor",
+   "name": "Staff Angel Mentor",
+   "character": "Whis",
+   "rarity": "Secret",
+   "zone": 17,
+   "aura": "P:97",
+   "why": "not named: picked to suit it (an angel)"
+  },
+  {
+   "id": "sakura_shogun",
+   "name": "First Sun Swordsman",
+   "character": "Yoriichi Tsugikuni",
+   "rarity": "Premium",
+   "zone": 2,
+   "aura": "S:SunBreathing",
+   "why": "the original Solar Flare (owner's pick, verbatim) on a Sun Seal base: kanji 日の呼吸, the 13th-form flame ring, the hanafuda sun, breath pulse, rim glints (tools/studio/auras/build_sun_breathing.luau)"
+  },
+  {
+   "id": "starlight_idol",
+   "name": "Cosplay Star",
+   "character": "Marin Kitagawa",
+   "rarity": "Premium",
+   "zone": 8,
+   "aura": "S:HeartFlame",
+   "why": "not named: kept the aura it wore under its nickname"
+  },
+  {
+   "id": "angel_commander",
+   "name": "Elf Archmage",
+   "character": "Frieren",
+   "rarity": "Premium",
+   "zone": 8,
+   "aura": "P:94",
+   "why": "not named: picked to suit it (her own magic, the pack is not worn (STAGING noBase))",
+   "noBase": true,
+   "floor": {
+    "core": "rbxassetid://139425774580328",
+    "glow": "rbxassetid://139425774580328",
+    "size": 8.5,
+    "coreColour": "FFF2D0",
+    "glowColour": "FFF2D0",
+    "brightness": 1.5,
+    "glowTransparency": 1,
+    "pulse": false
+   },
+   "fx": [
+    {
+     "name": "CircleTurn",
+     "texture": "rbxassetid://139425774580328",
+     "shape": "Box",
+     "part": [
+      0.2,
+      0.2,
+      0.2
+     ],
+     "y": 0.1,
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 0.7,
+     "life": [
+      3.2,
+      3.2
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       6.4
+      ],
+      [
+       1,
+       6.6
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.3,
+       0.45
+      ],
+      [
+       0.7,
+       0.45
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "CFE6FF"
+      ],
+      [
+       1,
+       "9FC8FF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      18,
+      18
+     ],
+     "brightness": 1.4,
+     "lightEmission": 1,
+     "locked": true,
+     "light": "E6EEFF",
+     "lightRange": 9,
+     "lightBrightness": 0.9
+    },
+    {
+     "name": "CastingCircle",
+     "texture": "rbxassetid://139425774580328",
+     "shape": "Box",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 3.9,
+     "offset": [
+      0,
+      -0.9
+     ],
+     "rate": 0.7,
+     "life": [
+      3.0,
+      3.0
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       2.9
+      ],
+      [
+       1,
+       3.1
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.25,
+       0.1
+      ],
+      [
+       0.75,
+       0.1
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFE6B0"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -30,
+      -30
+     ],
+     "brightness": 1.8,
+     "lightEmission": 1,
+     "locked": true,
+     "zOffset": -2
+    },
+    {
+     "name": "MoonweedField",
+     "texture": "rbxassetid://97003048377547",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      0.2,
+      5.4,
+      5.4
+     ],
+     "y": 0.45,
+     "orient": "FacingCameraWorldUp",
+     "rate": 4,
+     "life": [
+      2.6,
+      3.4
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.2,
+       0.75
+      ],
+      [
+       0.85,
+       0.8
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.15,
+       0
+      ],
+      [
+       0.85,
+       0.05
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      -15,
+      15
+     ],
+     "brightness": 1.2,
+     "lightEmission": 0.3,
+     "zOffset": 0.4
+    },
+    {
+     "name": "Petals",
+     "texture": "rbxassetid://76635208444627",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      0.3,
+      5,
+      5
+     ],
+     "y": 0.6,
+     "rate": 6,
+     "life": [
+      2.2,
+      3.2
+     ],
+     "speed": [
+      0.6,
+      1.2
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.15,
+       0.22
+      ],
+      [
+       1,
+       0.12
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       0.8,
+       0.3
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "E6F0FF"
+      ],
+      [
+       0.5,
+       "9FC0FF"
+      ],
+      [
+       1,
+       "C8B8FF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -120,
+      120
+     ],
+     "spread": [
+      30,
+      30
+     ],
+     "accel": [
+      0,
+      0.5,
+      0
+     ],
+     "drag": 0.6,
+     "brightness": 1.5,
+     "lightEmission": 0.8
+    },
+    {
+     "name": "HexBarrier",
+     "texture": "rbxassetid://105074940545440",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.4,
+      4.6,
+      4.6
+     ],
+     "y": 2.8,
+     "orient": "FacingCamera",
+     "rate": 2.5,
+     "life": [
+      0.6,
+      0.9
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       0.4
+      ],
+      [
+       0.2,
+       0.85
+      ],
+      [
+       1,
+       0.9
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.2,
+       0.35
+      ],
+      [
+       0.7,
+       0.5
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "DFF6FF"
+      ],
+      [
+       1,
+       "6FC8FF"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "brightness": 1.5,
+     "lightEmission": 1,
+     "zOffset": 0.3
+    },
+    {
+     "name": "ManaMotes",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      4,
+      4.4,
+      4.4
+     ],
+     "y": 2.2,
+     "rate": 10,
+     "life": [
+      1.2,
+      1.8
+     ],
+     "speed": [
+      0.5,
+      1.2
+     ],
+     "size": [
+      [
+       0,
+       0.18
+      ],
+      [
+       0.5,
+       0.14
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFBEA"
+      ],
+      [
+       1,
+       "FFD98A"
+      ]
+     ],
+     "accel": [
+      0,
+      0.6,
+      0
+     ],
+     "drag": 0.5,
+     "brightness": 2.5,
+     "lightEmission": 1
+    }
+   ]
+  },
+  {
+   "id": "lucky_cat_mascot",
+   "name": "Blood Fiend",
+   "character": "Power",
+   "rarity": "Premium",
+   "zone": 10,
+   "aura": "S:BloodBubble",
+   "why": "not named: kept the aura it wore under its nickname",
+   "noBase": true,
+   "fx": [
+    {
+     "name": "DarkVeil",
+     "texture": "rbxassetid://103697196498225",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.6,
+      2.4,
+      2.4
+     ],
+     "y": 2.8,
+     "rate": 12,
+     "life": [
+      0.8,
+      1.1
+     ],
+     "speed": [
+      1.6,
+      2.4
+     ],
+     "size": [
+      [
+       0,
+       1.6
+      ],
+      [
+       0.5,
+       3.0
+      ],
+      [
+       1,
+       2.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.2,
+       0.12
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "3A0410"
+      ],
+      [
+       1,
+       "0E0104"
+      ]
+     ],
+     "rotation": [
+      -10,
+      10
+     ],
+     "spread": [
+      3,
+      3
+     ],
+     "accel": [
+      0,
+      1.5,
+      0
+     ],
+     "drag": 1,
+     "brightness": 1,
+     "lightEmission": 0,
+     "zOffset": -3
+    },
+    {
+     "name": "BloodFlames",
+     "texture": "rbxassetid://116122699380457",
+     "flipbook": "Grid2x2",
+     "bodyParts": [
+      "UpperTorso",
+      "LowerTorso",
+      "LeftUpperArm",
+      "RightUpperArm",
+      "LeftLowerArm",
+      "RightLowerArm",
+      "LeftUpperLeg",
+      "RightUpperLeg"
+     ],
+     "rate": 8,
+     "life": [
+      0.5,
+      0.8
+     ],
+     "speed": [
+      1.4,
+      2.6
+     ],
+     "size": [
+      [
+       0,
+       0.6
+      ],
+      [
+       0.35,
+       1.5
+      ],
+      [
+       1,
+       0.5
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.15,
+       0.15
+      ],
+      [
+       0.7,
+       0.3
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "E6C8CC"
+      ]
+     ],
+     "rotation": [
+      -8,
+      8
+     ],
+     "spread": [
+      2,
+      2
+     ],
+     "accel": [
+      0,
+      2.5,
+      0
+     ],
+     "drag": 1.5,
+     "brightness": 1.2,
+     "lightEmission": 0.25,
+     "zOffset": -0.6
+    },
+    {
+     "name": "OuterFlames",
+     "texture": "rbxassetid://116122699380457",
+     "flipbook": "Grid2x2",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.6,
+      2.5,
+      2.5
+     ],
+     "y": 2.5,
+     "rate": 14,
+     "life": [
+      0.6,
+      0.9
+     ],
+     "speed": [
+      1.6,
+      2.6
+     ],
+     "size": [
+      [
+       0,
+       1.1
+      ],
+      [
+       0.35,
+       2.3
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.18,
+       0.05
+      ],
+      [
+       0.75,
+       0.25
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      -8,
+      8
+     ],
+     "spread": [
+      2,
+      2
+     ],
+     "accel": [
+      0,
+      2.5,
+      0
+     ],
+     "drag": 1.5,
+     "brightness": 0.9,
+     "lightEmission": 0.12,
+     "zOffset": -2.5
+    },
+    {
+     "name": "HeartGlow",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 3.6,
+     "rate": 2,
+     "life": [
+      1.0,
+      1.0
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       3.2
+      ],
+      [
+       0.4,
+       4.4
+      ],
+      [
+       1,
+       3.6
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.4,
+       0.6
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "E0102A"
+      ],
+      [
+       1,
+       "7A0418"
+      ]
+     ],
+     "brightness": 1.6,
+     "lightEmission": 1,
+     "zOffset": -4,
+     "locked": true,
+     "light": "E0182E",
+     "lightRange": 12,
+     "lightBrightness": 2.4
+    },
+    {
+     "name": "RisingDrops",
+     "texture": "rbxassetid://89368617950947",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      4,
+      2.8,
+      2.8
+     ],
+     "y": 2.2,
+     "orient": "VelocityParallel",
+     "rate": 8,
+     "life": [
+      1.2,
+      1.8
+     ],
+     "speed": [
+      1.2,
+      2.6
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.15,
+       0.26
+      ],
+      [
+       1,
+       0.08
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.1
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      180,
+      180
+     ],
+     "spread": [
+      4,
+      4
+     ],
+     "accel": [
+      0,
+      0.8,
+      0
+     ],
+     "drag": 0.6,
+     "brightness": 1,
+     "lightEmission": 0.1
+    },
+    {
+     "name": "BloodStreams",
+     "texture": "rbxassetid://130113799767686",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.4,
+      2.6,
+      2.6
+     ],
+     "y": 2.6,
+     "rate": 2,
+     "life": [
+      0.7,
+      1.0
+     ],
+     "speed": [
+      0.6,
+      1.0
+     ],
+     "size": [
+      [
+       0,
+       0.8
+      ],
+      [
+       0.4,
+       1.5
+      ],
+      [
+       1,
+       1.7
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.25,
+       0.3
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -160,
+      160
+     ],
+     "accel": [
+      0,
+      1.2,
+      0
+     ],
+     "brightness": 1,
+     "lightEmission": 0.1,
+     "zOffset": -0.5
+    },
+    {
+     "name": "Ripple",
+     "texture": "http://www.roblox.com/asset/?id=11557895555",
+     "shape": "Box",
+     "part": [
+      0.2,
+      0.2,
+      0.2
+     ],
+     "y": 0.12,
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 0.9,
+     "life": [
+      1.1,
+      1.3
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       2.2
+      ],
+      [
+       1,
+       5
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.25
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FF3048"
+      ],
+      [
+       1,
+       "6A0616"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "brightness": 1.4,
+     "lightEmission": 0.8,
+     "locked": true
+    }
+   ]
+  },
+  {
+   "id": "demon_lord_heir",
+   "name": "Control Devil",
+   "character": "Makima",
+   "rarity": "Premium",
+   "zone": 10,
+   "aura": "S:ControlDevil",
+   "why": "custom aura: her ringed gaze as a sigil and a halo, two dogs on chain leashes, contract chains (tools/studio/auras/build_control_devil.luau)"
+  },
+  {
+   "id": "phantom_thief",
+   "name": "One-Eyed Ghoul",
+   "character": "Ken Kaneki",
+   "rarity": "Premium",
+   "zone": 12,
+   "aura": "S:CrimsonFlame",
+   "why": "not named: kept the aura it wore under its nickname"
+  },
+  {
+   "id": "clockwork_butler",
+   "name": "Sweet-Tooth Detective",
+   "character": "Lawliet",
+   "rarity": "Premium",
+   "zone": 12,
+   "aura": "S:ElectricBlue",
+   "why": "not named: kept the aura it wore under its nickname"
+  },
+  {
+   "id": "void_empress",
+   "name": "Illusion Overlord",
+   "character": "Aizen Sosuke",
+   "rarity": "Premium",
+   "zone": 14,
+   "aura": "S:Hogyoku",
+   "why": "custom aura: the Hogyoku in his chest seal, a god-halo (Kurohitsugi blade crown + Kyoka Suigetsu shattered mirror), reiatsu pillars, Kyoka Suigetsu mirror shards, water-moon sigil (tools/studio/auras/build_hogyoku.luau)"
+  },
+  {
+   "id": "ghost_of_the_clan",
+   "name": "Ghost of the Clan",
+   "character": "Madara Uchiha",
+   "rarity": "Mythic",
+   "zone": 1,
+   "aura": "P:46",
+   "why": "named by the owner"
+  },
+  {
+   "id": "demon_progenitor",
+   "name": "Demon Progenitor",
+   "character": "Muzan",
+   "rarity": "Mythic",
+   "zone": 2,
+   "aura": "S:DemonKing",
+   "why": "custom aura: flesh whips, blue spider lilies, a blood pool with a heartbeat (tools/studio/auras/build_demon_king.luau)"
+  },
+  {
+   "id": "sun_god_captain",
+   "name": "Sun God Captain",
+   "character": "Luffy Wano",
+   "rarity": "Mythic",
+   "zone": 3,
+   "aura": "S:SolarBurst",
+   "why": "not named: kept the aura it wore under its nickname"
+  },
+  {
+   "id": "golden_age_hero",
+   "name": "Golden Age Hero",
+   "character": "All Might",
+   "rarity": "Mythic",
+   "zone": 4,
+   "aura": "P:92",
+   "why": "named by the owner"
+  },
+  {
+   "id": "time_wizard_king",
+   "name": "Time Wizard King",
+   "character": "Julius Novachrono",
+   "rarity": "Mythic",
+   "zone": 6,
+   "aura": "S:VinnFlow",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "tex:125283151882051": [
+      [
+       0,
+       "FFF1C9"
+      ],
+      [
+       1,
+       "FFB22E"
+      ]
+     ],
+     "tex:113083314207224": [
+      [
+       0,
+       "FFE29A"
+      ],
+      [
+       1,
+       "E8891C"
+      ]
+     ],
+     "tex:137185023437881": [
+      [
+       0,
+       "FFC94D"
+      ],
+      [
+       0.6,
+       "D9711A"
+      ],
+      [
+       1,
+       "8E1F1A"
+      ]
+     ],
+     "tex:12159555294": [
+      [
+       0,
+       "FFF4D1"
+      ],
+      [
+       1,
+       "FFB63A"
+      ]
+     ],
+     "Circle12": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFE2A0"
+      ]
+     ],
+     "Dull Triangular Circle": [
+      [
+       0,
+       "FFD460"
+      ],
+      [
+       1,
+       "D9781E"
+      ]
+     ],
+     "Fire40": [
+      [
+       0,
+       "FFD877"
+      ],
+      [
+       0.5,
+       "F0921F"
+      ],
+      [
+       1,
+       "A8321C"
+      ]
+     ],
+     "Rune_Heal_In003": [
+      [
+       0,
+       "FFE6A3"
+      ],
+      [
+       1,
+       "FFB03A"
+      ]
+     ],
+     "rune_11": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFD15C"
+      ]
+     ]
+    },
+    "brightness": {
+     "tex:125283151882051": 2.5,
+     "tex:113083314207224": 2.5,
+     "tex:137185023437881": 4,
+     "Circle12": 6,
+     "Dull Triangular Circle": 3,
+     "Fire40": 5,
+     "Rune_Heal_In003": 6,
+     "rune_11": 5
+    },
+    "light": "FFC45C"
+   }
+  },
+  {
+   "id": "ant_monarch",
+   "name": "Ant Monarch",
+   "character": "Meruem",
+   "rarity": "Mythic",
+   "zone": 7,
+   "aura": "P:3",
+   "why": "named by the owner"
+  },
+  {
+   "id": "tyrant_demon_lord",
+   "name": "Tyrant Demon Lord",
+   "character": "Anos Voldigoad",
+   "rarity": "Mythic",
+   "zone": 12,
+   "aura": "S:DemonCircle",
+   "why": "custom aura: layered demon magic circles (ground array, halo, casting arrays), Demon Eyes of Destruction, orbiting runes (tools/studio/auras/build_demon_circle.luau)"
+  },
+  {
+   "id": "alien_conqueror",
+   "name": "Alien Conqueror",
+   "character": "Boros",
+   "rarity": "Mythic",
+   "zone": 13,
+   "aura": "P:53",
+   "why": "named by the owner"
+  },
+  {
+   "id": "blood_war_king",
+   "name": "Blood War King",
+   "character": "Yhwach",
+   "rarity": "Mythic",
+   "zone": 14,
+   "aura": "S:TheAlmighty",
+   "why": "custom aura: The Almighty, eyes opening in his black shadow over head and body, a shadow pool, Quincy reishi (tools/studio/auras/build_almighty.luau)"
+  },
+  {
+   "id": "shadow_sovereign",
+   "name": "Shadow Sovereign",
+   "character": "Ashborn",
+   "rarity": "Mythic",
+   "zone": 15,
+   "aura": "P:80",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "Nebula 1": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "Nebula 2": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "Nebula 3": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "Nebula 4": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "Nebula 5": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "Smoke 1": [
+      [
+       0,
+       "00000A"
+      ],
+      [
+       1,
+       "00000A"
+      ]
+     ],
+     "Smoke 2": [
+      [
+       0,
+       "190F41"
+      ],
+      [
+       1,
+       "190F41"
+      ]
+     ],
+     "Black Smoke": [
+      [
+       0,
+       "00050A"
+      ],
+      [
+       1,
+       "00050A"
+      ]
+     ],
+     "Space Mini Star": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ]
+    },
+    "brightness": {},
+    "scale": {
+     "Nebula 1": 0.75,
+     "Nebula 2": 0.7,
+     "Nebula 3": 0.7,
+     "Nebula 4": 0.7,
+     "Nebula 5": 0.7,
+     "Smoke 1": 0.55,
+     "Smoke 2": 0.55,
+     "Black Smoke": 0.45,
+     "Space Mini Star": 0.75
+    },
+    "rate": {
+     "Smoke 1": 0.7,
+     "Black Smoke": 0.4
+    },
+    "speed": {
+     "Smoke 1": 0.4,
+     "Smoke 2": 0.5,
+     "Black Smoke": 0.55
+    },
+    "light": "0800FF"
+   }
+  },
+  {
+   "id": "curse_king",
+   "name": "Curse King",
+   "character": "Sukuna",
+   "rarity": "Mythic",
+   "zone": 16,
+   "aura": "S:MalevolentShrine",
+   "why": "his KingOfCurses (verbatim) with Dismantle volleys of razor slashes, Cleave X cuts opening the air, his domain's floor (tools/studio/auras/build_malevolent_shrine.luau)"
+  },
+  {
+   "id": "limitless_teacher",
+   "name": "Limitless Teacher",
+   "character": "Gojo",
+   "rarity": "Mythic",
+   "zone": 16,
+   "aura": "P:82",
+   "why": "named by the owner",
+   "extras": [
+    {
+     "aura": "P:52",
+     "keep": [
+      "Infinity Symbol"
+     ],
+     "label": "Infinite Reality: infinity symbol only"
+    }
+   ],
+   "palette": {
+    "colours": {
+     "InnerSmoke": [
+      [
+       0,
+       "0B2A9E"
+      ],
+      [
+       0.5,
+       "2F7BFF"
+      ],
+      [
+       1,
+       "0B2A9E"
+      ]
+     ],
+     "Smoke": [
+      [
+       0,
+       "1F4FFF"
+      ],
+      [
+       0.6,
+       "2F86FF"
+      ],
+      [
+       1,
+       "5B2EE0"
+      ]
+     ],
+     "Ash": [
+      [
+       0,
+       "F2FDFF"
+      ],
+      [
+       0.5,
+       "A6EEFF"
+      ],
+      [
+       1,
+       "35C8FF"
+      ]
+     ],
+     "Mist": [
+      [
+       0,
+       "0F2A80"
+      ],
+      [
+       1,
+       "2A1F80"
+      ]
+     ],
+     "Power": [
+      [
+       0,
+       "7FC8FF"
+      ],
+      [
+       1,
+       "1E4BFF"
+      ]
+     ],
+     "Ring": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.45,
+       "8FE6FF"
+      ],
+      [
+       1,
+       "2F7BFF"
+      ]
+     ],
+     "Pulsation": [
+      [
+       0,
+       "1A4BE8"
+      ],
+      [
+       1,
+       "6FCBFF"
+      ]
+     ],
+     "Infinity Symbol": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "B5F1FF"
+      ]
+     ]
+    },
+    "brightness": {
+     "Smoke": 3,
+     "Power": 1.6,
+     "Ring": 3,
+     "Pulsation": 2.5,
+     "Ash": 12
+    },
+    "light": "4FA8FF"
+   }
+  },
+  {
+   "id": "destroyer_cat",
+   "name": "Destroyer Cat",
+   "character": "Beerus",
+   "rarity": "Mythic",
+   "zone": 17,
+   "aura": "P:67",
+   "why": "named by the owner"
+  },
+  {
+   "id": "rose_dark_fighter",
+   "name": "Rose Dark Fighter",
+   "character": "Goku Black",
+   "rarity": "Mythic",
+   "zone": 17,
+   "aura": "S:SlimeStorm",
+   "why": "named by the owner"
+  },
+  {
+   "id": "masked_phantom",
+   "name": "Masked Phantom",
+   "character": "Obito Uchiha",
+   "rarity": "Legendary",
+   "zone": 1,
+   "aura": "S:CrimsonFlame",
+   "why": "named by the owner"
+  },
+  {
+   "id": "rain_god",
+   "name": "Rain God",
+   "character": "Pain",
+   "rarity": "Legendary",
+   "zone": 1,
+   "aura": "P:42",
+   "why": "named by the owner"
+  },
+  {
+   "id": "crimson_fist_demon",
+   "name": "Crimson Fist Demon",
+   "character": "Akaza",
+   "rarity": "Legendary",
+   "zone": 2,
+   "aura": "S:CompassNeedle",
+   "why": "custom aura: Destructive Death, the snowflake Compass Needle on the ground, needle pulses, snowflake impact barrage (tools/studio/auras/build_compass_needle.luau)"
+  },
+  {
+   "id": "six_eyed_moon",
+   "name": "Six-Eyed Moon",
+   "character": "Kokushibo",
+   "rarity": "Legendary",
+   "zone": 2,
+   "aura": "S:RedOutline",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "Fire18": [
+      [
+       0,
+       "B07CFF"
+      ],
+      [
+       0.45,
+       "6A4BFF"
+      ],
+      [
+       1,
+       "2B2FC8"
+      ]
+     ],
+     "Fire2": [
+      [
+       0,
+       "5A1240"
+      ],
+      [
+       1,
+       "200A2A"
+      ]
+     ],
+     "Dark Shadow Fire": [
+      [
+       0,
+       "4A1478"
+      ],
+      [
+       1,
+       "160A2E"
+      ]
+     ],
+     "Spec1": [
+      [
+       0,
+       "FF5A6E"
+      ],
+      [
+       0.6,
+       "D0154A"
+      ],
+      [
+       1,
+       "7A1FD0"
+      ]
+     ]
+    },
+    "brightness": {
+     "Fire18": 3,
+     "Fire2": 2,
+     "Dark Shadow Fire": 2.5,
+     "Spec1": 6
+    },
+    "rate": {
+     "Fire18": 2.5,
+     "Fire2": 1.3,
+     "Dark Shadow Fire": 1.5,
+     "Spec1": 2
+    },
+    "light": "7A6CFF"
+   },
+   "fx": [
+    {
+     "name": "MoonBlades",
+     "texture": "rbxassetid://135460081122301",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      5.6,
+      6.2,
+      6.2
+     ],
+     "y": 3.0,
+     "dir": "Top",
+     "rate": 10,
+     "life": [
+      1.4,
+      2.1
+     ],
+     "speed": [
+      0.2,
+      0.6
+     ],
+     "size": [
+      [
+       0,
+       0.3
+      ],
+      [
+       0.18,
+       1.2,
+       0.35
+      ],
+      [
+       0.8,
+       1.05,
+       0.3
+      ],
+      [
+       1,
+       0.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.12,
+       0.05
+      ],
+      [
+       0.75,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "BDF6FF"
+      ],
+      [
+       0.3,
+       "38AEFF"
+      ],
+      [
+       0.7,
+       "4A5CFF"
+      ],
+      [
+       1,
+       "7A2CFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -200,
+      200
+     ],
+     "spread": [
+      180,
+      180
+     ],
+     "accel": [
+      0,
+      0.6,
+      0
+     ],
+     "drag": 1.5,
+     "brightness": 2.2,
+     "lightEmission": 1,
+     "zOffset": 0.5,
+     "light": "6F7CFF",
+     "lightRange": 12,
+     "lightBrightness": 1.6
+    },
+    {
+     "name": "MoonBladesFar",
+     "texture": "rbxassetid://135460081122301",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      6.5,
+      7.6,
+      7.6
+     ],
+     "y": 3.4,
+     "rate": 3,
+     "life": [
+      2.2,
+      3.0
+     ],
+     "speed": [
+      0.1,
+      0.3
+     ],
+     "size": [
+      [
+       0,
+       0.9
+      ],
+      [
+       0.25,
+       2.3,
+       0.4
+      ],
+      [
+       1,
+       1.9
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.25,
+       0.55
+      ],
+      [
+       0.75,
+       0.65
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "7C5CFF"
+      ],
+      [
+       0.55,
+       "4B2CC8"
+      ],
+      [
+       1,
+       "9A1240"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -60,
+      60
+     ],
+     "spread": [
+      180,
+      180
+     ],
+     "drag": 2,
+     "brightness": 1.8,
+     "lightEmission": 1,
+     "zOffset": -1
+    },
+    {
+     "name": "MoonShards",
+     "texture": "rbxassetid://135460081122301",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      5,
+      3.4,
+      3.4
+     ],
+     "y": 2.8,
+     "rate": 14,
+     "life": [
+      0.6,
+      1.1
+     ],
+     "speed": [
+      2,
+      4.5
+     ],
+     "size": [
+      [
+       0,
+       0.5
+      ],
+      [
+       0.3,
+       0.55
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       0.7,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FF5A78"
+      ],
+      [
+       0.5,
+       "9A4BFF"
+      ],
+      [
+       1,
+       "45C2FF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -400,
+      400
+     ],
+     "spread": [
+      180,
+      180
+     ],
+     "drag": 3,
+     "brightness": 4,
+     "lightEmission": 1
+    },
+    {
+     "name": "MoonGlow",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      1.6,
+      3.6,
+      0.8
+     ],
+     "y": 3.0,
+     "rate": 5,
+     "life": [
+      0.9,
+      1.4
+     ],
+     "speed": [
+      0,
+      0.2
+     ],
+     "size": [
+      [
+       0,
+       3.5
+      ],
+      [
+       0.5,
+       5.2
+      ],
+      [
+       1,
+       4.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.35,
+       0.7
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "6A3CFF"
+      ],
+      [
+       0.6,
+       "3A2AD0"
+      ],
+      [
+       1,
+       "8A1A5A"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -30,
+      30
+     ],
+     "brightness": 1.6,
+     "lightEmission": 1,
+     "zOffset": -3
+    },
+    {
+     "name": "MoonHaze",
+     "texture": "rbxassetid://11989899750",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      0.4,
+      6,
+      6
+     ],
+     "y": 0.3,
+     "rate": 3,
+     "life": [
+      1.8,
+      2.6
+     ],
+     "speed": [
+      0.2,
+      0.5
+     ],
+     "size": [
+      [
+       0,
+       2.5
+      ],
+      [
+       1,
+       5.5
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.3,
+       0.72
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "5A2CC8"
+      ],
+      [
+       0.6,
+       "2A1A8E"
+      ],
+      [
+       1,
+       "6A0C30"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -25,
+      25
+     ],
+     "accel": [
+      0,
+      0.4,
+      0
+     ],
+     "brightness": 1.4,
+     "lightEmission": 0.7,
+     "zOffset": -2
+    }
+   ]
+  },
+  {
+   "id": "beast_emperor",
+   "name": "Beast Emperor",
+   "character": "Kaido",
+   "rarity": "Legendary",
+   "zone": 3,
+   "aura": "S:CyanStorm",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "Lightning1": [
+      [
+       0,
+       "C8F2FF"
+      ],
+      [
+       0.4,
+       "4FB8FF"
+      ],
+      [
+       1,
+       "2A5BFF"
+      ]
+     ],
+     "Lightning2": [
+      [
+       0,
+       "BFE8FF"
+      ],
+      [
+       0.5,
+       "3FA8FF"
+      ],
+      [
+       1,
+       "3A3CD8"
+      ]
+     ],
+     "Lightning3": [
+      [
+       0,
+       "C8F2FF"
+      ],
+      [
+       0.4,
+       "4FB8FF"
+      ],
+      [
+       1,
+       "2A5BFF"
+      ]
+     ],
+     "Lightning4": [
+      [
+       0,
+       "BFE8FF"
+      ],
+      [
+       0.5,
+       "3FA8FF"
+      ],
+      [
+       1,
+       "4A2CD8"
+      ]
+     ],
+     "Lightning5": [
+      [
+       0,
+       "C8F2FF"
+      ],
+      [
+       0.4,
+       "4FB8FF"
+      ],
+      [
+       1,
+       "2A5BFF"
+      ]
+     ],
+     "Lightning6": [
+      [
+       0,
+       "BFE8FF"
+      ],
+      [
+       0.5,
+       "3FA8FF"
+      ],
+      [
+       1,
+       "4A2CD8"
+      ]
+     ],
+     "Detail": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "5FD0FF"
+      ]
+     ]
+    },
+    "brightness": {
+     "Lightning1": 5,
+     "Lightning2": 5,
+     "Lightning3": 5,
+     "Lightning4": 5,
+     "Lightning5": 5,
+     "Lightning6": 5,
+     "Detail": 6
+    },
+    "rate": {
+     "Lightning1": 0.5,
+     "Lightning2": 0.5,
+     "Lightning3": 0.5,
+     "Lightning4": 0.5,
+     "Lightning5": 0.5,
+     "Lightning6": 0.5,
+     "Detail": 0.8
+    },
+    "scale": {
+     "Lightning1": 0.7,
+     "Lightning2": 0.7,
+     "Lightning3": 0.7,
+     "Lightning4": 0.7,
+     "Lightning5": 0.7,
+     "Lightning6": 0.7
+    },
+    "light": "5FB0FF"
+   },
+   "fx": [
+    {
+     "name": "StormCloud",
+     "texture": "rbxassetid://11989899750",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      1.2,
+      4.4,
+      4.4
+     ],
+     "y": 4.9,
+     "rate": 5.5,
+     "life": [
+      1.6,
+      2.4
+     ],
+     "speed": [
+      0.2,
+      0.5
+     ],
+     "size": [
+      [
+       0,
+       1.5
+      ],
+      [
+       0.4,
+       3.4,
+       0.4
+      ],
+      [
+       1,
+       4.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.3,
+       0.47
+      ],
+      [
+       0.75,
+       0.6
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "5A3CC8"
+      ],
+      [
+       0.5,
+       "3A2A9E"
+      ],
+      [
+       1,
+       "221A5A"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -40,
+      40
+     ],
+     "spread": [
+      50,
+      50
+     ],
+     "accel": [
+      0,
+      0.6,
+      0
+     ],
+     "drag": 1,
+     "brightness": 1.3,
+     "lightEmission": 0.55,
+     "zOffset": -1
+    },
+    {
+     "name": "ThunderArcs",
+     "texture": "rbxassetid://114181744965661",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      5.6,
+      6.4,
+      6.4
+     ],
+     "y": 3.0,
+     "rate": 6,
+     "life": [
+      0.08,
+      0.15
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       2.3,
+       0.7
+      ],
+      [
+       1,
+       2.6,
+       0.7
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.05
+      ],
+      [
+       0.7,
+       0.25
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "D8F6FF"
+      ],
+      [
+       0.5,
+       "6FCFFF"
+      ],
+      [
+       1,
+       "7A5CFF"
+      ]
+     ],
+     "rotation": [
+      -35,
+      35
+     ],
+     "brightness": 4.5,
+     "lightEmission": 1,
+     "zOffset": -0.5,
+     "light": "6FB8FF",
+     "lightRange": 13,
+     "lightBrightness": 1.4
+    },
+    {
+     "name": "ThunderShock",
+     "texture": "http://www.roblox.com/asset/?id=11557895555",
+     "shape": "Box",
+     "part": [
+      0.2,
+      0.2,
+      0.2
+     ],
+     "y": 0.12,
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 1.6,
+     "life": [
+      0.8,
+      1.0
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       2.5
+      ],
+      [
+       1,
+       9
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       0.6,
+       0.45
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "E8FBFF"
+      ],
+      [
+       0.35,
+       "4FC3FF"
+      ],
+      [
+       1,
+       "6A3CFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -90,
+      90
+     ],
+     "brightness": 3,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "DragonEmbers",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      0.4,
+      4.4,
+      4.4
+     ],
+     "y": 0.3,
+     "rate": 12,
+     "life": [
+      1.0,
+      1.6
+     ],
+     "speed": [
+      3,
+      6
+     ],
+     "size": [
+      [
+       0,
+       0.35
+      ],
+      [
+       0.6,
+       0.25
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "E8FBFF"
+      ],
+      [
+       0.4,
+       "45C2FF"
+      ],
+      [
+       1,
+       "6A3CFF"
+      ]
+     ],
+     "spread": [
+      12,
+      12
+     ],
+     "accel": [
+      0,
+      2,
+      0
+     ],
+     "drag": 0.6,
+     "brightness": 4,
+     "lightEmission": 1
+    },
+    {
+     "name": "StormGlow",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      1.8,
+      3.8,
+      0.8
+     ],
+     "y": 3.0,
+     "rate": 5,
+     "life": [
+      0.9,
+      1.4
+     ],
+     "speed": [
+      0,
+      0.2
+     ],
+     "size": [
+      [
+       0,
+       4
+      ],
+      [
+       0.5,
+       5.8
+      ],
+      [
+       1,
+       4.6
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.35,
+       0.76
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "2F6BFF"
+      ],
+      [
+       0.6,
+       "3A2AD0"
+      ],
+      [
+       1,
+       "5A1E9E"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -30,
+      30
+     ],
+     "brightness": 1.6,
+     "lightEmission": 1,
+     "zOffset": -3
+    }
+   ]
+  },
+  {
+   "id": "quake_captain",
+   "name": "Quake Captain",
+   "character": "Whitebeard",
+   "rarity": "Legendary",
+   "zone": 3,
+   "aura": "P:33",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "Determination": [
+      [
+       0,
+       "F2FBFF"
+      ],
+      [
+       0.5,
+       "BFE6FF"
+      ],
+      [
+       1,
+       "6FA8E8"
+      ]
+     ],
+     "Determination2": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.5,
+       "CFEEFF"
+      ],
+      [
+       1,
+       "7FB8F0"
+      ]
+     ],
+     "1": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "BFE6FF"
+      ]
+     ],
+     "2": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "BFE6FF"
+      ]
+     ],
+     "Beam": [
+      [
+       0,
+       "E6F6FF"
+      ],
+      [
+       1,
+       "8FC8F0"
+      ]
+     ]
+    },
+    "brightness": {},
+    "light": "BFE6FF"
+   },
+   "floor": {
+    "core": "rbxassetid://122143460318748",
+    "glow": "rbxassetid://122143460318748",
+    "size": 9,
+    "coreColour": "D8F2FF",
+    "glowColour": "6FA8E8",
+    "brightness": 1.6,
+    "glowTransparency": 1,
+    "pulse": false
+   },
+   "fx": [
+    {
+     "name": "QuakeOrbR",
+     "texture": "rbxassetid://113320563007188",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 1.9,
+     "offset": [
+      1.6,
+      0.4
+     ],
+     "rate": 3,
+     "life": [
+      0.6,
+      0.8
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       0.8
+      ],
+      [
+       1,
+       1.9
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       0.6,
+       0.35
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "9FD0F0"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -40,
+      40
+     ],
+     "brightness": 1.8,
+     "lightEmission": 1,
+     "locked": true,
+     "light": "CFEEFF",
+     "lightRange": 7,
+     "lightBrightness": 1.2
+    },
+    {
+     "name": "QuakeOrbL",
+     "texture": "rbxassetid://113320563007188",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 1.9,
+     "offset": [
+      -1.6,
+      0.4
+     ],
+     "rate": 3,
+     "life": [
+      0.6,
+      0.8
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       0.8
+      ],
+      [
+       1,
+       1.9
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       0.6,
+       0.35
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "9FD0F0"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -40,
+      40
+     ],
+     "brightness": 1.8,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "AirShatter",
+     "texture": "rbxassetid://102324797531062",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.4,
+      5.8,
+      5.8
+     ],
+     "y": 3.0,
+     "rate": 2.2,
+     "life": [
+      0.25,
+      0.4
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       1.6
+      ],
+      [
+       0.15,
+       2.4
+      ],
+      [
+       1,
+       2.6
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.5,
+       0.15
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "AEDCFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "brightness": 2,
+     "lightEmission": 1,
+     "zOffset": 0.5
+    },
+    {
+     "name": "Shockwave",
+     "texture": "http://www.roblox.com/asset/?id=11557895555",
+     "shape": "Box",
+     "part": [
+      0.2,
+      0.2,
+      0.2
+     ],
+     "y": 0.15,
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 1.4,
+     "life": [
+      0.9,
+      1.1
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       9
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       0.6,
+       0.5
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.5,
+       "BFE6FF"
+      ],
+      [
+       1,
+       "6FA8E8"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "brightness": 2,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "TremorDebris",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      0.3,
+      4.4,
+      4.4
+     ],
+     "y": 0.25,
+     "rate": 9,
+     "life": [
+      0.6,
+      1.0
+     ],
+     "speed": [
+      3,
+      6
+     ],
+     "size": [
+      [
+       0,
+       0.22
+      ],
+      [
+       1,
+       0.1
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.3
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "E6F6FF"
+      ],
+      [
+       1,
+       "8FB8D8"
+      ]
+     ],
+     "spread": [
+      25,
+      25
+     ],
+     "accel": [
+      0,
+      -14,
+      0
+     ],
+     "brightness": 1.5,
+     "lightEmission": 0.5
+    }
+   ]
+  },
+  {
+   "id": "red_haired_emperor",
+   "name": "Red-Haired Emperor",
+   "character": "Shanks",
+   "rarity": "Legendary",
+   "zone": 3,
+   "aura": "S:ConquerorsHaki",
+   "why": "custom aura: Conqueror's Haki, big black-and-crimson lightning, radial pressure wind, a shockwave, cracked stone (tools/studio/auras/build_conquerors_haki.luau)"
+  },
+  {
+   "id": "decay_villain",
+   "name": "Decay Villain",
+   "character": "Shigaraki",
+   "rarity": "Legendary",
+   "zone": 4,
+   "aura": "P:35",
+   "why": "named by the owner"
+  },
+  {
+   "id": "inferno_hero",
+   "name": "Inferno Hero",
+   "character": "Endeavor",
+   "rarity": "Legendary",
+   "zone": 4,
+   "aura": "P:55",
+   "why": "named by the owner"
+  },
+  {
+   "id": "emperor_striker",
+   "name": "Emperor Striker",
+   "character": "Kaiser",
+   "rarity": "Legendary",
+   "zone": 5,
+   "aura": "S:EmperorThorns",
+   "why": "custom aura: Kaiser's blue rose blooming on thorn vines that spiral up him, rose petals, a rose crest, a gold crown, Kaiser Impact lightning and shock ring (tools/studio/auras/build_emperor_thorns.luau)"
+  },
+  {
+   "id": "number_one_striker",
+   "name": "Number One Striker",
+   "character": "Don Lorenzo",
+   "rarity": "Legendary",
+   "zone": 5,
+   "aura": "S:AceEater",
+   "why": "custom aura: the Ace Eater, his pitch and coin ring, undead hands (Zombie-step), gold-grill jaws, an orbiting football (tools/studio/auras/build_ace_eater.luau)"
+  },
+  {
+   "id": "dark_slash_captain",
+   "name": "Dark Slash Captain",
+   "character": "Yami Sukehiro",
+   "rarity": "Legendary",
+   "zone": 6,
+   "aura": "S:DarkSlash",
+   "why": "custom aura: dimension-slash rifts, a black crescent moon, an ink pool with crossed cuts, ink brush strokes (tools/studio/auras/build_dark_slash.luau)"
+  },
+  {
+   "id": "devil_knight",
+   "name": "Devil Knight",
+   "character": "Liebe",
+   "rarity": "Legendary",
+   "zone": 6,
+   "aura": "S:AntiMagic",
+   "why": "his one winged angel (owner's pick, verbatim) round a black five-leaf clover grimoire seal, five five-leaf clovers gliding round him, black anti-magic sword cuts, black lightning and shards (tools/studio/auras/build_anti_magic.luau)"
+  },
+  {
+   "id": "prayer_master",
+   "name": "Prayer Master",
+   "character": "Netero",
+   "rarity": "Legendary",
+   "zone": 7,
+   "aura": "S:SunHalo",
+   "why": "named by the owner",
+   "noBase": true,
+   "fx": [
+    {
+     "name": "ThousandHands",
+     "texture": "rbxassetid://128212180686429",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 4.2,
+     "offset": [
+      0,
+      -0.8
+     ],
+     "rate": 0.5,
+     "life": [
+      4,
+      4
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       2.8
+      ],
+      [
+       0.5,
+       2.9
+      ],
+      [
+       1,
+       2.8
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.2,
+       0.15
+      ],
+      [
+       0.8,
+       0.15
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      6,
+      6
+     ],
+     "brightness": 1.3,
+     "lightEmission": 0.6,
+     "zOffset": -3,
+     "locked": true,
+     "light": "FFCF70",
+     "lightRange": 9,
+     "lightBrightness": 0.9
+    },
+    {
+     "name": "GoldenNen",
+     "texture": "rbxassetid://102788242727813",
+     "flipbook": "Grid2x2",
+     "bodyParts": [
+      "UpperTorso",
+      "LowerTorso",
+      "LeftUpperArm",
+      "RightUpperArm",
+      "LeftLowerArm",
+      "RightLowerArm"
+     ],
+     "rate": 5,
+     "life": [
+      0.5,
+      0.8
+     ],
+     "speed": [
+      1.2,
+      2.0
+     ],
+     "size": [
+      [
+       0,
+       0.3
+      ],
+      [
+       0.35,
+       0.7
+      ],
+      [
+       1,
+       0.25
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.15,
+       0.55
+      ],
+      [
+       0.7,
+       0.7
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      -8,
+      8
+     ],
+     "spread": [
+      2,
+      2
+     ],
+     "accel": [
+      0,
+      2.2,
+      0
+     ],
+     "drag": 1.5,
+     "brightness": 1.1,
+     "lightEmission": 0.3,
+     "zOffset": -2
+    },
+    {
+     "name": "NenShell",
+     "texture": "rbxassetid://102788242727813",
+     "flipbook": "Grid2x2",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.2,
+      2.0,
+      2.0
+     ],
+     "y": 2.5,
+     "rate": 8,
+     "life": [
+      0.5,
+      0.8
+     ],
+     "speed": [
+      1.2,
+      1.9
+     ],
+     "size": [
+      [
+       0,
+       0.8
+      ],
+      [
+       0.35,
+       1.5
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.18,
+       0.35
+      ],
+      [
+       0.75,
+       0.55
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      -8,
+      8
+     ],
+     "spread": [
+      2,
+      2
+     ],
+     "accel": [
+      0,
+      2.2,
+      0
+     ],
+     "drag": 1.5,
+     "brightness": 1.0,
+     "lightEmission": 0.25,
+     "zOffset": -3.5
+    },
+    {
+     "name": "Gratitude",
+     "texture": "rbxassetid://90709107449153",
+     "flipbook": "Grid2x2",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      1.5,
+      2.8,
+      2.8
+     ],
+     "y": 3.6,
+     "rate": 1.3,
+     "life": [
+      1.6,
+      2.2
+     ],
+     "speed": [
+      0.5,
+      0.9
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.15,
+       0.42
+      ],
+      [
+       0.85,
+       0.38
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.15,
+       0.05
+      ],
+      [
+       0.8,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "accel": [
+      0,
+      0.4,
+      0
+     ],
+     "drag": 0.5,
+     "brightness": 1.4,
+     "lightEmission": 0.7,
+     "zOffset": 0.5
+    },
+    {
+     "name": "PalmImprint",
+     "texture": "rbxassetid://113988170550430",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      2.6,
+      3.4,
+      3.4
+     ],
+     "y": 2.9,
+     "rate": 0.7,
+     "life": [
+      0.32,
+      0.42
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       0.6
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       1,
+       1.15
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.35,
+       0.1
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      -25,
+      25
+     ],
+     "brightness": 1.8,
+     "lightEmission": 0.8,
+     "zOffset": 0.6
+    },
+    {
+     "name": "SutraRing",
+     "texture": "rbxassetid://78509864546046",
+     "shape": "Box",
+     "part": [
+      0.2,
+      0.2,
+      0.2
+     ],
+     "y": 0.1,
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 0.5,
+     "life": [
+      4,
+      4
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       3.4
+      ],
+      [
+       1,
+       3.5
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.2,
+       0.5
+      ],
+      [
+       0.8,
+       0.5
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFE6A8"
+      ],
+      [
+       1,
+       "FFC45A"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -8,
+      -8
+     ],
+     "brightness": 1.2,
+     "lightEmission": 0.8,
+     "locked": true
+    },
+    {
+     "name": "PrayerMotes",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      3.6,
+      2.4,
+      2.4
+     ],
+     "y": 2.2,
+     "rate": 7,
+     "life": [
+      1.2,
+      1.8
+     ],
+     "speed": [
+      0.4,
+      1.0
+     ],
+     "size": [
+      [
+       0,
+       0.13
+      ],
+      [
+       0.5,
+       0.1
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFBEA"
+      ],
+      [
+       1,
+       "FFC45A"
+      ]
+     ],
+     "accel": [
+      0,
+      0.5,
+      0
+     ],
+     "drag": 0.5,
+     "brightness": 2.2,
+     "lightEmission": 1
+    }
+   ]
+  },
+  {
+   "id": "spider_thief_boss",
+   "name": "Spider Thief Boss",
+   "character": "Chrollo",
+   "rarity": "Legendary",
+   "zone": 7,
+   "aura": "S:SkillHunter",
+   "why": "custom aura: the grimoire Bandit's Secret at his hand, stolen-ability pages, the Troupe web (12 spokes, pulses running out along them), the spider seal facing front, Gyo aura lines (tools/studio/auras/build_skill_hunter.luau)"
+  },
+  {
+   "id": "noon_lion",
+   "name": "Noon Lion",
+   "character": "Escanor",
+   "rarity": "Legendary",
+   "zone": 8,
+   "aura": "P:99",
+   "why": "named by the owner"
+  },
+  {
+   "id": "slime_lord",
+   "name": "Slime Lord",
+   "character": "Rimuru",
+   "rarity": "Legendary",
+   "zone": 8,
+   "aura": "P:95",
+   "why": "named by the owner"
+  },
+  {
+   "id": "armored_giant",
+   "name": "Armored Giant",
+   "character": "Armored Titan",
+   "rarity": "Legendary",
+   "zone": 9,
+   "aura": "P:68",
+   "why": "named by the owner"
+  },
+  {
+   "id": "attack_giant",
+   "name": "Attack Giant",
+   "character": "Eren Titan",
+   "rarity": "Legendary",
+   "zone": 9,
+   "aura": "P:23",
+   "why": "named by the owner"
+  },
+  {
+   "id": "one_eyed_instructor",
+   "name": "One-Eyed Instructor",
+   "character": "Kishibe",
+   "rarity": "Legendary",
+   "zone": 10,
+   "aura": "P:45",
+   "why": "named by the owner"
+  },
+  {
+   "id": "gold_gang_boss",
+   "name": "Gold Gang Boss",
+   "character": "Giorno",
+   "rarity": "Legendary",
+   "zone": 11,
+   "aura": "S:GoldExperience",
+   "why": "custom aura: Gold Experience gives life (flowers blooming round him), golden ladybugs, the golden wind, a vine-and-ladybug crest (tools/studio/auras/build_gold_experience.luau)"
+  },
+  {
+   "id": "golden_vampire",
+   "name": "Golden Vampire",
+   "character": "Dio Brando",
+   "rarity": "Legendary",
+   "zone": 11,
+   "aura": "S:SaiyanGold",
+   "why": "named by the owner"
+  },
+  {
+   "id": "black_swordsman",
+   "name": "Black Swordsman",
+   "character": "Guts",
+   "rarity": "Legendary",
+   "zone": 12,
+   "aura": "P:35",
+   "why": "named by the owner"
+  },
+  {
+   "id": "shadow_mastermind",
+   "name": "Shadow Mastermind",
+   "character": "Cid Kagenou",
+   "rarity": "Legendary",
+   "zone": 12,
+   "aura": "P:48",
+   "why": "named by the owner"
+  },
+  {
+   "id": "hero_hunter",
+   "name": "Hero Hunter",
+   "character": "Garou",
+   "rarity": "Legendary",
+   "zone": 13,
+   "aura": "P:47",
+   "why": "named by the owner"
+  },
+  {
+   "id": "tornado_psychic",
+   "name": "Tornado Psychic",
+   "character": "Tatsumaki",
+   "rarity": "Legendary",
+   "zone": 13,
+   "aura": "P:27",
+   "why": "named by the owner"
+  },
+  {
+   "id": "battle_maniac_captain",
+   "name": "Battle Maniac Captain",
+   "character": "Kenpachi",
+   "rarity": "Legendary",
+   "zone": 14,
+   "aura": "S:SaiyanGold",
+   "why": "named by the owner"
+  },
+  {
+   "id": "hollow_bat",
+   "name": "Hollow Bat",
+   "character": "Ulquiorra",
+   "rarity": "Legendary",
+   "zone": 14,
+   "aura": "S:TorsoBlaze",
+   "why": "named by the owner"
+  },
+  {
+   "id": "dragon_monarch",
+   "name": "Dragon Monarch",
+   "character": "Antares",
+   "rarity": "Legendary",
+   "zone": 15,
+   "aura": "S:DragonMonarch",
+   "why": "his Cinder (owner's pick, verbatim) with a pair of crimson dragon wings beating on his back, the Monarch of Destruction's claw-torn seal, Dragon's Fear waves and drifting scales (tools/studio/auras/build_dragon_monarch.luau)"
+  },
+  {
+   "id": "shadow_monarch",
+   "name": "Shadow Monarch",
+   "character": "Sung Jinwoo",
+   "rarity": "Legendary",
+   "zone": 15,
+   "aura": "S:ShadowArise",
+   "why": "custom aura: the shadow army rising from a void pool, violet shadow flames, glowing eyes (tools/studio/auras/build_shadow_monarch.luau)"
+  },
+  {
+   "id": "curse_manipulator",
+   "name": "Curse Manipulator",
+   "character": "Geto",
+   "rarity": "Legendary",
+   "zone": 16,
+   "aura": "S:CurseManipulation",
+   "why": "custom aura: cursed-spirit orbs with eyes circling him, spirits drifting in to be absorbed, an Uzumaki spiral (tools/studio/auras/build_curse_manipulation.luau)"
+  },
+  {
+   "id": "sorcerer_hunter",
+   "name": "Sorcerer Hunter",
+   "character": "Toji Fushiguro",
+   "rarity": "Legendary",
+   "zone": 16,
+   "aura": "S:HeavenlyRestriction",
+   "why": "his Dummy pack (owner's pick, verbatim) on a caved-in cracked crater, sorcerer-killer cuts splitting the air, dust and stone chips; no glow: he has no cursed energy (tools/studio/auras/build_heavenly_restriction.luau)"
+  },
+  {
+   "id": "wheel_guardian",
+   "name": "Wheel Guardian",
+   "character": "Mahoraga",
+   "rarity": "Legendary",
+   "zone": 16,
+   "aura": "P:65",
+   "why": "named by the owner",
+   "noBase": true,
+   "floor": {
+    "core": "rbxassetid://100202570249582",
+    "glow": "rbxassetid://100202570249582",
+    "size": 7,
+    "coreColour": "FFFFFF",
+    "glowColour": "FFFFFF",
+    "brightness": 1,
+    "glowTransparency": 1,
+    "pulse": false,
+    "lit": true
+   },
+   "fx": [
+    {
+     "name": "DharmaWheel",
+     "texture": "rbxassetid://101199162873719",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 6.2,
+     "offset": [
+      0,
+      -0.45
+     ],
+     "rate": 0.25,
+     "life": [
+      8,
+      8
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       2.9
+      ],
+      [
+       1,
+       2.9
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.12,
+       0.1
+      ],
+      [
+       0.88,
+       0.1
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "rotSpeed": [
+      11.25,
+      11.25
+     ],
+     "brightness": 1.6,
+     "lightEmission": 0.4,
+     "zOffset": -1,
+     "locked": true,
+     "light": "FFD27A",
+     "lightRange": 7,
+     "lightBrightness": 0.8
+    },
+    {
+     "name": "AdaptPulse",
+     "texture": "rbxassetid://137368306775336",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 6.2,
+     "offset": [
+      0,
+      -0.4
+     ],
+     "rate": 0.35,
+     "life": [
+      0.9,
+      0.9
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       4.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       0.4,
+       0.45
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFF6DC"
+      ],
+      [
+       1,
+       "FFCF70"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "brightness": 2,
+     "lightEmission": 1,
+     "zOffset": -0.5,
+     "locked": true
+    },
+    {
+     "name": "OrbitA",
+     "texture": "rbxassetid://136104383504235",
+     "shape": "Box",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 3.7,
+     "tilt": [
+      18,
+      0,
+      0
+     ],
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 0.3333333333333333,
+     "life": [
+      6,
+      6
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       3.0
+      ],
+      [
+       1,
+       3.0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.1,
+       0
+      ],
+      [
+       0.9,
+       0
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "rotSpeed": [
+      120,
+      120
+     ],
+     "brightness": 2,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "OrbitB",
+     "texture": "rbxassetid://136104383504235",
+     "shape": "Box",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 2.6,
+     "tilt": [
+      158,
+      0,
+      50
+     ],
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 0.25,
+     "life": [
+      8,
+      8
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       3.2
+      ],
+      [
+       1,
+       3.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.1,
+       0
+      ],
+      [
+       0.9,
+       0
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "rotSpeed": [
+      90,
+      90
+     ],
+     "brightness": 2,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "OrbitC",
+     "texture": "rbxassetid://136104383504235",
+     "shape": "Box",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 3.1,
+     "tilt": [
+      32,
+      0,
+      -65
+     ],
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 0.2,
+     "life": [
+      10,
+      10
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       3.5
+      ],
+      [
+       1,
+       3.5
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.1,
+       0.25
+      ],
+      [
+       0.9,
+       0.25
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "rotSpeed": [
+      72,
+      72
+     ],
+     "brightness": 1.6,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "WheelSigil",
+     "texture": "rbxassetid://98377888436913",
+     "shape": "Box",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 0.15,
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 0.3333333333333333,
+     "life": [
+      6,
+      6
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       2.9
+      ],
+      [
+       1,
+       2.9
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.15,
+       0.15
+      ],
+      [
+       0.85,
+       0.15
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "rotSpeed": [
+      15,
+      15
+     ],
+     "brightness": 1.5,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "Shockwave",
+     "texture": "rbxassetid://137368306775336",
+     "shape": "Box",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 0.2,
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 0.35,
+     "life": [
+      0.9,
+      0.9
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       1.3
+      ],
+      [
+       1,
+       4.0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       0.5,
+       0.5
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFF6DC"
+      ],
+      [
+       1,
+       "FFCF70"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "brightness": 2,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "LightStreaks",
+     "texture": "rbxassetid://120599533714425",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      0.3,
+      5.0,
+      3.8
+     ],
+     "y": 0.4,
+     "orient": "FacingCameraWorldUp",
+     "rate": 18,
+     "life": [
+      0.45,
+      0.7
+     ],
+     "speed": [
+      0.2,
+      0.4
+     ],
+     "size": [
+      [
+       0,
+       1.2
+      ],
+      [
+       0.5,
+       1.7
+      ],
+      [
+       1,
+       1.4
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.2,
+       0.1
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFF3CF"
+      ],
+      [
+       1,
+       "FFC45A"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "accel": [
+      0,
+      13,
+      0
+     ],
+     "brightness": 2,
+     "lightEmission": 1
+    },
+    {
+     "name": "InkStreaks",
+     "texture": "rbxassetid://120599533714425",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      0.3,
+      4.6,
+      3.4
+     ],
+     "y": 0.4,
+     "orient": "FacingCameraWorldUp",
+     "rate": 6,
+     "life": [
+      0.5,
+      0.75
+     ],
+     "speed": [
+      0.2,
+      0.4
+     ],
+     "size": [
+      [
+       0,
+       1.2
+      ],
+      [
+       0.5,
+       1.8
+      ],
+      [
+       1,
+       1.4
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.2,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "120A1E"
+      ],
+      [
+       1,
+       "05030A"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "accel": [
+      0,
+      11,
+      0
+     ],
+     "brightness": 1,
+     "lightEmission": 0
+    },
+    {
+     "name": "PositiveMotes",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      4.4,
+      4.8,
+      3.6
+     ],
+     "y": 2.4,
+     "rate": 6,
+     "life": [
+      1.2,
+      1.8
+     ],
+     "speed": [
+      0.4,
+      0.9
+     ],
+     "size": [
+      [
+       0,
+       0.12
+      ],
+      [
+       0.5,
+       0.09
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFBEA"
+      ],
+      [
+       1,
+       "FFD27A"
+      ]
+     ],
+     "accel": [
+      0,
+      0.5,
+      0
+     ],
+     "drag": 0.5,
+     "brightness": 2,
+     "lightEmission": 1
+    }
+   ]
+  },
+  {
+   "id": "frost_tyrant",
+   "name": "Frost Tyrant",
+   "character": "Frieza",
+   "rarity": "Legendary",
+   "zone": 17,
+   "aura": "S:Atomic",
+   "why": "named by the owner"
+  },
+  {
+   "id": "instinct_warrior",
+   "name": "Instinct Warrior",
+   "character": "Goku",
+   "rarity": "Legendary",
+   "zone": 17,
+   "aura": "S:SaiyanGold",
+   "why": "named by the owner"
+  },
+  {
+   "id": "legendary_berserker",
+   "name": "Legendary Berserker",
+   "character": "Broly",
+   "rarity": "Legendary",
+   "zone": 17,
+   "aura": "P:32",
+   "why": "named by the owner"
+  },
+  {
+   "id": "perfect_bio_android",
+   "name": "Perfect Bio-Android",
+   "character": "Cell",
+   "rarity": "Legendary",
+   "zone": 17,
+   "aura": "P:50",
+   "why": "not named: picked to suit it (Perfect Cell's sparking aura)"
+  },
+  {
+   "id": "crow_illusionist",
+   "name": "Crow Illusionist",
+   "character": "Itachi Uchiha",
+   "rarity": "Epic",
+   "zone": 1,
+   "aura": "S:CrowGenjutsu",
+   "why": "custom aura: crows, Amaterasu, Mangekyo sigil, blood moon (tools/studio/auras/build_crow_genjutsu.luau)"
+  },
+  {
+   "id": "toad_sage",
+   "name": "Toad Sage",
+   "character": "Jiraiya",
+   "rarity": "Epic",
+   "zone": 1,
+   "aura": "P:43",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "Flame": [
+      [
+       0,
+       "FFF4D0"
+      ],
+      [
+       0.4,
+       "FFB03A"
+      ],
+      [
+       1,
+       "C8281A"
+      ]
+     ],
+     "Smoke2": [
+      [
+       0,
+       "FF9A3A"
+      ],
+      [
+       0.5,
+       "D0501E"
+      ],
+      [
+       1,
+       "5A1410"
+      ]
+     ],
+     "Smoke3": [
+      [
+       0,
+       "FFB24A"
+      ],
+      [
+       1,
+       "B0281A"
+      ]
+     ],
+     "2": [
+      [
+       0,
+       "FFC860"
+      ],
+      [
+       1,
+       "E0601E"
+      ]
+     ],
+     "ParticleEmitter": [
+      [
+       0,
+       "FFE0A0"
+      ],
+      [
+       1,
+       "FFB03A"
+      ]
+     ],
+     "Sphere thingy": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.5,
+       "FFC24A"
+      ],
+      [
+       1,
+       "E0501E"
+      ]
+     ],
+     "Sphere thingy2": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.5,
+       "FFC24A"
+      ],
+      [
+       1,
+       "E0501E"
+      ]
+     ],
+     "Sphere thingy3": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.5,
+       "FFC24A"
+      ],
+      [
+       1,
+       "E0501E"
+      ]
+     ],
+     "1": [
+      [
+       0,
+       "FFE6A8"
+      ],
+      [
+       1,
+       "FF8A2E"
+      ]
+     ],
+     "2 ": [
+      [
+       0,
+       "FFE6A8"
+      ],
+      [
+       1,
+       "FF8A2E"
+      ]
+     ],
+     "3": [
+      [
+       0,
+       "FFE6A8"
+      ],
+      [
+       1,
+       "FF8A2E"
+      ]
+     ],
+     "4": [
+      [
+       0,
+       "FFE6A8"
+      ],
+      [
+       1,
+       "FF8A2E"
+      ]
+     ],
+     "5": [
+      [
+       0,
+       "FFE6A8"
+      ],
+      [
+       1,
+       "FF8A2E"
+      ]
+     ]
+    },
+    "brightness": {},
+    "light": "FF9A3A"
+   },
+   "floor": {
+    "core": "rbxassetid://129804047032090",
+    "glow": "rbxassetid://129804047032090",
+    "size": 9,
+    "coreColour": "FFE2A8",
+    "glowColour": "E0601E",
+    "brightness": 2,
+    "glowTransparency": 1,
+    "pulse": false
+   },
+   "fx": [
+    {
+     "name": "Rasengan",
+     "texture": "rbxassetid://102248145348282",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 2.6,
+     "offset": [
+      1.7,
+      0.7
+     ],
+     "rate": 9,
+     "life": [
+      0.35,
+      0.5
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       1.3
+      ],
+      [
+       1,
+       1.5
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.3
+      ],
+      [
+       0.5,
+       0.05
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "BFF0FF"
+      ],
+      [
+       0.5,
+       "3FAEFF"
+      ],
+      [
+       1,
+       "2A5BFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      600,
+      800
+     ],
+     "brightness": 1.6,
+     "light": "5FB8FF",
+     "lightRange": 8,
+     "lightBrightness": 1.6
+    },
+    {
+     "name": "RasenganShell",
+     "texture": "rbxassetid://102248145348282",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.1,
+      0.1,
+      0.1
+     ],
+     "y": 2.6,
+     "offset": [
+      1.7,
+      0.7
+     ],
+     "rate": 6,
+     "life": [
+      0.3,
+      0.45
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       1.7
+      ],
+      [
+       1,
+       2.0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.5
+      ],
+      [
+       0.5,
+       0.35
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "8FD8FF"
+      ],
+      [
+       1,
+       "2A5BFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -700,
+      -500
+     ],
+     "brightness": 1.2,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "SageWisps",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      0.4,
+      4.4,
+      4.4
+     ],
+     "y": 0.3,
+     "rate": 12,
+     "life": [
+      1.2,
+      1.8
+     ],
+     "speed": [
+      2,
+      4
+     ],
+     "size": [
+      [
+       0,
+       0.35
+      ],
+      [
+       0.6,
+       0.28
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFF0C0"
+      ],
+      [
+       0.4,
+       "FFA040"
+      ],
+      [
+       1,
+       "C8281A"
+      ]
+     ],
+     "spread": [
+      12,
+      12
+     ],
+     "accel": [
+      0,
+      1.2,
+      0
+     ],
+     "drag": 0.6,
+     "brightness": 3,
+     "lightEmission": 1
+    }
+   ]
+  },
+  {
+   "id": "yellow_flash",
+   "name": "Yellow Flash",
+   "character": "Minato",
+   "rarity": "Epic",
+   "zone": 1,
+   "aura": "S:TitanBolt",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "tex:12414458390": [
+      [
+       0,
+       "FFF6C8"
+      ],
+      [
+       0.5,
+       "FFD23A"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "tex:13712010201": [
+      [
+       0,
+       "FFF6C8"
+      ],
+      [
+       0.5,
+       "FFD23A"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "tex:13370272316": [
+      [
+       0,
+       "FFF6C8"
+      ],
+      [
+       0.5,
+       "FFD23A"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "tex:13712011229": [
+      [
+       0,
+       "FFF6C8"
+      ],
+      [
+       0.5,
+       "FFD23A"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "Lines": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.4,
+       "FFE45A"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "Upward": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.4,
+       "FFE45A"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "Lightning 1": [
+      [
+       0,
+       "FFFBE0"
+      ],
+      [
+       0.5,
+       "FFD23A"
+      ],
+      [
+       1,
+       "3FA8FF"
+      ]
+     ],
+     "Lightning 2": [
+      [
+       0,
+       "FFFBE0"
+      ],
+      [
+       0.5,
+       "FFD23A"
+      ],
+      [
+       1,
+       "3FA8FF"
+      ]
+     ],
+     "Explosions 1": [
+      [
+       0,
+       "FFF2A0"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "Explosions 2": [
+      [
+       0,
+       "FFF2A0"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "Explosion 1": [
+      [
+       0,
+       "FFF2A0"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "Explosion 2": [
+      [
+       0,
+       "FFF2A0"
+      ],
+      [
+       1,
+       "FFB000"
+      ]
+     ],
+     "Bolts": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.5,
+       "FFE45A"
+      ],
+      [
+       1,
+       "5FB8FF"
+      ]
+     ]
+    },
+    "brightness": {},
+    "speed": {
+     "Lines": 0.3,
+     "Upward": 0.25,
+     "Lightning 1": 0.22,
+     "Lightning 2": 0.22,
+     "Explosions 1": 0.5,
+     "Explosions 2": 0.5
+    },
+    "light": "FFD84A"
+   },
+   "beams": {
+    "bottom": 0,
+    "top": 7.5,
+    "width": 5
+   }
+  },
+  {
+   "id": "butterfly_swordswoman",
+   "name": "Butterfly Swordswoman",
+   "character": "Shinobu Kocho",
+   "rarity": "Epic",
+   "zone": 2,
+   "aura": "S:ButterflyDance",
+   "why": "custom aura: Insect Breathing butterflies (tools/studio/auras/build_butterfly_dance.luau)"
+  },
+  {
+   "id": "crystal_cult_leader",
+   "name": "Crystal Cult Leader",
+   "character": "Douma",
+   "rarity": "Epic",
+   "zone": 2,
+   "aura": "P:64",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "tex:11975023580": [
+      [
+       0,
+       "DFF7FF"
+      ],
+      [
+       0.5,
+       "7FB8FF"
+      ],
+      [
+       1,
+       "B89CFF"
+      ]
+     ],
+     "tex:11975030489": [
+      [
+       0,
+       "DFF7FF"
+      ],
+      [
+       0.5,
+       "7FB8FF"
+      ],
+      [
+       1,
+       "B89CFF"
+      ]
+     ],
+     "tex:11290368841": [
+      [
+       0,
+       "CFEFFF"
+      ],
+      [
+       1,
+       "9A8CFF"
+      ]
+     ],
+     "tex:11290366632": [
+      [
+       0,
+       "CFEFFF"
+      ],
+      [
+       1,
+       "9A8CFF"
+      ]
+     ],
+     "tex:11172050895": [
+      [
+       0,
+       "E6F7FF"
+      ],
+      [
+       1,
+       "8FB0FF"
+      ]
+     ],
+     "Shine": [
+      [
+       0,
+       "E6F7FF"
+      ],
+      [
+       0.6,
+       "9FC8FF"
+      ],
+      [
+       1,
+       "C9B8FF"
+      ]
+     ],
+     "Glow": [
+      [
+       0,
+       "7FB8FF"
+      ],
+      [
+       1,
+       "7A7CFF"
+      ]
+     ],
+     "Dust": [
+      [
+       0,
+       "E6F7FF"
+      ],
+      [
+       0.35,
+       "A9D8FF"
+      ],
+      [
+       0.7,
+       "D9B8FF"
+      ],
+      [
+       1,
+       "FFC2E0"
+      ]
+     ],
+     "ParticleEmitter": [
+      [
+       0,
+       "BFE9FF"
+      ],
+      [
+       1,
+       "B89CFF"
+      ]
+     ],
+     "Shard1": [
+      [
+       0,
+       "A8D8FF"
+      ],
+      [
+       1,
+       "6F9CFF"
+      ]
+     ],
+     "Shard2": [
+      [
+       0,
+       "A8D8FF"
+      ],
+      [
+       1,
+       "6F9CFF"
+      ]
+     ],
+     "Shard3": [
+      [
+       0,
+       "A8D8FF"
+      ],
+      [
+       1,
+       "6F9CFF"
+      ]
+     ],
+     "Shard falling1": [
+      [
+       0,
+       "A8D8FF"
+      ],
+      [
+       1,
+       "6F9CFF"
+      ]
+     ],
+     "Shard falling2": [
+      [
+       0,
+       "A8D8FF"
+      ],
+      [
+       1,
+       "6F9CFF"
+      ]
+     ],
+     "Spike1": [
+      [
+       0,
+       "A8D8FF"
+      ],
+      [
+       1,
+       "6F9CFF"
+      ]
+     ],
+     "Spike2": [
+      [
+       0,
+       "A8D8FF"
+      ],
+      [
+       1,
+       "6F9CFF"
+      ]
+     ]
+    },
+    "brightness": {
+     "Dust": 0.55,
+     "Shine": 0.6,
+     "Glow": 0.7
+    },
+    "rate": {
+     "Dust": 0.6
+    },
+    "light": "8FC8FF"
+   },
+   "floor": {
+    "core": "rbxassetid://105355685560355",
+    "glow": "rbxassetid://99306142891306",
+    "size": 10,
+    "coreColour": "E6F7FF",
+    "glowColour": "4A7CFF",
+    "brightness": 2,
+    "glowTransparency": 0.9,
+    "pulse": false
+   },
+   "fx": [
+    {
+     "name": "LotusGarden",
+     "texture": "rbxassetid://106555028461223",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      0.3,
+      6.2,
+      6.2
+     ],
+     "y": 1.0,
+     "orient": "FacingCameraWorldUp",
+     "rate": 2.6,
+     "life": [
+      2.6,
+      3.4
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.25,
+       1.9
+      ],
+      [
+       0.8,
+       2.0
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.2,
+       0.05
+      ],
+      [
+       0.8,
+       0.15
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "8FD0FF"
+      ],
+      [
+       0.5,
+       "4A84FF"
+      ],
+      [
+       1,
+       "8A72FF"
+      ]
+     ],
+     "rotation": [
+      0,
+      0
+     ],
+     "brightness": 1.8,
+     "lightEmission": 1,
+     "zOffset": 0.6
+    },
+    {
+     "name": "IceButterflies",
+     "texture": "rbxassetid://74157749062965",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      5,
+      6.4,
+      6.4
+     ],
+     "y": 3.3,
+     "rate": 3,
+     "life": [
+      2.6,
+      3.6
+     ],
+     "speed": [
+      0.4,
+      0.9
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.1,
+       1.05
+      ],
+      [
+       0.9,
+       1.0
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "squash": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0625,
+       0.8
+      ],
+      [
+       0.125,
+       0.0
+      ],
+      [
+       0.1875,
+       0.8
+      ],
+      [
+       0.25,
+       0.0
+      ],
+      [
+       0.3125,
+       0.8
+      ],
+      [
+       0.375,
+       0.0
+      ],
+      [
+       0.4375,
+       0.8
+      ],
+      [
+       0.5,
+       0.0
+      ],
+      [
+       0.5625,
+       0.8
+      ],
+      [
+       0.625,
+       0.0
+      ],
+      [
+       0.6875,
+       0.8
+      ],
+      [
+       0.75,
+       0.0
+      ],
+      [
+       0.8125,
+       0.8
+      ],
+      [
+       0.875,
+       0.0
+      ],
+      [
+       0.9375,
+       0.8
+      ],
+      [
+       1.0,
+       0.0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.1,
+       0.08
+      ],
+      [
+       0.85,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FF8AC8"
+      ],
+      [
+       0.33,
+       "A88CFF"
+      ],
+      [
+       0.66,
+       "6FD0FF"
+      ],
+      [
+       1,
+       "7FFFD0"
+      ]
+     ],
+     "rotation": [
+      -25,
+      25
+     ],
+     "rotSpeed": [
+      -20,
+      20
+     ],
+     "spread": [
+      180,
+      180
+     ],
+     "accel": [
+      0,
+      0.35,
+      0
+     ],
+     "drag": 0.8,
+     "brightness": 2,
+     "lightEmission": 1,
+     "zOffset": 0.5,
+     "light": "9FC8FF",
+     "lightRange": 12,
+     "lightBrightness": 1.2
+    },
+    {
+     "name": "IceGlints",
+     "texture": "rbxassetid://106676034954642",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      6,
+      5.4,
+      5.4
+     ],
+     "y": 3.0,
+     "rate": 10,
+     "life": [
+      0.4,
+      0.8
+     ],
+     "speed": [
+      0,
+      0.2
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.3,
+       0.35
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       1,
+       0.4
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.5,
+       "CFE6FF"
+      ],
+      [
+       1,
+       "FFC2E6"
+      ]
+     ],
+     "rotation": [
+      0,
+      45
+     ],
+     "brightness": 3,
+     "lightEmission": 1
+    }
+   ]
+  },
+  {
+   "id": "flashy_shinobi",
+   "name": "Flashy Shinobi",
+   "character": "Tengen Uzui",
+   "rarity": "Epic",
+   "zone": 2,
+   "aura": "P:20",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "SPIN": [
+      [
+       0,
+       "FFD54A"
+      ],
+      [
+       0.5,
+       "FF8A1E"
+      ],
+      [
+       1,
+       "E0281A"
+      ]
+     ],
+     "LIGHT": [
+      [
+       0,
+       "FFD06A"
+      ],
+      [
+       0.5,
+       "FF8A1E"
+      ],
+      [
+       1,
+       "E0281A"
+      ]
+     ],
+     "SQUARE": [
+      [
+       0,
+       "FFE08A"
+      ],
+      [
+       0.5,
+       "FF7A1E"
+      ],
+      [
+       1,
+       "FFE08A"
+      ]
+     ],
+     "DUST": [
+      [
+       0,
+       "FFF2B0"
+      ],
+      [
+       0.5,
+       "FFB02E"
+      ],
+      [
+       1,
+       "FF4F8A"
+      ]
+     ],
+     "SPOTLIGHT": [
+      [
+       0,
+       "FFE6A0"
+      ],
+      [
+       1,
+       "FF6A1A"
+      ]
+     ],
+     "SPOTLIGHT2": [
+      [
+       0,
+       "FFE6A0"
+      ],
+      [
+       1,
+       "FF6A1A"
+      ]
+     ]
+    },
+    "brightness": {
+     "LIGHT": 0.55,
+     "SQUARE": 0.7,
+     "SPOTLIGHT": 0.8,
+     "SPOTLIGHT2": 0.8
+    },
+    "rate": {
+     "LIGHT": 0.6
+    },
+    "light": "FFA040"
+   },
+   "fx": [
+    {
+     "name": "Fireworks",
+     "texture": "rbxassetid://117907582997811",
+     "shape": "Sphere",
+     "style": "Surface",
+     "part": [
+      7.5,
+      5.5,
+      7.5
+     ],
+     "y": 5.2,
+     "rate": 2.4,
+     "life": [
+      0.7,
+      0.95
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       0.4
+      ],
+      [
+       0.22,
+       2.6
+      ],
+      [
+       1,
+       3.3
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.5,
+       0.15
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFF2B8"
+      ],
+      [
+       0.3,
+       "FFB02E"
+      ],
+      [
+       1,
+       "FF4F8A"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "brightness": 3,
+     "lightEmission": 1,
+     "zOffset": -1,
+     "light": "FFA848",
+     "lightRange": 12,
+     "lightBrightness": 1.3
+    },
+    {
+     "name": "FireworksRose",
+     "texture": "rbxassetid://117907582997811",
+     "shape": "Sphere",
+     "style": "Surface",
+     "part": [
+      8,
+      6,
+      8
+     ],
+     "y": 5.4,
+     "rate": 1.3,
+     "life": [
+      0.7,
+      0.95
+     ],
+     "speed": [
+      0,
+      0
+     ],
+     "size": [
+      [
+       0,
+       0.3
+      ],
+      [
+       0.22,
+       2.0
+      ],
+      [
+       1,
+       2.6
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.5,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFE0EC"
+      ],
+      [
+       0.3,
+       "FF5A8A"
+      ],
+      [
+       1,
+       "E0281A"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "brightness": 3,
+     "lightEmission": 1,
+     "zOffset": -1
+    },
+    {
+     "name": "GoldRibbon",
+     "texture": "http://www.roblox.com/asset/?id=11557895555",
+     "shape": "Box",
+     "part": [
+      0.2,
+      0.2,
+      0.2
+     ],
+     "y": 0.18,
+     "orient": "VelocityPerpendicular",
+     "dir": "Top",
+     "rate": 2.6,
+     "life": [
+      0.9,
+      1.2
+     ],
+     "speed": [
+      0.01,
+      0.01
+     ],
+     "size": [
+      [
+       0,
+       3.2
+      ],
+      [
+       1,
+       7.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.2
+      ],
+      [
+       0.6,
+       0.45
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFE89A"
+      ],
+      [
+       0.5,
+       "FF8A1E"
+      ],
+      [
+       1,
+       "E0281A"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      200,
+      320
+     ],
+     "brightness": 2,
+     "lightEmission": 1,
+     "locked": true
+    },
+    {
+     "name": "Glitter",
+     "texture": "rbxassetid://106676034954642",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      6,
+      5.6,
+      5.6
+     ],
+     "y": 3.0,
+     "rate": 14,
+     "life": [
+      0.5,
+      0.9
+     ],
+     "speed": [
+      0,
+      0.3
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.3,
+       0.45
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       1,
+       0.4
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.4,
+       "FFE08A"
+      ],
+      [
+       1,
+       "FFB02E"
+      ]
+     ],
+     "rotation": [
+      0,
+      45
+     ],
+     "rotSpeed": [
+      -60,
+      60
+     ],
+     "brightness": 4,
+     "lightEmission": 1
+    },
+    {
+     "name": "Embers",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      0.4,
+      4.6,
+      4.6
+     ],
+     "y": 0.3,
+     "rate": 10,
+     "life": [
+      1.0,
+      1.5
+     ],
+     "speed": [
+      2.5,
+      5
+     ],
+     "size": [
+      [
+       0,
+       0.3
+      ],
+      [
+       0.6,
+       0.22
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFF0B0"
+      ],
+      [
+       0.4,
+       "FF9A2E"
+      ],
+      [
+       1,
+       "E0281A"
+      ]
+     ],
+     "spread": [
+      14,
+      14
+     ],
+     "accel": [
+      0,
+      1.5,
+      0
+     ],
+     "drag": 0.6,
+     "brightness": 3.5,
+     "lightEmission": 1
+    }
+   ]
+  },
+  {
+   "id": "blazing_pirate",
+   "name": "Blazing Pirate",
+   "character": "Ace",
+   "rarity": "Epic",
+   "zone": 3,
+   "aura": "P:55",
+   "why": "the owner gave it Endeavor's aura"
+  },
+  {
+   "id": "hawkeye_swordsman",
+   "name": "Hawk-Eye Swordsman",
+   "character": "Mihawk",
+   "rarity": "Epic",
+   "zone": 3,
+   "aura": "S:HawkEye",
+   "why": "custom aura: Yoru's emerald flying slashes, Haki cracks, hawk eyes and feathers (tools/studio/auras/build_hawk_eye.luau)"
+  },
+  {
+   "id": "string_king",
+   "name": "Heavenly String King",
+   "character": "Doflamingo",
+   "rarity": "Epic",
+   "zone": 3,
+   "aura": "S:Purity",
+   "why": "named by the owner"
+  },
+  {
+   "id": "shadow_pirate_captain",
+   "name": "Shadow Pirate Captain",
+   "character": "Blackbeard",
+   "rarity": "Epic",
+   "zone": 3,
+   "aura": "P:40",
+   "why": "named by the owner"
+  },
+  {
+   "id": "blast_prodigy",
+   "name": "Blast Prodigy",
+   "character": "Bakugo",
+   "rarity": "Epic",
+   "zone": 4,
+   "aura": "P:56",
+   "why": "named by the owner"
+  },
+  {
+   "id": "crimson_wing_hero",
+   "name": "Crimson-Wing Hero",
+   "character": "Hawks",
+   "rarity": "Epic",
+   "zone": 4,
+   "aura": "P:8",
+   "why": "named by the owner"
+  },
+  {
+   "id": "cold_prodigy_winger",
+   "name": "Cold Prodigy Winger",
+   "character": "Rin Itoshi",
+   "rarity": "Epic",
+   "zone": 5,
+   "aura": "P:27",
+   "why": "named by the owner"
+  },
+  {
+   "id": "midfield_genius",
+   "name": "Midfield Genius",
+   "character": "Sae Itoshi",
+   "rarity": "Epic",
+   "zone": 5,
+   "aura": "P:39",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "Ring": [
+      [
+       0,
+       "FFC2EC"
+      ],
+      [
+       0.5,
+       "FF3FC0"
+      ],
+      [
+       1,
+       "B0108A"
+      ]
+     ],
+     "Intake": [
+      [
+       0,
+       "FFE0F4"
+      ],
+      [
+       0.5,
+       "FF4FC8"
+      ],
+      [
+       1,
+       "C0109A"
+      ]
+     ],
+     "OutdoorParticle": [
+      [
+       0,
+       "C0189A"
+      ],
+      [
+       1,
+       "5A0840"
+      ]
+     ],
+     "Debris": [
+      [
+       0,
+       "FF7A5A"
+      ],
+      [
+       0.5,
+       "FF2A3A"
+      ],
+      [
+       1,
+       "8A0A1A"
+      ]
+     ]
+    },
+    "brightness": {
+     "Ring": 1.8,
+     "Intake": 2.2
+    },
+    "light": "FF3FC0"
+   },
+   "fx": [
+    {
+     "name": "FlowNumbers",
+     "texture": "rbxassetid://77269623679808",
+     "flipbook": "Grid4x4",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      5.2,
+      7.2,
+      7.2
+     ],
+     "y": 2.8,
+     "rate": 12,
+     "life": [
+      1.4,
+      2.0
+     ],
+     "speed": [
+      0.6,
+      1.2
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.15,
+       1.05,
+       0.2
+      ],
+      [
+       0.8,
+       0.95
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.15,
+       0
+      ],
+      [
+       0.75,
+       0.1
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFA8EC"
+      ],
+      [
+       0.3,
+       "FF40C8"
+      ],
+      [
+       1,
+       "B0108A"
+      ]
+     ],
+     "rotation": [
+      -20,
+      20
+     ],
+     "rotSpeed": [
+      -15,
+      15
+     ],
+     "spread": [
+      10,
+      10
+     ],
+     "accel": [
+      0,
+      0.8,
+      0
+     ],
+     "drag": 0.6,
+     "brightness": 1.8,
+     "lightEmission": 1,
+     "zOffset": 1.5,
+     "light": "FF3FC0",
+     "lightRange": 11,
+     "lightBrightness": 1.3
+    },
+    {
+     "name": "FlowFlames",
+     "texture": "rbxassetid://11989899750",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.2,
+      3.2,
+      3.2
+     ],
+     "y": 2.4,
+     "rate": 10,
+     "life": [
+      0.6,
+      0.9
+     ],
+     "speed": [
+      1.5,
+      3
+     ],
+     "size": [
+      [
+       0,
+       0.8
+      ],
+      [
+       0.5,
+       1.6
+      ],
+      [
+       1,
+       0.4
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.25,
+       0.55
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FF8AE0"
+      ],
+      [
+       0.5,
+       "E020A8"
+      ],
+      [
+       1,
+       "70105A"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -60,
+      60
+     ],
+     "spread": [
+      8,
+      8
+     ],
+     "accel": [
+      0,
+      2,
+      0
+     ],
+     "brightness": 2,
+     "lightEmission": 1,
+     "zOffset": -0.5
+    },
+    {
+     "name": "DarkSmoke",
+     "texture": "rbxassetid://11989899750",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.4,
+      4.2,
+      4.2
+     ],
+     "y": 2.6,
+     "rate": 6,
+     "life": [
+      1.2,
+      1.8
+     ],
+     "speed": [
+      0.8,
+      1.6
+     ],
+     "size": [
+      [
+       0,
+       1.2
+      ],
+      [
+       1,
+       3
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.3,
+       0.45
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "3A0A2A"
+      ],
+      [
+       1,
+       "120410"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -30,
+      30
+     ],
+     "accel": [
+      0,
+      0.8,
+      0
+     ],
+     "brightness": 1,
+     "lightEmission": 0,
+     "zOffset": -2
+    },
+    {
+     "name": "RedEmbers",
+     "texture": "rbxassetid://12159555294",
+     "shape": "Cylinder",
+     "style": "Volume",
+     "part": [
+      3.6,
+      4.4,
+      4.4
+     ],
+     "y": 2.2,
+     "rate": 12,
+     "life": [
+      0.9,
+      1.4
+     ],
+     "speed": [
+      1,
+      2.5
+     ],
+     "size": [
+      [
+       0,
+       0.3
+      ],
+      [
+       0.6,
+       0.22
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0
+      ],
+      [
+       0.8,
+       0.2
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFB07A"
+      ],
+      [
+       0.4,
+       "FF2A3A"
+      ],
+      [
+       1,
+       "8A0A1A"
+      ]
+     ],
+     "spread": [
+      40,
+      40
+     ],
+     "accel": [
+      0,
+      1.2,
+      0
+     ],
+     "drag": 0.8,
+     "brightness": 3,
+     "lightEmission": 1
+    }
+   ]
+  },
+  {
+   "id": "crimson_lioness",
+   "name": "Crimson Lioness",
+   "character": "Mereoleona",
+   "rarity": "Epic",
+   "zone": 6,
+   "aura": "P:55",
+   "why": "the owner gave it Endeavor's aura"
+  },
+  {
+   "id": "demon_union_knight",
+   "name": "Demon Union Knight",
+   "character": "Nacht",
+   "rarity": "Epic",
+   "zone": 6,
+   "aura": "P:61",
+   "why": "named by the owner"
+  },
+  {
+   "id": "card_magician",
+   "name": "Card Magician",
+   "character": "Hisoka",
+   "rarity": "Epic",
+   "zone": 7,
+   "aura": "P:14",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "Smoke 1": [
+      [
+       0,
+       "FFB8E8"
+      ],
+      [
+       0.5,
+       "FF4FC0"
+      ],
+      [
+       1,
+       "8A1A9A"
+      ]
+     ],
+     "Smoke 2": [
+      [
+       0,
+       "E0309A"
+      ],
+      [
+       1,
+       "5A1478"
+      ]
+     ],
+     "Red Spiral": [
+      [
+       0,
+       "C0208A"
+      ],
+      [
+       1,
+       "5A0A50"
+      ]
+     ],
+     "Crimson Flare": [
+      [
+       0,
+       "7A1468"
+      ],
+      [
+       1,
+       "3A0A3A"
+      ]
+     ],
+     "Star Bits": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       0.5,
+       "FFB8E8"
+      ],
+      [
+       1,
+       "FF4FC0"
+      ]
+     ],
+     "Sparkles": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FF9AD8"
+      ]
+     ],
+     "Sparkle Droplets": [
+      [
+       0,
+       "FFE6F6"
+      ],
+      [
+       1,
+       "FF6AD0"
+      ]
+     ],
+     "Cape1-2Main": [
+      [
+       0,
+       "FF4FC0"
+      ],
+      [
+       1,
+       "9A1A9A"
+      ]
+     ],
+     "Cape1-2BG": [
+      [
+       0,
+       "FFE6F6"
+      ],
+      [
+       1,
+       "FF9AD8"
+      ]
+     ],
+     "Beam1-1Glow": [
+      [
+       0,
+       "FF4FC0"
+      ],
+      [
+       1,
+       "B01A9A"
+      ]
+     ],
+     "Beam2-2Glow": [
+      [
+       0,
+       "FF4FC0"
+      ],
+      [
+       1,
+       "B01A9A"
+      ]
+     ],
+     "Beam1-1": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFC2EC"
+      ]
+     ],
+     "Beam2-2": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFC2EC"
+      ]
+     ],
+     "BeamCapeLeft": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFC2EC"
+      ]
+     ],
+     "BeamCapeRight": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFC2EC"
+      ]
+     ]
+    },
+    "brightness": {
+     "Cape1-2BG": 3
+    },
+    "scale": {
+     "Hearts": 0.5,
+     "Diamonds": 0.5,
+     "Clubs": 0.5,
+     "Spades": 0.5
+    },
+    "keepDark": true,
+    "light": "FF4FC0"
+   },
+   "fx": [
+    {
+     "name": "FlyingCards",
+     "texture": "rbxassetid://88310227210137",
+     "flipbook": "Grid2x2",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      5,
+      6.2,
+      6.2
+     ],
+     "y": 3.0,
+     "rate": 4,
+     "life": [
+      2.0,
+      2.8
+     ],
+     "speed": [
+      0.3,
+      0.8
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.12,
+       0.95
+      ],
+      [
+       0.85,
+       0.9
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.12,
+       0
+      ],
+      [
+       0.85,
+       0.05
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -160,
+      160
+     ],
+     "spread": [
+      180,
+      180
+     ],
+     "accel": [
+      0,
+      0.3,
+      0
+     ],
+     "drag": 1,
+     "brightness": 1.2,
+     "lightEmission": 0,
+     "zOffset": 1
+    },
+    {
+     "name": "BungeeGumR",
+     "texture": "rbxassetid://128245794821063",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.3,
+      0.3,
+      0.3
+     ],
+     "y": 2.3,
+     "offset": [
+      1.6,
+      0.2
+     ],
+     "orient": "VelocityParallel",
+     "dir": "Right",
+     "rate": 2.2,
+     "life": [
+      0.7,
+      1.1
+     ],
+     "speed": [
+      1.5,
+      2.5
+     ],
+     "size": [
+      [
+       0,
+       0.4
+      ],
+      [
+       0.3,
+       1.6
+      ],
+      [
+       1,
+       1.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.2
+      ],
+      [
+       0.7,
+       0.35
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFB8E8"
+      ],
+      [
+       0.5,
+       "FF5FC8"
+      ],
+      [
+       1,
+       "D0208A"
+      ]
+     ],
+     "spread": [
+      55,
+      55
+     ],
+     "drag": 2,
+     "brightness": 1.6,
+     "lightEmission": 0.8
+    },
+    {
+     "name": "BungeeGumL",
+     "texture": "rbxassetid://128245794821063",
+     "shape": "Box",
+     "style": "Volume",
+     "part": [
+      0.3,
+      0.3,
+      0.3
+     ],
+     "y": 2.3,
+     "offset": [
+      -1.6,
+      0.2
+     ],
+     "orient": "VelocityParallel",
+     "dir": "Left",
+     "rate": 2.2,
+     "life": [
+      0.7,
+      1.1
+     ],
+     "speed": [
+      1.5,
+      2.5
+     ],
+     "size": [
+      [
+       0,
+       0.4
+      ],
+      [
+       0.3,
+       1.6
+      ],
+      [
+       1,
+       1.2
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.2
+      ],
+      [
+       0.7,
+       0.35
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFB8E8"
+      ],
+      [
+       0.5,
+       "FF5FC8"
+      ],
+      [
+       1,
+       "D0208A"
+      ]
+     ],
+     "spread": [
+      55,
+      55
+     ],
+     "drag": 2,
+     "brightness": 1.6,
+     "lightEmission": 0.8
+    },
+    {
+     "name": "FaceMarks",
+     "texture": "rbxassetid://106659789249068",
+     "flipbook": "Grid2x2",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      1.6,
+      3.6,
+      3.6
+     ],
+     "y": 4.6,
+     "rate": 3,
+     "life": [
+      1.0,
+      1.5
+     ],
+     "speed": [
+      0.2,
+      0.5
+     ],
+     "size": [
+      [
+       0,
+       0
+      ],
+      [
+       0.25,
+       0.4
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       0.1
+      ],
+      [
+       1,
+       0.4
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FFFFFF"
+      ],
+      [
+       1,
+       "FFFFFF"
+      ]
+     ],
+     "rotation": [
+      -25,
+      25
+     ],
+     "rotSpeed": [
+      -40,
+      40
+     ],
+     "accel": [
+      0,
+      0.4,
+      0
+     ],
+     "brightness": 1.5,
+     "lightEmission": 0.6,
+     "zOffset": 1
+    },
+    {
+     "name": "NenHaze",
+     "texture": "rbxassetid://11989899750",
+     "shape": "Cylinder",
+     "style": "Surface",
+     "part": [
+      4.2,
+      3.4,
+      3.4
+     ],
+     "y": 2.4,
+     "rate": 4,
+     "life": [
+      1.0,
+      1.5
+     ],
+     "speed": [
+      0.8,
+      1.6
+     ],
+     "size": [
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       2.4
+      ]
+     ],
+     "transparency": [
+      [
+       0,
+       1
+      ],
+      [
+       0.3,
+       0.78
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "colour": [
+      [
+       0,
+       "FF6AD0"
+      ],
+      [
+       0.5,
+       "B02AB0"
+      ],
+      [
+       1,
+       "4A1460"
+      ]
+     ],
+     "rotation": [
+      0,
+      360
+     ],
+     "rotSpeed": [
+      -30,
+      30
+     ],
+     "accel": [
+      0,
+      0.8,
+      0
+     ],
+     "brightness": 1,
+     "lightEmission": 0.6,
+     "zOffset": -2
+    }
+   ]
+  },
+  {
+   "id": "needle_assassin",
+   "name": "Needle Assassin",
+   "character": "Illumi",
+   "rarity": "Epic",
+   "zone": 7,
+   "aura": "P:30",
+   "why": "named by the owner"
+  },
+  {
+   "id": "dragon_sin",
+   "name": "Dragon Sin",
+   "character": "Meliodas",
+   "rarity": "Epic",
+   "zone": 8,
+   "aura": "P:67",
+   "why": "named by the owner"
+  },
+  {
+   "id": "ice_general",
+   "name": "Ice General",
+   "character": "Esdeath",
+   "rarity": "Epic",
+   "zone": 8,
+   "aura": "S:DemonsExtract",
+   "why": "custom aura: ice clusters erupting round her, hoarfrost seal and frost shockwave, hail, snow and diamond dust (tools/studio/auras/build_demons_extract.luau)"
+  },
+  {
+   "id": "beast_giant_prince",
+   "name": "Beast Giant Prince",
+   "character": "Zeke",
+   "rarity": "Epic",
+   "zone": 9,
+   "aura": "P:17",
+   "why": "named by the owner"
+  },
+  {
+   "id": "blade_captain",
+   "name": "Blade Captain",
+   "character": "Levi Ackerman",
+   "rarity": "Epic",
+   "zone": 9,
+   "aura": "P:77",
+   "why": "named by the owner"
+  },
+  {
+   "id": "bomb_girl",
+   "name": "Bomb Girl",
+   "character": "Reze",
+   "rarity": "Epic",
+   "zone": 10,
+   "aura": "P:62",
+   "why": "named by the owner"
+  },
+  {
+   "id": "crimson_boss",
+   "name": "Crimson Boss",
+   "character": "Diavolo",
+   "rarity": "Epic",
+   "zone": 11,
+   "aura": "S:ShadowMonarch",
+   "why": "named by the owner",
+   "palette": {
+    "colours": {
+     "Flame Burst": [
+      [
+       0,
+       "FFC4D8"
+      ],
+      [
+       0.4,
+       "FF4F7E"
+      ],
+      [
+       1,
+       "C0103A"
+      ]
+     ],
+     "Clean Flame Blast": [
+      [
+       0,
+       "FF6FA8"
+      ],
+      [
+       0.5,
+       "E0204A"
+      ],
+      [
+       1,
+       "7A0A2A"
+      ]
+     ],
+     "Dark Glow Fire": [
+      [
+       0,
+       "FF3A5A"
+      ],
+      [
+       1,
+       "8A0A2E"
+      ]
+     ],
+     "Dark Shadow Fire": [
+      [
+       0,
+       "B0123A"
+      ],
+      [
+       1,
+       "3A0418"
+      ]
+     ],
+     "Smoke": [
+      [
+       0,
+       "8A1E5A"
+      ],
+      [
+       1,
+       "2A0614"
+      ]
+     ],
+     "Spec2": [
+      [
+       0,
+       "FF8AB8"
+      ],
+      [
+       1,
+       "E0204A"
+      ]
+     ],
+     "Spec26": [
+      [
+       0,
+       "FF4F8E"
+      ],
+      [
+       1,
+       "B0103A"
+      ]
+     ]
+    },
+    "brightness": {},
+    "keepDark": true,
+    "light": "E0306A"
+   }
+  },
+  {
+   "id": "quiet_bomber",
+   "name": "Quiet Bomber",
+   "character": "Kira",
+   "rarity": "Epic",
+   "zone": 11,
+   "aura": "P:63",
+   "why": "named by the owner"
+  },
+  {
+   "id": "star_delinquent",
+   "name": "Star Delinquent",
+   "character": "Jotaro Joestar",
+   "rarity": "Epic",
+   "zone": 11,
+   "aura": "S:StarPlatinum",
+   "why": "custom aura: Joestar star crest, shooting-star orbits, menacing ゴゴゴ, ORA impacts, starlight glints, time-stop pulse, stat-hexagon sigil (tools/studio/auras/build_star_platinum.luau)"
+  },
+  {
+   "id": "apple_reaper",
+   "name": "Apple Reaper",
+   "character": "Ryuk",
+   "rarity": "Epic",
+   "zone": 12,
+   "aura": "P:61",
+   "why": "named by the owner"
+  },
+  {
+   "id": "notebook_mastermind",
+   "name": "Notebook Mastermind",
+   "character": "Light Yagami",
+   "rarity": "Epic",
+   "zone": 12,
+   "aura": "S:InkShadow",
+   "why": "named by the owner"
+  },
+  {
+   "id": "rebel_emperor",
+   "name": "Rebel Emperor",
+   "character": "Lelouch",
+   "rarity": "Epic",
+   "zone": 12,
+   "aura": "S:Geass",
+   "why": "the Heaven pack aura he wore, verbatim, on a round black-and-purple chessboard with the Geass bird engraved and lit crimson, the Geass glowing in his left eye and cast as rings every 2.5 s, the black king floating at his hand and the white king toppled (tools/studio/auras/build_geass.luau)"
+  },
+  {
+   "id": "silver_fist_master",
+   "name": "Silver Fist Master",
+   "character": "Bang",
+   "rarity": "Epic",
+   "zone": 13,
+   "aura": "P:59",
+   "why": "named by the owner"
+  },
+  {
+   "id": "fox_smile_traitor",
+   "name": "Fox Smile Traitor",
+   "character": "Gin Ichimaru",
+   "rarity": "Epic",
+   "zone": 14,
+   "aura": "P:59",
+   "why": "named by the owner"
+  },
+  {
+   "id": "panther_espada",
+   "name": "Panther Espada",
+   "character": "Grimmjow",
+   "rarity": "Epic",
+   "zone": 14,
+   "aura": "P:47",
+   "why": "named by the owner"
+  },
+  {
+   "id": "petal_noble",
+   "name": "Petal Noble",
+   "character": "Byakuya",
+   "rarity": "Epic",
+   "zone": 14,
+   "aura": "S:LoveStruck",
+   "why": "named by the owner"
+  },
+  {
+   "id": "ant_king_shade",
+   "name": "Ant King Shade",
+   "character": "Beru",
+   "rarity": "Epic",
+   "zone": 15,
+   "aura": "P:87",
+   "why": "named by the owner"
+  },
+  {
+   "id": "lightning_duelist",
+   "name": "Lightning Duelist",
+   "character": "Kashimo",
+   "rarity": "Epic",
+   "zone": 16,
+   "aura": "S:ElectricBlue",
+   "why": "named by the owner"
+  },
+  {
+   "id": "special_grade_rookie",
+   "name": "Special-Grade Rookie",
+   "character": "Yuta Okkotsu",
+   "rarity": "Epic",
+   "zone": 16,
+   "aura": "P:39",
+   "why": "named by the owner"
+  },
+  {
+   "id": "gray_pride_warrior",
+   "name": "Gray Pride Warrior",
+   "character": "Jiren",
+   "rarity": "Epic",
+   "zone": 17,
+   "aura": "P:59",
+   "why": "named by the owner"
+  },
+  {
+   "id": "pink_candy_monster",
+   "name": "Pink Candy Monster",
+   "character": "Majin Buu",
+   "rarity": "Epic",
+   "zone": 17,
+   "aura": "P:6",
+   "why": "named by the owner"
+  },
+  {
+   "id": "proud_prince",
+   "name": "Proud Prince",
+   "character": "Vegeta",
+   "rarity": "Epic",
+   "zone": 17,
+   "aura": "P:5",
+   "why": "named by the owner"
+  },
+  {
+   "id": "copy_ninja",
+   "name": "Copy Ninja",
+   "character": "Kakashi Hatake",
+   "rarity": "Rare",
+   "zone": 1,
+   "aura": "S:JackpotGreen",
+   "colour": "7FD4FF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "next_gen_ninja",
+   "name": "Next-Gen Ninja",
+   "character": "Boruto",
+   "rarity": "Rare",
+   "zone": 1,
+   "aura": "S:JackpotGreen",
+   "colour": "4AA8FF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "sand_guardian",
+   "name": "Sand Guardian",
+   "character": "Gaara",
+   "rarity": "Rare",
+   "zone": 1,
+   "aura": "S:JackpotGreen",
+   "colour": "D9A05B",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "flame_pillar",
+   "name": "Flame Pillar",
+   "character": "Rengoku",
+   "rarity": "Rare",
+   "zone": 2,
+   "aura": "S:JackpotGreen",
+   "colour": "E8261A",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "tide_swordsman",
+   "name": "Tide Swordsman",
+   "character": "Giyu Tomioka",
+   "rarity": "Rare",
+   "zone": 2,
+   "aura": "S:JackpotGreen",
+   "colour": "2F8BFF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "heart_surgeon",
+   "name": "Heart Surgeon",
+   "character": "Trafalgar Law",
+   "rarity": "Rare",
+   "zone": 3,
+   "aura": "S:JackpotGreen",
+   "colour": "00C2D8",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "serpent_empress",
+   "name": "Serpent Empress",
+   "character": "Boa Hancock",
+   "rarity": "Rare",
+   "zone": 3,
+   "aura": "S:JackpotGreen",
+   "colour": "FF4FA8",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "three_sword_hunter",
+   "name": "Three-Sword Hunter",
+   "character": "Zoro",
+   "rarity": "Rare",
+   "zone": 3,
+   "aura": "S:JackpotGreen",
+   "colour": "3CCB5A",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "blue_flame_villain",
+   "name": "Blue Flame Villain",
+   "character": "Dabi",
+   "rarity": "Rare",
+   "zone": 4,
+   "aura": "S:JackpotGreen",
+   "colour": "1E5BFF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "frostflame_hero",
+   "name": "Frostflame Hero",
+   "character": "Todoroki",
+   "rarity": "Rare",
+   "zone": 4,
+   "aura": "S:JackpotGreen",
+   "colour": "A8E6FF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "king_striker",
+   "name": "King Striker",
+   "character": "Barou",
+   "rarity": "Rare",
+   "zone": 5,
+   "aura": "S:JackpotGreen",
+   "colour": "C0143C",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "lazy_genius_striker",
+   "name": "Lazy Genius Striker",
+   "character": "Nagi",
+   "rarity": "Rare",
+   "zone": 5,
+   "aura": "S:JackpotGreen",
+   "colour": "E0E6FF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "curse_chain_brawler",
+   "name": "Cursed Chain Brawler",
+   "character": "Magna",
+   "rarity": "Rare",
+   "zone": 6,
+   "aura": "S:JackpotGreen",
+   "colour": "FF4500",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "wind_prodigy",
+   "name": "Wind Prodigy",
+   "character": "Yuno",
+   "rarity": "Rare",
+   "zone": 6,
+   "aura": "S:JackpotGreen",
+   "colour": "4CE0B3",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "chain_avenger",
+   "name": "Chain Avenger",
+   "character": "Kurapika",
+   "rarity": "Rare",
+   "zone": 7,
+   "aura": "S:JackpotGreen",
+   "colour": "FF2D55",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "dual_blade_gamer",
+   "name": "Dual-Blade Gamer",
+   "character": "Kirito",
+   "rarity": "Rare",
+   "zone": 8,
+   "aura": "S:JackpotGreen",
+   "colour": "3D5AFE",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "first_emperor",
+   "name": "First Emperor",
+   "character": "Qin Shi Huang",
+   "rarity": "Rare",
+   "zone": 8,
+   "aura": "S:JackpotGreen",
+   "colour": "FFD24A",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "commander_tactician",
+   "name": "Commander Tactician",
+   "character": "Erwin",
+   "rarity": "Rare",
+   "zone": 9,
+   "aura": "S:JackpotGreen",
+   "colour": "2E8B57",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "scarf_blade_soldier",
+   "name": "Scarf Blade Soldier",
+   "character": "Mikasa",
+   "rarity": "Rare",
+   "zone": 9,
+   "aura": "S:JackpotGreen",
+   "colour": "E53935",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "contract_hunter",
+   "name": "Contract Hunter",
+   "character": "Aki Hayakawa",
+   "rarity": "Rare",
+   "zone": 10,
+   "aura": "S:JackpotGreen",
+   "colour": "FF8C42",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "gravity_priest",
+   "name": "Gravity Priest",
+   "character": "Pucci",
+   "rarity": "Rare",
+   "zone": 11,
+   "aura": "S:JackpotGreen",
+   "colour": "9C6ADE",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "classroom_mastermind",
+   "name": "Classroom Mastermind",
+   "character": "Ayanokoji",
+   "rarity": "Rare",
+   "zone": 12,
+   "aura": "S:JackpotGreen",
+   "colour": "8E9AAF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "cyborg_disciple",
+   "name": "Cyborg Disciple",
+   "character": "Genos",
+   "rarity": "Rare",
+   "zone": 13,
+   "aura": "S:JackpotGreen",
+   "colour": "FF9E1B",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "ice_dragon_captain",
+   "name": "Ice Dragon Captain",
+   "character": "Toshiro Hitsugaya",
+   "rarity": "Rare",
+   "zone": 14,
+   "aura": "S:JackpotGreen",
+   "colour": "7FE7FF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "substitute_reaper",
+   "name": "Substitute Reaper",
+   "character": "Ichigo Kurosaki",
+   "rarity": "Rare",
+   "zone": 14,
+   "aura": "S:JackpotGreen",
+   "colour": "5AC8FA",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "crimson_knight_shade",
+   "name": "Crimson Knight Shade",
+   "character": "Igris",
+   "rarity": "Rare",
+   "zone": 15,
+   "aura": "S:JackpotGreen",
+   "colour": "B00020",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "clap_brother",
+   "name": "Clap Brother",
+   "character": "Todo",
+   "rarity": "Rare",
+   "zone": 16,
+   "aura": "S:JackpotGreen",
+   "colour": "7E57C2",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "shadow_summoner",
+   "name": "Shadow Summoner",
+   "character": "Megumi Fushiguro",
+   "rarity": "Rare",
+   "zone": 16,
+   "aura": "S:JackpotGreen",
+   "colour": "7B7BFF",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "speed_heir",
+   "name": "Speed Heir",
+   "character": "Naoya Zenin",
+   "rarity": "Rare",
+   "zone": 16,
+   "aura": "S:JackpotGreen",
+   "colour": "E6B800",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  },
+  {
+   "id": "beast_scholar",
+   "name": "Beast Scholar",
+   "character": "Gohan",
+   "rarity": "Rare",
+   "zone": 17,
+   "aura": "S:JackpotGreen",
+   "colour": "FFE135",
+   "why": "Rare: the owner's Rare aura, in the hero's colour"
+  }
+ ]
+}

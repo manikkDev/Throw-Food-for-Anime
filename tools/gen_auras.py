@@ -6,7 +6,8 @@
 
 Auras.luau maps every hero id (lane + premium, from design/game.json) to an aura key, either the
 hand-matched line in "heroes" or a stable pick (crc32 of the id) from its rarity's pool, plus each
-key's tier/cap and the runtime budget. work/auras/build.luau is tools/studio/build_auras.luau with
+key's tier/cap, the "hot" marks (auras thinned at high graphics, see src/shared/Core/AuraDensity.luau)
+and the runtime budget. work/auras/build.luau is tools/studio/build_auras.luau with
 the template spec embedded: run it in Studio EDIT mode to (re)build ReplicatedStorage.Assets.Auras.
 """
 from __future__ import annotations
@@ -57,6 +58,22 @@ def assignments(spec: dict, game: dict) -> dict[str, str]:
     return out
 
 
+def hot_marks(spec: dict, worn: dict[str, str]) -> dict[str, float]:
+    """design/auras.json "hot" (hero id -> the share of its rate the aura may be drawn at) by aura KEY.
+    Heroes sharing a template share its mark: the lowest wins."""
+    out: dict[str, float] = {}
+    for hid, mark in spec.get("hot", {}).items():
+        if hid.startswith("_"):
+            continue
+        if hid not in worn:
+            raise SystemExit(f"FAIL hot: {hid} wears no aura")
+        if not 0 < mark < 1:
+            raise SystemExit(f"FAIL hot: {hid} = {mark}: a mark is a share between 0 and 1")
+        key = worn[hid]
+        out[key] = min(out.get(key, 1.0), mark)
+    return out
+
+
 def render(spec: dict, game: dict) -> str:
     tiers = spec["tiers"]
     lines = [
@@ -71,16 +88,22 @@ def render(spec: dict, game: dict) -> str:
         "local Auras: {",
         "\tByHero: { [string]: string },",
         "\tTiers: { [string]: string },",
+        "\t--- aura key -> the share of its rate it may be DRAWN at (Core/AuraDensity): the hot auras only",
+        "\tHot: { [string]: number },",
         "\tBudget: Budget,",
         "\tLowDetail: Budget,",
         "} = {",
         "\tByHero = {",
     ]
-    for hid, key in sorted(assignments(spec, game).items()):
+    worn = assignments(spec, game)
+    for hid, key in sorted(worn.items()):
         lines.append(f"\t\t{hid} = {lua(key)},")
     lines += ["\t},", "\tTiers = {"]
     for key, row in sorted(spec["templates"].items()):
         lines.append(f"\t\t{key} = {lua(row['tier'])},")
+    lines += ["\t},", "\tHot = {"]
+    for key, mark in sorted(hot_marks(spec, worn).items()):
+        lines.append(f"\t\t{key} = {lua(mark)},")
     b = spec["budget"]
     lo = b["low_detail"]
     lines += [

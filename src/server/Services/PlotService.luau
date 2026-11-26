@@ -358,7 +358,7 @@ function PlotService:_dress(index: number, player: Player?, profile: any?, incom
 		"Title",
 		`{player.DisplayName}{stars}\n{Format.short(income)} yen/s`
 	)
-	local slotCost = Progress.nextSlotCost(Config, profile.slots - profile.bonusSlots)
+	local slotCost = Progress.nextSlotCost(Config, profile.slots, profile.bonusSlots)
 	setText(
 		model:FindFirstChild("SlotSign"),
 		"Title",

@@ -18,6 +18,7 @@ local SoundService = game:GetService("SoundService")
 local TweenService = game:GetService("TweenService")
 
 local Knit = require(ReplicatedStorage.Packages.Knit)
+local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Sfx = require(ReplicatedStorage.Shared.Sfx)
 local Screens = require(script.Parent.Parent.Ui.Screens)
 
@@ -95,6 +96,8 @@ local SILENT_BUTTONS: { [string]: boolean } = {
 }
 
 local MUSIC_FADE = 1.5
+-- the first six zones have a recorded ambience bed (assets/sfx/manifest.json: amb_<zone id>)
+local AMBIENCE_BEDS = 6
 local AMBIENCE_FADE = 0.5
 
 export type Opts = {
@@ -232,7 +235,19 @@ function SoundController:SetAmbience(zoneId: string?)
 	end
 	self._ambienceRole = role
 	local old = self._ambience
-	self._ambience = if zoneId then self:Play(role, nil, { fadeIn = AMBIENCE_FADE }) else nil
+	local new = if zoneId then self:Play(role, nil, { fadeIn = AMBIENCE_FADE }) else nil
+	if zoneId and not new then
+		-- a zone with no ambience of its own (zones 7 to 17 since economy v2) borrows one of the
+		-- six recorded beds, by its place down the lane, so a far throw is never silent
+		for index, zone in Config.Zones do
+			if zone.Id == zoneId then
+				local borrow = Config.Zones[(index - 1) % AMBIENCE_BEDS + 1]
+				new = self:Play("amb_" .. borrow.Id, nil, { fadeIn = AMBIENCE_FADE })
+				break
+			end
+		end
+	end
+	self._ambience = new
 	if old then
 		fadeOut(old, AMBIENCE_FADE)
 	end

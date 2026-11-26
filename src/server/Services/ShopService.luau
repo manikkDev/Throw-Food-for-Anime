@@ -3,6 +3,9 @@
 --
 -- Every price is read from Config on the server at the moment of purchase. The
 -- client sends WHAT it wants, never what it costs.
+--
+-- Gear, foods and slots UNLOCK by the furthest zone the player has reached
+-- (plan 12): Yen alone never buys ahead of the training.
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -12,6 +15,7 @@ local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
+local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local Guard = require(script.Parent.Parent.Logic.Guard)
 
 local MAPS = Lookup.of(Config)
@@ -23,6 +27,28 @@ local ShopService = Knit.CreateService({
 function ShopService:KnitInit()
 	self._buy = Net.server("ShopBuy")
 	self._equip = Net.server("FoodEquip")
+end
+
+--- Toast why a row is locked. Returns true when it IS locked.
+function ShopService:_locked(player: Player, profile: any, row: any, what: string): boolean
+	local lock = Progress.lock(row, profile.bestZone, profile.rebirth)
+	if not lock then
+		return false
+	end
+	if lock.rebirth then
+		self._state:Toast(player, `{what} unlocks at Rebirth {lock.rebirth}`, "bad")
+	else
+		local zone = Config.Zones[lock.zone :: number]
+		self._state:Toast(player, `{what} unlocks when you reach {zone.Name}`, "bad")
+	end
+	return true
+end
+
+-- a stronger food carries the throw further: it may reach (and unlock) a new zone
+function ShopService:_touchReach(profile: any)
+	local food = MAPS.food[profile.food]
+	local full = profile.power * (if food then food.PowerMult else 1)
+	Progress.touch(profile, Throw.reach(Config.Zones, full, profile.rebirth))
 end
 
 function ShopService:_short(player: Player, cost: number)
@@ -38,12 +64,16 @@ function ShopService:BuyFood(player: Player, id: string)
 	if not profile or not food or profile.foods[id] then
 		return
 	end
+	if self:_locked(player, profile, food, food.Name) then
+		return
+	end
 	if not self._economy:Spend(player, food.Cost, "food") then
 		self:_short(player, food.Cost)
 		return
 	end
 	profile.foods[id] = true
 	profile.food = id
+	self:_touchReach(profile)
 	self._state:MarkDirty(player)
 end
 
@@ -69,6 +99,7 @@ function ShopService:EquipFood(player: Player, id: string)
 		return
 	end
 	profile.food = id
+	self:_touchReach(profile)
 	self._state:MarkDirty(player)
 end
 
@@ -78,9 +109,13 @@ function ShopService:BuyGear(player: Player)
 	if not profile then
 		return
 	end
+	local gear = Progress.nextGear(Config, profile.gear)
 	local cost = Progress.nextGearCost(Config, profile.gear)
-	if not cost then
+	if not gear or not cost then
 		self._state:Toast(player, "Your dojo gear is maxed", "info")
+		return
+	end
+	if self:_locked(player, profile, gear, gear.Name) then
 		return
 	end
 	if not self._economy:Spend(player, cost, "gear") then
@@ -98,9 +133,13 @@ function ShopService:BuySlot(player: Player)
 	if not profile then
 		return
 	end
-	local cost = Progress.nextSlotCost(Config, profile.slots - profile.bonusSlots)
+	local cost = Progress.nextSlotCost(Config, profile.slots, profile.bonusSlots)
+	local zone = Progress.nextSlotZone(Config, profile.slots, profile.bonusSlots)
 	if not cost then
 		self._state:Toast(player, "Your plot is at its maximum", "info")
+		return
+	end
+	if self:_locked(player, profile, { Zone = zone }, "The next slot") then
 		return
 	end
 	if not self._economy:Spend(player, cost, "slot") then

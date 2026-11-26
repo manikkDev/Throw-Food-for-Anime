@@ -1,7 +1,7 @@
 --!strict
 -- ThrowController - the core verb on the client: stand on the pad, tap, watch.
 --
--- The client only sends (charge, useLuckyThrow). Everything it then shows
+-- The client only sends (charge, useLuckyThrow, auto, aim). Everything it then shows
 -- (wind-up, flight, landing, reveal: Fx/ThrowSequence) is a replay of a result
 -- the server has ALREADY decided and granted, so skipping, lagging or leaving
 -- loses nothing.
@@ -10,9 +10,12 @@
 -- the camera settles behind the shoulder looking down the lane, the HUD steps
 -- aside, and the meter's marker slides up and down by itself, one sweep every
 -- Throw.ChargeSeconds. ONE tap (the THROW button, Space, T, gamepad X or R2)
--- throws with the charge the marker shows at that instant. Bands on the meter
--- mark the height that reaches each zone, so tapping low is how a player farms
--- an earlier zone on purpose; the top slice is the perfect band (+luck).
+-- throws with the charge the marker shows at that instant.
+--
+-- AIM (plan 12, section 9). The player picks the zone to land in: any zone
+-- their Power reaches (Q / E, the bumpers, or a tap on either half of the
+-- "Lands in" line). The meter then only decides how DEEP in that zone the
+-- food lands (deeper = more luck); the top slice is the perfect band.
 
 local ContextActionService = game:GetService("ContextActionService")
 local Players = game:GetService("Players")
@@ -23,8 +26,9 @@ local UserInputService = game:GetService("UserInputService")
 local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
-local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
+local Format = require(ReplicatedStorage.Shared.Core.Format)
+local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local World = require(ReplicatedStorage.Shared.Core.World)
 local Motion = require(script.Parent.Parent.Fx.Motion)
@@ -44,12 +48,23 @@ end
 local CELEBRATE_ORDER = Config.Rarities.Rare.Order
 -- each region's colour on its banner as the food crosses into it
 local ZONE_COLORS: { [number]: Color3 } = {
-	Color3.fromHex("FF8FC8"), -- Sakura Schoolyard
-	Color3.fromHex("3FB6FF"), -- Pirate Harbor
-	Color3.fromHex("FF9A3C"), -- Ninja Village
-	Color3.fromHex("E8434F"), -- Samurai Castle
-	Color3.fromHex("FFD23F"), -- Hero City
-	Color3.fromHex("B266FF"), -- Realm of Legends
+	Color3.fromHex("FF9A3C"), -- Hidden Leaf Village
+	Color3.fromHex("5BD6B0"), -- Demon Slayer Corps
+	Color3.fromHex("3FB6FF"), -- Grand Line
+	Color3.fromHex("5BE38A"), -- Hero Academy
+	Color3.fromHex("3D7BFF"), -- Blue Lock Facility
+	Color3.fromHex("8BD94A"), -- Clover Kingdom
+	Color3.fromHex("FFB03C"), -- Hunter Exam
+	Color3.fromHex("C084FF"), -- Isekai Crossroads
+	Color3.fromHex("C9B28A"), -- Wall Maria
+	Color3.fromHex("FF6A3C"), -- Public Safety HQ
+	Color3.fromHex("FFD23F"), -- Bizarre Streets
+	Color3.fromHex("9B6BFF"), -- Shadow Council
+	Color3.fromHex("FFE14A"), -- City Z
+	Color3.fromHex("FF8FC8"), -- Soul Society
+	Color3.fromHex("7A5CFF"), -- Gate of Shadows
+	Color3.fromHex("6FA8FF"), -- Shibuya
+	Color3.fromHex("FFC83C"), -- Planet of the Gods
 }
 local T = Config.Throw
 local W = Config.World
@@ -71,6 +86,11 @@ local ThrowController = Knit.CreateController({
 	Name = "ThrowController",
 	_busy = false,
 	_useLucky = false,
+	-- the zone the player aims at; 0 = as far as their Power reaches
+	_aim = 0,
+	_aimSynced = false,
+	_aimBack = nil :: GuiObject?,
+	_aimFurther = nil :: GuiObject?,
 	_auto = false,
 	_autoThrown = false,
 	_onPad = false,
@@ -136,6 +156,29 @@ local function chargeOf(value: number): number
 	return math.clamp(T.MinCharge + (1 - T.MinCharge) * value, T.MinCharge, 1)
 end
 
+-- the furthest zone the player's throw reaches (Power x food, stopped by a sealed gate)
+function ThrowController:_reach(): number
+	local state = self._state.State
+	if not state then
+		return 1
+	end
+	local food = MAPS.food[state.food]
+	local full = state.power * (if food then food.PowerMult else 1)
+	return Throw.reach(Config.Zones, full, state.rebirth or 0)
+end
+
+-- step the aim one zone back (-1) or further (+1); the furthest zone is "no aim"
+function ThrowController:_stepAim(delta: number)
+	if self._busy or self._mode ~= "throw" then
+		return
+	end
+	local reach = self:_reach()
+	local now = if self._aim > 0 then math.min(self._aim, reach) else reach
+	local zone = math.clamp(now + delta, 1, reach)
+	self._aim = if zone >= reach then 0 else zone
+	self._zoneText = ""
+end
+
 function ThrowController:_canThrow(): boolean
 	-- never ask before the server cooldown has passed: a refused throw gets
 	-- no answer, and the pad would then sit locked waiting for one
@@ -152,7 +195,7 @@ function ThrowController:_send(value: number, auto: boolean)
 	self._frozen = value
 	self._autoThrown = auto
 	self._sentAt = os.clock()
-	self._request:FireServer(charge, self._useLucky, auto)
+	self._request:FireServer(charge, self._useLucky, auto, self._aim)
 	if self._charge then
 		Sound:Stop(self._charge, 0.1)
 		self._charge = nil
@@ -287,6 +330,46 @@ function ThrowController:_bindUi()
 		tapLabel.Position.Y.Scale,
 		tapLabel.Position.Y.Offset
 	)
+	-- AIM: the arrows either side of the "Lands in" line step the zone (UI v5.1)
+	-- (the cell carries the button's lip: hide the cell, not only the button)
+	self._aimBack = cellOf(gui, "AimBack")
+	self._aimFurther = cellOf(gui, "AimFurther")
+	Screens.button(gui, "AimBack").MouseButton1Down:Connect(function()
+		self:_stepAim(-1)
+	end)
+	Screens.button(gui, "AimFurther").MouseButton1Down:Connect(function()
+		self:_stepAim(1)
+	end)
+	-- ODDS: the live odds of the next throw (Pages/ThrowOdds)
+	-- Pages are blocked while the player is held on the spot ("throwpad" cinematic): the odds
+	-- page lifts that for itself and puts it back when it closes.
+	Screens.button(gui, "OddsButton").Activated:Connect(function()
+		if self._busy or self._playing then
+			return
+		end
+		local hud = self._hud :: any
+		if hud and hud.SetCinematic then
+			hud:SetCinematic("throwpad", false)
+		end
+		Screens.open("ThrowOdds")
+	end)
+	Screens.Closed:Connect(function(name: string)
+		local hud = self._hud :: any
+		if name == "ThrowOdds" and self._locked and hud and hud.SetCinematic then
+			hud:SetCinematic("throwpad", true)
+		end
+	end)
+	UserInputService.InputBegan:Connect(function(input: InputObject, processed: boolean)
+		if processed then
+			return
+		end
+		local key = input.KeyCode
+		if key == Enum.KeyCode.Q or key == Enum.KeyCode.ButtonL1 then
+			self:_stepAim(-1)
+		elseif key == Enum.KeyCode.E or key == Enum.KeyCode.ButtonR1 then
+			self:_stepAim(1)
+		end
+	end)
 	self._luckyButton.Activated:Connect(function()
 		self._useLucky = not self._useLucky
 		self:_refreshUi()
@@ -297,14 +380,12 @@ function ThrowController:_bindUi()
 	end)
 end
 
--- the toggles, the food and the zone bands follow the state (power and food
--- move the bands)
+-- the toggles and the food follow the state
 function ThrowController:_refreshUi()
 	local state = self._state.State
 	if not state or not self._gui then
 		return
 	end
-	local food = MAPS.food[state.food]
 	local throws = state.luckyThrows or 0
 	if throws <= 0 then
 		self._useLucky = false
@@ -320,35 +401,14 @@ function ThrowController:_refreshUi()
 		Screens.setIcon(self._foodIcon, "Food_" .. state.food)
 	end
 
-	-- one band per zone, made the first time the zone is reachable and then
-	-- only moved: its height is the smallest marker value that reaches it. Zones already reached
-	-- at the minimum charge all sit at the bottom: only the furthest of them shows (their names
-	-- stacked on one another under the meter, found in the owner's review 2026-11-15)
-	local bottom = 0
-	for index in Config.Zones do
-		local need = Throw.chargeForZone(T, Config.Zones, state.power, food.PowerMult, index)
-		if need and index > 1 and (need - T.MinCharge) / (1 - T.MinCharge) <= 0.02 then
-			bottom = index
-		end
+	-- the aim the server remembers, once
+	if not self._aimSynced then
+		self._aimSynced = true
+		self._aim = if typeof(state.aim) == "number" then state.aim else 0
 	end
-	for index, zone in Config.Zones do
-		local need = Throw.chargeForZone(T, Config.Zones, state.power, food.PowerMult, index)
-		local band = self._zoneBands[index]
-		if need and index > 1 then
-			if not band then
-				band = Screens.template("ZoneMarkTemplate")
-				band.Name = "ZoneBand" .. index
-				Screens.tint(band, self._zoneColors[index] or Theme.WHITE)
-				Screens.label(band, "ZoneMarkName").Text = zone.Name
-				band.Parent = self._bands
-				self._zoneBands[index] = band
-			end
-			local height = (need - T.MinCharge) / (1 - T.MinCharge)
-			band.Position = UDim2.new(band.Position.X.Scale, band.Position.X.Offset, 1 - height, 0)
-			band.Visible = height > 0.02 or index == bottom
-		elseif band then
-			band.Visible = false
-		end
+	-- the meter is a DEPTH meter now: the old zone marks are gone
+	for _, band in self._zoneBands do
+		band.Visible = false
 	end
 end
 
@@ -362,18 +422,25 @@ function ThrowController:_tickMeter()
 	self._marker.Position = UDim2.fromScale(0.5, 1 - value)
 	local food = MAPS.food[state.food]
 	local charge = chargeOf(value)
-	local base = Throw.effectivePower(state.power, food.PowerMult, T.MinCharge)
-	local eff = Throw.effectivePower(state.power, food.PowerMult, charge)
-	local bonus = `+{Format.short(math.floor(eff - base))} POWER`
+	local full = state.power * food.PowerMult
+	local tier = state.rebirth or 0
+	local zoneIndex, depth =
+		Throw.landing(T, Config.Zones, full, tier, if self._aim > 0 then self._aim else nil, charge)
+	-- deeper in the zone = more luck: that is what the marker is worth
+	local bonus = `+{math.floor(depth * T.DepthLuckBonus * 100 + 0.5)}% LUCK`
 	if bonus ~= self._bonusText then
 		self._bonusText = bonus
 		self._bonusLabel.Text = bonus
 	end
-	local zone = Config.Zones[Throw.zoneIndex(Config.Zones, eff)]
+	local zone = Config.Zones[zoneIndex]
 	local lands = `Lands in: {zone.Name}`
 	if lands ~= self._zoneText then
 		self._zoneText = lands
 		self._zoneLabel.Text = lands
+		-- an arrow shows only when the aim can move that way
+		local reach = Throw.reach(Config.Zones, full, tier)
+		self._aimBack.Visible = zoneIndex > 1
+		self._aimFurther.Visible = zoneIndex < reach
 	end
 end
 
@@ -735,8 +802,45 @@ function ThrowController:_play(result: any)
 		self:_lock(false)
 	end
 	pcall(self._afterCatch, self, result, carrying)
+	pcall(self._sealHint, self, result)
 	self:_rearm()
 	self:_setMode(self:_wantedMode())
+end
+
+-- The sealed gate stopped this throw (the server's `sealed`): the HUD and its REBIRTH notice are
+-- hidden while the player is held on the stage, so the stage says it (phase F playtest: a player
+-- past the seal kept throwing into the last open zone with no hint). Once per rebirth tier, then
+-- every SEAL_HINT_EVERY sealed throws.
+local SEAL_HINT_EVERY = 10
+function ThrowController:_sealHint(result: any)
+	local state = self._state.State
+	if not result.sealed or not state then
+		self._sealedThrows = 0
+		return
+	end
+	local tier = state.rebirth or 0
+	local nextTier = Progress.nextRebirth(Config, tier)
+	if not nextTier then
+		return
+	end
+	self._sealedThrows = (self._sealedThrows or 0) + 1
+	if self._sealToldTier == tier and self._sealedThrows % SEAL_HINT_EVERY ~= 0 then
+		return
+	end
+	self._sealToldTier = tier
+	local food = MAPS.food[state.food]
+	local powerMult = if food then food.PowerMult else 1
+	local opens = Config.Zones[nextTier.Unseals[1]]
+	local hud = self._hud :: any
+	if Progress.canRebirth(Config, tier, state.power, state.yen, powerMult) then
+		-- (a toast holds about 48 characters on one line)
+		hud:Toast(
+			`REBIRTH READY! Step off to open {if opens then opens.Name else "more zones"}`,
+			"good"
+		)
+	else
+		hud:Toast(`SEALED GATE: rebirth for {Format.short(nextTier.YenCost)} yen to go on`, "info")
+	end
 end
 
 -- Back on the pad after a catch: a Rare or better makes the player
@@ -1010,6 +1114,17 @@ function ThrowController:KnitStart()
 end
 
 --- True while the player is standing on their own throw pad.
+--- The zone the next throw is aimed at (the furthest in reach when no aim is set).
+function ThrowController:AimZone(): number
+	local reach = self:_reach()
+	return if self._aim > 0 then math.min(self._aim, reach) else reach
+end
+
+--- True while a Lucky Throw is switched on for the next throw.
+function ThrowController:LuckyArmed(): boolean
+	return self._useLucky
+end
+
 function ThrowController:OnPad(): boolean
 	return self._onPad
 end

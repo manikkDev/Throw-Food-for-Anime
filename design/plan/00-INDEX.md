@@ -16,6 +16,7 @@ it lures joins your plot and earns Yen; further throws reach rarer heroes.
 | `plan/06-motion-vfx-sound.md` | the throw sequence, 14 clips, 27 effects, 34 sounds |
 | `plan/07-monetisation-liveops.md` | store, policy, retention, analytics, launch |
 | `plan/08-build-order.md` | sections 2 to 6 step by step, inputs needed from the user, risks |
+| `plan/12-gameplay-economy-v2.md` | PLAN (2026-11-26, awaiting the owner): all 17 zones and 172 lane heroes in play, the "1 in N" odds, rebirth every band, passes and their bounds, the Aim control; numbers in `plan/12-economy-draft.json`, tested by `python tools/economy/econ_v2.py sim` |
 | `research/00` to `04` | evidence: store data, reference teardown, market and policy, external assets, Studio probes |
 | `design/{map,meshes,ui,animations,vfx,sfx}.json` | per-stage spec seeds, names matching the asset plan |
 | `tools/balance_sim.py` | pacing check: `python tools/balance_sim.py --check` |

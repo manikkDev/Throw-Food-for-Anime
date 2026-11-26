@@ -19,9 +19,13 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
+local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
+local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local World = require(ReplicatedStorage.Shared.Core.World)
 local Guard = require(script.Parent.Parent.Logic.Guard)
+
+local MAPS = Lookup.of(Config)
 
 local REP = Config.Training.RepSeconds
 local COUNT = Config.Server.PlotCount
@@ -197,19 +201,41 @@ function TrainingService:Toggle(player: Player, station: number?)
 end
 
 --- Add Power directly and announce a new rank if one was crossed.
-function TrainingService:AddPower(player: Player, amount: number)
+--- Add Power. `memory` (training reps and perfect taps, not paid packs or
+--- test grants): muscle memory multiplies the gain while the player is below
+--- their own record, and stops at the record.
+function TrainingService:AddPower(player: Player, amount: number, memory: boolean?)
 	local profile = self._data:Get(player)
 	if not profile or amount <= 0 then
 		return
 	end
 	local before = Progress.rank(Config, profile.power).index
-	profile.power += amount
+	if memory and Progress.catchingUp(profile.power, profile.powerRecord) then
+		profile.power = Progress.addPower(
+			Config,
+			profile.power,
+			profile.powerRecord,
+			amount * Config.Training.MuscleMemory
+		)
+	else
+		profile.power += amount
+	end
+	local food = MAPS.food[profile.food]
+	local full = profile.power * (if food then food.PowerMult else 1)
+	local newZone = Progress.touch(profile, Throw.reach(Config.Zones, full, profile.rebirth))
 	local after = Progress.rank(Config, profile.power)
-	if after.index > before then
-		-- the client's RANK UP banner celebrates it (owner's review 3: one alert, not two)
+	if after.index > before or newZone then
+		-- the client's RANK UP banner celebrates it (owner's review 3: one alert, not two);
+		-- a new zone unlocks gear, food and a slot, which the snapshot carries
 		self._state:MarkDirty(player)
 	end
 	self._state:Tick(player)
+end
+
+-- Power of one rep for this player: gear x Double Training x the rebirth bonus
+function TrainingService:_perRep(player: Player, profile: any): number
+	local double = self._store:Has(player, "DoubleTraining")
+	return Progress.powerPerRep(Config, profile.gear, double, profile.rebirth)
 end
 
 --- The Power of `minutes` of training on the player's current gear (the
@@ -220,9 +246,9 @@ function TrainingService:GrantMinutes(player: Player, minutes: number): number
 	if not profile then
 		return 0
 	end
-	local double = self._store:Has(player, "DoubleTraining")
 	local reps = Progress.repsIn(Config, minutes * 60)
-	local power = reps * Progress.powerPerRep(Config, profile.gear, double)
+	-- a paid pack counts at the normal rate: no muscle memory (plan 12, section 8)
+	local power = reps * self:_perRep(player, profile)
 	self:AddPower(player, power)
 	return power
 end
@@ -248,9 +274,7 @@ function TrainingService:_tap(player: Player)
 		return
 	end
 	session.perfectRep = target
-	local double = self._store:Has(player, "DoubleTraining")
-	local perRep = Progress.powerPerRep(Config, profile.gear, double)
-	self:AddPower(player, perRep * Config.Training.PerfectBonus)
+	self:AddPower(player, self:_perRep(player, profile) * Config.Training.PerfectBonus, true)
 end
 
 function TrainingService:KnitStart()
@@ -299,9 +323,7 @@ function TrainingService:KnitStart()
 				local reps = math.floor((now - session.last) / REP)
 				if reps > 0 then
 					session.last += reps * REP
-					local double = self._store:Has(player, "DoubleTraining")
-					local perRep = Progress.powerPerRep(Config, profile.gear, double)
-					self:AddPower(player, reps * perRep)
+					self:AddPower(player, reps * self:_perRep(player, profile), true)
 				end
 			end
 		end

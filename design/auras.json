@@ -182,13 +182,97 @@
    "source": "Torso",
    "tier": "B"
   },
+  "ButterflyDance": {
+   "custom": "tools/studio/auras/build_butterfly_dance.luau",
+   "tier": "C"
+  },
+  "CrowGenjutsu": {
+   "custom": "tools/studio/auras/build_crow_genjutsu.luau",
+   "tier": "C"
+  },
+  "ShadowArise": {
+   "custom": "tools/studio/auras/build_shadow_monarch.luau",
+   "tier": "D"
+  },
+  "DemonKing": {
+   "custom": "tools/studio/auras/build_demon_king.luau",
+   "tier": "E"
+  },
+  "ControlDevil": {
+   "custom": "tools/studio/auras/build_control_devil.luau",
+   "tier": "E"
+  },
+  "ConquerorsHaki": {
+   "custom": "tools/studio/auras/build_conquerors_haki.luau",
+   "tier": "D"
+  },
+  "DarkSlash": {
+   "custom": "tools/studio/auras/build_dark_slash.luau",
+   "tier": "D"
+  },
+  "CurseManipulation": {
+   "custom": "tools/studio/auras/build_curse_manipulation.luau",
+   "tier": "D"
+  },
+  "HawkEye": {
+   "custom": "tools/studio/auras/build_hawk_eye.luau",
+   "tier": "C"
+  },
   "StarPlatinum": {
    "custom": "tools/studio/auras/build_star_platinum.luau",
    "tier": "C"
   },
+  "EmperorThorns": {
+   "custom": "tools/studio/auras/build_emperor_thorns.luau",
+   "tier": "D"
+  },
+  "TheAlmighty": {
+   "custom": "tools/studio/auras/build_almighty.luau",
+   "tier": "E"
+  },
+  "SunBreathing": {
+   "custom": "tools/studio/auras/build_sun_breathing.luau",
+   "tier": "E"
+  },
+  "DemonCircle": {
+   "custom": "tools/studio/auras/build_demon_circle.luau",
+   "tier": "E"
+  },
   "Hogyoku": {
    "custom": "tools/studio/auras/build_hogyoku.luau",
    "tier": "E"
+  },
+  "CompassNeedle": {
+   "custom": "tools/studio/auras/build_compass_needle.luau",
+   "tier": "D"
+  },
+  "AntiMagic": {
+   "custom": "tools/studio/auras/build_anti_magic.luau",
+   "tier": "D"
+  },
+  "DragonMonarch": {
+   "custom": "tools/studio/auras/build_dragon_monarch.luau",
+   "tier": "D"
+  },
+  "HeavenlyRestriction": {
+   "custom": "tools/studio/auras/build_heavenly_restriction.luau",
+   "tier": "D"
+  },
+  "Geass": {
+   "custom": "tools/studio/auras/build_geass.luau",
+   "tier": "C"
+  },
+  "MalevolentShrine": {
+   "custom": "tools/studio/auras/build_malevolent_shrine.luau",
+   "tier": "E"
+  },
+  "AceEater": {
+   "custom": "tools/studio/auras/build_ace_eater.luau",
+   "tier": "D"
+  },
+  "GoldExperience": {
+   "custom": "tools/studio/auras/build_gold_experience.luau",
+   "tier": "D"
   },
   "SkillHunter": {
    "custom": "tools/studio/auras/build_skill_hunter.luau",
@@ -197,79 +281,685 @@
   "DemonsExtract": {
    "custom": "tools/studio/auras/build_demons_extract.luau",
    "tier": "C"
+  },
+  "H_bald_cape_hero": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 212
+  },
+  "H_staff_angel_mentor": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 300
+  },
+  "H_starlight_idol": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 140
+  },
+  "H_angel_commander": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 57
+  },
+  "H_lucky_cat_mascot": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 97
+  },
+  "H_phantom_thief": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_clockwork_butler": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 49
+  },
+  "H_ghost_of_the_clan": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 320
+  },
+  "H_sun_god_captain": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 320
+  },
+  "H_golden_age_hero": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 53
+  },
+  "H_time_wizard_king": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 38
+  },
+  "H_ant_monarch": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 320
+  },
+  "H_alien_conqueror": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 282
+  },
+  "H_shadow_sovereign": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 287
+  },
+  "H_limitless_teacher": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 334
+  },
+  "H_destroyer_cat": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 320
+  },
+  "H_rose_dark_fighter": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_masked_phantom": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_rain_god": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 212
+  },
+  "H_six_eyed_moon": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 227
+  },
+  "H_beast_emperor": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 54
+  },
+  "H_quake_captain": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 277
+  },
+  "H_decay_villain": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 273
+  },
+  "H_inferno_hero": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 260
+  },
+  "H_prayer_master": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 50
+  },
+  "H_noon_lion": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 70
+  },
+  "H_slime_lord": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 46
+  },
+  "H_armored_giant": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 38
+  },
+  "H_attack_giant": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 70
+  },
+  "H_one_eyed_instructor": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 260
+  },
+  "H_golden_vampire": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 43
+  },
+  "H_black_swordsman": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 273
+  },
+  "H_shadow_mastermind": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 157
+  },
+  "H_hero_hunter": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 142
+  },
+  "H_tornado_psychic": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 130
+  },
+  "H_battle_maniac_captain": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 43
+  },
+  "H_hollow_bat": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 19
+  },
+  "H_wheel_guardian": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 39
+  },
+  "H_frost_tyrant": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 36
+  },
+  "H_instinct_warrior": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 43
+  },
+  "H_legendary_berserker": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 262
+  },
+  "H_perfect_bio_android": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 101
+  },
+  "H_toad_sage": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 229
+  },
+  "H_yellow_flash": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 74
+  },
+  "H_crystal_cult_leader": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 203
+  },
+  "H_flashy_shinobi": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 111
+  },
+  "H_blazing_pirate": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 260
+  },
+  "H_string_king": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 260
+  },
+  "H_shadow_pirate_captain": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 160
+  },
+  "H_blast_prodigy": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_crimson_wing_hero": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 85
+  },
+  "H_cold_prodigy_winger": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 130
+  },
+  "H_midfield_genius": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 261
+  },
+  "H_crimson_lioness": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 260
+  },
+  "H_demon_union_knight": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_card_magician": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 228
+  },
+  "H_needle_assassin": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 201
+  },
+  "H_dragon_sin": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "E",
+   "live": 320
+  },
+  "H_beast_giant_prince": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_blade_captain": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_bomb_girl": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_crimson_boss": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 140
+  },
+  "H_quiet_bomber": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 124
+  },
+  "H_apple_reaper": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_notebook_mastermind": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 140
+  },
+  "H_silver_fist_master": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_fox_smile_traitor": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_panther_espada": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 142
+  },
+  "H_petal_noble": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "D",
+   "live": 201
+  },
+  "H_ant_king_shade": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_lightning_duelist": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 49
+  },
+  "H_special_grade_rookie": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_gray_pride_warrior": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_pink_candy_monster": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "A",
+   "live": 50
+  },
+  "H_proud_prince": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "B",
+   "live": 101
+  },
+  "H_copy_ninja": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_next_gen_ninja": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_sand_guardian": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_flame_pillar": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_tide_swordsman": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_heart_surgeon": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_serpent_empress": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_three_sword_hunter": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_blue_flame_villain": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_frostflame_hero": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_king_striker": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_lazy_genius_striker": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_curse_chain_brawler": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_wind_prodigy": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_chain_avenger": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_dual_blade_gamer": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_first_emperor": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_commander_tactician": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_scarf_blade_soldier": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_contract_hunter": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_gravity_priest": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_classroom_mastermind": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_cyborg_disciple": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_ice_dragon_captain": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_substitute_reaper": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_crimson_knight_shade": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_clap_brother": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_shadow_summoner": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_speed_heir": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
+  },
+  "H_beast_scholar": {
+   "custom": "tools/studio/export_preview_auras.luau",
+   "tier": "C",
+   "live": 200
   }
  },
  "by_rarity": {
-  "_note": "a hero with no line in 'heroes' gets a stable pick (by its id) from its rarity's pool; an empty pool = no aura",
+  "_note": "EMPTY on purpose since 2026-11-26: the owner assigned every aura hero by name (tools/aura_assign.py); Common and Uncommon heroes wear no aura. A hero with no line in 'heroes' has no aura.",
   "Common": [],
-  "Uncommon": [
-   "PurpleSpark",
-   "VioletWisp",
-   "JackpotGreen",
-   "RedOutline",
-   "ElectricBlue"
-  ],
-  "Rare": [
-   "SaiyanGold",
-   "CyanStorm",
-   "InkShadow",
-   "ShadowMonarch",
-   "HeartFlame",
-   "InfinityBlue"
-  ],
-  "Epic": [
-   "NightWings",
-   "CrimsonFlame",
-   "SilverLightning",
-   "SlimeStorm",
-   "BloodBubble",
-   "SunHalo",
-   "LoveStruck"
-  ],
-  "Legendary": [
-   "Purity",
-   "TitanBolt",
-   "FieryRitual",
-   "UltraInstinct",
-   "BloodMoon"
-  ],
-  "Mythic": [
-   "Apostle",
-   "CrimsonSigil",
-   "ChromaticVoid",
-   "KingOfCurses",
-   "SolarBurst"
-  ],
-  "Secret": [
-   "ChromaticVoid",
-   "Apostle",
-   "SolarBurst"
-  ]
+  "Uncommon": [],
+  "Rare": [],
+  "Epic": [],
+  "Legendary": [],
+  "Mythic": [],
+  "Secret": []
  },
  "heroes": {
-  "_note": "hand-matched to the character (theme first, then rarity)",
-  "curse_king": "KingOfCurses",
-  "sorcerer_hunter": "InkShadow",
-  "classroom_mastermind": "SilverLightning",
-  "red_haired_emperor": "FieryRitual",
-  "star_delinquent": "StarPlatinum",
-  "ghost_of_the_clan": "NightWings",
-  "demon_progenitor": "BloodMoon",
-  "black_swordsman": "ShadowMonarch",
-  "bald_cape_hero": "Purity",
-  "golden_vampire": "SaiyanGold",
-  "sun_god_captain": "SolarBurst",
-  "wheel_guardian": "Apostle",
-  "starlight_idol": "HeartFlame",
-  "clockwork_butler": "ElectricBlue",
-  "phantom_thief": "CrimsonFlame",
-  "demon_lord_heir": "CrimsonSigil",
-  "angel_commander": "TitanBolt",
-  "void_empress": "Hogyoku",
-  "lucky_cat_mascot": "BloodBubble",
-  "sakura_shogun": "SunHalo",
+  "_note": "Since 2026-11-26 (plan 12 phase E) every line is the owner's approved assignment: a hand-built aura's key, or H_<heroId> = that hero's preview stand captured by tools/aura_to_game.py. Do not hand-edit H_ lines: re-run the tool.",
+  "alien_conqueror": "H_alien_conqueror",
+  "angel_commander": "H_angel_commander",
+  "ant_king_shade": "H_ant_king_shade",
+  "ant_monarch": "H_ant_monarch",
+  "apple_reaper": "H_apple_reaper",
+  "armored_giant": "H_armored_giant",
+  "attack_giant": "H_attack_giant",
+  "bald_cape_hero": "H_bald_cape_hero",
+  "battle_maniac_captain": "H_battle_maniac_captain",
+  "beast_emperor": "H_beast_emperor",
+  "beast_giant_prince": "H_beast_giant_prince",
+  "beast_scholar": "H_beast_scholar",
+  "black_swordsman": "H_black_swordsman",
+  "blade_captain": "H_blade_captain",
+  "blast_prodigy": "H_blast_prodigy",
+  "blazing_pirate": "H_blazing_pirate",
+  "blood_war_king": "TheAlmighty",
+  "blue_flame_villain": "H_blue_flame_villain",
+  "bomb_girl": "H_bomb_girl",
+  "butterfly_swordswoman": "ButterflyDance",
+  "card_magician": "H_card_magician",
+  "chain_avenger": "H_chain_avenger",
+  "clap_brother": "H_clap_brother",
+  "classroom_mastermind": "H_classroom_mastermind",
+  "clockwork_butler": "H_clockwork_butler",
+  "cold_prodigy_winger": "H_cold_prodigy_winger",
+  "commander_tactician": "H_commander_tactician",
+  "contract_hunter": "H_contract_hunter",
+  "copy_ninja": "H_copy_ninja",
+  "crimson_boss": "H_crimson_boss",
+  "crimson_fist_demon": "CompassNeedle",
+  "crimson_knight_shade": "H_crimson_knight_shade",
+  "crimson_lioness": "H_crimson_lioness",
+  "crimson_wing_hero": "H_crimson_wing_hero",
+  "crow_illusionist": "CrowGenjutsu",
+  "crystal_cult_leader": "H_crystal_cult_leader",
+  "curse_chain_brawler": "H_curse_chain_brawler",
+  "curse_king": "MalevolentShrine",
+  "curse_manipulator": "CurseManipulation",
+  "cyborg_disciple": "H_cyborg_disciple",
+  "dark_slash_captain": "DarkSlash",
+  "decay_villain": "H_decay_villain",
+  "demon_lord_heir": "ControlDevil",
+  "demon_progenitor": "DemonKing",
+  "demon_union_knight": "H_demon_union_knight",
+  "destroyer_cat": "H_destroyer_cat",
+  "devil_knight": "AntiMagic",
+  "dragon_monarch": "DragonMonarch",
+  "dragon_sin": "H_dragon_sin",
+  "dual_blade_gamer": "H_dual_blade_gamer",
+  "emperor_striker": "EmperorThorns",
+  "first_emperor": "H_first_emperor",
+  "flame_pillar": "H_flame_pillar",
+  "flashy_shinobi": "H_flashy_shinobi",
+  "fox_smile_traitor": "H_fox_smile_traitor",
+  "frost_tyrant": "H_frost_tyrant",
+  "frostflame_hero": "H_frostflame_hero",
+  "ghost_of_the_clan": "H_ghost_of_the_clan",
+  "gold_gang_boss": "GoldExperience",
+  "golden_age_hero": "H_golden_age_hero",
+  "golden_vampire": "H_golden_vampire",
+  "gravity_priest": "H_gravity_priest",
+  "gray_pride_warrior": "H_gray_pride_warrior",
+  "hawkeye_swordsman": "HawkEye",
+  "heart_surgeon": "H_heart_surgeon",
+  "hero_hunter": "H_hero_hunter",
+  "hollow_bat": "H_hollow_bat",
+  "ice_dragon_captain": "H_ice_dragon_captain",
+  "ice_general": "DemonsExtract",
+  "inferno_hero": "H_inferno_hero",
+  "instinct_warrior": "H_instinct_warrior",
+  "king_striker": "H_king_striker",
+  "lazy_genius_striker": "H_lazy_genius_striker",
+  "legendary_berserker": "H_legendary_berserker",
+  "lightning_duelist": "H_lightning_duelist",
+  "limitless_teacher": "H_limitless_teacher",
+  "lucky_cat_mascot": "H_lucky_cat_mascot",
+  "masked_phantom": "H_masked_phantom",
+  "midfield_genius": "H_midfield_genius",
+  "needle_assassin": "H_needle_assassin",
+  "next_gen_ninja": "H_next_gen_ninja",
+  "noon_lion": "H_noon_lion",
+  "notebook_mastermind": "H_notebook_mastermind",
+  "number_one_striker": "AceEater",
+  "one_eyed_instructor": "H_one_eyed_instructor",
+  "panther_espada": "H_panther_espada",
+  "perfect_bio_android": "H_perfect_bio_android",
+  "petal_noble": "H_petal_noble",
+  "phantom_thief": "H_phantom_thief",
+  "pink_candy_monster": "H_pink_candy_monster",
+  "prayer_master": "H_prayer_master",
+  "proud_prince": "H_proud_prince",
+  "quake_captain": "H_quake_captain",
+  "quiet_bomber": "H_quiet_bomber",
+  "rain_god": "H_rain_god",
+  "rebel_emperor": "Geass",
+  "red_haired_emperor": "ConquerorsHaki",
+  "rose_dark_fighter": "H_rose_dark_fighter",
+  "sakura_shogun": "SunBreathing",
+  "sand_guardian": "H_sand_guardian",
+  "scarf_blade_soldier": "H_scarf_blade_soldier",
+  "serpent_empress": "H_serpent_empress",
+  "shadow_mastermind": "H_shadow_mastermind",
+  "shadow_monarch": "ShadowArise",
+  "shadow_pirate_captain": "H_shadow_pirate_captain",
+  "shadow_sovereign": "H_shadow_sovereign",
+  "shadow_summoner": "H_shadow_summoner",
+  "silver_fist_master": "H_silver_fist_master",
+  "six_eyed_moon": "H_six_eyed_moon",
+  "slime_lord": "H_slime_lord",
+  "sorcerer_hunter": "HeavenlyRestriction",
+  "special_grade_rookie": "H_special_grade_rookie",
+  "speed_heir": "H_speed_heir",
   "spider_thief_boss": "SkillHunter",
-  "ice_general": "DemonsExtract"
+  "staff_angel_mentor": "H_staff_angel_mentor",
+  "star_delinquent": "StarPlatinum",
+  "starlight_idol": "H_starlight_idol",
+  "string_king": "H_string_king",
+  "substitute_reaper": "H_substitute_reaper",
+  "sun_god_captain": "H_sun_god_captain",
+  "three_sword_hunter": "H_three_sword_hunter",
+  "tide_swordsman": "H_tide_swordsman",
+  "time_wizard_king": "H_time_wizard_king",
+  "toad_sage": "H_toad_sage",
+  "tornado_psychic": "H_tornado_psychic",
+  "tyrant_demon_lord": "DemonCircle",
+  "void_empress": "Hogyoku",
+  "wheel_guardian": "H_wheel_guardian",
+  "wind_prodigy": "H_wind_prodigy",
+  "yellow_flash": "H_yellow_flash"
+ },
+ "hot": {
+  "_note": "Auras that WASH OUT at maximum graphics (the hero turns into a white ball, or drowns in black smoke): hero id -> the share of its emitter rates the aura may be DRAWN at. Roblox draws about 0.4 of a rate in Studio's edit view (where the owner approved every aura) and all of it at maximum graphics, plus bloom; the game thins a hot aura on high graphics only, down to this mark (src/shared/Core/AuraDensity.luau, Fx/Vfx). 0.4 = exactly the density that was approved. Found and checked with tools/aura_judge.py (heroes on a real base at maximum graphics). Heroes sharing a template share the lowest mark. Audit of 2026-11-26: all 130 auras looked at; these seven are the ones thinning visibly helps. White-clothed heroes (Gin, Jiren, Jiraiya ...) glare at maximum graphics with NO aura at all: that is the map's bloom on white cloth, not their aura, so they carry no mark.",
+  "limitless_teacher": 0.4,
+  "lightning_duelist": 0.4,
+  "clockwork_butler": 0.4,
+  "panther_espada": 0.4,
+  "quiet_bomber": 0.4,
+  "black_swordsman": 0.4,
+  "decay_villain": 0.4
  },
  "budget": {
   "_note": "runtime (src/client/Fx/HeroAura.luau via Fx/Vfx): nearest heroes first; an aura beyond the range or the count is not built at all",

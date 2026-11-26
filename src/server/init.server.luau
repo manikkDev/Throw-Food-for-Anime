@@ -12,7 +12,7 @@ local showcase = workspace:FindFirstChild("AuraShowcase")
 if showcase then
 	showcase:Destroy()
 end
-for _, name in { "AuraPackBrowser", "ZoneLab", "MapV2" } do
+for _, name in { "AuraPackBrowser", "AuraAssignPreview", "RareAuraDemo", "ZoneLab", "MapV2" } do
 	local dev = workspace:FindFirstChild(name)
 	if dev then
 		dev:Destroy()

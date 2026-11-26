@@ -100,7 +100,7 @@ for _, row in ROSTER do
 		return nil
 	end
 	for _, acc in rig:GetChildren() do
-		if not acc:IsA("Accessory") or acc:FindFirstChildWhichIsA("WrapLayer", true) then
+		if not acc:IsA("Accessory") then
 			continue
 		end
 		local handle = acc:FindFirstChild("Handle")
@@ -118,6 +118,9 @@ for _, row in ROSTER do
 				held = true
 			end
 		end
+		-- Layered clothing stays an Accessory but still needs a joint: one held only by a RigidConstraint
+		-- (stripped above) floats loose and draws wrong (Minato's coat as a black logo shirt, 2026-11-25).
+		local layered = acc:FindFirstChildWhichIsA("WrapLayer", true) ~= nil
 		if not held then
 			local att = handle:FindFirstChildOfClass("Attachment")
 			local body = att and bodyAttachment(att.Name)
@@ -130,6 +133,9 @@ for _, row in ROSTER do
 				weld.C1 = body.CFrame
 				weld.Parent = handle
 			end
+		end
+		if layered then
+			continue
 		end
 		local model = Instance.new("Model")
 		model.Name = acc.Name

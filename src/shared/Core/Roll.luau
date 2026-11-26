@@ -1,14 +1,24 @@
 --!strict
 -- Roll - who a throw lures, and how rare that really was. Pure.
 --
--- Three independent draws: hero (by zone table, scaled by luck and craving),
--- mutation, size. The "1 in N" shown to the player is 1 / (pHero x pMutation x
--- pSize) computed from the SAME weights that rolled, so it cannot disagree
--- with what happened.
+-- Three independent draws: hero, mutation, size.
+--
+-- THE HERO (plan 12, section 3.1). Each rarity from Rare up has a base chance
+-- "1 in OneIn". Luck divides it: chance = luck ^ LuckPower / OneIn. The roll
+-- is one number cut into bands, RAREST FIRST, so luck never stops helping the
+-- top of the table. What the bands leave goes to Uncommon and Common
+-- (UncommonShare of it to Uncommon); the least rare band (Rare) always leaves
+-- them CommonFloor of the roll, so a Common stays catchable for the Index.
+-- Heroes of one rarity share its chance; a hero that craves the thrown
+-- flavour counts CravingWeightMult times inside its rarity.
+--
+-- THE SCORE. The "1 in N" on the catch card is rarity odds x mutation odds x
+-- size odds AT BASE ODDS (luck 1): the same catch shows the same number for
+-- every player, so the leaderboard cannot reward low luck. No mutation / no
+-- size counts as 1: a plain Mythic is exactly "1 in 10,000".
 --
 -- Randomness is injected: `rng()` returns a number in [0, 1). Specs pass a
 -- seeded generator; the server passes Random:NextNumber.
-
 local Roll = {}
 
 export type HeroWeight = { id: string, rarity: string, weight: number, chance: number }
@@ -18,60 +28,136 @@ export type Result = {
 	rarity: string,
 	mutation: string?,
 	size: string?,
+	-- what really rolled, at the player's luck
 	pHero: number,
 	pMutation: number,
 	pSize: number,
+	-- the score: base odds, the same for everyone
 	oneInN: number,
 }
 
+--- Chance of each rarity the zone holds at `luck`. `floor` (a rarity name)
+--- moves everything rarer-than-nothing-below-it up: a Lucky Throw is never
+--- below Epic. Sums to 1.
+function Roll.rarityChances(
+	cfg: any,
+	zoneCharacters: { any },
+	luck: number,
+	floor: string?
+): { [string]: number }
+	local present: { [string]: boolean } = {}
+	for _, character in zoneCharacters do
+		present[character.Rarity] = true
+	end
+	-- the luck-scaled bands, rarest first
+	local bands: { string } = {}
+	for name, rarity in cfg.Rarities do
+		if present[name] and rarity.OneIn then
+			table.insert(bands, name)
+		end
+	end
+	table.sort(bands, function(a, b)
+		return cfg.Rarities[a].Order > cfg.Rarities[b].Order
+	end)
+
+	local l = math.max(1, luck)
+	local chances: { [string]: number } = {}
+	local left = 1
+	local hasPlain = present.Common or present.Uncommon
+	for i, name in bands do
+		local rarity = cfg.Rarities[name]
+		local p = math.min(left, l ^ rarity.LuckPower / rarity.OneIn)
+		if i == #bands and hasPlain then
+			-- the least rare band leaves room for the plain heroes
+			p = math.min(p, math.max(0, left - cfg.Roll.CommonFloor))
+		end
+		chances[name] = p
+		left -= p
+	end
+	left = math.max(left, 0)
+	if present.Uncommon then
+		local share = if present.Common then cfg.Roll.UncommonShare else 1
+		chances.Uncommon = left * share
+		left -= chances.Uncommon
+	end
+	if present.Common then
+		chances.Common = left
+		left = 0
+	end
+	if left > 0 and #bands > 0 then
+		-- a zone of only rare heroes: the remainder is its least rare band's
+		chances[bands[#bands]] += left
+	end
+
+	if floor ~= nil and cfg.Rarities[floor] then
+		local floorOrder = cfg.Rarities[floor].Order
+		-- the lowest rarity the zone holds that is at least the floor
+		local target: string? = nil
+		for name in chances do
+			local order = cfg.Rarities[name].Order
+			if
+				order >= floorOrder
+				and (target == nil or order < cfg.Rarities[target :: string].Order)
+			then
+				target = name
+			end
+		end
+		if target then
+			for name, p in chances do
+				if cfg.Rarities[name].Order < floorOrder then
+					chances[target] += p
+					chances[name] = 0
+				end
+			end
+		end
+	end
+	return chances
+end
+
 --- Weight and chance of every hero in a zone at `luck`, optionally with a
---- thrown food `flavor` (a craved flavour multiplies that hero's weight).
+--- thrown food `flavor` and a rarity `floor`.
 --- `zoneCharacters` is Lookup.of(cfg).zoneCharacters[zoneId].
 function Roll.heroWeights(
 	cfg: any,
 	zoneCharacters: { any },
 	luck: number,
-	flavor: string?
+	flavor: string?,
+	floor: string?
 ): { HeroWeight }
-	local rows: { HeroWeight } = {}
-	local total = 0
-	-- Heroes of one rarity SHARE that rarity's weight. So a zone's rarity odds
-	-- (and with them the whole economy) do not depend on how many heroes it
-	-- has: a hero added later makes its neighbours rarer, never the zone richer.
+	local chances = Roll.rarityChances(cfg, zoneCharacters, luck, floor)
+	-- inside a rarity every hero counts once, a craving hero several times
 	local sharing: { [string]: number } = {}
+	local rows: { HeroWeight } = {}
 	for _, character in zoneCharacters do
-		sharing[character.Rarity] = (sharing[character.Rarity] or 0) + 1
-	end
-	for _, character in zoneCharacters do
-		local rarity = cfg.Rarities[character.Rarity]
-		local weight = rarity.Weight
-			* (1 + (math.max(1, luck) - 1) * rarity.LuckScale)
-			/ sharing[character.Rarity]
-		if flavor ~= nil and character.Craves == flavor then
-			weight *= cfg.Throw.CravingWeightMult
-		end
-		total += weight
+		local weight = if flavor ~= nil and character.Craves == flavor
+			then cfg.Throw.CravingWeightMult
+			else 1
+		sharing[character.Rarity] = (sharing[character.Rarity] or 0) + weight
 		table.insert(
 			rows,
 			{ id = character.Id, rarity = character.Rarity, weight = weight, chance = 0 }
 		)
 	end
 	for _, row in rows do
-		row.chance = if total > 0 then row.weight / total else 0
+		row.chance = (chances[row.rarity] or 0) * row.weight / sharing[row.rarity]
 	end
 	return rows
 end
 
---- Pick a row by weight. `r` in [0, 1).
+--- Pick a row by chance. `r` in [0, 1).
 function Roll.pick(rows: { HeroWeight }, r: number): HeroWeight
 	local acc = 0
+	local last = rows[#rows]
 	for _, row in rows do
 		acc += row.chance
-		if r < acc then
-			return row
+		if row.chance > 0 then
+			last = row
+			if r < acc then
+				return row
+			end
 		end
 	end
-	return rows[#rows]
+	return last
 end
 
 --- One draw over a variant table (Mutations or Sizes), rarest first. The
@@ -105,20 +191,58 @@ function Roll.variant(
 	return nil, math.max(1 - acc, 1e-12)
 end
 
---- A full catch.
+--- "1 in N" of a rarity in this zone at base odds (luck 1, no craving).
+function Roll.rarityOneIn(cfg: any, zoneCharacters: { any }, rarity: string): number
+	local p = Roll.rarityChances(cfg, zoneCharacters, 1, nil)[rarity] or 0
+	return if p > 0 then 1 / p else math.huge
+end
+
+--- The score of a catch: base rarity odds x base mutation odds x base size
+--- odds. `maps` is Lookup.of(cfg).
+function Roll.score(
+	cfg: any,
+	maps: any,
+	zoneCharacters: { any },
+	rarity: string,
+	mutation: string?,
+	size: string?
+): number
+	local n = Roll.rarityOneIn(cfg, zoneCharacters, rarity)
+	if mutation and maps.mutation[mutation] then
+		n /= maps.mutation[mutation].Chance
+	end
+	if size and maps.size[size] then
+		n /= maps.size[size].Chance
+	end
+	return n
+end
+
+--- The stamp a score earns ("LUCKY" ... "GODLY"), or nil below the first.
+function Roll.stamp(cfg: any, oneInN: number): string?
+	local best: string? = nil
+	for _, stamp in cfg.Roll.Stamps do
+		if oneInN >= stamp.OneIn then
+			best = stamp.Name
+		end
+	end
+	return best
+end
+
+--- A full catch. `floor`: the lowest rarity this throw can give (Lucky Throw).
 function Roll.throw(
 	cfg: any,
+	maps: any,
 	zoneCharacters: { any },
 	luck: number,
 	flavor: string?,
 	rng: () -> number,
-	mutationMult: number?
+	mutationMult: number?,
+	floor: string?
 ): Result
-	local rows = Roll.heroWeights(cfg, zoneCharacters, luck, flavor)
+	local rows = Roll.heroWeights(cfg, zoneCharacters, luck, flavor, floor)
 	local hero = Roll.pick(rows, rng())
 	local mutation, pMutation = Roll.variant(cfg.Mutations, luck, rng(), mutationMult or 1)
 	local size, pSize = Roll.variant(cfg.Sizes, luck, rng(), 1)
-	local p = math.max(hero.chance * pMutation * pSize, 1e-300)
 	return {
 		id = hero.id,
 		rarity = hero.rarity,
@@ -127,7 +251,7 @@ function Roll.throw(
 		pHero = hero.chance,
 		pMutation = pMutation,
 		pSize = pSize,
-		oneInN = 1 / p,
+		oneInN = Roll.score(cfg, maps, zoneCharacters, hero.rarity, mutation, size),
 	}
 end
 
@@ -149,8 +273,6 @@ function Roll.byPercent(odds: { any }, r: number): any
 	return odds[#odds]
 end
 
---- Best of `count` hero draws by rarity order: used nowhere by default, kept
---- for event throws ("best of N").
 function Roll.rarityOrder(cfg: any, rarity: string): number
 	return cfg.Rarities[rarity].Order
 end

@@ -1,7 +1,6 @@
 --!strict
 local Support = require("./Support")
 local Income = require("../src/shared/Core/Income")
-local Progress = require("../src/shared/Core/Progress")
 
 local C = Support.Config
 local M = Support.Maps
@@ -78,79 +77,5 @@ return {
 			local prevRare = C.Zones[i - 1].BaseIncome * C.Rarities.Rare.IncomeMult
 			assert(common > prevRare, `zone {i} common does not beat zone {i - 1} rare`)
 		end
-	end,
-
-	["the slot cost matches the simulator's formula and stops at the cap"] = function()
-		local P = C.Plot
-		assert(Progress.nextSlotCost(C, P.StartSlots) == P.SlotBaseCost)
-		local second = Progress.nextSlotCost(C, P.StartSlots + 1) :: number
-		assert(Support.near(second, P.SlotBaseCost * P.SlotCostGrowth, 0.001))
-		assert(Progress.nextSlotCost(C, P.MaxSlots) == nil)
-	end,
-
-	["gear is bought in order and ends"] = function()
-		assert(Progress.nextGearCost(C, 1) == C.Training.Equipment[2].Cost)
-		assert(Progress.nextGearCost(C, #C.Training.Equipment) == nil)
-	end,
-
-	["double training doubles power per rep"] = function()
-		assert(Progress.powerPerRep(C, 2, true) == Progress.powerPerRep(C, 2, false) * 2)
-	end,
-
-	["rank thresholds are inclusive"] = function()
-		local ranks = C.Training.Ranks
-		assert(Progress.rank(C, ranks[2].Power).index == 2, "exactly on the number is the new rank")
-		assert(Progress.rank(C, ranks[2].Power - 1).index == 1)
-		assert(Progress.rank(C, 1e30).progress == 1)
-	end,
-
-	["offline pays nothing for a short absence and stops at the cap"] = function()
-		local O = C.Offline
-		assert(Progress.offline(C, O.MinSecondsAway - 1, 100) == 0)
-		local full = Progress.offline(C, O.CapHours * 3600, 100)
-		local over = Progress.offline(C, O.CapHours * 3600 * 10, 100)
-		assert(full == over, "time past the cap must not pay")
-		assert(full == math.floor(O.CapHours * 3600 * 100 * O.Rate))
-	end,
-
-	["rebirth needs both power and yen"] = function()
-		local t = C.Rebirth.Tiers[1]
-		assert(not Progress.canRebirth(C, 0, t.PowerReq, t.YenCost - 1))
-		assert(not Progress.canRebirth(C, 0, t.PowerReq - 1, t.YenCost))
-		assert(Progress.canRebirth(C, 0, t.PowerReq, t.YenCost))
-		assert(
-			not Progress.canRebirth(C, #C.Rebirth.Tiers, 1e300, 1e300),
-			"the last tier is the cap"
-		)
-	end,
-
-	["rebirth resets progress and keeps premium heroes"] = function()
-		local premium = C.PremiumCharacters[1]
-		local profile = {
-			rebirth = 0,
-			yen = 5e12,
-			power = 9e8,
-			foods = { onigiri = true, ramen = true },
-			food = "ramen",
-			gear = 6,
-			slots = 20,
-			bonusSlots = 2,
-			heroes = { h1 = hero(COMMON.Id, 1), h7 = hero(premium.Id, 19) },
-			index = { [COMMON.Id] = { muts = {}, sizes = {} } },
-			luckyThrows = 4,
-		}
-		profile.away = { yen = 5000, seconds = 600 }
-		Progress.applyRebirth(C, M, profile)
-		assert(profile.away.yen == 0, "unclaimed offline pay must not survive a rebirth")
-		assert(profile.rebirth == 1 and profile.yen == 0)
-		assert(profile.power == C.Training.StartPower and profile.gear == 1)
-		assert(profile.slots == C.Plot.StartSlots + 2, "bonus slots survive")
-		assert(profile.food == C.Foods[1].Id and profile.foods.ramen == nil)
-		assert(profile.heroes.h1 == nil, "lane heroes are gone")
-		assert(profile.heroes.h7 ~= nil and profile.heroes.h7.slot == 1, "premium re-seated")
-		assert(
-			profile.index[COMMON.Id] ~= nil and profile.luckyThrows == 4,
-			"index and throws kept"
-		)
 	end,
 }

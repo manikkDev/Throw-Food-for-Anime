@@ -62,12 +62,64 @@ return {
 		assert(not Throw.isPerfect(T, 1 - T.PerfectWindow - 0.01))
 	end,
 
-	["the bar mark for an unreachable zone is nil"] = function()
+	["a new player can throw into the first band only"] = function()
+		local open = Throw.openZones(Z, 0)
+		assert(open >= 1 and open < #Z, "the first band is part of the lane")
+		assert(Z[open + 1].RebirthReq == 1, "the zone after the first band needs rebirth one")
+		assert(Throw.reach(Z, 1e300, 0) == open, "no Power throws past a sealed gate")
+		assert(Throw.reach(Z, 0, 0) == 1)
+	end,
+
+	["each rebirth opens more of the lane, the last one all of it"] = function()
+		local before = Throw.openZones(Z, 0)
+		for tier = 1, #C.Rebirth.Tiers do
+			local open = Throw.openZones(Z, tier)
+			assert(open >= before, `rebirth {tier} closed a zone`)
+			before = open
+		end
+		assert(before == #Z)
+	end,
+
+	["the seal is reached when Power meets the sealed gate"] = function()
+		local open = Throw.openZones(Z, 0)
+		local gate = Z[open + 1].PowerReq
+		assert(not Throw.atSeal(Z, gate - 1, 0))
+		assert(Throw.atSeal(Z, gate, 0))
+		assert(not Throw.atSeal(Z, 1e300, #C.Rebirth.Tiers), "an open lane has no seal")
+	end,
+
+	["an aim lands in the chosen zone, never further than the reach"] = function()
 		local T = C.Throw
-		assert(Throw.chargeForZone(T, Z, 10, 1, 3) == nil)
-		local mark = Throw.chargeForZone(T, Z, Z[2].PowerReq * 2, 1, 2)
-		assert(mark ~= nil and math.abs(mark - 0.5) < 1e-9)
-		assert(Throw.chargeForZone(T, Z, 1000, 1, 1) == T.MinCharge)
+		local full = Z[3].PowerReq * 2
+		local zone, depth = Throw.landing(T, Z, full, 0, nil, 1)
+		assert(zone == 3, "no aim = the furthest zone")
+		assert(
+			depth > 0 and depth < 1,
+			"the furthest zone is only in range as deep as the Power goes"
+		)
+		zone, depth = Throw.landing(T, Z, full, 0, 1, 1)
+		assert(zone == 1 and depth == 1, "an earlier zone is wholly in range")
+		zone = Throw.landing(T, Z, full, 0, 99, 1)
+		assert(zone == 3, "an aim past the reach is the reach")
+		zone = Throw.landing(T, Z, full, 0, 0, 1)
+		assert(zone == 3, "aim 0 means the furthest")
+	end,
+
+	["the meter decides how deep"] = function()
+		local T = C.Throw
+		local full = Z[3].PowerReq
+		local _, shallow = Throw.landing(T, Z, full * 100, 0, 2, T.MinCharge)
+		local _, deep = Throw.landing(T, Z, full * 100, 0, 2, 1)
+		assert(shallow == 0 and deep == 1)
+		local _, mid = Throw.landing(T, Z, full * 100, 0, 2, (T.MinCharge + 1) / 2)
+		assert(math.abs(mid - 0.5) < 1e-9)
+	end,
+
+	["Power past a sealed gate fills the last open zone"] = function()
+		local T = C.Throw
+		local open = Throw.openZones(Z, 0)
+		local zone, depth = Throw.landing(T, Z, 1e300, 0, nil, 1)
+		assert(zone == open and depth == 1)
 	end,
 
 	["flight time stays inside its limits"] = function()

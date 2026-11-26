@@ -55,8 +55,8 @@ end
 -- player can reach right now.
 function RewardsService:_giftHero(player: Player, profile: any)
 	local food = MAPS.food[profile.food]
-	local eff = Throw.effectivePower(profile.power, food.PowerMult, 1)
-	local zone = Config.Zones[Throw.zoneIndex(Config.Zones, eff)]
+	local full = profile.power * food.PowerMult
+	local zone = Config.Zones[Throw.reach(Config.Zones, full, profile.rebirth)]
 	for _, character in MAPS.zoneCharacters[zone.Id] do
 		if character.Rarity == R.PlaytimeFirstGiftRarity then
 			self._squad:GrantAndShow(player, character.Id, nil, nil, "gift")

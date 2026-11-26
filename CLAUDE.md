@@ -60,14 +60,14 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - Code: `src/` (16 server services, 7 client controllers + `src/client/Ui/` (Screens, Pages), 12 pure Core modules with specs in `tests/`).
   `src/shared/Config/GameConfig.luau` is GENERATED from `design/game.json`: edit the JSON, then
   `python ~/.claude/skills/create-roblox-game/scripts/gen_config.py --dir .`. Pacing gate:
-  `python tools/balance_sim.py --check`. Server-only tunables (promo codes) live in `server_config`
+  `python tools/economy/econ_v2.py check` (the old `balance_sim.py` is retired). Server-only tunables (promo codes) live in `server_config`
   in the same JSON: `python tools/gen_server_config.py` writes `src/server/Config/ServerConfig.luau`.
   Never put a code in `config` (it is sent to every client). Every gate at once: `python tools/gate.py`.
 - Hero templates: `ReplicatedStorage.Assets.Characters.Char_<id>` (in the place, not in Rojo).
   Rebuilt from `ServerStorage.CharacterSources.R15_Final` by `tools/studio/bake_characters.luau`.
   The user's imports are archived in `ServerStorage.CharacterSources.R6_Originals` (31) and
   `.Originals_Batch2` (12) and `.Originals_Batch3` (16): never delete. New avatars: `tools/studio/build_r15.luau` rebuilds them to
-  the standard rig, `python tools/studio/run_bake.py` bakes the whole roster (180 heroes today: 172 lane + 8 premium; the 97 of batch 4, 2026-11-22, are in the roster and templates but not yet in `config.Characters`: see the README).
+  the standard rig, `python tools/studio/run_bake.py` bakes the whole roster (180 heroes: 172 lane + 8 premium, ALL in `config.Characters` / `PremiumCharacters` since economy v2, 2026-11-26).
   Roster map: `design/characters/roster.json`; rules and traps: `design/characters/README.md`.
 - The map is `Workspace.Map` in the place: **hub v2 since 2026-11-21** (about 12,800 parts): FIVE bases (since
   2026-11-22, `tools/studio/base_layout.luau`, rerunnable, reads the synced config: a config edit + a rerun re-lays them)
@@ -120,6 +120,19 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   that in Studio edit mode -> `ReplicatedStorage.Assets.Auras`); runtime `src/client/Fx/HeroAura.luau` via `Fx/Vfx` (nearest
   heroes only, phones get the low-detail budget). Clock / purple flare / landing impact: `tools/studio/build_fx_imports.luau`
   -> `ReplicatedStorage.Assets.FxImported`, played by `Fx/ImportedFx`.
+- APPROVED AURAS IN THE GAME (plan 12 phase E, 2026-11-26): who wears what is the owner's assignment on the preview
+  yard (`tools/aura_assign.py`, `design/aura_assignments.json`). `python tools/aura_to_game.py` (Studio edit mode, yard
+  built; `--only=<ids>` for some) keeps the 25 hand-built auras and captures every other stand as it stands
+  (`tools/studio/export_preview_auras.luau`) into `Assets.Auras.H_<heroId>`, then rewrites `design/auras.json` (130 hero
+  lines; never hand-edit an `H_` line; `by_rarity` is EMPTY on purpose: Common and Uncommon wear none) and runs
+  gen_auras.py. After the owner changes an aura on the yard: rerun it for that hero, then judge it (next line).
+- JUDGE AN AURA WHERE IT IS WORN, AT MAXIMUM GRAPHICS. Studio's edit view draws about 40% of an emitter's rate and
+  little bloom; a player at max graphics gets all of it (Gojo's approved blue sphere was a white ball in play).
+  `python tools/aura_judge.py row <n>` (or `show <ids>`, `--raw`, `id=0.3`, `clear`) stands heroes on Plot5 with the
+  game's own aura code; set `settings().Rendering.EditQualityLevel` to Level21 to look and back to Automatic after.
+  An aura that washes out gets a mark in `design/auras.json` "hot" (hero id -> share of its rate it may be drawn at;
+  0.4 = the approved density) -> `Auras.Hot`; `Core/AuraDensity` + `Fx/Vfx` thin it on high graphics only. White-clothed
+  heroes glare at max graphics with no aura at all: that is `MapBloom` on white cloth, not an aura fault.
 - Aura showcase (owner's view of who wears what): `python tools/studio/aura_showcase.py build` -> `Workspace.AuraShowcase`
   (dev only, deleted by the server on start). The owner renames a dummy in `AuraShowcase.Auras` to a hero's name; then
   `python tools/studio/aura_showcase.py sync` records it in `design/auras.json` and rebuilds.
@@ -171,8 +184,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   floor kit and gate, and the lobby's two funnel walls. Its templates live in `ServerStorage.StoreAssets.Zone01_Naruto`
   (never delete): buildings from `harvest_naruto.luau` + `harvest_naruto_store.luau` (quarantined store packs); the stone
   heads, trees, bush, gate keep and rock outcrop are Studio `generate_mesh` results. The old zone-1 dressing is in
-  `ServerStorage.MapArchive.Zone1_sakura_schoolyard_v1` (never delete). The game's zone DATA (ids, names, heroes per zone)
-  is still the old six: only the look of zones 1 to 3 changed.
+  `ServerStorage.MapArchive.Zone1_sakura_schoolyard_v1` (never delete). Since economy v2 (2026-11-26) the game's zone DATA is the 17 anime zones too (the config ids are still the old map ids).
   `zone_02_demon_slayer.luau` = zone 2 "Demon Slayer Corps" (z 520..880, config id still `pirate_harbor`): checkered
   floor, the Mugen Train, a Taisho mansion, wisteria; templates in `ServerStorage.StoreAssets.Zone02_DemonSlayer` (never
   delete, all `generate_mesh`), old dressing in `MapArchive.Zone2_pirate_harbor_v1`. A zone's walls JOIN the previous
@@ -275,8 +287,8 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   15 gate_of_shadows, 16 shibuya, 17 planet_of_gods (real water, like zone 3). Templates: `StoreAssets.Zone04_MHA` ..
   `Zone17_DragonBall` (never delete, all `generate_mesh`); old dressing of zones 4-6 in `MapArchive.Zone<n>_<id>_v1`.
   Terrain material colours are GLOBAL and every zone owns some: before recolouring one, grep the zone files for it.
-  STILL THE OLD SIX in the game's DATA (`config.Zones`: names, heroes per zone, power gates, economy): zones 7-17 are
-  scenery with "COMING SOON" gates, no throw lands past z 2320, and the new heroes are not catchable yet.
+  Since economy v2 (2026-11-26) all 17 are in `config.Zones` and every hero is catchable; zones past the player's rebirth
+  band are SEALED (see ECONOMY V2 below). Their gate plaques and seal visuals still need phase D of plan 12.
 - ZONE REWORK (2026-11-22): the owner rejected the first, fast build of zones 3-17 ("too vague without any details",
   "poorly made", buildings "not even placed properly") and ordered them redone ONE BY ONE, quality over speed. Zones 3 to
   17 were each rewritten: 12 to 20 unique generated models, paved streets and plazas, a set piece on a plinth facing the
@@ -288,6 +300,29 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   report crossings), never by hand; a terrace's real ground is `TERRACE` = LY + 2 (-46), not LY; `pave` IS the ground (it
   cuts the terrain away under its slab), so rebuild WITH terrain after changing a paving layout; `floor{}` lays a kerbstone
   down the lane's edge of every non-sea zone; wait for `store` to print a model's real size before writing a row.
+
+- ECONOMY V2 (plan `design/plan/12-gameplay-economy-v2.md`, owner approved 2026-11-26; build log in its section 15).
+  Numbers: design inputs at the top of `tools/economy/econ_v2.py` -> `gen` -> `apply` (writes zones, rarities, gear,
+  foods, slots, rebirths, pacing into `design/game.json`) -> `python tools/gen_characters.py` (heroes from
+  `design/characters/lineup.json`: THE truth for a hero's zone and rarity) -> gen_config.py -> `python tools/gate.py`.
+  Rules (pure, `src/shared/Core`): Roll = "1 in N" bands rarest first, luck divides N, the score on the card is BASE odds;
+  Luck = food x depth x perfect x (1 + added free bonuses) x passes x server x lucky, capped at `Luck.Max`; Throw = the
+  player AIMS at a zone (5th argument of ThrowRequest), the meter decides depth, zones past `RebirthReq` are sealed;
+  Progress = gear / food / slots unlock by `profile.bestZone`, rebirth resets Power and Yen ONLY, training x4 below
+  `profile.powerRecord`. Saves: `Profiles_v2` / `Profiles_Dev_v2`. Test panel: "Reach a zone", "Ready + rebirth".
+  UI layer `tools/ui/screens_v51.py` (aim arrows, ODDS button, the ThrowOdds page). World: gate plaques by
+  `tools/studio/zone_gate_plaques.luau` (rerun after a gate's Power moves); the SEAL on a closed zone is a
+  client-local clone of `ReplicatedStorage.Assets.World.ZoneSeal` (`tools/studio/zone_seal.luau`,
+  `Controllers/SealController`), never part of the map. Index zone pictures: `tools/ui/zone_shots.py`.
+  Phases A to F are in main (F = the playtest through all ten rebirths, log in section 15), uncommitted, the place
+  unsaved; only the snapshot is left, on the owner's sign-off. Phones are landscape-only (`init.client.luau` +
+  `StarterGui.ScreenOrientation` LandscapeSensor). On the stage the HUD is hidden: anything the player must know
+  there goes through a toast from ThrowController (`_sealHint` is the example), and a toast holds ~48 characters.
+- Driving a playtest over MCP: move the character on the SERVER datamodel (a client-side teleport does not
+  replicate; the throw is then refused "not on own throw pad", printed only with workspace attribute `TFADebug`),
+  then fire the remotes from the Client datamodel in a `task.spawn` and log into a StringValue (output from a
+  yielding call is dropped). In the Device Simulator `user_mouse_input` clicks off-target: hit-test with
+  `PlayerGui:GetGuiObjectsAtPosition` instead.
 
 ## Known traps on this machine
 
