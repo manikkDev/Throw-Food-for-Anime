@@ -441,3 +441,6 @@ rebirth Power gates do not change.
   Legendary Ramen: level in the hand, a constant lean through the flight, upright after landing.
 - Open: in the landing close-up a bowl fills most of the frame (foods are drawn 1.7x in flight and the
   camera was set for the old, smaller models): phase C.
+
+**Checkpoint, 2026-11-26:** phase A and food batches 1 to 3 committed (dfa0551) and saved as place version
+921 ("Plan 13: rules + foods of worlds 1-7"). Not pushed, not published. Not a section snapshot: no tag.
