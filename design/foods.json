@@ -28,6 +28,12 @@
     "floor_boss_stew": {"size": 2.5, "throw": "heave", "look": "iron pot of brown stew with meat and vegetables, a ladle, blue crystal trim"},
     "steamed_potato": {"size": 2.1, "throw": "pitch", "look": "golden baked potato cut open, fluffy yellow inside, butter and chives"},
     "scout_bread": {"size": 2.3, "throw": "pitch", "look": "tall crusty loaf with score cuts, tied with a green cloth bow"},
-    "officers_ham": {"size": 2.7, "throw": "heave", "look": "glazed ham joint scored in diamonds on a wooden board, slices fanned out, string tied"}
+    "officers_ham": {"size": 2.7, "throw": "heave", "look": "honey-glazed ham joint scored in diamonds with cloves, slices fanned out (texture redone with generate_texture)"},
+    "jam_toast": {"size": 2.0, "throw": "spin", "look": "thick slice of toast with glossy red jam and a butter square"},
+    "hunter_burger": {"size": 2.4, "throw": "pitch", "look": "tall burger: sesame bun, two patties, dripping cheese, lettuce, tomato, a flag pick"},
+    "devil_ice_cream": {"size": 2.7, "throw": "pitch", "look": "waffle cone with three scoops (white, red, black), two red horns, red syrup"},
+    "double_cherry": {"size": 2.1, "throw": "pitch", "look": "two glossy red cherries on joined green stems with a leaf"},
+    "margherita": {"size": 2.8, "throw": "spin", "look": "whole pizza on a wooden board: puffy crust, red sauce, mozzarella, basil, one slice pulled out"},
+    "healing_pasta": {"size": 2.5, "throw": "heave", "look": "gold-rimmed plate with a twirl of black spaghetti, squid rings, tomato, basil, sparkles, a fork"}
   }
 }

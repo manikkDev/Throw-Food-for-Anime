@@ -26,6 +26,12 @@
   "Food_officers_ham": 135732232245740,
   "Food_scout_bread": 115037124089174,
   "Food_steamed_potato": 84579674384938,
+  "Food_devil_ice_cream": 117110764432083,
+  "Food_double_cherry": 135875279411952,
+  "Food_healing_pasta": 134484356334897,
+  "Food_hunter_burger": 129244732522603,
+  "Food_jam_toast": 115625618031968,
+  "Food_margherita": 99219422899907,
   "_hashes": {
     "Food_flame_bento": "0c49ffc7c8d39098",
     "Food_legend_ramen": "f8252f0e70088999",
@@ -53,6 +59,12 @@
     "Food_isekai_apple": "c0ebb4160da6a995",
     "Food_officers_ham": "a46cb2695c4e056c",
     "Food_scout_bread": "1581ce59e83ee7b8",
-    "Food_steamed_potato": "17a2a7ec0cedeb97"
+    "Food_steamed_potato": "17a2a7ec0cedeb97",
+    "Food_devil_ice_cream": "92fbe1368725cf29",
+    "Food_double_cherry": "c299b23bfd9dddd2",
+    "Food_healing_pasta": "e8ba3e3b7fa1b031",
+    "Food_hunter_burger": "5ef45735007496d8",
+    "Food_jam_toast": "3d08a81437889457",
+    "Food_margherita": "3c4d5357c1f86a58"
   }
 }

@@ -452,3 +452,9 @@ rebirth Power gates do not change.
 - Trap: generate_texture hands the model back without its PrimaryPart and turned; set the PrimaryPart again
   before install_foods.py. A capture comes back as a blank dark frame when the display has blanked during a
   wait: run tools/studio/front.ps1 right before it.
+
+**Phase B, batch 5 (worlds 10 and 11, six foods), 2026-11-26: built, awaiting the owner's look.**
+- Jam Toast, Devil Hunter Burger, Devil Ice Cream, Double Cherry, Margherita Pizza, Healing Squid Ink Pasta:
+  one try each. 33 of 51 foods have their own model and icon.
+- Trap: one icon (the black pasta) came out as a small dark blob on its first render although the tool said
+  ok: LOOK at the sheet after every icon run, the tool cannot tell a bad capture from a good one.
