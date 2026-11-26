@@ -1,12 +1,16 @@
 --!strict
 -- FoodShop - the foods, in ONE row that scrolls sideways (touch drag, or the
 -- mouse wheel: Screens reads the row's WheelScrollsX attribute): buy with
--- Yen, equip, and how many heroes not yet caught crave each flavour. Cards
--- are built once and updated in place; opening the page brings the NEXT food
--- into view.
+-- Yen, pin, and how many heroes not yet caught love each dish. Cards are built
+-- once and updated in place; opening the page brings the NEXT food into view.
+--
+-- Plan 13: three dishes per world (Snack, Meal, Signature). A card shows the
+-- worlds the player has reached and the next one. The game throws the BEST
+-- owned food for the aimed world by itself (IN USE); pressing an owned food
+-- PINS it instead, pressing the pinned one again goes back to auto.
 --
 -- What a card says about itself (design/ui/CHANGES-v3.md):
---   * its art tile is tinted by the food's flavour
+--   * its art tile is tinted by the food's role
 --   * the first food the player does not own is NEXT: a NEXT tag and a gold
 --     keyline; the foods after it are dimmed
 --   * its button is a state: EQUIPPED (a flat pill), EQUIP, the price when
@@ -18,13 +22,16 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
+local Foods = require(ReplicatedStorage.Shared.Core.Foods)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
+local FoodLook = require(script.Parent.Parent.FoodLook)
 local Screens = require(script.Parent.Parent.Screens)
 local Theme = require(script.Parent.Parent.Theme)
 local Viewports = require(script.Parent.Parent.Viewports)
 local Types = require(script.Parent.Types)
 
 local MAPS = Lookup.of(Config)
+-- the four flavour filters of the old shop are hidden (flavours are gone): only All is left
 local FILTERS = { "All", "Savory", "Sweet", "Spicy", "Seafood" }
 
 local FoodShop = { name = "FoodShop" } :: Types.Page
@@ -40,24 +47,28 @@ local nextId: string? = nil -- the first food the player does not own
 
 local function press(foodId: string)
 	local state = ctx.state()
-	if not state or state.food == foodId then
+	if not state then
 		return
 	end
 	if state.foods[foodId] then
-		ctx.fire("FoodEquip", foodId)
+		-- owned: pin it; the pinned one again = back to auto-pick
+		local pinned = state.autoFood == false and state.food == foodId
+		ctx.fire("FoodEquip", if pinned then "auto" else foodId)
 	else
 		ctx.fire("ShopBuy", "food", foodId)
 	end
 end
 
 function FoodShop.render(state: any)
-	-- how many heroes not yet in the index crave each flavour
+	-- how many heroes not yet in the index love each dish
 	local craving: { [string]: number } = {}
 	for _, character in Config.Characters do
 		if not state.index[character.Id] then
-			craving[character.Craves] = (craving[character.Craves] or 0) + 1
+			craving[character.Favourite] = (craving[character.Favourite] or 0) + 1
 		end
 	end
+	local best = state.bestZone or 1
+	local inUse, target = FoodLook.current(state)
 	-- the first food the player does not own is the next one to buy
 	nextId = nil
 	for _, food in Config.Foods do
@@ -77,15 +88,12 @@ function FoodShop.render(state: any)
 		local face = Screens.frame(card, "Face")
 		local stroke = face:FindFirstChildOfClass("UIStroke")
 		if isNew then
-			Screens.label(card, "TierText").Text = `T{food.Tier}`
+			Screens.label(card, "TierText").Text = `W{food.Zone}`
 			Screens.label(card, "FoodName").Text = food.Name
-			Screens.label(card, "PowerText").Text = "POWER " .. Format.mult(food.PowerMult)
-			Screens.label(card, "LuckText").Text = "LUCK " .. Format.mult(food.Luck)
-			Screens.setIcon(Screens.image(card, "FlavorIcon"), "IconFlavor" .. food.Flavor)
-			Screens.tint(
-				Screens.frame(card, "ArtTile"),
-				Theme.FLAVOR_TILE[food.Flavor] or Theme.WHITE
-			)
+			Screens.label(card, "PowerText").Text = food.Role:upper()
+			Screens.image(card, "FlavorIcon").Visible = false
+			Screens.image(card, "PowerIcon").Visible = false
+			Screens.tint(Screens.frame(card, "ArtTile"), FoodLook.tile(food))
 			Viewports.food(Screens.viewport(card, "Viewport"), foodId)
 			if stroke and not keyline then
 				keyline = stroke.Color
@@ -94,7 +102,13 @@ function FoodShop.render(state: any)
 				press(foodId)
 			end)
 		end
-		card.Visible = filter == "All" or food.Flavor == filter
+		-- the worlds reached, and the next one as a teaser
+		card.Visible = food.Zone <= best + 1
+		-- its luck where the next throw goes: half past its own world
+		local stale = Foods.isStale(food, target)
+		Screens.label(card, "LuckText").Text = "LUCK "
+			.. Format.mult(Foods.luckAt(Config, food, target))
+			.. (if stale then " (HALF)" else "")
 
 		local isNext = foodId == nextId
 		Screens.frame(card, "NextTagCell").Visible = isNext
@@ -106,18 +120,21 @@ function FoodShop.render(state: any)
 			pastNext = true
 		end
 
-		local waiting = craving[food.Flavor] or 0
+		local waiting = craving[food.Id] or 0
 		Screens.frame(card, "CravePill").Visible = waiting > 0
 		Screens.label(card, "CraveHint").Text = if waiting == 1
 			then "+1 hero"
 			else `+{waiting} heroes`
 
 		local price = Screens.label(buy, "PriceText")
-		if state.food == foodId then
-			price.Text = "EQUIPPED"
+		if state.foods[foodId] and state.autoFood == false and state.food == foodId then
+			price.Text = "PINNED"
+			Screens.setButtonState(buy, "state")
+		elseif state.foods[foodId] and inUse and inUse.Id == foodId then
+			price.Text = "IN USE"
 			Screens.setButtonState(buy, "state")
 		elseif state.foods[foodId] then
-			price.Text = "EQUIP"
+			price.Text = "PIN"
 			Screens.setButtonState(buy, "neutral", nil, "IconTick")
 		else
 			-- a food opens with its zone: until then the button names the zone
@@ -184,6 +201,14 @@ function FoodShop.init(context: Types.Ctx)
 	end
 	for _, name in FILTERS do
 		local button = Screens.button(gui, "Filter" .. name)
+		-- the flavour filters went with the flavours (plan 13): the whole row is hidden
+		local row = button.Parent and button.Parent.Parent
+		if row and row:IsA("GuiObject") then
+			row.Visible = false
+		end
+		if name ~= "All" then
+			continue
+		end
 		filterButtons[name] = button
 		button.Activated:Connect(function()
 			filter = name

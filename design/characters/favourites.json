@@ -1,0 +1,21 @@
+{
+  "_what": "Iconic favourite dishes (plan 13). hero id -> S (Snack), M (Meal) or G (Signature) of the hero's own world. Every hero not listed gets one by tools/gen_characters.py, spread over the three dishes inside its world and rarity.",
+  "roles": {
+    "fox_ninja": "G", "crow_illusionist": "M",
+    "flame_pillar": "G", "boar_mask_brawler": "M",
+    "straw_hat_rookie": "M", "sun_god_captain": "M", "shadow_pirate_captain": "G",
+    "frostflame_hero": "S", "emerald_hero": "M", "blast_prodigy": "G",
+    "egoist_striker": "S", "king_striker": "G",
+    "anti_magic_knight": "S",
+    "lightning_assassin": "S",
+    "return_runner": "S", "dual_blade_gamer": "G",
+    "chainsaw_kid": "S", "lucky_cat_mascot": "G",
+    "pompadour_guardian": "G",
+    "notebook_mastermind": "S", "apple_reaper": "M",
+    "bald_cape_hero": "M", "strongest_bluffer": "G",
+    "substitute_reaper": "M",
+    "shadow_monarch": "G",
+    "limitless_teacher": "G", "cursed_vessel": "M",
+    "destroyer_cat": "M", "beast_scholar": "S", "proud_prince": "G"
+  }
+}

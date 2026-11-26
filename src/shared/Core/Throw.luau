@@ -1,7 +1,8 @@
 --!strict
 -- Throw - where a throw lands. Pure.
 --
--- full power = Power x food.PowerMult. It decides the FURTHEST zone a player
+-- full power = the player's Power (food gives luck only, plan 13). It decides
+-- the FURTHEST zone a player
 -- can reach; a zone whose RebirthReq they have not earned is SEALED, and a
 -- throw never passes a sealed gate.
 --
@@ -19,8 +20,8 @@ function Throw.validCharge(cfgThrow: any, charge: any): boolean
 	return charge >= cfgThrow.MinCharge and charge <= 1
 end
 
-function Throw.effectivePower(power: number, foodPowerMult: number, charge: number): number
-	return power * foodPowerMult * charge
+function Throw.effectivePower(power: number, charge: number): number
+	return power * charge
 end
 
 --- 1-based index of the furthest zone whose gate `eff` meets, ignoring seals.

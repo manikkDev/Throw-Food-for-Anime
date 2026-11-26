@@ -319,6 +319,16 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `economy-v2` = place version 903. Not published: that needs the owner's word (and Game Settings max players 5). Phones are landscape-only (`init.client.luau` +
   `StarterGui.ScreenOrientation` LandscapeSensor). On the stage the HUD is hidden: anything the player must know
   there goes through a toast from ThrowController (`_sealHint` is the example), and a toast holds ~48 characters.
+- FOOD AND TRAINING V2 (plan `design/plan/13-food-and-training-v2.md`, owner approved 2026-11-26; build log in its
+  section 11; phase A = rules and wiring is built, phases B to F = art, grounds, playtest are not). Numbers:
+  `tools/economy/econ_v3.py` (`gen`, `apply`, `check` = the pacing gate, `cadence`, `table`), then gen_characters.py,
+  gen_config.py, gate.py. Rules: 51 foods = 3 per world (Snack, Meal, Signature); food gives LUCK only (reach = Power);
+  a food counts half in a world later than its own (`Core/Foods`); the throw auto-picks the best owned food for the
+  landing world unless the player pinned one (`profile.autoFood`); each hero has a `Favourite` dish (not a flavour;
+  iconic pairs in `design/characters/favourites.json`). Training: 57 rows = 19 tiers x 3 levels (`Model` = the tier's
+  template); `Core/Beat` grades one tap per jittered beat (Perfect / Good), Focus 40 = an 8 s awakening; leaving it
+  running is x1. Client: `Ui/FoodLook` is the one place that says which food is thrown and how it is drawn (foods
+  without their own model borrow an old one until phase B). Saves: `Profiles_v3` / `Profiles_Dev_v3`.
 - Driving a playtest over MCP: move the character on the SERVER datamodel (a client-side teleport does not
   replicate; the throw is then refused "not on own throw pad", printed only with workspace attribute `TFADebug`),
   then fire the remotes from the Client datamodel in a `task.spawn` and log into a StringValue (output from a

@@ -28,6 +28,7 @@ local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 
 local Ui = script.Parent.Parent.Ui
 local DevPanel = require(Ui.DevPanel)
+local FoodLook = require(Ui.FoodLook)
 local Screens = require(Ui.Screens)
 local Celebrate = require(script.Parent.Parent.Ui.Celebrate)
 local Types = require(Ui.Pages.Types)
@@ -171,7 +172,7 @@ function MenuController:_refreshBadges()
 			flags.BtnShop = state.yen >= food.Cost
 			if flags.BtnShop and not quiet then
 				hud:Notice(notice, {
-					icon = "Food_" .. food.Id,
+					icon = FoodLook.iconKey(food.Id),
 					title = "NEW FOOD!",
 					body = `You can buy {food.Name}`,
 					button = "SHOP",
@@ -183,9 +184,7 @@ function MenuController:_refreshBadges()
 		end
 		hud:ClearNotice(notice)
 	end
-	local equipped = MAPS.food[state.food]
-	local powerMult = if equipped then equipped.PowerMult else 1
-	flags.BtnRebirth = Progress.canRebirth(Config, state.rebirth, state.power, state.yen, powerMult)
+	flags.BtnRebirth = Progress.canRebirth(Config, state.rebirth, state.power, state.yen)
 	local nextTier = Progress.nextRebirth(Config, state.rebirth)
 	if flags.BtnRebirth and not quiet then
 		hud:Notice("rebirth:" .. state.rebirth, {
@@ -198,11 +197,7 @@ function MenuController:_refreshBadges()
 			buttonIcon = "IconRebirth",
 			page = "Rebirth",
 		})
-	elseif
-		nextTier
-		and not quiet
-		and Throw.atSeal(Config.Zones, state.power * powerMult, state.rebirth)
-	then
+	elseif nextTier and not quiet and Throw.atSeal(Config.Zones, state.power, state.rebirth) then
 		-- the throw reaches the sealed gate but the fee is short
 		hud:Notice("seal:" .. state.rebirth, {
 			icon = "IconRebirth",

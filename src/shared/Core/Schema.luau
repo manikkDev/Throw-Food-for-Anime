@@ -24,6 +24,8 @@ export type Profile = {
 	rebirth: number,
 	foods: { [string]: boolean },
 	food: string,
+	autoFood: boolean,
+	cookbook: { [string]: boolean },
 	gear: number,
 	slots: number,
 	bonusSlots: number,
@@ -65,7 +67,11 @@ function Schema.default(cfg: any): Profile
 		aim = 0,
 		rebirth = 0,
 		foods = { [starter] = true },
+		-- the pinned food; with autoFood on, every throw uses the best owned food for its world
 		food = starter,
+		autoFood = true,
+		-- worlds whose three dishes are all owned and rewarded (zone id -> true)
+		cookbook = {},
 		gear = 1,
 		slots = cfg.Plot.StartSlots,
 		bonusSlots = 0,
@@ -105,6 +111,7 @@ end
 -- because their keys are data (hero uids, hero ids, codes), not fields.
 local OPAQUE = {
 	foods = true,
+	cookbook = true,
 	heroes = true,
 	index = true,
 	zonesClaimed = true,

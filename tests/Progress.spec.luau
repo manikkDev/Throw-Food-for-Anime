@@ -18,10 +18,20 @@ return {
 		end
 		for i = 2, #GEAR do
 			assert(GEAR[i].PowerPerRep > GEAR[i - 1].PowerPerRep, `gear {i} is not stronger`)
-			assert(GEAR[i].Cost > GEAR[i - 1].Cost, `gear {i} is not dearer`)
+			-- inside a tier each level is dearer; a tier's first level is dearer than the
+			-- last tier's first level (it may undercut that tier's level III: a new world's
+			-- first upgrade is meant to be an easy buy)
+			if GEAR[i].Tier == GEAR[i - 1].Tier then
+				assert(GEAR[i].Cost > GEAR[i - 1].Cost, `gear {i} is not dearer`)
+			elseif i > 3 then
+				assert(GEAR[i].Cost > GEAR[i - 3].Cost, `gear {i} is not dearer than tier before`)
+			end
 		end
 		for i = 2, #C.Foods do
-			assert(C.Foods[i].Cost > C.Foods[i - 1].Cost, `food {i} is not dearer`)
+			-- (prices inside a world: Foods.spec; a new world's snack may undercut the last signature)
+			if i > 3 then
+				assert(C.Foods[i].Cost > C.Foods[i - 3].Cost, `food {i} is not dearer`)
+			end
 			assert(C.Foods[i].Zone >= C.Foods[i - 1].Zone)
 		end
 	end,
@@ -94,9 +104,12 @@ return {
 
 	-- --------------------------------------------------------------- unlocks
 	["gear, food and slots unlock by the furthest zone reached"] = function()
-		assert(Progress.lock(GEAR[2], 1, 0) ~= nil, "zone-two gear is locked in zone one")
-		assert((Progress.lock(GEAR[2], 1, 0) :: any).zone == 2)
-		assert(Progress.lock(GEAR[2], 2, 0) == nil)
+		-- three levels per tier (plan 13): the fourth row is the first of zone two
+		assert(GEAR[3].Zone == 1 and GEAR[4].Zone == 2)
+		assert(Progress.lock(GEAR[3], 1, 0) == nil, "a tier's levels open with its zone")
+		assert(Progress.lock(GEAR[4], 1, 0) ~= nil, "zone-two gear is locked in zone one")
+		assert((Progress.lock(GEAR[4], 1, 0) :: any).zone == 2)
+		assert(Progress.lock(GEAR[4], 2, 0) == nil)
 		assert(Progress.lock(C.Foods[1], 1, 0) == nil, "the starter food is never locked")
 		local last = C.Foods[#C.Foods]
 		assert(Progress.lock(last, last.Zone - 1, 99) ~= nil)
@@ -134,8 +147,6 @@ return {
 		assert(not Progress.canRebirth(C, 0, t.PowerReq, t.YenCost - 1))
 		assert(not Progress.canRebirth(C, 0, t.PowerReq - 1, t.YenCost))
 		assert(Progress.canRebirth(C, 0, t.PowerReq, t.YenCost))
-		-- the food carries the throw: half the Power with a x2 food reaches the gate
-		assert(Progress.canRebirth(C, 0, t.PowerReq / 2, t.YenCost, 2))
 		assert(
 			not Progress.canRebirth(C, #C.Rebirth.Tiers, 1e300, 1e300),
 			"the last tier is the cap"
@@ -148,8 +159,8 @@ return {
 		profile.power = 9e8
 		profile.powerRecord = 9e8
 		profile.bestZone = 3
-		profile.foods.ramen = true
-		profile.food = "ramen"
+		profile.foods[C.Foods[3].Id] = true
+		profile.food = C.Foods[3].Id
 		profile.gear = 3
 		profile.slots = 12
 		profile.heroes = { h1 = { id = "x", stars = 0, slot = 1 } }
@@ -161,7 +172,11 @@ return {
 		assert(profile.away.yen == 0, "unclaimed offline pay must not survive a rebirth")
 		assert(profile.power == C.Training.StartPower)
 		assert(profile.powerRecord == 9e8, "the record is what muscle memory climbs back to")
-		assert(profile.gear == 3 and profile.food == "ramen" and profile.foods.ramen == true)
+		assert(
+			profile.gear == 3
+				and profile.food == C.Foods[3].Id
+				and profile.foods[C.Foods[3].Id] == true
+		)
 		assert(profile.slots == 12 and profile.heroes.h1 ~= nil and profile.index.x ~= nil)
 		assert(profile.bestZone == 3, "unlocks are kept")
 		assert(profile.luckyThrows == 4 + C.Rebirth.Tiers[1].LuckyThrows)

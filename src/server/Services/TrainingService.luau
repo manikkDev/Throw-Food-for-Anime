@@ -8,9 +8,11 @@
 --     and LOCKED there (root anchored, WalkSpeed 0, no jump) until Stop. The client cannot walk
 --     off mid-rep or punch the air from across the court (owner's review, 2026-11-15).
 --   * reps run on the SERVER's clock (RepSeconds); the client only plays the clip.
---   * the timing game: a tap (TrainTap) inside the last PerfectWindow of a rep's cycle (plus a
---     small latency allowance) makes that rep PERFECT: + PerfectBonus of its Power. One per rep,
---     taps rate-limited, all judged here against the session's own start time.
+--   * the game (plan 13, Core/Beat): beats come at jittered moments from the session's seed. One
+--     tap (TrainTap) per beat is graded here against the session's own clock: PERFECT / GOOD add
+--     to that beat's reps and fill FOCUS; a full bar AWAKENS the hero for a few seconds (every rep
+--     an automatic perfect, x AwakeningMult), during which taps do not count. A player who never
+--     taps still gets every rep: leaving it running is the x1 floor.
 --   * Stop(player) (the Exit button, a death, leaving) restores movement.
 
 local Players = game:GetService("Players")
@@ -19,25 +21,30 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
-local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
+local Beat = require(ReplicatedStorage.Shared.Core.Beat)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local World = require(ReplicatedStorage.Shared.Core.World)
 local Guard = require(script.Parent.Parent.Logic.Guard)
 
-local MAPS = Lookup.of(Config)
-
 local REP = Config.Training.RepSeconds
 local COUNT = Config.Server.PlotCount
--- a tap this soon AFTER a rep boundary still counts for the rep that just ended (network lag)
-local LATE_ALLOWANCE = 0.12
+local BEAT = Config.Training.Beat
+-- how far a tap may be off because of the network: added to both grading windows
+local LAG_ALLOWANCE = 0.08
 
 type Session = {
 	station: number,
 	start: number, -- os.clock() of the start: reps and the timing game run from it
 	startServer: number, -- the same instant as workspace:GetServerTimeNow(), for the client's ring
 	last: number,
-	perfectRep: number, -- the last rep index that was already made perfect
+	seed: number, -- the beats' jitter (Beat.moment)
+	beat: number, -- seconds between beats
+	judged: number, -- the last beat that was graded
+	lastTap: number,
+	focus: number,
+	awakeUntil: number, -- os.clock() the awakening ends at (0 = not awake)
+	awakeServer: number, -- the same instant on the shared server clock, for the client
 	saved: { walk: number, jump: number, jumpPower: number }?,
 }
 
@@ -56,12 +63,20 @@ function TrainingService:IsTraining(player: Player): boolean
 end
 
 --- The state the client needs for the session (nil when not training).
-function TrainingService:View(player: Player): { station: number, start: number, rep: number }?
+function TrainingService:View(player: Player): { [string]: number }?
 	local session = self._sessions[player]
 	if not session then
 		return nil
 	end
-	return { station = session.station, start = session.startServer, rep = REP }
+	return {
+		station = session.station,
+		start = session.startServer,
+		rep = REP,
+		seed = session.seed,
+		beat = session.beat,
+		focus = session.focus,
+		awake = session.awakeServer,
+	}
 end
 
 local function parts(player: Player): (Humanoid?, BasePart?)
@@ -138,7 +153,13 @@ function TrainingService:Start(player: Player, station: number)
 		start = now,
 		startServer = workspace:GetServerTimeNow(),
 		last = now,
-		perfectRep = -1,
+		seed = math.random(1, 100000),
+		beat = REP,
+		judged = 0,
+		lastTap = 0,
+		focus = 0,
+		awakeUntil = 0,
+		awakeServer = 0,
 		saved = saved,
 	}
 	self._state:MarkDirty(player)
@@ -220,9 +241,8 @@ function TrainingService:AddPower(player: Player, amount: number, memory: boolea
 	else
 		profile.power += amount
 	end
-	local food = MAPS.food[profile.food]
-	local full = profile.power * (if food then food.PowerMult else 1)
-	local newZone = Progress.touch(profile, Throw.reach(Config.Zones, full, profile.rebirth))
+	local newZone =
+		Progress.touch(profile, Throw.reach(Config.Zones, profile.power, profile.rebirth))
 	local after = Progress.rank(Config, profile.power)
 	if after.index > before or newZone then
 		-- the client's RANK UP banner celebrates it (owner's review 3: one alert, not two);
@@ -253,28 +273,40 @@ function TrainingService:GrantMinutes(player: Player, minutes: number): number
 	return power
 end
 
--- the timing game: is this tap inside the perfect window of a rep not yet made perfect?
+-- the game: grade this tap against the nearest beat. One grade per beat; a tap that misses still
+-- uses its beat up, so mashing the screen lands on "miss", not on a lucky "good".
 function TrainingService:_tap(player: Player)
 	local session = self._sessions[player]
 	local profile = self._data:Get(player)
 	if not session or not profile then
 		return
 	end
-	local elapsed = os.clock() - session.start
-	local rep = math.floor(elapsed / REP)
-	local phase = (elapsed - rep * REP) / REP
-	local window = Config.Training.PerfectWindow
-	local target: number? = nil
-	if phase >= 1 - window then
-		target = rep
-	elseif phase * REP <= LATE_ALLOWANCE then
-		target = rep - 1
-	end
-	if target == nil or target <= session.perfectRep or target < 0 then
+	local now = os.clock()
+	if now < session.awakeUntil or now - session.lastTap < BEAT.MinTapGap then
 		return
 	end
-	session.perfectRep = target
-	self:AddPower(player, self:_perRep(player, profile) * Config.Training.PerfectBonus, true)
+	session.lastTap = now
+	local elapsed = now - session.start
+	local n = Beat.nearest(session.beat, elapsed, session.seed)
+	if n <= session.judged then
+		return
+	end
+	session.judged = n
+	local gap = elapsed - Beat.moment(session.beat, n, session.seed)
+	local grade = Beat.grade(BEAT, gap, LAG_ALLOWANCE)
+	local mult, focus = Beat.reward(BEAT, grade)
+	if mult > 1 then
+		-- the reps themselves are paid by the clock: this is the bonus on the beat's reps
+		local reps = session.beat / REP
+		self:AddPower(player, self:_perRep(player, profile) * reps * (mult - 1), true)
+	end
+	session.focus += focus
+	if session.focus >= BEAT.FocusFull then
+		session.focus = 0
+		session.awakeUntil = now + BEAT.AwakeningSeconds
+		session.awakeServer = workspace:GetServerTimeNow() + BEAT.AwakeningSeconds
+	end
+	self._tapRemote:FireClient(player, grade, session.focus, session.awakeServer)
 end
 
 function TrainingService:KnitStart()
@@ -293,7 +325,7 @@ function TrainingService:KnitStart()
 		end
 	end)
 	self._tapRemote.OnServerEvent:Connect(function(player: Player)
-		local rate = Config.Training.MaxTapsPerSecond
+		local rate = Config.Training.MaxTapsPerSecond * 2
 		if not Guard.allow(player, "TrainTap", rate, rate * 2) then
 			return
 		end
@@ -323,7 +355,8 @@ function TrainingService:KnitStart()
 				local reps = math.floor((now - session.last) / REP)
 				if reps > 0 then
 					session.last += reps * REP
-					self:AddPower(player, reps * self:_perRep(player, profile), true)
+					local mult = if now < session.awakeUntil then Beat.awakenedMult(BEAT) else 1
+					self:AddPower(player, reps * self:_perRep(player, profile) * mult, true)
 				end
 			end
 		end

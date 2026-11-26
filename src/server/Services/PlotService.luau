@@ -173,7 +173,7 @@ local function gearTemplate(tier: number): Model?
 	if not row or not folder then
 		return nil
 	end
-	local slug = "Equip_" .. string.gsub(string.lower(row.Name), "%s+", "_")
+	local slug = "Equip_" .. string.gsub(string.lower(row.Model or row.Name), "%s+", "_")
 	local found = folder:FindFirstChild(slug)
 	return if found and found:IsA("Model") then found else nil
 end
@@ -188,7 +188,10 @@ function PlotService:_showGear(model: Instance, tier: number)
 	for i, row in Config.Training.Stations do
 		if string.sub(row.Prop, 1, 6) == "Equip_" then
 			for t, eq in Config.Training.Equipment do
-				if "Equip_" .. string.gsub(string.lower(eq.Name), "%s+", "_") == row.Prop then
+				if
+					"Equip_" .. string.gsub(string.lower(eq.Model or eq.Name), "%s+", "_")
+					== row.Prop
+				then
 					self:_showGearAt(model, "Target" .. i, t)
 				end
 			end

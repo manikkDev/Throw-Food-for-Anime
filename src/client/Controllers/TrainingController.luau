@@ -25,6 +25,7 @@ local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
+local Beat = require(ReplicatedStorage.Shared.Core.Beat)
 local World = require(ReplicatedStorage.Shared.Core.World)
 local Motion = require(script.Parent.Parent.Fx.Motion)
 local Vfx = require(script.Parent.Parent.Fx.Vfx)
@@ -35,7 +36,7 @@ local W = Config.World
 local TR = Config.Training
 local COUNT = Config.Server.PlotCount
 local player = Players.LocalPlayer
-local LATE = 0.12 -- the same latency allowance the server gives
+local BEAT = TR.Beat
 
 -- per station kind: the marker(s) that are a contact, the sound, where the hit effect goes
 local KIND = {
@@ -52,7 +53,11 @@ type Live = {
 	track: AnimationTrack?,
 	marks: { RBXScriptConnection },
 	weights: Instance?,
-	judged: number, -- the last rep cycle a tap was judged in
+	seed: number,
+	beat: number, -- seconds between beats
+	focus: number,
+	awake: number, -- server time the awakening ends at
+	judged: number, -- the last beat a tap was judged for
 	combo: number,
 }
 
@@ -245,8 +250,12 @@ function TrainingController:_begin(session: any)
 		station = session.station,
 		start = session.start,
 		rep = session.rep,
+		seed = session.seed or 1,
+		beat = session.beat or session.rep,
+		focus = session.focus or 0,
+		awake = session.awake or 0,
 		marks = {},
-		judged = -1,
+		judged = 0,
 		combo = 0,
 	}
 	self._live = live
@@ -351,66 +360,98 @@ function TrainingController:_end()
 	end
 end
 
--- the phase (0..1) of the current rep on the server's clock, and the rep's index
-function TrainingController:_phase(live: Live): (number, number)
+-- Where the session is on the server's clock: the beat coming up (or just passed), the seconds
+-- to its moment (negative = before it), and how far the ring has closed on it (0..1).
+function TrainingController:_beat(live: Live): (number, number, number)
 	local elapsed = self._state:ServerNow() - live.start
-	local rep = math.floor(elapsed / live.rep)
-	return (elapsed - rep * live.rep) / live.rep, rep
+	local n = Beat.nearest(live.beat, elapsed, live.seed)
+	local moment = Beat.moment(live.beat, n, live.seed)
+	if elapsed - moment > BEAT.GoodWindow then
+		-- that one is over: the ring is already closing on the next
+		n += 1
+		moment = Beat.moment(live.beat, n, live.seed)
+	end
+	local before = Beat.moment(live.beat, n - 1, live.seed)
+	local span = math.max(moment - before, 1e-3)
+	return n, elapsed - moment, math.clamp((elapsed - before) / span, 0, 1.15)
+end
+
+function TrainingController:_awake(live: Live): boolean
+	return self._state:ServerNow() < live.awake
+end
+
+local function flash(text: string, hold: number)
+	local label = find("PerfectLabel")
+	if label and label:IsA("TextLabel") then
+		label.Text = text
+		label.Visible = true
+		Screens.pop(label, 1.3)
+		task.delay(hold, function()
+			if label.Text == text then
+				label.Visible = false
+			end
+		end)
+	end
 end
 
 function TrainingController:_tap()
 	local live = self._live
-	if not live then
+	if not live or self:_awake(live) then
 		return
 	end
-	local phase, rep = self:_phase(live)
-	local target: number? = nil
-	if phase >= 1 - TR.PerfectWindow then
-		target = rep
-	elseif phase * live.rep <= LATE then
-		target = rep - 1
+	local n, gap = self:_beat(live)
+	if n <= live.judged then
+		return
 	end
 	if self._tapRemote then
 		self._tapRemote:FireServer()
 	end
-	local perfect = find("PerfectLabel")
+	-- shown at once from the same rule the server grades by; the server's answer (the
+	-- Focus bar, the awakening) follows through TrainTap
+	live.judged = n
+	local grade = Beat.grade(BEAT, gap)
 	local combo = find("Combo")
-	if target and target > live.judged then
-		live.judged = target
-		live.combo += 1
-		Sound:Play("perfect_ding", nil, { pitchVary = 0.04 })
-		if perfect and perfect:IsA("TextLabel") then
-			perfect.Text = "PERFECT!"
-			perfect.Visible = true
-			Screens.pop(perfect, 1.3)
-			task.delay(0.5, function()
-				if perfect.Text == "PERFECT!" then
-					perfect.Visible = false
-				end
-			end)
-		end
-		if combo and combo:IsA("TextLabel") and live.combo >= 2 then
-			combo.Text = `x{live.combo} COMBO`
-			combo.Visible = true
-			Screens.pop(combo, 1.2)
-		end
-		local _, _, root = character()
-		if root then
-			Vfx.play("PerfectThrow_Flash", root.Position + Vector3.new(0, 2, 0), { scale = 0.6 })
-		end
-	elseif target == nil then
+	if grade == "miss" then
 		live.combo = 0
 		if combo then
 			combo.Visible = false
 		end
-		if perfect and perfect:IsA("TextLabel") then
-			perfect.Text = if phase < 0.5 then "TOO EARLY" else "ALMOST!"
-			perfect.Visible = true
-			task.delay(0.35, function()
-				if perfect.Text ~= "PERFECT!" then
-					perfect.Visible = false
-				end
-			end)
+		flash(if gap < 0 then "TOO EARLY" else "TOO LATE", 0.35)
+		return
+	end
+	live.combo += 1
+	Sound:Play(
+		"perfect_ding",
+		nil,
+		{ pitchVary = 0.04, volume = if grade == "perfect" then 1 else 0.6 }
+	)
+	flash(if grade == "perfect" then "PERFECT!" else "GOOD", 0.5)
+	if combo and combo:IsA("TextLabel") and live.combo >= 2 then
+		combo.Text = `x{live.combo} COMBO`
+		combo.Visible = true
+		Screens.pop(combo, 1.2)
+	end
+	local _, _, root = character()
+	if root and grade == "perfect" then
+		Vfx.play("PerfectThrow_Flash", root.Position + Vector3.new(0, 2, 0), { scale = 0.6 })
+	end
+end
+
+-- the server's grade of a tap: the Focus it left and when an awakening ends
+function TrainingController:_graded(focus: number, awake: number)
+	local live = self._live
+	if not live then
+		return
+	end
+	live.focus = focus
+	if awake > live.awake then
+		live.awake = awake
+		live.combo = 0
+		flash("AWAKENING!", BEAT.AwakeningSeconds)
+		Sound:Play("rank_up", nil, {})
+		local _, _, root = character()
+		if root then
+			Vfx.play("PerfectThrow_Flash", root.Position + Vector3.new(0, 2, 0), { scale = 1.6 })
 		end
 	end
 end
@@ -420,25 +461,45 @@ function TrainingController:_frame()
 	if not live then
 		return
 	end
-	local phase = self:_phase(live)
+	local awake = self:_awake(live)
+	local _, gap, closing = self:_beat(live)
 	local ring = find("TimingRing")
 	local shrink = ring and ring:FindFirstChild("Shrink")
 	if ring and shrink and shrink:IsA("GuiObject") then
 		local targetScale = (ring:GetAttribute("TargetScale") or 0.62) :: number
-		local s = 1 - (1 - targetScale) * phase
+		-- awake: the ring rests on the target; else it closes on it at the beat's moment
+		local s = if awake then targetScale else 1 - (1 - targetScale) * math.min(closing, 1)
 		shrink.Size = UDim2.fromScale(s, s)
-		local hot = phase >= 1 - TR.PerfectWindow
 		shrink.BackgroundTransparency = 1
 		local stroke = shrink:FindFirstChildOfClass("UIStroke")
 		if stroke then
-			stroke.Color = if hot then Color3.fromHex("48D687") else Color3.fromHex("FFFFFF")
+			stroke.Color = if awake
+				then Color3.fromHex("FFC93C")
+				elseif math.abs(gap) <= BEAT.PerfectWindow then Color3.fromHex("48D687")
+				else Color3.fromHex("FFFFFF")
 		end
+	end
+	-- Focus: the hint line carries it until the bar of phase D exists
+	local hint = find("TapHint")
+	if hint and hint:IsA("TextLabel") then
+		hint.Text = if awake
+			then "AWAKENED! x" .. tostring(Beat.awakenedMult(BEAT))
+			else `FOCUS {math.floor(live.focus / BEAT.FocusFull * 100 + 0.5)}%   TAP IN THE RING`
 	end
 end
 
 function TrainingController:KnitStart()
 	self._state = Knit.GetController("StateController")
 	self._tapRemote = Net.client("TrainTap")
+	if self._tapRemote then
+		self._tapRemote.OnClientEvent:Connect(
+			function(_grade: unknown, focus: unknown, awake: unknown)
+				if typeof(focus) == "number" and typeof(awake) == "number" then
+					self:_graded(focus, awake)
+				end
+			end
+		)
+	end
 	local exit = Net.client("TrainSet")
 	self._state:Observe(function(state: any)
 		local session = state and state.trainSession

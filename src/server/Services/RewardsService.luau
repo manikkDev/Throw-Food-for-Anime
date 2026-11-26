@@ -54,9 +54,7 @@ end
 -- The first gift of the day is a guaranteed hero from the furthest zone the
 -- player can reach right now.
 function RewardsService:_giftHero(player: Player, profile: any)
-	local food = MAPS.food[profile.food]
-	local full = profile.power * food.PowerMult
-	local zone = Config.Zones[Throw.reach(Config.Zones, full, profile.rebirth)]
+	local zone = Config.Zones[Throw.reach(Config.Zones, profile.power, profile.rebirth)]
 	for _, character in MAPS.zoneCharacters[zone.Id] do
 		if character.Rarity == R.PlaytimeFirstGiftRarity then
 			self._squad:GrantAndShow(player, character.Id, nil, nil, "gift")

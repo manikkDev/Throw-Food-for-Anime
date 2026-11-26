@@ -1,0 +1,27 @@
+{
+  "_what": "Food art (plan 13 phase B). Per food: `size` = longest side in the hand, in studs; `throw` = pitch (one hand), heave (two hands: bowls, plates, feasts) or spin (skewers, flat things); `turn` = degrees [x, y, z] that stand the generated mesh the right way up (the generator lays some models down); `look` = what the model must show (the generator prompt is built from it). Models: Studio generate_mesh -> tools/studio/foods/food_lab.luau (judging row) -> install_foods.luau (templates in ReplicatedStorage.Assets.Foods, raw copies in ServerStorage.StoreAssets.Foods_v2).",
+  "max_triangles": 6000,
+  "foods": {
+    "onigiri": {"size": 1.8, "throw": "pitch", "look": "plump rounded triangle of white rice, nori strip at the bottom, pink plum on top"},
+    "tricolor_dango": {"size": 2.6, "throw": "spin", "turn": [90, 0, 0], "look": "three dumplings on a bamboo stick: pink, white, green"},
+    "legend_ramen": {"size": 2.3, "throw": "heave", "look": "red lacquer bowl with a gold rim pattern, noodles, pork slices, egg half, pink swirl fish cake, nori, chopsticks"},
+    "ohagi": {"size": 2.2, "throw": "pitch", "look": "three oval rice cakes in a row: black sesame, yellow soybean flour, red bean"},
+    "tempura_bowl": {"size": 2.3, "throw": "heave", "look": "blue and white bowl of rice with three golden shrimp tempura, red tails up"},
+    "flame_bento": {"size": 2.6, "throw": "heave", "look": "open black lacquer lunch box with flame patterns outside: rice with a red plum, salmon, omelette, fried chicken, greens"},
+    "sea_takoyaki": {"size": 2.6, "throw": "heave", "look": "boat tray of six octopus balls with sauce, mayonnaise, seaweed and bonito flakes, two picks"},
+    "meat_on_bone": {"size": 2.8, "throw": "pitch", "turn": [-90, 0, 0], "look": "a big round chunk of glazed roasted meat on one white bone handle (the generator painted it pink four times: its texture was redone with generate_texture)"},
+    "swirl_fruit": {"size": 2.2, "throw": "pitch", "look": "round purple fruit covered in spiral swirls, curly green stem"},
+    "cold_soba": {"size": 2.4, "throw": "heave", "look": "square lacquer tray with a bamboo mat, a mound of grey-brown noodles with seaweed strips, a dipping cup"},
+    "hero_katsudon": {"size": 2.4, "throw": "heave", "look": "green bowl with a yellow lightning stripe, rice, sliced golden pork cutlet, egg, peas"},
+    "mapo_tofu": {"size": 2.4, "throw": "heave", "look": "black iron pot of red chili sauce with white tofu cubes and whole red chilies"},
+    "kintsuba": {"size": 1.9, "throw": "pitch", "look": "thick square block of red bean paste in a thin pale grilled skin"},
+    "striker_gyoza": {"size": 2.5, "throw": "heave", "look": "blue plate with six pan-fried crescent dumplings, golden bottoms, a sauce dish"},
+    "rank_one_steak": {"size": 2.8, "throw": "heave", "look": "plate with a thick grilled T-bone steak, butter on top, fries, broccoli"},
+    "tatoes": {"size": 2.3, "throw": "heave", "look": "straw basket of three purple-skinned baked potatoes, one split open"},
+    "clover_cake": {"size": 2.4, "throw": "heave", "look": "round cream cake on a plate with a green four-leaf clover on top, one slice cut out"},
+    "sheep_feast": {"size": 2.9, "throw": "heave", "look": "silver platter piled with roast chicken, pancakes, sausages, cheese, fruit and cotton-ball cream puffs"},
+    "choco_robot": {"size": 2.2, "throw": "pitch", "look": "yellow and red candy box with a toy robot face, chocolate balls spilling out"},
+    "exam_sushi": {"size": 2.7, "throw": "heave", "look": "wooden sushi board with four nigiri (salmon, tuna, shrimp, egg), wasabi and ginger"},
+    "boar_roast": {"size": 2.9, "throw": "heave", "look": "whole golden roast pig on a wooden platter, apple in its mouth, lettuce around"}
+  }
+}

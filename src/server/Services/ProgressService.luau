@@ -70,10 +70,8 @@ function ProgressService:Rebirth(player: Player)
 		self._state:Toast(player, "You are at the highest rebirth", "info")
 		return
 	end
-	-- the throw must reach the sealed gate: Power x the equipped food's PowerMult
-	local food = MAPS.food[profile.food]
-	local powerMult = if food then food.PowerMult else 1
-	if not Progress.canRebirth(Config, profile.rebirth, profile.power, profile.yen, powerMult) then
+	-- the throw must reach the sealed gate: Power alone (food gives luck only)
+	if not Progress.canRebirth(Config, profile.rebirth, profile.power, profile.yen) then
 		self._state:Toast(
 			player,
 			`Rebirth needs a throw of {Format.short(nextTier.PowerReq)} power`

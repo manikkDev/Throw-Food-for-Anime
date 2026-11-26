@@ -44,6 +44,7 @@ local ThrowPose = require(script.Parent.ThrowPose)
 local Vfx = require(script.Parent.Vfx)
 local Sound = require(script.Parent.Parent.Controllers.SoundController)
 local RevealUi = require(script.Parent.Parent.Ui.RevealUi)
+local FoodLook = require(script.Parent.Parent.Ui.FoodLook)
 local Theme = require(script.Parent.Parent.Ui.Theme)
 local Viewports = require(script.Parent.Parent.Ui.Viewports)
 
@@ -67,17 +68,17 @@ local STINGS: { [string]: { role: string, speed: number? } } = {
 	Secret = { role = "reveal_mythic", speed = 0.85 },
 }
 
---- The trail effect for a food: by its tier (1-4, 5-8, 9-12).
+--- The trail effect for a food: by its role (snack, meal, signature dish).
 local function trailFor(foodId: string): (string, Color3?)
 	local food = MAPS.food[foodId]
 	if not food then
 		return "ThrowTrail_Basic", nil
 	end
-	local name = if food.Tier >= 9
+	local name = if food.Role == "Signature"
 		then "ThrowTrail_Epic"
-		elseif food.Tier >= 5 then "ThrowTrail_Hot"
+		elseif food.Role == "Meal" then "ThrowTrail_Hot"
 		else "ThrowTrail_Basic"
-	return name, Theme.FLAVOR[food.Flavor]
+	return name, FoodLook.color(food)
 end
 
 -- The rarities from least to most rare: the suspense escalates through them one step at a time
@@ -424,8 +425,13 @@ function ThrowSequence.play(deps: Deps): boolean
 		pose = thrown
 		local hand = thrown.hand
 		local inHand = stand + Vector3.new(1, 1.5, 1)
+		-- a bowl, a plate or a tray (template attribute Throw = "heave") stays level in the hand: it
+		-- must not tip its soup out as the arm winds up; anything else turns with the hand
+		local carried = ball:FindFirstChildWhichIsA("Model")
+		local level = carried ~= nil and carried:GetAttribute("Throw") == "heave"
 		local flowing = frames(thrown.releaseAt, function(now: number)
-			ball.CFrame = if hand then hand.CFrame * HAND_OFFSET else CFrame.new(inHand)
+			local held = if hand then hand.CFrame * HAND_OFFSET else CFrame.new(inHand)
+			ball.CFrame = if level then CFrame.new(held.Position) else held
 			local u = smooth((now - t0) / math.max(thrown.releaseAt - t0, 0.01))
 			camera.CFrame = sideCam * CFrame.new(0, 0, -1.5 * u)
 		end, function(): boolean

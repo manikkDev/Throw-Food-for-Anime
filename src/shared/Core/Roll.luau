@@ -9,8 +9,8 @@
 -- top of the table. What the bands leave goes to Uncommon and Common
 -- (UncommonShare of it to Uncommon); the least rare band (Rare) always leaves
 -- them CommonFloor of the roll, so a Common stays catchable for the Index.
--- Heroes of one rarity share its chance; a hero that craves the thrown
--- flavour counts CravingWeightMult times inside its rarity.
+-- Heroes of one rarity share its chance; a hero whose FAVOURITE dish is the
+-- thrown food counts CravingWeightMult times inside its rarity (plan 13).
 --
 -- THE SCORE. The "1 in N" on the catch card is rarity odds x mutation odds x
 -- size odds AT BASE ODDS (luck 1): the same catch shows the same number for
@@ -115,13 +115,13 @@ function Roll.rarityChances(
 end
 
 --- Weight and chance of every hero in a zone at `luck`, optionally with a
---- thrown food `flavor` and a rarity `floor`.
+--- thrown food id `foodId` and a rarity `floor`.
 --- `zoneCharacters` is Lookup.of(cfg).zoneCharacters[zoneId].
 function Roll.heroWeights(
 	cfg: any,
 	zoneCharacters: { any },
 	luck: number,
-	flavor: string?,
+	foodId: string?,
 	floor: string?
 ): { HeroWeight }
 	local chances = Roll.rarityChances(cfg, zoneCharacters, luck, floor)
@@ -129,7 +129,7 @@ function Roll.heroWeights(
 	local sharing: { [string]: number } = {}
 	local rows: { HeroWeight } = {}
 	for _, character in zoneCharacters do
-		local weight = if flavor ~= nil and character.Craves == flavor
+		local weight = if foodId ~= nil and character.Favourite == foodId
 			then cfg.Throw.CravingWeightMult
 			else 1
 		sharing[character.Rarity] = (sharing[character.Rarity] or 0) + weight
@@ -234,12 +234,12 @@ function Roll.throw(
 	maps: any,
 	zoneCharacters: { any },
 	luck: number,
-	flavor: string?,
+	foodId: string?,
 	rng: () -> number,
 	mutationMult: number?,
 	floor: string?
 ): Result
-	local rows = Roll.heroWeights(cfg, zoneCharacters, luck, flavor, floor)
+	local rows = Roll.heroWeights(cfg, zoneCharacters, luck, foodId, floor)
 	local hero = Roll.pick(rows, rng())
 	local mutation, pMutation = Roll.variant(cfg.Mutations, luck, rng(), mutationMult or 1)
 	local size, pSize = Roll.variant(cfg.Sizes, luck, rng(), 1)

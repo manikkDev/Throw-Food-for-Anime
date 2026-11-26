@@ -110,8 +110,7 @@ function AdminService:_dev(player: Player, command: string, arg: any): boolean
 	elseif command == "zone" and Guard.integer(arg, 1, #Config.Zones) then
 		-- enough Power to reach zone `arg` with the equipped food (a sealed zone still needs its
 		-- rebirth: use "rebirthnow" first)
-		local food = MAPS.food[profile.food]
-		local need = Config.Zones[arg].PowerReq / (if food then food.PowerMult else 1)
+		local need = Config.Zones[arg].PowerReq
 		self._training:AddPower(player, math.max(0, need * 1.01 - profile.power))
 	elseif command == "rebirthnow" then
 		-- the next rebirth at once: its Power and its fee, then the rebirth itself

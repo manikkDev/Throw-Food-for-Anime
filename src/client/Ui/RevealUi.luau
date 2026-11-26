@@ -15,6 +15,7 @@ local TweenService = game:GetService("TweenService")
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
+local FoodLook = require(script.Parent.FoodLook)
 local Screens = require(script.Parent.Screens)
 local Theme = require(script.Parent.Theme)
 local UiFx = require(script.Parent.UiFx)
@@ -507,15 +508,17 @@ function RevealUi.final(result: any)
 	Screens.frame(card, "MutationTagCell").Visible = mut ~= nil
 	Screens.label(card, "MutationText").Text = if mut then mut:upper() else ""
 	Screens.tint(Screens.frame(card, "MutationTag"), Theme.mutation(mut))
-	local craves = character and (character :: any).Craves
+	-- the hero's favourite dish (plan 13): thrown = "FAVOURITE!", else which dish it loves
+	local craves = character and (character :: any).Favourite
+	local loved = if typeof(craves) == "string" then MAPS.food[craves] else nil
 	local crave = Screens.frame(card, "CraveTagCell")
-	crave.Visible = typeof(craves) == "string"
-	if typeof(craves) == "string" then
+	crave.Visible = loved ~= nil
+	if loved then
 		Screens.label(card, "CraveText").Text = if result.flavorMatch
-			then "CRAVING!"
-			else `CRAVES {craves:upper()}`
-		Screens.setIcon(Screens.image(card, "CraveTagIcon"), "IconFlavor" .. craves)
-		Screens.tint(Screens.frame(card, "CraveTag"), Theme.FLAVOR_TILE[craves] or Theme.PREMIUM)
+			then "FAVOURITE!"
+			else `LOVES {loved.Name:upper()}`
+		Screens.setIcon(Screens.image(card, "CraveTagIcon"), FoodLook.iconKey(loved.Id))
+		Screens.tint(Screens.frame(card, "CraveTag"), FoodLook.tile(loved))
 	end
 	local stars = tonumber(result.stars) or 0
 	for i = 1, 3 do

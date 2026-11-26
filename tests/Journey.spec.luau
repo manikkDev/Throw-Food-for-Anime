@@ -36,12 +36,12 @@ end
 -- one throw, as ThrowService does it; returns the zone it landed in
 local function throw(profile: any, rng: () -> number, charge: number): (number, Roll.Result)
 	local food = M.food[profile.food]
-	local full = profile.power * food.PowerMult
+	local full = profile.power
 	Progress.touch(profile, Throw.reach(Z, full, profile.rebirth))
 	local aim = if profile.aim > 0 then profile.aim else nil
 	local zone, depth = Throw.landing(T, Z, full, profile.rebirth, aim, charge)
 	local luck = Luck.total(C, sources(profile, food, depth))
-	local result = Roll.throw(C, M, M.zoneCharacters[Z[zone].Id], luck, food.Flavor, rng)
+	local result = Roll.throw(C, M, M.zoneCharacters[Z[zone].Id], luck, food.Id, rng)
 	if C.Rarities[result.rarity].Order >= C.Rarities[T.DryStreakResetRarity].Order then
 		profile.dry = 0
 	else
@@ -54,7 +54,6 @@ end
 
 -- training, as TrainingService does it: reps with muscle memory
 local function train(profile: any, reps: number)
-	local food = M.food[profile.food]
 	for _ = 1, reps do
 		local gain = Progress.powerPerRep(C, profile.gear, false, profile.rebirth)
 		if Progress.catchingUp(profile.power, profile.powerRecord) then
@@ -67,7 +66,7 @@ local function train(profile: any, reps: number)
 		else
 			profile.power += gain
 		end
-		Progress.touch(profile, Throw.reach(Z, profile.power * food.PowerMult, profile.rebirth))
+		Progress.touch(profile, Throw.reach(Z, profile.power, profile.rebirth))
 	end
 end
 
@@ -76,7 +75,7 @@ return {
 		local profile = Schema.default(C)
 		local zone = throw(profile, Support.rng(1), 1)
 		assert(zone == 1 and profile.bestZone == 1)
-		assert(Progress.lock(C.Training.Equipment[2], profile.bestZone, profile.rebirth) ~= nil)
+		assert(Progress.lock(C.Training.Equipment[4], profile.bestZone, profile.rebirth) ~= nil)
 		assert(Progress.nextSlotZone(C, profile.slots, profile.bonusSlots) == 2)
 		assert(Income.player(C, M, profile.heroes, {
 			doubleYen = false,
@@ -89,7 +88,7 @@ return {
 		local profile = Schema.default(C)
 		train(profile, math.ceil(Z[2].PowerReq / C.Training.Equipment[1].PowerPerRep) + 1)
 		assert(profile.bestZone == 2, `best zone is {profile.bestZone}`)
-		assert(Progress.lock(C.Training.Equipment[2], profile.bestZone, profile.rebirth) == nil)
+		assert(Progress.lock(C.Training.Equipment[4], profile.bestZone, profile.rebirth) == nil)
 		local zone = throw(profile, Support.rng(2), 1)
 		assert(zone == 2)
 		-- aiming back at zone one works, and is remembered

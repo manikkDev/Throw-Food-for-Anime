@@ -9,7 +9,8 @@ SOURCES
   design/characters/lineup.json   THE TRUTH for gameplay: every hero's zone (1..17) and rarity, and
                                   the premium heroes with how they are sold. Edit this, then run me.
   design/characters/roster.json   id -> in-game name (the alias) and the real character (Source).
-  design/game.json                kept per hero if already there: Craves, Idle, Line.
+  design/game.json                kept per hero if already there: Idle, Line.
+  design/characters/favourites.json   iconic favourite dishes; the rest are spread by this tool (plan 13).
 
 A new hero gets a craved flavour and an idle clip by a stable hash of its id, so re-running never
 reshuffles them. Then: python ~/.claude/skills/create-roblox-game/scripts/gen_config.py --dir .
@@ -26,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GAME = ROOT / "design" / "game.json"
 LINEUP = ROOT / "design" / "characters" / "lineup.json"
 ROSTER = ROOT / "design" / "characters" / "roster.json"
+FAVOURITES = ROSTER.parent / "favourites.json"
 HERO_LIST = ROOT / "design" / "characters" / "HERO_LIST_BY_RARITY.md"
 
 RARITY_ORDER = ["Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Secret"]
@@ -83,7 +85,24 @@ def build(doc: dict) -> tuple[list[dict], list[dict]]:
     zones = cfg["Zones"]
     old = {c["Id"]: c for c in cfg["Characters"]}
     old.update({c["Id"]: c for c in cfg["PremiumCharacters"]})
-    flavors = cfg["Flavors"]
+    # favourite dish (plan 13): one of the three foods of the hero's own world. Iconic pairs come
+    # from favourites.json; the others are dealt round inside each world and rarity, so every dish
+    # is somebody's favourite at every rarity that has three heroes.
+    foods_of: dict[int, list[str]] = {}
+    for food in cfg["Foods"]:
+        foods_of.setdefault(food["Zone"], []).append(food["Id"])
+    iconic = json.loads(FAVOURITES.read_text(encoding="utf-8"))["roles"]
+    dealt: dict[tuple[int, str], int] = {}
+
+    def favourite(row: dict) -> str:
+        dishes = foods_of[row["Zone"]]
+        if row["Id"] in iconic:
+            return dishes["SMG".index(iconic[row["Id"]])]
+        key = (row["Zone"], row["Rarity"])
+        n = dealt.get(key, 0)
+        dealt[key] = n + 1
+        return dishes[(n + list(cfg["Rarities"]).index(row["Rarity"])) % len(dishes)]
+
     seen: set[str] = set()
 
     def base(hid: str) -> dict:
@@ -102,7 +121,7 @@ def build(doc: dict) -> tuple[list[dict], list[dict]]:
         if row["Rarity"] not in cfg["Rarities"]:
             raise SystemExit(f"lineup: {row['Id']} rarity {row['Rarity']}")
         out = {"Id": row["Id"], "Name": r["Name"], "Zone": zones[row["Zone"] - 1]["Id"], "Rarity": row["Rarity"],
-               "Craves": prev.get("Craves") or pick(flavors, row["Id"] + ":craves"),
+               "Favourite": favourite(row),
                "Idle": prev.get("Idle") or pick(IDLES, row["Id"] + ":idle")}
         if prev.get("Line"):
             out["Line"] = prev["Line"]

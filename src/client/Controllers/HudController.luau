@@ -34,6 +34,7 @@ local Luck = require(ReplicatedStorage.Shared.Core.Luck)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Vfx = require(script.Parent.Parent.Fx.Vfx)
 local RevealUi = require(script.Parent.Parent.Ui.RevealUi)
+local FoodLook = require(script.Parent.Parent.Ui.FoodLook)
 local Screens = require(script.Parent.Parent.Ui.Screens)
 local HudMoments = require(script.Parent.Parent.Ui.HudMoments)
 local Celebrate = require(script.Parent.Parent.Ui.Celebrate)
@@ -116,8 +117,7 @@ function HudController:CurrentLuck(): (number, { Luck.Line })
 		return 1, {}
 	end
 	local sources = table.clone(state.luck)
-	local food = MAPS.food[state.food]
-	sources.foodLuck = if food then food.Luck else 1
+	sources.foodLuck = FoodLook.luck(state)
 	local env = self._state.Env
 	if env then
 		sources.serverMult = env.luck
@@ -709,19 +709,18 @@ function HudController:_purchases(state: any)
 					self:Reward({
 						title = "NEW FOOD!",
 						name = food.Name,
-						sub = `Luck {Format.mult(food.Luck)}   Power {Format.mult(food.PowerMult)}`,
+						sub = `Luck {Format.mult(food.Luck)} in {Config.Zones[food.Zone].Name}`,
 						chips = {
 							{ text = `Luck {Format.mult(food.Luck)}`, icon = "IconLuck" },
-							{ text = `Power {Format.mult(food.PowerMult)}`, icon = "IconPower" },
 							{
-								text = tostring(food.Flavor):upper(),
-								icon = "IconFlavor" .. tostring(food.Flavor),
-								color = Theme.FLAVOR_TILE[food.Flavor],
+								text = tostring(food.Role):upper(),
+								icon = "IconShop",
+								color = FoodLook.tile(food),
 							},
 						},
-						model = folder and folder:FindFirstChild("Food_" .. food.Id),
-						image = "Food_" .. food.Id,
-						color = Theme.FLAVOR_TILE[food.Flavor] or Theme.CONFIRM,
+						model = folder and folder:FindFirstChild(FoodLook.modelKey(food.Id)),
+						image = FoodLook.iconKey(food.Id),
+						color = FoodLook.tile(food),
 					})
 				end
 			end
@@ -872,7 +871,7 @@ function HudController:_refresh()
 	local labels = self._labels
 	local rank = Progress.rank(Config, state.power)
 	local luck = self:CurrentLuck()
-	local food = MAPS.food[state.food]
+	local food = FoodLook.current(state)
 	labels.YenAmount.Text = Format.short(state.yen)
 	if not self._holdIncome then
 		labels.IncomePerSecond.Text = `+{Format.short(state.income or 0)}/s`
@@ -881,12 +880,15 @@ function HudController:_refresh()
 	labels.RankName.Text = rank.name:upper()
 	labels.LuckAmount.Text = Format.mult(luck)
 	labels.FoodName.Text = if food then food.Name else ""
-	labels.FoodFlavor.Text = if food then food.Flavor:upper() else ""
+	labels.FoodFlavor.Text = if not food
+		then ""
+		elseif state.autoFood == false then "PINNED"
+		else "AUTO"
 	if food and hud:GetAttribute("FoodShown") ~= food.Id then
 		hud:SetAttribute("FoodShown", food.Id)
 		local chip = Screens.button(hud, "FoodChip")
-		Screens.setIcon(Screens.image(chip, "Icon"), "Food_" .. food.Id)
-		Screens.setIcon(Screens.image(chip, "FlavorIcon"), "IconFlavor" .. food.Flavor)
+		Screens.setIcon(Screens.image(chip, "Icon"), FoodLook.iconKey(food.Id))
+		Screens.image(chip, "FlavorIcon").Visible = false
 	end
 end
 

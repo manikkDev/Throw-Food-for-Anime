@@ -52,7 +52,9 @@ local function gearTemplate(tier: number): Model?
 	if not row or not folder then
 		return nil
 	end
-	local found = folder:FindFirstChild("Equip_" .. string.gsub(string.lower(row.Name), "%s+", "_"))
+	local found = folder:FindFirstChild(
+		"Equip_" .. string.gsub(string.lower(row.Model or row.Name), "%s+", "_")
+	)
 	return if found and found:IsA("Model") then found else nil
 end
 
@@ -64,7 +66,8 @@ local function anchorFor(model: Instance, tier: number): BasePart?
 			if string.sub(row.Prop, 1, 6) == "Equip_" then
 				local eq = TR.Equipment[tier]
 				if
-					eq and "Equip_" .. string.gsub(string.lower(eq.Name), "%s+", "_") == row.Prop
+					eq
+					and "Equip_" .. string.gsub(string.lower(eq.Model or eq.Name), "%s+", "_") == row.Prop
 				then
 					name = "Target" .. i
 				end

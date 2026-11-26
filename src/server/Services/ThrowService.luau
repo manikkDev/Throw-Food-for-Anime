@@ -17,6 +17,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
+local Foods = require(ReplicatedStorage.Shared.Core.Foods)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Luck = require(ReplicatedStorage.Shared.Core.Luck)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
@@ -119,8 +120,7 @@ function ThrowService:_handle(
 		self:_placeFirst(player)
 		return self:_refuse(player, "carrying a hero")
 	end
-	local food = MAPS.food[profile.food]
-	if not food or not profile.foods[profile.food] then
+	if not MAPS.food[profile.food] or not profile.foods[profile.food] then
 		return self:_refuse(player, "equipped food not owned")
 	end
 	self._last[player] = now
@@ -131,7 +131,7 @@ function ThrowService:_handle(
 	if typeof(aim) == "number" and aim == aim and aim >= 0 and aim <= #Config.Zones then
 		profile.aim = math.floor(aim :: number)
 	end
-	local full = profile.power * food.PowerMult
+	local full = profile.power
 	Progress.touch(profile, Throw.reach(Config.Zones, full, profile.rebirth))
 	local zoneIndex, depth = Throw.landing(
 		T,
@@ -142,12 +142,14 @@ function ThrowService:_handle(
 		charge :: number
 	)
 	local zone = Config.Zones[zoneIndex]
+	-- the food: the best one owned for this world (auto-pick), or the one the player pinned
+	local food = Foods.forThrow(Config, MAPS.food, profile, zoneIndex) or MAPS.food[profile.food]
 	local perfect = Throw.isPerfect(T, charge :: number)
 	-- a Lucky Throw is never below its floor rarity
 	local floor: string? = if useLucky then T.LuckyFloor else nil
 
 	local sources = self._state:LuckSources(player)
-	sources.foodLuck = food.Luck
+	sources.foodLuck = Foods.luckAt(Config, food, zoneIndex)
 	sources.depth = depth
 	sources.perfect = perfect
 	sources.luckyThrow = useLucky
@@ -161,7 +163,7 @@ function ThrowService:_handle(
 		result = self:_firstCatch(MAPS.zoneCharacters[Config.Zones[1].Id], luck)
 	end
 	if not result then
-		result = Roll.throw(Config, MAPS, zoneCharacters, luck, food.Flavor, function(): number
+		result = Roll.throw(Config, MAPS, zoneCharacters, luck, food.Id, function(): number
 			return self._random:NextNumber()
 		end, self._events:MutationMult(), floor)
 		-- Studio test (AdminService "nextrarity"): re-roll until the forced rarity comes up
@@ -178,7 +180,7 @@ function ThrowService:_handle(
 					MAPS,
 					zoneCharacters,
 					Config.Luck.Max,
-					food.Flavor,
+					food.Id,
 					function(): number
 						return self._random:NextNumber()
 					end,
@@ -266,7 +268,8 @@ function ThrowService:_handle(
 		uid = grant.uid,
 		income = grant.income,
 		soldYen = grant.soldYen,
-		flavorMatch = MAPS.character[roll.id].Craves == food.Flavor,
+		flavorMatch = MAPS.character[roll.id].Favourite == food.Id,
+		food = food.Id,
 	})
 	local seen = {
 		plot = index,

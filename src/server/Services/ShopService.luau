@@ -13,6 +13,7 @@ local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
+local Foods = require(ReplicatedStorage.Shared.Core.Foods)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
@@ -44,11 +45,9 @@ function ShopService:_locked(player: Player, profile: any, row: any, what: strin
 	return true
 end
 
--- a stronger food carries the throw further: it may reach (and unlock) a new zone
+-- the furthest zone the player's Power reaches may be a new one
 function ShopService:_touchReach(profile: any)
-	local food = MAPS.food[profile.food]
-	local full = profile.power * (if food then food.PowerMult else 1)
-	Progress.touch(profile, Throw.reach(Config.Zones, full, profile.rebirth))
+	Progress.touch(profile, Throw.reach(Config.Zones, profile.power, profile.rebirth))
 end
 
 function ShopService:_short(player: Player, cost: number)
@@ -73,6 +72,17 @@ function ShopService:BuyFood(player: Player, id: string)
 	end
 	profile.foods[id] = true
 	profile.food = id
+	-- the cookbook: all three dishes of a world owned pays one Lucky Throw, once
+	local zone = Config.Zones[food.Zone]
+	if
+		zone
+		and not profile.cookbook[zone.Id]
+		and Foods.setComplete(Config, profile.foods, food.Zone)
+	then
+		profile.cookbook[zone.Id] = true
+		profile.luckyThrows += Config.Rewards.CookbookLuckyThrows
+		self._state:Toast(player, `{zone.Name} cookbook complete! +1 Lucky Throw`, "good")
+	end
 	self:_touchReach(profile)
 	self._state:MarkDirty(player)
 end
@@ -92,13 +102,25 @@ function ShopService:BuyNextFood(player: Player)
 	self._state:Toast(player, "You own every food", "info")
 end
 
---- Equip a food the player already owns.
+--- Equip a food the player already owns. Choosing by hand PINS it (auto-pick
+--- off); the id "auto" turns auto-pick back on.
 function ShopService:EquipFood(player: Player, id: string)
 	local profile = self._data:Get(player)
-	if not profile or not profile.foods[id] or profile.food == id then
+	if not profile then
+		return
+	end
+	if id == "auto" then
+		if not profile.autoFood then
+			profile.autoFood = true
+			self._state:MarkDirty(player)
+		end
+		return
+	end
+	if not profile.foods[id] or (profile.food == id and not profile.autoFood) then
 		return
 	end
 	profile.food = id
+	profile.autoFood = false
 	self:_touchReach(profile)
 	self._state:MarkDirty(player)
 end

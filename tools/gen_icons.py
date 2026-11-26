@@ -16,6 +16,8 @@ Sources (written by the roblox-ui skill's upload_icons.py, one per folder):
                                     older maps stay as fallbacks for any key v4 does not carry (FxStarburst,
                                     FxSunburst, pattern_*).
     assets/ui/ids_zone_bg.json      Hero Index zone card backdrops ZoneBg_<zoneId> (tools/ui/zone_backdrops.py).
+    assets/ui/ids_food_icons_v2.json  plan 13 food icons, rendered from the real food models (tools/ui/food_icons_v2.py):
+                                    Food_<id> for the 51 foods. Read last: a food's own icon replaces a stand-in.
     assets/ui/ids_cards.json        card-opening art (tools/ui/cards_art.py): CardBack, CardFrame_<Tier>, CardBanner_<Tier>,
                                     CardFoil, CardWindowShade, CardPortraitBg, CelebrateBackdrop, CelebrateBanner.
 
@@ -35,7 +37,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "src" / "shared" / "Config" / "Icons.luau"
 # Order matters: a later map overrides an earlier one key by key. v4 is last on purpose.
 MAPS = ["ids_icons.json", "ids_food_icons.json", "ids_patterns.json", "ids_icons_big.json", "ids_icons_v4.json", "ids_fx_v4.json",
-        "ids_zone_bg.json", "ids_cards.json"]
+        "ids_zone_bg.json", "ids_cards.json", "ids_food_icons_v2.json"]
 
 BANNER = """--!strict
 -- GENERATED FILE - DO NOT EDIT BY HAND.

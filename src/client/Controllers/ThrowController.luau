@@ -34,6 +34,7 @@ local World = require(ReplicatedStorage.Shared.Core.World)
 local Motion = require(script.Parent.Parent.Fx.Motion)
 local ThrowSequence = require(script.Parent.Parent.Fx.ThrowSequence)
 local Vfx = require(script.Parent.Parent.Fx.Vfx)
+local FoodLook = require(script.Parent.Parent.Ui.FoodLook)
 local Screens = require(script.Parent.Parent.Ui.Screens)
 local Theme = require(script.Parent.Parent.Ui.Theme)
 local Sound = require(script.Parent.SoundController)
@@ -162,9 +163,7 @@ function ThrowController:_reach(): number
 	if not state then
 		return 1
 	end
-	local food = MAPS.food[state.food]
-	local full = state.power * (if food then food.PowerMult else 1)
-	return Throw.reach(Config.Zones, full, state.rebirth or 0)
+	return Throw.reach(Config.Zones, state.power, state.rebirth or 0)
 end
 
 -- step the aim one zone back (-1) or further (+1); the furthest zone is "no aim"
@@ -396,9 +395,13 @@ function ThrowController:_refreshUi()
 	self._autoCell.Visible = state.passes ~= nil and state.passes.AutoThrow == true
 	Screens.setButtonState(self._autoButton, if self._auto then "afford" else "shipped")
 	self._autoState.Text = if self._auto then "ON" else "OFF"
-	if self._gui:GetAttribute("FoodShown") ~= state.food then
-		self._gui:SetAttribute("FoodShown", state.food)
-		Screens.setIcon(self._foodIcon, "Food_" .. state.food)
+	-- the food this throw will use: the best one owned for the aimed zone, or the pinned one
+	local aimed = if self._aim > 0 then math.min(self._aim, self:_reach()) else self:_reach()
+	local thrown = FoodLook.current(state, aimed)
+	local thrownId = if thrown then thrown.Id else state.food
+	if self._gui:GetAttribute("FoodShown") ~= thrownId then
+		self._gui:SetAttribute("FoodShown", thrownId)
+		Screens.setIcon(self._foodIcon, FoodLook.iconKey(thrownId))
 	end
 
 	-- the aim the server remembers, once
@@ -420,9 +423,8 @@ function ThrowController:_tickMeter()
 	end
 	local value = self:_value()
 	self._marker.Position = UDim2.fromScale(0.5, 1 - value)
-	local food = MAPS.food[state.food]
 	local charge = chargeOf(value)
-	local full = state.power * food.PowerMult
+	local full = state.power
 	local tier = state.rebirth or 0
 	local zoneIndex, depth =
 		Throw.landing(T, Config.Zones, full, tier, if self._aim > 0 then self._aim else nil, charge)
@@ -655,13 +657,28 @@ end
 local function foodTemplate(foodId: string): Model?
 	local assets = ReplicatedStorage:FindFirstChild("Assets")
 	local foods = assets and assets:FindFirstChild("Foods")
-	local found = foods and foods:FindFirstChild("Food_" .. foodId)
+	local found = foods and foods:FindFirstChild(FoodLook.modelKey(foodId))
 	return if found and found:IsA("Model") then found else nil
 end
 
 -- Thrown food is drawn bigger than it is in the hand: it has to read from the
 -- far end of a lane on a phone.
 local FLIGHT_SCALE = 1.7
+
+-- How a food turns in flight, by its template's Throw attribute (design/foods.json, plan 13):
+--   heave  a bowl, plate, tray or box flies LEVEL, its top leaning toward the chase camera behind
+--          it, with a slow flat turn: the soup never points at the ground
+--   spin   a skewer or a flat thing flips end over end, like a thrown knife
+--   else   a small solid food tumbles, slowly enough for its texture to be read
+local HEAVE_LEAN = CFrame.Angles(math.rad(-22), 0, 0)
+local function flightTurn(style: any, t: number): CFrame
+	if style == "heave" then
+		return HEAVE_LEAN * CFrame.Angles(0, t * 1.2, 0)
+	elseif style == "spin" then
+		return CFrame.Angles(t * 7, 0, 0)
+	end
+	return CFrame.Angles(t * 2.6, t * 1.5, 0)
+end
 
 local function makeFood(foodId: string): Part
 	local food = MAPS.food[foodId]
@@ -674,7 +691,7 @@ local function makeFood(foodId: string): Part
 	ball.CanQuery = false
 	ball.CanTouch = false
 	ball.Material = Enum.Material.Neon
-	ball.Color = if food then Theme.FLAVOR[food.Flavor] else Color3.new(1, 1, 1)
+	ball.Color = FoodLook.color(food)
 	local trail = Instance.new("Trail")
 	local a0, a1 = Instance.new("Attachment"), Instance.new("Attachment")
 	a0.Position = Vector3.new(0, 0.9, 0)
@@ -710,12 +727,13 @@ local function makeFood(foodId: string): Part
 			end
 		end
 		model.Parent = ball
+		local style = model:GetAttribute("Throw")
 		-- tumble IN FLIGHT only (ThrowSequence sets "Tumble"); landed or in a hand it stays upright
 		-- (owner's review 5: "rotating like a tyre even after landing and in the hand")
 		local spin = RunService.RenderStepped:Connect(function()
 			if ball:GetAttribute("Tumble") == true then
 				local t = os.clock()
-				ball.CFrame = CFrame.new(ball.Position) * CFrame.Angles(t * 5, t * 3, 0)
+				ball.CFrame = CFrame.new(ball.Position) * flightTurn(style, t)
 			end
 		end)
 		ball.Destroying:Once(function()
@@ -741,7 +759,11 @@ function ThrowController:_play(result: any)
 	local ok, err = pcall(function()
 		early = ThrowSequence.play({
 			result = result,
-			foodId = if state then state.food else "",
+			-- the server says which food it threw (auto-pick); the pinned one is the fallback
+			foodId = if typeof(result.food) == "string"
+				then result.food
+				elseif state then state.food
+				else "",
 			plot = if state and state.plot then state.plot else 1,
 			fast = fast,
 			sentAt = self._sentAt,
@@ -828,11 +850,9 @@ function ThrowController:_sealHint(result: any)
 		return
 	end
 	self._sealToldTier = tier
-	local food = MAPS.food[state.food]
-	local powerMult = if food then food.PowerMult else 1
 	local opens = Config.Zones[nextTier.Unseals[1]]
 	local hud = self._hud :: any
-	if Progress.canRebirth(Config, tier, state.power, state.yen, powerMult) then
+	if Progress.canRebirth(Config, tier, state.power, state.yen) then
 		-- (a toast holds about 48 characters on one line)
 		hud:Toast(
 			`REBIRTH READY! Step off to open {if opens then opens.Name else "more zones"}`,

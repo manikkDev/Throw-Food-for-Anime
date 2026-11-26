@@ -164,20 +164,14 @@ function Progress.nextRebirth(cfg: any, tier: number): any?
 	return cfg.Rebirth.Tiers[tier + 1]
 end
 
---- A rebirth needs the throw to reach the sealed gate (Power x the food's
---- PowerMult >= PowerReq) and the Yen fee.
-function Progress.canRebirth(
-	cfg: any,
-	tier: number,
-	power: number,
-	yen: number,
-	foodPowerMult: number?
-): boolean
+--- A rebirth needs the throw to reach the sealed gate (Power >= PowerReq)
+--- and the Yen fee.
+function Progress.canRebirth(cfg: any, tier: number, power: number, yen: number): boolean
 	local nextTier = cfg.Rebirth.Tiers[tier + 1]
 	if not nextTier then
 		return false
 	end
-	return power * (foodPowerMult or 1) >= nextTier.PowerReq and yen >= nextTier.YenCost
+	return power >= nextTier.PowerReq and yen >= nextTier.YenCost
 end
 
 --- Apply a rebirth to a profile table IN PLACE. Resets Power and Yen ONLY

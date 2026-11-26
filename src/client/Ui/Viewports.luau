@@ -10,6 +10,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
 local Motion = require(script.Parent.Parent.Fx.Motion)
+local FoodLook = require(script.Parent.FoodLook)
 
 local Viewports = {}
 
@@ -343,7 +344,7 @@ function Viewports.food(frame: ViewportFrame, id: string?)
 	end
 	clear(frame)
 	frame:SetAttribute("Showing", "")
-	local source = if id then template("Foods", "Food_" .. id) else nil
+	local source = if id then template("Foods", FoodLook.modelKey(id)) else nil
 	if not source then
 		return
 	end

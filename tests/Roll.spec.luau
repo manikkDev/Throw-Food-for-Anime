@@ -143,7 +143,7 @@ return {
 	end,
 
 	["a craving moves chance inside the rarity, never between rarities"] = function()
-		local flavor = FULL[1].Craves
+		local flavor = FULL[1].Favourite
 		local plain = Roll.rarityChances(C, FULL, 3, nil)
 		local byRarity: { [string]: number } = {}
 		local craving, other: any = nil, nil
@@ -160,7 +160,7 @@ return {
 		for name, p in plain do
 			assert(near(byRarity[name] or 0, p), `{name} changed with a craving`)
 		end
-		assert(craving ~= nil, "the first hero craves its own flavour")
+		assert(craving ~= nil, "the first hero's favourite dish is the thrown food")
 		if other then
 			assert(near(craving.chance, other.chance * C.Throw.CravingWeightMult))
 		end

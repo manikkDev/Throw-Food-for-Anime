@@ -123,7 +123,8 @@ end
 function FxController:_followTraining(state: any)
 	-- the training clips moved to TrainingController (one clip per station, 2026-11-15): nothing
 	-- plays here any more; this only stops a clip a previous build left running
-	local _ = GEAR_CLIP[(Config.Training.Equipment[state.gear] or {}).Name or ""]
+	local row = Config.Training.Equipment[state.gear] or {}
+	local _ = GEAR_CLIP[row.Model or row.Name or ""]
 	local clip = ""
 	if clip == self._trainClip then
 		return

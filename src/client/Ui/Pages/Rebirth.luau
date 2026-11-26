@@ -9,14 +9,12 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
-local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Screens = require(script.Parent.Parent.Screens)
 local Types = require(script.Parent.Types)
 
 local Rebirth = { name = "Rebirth" } :: Types.Page
 
-local MAPS = Lookup.of(Config)
 -- the two lists, written over the tree's (which still names the old wipe)
 local KEEPS = { "Your heroes", "Gear and foods", "Plot slots", "Hero Index" }
 local LOSES = { "Yen", "Power" }
@@ -61,10 +59,8 @@ function Rebirth.render(state: any)
 		Screens.setButtonState(confirm, "off")
 		return
 	end
-	-- the throw that must reach the sealed gate: Power x the equipped food
-	local food = MAPS.food[state.food]
-	local powerMult = if food then food.PowerMult else 1
-	local reach = state.power * powerMult
+	-- the throw that must reach the sealed gate: Power alone (food gives luck only)
+	local reach = state.power
 	Screens.label(gui, "NextTier").Text = `REBIRTH {tier.Tier}`
 	-- what this rebirth opens, on the chip under the lists
 	if #tier.Unseals > 0 then
@@ -85,7 +81,7 @@ function Rebirth.render(state: any)
 		`+{percent(tier.LuckBonus)}% LUCK  +{tier.LuckyThrows} THROWS`
 	Screens.setButtonState(
 		confirm,
-		if Progress.canRebirth(Config, state.rebirth, state.power, state.yen, powerMult)
+		if Progress.canRebirth(Config, state.rebirth, state.power, state.yen)
 			then "gold"
 			else "cannot"
 	)

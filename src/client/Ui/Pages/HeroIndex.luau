@@ -20,6 +20,7 @@ local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Roll = require(ReplicatedStorage.Shared.Core.Roll)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
+local FoodLook = require(script.Parent.Parent.FoodLook)
 local Screens = require(script.Parent.Parent.Screens)
 local Theme = require(script.Parent.Parent.Theme)
 local UiFx = require(script.Parent.Parent.UiFx)
@@ -90,9 +91,6 @@ end
 
 function HeroIndex.render(state: any)
 	local luck = ctx.luck()
-	local food = MAPS.food[state.food]
-	local flavor = if food then food.Flavor else nil
-	local powerMult = if food then food.PowerMult else 1
 
 	for index, tab in tabs do
 		local zone = Config.Zones[index]
@@ -121,7 +119,7 @@ function HeroIndex.render(state: any)
 			Screens.fill(Screens.frame(tab, "Fill"), if total > 0 then have / total else 0)
 			-- locked: the throw cannot reach it (not enough Power, or its gate is sealed)
 			Screens.image(tab, "LockIcon").Visible = index
-				> Throw.reach(Config.Zones, state.power * powerMult, state.rebirth or 0)
+				> Throw.reach(Config.Zones, state.power, state.rebirth or 0)
 		end
 	end
 
@@ -149,7 +147,14 @@ function HeroIndex.render(state: any)
 
 	local keys: { string } = {}
 	local chance: { [string]: number } = {}
-	for _, weight in Roll.heroWeights(Config, zoneCharacters, luck, flavor) do
+	-- the odds are for the food a throw into THIS zone would use, at its luck there
+	local thrown = FoodLook.current(state, selected)
+	local here = FoodLook.luck(state, selected)
+	local now = FoodLook.luck(state)
+	local zoneLuck = math.clamp(luck * here / math.max(now, 1e-6), 1, Config.Luck.Max)
+	for _, weight in
+		Roll.heroWeights(Config, zoneCharacters, zoneLuck, if thrown then thrown.Id else nil)
+	do
 		table.insert(keys, weight.id)
 		chance[weight.id] = weight.chance
 	end
@@ -160,7 +165,7 @@ function HeroIndex.render(state: any)
 		local portrait = Screens.viewport(tile, "Portrait")
 		local mark = Screens.label(tile, "UnknownMark")
 		if isNew then
-			Screens.setIcon(Screens.image(tile, "CraveIcon"), "IconFlavor" .. character.Craves)
+			Screens.setIcon(Screens.image(tile, "CraveIcon"), FoodLook.iconKey(character.Favourite))
 			mark.TextColor3 = rarity
 			-- the rarity is always shown, caught or not
 			Screens.label(tile, "RarityText").Text = character.Rarity:upper()

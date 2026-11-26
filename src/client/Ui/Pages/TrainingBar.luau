@@ -51,7 +51,9 @@ local function gearModel(tier: number): Instance?
 	if not row or not folder then
 		return nil
 	end
-	return folder:FindFirstChild("Equip_" .. string.gsub(string.lower(row.Name), "%s+", "_"))
+	return folder:FindFirstChild(
+		"Equip_" .. string.gsub(string.lower(row.Model or row.Name), "%s+", "_")
+	)
 end
 
 -- the UPGRADE READY chip: shown pulsing, or hidden
