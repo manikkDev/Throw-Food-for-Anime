@@ -120,6 +120,14 @@ function AdminService:_dev(player: Player, command: string, arg: any): boolean
 			self._economy:Add(player, tier.YenCost, "dev")
 			Knit.GetService("ProgressService"):Rebirth(player)
 		end
+	elseif command == "best" and Guard.integer(arg, 1, #Config.Zones) then
+		-- a save that has reached zone `arg`: its best zone, the rebirths that open it and the Power
+		-- to land there (the food shop and every world-gated page then show up to that world)
+		profile.bestZone = math.max(profile.bestZone or 1, arg)
+		profile.rebirth = math.max(profile.rebirth, Config.Zones[arg].RebirthReq or 0)
+		local need = Config.Zones[arg].PowerReq
+		self._training:AddPower(player, math.max(0, need * 1.01 - profile.power))
+		self._plots:Refresh(player)
 	elseif command == "allfoods" then
 		for _, food in Config.Foods do
 			profile.foods[food.Id] = true

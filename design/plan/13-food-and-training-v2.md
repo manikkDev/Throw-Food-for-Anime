@@ -470,3 +470,23 @@ have their own textured model and icon (sheet: `assets/ui/food_icons_v2_sheet.pn
 - Whole phase, tries per food: 41 of 51 on the first try, 8 on the second, the meat on its fourth plus a
   texture pass, the ham on a texture pass. Not looked at in a play session: batches 2 to 6 (only batch 1's
   shop cards and the ramen's throw were seen in the game).
+
+### 2026-11-27: phase B checked in the game
+
+- New Studio test command `best <n>` (AdminService): a save that has reached world n (best zone, the rebirths
+  that open it, the Power to land there), so the food shop and every world-gated page show up to that world.
+- Food shop, all 51 cards seen (13 screens): every card has its own icon, the right world, role and luck,
+  "(HALF)" on foods of earlier worlds, IN USE on the auto-picked Warrior's Feast. HUD chip shows the food's icon.
+- "NEW FOOD!" cards: about half came up with an empty stage the first time a food was shown (the mesh had not
+  downloaded yet); the same foods were fine later. Not fixed: preloading the food templates would fix it.
+- BUG FOUND AND FIXED: the thrown food was `ScaleTo(1.7)` absolute, but `install_foods` sized each template
+  with ScaleTo (template scales 0.37 to 0.70; only the dango is 1.04), so 50 of 51 foods flew and landed 2 to
+  4.5 times their size (the swirl fruit was ~10 studs; the "landing close-up bowl too large" note). Now
+  ThrowController keeps the template's own scale in the hand and grows to 1.7 x that over 0.25 s after the
+  release (and snaps to it on landing, so a skipped flight still lands at flight size for the pick-up).
+- Flight, measured on all three styles: pitch (swirl fruit) tumbles, spin (dango) turns end over end on one
+  axis, heave (Warrior's Feast) is level in the hand, leans 22 degrees and turns slowly; all land upright.
+  The hero holds the fruit at a believable size; the catch card shows "LOVES <dish>".
+- Weakest models seen in the game: Officer's Ham (dark, dull), Healing Squid Ink Pasta (dark blob), Meat on
+  the Bone; the Warrior's Feast reads as plain stacked cups in the landing close-up. The "YOUR SPOT" sign
+  stays up while the player stands on the spot.

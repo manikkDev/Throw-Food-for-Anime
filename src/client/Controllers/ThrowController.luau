@@ -664,6 +664,7 @@ end
 -- Thrown food is drawn bigger than it is in the hand: it has to read from the
 -- far end of a lane on a phone.
 local FLIGHT_SCALE = 1.7
+local FLIGHT_GROW = 0.25 -- seconds from hand size to FLIGHT_SCALE after the release
 
 -- How a food turns in flight, by its template's Throw attribute (design/foods.json, plan 13):
 --   heave  a bowl, plate, tray or box flies LEVEL, its top leaning toward the chase camera behind
@@ -710,8 +711,13 @@ local function makeFood(foodId: string): Part
 		-- the ball stays as the invisible carrier (the flight code moves it and
 		-- the trail hangs off it); the model rides on it
 		ball.Transparency = 1
+		-- in the hand the food is its own size (design/foods.json `size`); it grows to
+		-- FLIGHT_SCALE as it leaves the hand (below), so it is not torso-sized in the wind-up
+		-- (a template's own Scale is NOT 1: install_foods sized each to its `size` with ScaleTo,
+		-- so every size here is relative to it; an absolute ScaleTo(1.7) flew foods 2-4.5x big)
 		local model = template:Clone()
-		model:ScaleTo(FLIGHT_SCALE)
+		local handScale = model:GetScale()
+		local flightScale = handScale * FLIGHT_SCALE
 		model:PivotTo(ball.CFrame)
 		for _, piece in model:GetDescendants() do
 			if piece:IsA("BasePart") then
@@ -730,14 +736,30 @@ local function makeFood(foodId: string): Part
 		local style = model:GetAttribute("Throw")
 		-- tumble IN FLIGHT only (ThrowSequence sets "Tumble"); landed or in a hand it stays upright
 		-- (owner's review 5: "rotating like a tyre even after landing and in the hand")
+		local grownAt: number? = nil
 		local spin = RunService.RenderStepped:Connect(function()
 			if ball:GetAttribute("Tumble") == true then
 				local t = os.clock()
+				if grownAt == nil then
+					grownAt = t
+				end
+				local g = math.clamp((t - (grownAt :: number)) / FLIGHT_GROW, 0, 1)
+				if model.Parent and model:GetScale() < flightScale then
+					model:ScaleTo(handScale + (flightScale - handScale) * (1 - (1 - g) * (1 - g)))
+				end
 				ball.CFrame = CFrame.new(ball.Position) * flightTurn(style, t)
+			end
+		end)
+		-- landed (or the flight was skipped in a frame): flight size at once, which the
+		-- pick-up in ThrowSequence shrinks back to hand size
+		local landed = ball:GetAttributeChangedSignal("Tumble"):Connect(function()
+			if ball:GetAttribute("Tumble") == false and model.Parent then
+				model:ScaleTo(flightScale)
 			end
 		end)
 		ball.Destroying:Once(function()
 			spin:Disconnect()
+			landed:Disconnect()
 		end)
 	end
 	ball.Parent = workspace
