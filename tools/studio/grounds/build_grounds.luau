@@ -787,19 +787,39 @@ local function buildFalls(tier: number)
 		for _, row in { { -6.0, 7.6 }, { 6.0, 6.8 } } do
 			local x, top = row[1], row[2]
 			local head = mesh(m, "dragon_spout", "Dragon", 1.4, V(x, top - 0.5, -6.6), V(-x * 0.2, 0, 1), true)
-			local mouth = ghost(m, "Spout", V(0.5, 0.3, 0.3), CFrame.lookAt(V(x * 0.97, top - 0.5 + head.Size.Y * 0.42, -6.6 + head.Size.Z / 2), V(x * 0.8, top, 0)))
-			emitter(mouth, "Stream", {
+			-- the spout: an arc of the falls' own water from the mouth down into the pool (a stream of
+			-- particles read as a string of beads)
+			local mouth = V(x * 0.97, top - 0.5 + head.Size.Y * 0.42, -6.6 + head.Size.Z / 2)
+			local landing = V(x * 0.7, SURFACE, -3.4)
+			local holder = ghost(m, "Spout", V(0.3, 0.3, 0.3), CFrame.new(mouth))
+			local out = (landing - mouth) * V(1, 0, 1)
+			local a0 = Instance.new("Attachment")
+			a0.Name = "Mouth"
+			a0.Parent = holder
+			a0.WorldCFrame = CFrame.lookAt(mouth, mouth + out) * CFrame.Angles(0, math.rad(90), 0)
+			local a1 = Instance.new("Attachment")
+			a1.Name = "Pool"
+			a1.Parent = holder
+			a1.WorldCFrame = CFrame.new(landing) * CFrame.Angles(0, 0, math.rad(-90))
+			for _, layer in { { "water_sheet", 0.85, 0.2, 0 }, { "water_foam", 0.55, 0.35, 0.1 } } do
+				local beam = waterBeam(holder, "Spout", a0, a1, layer[1], layer[2], 3, 4, layer[3], layer[4])
+				beam.CurveSize0 = out.Magnitude * 0.55
+				beam.CurveSize1 = 0.6
+				beam.FaceCamera = true
+				beam:SetAttribute("Flow", nil)
+			end
+			local splash = ghost(m, "SpoutSplash", V(0.8, 0.2, 0.8), CFrame.new(landing))
+			emitter(splash, "Splash", {
 				Texture = tex("dot"),
-				Rate = 34,
-				Lifetime = NumberRange.new(0.75, 0.9),
-				Speed = NumberRange.new(5, 6),
-				SpreadAngle = Vector2.new(3, 3),
-				EmissionDirection = Enum.NormalId.Front,
-				Acceleration = V(0, -26, 0),
-				Size = NS({ 0, 0.5 }, { 1, 0.75 }),
-				Transparency = NS({ 0, 0.1 }, { 0.8, 0.25 }, { 1, 1 }),
-				Color = CS(RGB(255, 255, 255), HEX("9FDBFF")),
-				LightEmission = 0.15,
+				Rate = 14,
+				Lifetime = NumberRange.new(0.3, 0.45),
+				Speed = NumberRange.new(2.5, 4),
+				SpreadAngle = Vector2.new(35, 35),
+				EmissionDirection = Enum.NormalId.Top,
+				Acceleration = V(0, -18, 0),
+				Size = NS({ 0, 0.25 }, { 1, 0 }),
+				Color = CS(RGB(255, 255, 255)),
+				LightEmission = 0.1,
 			})
 		end
 		for _, c in { V(-6.65, 0, 4.1), V(6.65, 0, 4.1) } do
@@ -989,9 +1009,11 @@ local function buildBoulder(tier: number)
 	banner(L2, V(-7.9, 0, 3.6), V(1, 0, 0), 8.4, HEX("F6EFD9"), HEX("3A3F4A"), "剛\n力")
 
 	-- LEVEL III: fire and gold
-	for _, x in { -5.9, 5.9 } do
-		local b = mesh(L3, "brazier", "Brazier", 1.3, V(x, DECK, -7.3), V(0, 0, 1), true)
-		fire(L3, V(x, DECK + b.Size.Y * 0.74, -7.3), 1.1)
+	-- (both on the far side: the training camera looks in from +X, and a brazier there stood big in
+	-- the right of the shot)
+	for _, at in { V(-5.9, DECK, -7.3), V(-6.0, DECK, -1.2) } do
+		local b = mesh(L3, "brazier", "Brazier", 1.3, at, V(0, 0, 1), true)
+		fire(L3, at + V(0, b.Size.Y * 0.74, 0), 1.1)
 	end
 	crestRing(L3, V(0, DECK, standAt.Z - 0.4), 3.3)
 	finish(m)
@@ -1104,7 +1126,8 @@ local function buildPeak(tier: number)
 	noticeBoard(m, V(-6.6, 0, 8.3), V(-0.55, 0, 0.83))
 
 	-- LEVEL II: the thunder drums and the first storm crystals
-	mesh(L2, "thunder_drums", "ThunderDrums", 1.9, V(6.4, 0.25, 3.4), V(-0.55, 0, 0.83), true)
+	-- (back beside the crag: at the front corner they stood big in the training shot)
+	mesh(L2, "thunder_drums", "ThunderDrums", 1.9, V(7.4, 0.25, -3.9), V(-0.8, 0, 0.6), true)
 	for _, at in { V(-5.0, 0.25, 1.8), V(4.9, 0.25, -1.0) } do
 		mesh(L2, "storm_crystal", "Crystal", 1.0, at, V(at.X, 0, 1), true)
 	end
@@ -1144,7 +1167,7 @@ end
 local GRAVITY = {
 	[13] = { machine = "gravity_generator", scale = 1.1, energy = HEX("B58CFF"), neon = HEX("7A3CFF"), deck = HEX("34364A"), trim = HEX("8C7A4A"), g = { "10 G", "25 G", "50 G" } },
 	[14] = { machine = "gravity_core", scale = 1.08, energy = HEX("FF5CD6"), neon = HEX("E01FB4"), deck = HEX("26222E"), trim = HEX("C9A24A"), g = { "100 G", "250 G", "500 G" } },
-	[15] = { machine = "gravity_singularity", scale = 1.3, energy = HEX("FF8A5C"), neon = HEX("FF3A14"), deck = HEX("1C1A1E"), trim = HEX("D8B24A"), g = { "1000 G", "2500 G", "5000 G" } },
+	[15] = { machine = "gravity_singularity", scale = 1.1, energy = HEX("FF8A5C"), neon = HEX("FF3A14"), deck = HEX("1C1A1E"), trim = HEX("D8B24A"), g = { "1000 G", "2500 G", "5000 G" } },
 }
 
 local function buildGravity(tier: number)

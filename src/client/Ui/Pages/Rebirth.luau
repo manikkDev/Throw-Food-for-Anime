@@ -62,9 +62,19 @@ function Rebirth.render(state: any)
 	-- the throw that must reach the sealed gate: Power alone (food gives luck only)
 	local reach = state.power
 	Screens.label(gui, "NextTier").Text = `REBIRTH {tier.Tier}`
-	-- what this rebirth opens, on the chip under the lists
+	-- what this rebirth opens, on the chip under the lists: its world and, at the rebirths that
+	-- open one (1, 2, 4, 5, 7), a training ground
+	local opens: { string } = {}
 	if #tier.Unseals > 0 then
-		current.Text = `Opens {Config.Zones[tier.Unseals[1]].Name}`
+		table.insert(opens, Config.Zones[tier.Unseals[1]].Name)
+	end
+	for _, ground in Config.Training.Grounds do
+		if ground.Rebirth == tier.Tier then
+			table.insert(opens, ground.Name)
+		end
+	end
+	if #opens > 0 then
+		current.Text = `Opens {table.concat(opens, " + ")}`
 	end
 	Screens.label(gui, "PowerReqText").Text =
 		`{Format.short(reach)} / {Format.short(tier.PowerReq)}`

@@ -815,3 +815,47 @@ ends here. What changed:
 
 
 Checkpoint: commit `5f76005` (six grounds, phase E closed) = place version 974 (saved 2026-11-27, not published, not pushed).
+
+### 2026-11-27: phase F, the playtest. Snapshot NOT taken: it waits for the owner's sign-off.
+
+- **Pacing gate** (`econ_v3.py check`): every target met (zone 3 at 11m33s, rebirth 1 at 28m42s, rebirth 4 at
+  7h01m, rebirth 7 at 24h12m, zone 17 at 27h43m); the six-ground share-out moved no price.
+- **The whole game in order, through the real remotes, on a wiped `Profiles_Dev_v3` save** (harness in the
+  session scratchpad: the server stands the character on its throw spot, the client fires ShopBuy, ThrowPad,
+  ThrowRequest, ProgressAction and AdminCommand `zone` / `yen` / `rebirthready`, and a hook logs StateSnapshot,
+  ThrowResult and Toast). For each of the 17 worlds: its three foods, its gear rows and its slot bought through the
+  shop; a throw "as far as it goes", one aimed at world 1 and one aimed past the seal. 417 s for all 17, then
+  rebirths 8 to 10 and the last six gear rows.
+  - Every "as far as it goes" throw landed in the world just reached; every throw aimed at world 1 landed there
+    (depth 1, the most depth luck); every throw aimed past the seal was held to the last open world. The auto-pick
+    threw that world's Signature dish every time (51 foods, 17 cookbooks, a Lucky Throw for each).
+  - All ten rebirths: the real REBIRTH button refused without the fee ("Rebirth needs a throw of 30K power and
+    2.5M yen" ... "5Sx power and 1.4Sp yen"), then reset Power (to 10) and Yen only and kept heroes, gear, foods,
+    slots and the best world, +3 Lucky Throws each. (After rebirth 6 the Yen read 8.6T, not 0: the income of 39
+    heroes during the 9 s cinematic.) An 11th rebirth says "You are at the highest rebirth", a 58th gear "maxed".
+  - The courts at each step: post + falls (locked) -> post + falls -> boulder + falls (rebirth 2) -> boulder + peak
+    (4) -> gravity + peak (5) -> gravity + orb (7); the ground the gear belongs to names it and its level on its
+    board (Wooden Post III ... Galaxy Orb III), the other says the gear's Power per rep.
+- **All six grounds played** at their new top tiers through the Studio test input (an auto-player that reads the HUD
+  of every game): Galaxy Orb, Singularity (12 Perfect, an awakening), Magma Boulder (17 Perfect, an awakening),
+  Dragon Falls (10 Perfect, an awakening), Heaven's Peak (16 Perfect, 1 Good, an awakening), Gravity Room, and the
+  Striking Post on a fresh save (32 Perfect, an awakening).
+- **FIXED, seen in those sessions:** the Singularity at 1.3x stood behind the beat track (now 1.1x like the other
+  machines); Boulder Breaker's level-III brazier on the camera's side stood big in the right of the shot (both
+  braziers now on the far side); Thunder Peak's level-II drums filled the bottom right (moved back beside the
+  crag); Dragon Falls' spouts were strings of beads (now arcs of the falls' own water with a splash). The Rebirth
+  page now names the training ground a rebirth opens ("Opens Clover Kingdom + Boulder Breaker"), as section 7 of
+  this plan said it would; seen in the game on the PC.
+- **Phones** (Studio Device Simulator, Galaxy A06 705 x 338): the beat track, the charge gauge and the rod buttons
+  fit with the hint and the Focus bar. The rod buttons are 34 px there (under the usual 44 px), but a tap anywhere
+  on that third of the screen answers for that rod. Roblox's thumbstick ring still sits over the Power / Yen / Luck
+  stack. The Rebirth page could not be opened on the simulated phone (scripted clicks miss there, as in plan 12).
+- **Frame rate: NOT measured.** In this Studio play test (server and client in one process, scripted calls) the
+  hub alone ran at 26 fps and a Gravity Chamber awakening at 15 to 24, worst frame 69 ms either way: Studio is the
+  limit here, not the grounds. A real phone is needed.
+- **For the owner to decide (economy, not changed):** in world 13 the longest stretch with nothing to buy is about
+  an hour (`econ_v3.py cadence`): the Crab Hot Pot (1.9Qi) and gear 13.3 (1Qi) cost more than world 14's first
+  dish (1.3Qi) and gear (960Qa), and the 2.3Qi rebirth fee falls there. And gear 19.1 (190Sx) costs less than 18.3
+  (230Sx).
+- **Not done:** nothing was listened to; nothing was played by hand; a second client's view of the awakenings is
+  untried.
