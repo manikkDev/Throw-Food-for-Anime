@@ -712,3 +712,5 @@ Checkpoint: commit `224c9e1` (phase D) = place version 954 (saved 2026-11-27, no
   are untried (three rod buttons of 72 px are the smallest targets so far), and the bolt from the sky was never
   caught in a capture (it lives 0.2 s). Grounds 5 to 8 remain.
 
+
+Checkpoint: commit `a8184f9` (phase E pair 1) = place version 964 (saved 2026-11-27, not published, not pushed).
