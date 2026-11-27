@@ -859,3 +859,8 @@ Checkpoint: commit `5f76005` (six grounds, phase E closed) = place version 974 (
   (230Sx).
 - **Not done:** nothing was listened to; nothing was played by hand; a second client's view of the awakenings is
   untried.
+
+**Snapshot (2026-11-27), on the owner's sign-off ("Sign off, snapshot").** Gates green, commit b56df63, tag
+`food-training-v2`, place version 978 ("Food and training v2 approved (git food-training-v2)"). Not pushed, not
+published. The two economy points above (the dry hour in world 13, gear 19.1 cheaper than 18.3) stay open.
+
