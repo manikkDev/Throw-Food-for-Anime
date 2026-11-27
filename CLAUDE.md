@@ -320,7 +320,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `StarterGui.ScreenOrientation` LandscapeSensor). On the stage the HUD is hidden: anything the player must know
   there goes through a toast from ThrowController (`_sealHint` is the example), and a toast holds ~48 characters.
 - FOOD AND TRAINING V2 (plan `design/plan/13-food-and-training-v2.md`, owner approved 2026-11-26; build log in its
-  section 11; phase A = rules and wiring and phase B = the 51 food models and icons are built, phases C to F = throw feel, training grounds, playtest are not). Numbers:
+  section 11; phases A (rules and wiring), B (the 51 food models and icons) and C (throw feel; commit 3f88e12 = place version 939) are built; D to F (training grounds, playtest) are not). Numbers:
   `tools/economy/econ_v3.py` (`gen`, `apply`, `check` = the pacing gate, `cadence`, `table`), then gen_characters.py,
   gen_config.py, gate.py. Rules: 51 foods = 3 per world (Snack, Meal, Signature); food gives LUCK only (reach = Power);
   a food counts half in a world later than its own (`Core/Foods`); the throw auto-picks the best owned food for the

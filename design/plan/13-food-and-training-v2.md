@@ -562,3 +562,5 @@ What a throw is now, by the dish's role (`src/client/Fx/FoodFx.luau` decides, no
   phone (phase F).
 - Retired: `ThrowTrail_Hot`, `ThrowTrail_Epic` (nothing uses them). New gate step: `gen_food_feel.py --check`
   (the table is current, and every Signature dish has both effects and every sound role it names).
+
+Checkpoint: commit `3f88e12` (phase C) = place version 939 (saved 2026-11-27, not published, not pushed).
