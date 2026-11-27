@@ -812,3 +812,6 @@ ends here. What changed:
   were).
 - **Not done:** as before, nothing here has been played by hand, heard, or tried on a phone or with a second
   client. Phase F (the full playtest and tuning) is what is left of plan 13.
+
+
+Checkpoint: commit `5f76005` (six grounds, phase E closed) = place version 974 (saved 2026-11-27, not published, not pushed).
