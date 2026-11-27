@@ -1,4 +1,4 @@
-# VFX: 64 authored effects (section 4: 25; plan 13 phase C: the 39 food effects)
+# VFX: 73 authored effects (section 4: 25; plan 13 phase C: the 39 food effects; phase D: 9 new training effects)
 
 Authored with the roblox-vfx skill's authoring route: own textures (the skill's maths-made library
 `sim/textures/lib` + this game's own in `textures/`), judged frame by frame in the skill's browser
@@ -20,6 +20,25 @@ a flight effect rides WITH the food (`LockedToPart`, born 2.2 studs behind its c
 sprites fuse into a pale cloud at max graphics (use the cel sprites); a flipbook laid flat draws as a broken arc
 (use a ring sprite); beam strips are not particle textures. An instance with `"sim": true` is a stand-in for the
 judging strips only (the thrown food) and is dropped by the packer.
+
+## The training effects (plan 13 phase D)
+
+`builders/build_train.py` builds the ten effects of the training grounds (`python builders/build_train.py [hit crit
+flurry pulse awaken aura post_burst post_rise falls_ascend falls_crash]`): `Train_Hit` (a rep on the post; replaces the
+section 4 one: `build_home.py` no longer builds it), `Train_Crit` (the PERFECT rep, played over it),
+`Train_Flurry` (loop: the awakening's hit storm on the post's face), `Train_Pulse` (tint: a breath let out, rings on the
+water), `Train_Awaken` and `Train_Aura` (tint: the awakening burst and the looped aura, in the ground's energy colour),
+`Post_Burst` / `Post_Rise` (the post bursts into splinters, a new one comes up), `Falls_Ascend` / `Falls_Crash` (the
+column of rising water where the trainee floats, the water crashing back). Their own textures: `tools/make_train_tex.py`
+(`water_sheet`, `water_foam`, `pool_ripple`, `wood_splinter`); the set pieces of the grounds
+(`tools/studio/grounds/build_grounds.luau`) use the same uploaded images on their own Beams, through `ids.json`.
+Judged in the game with `tools/studio/grounds/fx_judge.luau` (`_G.GroundJudge.play(name, spot, freezeAt, tint)`). What
+that taught, on top of phase C's rules:
+- a flame sprite drawn with `VelocityParallel` lies on its side (the aura streamed off the trainee's back): flames are
+  upright camera-facing sprites that RISE; only streak textures take `VelocityParallel`.
+- a critical flash that starts white blooms to a plain white blob at max graphics: start it gold, put a small white cross on top.
+- lamps and soft halos on pale rock white the whole scene out at max graphics (the waterfall's awakening): PointLights
+  at 0.35 to 0.5, halos narrow and above 0.7 transparent, water beams at LightEmission 0.05 to 0.15.
 
 ## Layout
 

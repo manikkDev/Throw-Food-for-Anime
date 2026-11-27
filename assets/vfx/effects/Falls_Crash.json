@@ -1,0 +1,796 @@
+{
+ "name": "Falls_Crash",
+ "note": "The falls crash back onto the pool at the end of the awakening.",
+ "duration": 1.5,
+ "camera": {
+  "pos": [
+   7,
+   5,
+   15
+  ],
+  "at": [
+   0,
+   3.5,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "stripFloors": [
+  "#E9D2A2"
+ ],
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": true,
+  "origin": [
+   0,
+   0,
+   0
+  ]
+ },
+ "brief": {
+  "category": "impact",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "wall of splash",
+  "dominant": "#5FD8FF",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "a wall of water goes up"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.6000000000000001
+   },
+   {
+    "name": "residue",
+    "t0": 0.6000000000000001,
+    "t1": 1.5
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Foot",
+   "CFrame": [
+    0,
+    0.5,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    6.0,
+    0.5,
+    1.6
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Splash",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/flipbooks/water/water_splash_cel_00_4x4",
+      "FlipbookLayout": {
+       "Enum": "ParticleFlipbookLayout.Grid4x4"
+      },
+      "FlipbookMode": {
+       "Enum": "ParticleFlipbookMode.OneShot"
+      },
+      "FlipbookBlendFrames": false,
+      "FlipbookFramerate": {
+       "NumberRange": [
+        32.0,
+        32.0
+       ]
+      },
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Box"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        2,
+        4
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.45,
+        0.55
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        -8,
+        8
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         2.25
+        ],
+        [
+         0.3,
+         3.75
+        ],
+        [
+         1,
+         4.25
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.7,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.8039,
+          0.9373,
+          1.0
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.25,
+      "ZOffset": 1
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Drops",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/specks/dot_cel_00",
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        55,
+        55
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        18,
+        32
+       ]
+      },
+      "Acceleration": {
+       "Vector3": [
+        0,
+        -60,
+        0
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.6,
+        1.0
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -300,
+        300
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.4
+        ],
+        [
+         0.7,
+         0.3
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.3725,
+          0.8471,
+          1.0
+         ]
+        ]
+       ]
+      },
+      "ZOffset": 0.5,
+      "LightEmission": 0.35
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Mist",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/smoke/smoke_puff_soft_02",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Box"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        70,
+        70
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        5,
+        10
+       ]
+      },
+      "Drag": 3,
+      "Lifetime": {
+       "NumberRange": [
+        0.8,
+        1.2
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -30,
+        30
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.5
+        ],
+        [
+         1,
+         3.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.55
+        ],
+        [
+         0.5,
+         0.7
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.1,
+      "ZOffset": 0.4
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Streaks",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/specks/streak_cel_00",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Box"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        35,
+        35
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        28,
+        42
+       ]
+      },
+      "Acceleration": {
+       "Vector3": [
+        0,
+        -70,
+        0
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.3,
+        0.5
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.9
+        ],
+        [
+         1,
+         0.25
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.3725,
+          0.8471,
+          1.0
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.4,
+      "ZOffset": 1.2,
+      "Orientation": {
+       "Enum": "ParticleOrientation.VelocityParallel"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Ground",
+   "CFrame": [
+    0,
+    0.15,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Ring",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_cel_08",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.55,
+          0.55
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.5
+          ],
+          [
+           0.25,
+           7.300000000000001
+          ],
+          [
+           1,
+           8.5
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            0.3725,
+            0.8471,
+            1.0
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.3,
+        "ZOffset": 0.2
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Ripple",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:tfa/pool_ripple",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.9,
+          0.9
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           3.0
+          ],
+          [
+           0.25,
+           7.800000000000001
+          ],
+          [
+           1,
+           9.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.1
+          ],
+          [
+           0.6,
+           0.3
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.4,
+        "ZOffset": 0.2
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Ring2",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_glow_02",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.6,
+          0.6
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.0
+          ],
+          [
+           0.25,
+           5.2
+          ],
+          [
+           1,
+           6.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.3725,
+            0.8471,
+            1.0
+           ]
+          ],
+          [
+           1,
+           [
+            0.3725,
+            0.8471,
+            1.0
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 0.2
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Foot.Splash",
+   "count": 5,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Foot.Drops",
+   "count": 26,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Foot.Streaks",
+   "count": 14,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Foot.Mist",
+   "count": 6,
+   "t": 0.03
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Ring",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Ring2",
+   "count": 1,
+   "t": 0.05
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Ripple",
+   "count": 1,
+   "t": 0.1
+  },
+  {
+   "do": "emit",
+   "target": "Foot.Splash",
+   "count": 3,
+   "t": 0.12
+  },
+  {
+   "do": "emit",
+   "target": "Foot.Mist",
+   "count": 4,
+   "t": 0.25
+  },
+  {
+   "do": "shake",
+   "amp": 0.4,
+   "time": 0.3,
+   "freq": 24,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.0,
+  0.04,
+  0.1,
+  0.2,
+  0.35,
+  0.55,
+  0.8,
+  1.1
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

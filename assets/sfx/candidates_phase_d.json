@@ -1,0 +1,154 @@
+{
+ "roles": {
+  "post_hit": [
+   {"rank": 1, "id": 9120916237, "name": "Wood Impacts 2 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Dry wood impact, ProSoundEffects; tight thwack candidate"},
+   {"rank": 2, "id": 9120888730, "name": "Wood Hits Board Impacts On Fence Post 3 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Board hitting a fence post; closest literal match to a post hit"},
+   {"rank": 3, "id": 9120916489, "name": "Wood Impacts 5 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Dry wood impact variant"},
+   {"rank": 4, "id": 9120888471, "name": "Wood Hits Board Impacts On Fence Post 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Fence post hit, first take; alternate"},
+   {"rank": 5, "id": 9120916623, "name": "Wood Impacts 8 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Wood impact variant; may carry a tail, check length"},
+   {"rank": 6, "id": 9113225734, "name": "Axe Impact Giant Thuddy Hits On Wood Floor 2 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Thuddy wood hit; more thud than thwack, weaker fit"},
+   {"rank": 7, "id": 9120916819, "name": "Wood Impacts 11 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Wood impact variant; spare"},
+   {"rank": 8, "id": 9120888847, "name": "Wood Hits Board Impacts On Fence Post 5 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Fence post hit variant; spare"}
+  ],
+  "post_crit": [
+   {"rank": 1, "id": 9113582284, "name": "Branch Snap Wood Stick Crack Various Sizes 7 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Sharp wood crack; the crack layer of a crit"},
+   {"rank": 2, "id": 9113225986, "name": "Axe Impact Giant Thuddy Hits On Wood Floor 5 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Big thuddy wood impact; crit weight"},
+   {"rank": 3, "id": 9113551773, "name": "Boom Thump Rattling Impacts Light Crunch 1 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Boom-thump with bass kick; the punchy bass layer"},
+   {"rank": 4, "id": 9126267420, "name": "Wood Hit Giant Wood Beam Dull Thuds Knocks 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Heavy dull beam knock; bass-heavy crit"},
+   {"rank": 5, "id": 9120826936, "name": "Wood Cracks Multiple Variations 4 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Wood crack variation; short"},
+   {"rank": 6, "id": 9120805690, "name": "Wood Break Breaking Open Wood Door Cracks 1 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Door crack; may run long for under 0.8 s"},
+   {"rank": 7, "id": 113541549231037, "name": "SFX_Axe_Wood_Hit_Crack_04", "creator": "kaysenbutler54", "duration": 3, "duration_verified": false, "why": "Axe into wood crack; individual uploader, licence basis as all, short take expected"},
+   {"rank": 8, "id": 9113581977, "name": "Branch Snap Wood Stick Crack Various Sizes 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Branch snap crack; crit alternate"}
+  ],
+  "flurry_hit": [
+   {"rank": 1, "id": 9114771792, "name": "Hand Slap Claps 3 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Short hand slap tick, ProSoundEffects"},
+   {"rank": 2, "id": 9114460381, "name": "Fist Pounds Table Wooden Impacts 9 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Fist knock on wood, tick-length; light punch feel"},
+   {"rank": 3, "id": 9114460235, "name": "Fist Pounds Table Wooden Impacts 6 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Fist on wood; may carry a tail"},
+   {"rank": 4, "id": 109316755832781, "name": "Punch hit.", "creator": "x_iifran", "duration": 1, "duration_verified": false, "why": "Plain punch hit; individual uploader"},
+   {"rank": 5, "id": 137499859855978, "name": "heavy punch hit sfx", "creator": "Axellatic", "duration": 2, "duration_verified": false, "why": "Punch hit; heavy, so may be too big for a flurry"},
+   {"rank": 6, "id": 96359585058783, "name": "victim impact punch hit sfx attack", "creator": "Axellatic", "duration": 2, "duration_verified": false, "why": "Punch impact; check for tail"},
+   {"rank": 7, "id": 135726637805863, "name": "Light Punch 7", "creator": "GleonoffG", "duration": 2, "duration_verified": false, "why": "Light punch; name hints at anime-style swing, may be a whoosh"},
+   {"rank": 8, "id": 90934857711965, "name": "Light Punch 1", "creator": "GleonoffG", "duration": 1, "duration_verified": false, "why": "Light punch; short, audition for flurry tick"}
+  ],
+  "post_break": [
+   {"rank": 1, "id": 9126239755, "name": "Wood Crack Thick Splintering Bursts Creaking (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Thick wood splintering burst; big break, length likely too long, trim or check"},
+   {"rank": 2, "id": 9126242477, "name": "Wood Crate Smash Crunching Cracking Splinter (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Crate smash with splinter; exploding-wood feel"},
+   {"rank": 3, "id": 9120961933, "name": "Wood Smashing 5 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Wood smash; big, may be long"},
+   {"rank": 4, "id": 9125993215, "name": "Splintering Wood Break Drop Various Versions (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Splintering wood break; short"},
+   {"rank": 5, "id": 9120962912, "name": "Wood Snap Splinter 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Wood snap and splinter; short"},
+   {"rank": 6, "id": 9126242233, "name": "Wood Crate Smash Crunching Cracking Splinter (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Crate smash variant"},
+   {"rank": 7, "id": 104568144438070, "name": "Wood Break", "creator": "MrAudio6", "duration": 1, "duration_verified": false, "why": "Plain wood break; individual uploader"},
+   {"rank": 8, "id": 9120805690, "name": "Wood Break Breaking Open Wood Door Cracks 1 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Wood door break; alternate"}
+  ],
+  "post_rise": [
+   {"rank": 1, "id": 9125880099, "name": "Rock Scrape Deep Clunky Slides Rumbling Thun (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Deep rumbling stone slide ending in a thunk; closest to a pillar locking in"},
+   {"rank": 2, "id": 9113807062, "name": "Cinder Block Slide On Stone Surface Course 2 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Heavy stone slide; long, trim to rise length"},
+   {"rank": 3, "id": 9125441154, "name": "Cinder Block Slide On Stone Plate Hollow Cou (SFX)", "creator": "ProSoundEffects", "duration": 7, "duration_verified": false, "why": "Hollow stone slide; may run long"},
+   {"rank": 4, "id": 9118657619, "name": "Rock Mud Slide Avalanche- Like Bursts 2 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Rock slide burst; rumble-heavy"},
+   {"rank": 5, "id": 9125876011, "name": "Rock Scrape Cinder Block Sliding Around In M (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Stone scrape; rise-like"},
+   {"rank": 6, "id": 3072175734, "name": "Stone Slide 1", "creator": "InfiniteGalaxiiBoy", "duration": 1, "duration_verified": false, "why": "Plain stone slide; short, individual uploader"},
+   {"rank": 7, "id": 109757660976240, "name": "Stone slide SFX", "creator": "nalasfrr", "duration": 8, "duration_verified": false, "why": "Stone slide; long listing, individual uploader"},
+   {"rank": 8, "id": 9118749929, "name": "Rumble Earth Rumble Slow Build Heavy 1 (SFX)", "creator": "ProSoundEffects", "duration": 63, "duration_verified": false, "why": "Earth rumble; listed length is implausible (63 s), weak fit, audition only"}
+  ],
+  "breath_pulse": [
+   {"rank": 1, "id": 9119227893, "name": "Slow Whoosh Beefy Airy Pass By 2 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Slow soft airy whoosh; calm release"},
+   {"rank": 2, "id": 9119227910, "name": "Slow Whoosh Beefy Airy Pass By 4 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Slow airy whoosh variant"},
+   {"rank": 3, "id": 9119228137, "name": "Slow Whoosh Beefy Airy Pass By 6 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Slow airy whoosh variant"},
+   {"rank": 4, "id": 9119227880, "name": "Slow Whoosh Beefy Airy Pass By 3 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Slow airy whoosh variant"},
+   {"rank": 5, "id": 9113606241, "name": "Bubble Whooshes Liquid Pass By 1 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Liquid bubble whoosh; water-ripple flavour"},
+   {"rank": 6, "id": 107192966735092, "name": "cleansing water swirl with a sparkle chime", "creator": "SuperUtochka", "duration": 1, "duration_verified": false, "why": "Water swirl into a sparkle chime; calm and fits breath and focus; individual uploader"},
+   {"rank": 7, "id": 9114344217, "name": "Energy Presence 11 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Airy presence swell; long, trim needed"},
+   {"rank": 8, "id": 9120519034, "name": "Water Drip Into Ceramic Bowl Pings 37 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Water drop into bowl ping; also a breath_perfect alternate"}
+  ],
+  "breath_perfect": [
+   {"rank": 1, "id": 9125597663, "name": "Hand Bell Small Cast Iron Buddhist Temple Be (SFX)", "creator": "ProSoundEffects", "duration": 7, "duration_verified": false, "why": "Small Buddhist temple hand bell, one strike; ring may run long, check"},
+   {"rank": 2, "id": 9125597120, "name": "Hand Bell Small Cast Iron Buddhist Temple Be (SFX)", "creator": "ProSoundEffects", "duration": 10, "duration_verified": false, "why": "Same bell, second take; listing length suspicious"},
+   {"rank": 3, "id": 100048167297200, "name": "Singing_bowl", "creator": "tanker0119sub", "duration": 3, "duration_verified": false, "why": "Singing bowl strike; exact fit, individual uploader"},
+   {"rank": 4, "id": 9126073001, "name": "Synth Sparkle Tone High Pitch Bell Tone Ding (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Bright bell ding; clear single strike, more synth than bowl"},
+   {"rank": 5, "id": 9126073318, "name": "Synth Sparkle Tone High Pitch Bell Tone Ding (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Bright bell ding, second take"},
+   {"rank": 6, "id": 18103166788, "name": "bell ding", "creator": "brokendaggers", "duration": 1, "duration_verified": false, "why": "Plain bell ding; short, individual uploader"},
+   {"rank": 7, "id": 9120518531, "name": "Water Drip Into Ceramic Bowl Pings 32 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Water drop into ceramic bowl; water-drop chime"},
+   {"rank": 8, "id": 9126073026, "name": "Synth Sparkle Tone High Pitch Bell Tone Ding (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Bright bell ding, third take; clean single strike"}
+  ],
+  "awaken_start": [
+   {"rank": 1, "id": 130114397986399, "name": "Charging Power Up Sound Effect", "creator": "MrGrumpycat19", "duration": 5, "duration_verified": false, "why": "Charging power-up; may run long for 1 to 2.5 s, trim"},
+   {"rank": 2, "id": 3406813517, "name": "Power_Up", "creator": "thienbao2109", "duration": 2, "duration_verified": false, "why": "Plain power-up burst; short"},
+   {"rank": 3, "id": 133977339172345, "name": "power up 1", "creator": "AwakenThePotential", "duration": 2, "duration_verified": false, "why": "Power-up burst; individual uploader"},
+   {"rank": 4, "id": 122439012218772, "name": "Magic Energy Charge Burst", "creator": "GleonoffG", "duration": 3, "duration_verified": false, "why": "Energy charge burst; magic flavour"},
+   {"rank": 5, "id": 120568222164096, "name": "Energy Charge", "creator": "ben_sound", "duration": 3, "duration_verified": false, "why": "Energy charge release; individual uploader"},
+   {"rank": 6, "id": 101385852400684, "name": "Energy Charge 2", "creator": "ben_sound", "duration": 3, "duration_verified": false, "why": "Energy charge, second take"},
+   {"rank": 7, "id": 9114447022, "name": "Fire Whoosh 19 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Ignite whoosh; ProSoundEffects, a fallback if no power-up is clean"}
+  ],
+  "awaken_loop": [
+   {"rank": 1, "id": 9125549390, "name": "Energy Pass Bys Slow Synth Pulsing Buzz Hum (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Slow pulsing buzz hum; steady energy field, no melody"},
+   {"rank": 2, "id": 9117881722, "name": "Power Throb Deep Tonal Hum Slow Pulse 2 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Deep tonal hum, slow pulse; power-hum loop candidate"},
+   {"rank": 3, "id": 9117881642, "name": "Power Throb Deep Tonal Hum Slow Pulse 1 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Deep tonal hum variant"},
+   {"rank": 4, "id": 9125784811, "name": "Power Throb Tonal Hum Slow Pulse Electrical (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Electrical power hum; slightly brighter"},
+   {"rank": 5, "id": 9125550082, "name": "Energy Pass Bys Slow Synth Pulsing Buzz Hum (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Pulsing buzz hum variant"},
+   {"rank": 6, "id": 133393818363500, "name": "fire aura loop", "creator": "Divinicalll", "duration": 5, "duration_verified": false, "why": "Named as a fire-aura loop, the exact brief; individual uploader, check it is not a franchise rip"},
+   {"rank": 7, "id": 109924756554836, "name": "energy_loop", "creator": "KyloDawg1", "duration": 6, "duration_verified": false, "why": "Generic energy loop; individual uploader"},
+   {"rank": 8, "id": 77198472633572, "name": "Audio_Energy_Core_Hum", "creator": "helpmeiseekhelp", "duration": 10, "duration_verified": false, "why": "Energy core hum; long, individual uploader"}
+  ],
+  "awaken_sting": [
+   {"rank": 1, "id": 1843054270, "name": "Orchestra Hit D (No Choir)", "creator": "APMOfficial", "duration": 10, "duration_verified": false, "why": "Orchestral hit without choir, APM library; trim to 1 to 3 s"},
+   {"rank": 2, "id": 1843084199, "name": "Buzzy Brass Hit", "creator": "APMOfficial", "duration": 9, "duration_verified": false, "why": "Brass hit, APM library; punchy"},
+   {"rank": 3, "id": 1843084213, "name": "Buzzy Brass Hit (Alternate Version)", "creator": "APMOfficial", "duration": 7, "duration_verified": false, "why": "Brass hit alternate"},
+   {"rank": 4, "id": 107779315528076, "name": "Japanese Drum Sound", "creator": "brainbrain25", "duration": 3, "duration_verified": false, "why": "Japanese drum hit, the taiko flavour asked for; individual uploader"},
+   {"rank": 5, "id": 116897140499024, "name": "Japanese Drum2 - Sound Effect", "creator": "DjrayLuke2", "duration": 2, "duration_verified": false, "why": "Japanese drum, second take; short"},
+   {"rank": 6, "id": 120373059281081, "name": "warm-wide-brass-hit-soft_C", "creator": "FortWorthT55", "duration": 3, "duration_verified": false, "why": "Soft warm brass hit; less punch, individual uploader"},
+   {"rank": 7, "id": 1841318075, "name": "Cinematic Percussion Hits 3", "creator": "APMOfficial", "duration": 10, "duration_verified": false, "why": "Cinematic percussion hit, APM; long listing"},
+   {"rank": 8, "id": 1841318074, "name": "Cinematic Percussion Hits 2", "creator": "APMOfficial", "duration": 14, "duration_verified": false, "why": "Cinematic percussion, second; listing type Unknown"}
+  ],
+  "falls_loop": [
+   {"rank": 1, "id": 9120552671, "name": "Waterfall Steady Stream 2 (SFX)", "creator": "ProSoundEffects", "duration": 37, "duration_verified": false, "why": "Steady waterfall stream, ProSoundEffects; loopable only if its end meets its start, verify"},
+   {"rank": 2, "id": 9120552550, "name": "Waterfall Steady Stream 1 (SFX)", "creator": "ProSoundEffects", "duration": 27, "duration_verified": false, "why": "Steady waterfall stream; type listed Unknown"},
+   {"rank": 3, "id": 9120549564, "name": "Waterfall Background Water Roar 1 (SFX)", "creator": "ProSoundEffects", "duration": 56, "duration_verified": false, "why": "Background water roar bed; long, good for a loop"},
+   {"rank": 4, "id": 9120551672, "name": "Waterfall Heavy Water Flow 2 (SFX)", "creator": "ProSoundEffects", "duration": 61, "duration_verified": false, "why": "Heavy water flow; bigger than medium, check it is not too loud"},
+   {"rank": 5, "id": 9116496581, "name": "Medium Size Waterfall 2 (SFX)", "creator": "ProSoundEffects", "duration": 106, "duration_verified": false, "why": "Medium waterfall; listed length implausible, check it loops"},
+   {"rank": 6, "id": 8601597384, "name": "Seamless Waterfall [FIXED]", "creator": "roblox_user_499636463", "duration": 14, "duration_verified": false, "why": "Explicitly seamless waterfall loop; individual uploader"},
+   {"rank": 7, "id": 9120552418, "name": "Waterfall Small 1 (SFX)", "creator": "ProSoundEffects", "duration": 27, "duration_verified": false, "why": "Small waterfall; quieter bed"},
+   {"rank": 8, "id": 5062790866, "name": "Waterfall Loop - from Zapsplat", "creator": "SqueegiLuigi", "duration": 9, "duration_verified": false, "why": "Waterfall loop taken from ZapSplat: ZapSplat's free licence REQUIRES ATTRIBUTION. Do not use without a confirmed licence basis"}
+  ],
+  "falls_split": [
+   {"rank": 1, "id": 9119538576, "name": "Squeeze Bottle Filled With Water Sucking 10 (SFX)", "creator": "ProSoundEffects", "duration": 7, "duration_verified": false, "why": "Water being sucked; reverse-ish watery pull"},
+   {"rank": 2, "id": 9114167805, "name": "Drain Suction 3 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Drain suction; upward pull feel"},
+   {"rank": 3, "id": 9118711394, "name": "Rope And Water Pulling Out Hard Yanks 1 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Water pulled out, hard yank; parting-water feel"},
+   {"rank": 4, "id": 9120646062, "name": "Wet Mop Drip Pulling Out Of Water 1 (SFX)", "creator": "ProSoundEffects", "duration": 8, "duration_verified": false, "why": "Pulling out of water; long, trim needed"},
+   {"rank": 5, "id": 9119538318, "name": "Squeeze Bottle Filled With Water Sucking 6 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Water sucking, short variant"},
+   {"rank": 6, "id": 9116941919, "name": "Mixer Underwater 501 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Underwater mixer swirl; weaker, watery"},
+   {"rank": 7, "id": 9120363600, "name": "Vacuum Water Suction 1 (SFX)", "creator": "ProSoundEffects", "duration": 78, "duration_verified": false, "why": "Vacuum water suction; listing length implausible, type Unknown, audition"},
+   {"rank": 8, "id": 9120363868, "name": "Vacuum Water Suction 2 (SFX)", "creator": "ProSoundEffects", "duration": 47, "duration_verified": false, "why": "Vacuum water suction, second take; same caveat"}
+  ],
+  "falls_crash": [
+   {"rank": 1, "id": 9120610532, "name": "Wave Crash 3 (SFX)", "creator": "ProSoundEffects", "duration": 9, "duration_verified": false, "why": "Large wave crash; trim to 2.5 s"},
+   {"rank": 2, "id": 9120585252, "name": "Water Splash Big Water Splash Dive In 1 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Big water splash dive; a body of water hitting"},
+   {"rank": 3, "id": 9120585530, "name": "Water Splash Big Water Splash Dive In 3 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Big splash variant"},
+   {"rank": 4, "id": 9120611452, "name": "Wave Crashes Single Large Impacts 6 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Single large wave impact; closest to a single crash"},
+   {"rank": 5, "id": 9120610525, "name": "Wave Crash 2 (SFX)", "creator": "ProSoundEffects", "duration": 8, "duration_verified": false, "why": "Wave crash variant"},
+   {"rank": 6, "id": 9120611318, "name": "Wave Crashes Single Large Impacts 4 (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Single large wave impact, second take"},
+   {"rank": 7, "id": 9120585950, "name": "Water Splash Big Water Splash Dive In 4 (SFX)", "creator": "ProSoundEffects", "duration": 9, "duration_verified": false, "why": "Big splash; long listing"},
+   {"rank": 8, "id": 9120586063, "name": "Water Splash Big Water Splash Dive In 6 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Big splash variant"}
+  ],
+  "focus_tick": [
+   {"rank": 1, "id": 4612384434, "name": "ui_mission_tick", "creator": "thienbao2109", "duration": 1, "duration_verified": false, "why": "Mission tick UI sound; short, individual uploader"},
+   {"rank": 2, "id": 99102731755541, "name": "UI Tick - OrcaCreations", "creator": "OrcaCreations", "duration": 0, "duration_verified": false, "why": "UI tick; listed length 0 is unreliable, probe"},
+   {"rank": 3, "id": 108695571796559, "name": "UI tick", "creator": "WillShockwave", "duration": 0, "duration_verified": false, "why": "UI tick; probe length"},
+   {"rank": 4, "id": 99087108500509, "name": "ui_tick", "creator": "VINTAMOU", "duration": 0, "duration_verified": false, "why": "UI tick; probe length"},
+   {"rank": 5, "id": 95332376755824, "name": "ui_tick", "creator": "nzlaid", "duration": 0, "duration_verified": false, "why": "UI tick; probe length"},
+   {"rank": 6, "id": 100711219207894, "name": "ui_tick", "creator": "RERDEV", "duration": 0, "duration_verified": false, "why": "UI tick; probe length"},
+   {"rank": 7, "id": 75458150587771, "name": "Smaltra UI tick", "creator": "Porevoz", "duration": 0, "duration_verified": false, "why": "UI tick; probe length"},
+   {"rank": 8, "id": 113085021060403, "name": "ui_hover", "creator": "Doimens", "duration": 0, "duration_verified": false, "why": "UI hover tick; fallback"}
+  ],
+  "focus_full": [
+   {"rank": 1, "id": 107192966735092, "name": "cleansing water swirl with a sparkle chime", "creator": "SuperUtochka", "duration": 1, "duration_verified": false, "why": "Rising swirl into a sparkle chime; a gauge-full payoff; individual uploader"},
+   {"rank": 2, "id": 120214050697813, "name": "Magic_Sparkle", "creator": "LosPalmosLLC", "duration": 2, "duration_verified": false, "why": "Magic sparkle; short shimmer"},
+   {"rank": 3, "id": 117011707307950, "name": "Glitter Sparkle Magic Sound", "creator": "Little Body Big Heart.", "duration": 1, "duration_verified": false, "why": "Glitter sparkle; short"},
+   {"rank": 4, "id": 132381858621446, "name": "Magic crystal sparkle sound effect 3", "creator": "roblox_user_1996596200", "duration": 4, "duration_verified": false, "why": "Crystal sparkle; may run long"},
+   {"rank": 5, "id": 131722051883127, "name": "Magic crystal sparkle sound effect 2", "creator": "roblox_user_1996596200", "duration": 6, "duration_verified": false, "why": "Crystal sparkle variant; long"},
+   {"rank": 6, "id": 135968996204345, "name": "FIXED sparkle magic sound", "creator": "Hibuki_DSP", "duration": 1, "duration_verified": false, "why": "Sparkle magic sound; short"},
+   {"rank": 7, "id": 9126073001, "name": "Synth Sparkle Tone High Pitch Bell Tone Ding (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Bright high sparkle ding; a clean payoff accent"},
+   {"rank": 8, "id": 9125986205, "name": "Sparkle Tone Constant High End Shimmer Spark (SFX)", "creator": "ProSoundEffects", "duration": 18, "duration_verified": false, "why": "High shimmer tone; listed length too long, trim to 1.2 s"}
+  ]
+ },
+ "notes": "Candidates only: nothing downloaded, uploaded or edited. Licence basis for every id is UNVERIFIED: the Roblox audio policy and Creator Store audio terms returned HTTP 403 and 404 to WebFetch, so the licence text was not read. Treat ProSoundEffects, APMOfficial and DistrokidOfficial as Roblox-library audio (creator-verified, same basis as phase C), and individual-uploader ids as needing the same basis check before use. ZapSplat-sourced id 5062790866 needs attribution under ZapSplat's free licence: do not use without a confirmed licence. Dropped for licence or rip risk: DBZ and SSJ aura and power-up clips (franchise names, e.g. 90395161583182, 80158160943011), Cursed Energy Charge (84317873848171, JJK-named), Undertale asgore clips, and 'UI_Tick' from Massive Driving Universe Group (93076868992220). Duration is the toolbox listing only (duration_verified false everywhere); listed 0 means unknown. Thin roles (fewer than 6 strong candidates): focus_tick (all ids list length 0, mostly individual uploaders, no ProSoundEffects tick found), falls_split (no clean reverse-water whoosh found; best are suction and pull-out clips with long listings), awaken_sting (APM brass and orchestra hits are the only strong fits; Japanese flavour is thin), breath_perfect (no ProSoundEffects bowl found; bell and drip candidates only), flurry_hit (ProSoundEffects light-punch tick missing; many punch hits list 0 length)."
+}

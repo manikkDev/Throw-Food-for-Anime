@@ -564,3 +564,98 @@ What a throw is now, by the dish's role (`src/client/Fx/FoodFx.luau` decides, no
   (the table is current, and every Signature dish has both effects and every sound role it names).
 
 Checkpoint: commit `3f88e12` (phase C) = place version 939 (saved 2026-11-27, not published, not pushed).
+
+### 2026-11-27: phase D, the training framework and grounds 1 and 2
+
+![phase D](img/13-phaseD-grounds.jpg)
+
+**What training is now.** A base has two courts; each shows one training GROUND, a whole set piece
+(`Core/Grounds`: the two newest the owner has opened; before the first rebirth the second court shows the
+Waterfall chained off under a board "LOCKED / REBIRTH 1"). The old round mats, the gear anchors and the eight
+gear models are archived (`MapArchive.TrainingCourts_v1`, `MapArchive.Gear_v1`).
+
+| | Striking Post (start, left court) | Waterfall Focus (rebirth 1, right court) |
+|---|---|---|
+| The game | a ring closes on the gold ring: TAP as it lands, once a second | a disc swells out to the gold ring: HOLD, let go on it, every 3 s |
+| Tiers (look) | Wooden Post, Banded Post, Iron Post (tiers 1 to 3) | Mountain Falls, Shrine Falls (tiers 4 and 5) |
+| Level II adds | a war drum, two banners, a sacred rope on the wall | a sacred rope with streamers across the falls, two lit lanterns |
+| Level III adds | two burning braziers, a gold crest ring in the deck | lotus lanterns afloat, spirit lights off the water |
+| Awakening | a flurry, the post shakes and glows, then bursts into splinters and a new one rises | the falls part and run upward round a column of light, then crash back |
+| Camera | side-on, 9 studs, closer and lower when awakened | straight on from the front, back and up when awakened |
+
+- **The framework** (one set of numbers for every ground, as section 5.1 asked):
+  - `Core/Beat` got the held beat (`gradeHold`: the release is graded, a hold shorter than the ground's
+    `MinHold` is a miss, so tapping fast cannot stand in for holding), Focus by beat length (`focus`: a 3 s beat
+    carries 3 reps and 3 times the Focus, so every ground awakens at the same rate), `upcoming` (the beat to
+    play and how far the ring has come) and `clipAt` (below). `Core/Grounds`: which grounds a base shows and
+    the tier and level each is drawn at. Spec `tests/Grounds.spec.luau` (9 cases; 145 specs pass).
+  - **The clip keeps time.** A beat is jittered, so a looping clip drifts off it. `Beat.clipAt` gives, for any
+    moment of a session, where the clip should be and how fast it should run so that its reps (config `Marks`)
+    fall ON the beats; `TrainingController:_sync` sets the speed between every two beats and corrects drift. The
+    fist lands as the ring does; the breath is let out on the gold.
+  - Server (`TrainingService`): a session belongs to a court; the stand point and facing come from the set
+    piece's `Stand` part; a held game sends hold-begin and hold-end and the server grades the release; the
+    character carries `TrainPlot`, `TrainCourt` and, while awakened, `TrainAwake` (the server time it ends).
+  - Everyone sees it (`Controllers/GroundController`): from those attributes alone every client plays the
+    ground's awakening on that plot's set piece, with the aura on the trainee. The trainee's own client adds the
+    reps (the beats are known only to it and the server).
+  - HUD (UI v5.2, `tools/ui/screens_v52.py`): a Focus bar under the ring (gold and running down while
+    awakened), the breath disc in the ring, the instruction over the ring ("HOLD", then "LET GO IN THE GOLD").
+- **The set pieces** (`tools/studio/grounds/`): 15 generated pieces (three posts, two cliffs, the seat stone, the
+  notice board, weapon rack, straw dummy, war drum, brazier, stone lantern, lotus lantern; kept in
+  `StoreAssets.Grounds`) + part-built walls, decks, kerbs, ropes, banners and the lock. `ground_lab.luau` gathers
+  and squares generated pieces, `build_grounds.luau` (through `run_build.py`, which passes the effect texture
+  ids) builds `Assets.Grounds.Ground_<id>_T<tier>` and a small `Show_<id>_T<tier>` for dialogs, `court_setup.luau`
+  prepared the five bases, `preview.luau` stands two templates on a base for a look. The waterfall is two Beams a
+  side (a streaked sheet and faster foam, the game's own textures) pouring over the lip, with spray, a splash
+  flipbook and mist at the foot; the notice board carries the ground's name, the gear the owner trains on and
+  the next upgrade, and holds the Upgrade prompt.
+- **Effects** (`assets/vfx/builders/build_train.py`, 10 effects, 4 textures of their own): the rep, the PERFECT
+  critical over it, the flurry, the breath's rings, the awakening burst and aura (tinted with the ground's
+  energy: gold for the post, cyan for the falls), the post's burst and rise, the falls' column and crash.
+  Judged in the game with `tools/studio/grounds/fx_judge.luau`; what that fixed is in `assets/vfx/README.md`
+  (flame sprites must not be velocity-parallel; a critical must start gold; lamps and halos on pale rock white
+  the court out at max graphics).
+- **Sounds:** 14 new roles, all from Roblox-licensed libraries this time (ProSoundEffects, APMOfficial), picked
+  from measured loudness curves (`tools/studio/sfx_probe.py` -> `work/sfx/probe_d.json`, 116 candidates);
+  lead-ins and caps in `SoundController`. The waterfall is heard in the world (`falls_loop` on every pool).
+  NOBODY HAS LISTENED TO THEM (as in phase C): the owner's first listen decides the swaps.
+- **The five clips** (animations batch r8, `tools/anim/clips_r8.py`, uploaded): TrainPost (makiwara practice
+  from a front stance: a right reverse punch and a left lunge punch, Hit at 0.5 and 1.5 s), PostFlurry (six
+  punches a second, leaning in), PostFinish (wind-up, then one blow 0.4 studs through the post; its first frame
+  is the flurry's and its last the loop's, so nothing pops), TrainBreath (seated: the hands rise up the centre
+  line through the inhale, turn over at the Pulse, press down) and BreathAscend (floating cross-legged, arms
+  open). The post's face is 2.87 studs in front of the trainee (config `Contact`; the set piece's stand point is
+  placed from it): the first pass at 2.47 gave a short, bunched punch and was redone. The author's own list of
+  rough spots: PostFinish goes 0.4 through, not the 0.6 asked for; TrainBreath's hands meet side by side, not
+  cupped (the rig has no forearm roll); the seated legs are the old TrainMeditate fold (they sink 0.4 into the
+  seat); the back shin of the post stance dips 0.2 under the floor.
+- **Played in Studio** (a fresh save; an auto-player that fires `TrainTap` exactly when the HUD's ring lands):
+  - Striking Post: the capture caught the right fist on the rope pad with the hit burst on it and the ring on
+    the gold in the same frame: the clip is in time. 20 Perfects filled Focus; the awakening ran 8 s (flurry,
+    aura, hit storm, the post shaking and glowing, closer camera). A log of its end, ten samples a second:
+    PostFinish starts 0.46 s before the end, its blow lands at +0.04 s, the post is gone at +0.08 with
+    `Post_Burst`, `Post_Rise` at +0.5 and the new post is home by +0.95; the loop resumes in time.
+  - Waterfall Focus (rebirth 1): seated on the stone, hands at the chest, the falls behind; 7 perfect breaths
+    awakened it; the hero floats, the falls stand apart either side and water runs up the gap.
+  - Buying a gear level swaps the set piece (`1/1/1` -> `1/1/2`: drum, banners, rope appear), the "NEW GEAR!"
+    card shows, the board reads the new level; the locked Waterfall opens on the first rebirth.
+  - Two bugs this found and fixed: a blow landing while the new post was still rising took that height for the
+    post's place and left it 0.3 studs up (the server now writes the centrepiece's rest pose on it, clients put it
+    back there); the final blow's lens push could freeze the camera at the awakened shot's lens (the push now
+    returns to the shot's own lens, and the camera's move and lens are separate tweens).
+- **Not done, not verified:** nobody has PLAYED it by hand (the taps were fired by a script on the beat; real
+  hit rates, the feel of the windows and of the 3 s breath are the owner's to judge, as section 9 said); the
+  sounds are unheard; nothing was tried on a phone; other players' view of an awakening was not watched from a
+  second client (it is built from replicated attributes only); the post's burst itself was seen frozen with the
+  judge tool and in the log, not in a live capture (a capture takes seconds); max-graphics captures of the
+  awakenings were cut short by the PC running out of memory (the last ones were at Studio's automatic level).
+  Grounds 3 to 8 are phase E: a player past rebirth 1 still sees the Waterfall and, from rebirth 2, an empty
+  left court until Boulder Breaker is built.
+- **Traps found:** an Attachment's `WorldCFrame` set before it has a parent is taken as its local CFrame (the
+  falls stood 13 studs up in the sky); a Beam's width lies along its attachments' Y, not Z (the sheets stood
+  edge-on); a textured generated mesh cannot be tinted by `Color` (the "river rocks" came near-white: the seat
+  stone is used for them); `VirtualInputManager` is not open to `execute_luau` (the auto-player of the play
+  tests fires `TrainTap` when the HUD's ring lands instead); Studio crashed twice when the PC ran out of memory
+  with another heavy app open (Team Create kept everything; relaunch with
+  `RobloxStudioBeta.exe -task EditPlace -placeId 106586376894468 -universeId 10776373502`).

@@ -13,6 +13,7 @@
   python tools/anim/run.py build5                   batch r5 only -> work/anim/upload5/build_r5.lua
   python tools/anim/run.py build6                   batch r6 only -> work/anim/upload6/build_r6.lua
   python tools/anim/run.py build7                   batch r7 only -> work/anim/upload7/build_r7.lua
+  python tools/anim/run.py build8                   batch r8 only -> work/anim/upload8/build_r8.lua
   python tools/anim/run.py probe A B ... [--frames]  mesh_probe.py: floor, foot slip, part overlaps (real meshes)
 """
 import concurrent.futures as cf
@@ -47,13 +48,15 @@ R6 = ["CarryShoulder", "CarriedRide", "PlaceHero"]   # clips_r6.py, batch r6 (Pl
 ORDER += [n for n in R6 if n not in ORDER]
 R7 = ["HoldPitch", "HoldHeave", "ThrowHeave", "HoldSpin", "ThrowSpin"]   # clips_r7.py, batch r7 (plan 13 phase C)
 ORDER += R7
+R8 = ["TrainPost", "PostFlurry", "PostFinish", "TrainBreath", "BreathAscend"]   # clips_r8.py, batch r8 (plan 13 phase D)
+ORDER += R8
 R3_RENDERS = os.path.join(WORK, "r3")       # batch r3 keeps its sheets / GIFs here
 
 
 def all_clips():
     import clips_player
     out = dict(clips_player.CLIPS)
-    for mod in ("clips_hero", "clips_r3", "clips_r4", "clips_r5", "clips_r6", "clips_r7"):
+    for mod in ("clips_hero", "clips_r3", "clips_r4", "clips_r5", "clips_r6", "clips_r7", "clips_r8"):
         try:
             out.update(__import__(mod).CLIPS)
         except ImportError:
@@ -281,6 +284,9 @@ if __name__ == "__main__":
             print(f"--- {n} (exit {code})")
             print("\n".join(ln for ln in lines[i:] if ln.startswith(("===", "  "))) if code == 0
                   else "\n".join(lines[-20:]))
+    elif cmd == "build8":
+        os.makedirs(os.path.join(WORK, "upload8"), exist_ok=True)
+        build(R8, os.path.join(WORK, "upload8", "build_r8.lua"))
     elif cmd == "build7":
         os.makedirs(os.path.join(WORK, "upload7"), exist_ok=True)
         build(R7, os.path.join(WORK, "upload7", "build_r7.lua"))

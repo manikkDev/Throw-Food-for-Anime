@@ -242,7 +242,10 @@ def reveal():
 
 # =================================================================== FoodShop
 
-FOODS = CFG["Foods"]
+# plan 13 took Flavor and PowerMult out of the config; the mockup cards still draw a flavour chip and a
+# power pill (the client hides or rewrites them), so the sample foods carry stand-in values
+_FLAVOURS = ("Savory", "Sweet", "Spicy", "Seafood")
+FOODS = [{"Flavor": _FLAVOURS[i % 4], "PowerMult": 1 + 0.25 * i, **food} for i, food in enumerate(CFG["Foods"])]
 
 
 def food_card_template(name="FoodCardTemplate", food=FOODS[10], state="price"):
@@ -373,7 +376,7 @@ def squad():
 # =================================================================== HeroIndex
 
 ZONES = CFG["Zones"]
-CHARS = CFG["Characters"]
+CHARS = [{"Craves": _FLAVOURS[i % 4], **c} for i, c in enumerate(CFG["Characters"])]  # see FOODS
 
 
 def hero_tile_template(name="HeroTileTemplate", hero="Heavenly String King", rarity="Epic", craves="Seafood",

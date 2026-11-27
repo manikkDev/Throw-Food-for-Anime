@@ -73,18 +73,15 @@ return {
 		end
 	end,
 
-	["training stations: inside their court on the forecourt lawn, mirrored, clear of the walkway"] = function()
+	["training courts: on the forecourt lawn, mirrored, clear of the walkway and the stage"] = function()
 		local x0 = World.plotX(W, 1, COUNT)
-		local stations = C.Training.Stations
-		assert(#stations % 2 == 0, "stations come in mirrored pairs")
-		for i, row in stations do
-			local x, z, sx, sz = World.station(W, C.Training, 1, COUNT, i)
+		local courts = C.Training.Courts
+		assert(
+			#courts == 2 and courts[1].Side == -1 and courts[2].Side == 1,
+			"court 1 left, court 2 right"
+		)
+		for _, row in courts do
 			local cx, cz, cw, cd = World.court(W, 1, COUNT, row.Side)
-			assert(
-				math.abs(x - cx) <= cw / 2 - 2 and math.abs(sx - cx) <= cw / 2 - 2,
-				`{row.Id} pokes out of its court`
-			)
-			assert(z - cz >= -cd / 2 and sz <= cz + cd / 2, `{row.Id} pokes out of its court (z)`)
 			-- the courts stand on the lawn in front of the base: clear of the walkway (16 wide), short
 			-- of the neighbour's court, between the base's front edge and the throw stage
 			assert(math.abs(cx - x0) - cw / 2 >= 8 + 2, "a court covers the walkway")
@@ -94,27 +91,6 @@ return {
 			)
 			assert(cz - cd / 2 >= W.PlotFrontZ + 2, "a court reaches into the base")
 			assert(cz + cd / 2 <= W.StageZ - 14 - 20, "a court is crowding the throw stage")
-			-- its mirror twin
-			local twin = false
-			for _, other in stations do
-				if
-					other.Side == -row.Side
-					and math.abs(other.X + row.X) < 0.01
-					and other.Z == row.Z
-				then
-					twin = true
-				end
-			end
-			assert(twin, `{row.Id} has no mirrored twin`)
-			for j, other in stations do
-				if j ~= i then
-					local ox = World.station(W, C.Training, 1, COUNT, j)
-					assert(
-						math.abs(ox - x) >= 2 * W.StationRadius + 4,
-						`{row.Id} and {other.Id} are too close`
-					)
-				end
-			end
 		end
 		local signX, signZ = World.slotSign(W, 1, COUNT)
 		for _, side in { -1, 1 } do

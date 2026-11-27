@@ -1130,6 +1130,160 @@
       "looped": false,
       "kind": "SoundEffect",
       "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "post_hit",
+      "id": 9120888730,
+      "name": "Wood Hits Board Impacts On Fence Post 3 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 0.652,
+      "volume": 0.4,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "post_crit",
+      "id": 9113225986,
+      "name": "Axe Impact Giant Thuddy Hits On Wood Floor 5 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 0.859,
+      "volume": 0.55,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "flurry_hit",
+      "id": 9114771792,
+      "name": "Hand Slap Claps 3 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 0.628,
+      "volume": 0.5,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "post_break",
+      "id": 9126242477,
+      "name": "Wood Crate Smash Crunching Cracking Splinter (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 2.112,
+      "volume": 0.8,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "post_rise",
+      "id": 9125880099,
+      "name": "Rock Scrape Deep Clunky Slides Rumbling Thun (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.687,
+      "volume": 1.0,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "breath_pulse",
+      "id": 9119228137,
+      "name": "Slow Whoosh Beefy Airy Pass By 6 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 0.803,
+      "volume": 0.9,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "breath_perfect",
+      "id": 9126073318,
+      "name": "Synth Sparkle Tone High Pitch Bell Tone Ding (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.6,
+      "volume": 0.8,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "awaken_start",
+      "id": 9114447022,
+      "name": "Fire Whoosh 19 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.275,
+      "volume": 0.9,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "awaken_loop",
+      "id": 9117881642,
+      "name": "Power Throb Deep Tonal Hum Slow Pulse 1 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 4.48,
+      "volume": 0.35,
+      "looped": true,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "awaken_sting",
+      "id": 1841318075,
+      "name": "Cinematic Percussion Hits 3",
+      "creator": "APMOfficial",
+      "length": 9.639,
+      "volume": 0.5,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "falls_loop",
+      "id": 9116496581,
+      "name": "Medium Size Waterfall 2 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 105.621,
+      "volume": 0.22,
+      "looped": true,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "falls_split",
+      "id": 9114167805,
+      "name": "Drain Suction 3 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 3.413,
+      "volume": 0.6,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "falls_crash",
+      "id": 9120585252,
+      "name": "Water Splash Big Water Splash Dive In 1 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 3.605,
+      "volume": 0.8,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "focus_full",
+      "id": 9126073001,
+      "name": "Synth Sparkle Tone High Pitch Bell Tone Ding (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.163,
+      "volume": 0.8,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
     }
   ],
   "_picked": "by hand from measured candidates (two search rounds, 438 probed in Studio): Roblox-licensed libraries (ProSoundEffects, APMOfficial, DistrokidOfficial) preferred; game rips rejected; cap = seconds the game plays before fading"

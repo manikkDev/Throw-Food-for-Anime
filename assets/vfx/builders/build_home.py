@@ -291,5 +291,6 @@ def zone_unlock():
 
 
 if __name__ == "__main__":
-    dash_home(); train_hit(); powerup(); coin_pop(); slot_unlock()
+    # (Train_Hit is built by build_train.py since plan 13 phase D; train_hit() above is the section 4 version, kept for reference)
+    dash_home(); powerup(); coin_pop(); slot_unlock()
     rebirth_nova(); summon_portal(); server_luck(); zone_unlock()

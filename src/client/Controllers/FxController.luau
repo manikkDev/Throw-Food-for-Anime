@@ -28,19 +28,6 @@ local W = Config.World
 local COUNT = Config.Server.PlotCount
 local player = Players.LocalPlayer
 
--- The training clip for each piece of dojo gear, by the gear's NAME
--- (Config.Training.Equipment rows have no id): strikes on the dummies and the
--- sandbag, a push on the pillar, a meditation at the rest.
-local GEAR_CLIP: { [string]: string } = {
-	["Wooden Dummy"] = "TrainStrike",
-	["Sandbag"] = "TrainStrike",
-	["Iron Dummy"] = "TrainStrike",
-	["Stone Pillar"] = "TrainPush",
-	["Waterfall"] = "TrainMeditate",
-	["Gravity Dojo"] = "TrainMeditate",
-	["Dragon Shrine"] = "TrainMeditate",
-	["Star Forge"] = "TrainMeditate",
-}
 -- a rep with no clip marker this recent gets its hit from the server's rep
 -- the sky over the hub while server luck runs
 local HUB_SKY = Vector3.new(0, W.GroundY + 40, W.PlotBackZ - W.HubDepth / 2)
@@ -123,8 +110,7 @@ end
 function FxController:_followTraining(state: any)
 	-- the training clips moved to TrainingController (one clip per station, 2026-11-15): nothing
 	-- plays here any more; this only stops a clip a previous build left running
-	local row = Config.Training.Equipment[state.gear] or {}
-	local _ = GEAR_CLIP[row.Model or row.Name or ""]
+	local _ = state
 	local clip = ""
 	if clip == self._trainClip then
 		return

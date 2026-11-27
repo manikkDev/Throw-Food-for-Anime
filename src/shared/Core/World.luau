@@ -93,20 +93,6 @@ function World.slotSign(world: any, plotIndex: number, count: number): (number, 
 	return World.plotX(world, plotIndex, count) + world.SlotSignX, world.SlotSignZ
 end
 
---- Training station `i` (config Training.Stations): the target's world (x, z) and the point the
---- trainee is snapped to, (standX, standZ). The trainee faces -Z, toward the target.
-function World.station(
-	world: any,
-	training: any,
-	plotIndex: number,
-	count: number,
-	i: number
-): (number, number, number, number)
-	local row = training.Stations[i]
-	local x = World.plotX(world, plotIndex, count) + row.X
-	return x, row.Z, x, row.Z + row.Stand
-end
-
 --- A training court: side -1 (left, -X) or 1 (right): centre (x, z) and size (width, depth).
 function World.court(
 	world: any,

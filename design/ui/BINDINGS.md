@@ -1900,6 +1900,7 @@ Root: `TrainingBar` (ScreenGui), file `src/ui/TrainingBar.model.json`
 | `StationTitle` | training station name | STRIKE DUMMY / GRAVITY DOJO |
 | `RepPower` | power gained by the last rep (+N POWER) | +120 POWER / +11.00K POWER |
 | `Combo` | perfect-rep combo (x3 COMBO), hidden at 0 | x3 COMBO / x12 COMBO |
+| `FocusBar.FocusText` | Focus as a percentage; awakened: the seconds left (UI v5.2) | FOCUS 100% / AWAKENED! 8s |
 
 **Buttons**
 
@@ -1913,8 +1914,11 @@ Root: `TrainingBar` (ScreenGui), file `src/ui/TrainingBar.model.json`
 |---|---|
 | `TimingRing` | Frame |
 | `TimingRing.Target` | Frame |
-| `TimingRing.Shrink` | Frame |
-| `TapHint` | TextLabel |
+| `TimingRing.Shrink` | Frame (the tapped game: closes on Target; hidden in the held game) |
+| `TimingRing.Fill` | Frame (the held game: the breath disc swelling out to Target; UI v5.2) |
+| `FocusBar` | Frame |
+| `FocusBar.Fill` | Frame (Focus; awakened: the time left, gold) |
+| `TapHint` | TextLabel (the ground's instruction, then what to do right now) |
 | `PerfectLabel` | TextLabel |
 
 **IconKey slots** (ImageLabel, Image empty)

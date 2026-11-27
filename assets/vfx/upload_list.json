@@ -883,6 +883,13 @@
    "transposed": true
   },
   {
+   "file": "tfa__pool_ripple.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__pool_ripple.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\pool_ripple.png",
+   "transposed": false
+  },
+  {
    "file": "tfa__ribbon_solid__vt.png",
    "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__ribbon_solid__vt.png",
    "kind": "Image",
@@ -894,6 +901,27 @@
    "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__sugar_cube.png",
    "kind": "Image",
    "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\sugar_cube.png",
+   "transposed": false
+  },
+  {
+   "file": "tfa__water_foam__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__water_foam__vt.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\water_foam.png",
+   "transposed": true
+  },
+  {
+   "file": "tfa__water_sheet__vt.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__water_sheet__vt.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\water_sheet.png",
+   "transposed": true
+  },
+  {
+   "file": "tfa__wood_splinter.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__wood_splinter.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\wood_splinter.png",
    "transposed": false
   }
  ],

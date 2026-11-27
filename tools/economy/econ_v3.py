@@ -366,12 +366,31 @@ def load() -> dict:
     return json.loads(DRAFT.read_text(encoding="utf-8"))
 
 
-GROUND_ROWS = [  # name, rebirth tier that opens it, court side (-1 left, 1 right), the game, seconds per beat
-    ("Striking Post", 0, -1, "ring", 1), ("Waterfall Focus", 1, 1, "breath", 3),
-    ("Boulder Breaker", 2, -1, "sweep", 2), ("Thunder Peak", 3, 1, "reflex", 2),
-    ("Gravity Chamber", 4, -1, "rhythm", 1), ("Spirit Orb", 5, 1, "charge", 4),
-    ("Titan Chains", 6, -1, "triple", 3), ("Timeless Hall", 7, 1, "medley", 2),
+GROUND_ROWS = [  # id, name, rebirth tier that opens it, court side (-1 left, 1 right), the game, seconds per beat
+    ("post", "Striking Post", 0, -1, "ring", 1), ("falls", "Waterfall Focus", 1, 1, "breath", 3),
+    ("boulder", "Boulder Breaker", 2, -1, "sweep", 2), ("peak", "Thunder Peak", 3, 1, "reflex", 2),
+    ("gravity", "Gravity Chamber", 4, -1, "rhythm", 1), ("orb", "Spirit Orb", 5, 1, "charge", 4),
+    ("chains", "Titan Chains", 6, -1, "triple", 3), ("hall", "Timeless Hall", 7, 1, "medley", 2),
 ]
+# what a ground needs beyond its numbers (plan 13 phase D; the grounds of phase E get theirs then):
+# the clips (training loop, awakening loop, the one-shot that ends the awakening), the marker that is
+# the rep, the line under the game, and for a game that is held: how long before the beat the hold
+# must have begun
+GROUND_FEEL = {
+    # Marks: the seconds into Clip (ClipSeconds long) of its reps; the client runs the clip so that
+    # each one falls on a beat. FinishAt: the seconds into FinishClip of its blow. Contact: how far in
+    # front of the trainee the struck face is (the clips are authored to it: assets/animations batch
+    # r8; the set piece's Stand part is placed from it, tools/studio/grounds/build_grounds.luau).
+    "post": {"Clip": "TrainPost", "ClipSeconds": 2.0, "Marks": [0.5, 1.5], "AwakeClip": "PostFlurry",
+             "FinishClip": "PostFinish", "FinishAt": 0.5, "Contact": 2.87, "Hint": "TAP AS THE RING LANDS"},
+    "falls": {"Clip": "TrainBreath", "ClipSeconds": 3.0, "Marks": [2.5], "AwakeClip": "BreathAscend",
+              "Hint": "HOLD, LET GO IN THE GOLD", "MinHold": 0.6},
+}
+# the look of each gear tier (its model: Assets.Grounds.Ground_<ground id>_T<tier>); three levels each
+GEAR_MODELS = ["Wooden Post", "Banded Post", "Iron Post", "Mountain Falls", "Shrine Falls", "Granite Boulder",
+               "Obsidian Boulder", "Storm Peak", "Thunder Peak", "Gravity Room", "Gravity Core", "Spirit Orb",
+               "Sun Orb", "Titan Chains", "Colossus Chains", "Timeless Hall", "Hall of Ages", "Endless Dojo",
+               "Hall of Gods"]
 BEAT = {"PerfectBonus": 1.0, "GoodBonus": 0.5, "FocusPerfect": 2, "FocusGood": 1, "FocusFull": 40,
         "AwakeningSeconds": 8, "AwakeningMult": 1.5, "PerfectWindow": 0.12, "GoodWindow": 0.3,
         "MinTapGap": 0.1}
@@ -401,7 +420,7 @@ def run_apply(_a) -> int:
                      "Luck": f["Luck"], "Cost": f["Cost"]} for n, f in enumerate(d["Foods"])]
     cfg.pop("Flavors", None)
     cfg["Luck"]["StaleFood"] = STALE
-    names = v2.GEAR_NAMES + ["Endless Dojo", "Hall of Gods"]
+    names = GEAR_MODELS
     gear = []
     for g in d["Gear"]:
         model = names[g["Tier"] - 1]
@@ -413,13 +432,14 @@ def run_apply(_a) -> int:
         gear.append(row)
     training = cfg["Training"]
     training["Equipment"] = gear
-    training["Grounds"] = [{"Name": n, "Rebirth": t, "Side": side, "Game": game, "BeatSeconds": beat}
-                           for n, t, side, game, beat in GROUND_ROWS]
+    training["Grounds"] = [{"Id": gid, "Name": n, "Rebirth": t, "Side": side, "Game": game, "BeatSeconds": beat,
+                            **GROUND_FEEL.get(gid, {})}
+                           for gid, n, t, side, game, beat in GROUND_ROWS]
     training["Beat"] = BEAT
-    for key in ("PerfectBonus", "PerfectWindow"):
+    for key in ("PerfectBonus", "PerfectWindow", "Stations"):
         training.pop(key, None)
-    for station in training["Stations"]:  # the second court opens with the first rebirth (tier 4, level I)
-        station["Unlock"] = 1 if station["Id"] == "strike" else 10
+    # the two courts of a base (court 1 left, court 2 right): where a ground's set piece is centred
+    training["Courts"] = [{"Side": -1}, {"Side": 1}]
     plot = cfg["Plot"]
     plot["SlotCosts"] = [x["Cost"] for x in d["Slots"]]
     plot["SlotZones"] = [x["Zone"] for x in d["Slots"]]

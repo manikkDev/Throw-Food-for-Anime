@@ -1,18 +1,21 @@
 --!strict
--- TrainingService - Power, from the training stations on the player's own plot
--- (config Training.Stations: strike and meditate since 2026-11-22, one on each mirrored court).
+-- TrainingService - Power, from the training grounds on the player's own plot (plan 13 phase D).
 --
--- A session belongs to ONE station:
---   * Start(player, i): the plot is theirs, the station is unlocked (gear tier >= Unlock). The
---     character is SNAPPED to the station's stand point facing the target, at contact distance,
+-- A base has two courts; each shows one training ground (Core/Grounds: the two newest the owner
+-- has opened). A session belongs to ONE court:
+--   * Start(player, court): the plot is theirs and the ground is open (its rebirth). The character
+--     is SNAPPED to the ground's stand point (the `Stand` part of the set piece PlotService placed)
 --     and LOCKED there (root anchored, WalkSpeed 0, no jump) until Stop. The client cannot walk
 --     off mid-rep or punch the air from across the court (owner's review, 2026-11-15).
 --   * reps run on the SERVER's clock (RepSeconds); the client only plays the clip.
---   * the game (plan 13, Core/Beat): beats come at jittered moments from the session's seed. One
---     tap (TrainTap) per beat is graded here against the session's own clock: PERFECT / GOOD add
---     to that beat's reps and fill FOCUS; a full bar AWAKENS the hero for a few seconds (every rep
---     an automatic perfect, x AwakeningMult), during which taps do not count. A player who never
---     taps still gets every rep: leaving it running is the x1 floor.
+--   * the game (Core/Beat): beats come at jittered moments from the session's seed, the ground's
+--     BeatSeconds apart. One input per beat is graded here against the session's own clock: a TAP
+--     on the beat (ring), or a HOLD let go on the beat (breath: the hold must have begun MinHold
+--     before). PERFECT / GOOD add to that beat's reps and fill FOCUS; a full bar AWAKENS the hero
+--     for a few seconds (every rep an automatic perfect, x AwakeningMult), during which input does
+--     not count. A player who never touches anything still gets every rep: the x1 floor.
+--   * everyone sees it: the character carries TrainPlot / TrainCourt while it trains and
+--     TrainAwake (the server time the awakening ends) while awakened; clients draw from those.
 --   * Stop(player) (the Exit button, a death, leaving) restores movement.
 
 local Players = game:GetService("Players")
@@ -22,19 +25,21 @@ local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Beat = require(ReplicatedStorage.Shared.Core.Beat)
+local Grounds = require(ReplicatedStorage.Shared.Core.Grounds)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Throw = require(ReplicatedStorage.Shared.Core.Throw)
-local World = require(ReplicatedStorage.Shared.Core.World)
 local Guard = require(script.Parent.Parent.Logic.Guard)
 
 local REP = Config.Training.RepSeconds
-local COUNT = Config.Server.PlotCount
 local BEAT = Config.Training.Beat
 -- how far a tap may be off because of the network: added to both grading windows
 local LAG_ALLOWANCE = 0.08
 
 type Session = {
-	station: number,
+	station: number, -- the court (1 left, 2 right)
+	ground: number, -- index into Training.Grounds
+	minHold: number?, -- a held game: seconds the hold must last before its release counts
+	holdStart: number?, -- os.clock() the current hold began at
 	start: number, -- os.clock() of the start: reps and the timing game run from it
 	startServer: number, -- the same instant as workspace:GetServerTimeNow(), for the client's ring
 	last: number,
@@ -70,6 +75,7 @@ function TrainingService:View(player: Player): { [string]: number }?
 	end
 	return {
 		station = session.station,
+		ground = session.ground,
 		start = session.startServer,
 		rep = REP,
 		seed = session.seed,
@@ -86,10 +92,9 @@ local function parts(player: Player): (Humanoid?, BasePart?)
 	return humanoid, if root and root:IsA("BasePart") then root else nil
 end
 
-function TrainingService:Start(player: Player, station: number)
+function TrainingService:Start(player: Player, court: number)
 	local profile = self._data:Get(player)
-	local row = Config.Training.Stations[station]
-	if not profile or not row then
+	if not profile or (court ~= 1 and court ~= 2) then
 		return
 	end
 	if self._sessions[player] then
@@ -100,13 +105,13 @@ function TrainingService:Start(player: Player, station: number)
 		self._state:Toast(player, "Place your hero on a pedestal first!", "bad")
 		return
 	end
-	if (profile.gear or 0) < row.Unlock then
-		local gear = Config.Training.Equipment[row.Unlock]
-		self._state:Toast(
-			player,
-			`{row.Name} unlocks with the {if gear then gear.Name else "next gear"}`,
-			"info"
-		)
+	local shown = Grounds.shown(Config, profile.rebirth or 0)[court]
+	local row = shown and Config.Training.Grounds[shown.ground]
+	if not shown or not row then
+		return
+	end
+	if shown.locked then
+		self._state:Toast(player, `{row.Name} opens at Rebirth {shown.locked}`, "info")
 		return
 	end
 	local index = self._plots:IndexOf(player)
@@ -114,47 +119,34 @@ function TrainingService:Start(player: Player, station: number)
 	if not index or not humanoid or not root or humanoid.Health <= 0 then
 		return
 	end
-	local tx, tz, sx, sz = World.station(Config.World, Config.Training, index, COUNT, station)
-	-- contact: the clip's fists / palms reach Contact studs in front of the root, so the root
-	-- stands Contact in front of the target's real front face (the strike gear changes size
-	-- with the tier: wooden dummy, sandbag, iron dummy)
-	if row.Contact then
-		local face = self:_targetFace(index, row, station)
-		if face then
-			sz = face + row.Contact
-		end
-	end
-	if not self._plots:Near(player, sx, sz, Config.World.StationRadius + 10) then
-		self._state:Toast(player, "Walk up to the station to train", "info")
+	-- the stand point of the set piece on that court: where the feet go and which way they face
+	local stand: CFrame = self._plots:GroundStand(index, court)
+	local reach = Config.World.StationRadius + 10
+	if not self._plots:Near(player, stand.Position.X, stand.Position.Z, reach) then
+		self._state:Toast(player, "Walk up to the training ground", "info")
 		return
 	end
-	-- snap: stand point, facing the target, feet on the court
-	local params = RaycastParams.new()
-	params.FilterDescendantsInstances = { player.Character :: Model }
-	params.FilterType = Enum.RaycastFilterType.Exclude
-	local hit =
-		workspace:Raycast(Vector3.new(sx, root.Position.Y + 10, sz), Vector3.new(0, -40, 0), params)
-	local floorY = if hit then hit.Position.Y else Config.World.GroundY
-	local y = floorY + humanoid.HipHeight + root.Size.Y / 2
+	local y = stand.Position.Y + humanoid.HipHeight + root.Size.Y / 2
 	local saved =
 		{ walk = humanoid.WalkSpeed, jump = humanoid.JumpHeight, jumpPower = humanoid.JumpPower }
 	humanoid.WalkSpeed = 0
 	humanoid.JumpHeight = 0
 	humanoid.JumpPower = 0
 	root.AssemblyLinearVelocity = Vector3.zero
-	-- strike / push face their target; curls and meditation (no contact) face out to the court,
-	-- back to the log and the falls, so the camera sees them from the front
-	local facing = if row.Contact then Vector3.new(tx, y, tz) else Vector3.new(sx, y, sz + 10)
-	root.CFrame = CFrame.lookAt(Vector3.new(sx, y, sz), facing)
+	local at = Vector3.new(stand.Position.X, y, stand.Position.Z)
+	local look = stand.LookVector
+	root.CFrame = CFrame.lookAt(at, at + Vector3.new(look.X, 0, look.Z))
 	root.Anchored = true
 	local now = os.clock()
 	self._sessions[player] = {
-		station = station,
+		station = court,
+		ground = shown.ground,
+		minHold = row.MinHold,
 		start = now,
 		startServer = workspace:GetServerTimeNow(),
 		last = now,
 		seed = math.random(1, 100000),
-		beat = REP,
+		beat = row.BeatSeconds,
 		judged = 0,
 		lastTap = 0,
 		focus = 0,
@@ -162,35 +154,13 @@ function TrainingService:Start(player: Player, station: number)
 		awakeServer = 0,
 		saved = saved,
 	}
+	local character = player.Character
+	if character then
+		character:SetAttribute("TrainPlot", index)
+		character:SetAttribute("TrainCourt", court)
+		character:SetAttribute("TrainAwake", nil)
+	end
 	self._state:MarkDirty(player)
-end
-
--- The +Z (front) face of a station's target in world Z, from its bounding box; nil if missing.
-function TrainingService:_targetFace(index: number, row: any, station: number): number?
-	local map = workspace:FindFirstChild("Map")
-	local plots = map and map:FindFirstChild("Plots")
-	local plot = plots and plots:FindFirstChild("Plot" .. index)
-	if not plot then
-		return nil
-	end
-	local target: Instance? = nil
-	if row.Prop == "gear_strike" then
-		local anchor = plot:FindFirstChild("Gear")
-		target = anchor and anchor:FindFirstChild("GearModel")
-	elseif row.Prop == "gear_spirit" then
-		local anchor = plot:FindFirstChild("SpiritGear")
-		target = anchor and anchor:FindFirstChild("GearModel")
-	else
-		local anchor = plot:FindFirstChild("Target" .. station, true)
-		target = anchor and (anchor:FindFirstChild("GearModel") or anchor)
-	end
-	if target and target:IsA("Model") then
-		local cf, size = target:GetBoundingBox()
-		return cf.Position.Z + size.Z / 2
-	elseif target and target:IsA("BasePart") then
-		return target.Position.Z + target.Size.Z / 2
-	end
-	return nil
 end
 
 function TrainingService:Stop(player: Player)
@@ -199,6 +169,12 @@ function TrainingService:Stop(player: Player)
 		return
 	end
 	self._sessions[player] = nil
+	local character = player.Character
+	if character then
+		character:SetAttribute("TrainPlot", nil)
+		character:SetAttribute("TrainCourt", nil)
+		character:SetAttribute("TrainAwake", nil)
+	end
 	local humanoid, root = parts(player)
 	if root then
 		root.Anchored = false
@@ -273,16 +249,33 @@ function TrainingService:GrantMinutes(player: Player, minutes: number): number
 	return power
 end
 
--- the game: grade this tap against the nearest beat. One grade per beat; a tap that misses still
--- uses its beat up, so mashing the screen lands on "miss", not on a lucky "good".
-function TrainingService:_tap(player: Player)
+-- the game: grade this input against the nearest beat. One grade per beat; an input that misses
+-- still uses its beat up, so mashing the screen lands on "miss", not on a lucky "good".
+-- `down`: a held game sends true when the hold begins and false when it is let go (the release is
+-- what is graded); a tapped game sends nothing.
+function TrainingService:_tap(player: Player, down: boolean?)
 	local session = self._sessions[player]
 	local profile = self._data:Get(player)
 	if not session or not profile then
 		return
 	end
 	local now = os.clock()
-	if now < session.awakeUntil or now - session.lastTap < BEAT.MinTapGap then
+	if now < session.awakeUntil then
+		session.holdStart = nil
+		return
+	end
+	local held: number? = nil
+	if session.minHold then
+		if down == true then
+			session.holdStart = session.holdStart or now
+			return
+		elseif down ~= false or not session.holdStart then
+			return
+		end
+		held = now - session.holdStart
+		session.holdStart = nil
+	end
+	if now - session.lastTap < BEAT.MinTapGap then
 		return
 	end
 	session.lastTap = now
@@ -293,18 +286,24 @@ function TrainingService:_tap(player: Player)
 	end
 	session.judged = n
 	local gap = elapsed - Beat.moment(session.beat, n, session.seed)
-	local grade = Beat.grade(BEAT, gap, LAG_ALLOWANCE)
-	local mult, focus = Beat.reward(BEAT, grade)
+	local grade = if held and session.minHold
+		then Beat.gradeHold(BEAT, gap, held, session.minHold, LAG_ALLOWANCE)
+		else Beat.grade(BEAT, gap, LAG_ALLOWANCE)
+	local mult = Beat.reward(BEAT, grade)
 	if mult > 1 then
 		-- the reps themselves are paid by the clock: this is the bonus on the beat's reps
 		local reps = session.beat / REP
 		self:AddPower(player, self:_perRep(player, profile) * reps * (mult - 1), true)
 	end
-	session.focus += focus
+	session.focus += Beat.focus(BEAT, grade, session.beat, REP)
 	if session.focus >= BEAT.FocusFull then
 		session.focus = 0
 		session.awakeUntil = now + BEAT.AwakeningSeconds
 		session.awakeServer = workspace:GetServerTimeNow() + BEAT.AwakeningSeconds
+		local character = player.Character
+		if character then
+			character:SetAttribute("TrainAwake", session.awakeServer)
+		end
 	end
 	self._tapRemote:FireClient(player, grade, session.focus, session.awakeServer)
 end
@@ -324,12 +323,12 @@ function TrainingService:KnitStart()
 			self:Stop(player)
 		end
 	end)
-	self._tapRemote.OnServerEvent:Connect(function(player: Player)
+	self._tapRemote.OnServerEvent:Connect(function(player: Player, down: unknown)
 		local rate = Config.Training.MaxTapsPerSecond * 2
 		if not Guard.allow(player, "TrainTap", rate, rate * 2) then
 			return
 		end
-		self:_tap(player)
+		self:_tap(player, if typeof(down) == "boolean" then down else nil)
 	end)
 	Players.PlayerRemoving:Connect(function(player: Player)
 		self._sessions[player] = nil

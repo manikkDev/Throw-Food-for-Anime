@@ -8,6 +8,7 @@ export type Clip = { id: string, priority: string, looped: boolean }
 
 local Animations: { Clips: { [string]: Clip }, Emotes: { string } } = {
 	Clips = {
+		BreathAscend = { id = "rbxassetid://97059147871858", priority = "Action", looped = true },
 		CarriedRide = { id = "rbxassetid://129171837155585", priority = "Action", looped = true },
 		CarryHold = { id = "rbxassetid://123151573991982", priority = "Action", looped = true },
 		CarryShoulder = { id = "rbxassetid://92687348195038", priority = "Action", looped = true },
@@ -29,14 +30,18 @@ local Animations: { Clips: { [string]: Clip }, Emotes: { string } } = {
 		IdlePower = { id = "rbxassetid://90410459126519", priority = "Core", looped = true },
 		IdleShy = { id = "rbxassetid://77216879621963", priority = "Core", looped = true },
 		PlaceHero = { id = "rbxassetid://77773650101040", priority = "Action", looped = false },
+		PostFinish = { id = "rbxassetid://112536509537880", priority = "Action", looped = false },
+		PostFlurry = { id = "rbxassetid://132319214674778", priority = "Action", looped = true },
 		RebirthAwaken = { id = "rbxassetid://128371788611919", priority = "Action", looped = false },
 		RebirthEvolve = { id = "rbxassetid://116897390479380", priority = "Action", looped = false },
 		RevealLand = { id = "rbxassetid://122474403767673", priority = "Action", looped = false },
 		Throw = { id = "rbxassetid://71725881856076", priority = "Action", looped = false },
 		ThrowHeave = { id = "rbxassetid://75510375255020", priority = "Action", looped = false },
 		ThrowSpin = { id = "rbxassetid://73973272432226", priority = "Action", looped = false },
+		TrainBreath = { id = "rbxassetid://116903687681313", priority = "Action", looped = true },
 		TrainLift = { id = "rbxassetid://125310741661163", priority = "Action", looped = true },
 		TrainMeditate = { id = "rbxassetid://114324040023472", priority = "Action", looped = true },
+		TrainPost = { id = "rbxassetid://92792148863787", priority = "Action", looped = true },
 		TrainPush = { id = "rbxassetid://80340524340542", priority = "Action", looped = true },
 		TrainStrike = { id = "rbxassetid://87578970825099", priority = "Action", looped = true },
 	},

@@ -74,6 +74,14 @@ KeyframeSequences with the skill's `scripts/upload_animation.py`.
 | ThrowHeave | player | Action | no | 1.5 | Release 0.7667 | **r7** from HoldHeave: arch back, overhead throw-in with both arms, settle; the bowl level until Release |
 | HoldSpin | player | Action | yes | 2.0 | - | **r7** a flat or stick food held flat out to the right at shoulder height, arm cocked |
 | ThrowSpin | player | Action | no | 1.5 | Release 0.7 | **r7** from HoldSpin: coil, stride, side-arm sling across the body |
+| TrainPost | player | Action | yes | 2.0 | Hit 0.5, 1.5 | **r8** (`clips_r8.py`, plan 13 phase D, uploaded). Makiwara practice from a left front stance: right reverse punch, left lunge punch; the post's face 2.87 in front of the HRP. The game runs it so each Hit falls on a beat (`Core/Beat.clipAt`) |
+| PostFlurry | player | Action | yes | 1.0 | Hit x6, 0.1667 apart | **r8** the Striking Post's awakening: six alternating punches a second, leaning in |
+| PostFinish | player | Action | no | 1.2 | Hit 0.5 | **r8** ends the awakening: wind-up, one blow 0.4 through the post's face; frame 0 = PostFlurry's, last frames = TrainPost's first |
+| TrainBreath | player | Action | yes | 3.0 | Pulse 2.5 | **r8** seated under the falls: hands rise up the centre line through the inhale, turn over at Pulse, press down. Seat: LowerTorso 1.65 below standing, its underside 0.32 above the clip's floor |
+| BreathAscend | player | Action | yes | 2.0 | - | **r8** the Waterfall's awakening: floating cross-legged 1.6 above the seat, arms open, a slow bob |
+
+Batch r8 hand-off (contact table, knuckle points for hit effects, the author's list of rough spots):
+`work/anim/upload8/README.md`. TrainStrike, TrainPush, TrainLift and TrainMeditate are no longer played by the game.
 
 ## Contact and props (rev 2) - what the main thread places
 

@@ -144,7 +144,11 @@
   "lib__sprites__elements__flame_cel_02.png": 72758573989614,
   "lib__sprites__elements__flame_cel_05.png": 110003493772159,
   "lib__sprites__cracks__crack_glow_02.png": 109558437201675,
-  "lib__sprites__elements__tendril_cel_03.png": 73800934875082
+  "lib__sprites__elements__tendril_cel_03.png": 73800934875082,
+  "tfa__pool_ripple.png": 117734372127517,
+  "tfa__water_foam__vt.png": 107461682001420,
+  "tfa__water_sheet__vt.png": 90130101110366,
+  "tfa__wood_splinter.png": 89131742746517
  },
  "meshes": {}
 }

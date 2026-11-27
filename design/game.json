@@ -248,8 +248,8 @@
       "RepSeconds": 1.0,
       "Equipment": [
         {
-          "Name": "Wooden Dummy I",
-          "Model": "Wooden Dummy",
+          "Name": "Wooden Post I",
+          "Model": "Wooden Post",
           "Tier": 1,
           "Level": 1,
           "Ground": 1,
@@ -258,8 +258,8 @@
           "Zone": 1
         },
         {
-          "Name": "Wooden Dummy II",
-          "Model": "Wooden Dummy",
+          "Name": "Wooden Post II",
+          "Model": "Wooden Post",
           "Tier": 1,
           "Level": 2,
           "Ground": 1,
@@ -268,8 +268,8 @@
           "Zone": 1
         },
         {
-          "Name": "Wooden Dummy III",
-          "Model": "Wooden Dummy",
+          "Name": "Wooden Post III",
+          "Model": "Wooden Post",
           "Tier": 1,
           "Level": 3,
           "Ground": 1,
@@ -278,8 +278,8 @@
           "Zone": 1
         },
         {
-          "Name": "Sandbag I",
-          "Model": "Sandbag",
+          "Name": "Banded Post I",
+          "Model": "Banded Post",
           "Tier": 2,
           "Level": 1,
           "Ground": 1,
@@ -288,8 +288,8 @@
           "Zone": 2
         },
         {
-          "Name": "Sandbag II",
-          "Model": "Sandbag",
+          "Name": "Banded Post II",
+          "Model": "Banded Post",
           "Tier": 2,
           "Level": 2,
           "Ground": 1,
@@ -298,8 +298,8 @@
           "Zone": 2
         },
         {
-          "Name": "Sandbag III",
-          "Model": "Sandbag",
+          "Name": "Banded Post III",
+          "Model": "Banded Post",
           "Tier": 2,
           "Level": 3,
           "Ground": 1,
@@ -308,8 +308,8 @@
           "Zone": 2
         },
         {
-          "Name": "Iron Dummy I",
-          "Model": "Iron Dummy",
+          "Name": "Iron Post I",
+          "Model": "Iron Post",
           "Tier": 3,
           "Level": 1,
           "Ground": 1,
@@ -318,8 +318,8 @@
           "Zone": 3
         },
         {
-          "Name": "Iron Dummy II",
-          "Model": "Iron Dummy",
+          "Name": "Iron Post II",
+          "Model": "Iron Post",
           "Tier": 3,
           "Level": 2,
           "Ground": 1,
@@ -328,8 +328,8 @@
           "Zone": 3
         },
         {
-          "Name": "Iron Dummy III",
-          "Model": "Iron Dummy",
+          "Name": "Iron Post III",
+          "Model": "Iron Post",
           "Tier": 3,
           "Level": 3,
           "Ground": 1,
@@ -338,8 +338,8 @@
           "Zone": 3
         },
         {
-          "Name": "Stone Pillar I",
-          "Model": "Stone Pillar",
+          "Name": "Mountain Falls I",
+          "Model": "Mountain Falls",
           "Tier": 4,
           "Level": 1,
           "Ground": 2,
@@ -348,8 +348,8 @@
           "Zone": 4
         },
         {
-          "Name": "Stone Pillar II",
-          "Model": "Stone Pillar",
+          "Name": "Mountain Falls II",
+          "Model": "Mountain Falls",
           "Tier": 4,
           "Level": 2,
           "Ground": 2,
@@ -358,8 +358,8 @@
           "Zone": 4
         },
         {
-          "Name": "Stone Pillar III",
-          "Model": "Stone Pillar",
+          "Name": "Mountain Falls III",
+          "Model": "Mountain Falls",
           "Tier": 4,
           "Level": 3,
           "Ground": 2,
@@ -368,8 +368,8 @@
           "Zone": 4
         },
         {
-          "Name": "Waterfall I",
-          "Model": "Waterfall",
+          "Name": "Shrine Falls I",
+          "Model": "Shrine Falls",
           "Tier": 5,
           "Level": 1,
           "Ground": 2,
@@ -378,8 +378,8 @@
           "Zone": 5
         },
         {
-          "Name": "Waterfall II",
-          "Model": "Waterfall",
+          "Name": "Shrine Falls II",
+          "Model": "Shrine Falls",
           "Tier": 5,
           "Level": 2,
           "Ground": 2,
@@ -388,8 +388,8 @@
           "Zone": 5
         },
         {
-          "Name": "Waterfall III",
-          "Model": "Waterfall",
+          "Name": "Shrine Falls III",
+          "Model": "Shrine Falls",
           "Tier": 5,
           "Level": 3,
           "Ground": 2,
@@ -398,8 +398,8 @@
           "Zone": 5
         },
         {
-          "Name": "Gravity Dojo I",
-          "Model": "Gravity Dojo",
+          "Name": "Granite Boulder I",
+          "Model": "Granite Boulder",
           "Tier": 6,
           "Level": 1,
           "Ground": 3,
@@ -408,8 +408,8 @@
           "Zone": 6
         },
         {
-          "Name": "Gravity Dojo II",
-          "Model": "Gravity Dojo",
+          "Name": "Granite Boulder II",
+          "Model": "Granite Boulder",
           "Tier": 6,
           "Level": 2,
           "Ground": 3,
@@ -418,8 +418,8 @@
           "Zone": 6
         },
         {
-          "Name": "Gravity Dojo III",
-          "Model": "Gravity Dojo",
+          "Name": "Granite Boulder III",
+          "Model": "Granite Boulder",
           "Tier": 6,
           "Level": 3,
           "Ground": 3,
@@ -428,8 +428,8 @@
           "Zone": 6
         },
         {
-          "Name": "Dragon Shrine I",
-          "Model": "Dragon Shrine",
+          "Name": "Obsidian Boulder I",
+          "Model": "Obsidian Boulder",
           "Tier": 7,
           "Level": 1,
           "Ground": 3,
@@ -438,8 +438,8 @@
           "Zone": 7
         },
         {
-          "Name": "Dragon Shrine II",
-          "Model": "Dragon Shrine",
+          "Name": "Obsidian Boulder II",
+          "Model": "Obsidian Boulder",
           "Tier": 7,
           "Level": 2,
           "Ground": 3,
@@ -448,8 +448,8 @@
           "Zone": 7
         },
         {
-          "Name": "Dragon Shrine III",
-          "Model": "Dragon Shrine",
+          "Name": "Obsidian Boulder III",
+          "Model": "Obsidian Boulder",
           "Tier": 7,
           "Level": 3,
           "Ground": 3,
@@ -458,8 +458,8 @@
           "Zone": 7
         },
         {
-          "Name": "Star Forge I",
-          "Model": "Star Forge",
+          "Name": "Storm Peak I",
+          "Model": "Storm Peak",
           "Tier": 8,
           "Level": 1,
           "Ground": 4,
@@ -468,8 +468,8 @@
           "Zone": 8
         },
         {
-          "Name": "Star Forge II",
-          "Model": "Star Forge",
+          "Name": "Storm Peak II",
+          "Model": "Storm Peak",
           "Tier": 8,
           "Level": 2,
           "Ground": 4,
@@ -478,8 +478,8 @@
           "Zone": 8
         },
         {
-          "Name": "Star Forge III",
-          "Model": "Star Forge",
+          "Name": "Storm Peak III",
+          "Model": "Storm Peak",
           "Tier": 8,
           "Level": 3,
           "Ground": 4,
@@ -518,8 +518,8 @@
           "Zone": 9
         },
         {
-          "Name": "Spirit Chamber I",
-          "Model": "Spirit Chamber",
+          "Name": "Gravity Room I",
+          "Model": "Gravity Room",
           "Tier": 10,
           "Level": 1,
           "Ground": 5,
@@ -528,8 +528,8 @@
           "Zone": 10
         },
         {
-          "Name": "Spirit Chamber II",
-          "Model": "Spirit Chamber",
+          "Name": "Gravity Room II",
+          "Model": "Gravity Room",
           "Tier": 10,
           "Level": 2,
           "Ground": 5,
@@ -538,8 +538,8 @@
           "Zone": 10
         },
         {
-          "Name": "Spirit Chamber III",
-          "Model": "Spirit Chamber",
+          "Name": "Gravity Room III",
+          "Model": "Gravity Room",
           "Tier": 10,
           "Level": 3,
           "Ground": 5,
@@ -548,8 +548,8 @@
           "Zone": 10
         },
         {
-          "Name": "Titan Chains I",
-          "Model": "Titan Chains",
+          "Name": "Gravity Core I",
+          "Model": "Gravity Core",
           "Tier": 11,
           "Level": 1,
           "Ground": 5,
@@ -558,8 +558,8 @@
           "Zone": 11
         },
         {
-          "Name": "Titan Chains II",
-          "Model": "Titan Chains",
+          "Name": "Gravity Core II",
+          "Model": "Gravity Core",
           "Tier": 11,
           "Level": 2,
           "Ground": 5,
@@ -568,8 +568,8 @@
           "Zone": 11
         },
         {
-          "Name": "Titan Chains III",
-          "Model": "Titan Chains",
+          "Name": "Gravity Core III",
+          "Model": "Gravity Core",
           "Tier": 11,
           "Level": 3,
           "Ground": 5,
@@ -578,8 +578,8 @@
           "Zone": 11
         },
         {
-          "Name": "Void Anvil I",
-          "Model": "Void Anvil",
+          "Name": "Spirit Orb I",
+          "Model": "Spirit Orb",
           "Tier": 12,
           "Level": 1,
           "Ground": 6,
@@ -588,8 +588,8 @@
           "Zone": 12
         },
         {
-          "Name": "Void Anvil II",
-          "Model": "Void Anvil",
+          "Name": "Spirit Orb II",
+          "Model": "Spirit Orb",
           "Tier": 12,
           "Level": 2,
           "Ground": 6,
@@ -598,8 +598,8 @@
           "Zone": 12
         },
         {
-          "Name": "Void Anvil III",
-          "Model": "Void Anvil",
+          "Name": "Spirit Orb III",
+          "Model": "Spirit Orb",
           "Tier": 12,
           "Level": 3,
           "Ground": 6,
@@ -608,8 +608,8 @@
           "Zone": 12
         },
         {
-          "Name": "Phoenix Kiln I",
-          "Model": "Phoenix Kiln",
+          "Name": "Sun Orb I",
+          "Model": "Sun Orb",
           "Tier": 13,
           "Level": 1,
           "Ground": 6,
@@ -618,8 +618,8 @@
           "Zone": 13
         },
         {
-          "Name": "Phoenix Kiln II",
-          "Model": "Phoenix Kiln",
+          "Name": "Sun Orb II",
+          "Model": "Sun Orb",
           "Tier": 13,
           "Level": 2,
           "Ground": 6,
@@ -628,8 +628,8 @@
           "Zone": 13
         },
         {
-          "Name": "Phoenix Kiln III",
-          "Model": "Phoenix Kiln",
+          "Name": "Sun Orb III",
+          "Model": "Sun Orb",
           "Tier": 13,
           "Level": 3,
           "Ground": 6,
@@ -638,8 +638,8 @@
           "Zone": 13
         },
         {
-          "Name": "Moon Temple I",
-          "Model": "Moon Temple",
+          "Name": "Titan Chains I",
+          "Model": "Titan Chains",
           "Tier": 14,
           "Level": 1,
           "Ground": 7,
@@ -648,8 +648,8 @@
           "Zone": 14
         },
         {
-          "Name": "Moon Temple II",
-          "Model": "Moon Temple",
+          "Name": "Titan Chains II",
+          "Model": "Titan Chains",
           "Tier": 14,
           "Level": 2,
           "Ground": 7,
@@ -658,8 +658,8 @@
           "Zone": 14
         },
         {
-          "Name": "Moon Temple III",
-          "Model": "Moon Temple",
+          "Name": "Titan Chains III",
+          "Model": "Titan Chains",
           "Tier": 14,
           "Level": 3,
           "Ground": 7,
@@ -668,8 +668,8 @@
           "Zone": 14
         },
         {
-          "Name": "Sun Crucible I",
-          "Model": "Sun Crucible",
+          "Name": "Colossus Chains I",
+          "Model": "Colossus Chains",
           "Tier": 15,
           "Level": 1,
           "Ground": 7,
@@ -678,8 +678,8 @@
           "Zone": 15
         },
         {
-          "Name": "Sun Crucible II",
-          "Model": "Sun Crucible",
+          "Name": "Colossus Chains II",
+          "Model": "Colossus Chains",
           "Tier": 15,
           "Level": 2,
           "Ground": 7,
@@ -688,8 +688,8 @@
           "Zone": 15
         },
         {
-          "Name": "Sun Crucible III",
-          "Model": "Sun Crucible",
+          "Name": "Colossus Chains III",
+          "Model": "Colossus Chains",
           "Tier": 15,
           "Level": 3,
           "Ground": 7,
@@ -698,8 +698,8 @@
           "Zone": 15
         },
         {
-          "Name": "Celestial Gate I",
-          "Model": "Celestial Gate",
+          "Name": "Timeless Hall I",
+          "Model": "Timeless Hall",
           "Tier": 16,
           "Level": 1,
           "Ground": 8,
@@ -708,8 +708,8 @@
           "Zone": 16
         },
         {
-          "Name": "Celestial Gate II",
-          "Model": "Celestial Gate",
+          "Name": "Timeless Hall II",
+          "Model": "Timeless Hall",
           "Tier": 16,
           "Level": 2,
           "Ground": 8,
@@ -718,8 +718,8 @@
           "Zone": 16
         },
         {
-          "Name": "Celestial Gate III",
-          "Model": "Celestial Gate",
+          "Name": "Timeless Hall III",
+          "Model": "Timeless Hall",
           "Tier": 16,
           "Level": 3,
           "Ground": 8,
@@ -728,8 +728,8 @@
           "Zone": 16
         },
         {
-          "Name": "God's Arena I",
-          "Model": "God's Arena",
+          "Name": "Hall of Ages I",
+          "Model": "Hall of Ages",
           "Tier": 17,
           "Level": 1,
           "Ground": 8,
@@ -738,8 +738,8 @@
           "Zone": 17
         },
         {
-          "Name": "God's Arena II",
-          "Model": "God's Arena",
+          "Name": "Hall of Ages II",
+          "Model": "Hall of Ages",
           "Tier": 17,
           "Level": 2,
           "Ground": 8,
@@ -748,8 +748,8 @@
           "Zone": 17
         },
         {
-          "Name": "God's Arena III",
-          "Model": "God's Arena",
+          "Name": "Hall of Ages III",
+          "Model": "Hall of Ages",
           "Tier": 17,
           "Level": 3,
           "Ground": 8,
@@ -894,51 +894,46 @@
           "Power": 3e+18
         }
       ],
-      "Stations": [
-        {
-          "Id": "strike",
-          "Name": "Strike Dummy",
-          "Clip": "TrainStrike",
-          "Side": -1,
-          "X": -23.5,
-          "Z": 80,
-          "Stand": 4.0,
-          "Unlock": 1,
-          "Prop": "gear_strike",
-          "Hint": "Punch the dummy",
-          "Contact": 2.47
-        },
-        {
-          "Id": "meditate",
-          "Name": "Waterfall Focus",
-          "Clip": "TrainMeditate",
-          "Side": 1,
-          "X": 23.5,
-          "Z": 80,
-          "Stand": 5.0,
-          "Unlock": 10,
-          "Prop": "gear_spirit",
-          "Hint": "Meditate under the falls"
-        }
-      ],
       "MaxTapsPerSecond": 4,
       "MuscleMemory": 4.0,
       "Grounds": [
         {
+          "Id": "post",
           "Name": "Striking Post",
           "Rebirth": 0,
           "Side": -1,
           "Game": "ring",
-          "BeatSeconds": 1
+          "BeatSeconds": 1,
+          "Clip": "TrainPost",
+          "ClipSeconds": 2.0,
+          "Marks": [
+            0.5,
+            1.5
+          ],
+          "AwakeClip": "PostFlurry",
+          "FinishClip": "PostFinish",
+          "FinishAt": 0.5,
+          "Contact": 2.87,
+          "Hint": "TAP AS THE RING LANDS"
         },
         {
+          "Id": "falls",
           "Name": "Waterfall Focus",
           "Rebirth": 1,
           "Side": 1,
           "Game": "breath",
-          "BeatSeconds": 3
+          "BeatSeconds": 3,
+          "Clip": "TrainBreath",
+          "ClipSeconds": 3.0,
+          "Marks": [
+            2.5
+          ],
+          "AwakeClip": "BreathAscend",
+          "Hint": "HOLD, LET GO IN THE GOLD",
+          "MinHold": 0.6
         },
         {
+          "Id": "boulder",
           "Name": "Boulder Breaker",
           "Rebirth": 2,
           "Side": -1,
@@ -946,6 +941,7 @@
           "BeatSeconds": 2
         },
         {
+          "Id": "peak",
           "Name": "Thunder Peak",
           "Rebirth": 3,
           "Side": 1,
@@ -953,6 +949,7 @@
           "BeatSeconds": 2
         },
         {
+          "Id": "gravity",
           "Name": "Gravity Chamber",
           "Rebirth": 4,
           "Side": -1,
@@ -960,6 +957,7 @@
           "BeatSeconds": 1
         },
         {
+          "Id": "orb",
           "Name": "Spirit Orb",
           "Rebirth": 5,
           "Side": 1,
@@ -967,6 +965,7 @@
           "BeatSeconds": 4
         },
         {
+          "Id": "chains",
           "Name": "Titan Chains",
           "Rebirth": 6,
           "Side": -1,
@@ -974,6 +973,7 @@
           "BeatSeconds": 3
         },
         {
+          "Id": "hall",
           "Name": "Timeless Hall",
           "Rebirth": 7,
           "Side": 1,
@@ -992,7 +992,15 @@
         "PerfectWindow": 0.12,
         "GoodWindow": 0.3,
         "MinTapGap": 0.1
-      }
+      },
+      "Courts": [
+        {
+          "Side": -1
+        },
+        {
+          "Side": 1
+        }
+      ]
     },
     "Foods": [
       {

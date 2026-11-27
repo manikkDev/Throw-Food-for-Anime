@@ -5,14 +5,14 @@
    "loop": true,
    "duration": 2.4,
    "attach": "point",
-   "particles_peak": null,
-   "strip": null,
+   "particles_peak": 4,
+   "strip": "assets/vfx/strips/Aroma_Meal.jpg",
    "kit": "assets/vfx/kits/Aroma_Meal.luau",
    "kit_checks": [
     "OK",
     "OK"
    ],
-   "critic": null,
+   "critic": "WARN tier budget anticipation+main 2.40s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN layer count 1 visual layers (corpus p25 4); WARN peak early brightest frame at 66% of the main event (want <= 25-30%)",
    "notes": "Aroma over the resting dish (loop until picked up)."
   },
   {
@@ -27,7 +27,7 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN tier budget anticipation+main 2.40s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN layer count 3 visual layers (corpus p25 4); WARN peak early brightest frame at 61% of the main event (want <= 25-30%)",
+   "critic": "WARN tier budget anticipation+main 2.40s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN layer count 3 visual layers (corpus p25 4); WARN peak early brightest frame at 62% of the main event (want <= 25-30%)",
    "notes": "Aroma over the resting dish (loop until picked up)."
   },
   {
@@ -136,6 +136,30 @@
    "notes": "Hero dashes home (loop until stop)."
   },
   {
+   "name": "Falls_Ascend",
+   "loop": true,
+   "duration": 2.0,
+   "attach": "part",
+   "particles_peak": 42,
+   "strip": "assets/vfx/strips/Falls_Ascend.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN tier budget anticipation+main 2.00s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN peak early brightest frame at 32% of the main event (want <= 25-30%)",
+   "notes": "The column of light and rising water of the Waterfall's awakening (loop)."
+  },
+  {
+   "name": "Falls_Crash",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 61,
+   "strip": "assets/vfx/strips/Falls_Crash.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN peak early brightest frame at 50% of the main event (want <= 25-30%)",
+   "notes": "The falls crash back onto the pool at the end of the awakening."
+  },
+  {
    "name": "Favourite_Burst",
    "loop": false,
    "duration": 1.6,
@@ -209,6 +233,30 @@
    ],
    "critic": "WARN tier budget anticipation+main 0.20s vs basic 0.3-0.8s; WARN linear fades 2 emitters fade linearly from birth: ['Cross', 'Ring'] (hold, then fade late); WARN peak early brightest frame at 33% of the main event (want <= 25-30%)",
    "notes": "Perfect release at the hand."
+  },
+  {
+   "name": "Post_Burst",
+   "loop": false,
+   "duration": 1.4,
+   "attach": "point",
+   "particles_peak": 66,
+   "strip": "assets/vfx/strips/Post_Burst.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "PASS",
+   "notes": "The post bursts into splinters at the end of the awakening."
+  },
+  {
+   "name": "Post_Rise",
+   "loop": false,
+   "duration": 1.0,
+   "attach": "point",
+   "particles_peak": 28,
+   "strip": "assets/vfx/strips/Post_Rise.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN layer count 4 visual layers (corpus p25 6)",
+   "notes": "A new post rises out of the floor."
   },
   {
    "name": "PowerUp_Burst",
@@ -365,7 +413,7 @@
    "loop": false,
    "duration": 1.5,
    "attach": "point",
-   "particles_peak": 29,
+   "particles_peak": 36,
    "strip": "assets/vfx/strips/Sig_boar_roast_Land.jpg",
    "kit": "assets/vfx/kits/Sig_boar_roast_Land.luau",
    "kit_checks": [
@@ -417,7 +465,7 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN distinct lifetimes 2 distinct of 3 emitters (layers must die at different times); WARN accent hue distance 15 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 81% of the main event (want <= 25-30%)",
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN distinct lifetimes 2 distinct of 3 emitters (layers must die at different times); WARN accent hue distance 15 deg (want a complementary/cool contrast or a white accent)",
    "notes": "Captain's Curry: black and white spirit pressure streaks."
   },
   {
@@ -432,7 +480,7 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 85% of the main event (want <= 25-30%)",
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 48% of the main event (want <= 25-30%)",
    "notes": "Crab Hot Pot lands: one clean shockwave and a column of steam."
   },
   {
@@ -485,7 +533,7 @@
    "loop": false,
    "duration": 1.5,
    "attach": "point",
-   "particles_peak": 32,
+   "particles_peak": 35,
    "strip": "assets/vfx/strips/Sig_detective_cake_Land.jpg",
    "kit": "assets/vfx/kits/Sig_detective_cake_Land.luau",
    "kit_checks": [
@@ -537,7 +585,7 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 2 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 85% of the main event (want <= 25-30%)",
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 2 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 98% of the main event (want <= 25-30%)",
    "notes": "Devil Ice Cream: cold mist and red chain rings."
   },
   {
@@ -575,14 +623,14 @@
    "loop": false,
    "duration": 1.5,
    "attach": "point",
-   "particles_peak": 36,
+   "particles_peak": 48,
    "strip": "assets/vfx/strips/Sig_flame_bento_Land.jpg",
    "kit": "assets/vfx/kits/Sig_flame_bento_Land.luau",
    "kit_checks": [
     "OK",
     "OK"
    ],
-   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 52% of the main event (want <= 25-30%)",
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
    "notes": "Flame Bento lands: fire burst, ember fountain, a scorch mark."
   },
   {
@@ -620,14 +668,14 @@
    "loop": true,
    "duration": 1.1,
    "attach": "part",
-   "particles_peak": 27,
+   "particles_peak": 23,
    "strip": "assets/vfx/strips/Sig_floor_boss_stew_Trail.jpg",
    "kit": "assets/vfx/kits/Sig_floor_boss_stew_Trail.luau",
    "kit_checks": [
     "OK",
     "OK"
    ],
-   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 25 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 93% of the main event (want <= 25-30%)",
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 25 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 94% of the main event (want <= 25-30%)",
    "notes": "Floor Boss Stew: the world breaks into blue polygons behind it."
   },
   {
@@ -650,14 +698,14 @@
    "loop": true,
    "duration": 1.1,
    "attach": "part",
-   "particles_peak": 20,
+   "particles_peak": 19,
    "strip": "assets/vfx/strips/Sig_healing_pasta_Trail.jpg",
    "kit": "assets/vfx/kits/Sig_healing_pasta_Trail.luau",
    "kit_checks": [
     "OK",
     "OK"
    ],
-   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 9 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 48% of the main event (want <= 25-30%)",
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 9 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 52% of the main event (want <= 25-30%)",
    "notes": "Healing Squid Ink Pasta: golden sparkle and drifting sound-effect glyphs."
   },
   {
@@ -687,7 +735,7 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 2 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 87% of the main event (want <= 25-30%)",
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 2 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 81% of the main event (want <= 25-30%)",
    "notes": "Legendary Ramen: steam spiral and spinning fish-cake swirls."
   },
   {
@@ -695,14 +743,14 @@
    "loop": false,
    "duration": 1.5,
    "attach": "point",
-   "particles_peak": 29,
+   "particles_peak": 35,
    "strip": "assets/vfx/strips/Sig_mapo_tofu_Land.jpg",
    "kit": "assets/vfx/kits/Sig_mapo_tofu_Land.luau",
    "kit_checks": [
     "OK",
     "OK"
    ],
-   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 37% of the main event (want <= 25-30%)",
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
    "notes": "Explosion Mapo Tofu lands: a small comic blast."
   },
   {
@@ -717,7 +765,7 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 4 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 91% of the main event (want <= 25-30%)",
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 4 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 93% of the main event (want <= 25-30%)",
    "notes": "Explosion Mapo Tofu: little orange blasts popping along the path."
   },
   {
@@ -777,7 +825,7 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 12 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 74% of the main event (want <= 25-30%)",
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 12 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 100% of the main event (want <= 25-30%)",
    "notes": "Rank One Steak: blue speed lines racing past."
   },
   {
@@ -785,14 +833,14 @@
    "loop": false,
    "duration": 1.7,
    "attach": "point",
-   "particles_peak": 70,
+   "particles_peak": 55,
    "strip": "assets/vfx/strips/Sig_saiyan_feast_Land.jpg",
    "kit": "assets/vfx/kits/Sig_saiyan_feast_Land.luau",
    "kit_checks": [
     "OK",
     "OK"
    ],
-   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 48% of the main event (want <= 25-30%)",
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
    "notes": "Warrior's Feast lands: a golden aura erupts with lightning, the ground cracks."
   },
   {
@@ -800,7 +848,7 @@
    "loop": true,
    "duration": 1.1,
    "attach": "part",
-   "particles_peak": 40,
+   "particles_peak": 41,
    "strip": "assets/vfx/strips/Sig_saiyan_feast_Trail.jpg",
    "kit": "assets/vfx/kits/Sig_saiyan_feast_Trail.luau",
    "kit_checks": [
@@ -845,7 +893,7 @@
    "loop": false,
    "duration": 1.5,
    "attach": "point",
-   "particles_peak": 37,
+   "particles_peak": 39,
    "strip": "assets/vfx/strips/Sig_swirl_fruit_Land.jpg",
    "kit": "assets/vfx/kits/Sig_swirl_fruit_Land.luau",
    "kit_checks": [
@@ -927,8 +975,56 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 13 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 98% of the main event (want <= 25-30%)",
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 13 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 100% of the main event (want <= 25-30%)",
    "notes": "Meal flight: tintable streak + sparks that ride with the food."
+  },
+  {
+   "name": "Train_Aura",
+   "loop": true,
+   "duration": 2.0,
+   "attach": "root",
+   "particles_peak": 36,
+   "strip": "assets/vfx/strips/Train_Aura.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN tier budget anticipation+main 2.00s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN peak early brightest frame at 48% of the main event (want <= 25-30%)",
+   "notes": "The awakened hero's aura (loop)."
+  },
+  {
+   "name": "Train_Awaken",
+   "loop": false,
+   "duration": 1.3,
+   "attach": "point",
+   "particles_peak": 36,
+   "strip": "assets/vfx/strips/Train_Awaken.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "PASS",
+   "notes": "The hero awakens: shock ring, pillar, burst."
+  },
+  {
+   "name": "Train_Crit",
+   "loop": false,
+   "duration": 0.7,
+   "attach": "point",
+   "particles_peak": 23,
+   "strip": "assets/vfx/strips/Train_Crit.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "PASS",
+   "notes": "A PERFECT rep: the critical flash over the hit."
+  },
+  {
+   "name": "Train_Flurry",
+   "loop": true,
+   "duration": 1.2,
+   "attach": "part",
+   "particles_peak": 16,
+   "strip": "assets/vfx/strips/Train_Flurry.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN tier budget anticipation+main 1.20s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN layer count 4 visual layers (corpus p25 5); WARN peak early brightest frame at 61% of the main event (want <= 25-30%)",
+   "notes": "The awakening's flurry on the post (loop)."
   },
   {
    "name": "Train_Hit",
@@ -942,8 +1038,20 @@
     "OK",
     "OK"
    ],
-   "critic": "WARN tier budget anticipation+main 0.20s vs basic 0.3-0.8s; WARN layer count 4 visual layers (corpus p25 6); WARN peak early brightest frame at 33% of the main event (want <= 25-30%)",
-   "notes": "Training rep impact at the dummy."
+   "critic": "WARN layer count 5 visual layers (corpus p25 6); WARN peak early brightest frame at 35% of the main event (want <= 25-30%)",
+   "notes": "A training rep lands on the post."
+  },
+  {
+   "name": "Train_Pulse",
+   "loop": false,
+   "duration": 1.0,
+   "attach": "point",
+   "particles_peak": 20,
+   "strip": "assets/vfx/strips/Train_Pulse.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN layer count 5 visual layers (corpus p25 6); WARN peak early brightest frame at 71% of the main event (want <= 25-30%)",
+   "notes": "A breath let out: rings on the water, drops rising."
   },
   {
    "name": "Zone_Unlock",

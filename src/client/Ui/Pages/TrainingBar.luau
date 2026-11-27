@@ -1,13 +1,13 @@
 --!strict
--- TrainingBar - shown while the player trains at a station: rank, progress,
--- power per rep, the exit X. A HUD overlay, not a page. The station's own name
--- is NOT repeated here (the world shows it; TrainingController hides the
--- StationTitle and the station's world plate).
+-- TrainingBar - shown while the player trains on a ground: rank, progress,
+-- power per rep, the exit X. A HUD overlay, not a page. The ground's own name
+-- is NOT repeated here (its board in the world shows it; TrainingController
+-- hides the StationTitle).
 --
 -- Every rep pops a "+N" over the character, slides the bar to its new fill,
 -- flashes the bar's frame and pops the numbers; a new rank pops its name and
 -- raises the top banner (ctx.levelUp). When the next gear tier is affordable a
--- pulsing gold UPGRADE READY chip says where to buy it (the gear stand, F),
+-- pulsing gold UPGRADE READY chip says where to buy it (the ground's board, F),
 -- with a chime the first time; a new piece of gear (bought anywhere) is an
 -- unboxing reward (ctx.reward) with its model, never a banner or a toast.
 
@@ -21,6 +21,7 @@ local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
 local Screens = require(script.Parent.Parent.Screens)
+local GroundLook = require(script.Parent.Parent.GroundLook)
 local Types = require(script.Parent.Types)
 
 local TrainingBar = { name = "TrainingBar", overlay = true } :: Types.Page
@@ -42,19 +43,6 @@ local barStrokeColor = Color3.new(1, 1, 1)
 local barStrokeThick = 2
 local readyFor: number? = nil -- the gear tier the UPGRADE READY chime last rang for
 local pulse: Tween? = nil
-
--- the model template of gear tier `tier` (ReplicatedStorage.Assets.Gear.Equip_<name>)
-local function gearModel(tier: number): Instance?
-	local row = Config.Training.Equipment[tier]
-	local assets = ReplicatedStorage:FindFirstChild("Assets")
-	local folder = assets and assets:FindFirstChild("Gear")
-	if not row or not folder then
-		return nil
-	end
-	return folder:FindFirstChild(
-		"Equip_" .. string.gsub(string.lower(row.Model or row.Name), "%s+", "_")
-	)
-end
 
 -- the UPGRADE READY chip: shown pulsing, or hidden
 local function showReady(on: boolean)
@@ -182,11 +170,11 @@ function TrainingBar.render(state: any)
 						icon = "IconPower",
 					},
 					{
-						text = `Tier {state.gear} of {#Config.Training.Equipment}`,
+						text = GroundLook.tag(state.gear),
 						icon = "IconTrain",
 					},
 				},
-				model = gearModel(state.gear),
+				model = GroundLook.display(state.gear),
 				image = "IconTrainBig",
 				color = GEAR_GOLD,
 			})
@@ -219,8 +207,8 @@ function TrainingBar.render(state: any)
 	local ready = cost ~= nil and state.yen >= cost
 	local touch = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
 	Screens.label(gui, "UpgradeText").Text = if touch
-		then "Leave training, tap the gear stand"
-		else "Leave training, press F at the gear stand"
+		then "Leave training, tap the notice board"
+		else "Leave training, press F at the board"
 	showReady(ready)
 	if ready and readyFor ~= state.gear then
 		readyFor = state.gear

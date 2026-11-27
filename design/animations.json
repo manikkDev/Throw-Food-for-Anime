@@ -226,6 +226,46 @@
    "_intent": "plan 13 phase C: the side-arm throw of pizza, toast, skewers",
    "priority": "Action",
    "looped": false
+  },
+  {
+   "name": "TrainPost",
+   "reference": "karate makiwara practice from a left front stance: a full-hip right reverse punch lands on the post at 0.5 s, recoil, a left lunge punch lands at 1.5 s; the post's face is 2.87 studs in front of the HumanoidRootPart, fists at chest height; 2.0 s loop, Hit markers exactly 1.0 s apart",
+   "_intent": "plan 13 phase D: the Striking Post's training loop; the game runs the clip so each Hit falls on a beat (Core/Beat.clipAt)",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "PostFlurry",
+   "reference": "anime rapid-fire flurry on the post, leaning in from bent knees: six alternating punches a second (Hit every 0.1667 s), fists spread round the weak spot; 1.0 s loop",
+   "_intent": "plan 13 phase D: the Striking Post's awakening loop",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "PostFinish",
+   "reference": "the blow that ends the flurry: weight back, right fist chambered, left hand out as a sight, then one committed right straight 0.4 studs THROUGH the post's face (Hit 0.5 s), a held follow-through, settles to TrainPost's first frame; 1.2 s, not looped",
+   "_intent": "plan 13 phase D: played so its Hit lands as the awakening runs out; the post bursts on it",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": false
+  },
+  {
+   "name": "TrainBreath",
+   "reference": "seated cross-legged under a waterfall, one slow breath: inhale 0 to 2.5 s (spine lengthens, hands rise together from the lap up the centre line to chest height, palms up), Pulse marker at 2.5 s, exhale to 3.0 s (hands turn over and press down to the lap); 3.0 s loop",
+   "_intent": "plan 13 phase D: the Waterfall's training loop; the game runs the clip so Pulse falls on the beat (the player lets go there)",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "BreathAscend",
+   "reference": "floating cross-legged 1.6 studs above the seat, arms opened wide and low, palms up, head tilted back, a slow +-0.15 bob; 2.0 s loop",
+   "_intent": "plan 13 phase D: the Waterfall's awakening loop (cross-faded from TrainBreath)",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
   }
  ],
  "roblox_owned": {

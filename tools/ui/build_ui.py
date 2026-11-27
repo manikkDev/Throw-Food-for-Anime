@@ -25,7 +25,7 @@ import mangapop as mp  # noqa: E402  (applies the patches)
 from mangapop import ub  # noqa: E402
 import mp3  # noqa: E402,F401  (v3 system: emitter additions)
 import mp4  # noqa: E402,F401  (v4 system: thin strokes, lip only on buttons, type scale)
-import screens_v51 as screens  # noqa: E402  (UI v5.1: v5.0 + the aim arrows, the ODDS button and the ThrowOdds page)
+import screens_v52 as screens  # noqa: E402  (UI v5.2: v5.1 + the training games (Focus bar, breath disc))
 import verify_ui as vu  # noqa: E402
 from PIL import Image, ImageDraw  # noqa: E402
 

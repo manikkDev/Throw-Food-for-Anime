@@ -16,6 +16,7 @@ local Knit = require(ReplicatedStorage.Packages.Knit)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
 local Format = require(ReplicatedStorage.Shared.Core.Format)
+local Grounds = require(ReplicatedStorage.Shared.Core.Grounds)
 local Income = require(ReplicatedStorage.Shared.Core.Income)
 local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local Progress = require(ReplicatedStorage.Shared.Core.Progress)
@@ -164,71 +165,169 @@ local function setText(anchor: Instance?, guiName: string, text: string)
 	end
 end
 
--- The model of a training-gear tier, if the place has it
--- (ReplicatedStorage.Assets.Gear.Equip_<name>).
-local function gearTemplate(tier: number): Model?
-	local row = Config.Training.Equipment[tier]
+-- THE TRAINING GROUNDS (plan 13 phase D). Each court of a plot has an anchor part `Ground<court>`
+-- at its centre, on the floor; the set piece of the ground that court shows stands on it
+-- (ReplicatedStorage.Assets.Grounds.Ground_<id>_T<tier>, built by tools/studio/grounds). A set piece
+-- carries what the game reads:
+--   Stand   an invisible part: where the trainee's feet go and (its LookVector) which way they face
+--   Sign    the notice board: a SurfaceGui `Board` with the labels Title, Level and Next
+--   L2, L3  what gear levels II and III add; taken out of a copy below that level
+-- The two prompts of a court live in the place, on `TrainSpot<court>` and `GearSign<court>`; they
+-- are moved onto the set piece's Stand and Sign whenever it changes.
+local function groundsFolder(): Instance?
 	local assets = ReplicatedStorage:FindFirstChild("Assets")
-	local folder = assets and assets:FindFirstChild("Gear")
-	if not row or not folder then
-		return nil
-	end
-	local slug = "Equip_" .. string.gsub(string.lower(row.Model or row.Name), "%s+", "_")
-	local found = folder:FindFirstChild(slug)
-	return if found and found:IsA("Model") then found else nil
+	return assets and assets:FindFirstChild("Grounds")
 end
 
--- The gear models on the training stations: the STRIKE target shows the owner's strike gear
--- (wooden dummy, sandbag, iron dummy: tiers 1-3, the best one owned), the MEDITATE station shows
--- the spirit gear (waterfall and up: the best one owned, the waterfall until then).
-function PlotService:_showGear(model: Instance, tier: number)
-	self:_showGearAt(model, "Gear", if tier <= 0 then 0 else math.min(tier, 3))
-	self:_showGearAt(model, "SpiritGear", math.max(tier, 5))
-	-- the push station's stone pillar (any Equip_ target anchor shows its own gear tier)
-	for i, row in Config.Training.Stations do
-		if string.sub(row.Prop, 1, 6) == "Equip_" then
-			for t, eq in Config.Training.Equipment do
-				if
-					"Equip_" .. string.gsub(string.lower(eq.Model or eq.Name), "%s+", "_")
-					== row.Prop
-				then
-					self:_showGearAt(model, "Target" .. i, t)
-				end
-			end
-		end
+local function setLabel(root: Instance?, name: string, text: string)
+	local label = root and root:FindFirstChild(name, true)
+	if label and label:IsA("TextLabel") then
+		label.Text = text
 	end
 end
 
--- Stand gear tier `tier` on the anchor `name`. The anchor keeps the prompt and the label; it
--- turns invisible once a real model stands on it.
-function PlotService:_showGearAt(model: Instance, name: string, tier: number)
-	local anchor = model:FindFirstChild(name)
-	if not anchor or not anchor:IsA("BasePart") or anchor:GetAttribute("Tier") == tier then
+-- Stand the right set piece on court `court` of plot `model`: the ground `shown` at the look of
+-- gear row `gear`. Nothing happens when it already stands there.
+function PlotService:_showGround(
+	model: Instance,
+	court: number,
+	shown: Grounds.Shown?,
+	gear: number
+)
+	local anchor = model:FindFirstChild("Ground" .. court)
+	if not anchor or not anchor:IsA("BasePart") then
 		return
 	end
-	anchor:SetAttribute("Tier", tier)
-	local old = anchor:FindFirstChild("GearModel")
+	local tier, level = 0, 0
+	if shown then
+		tier, level = Grounds.look(Config, shown.ground, gear)
+	end
+	local key = if shown then `{shown.ground}/{tier}/{level}/{shown.locked or 0}` else ""
+	if anchor:GetAttribute("Look") == key then
+		return
+	end
+	anchor:SetAttribute("Look", key)
+	anchor:SetAttribute("Ground", if shown then shown.ground else nil)
+	anchor:SetAttribute("Tier", if shown then tier else nil)
+	anchor:SetAttribute("Level", if shown then level else nil)
+	anchor:SetAttribute("Locked", if shown then shown.locked else nil)
+	local old = anchor:FindFirstChild("GroundModel")
 	if old then
 		old:Destroy()
 	end
-	local template = gearTemplate(tier)
-	if not template then
-		-- an empty plot shows nothing; a plot whose model is missing keeps the box
-		anchor.Transparency = if tier == 0 and gearTemplate(1) then 1 else 0
+	local folder = groundsFolder()
+	local template = if shown and folder
+		then folder:FindFirstChild(Grounds.template(Config, shown.ground, tier))
+		else nil
+	local spot = model:FindFirstChild("TrainSpot" .. court)
+	local sign = model:FindFirstChild("GearSign" .. court)
+	for _, holder in { spot, sign } do
+		local prompt = holder and holder:FindFirstChildWhichIsA("ProximityPrompt")
+		if prompt then
+			-- an empty plot, or a ground whose set piece is not in the place, has nothing to walk up to
+			prompt.Enabled = template ~= nil
+		end
+	end
+	if not shown or not template or not template:IsA("Model") then
 		return
 	end
 	local copy = template:Clone()
-	copy.Name = "GearModel"
-	local ground = anchor.Position - Vector3.new(0, anchor.Size.Y / 2, 0)
-	copy:PivotTo(CFrame.new(ground))
-	for _, piece in copy:GetDescendants() do
-		if piece:IsA("BasePart") then
-			piece.Anchored = true
+	copy.Name = "GroundModel"
+	for extra = level + 1, 3 do
+		local piece = copy:FindFirstChild("L" .. extra)
+		if piece then
+			piece:Destroy()
 		end
 	end
+	local lock = copy:FindFirstChild("Lock")
+	if lock and not shown.locked then
+		lock:Destroy()
+	elseif lock then
+		setLabel(lock, "LockText", `REBIRTH {shown.locked}`)
+	end
+	copy:PivotTo(anchor.CFrame)
+	-- where the centrepiece stands at rest: clients move it (a blow, the awakening) and put it back here
+	local target = copy:FindFirstChild("Target")
+	if target and target:IsA("Model") then
+		target:SetAttribute("Rest", target:GetPivot())
+	end
 	copy.Parent = anchor
-	anchor.Transparency = 1
-	anchor.CanCollide = false
+	local stand = copy:FindFirstChild("Stand")
+	if stand and stand:IsA("BasePart") and spot and spot:IsA("BasePart") then
+		spot.CFrame = stand.CFrame + Vector3.new(0, 3, 0)
+	end
+	local board = copy:FindFirstChild("Sign")
+	if board and board:IsA("BasePart") and sign and sign:IsA("BasePart") then
+		sign.CFrame = board.CFrame
+	end
+end
+
+--- Where a trainee stands on court `court` of plot `index`: feet position and facing. The set
+--- piece's Stand part; the court's centre, facing the base, when there is no set piece.
+function PlotService:GroundStand(index: number, court: number): CFrame
+	local model = self:_model(index)
+	local anchor = model and model:FindFirstChild("Ground" .. court)
+	local piece = anchor and anchor:FindFirstChild("GroundModel")
+	local stand = piece and piece:FindFirstChild("Stand")
+	if stand and stand:IsA("BasePart") then
+		return stand.CFrame
+	end
+	local side = Config.Training.Courts[court].Side
+	local x, z = World.court(Config.World, index, Config.Server.PlotCount, side)
+	local y = if anchor and anchor:IsA("BasePart") then anchor.Position.Y else Config.World.GroundY
+	return CFrame.lookAt(Vector3.new(x, y, z), Vector3.new(x, y, z - 10))
+end
+
+-- The set pieces of a plot and what their boards say.
+function PlotService:_showGrounds(model: Instance, profile: any?)
+	local shown = if profile then Grounds.shown(Config, profile.rebirth or 0) else {}
+	local gear = if profile then profile.gear else 0
+	local row = if profile then Config.Training.Equipment[gear] else nil
+	local nextRow = if profile then Config.Training.Equipment[gear + 1] else nil
+	for court = 1, #Config.Training.Courts do
+		local here: Grounds.Shown? = shown[court]
+		self:_showGround(model, court, here, gear)
+		local anchor = model:FindFirstChild("Ground" .. court)
+		local piece = anchor and anchor:FindFirstChild("GroundModel")
+		local ground = here and Config.Training.Grounds[here.ground]
+		local spot = model:FindFirstChild("TrainSpot" .. court)
+		local trainPrompt = spot and spot:FindFirstChildWhichIsA("ProximityPrompt")
+		if trainPrompt and ground then
+			trainPrompt.ObjectText = ground.Name
+			trainPrompt.ActionText = if here and here.locked then "Locked" else "Train"
+		end
+		local sign = model:FindFirstChild("GearSign" .. court)
+		local gearPrompt = sign and sign:FindFirstChildWhichIsA("ProximityPrompt")
+		if gearPrompt then
+			gearPrompt.ObjectText = "Training gear"
+		end
+		if not piece or not here or not ground or not row then
+			continue
+		end
+		-- the board: the ground, the gear the owner trains on, the next upgrade
+		setLabel(piece, "Title", ground.Name:upper())
+		if here.locked then
+			setLabel(piece, "Level", `OPENS AT REBIRTH {here.locked}`)
+			setLabel(piece, "Next", "")
+			continue
+		end
+		-- the gear is named on the board of the ground it belongs to; the other ground pays the same
+		-- Power (the gear is the owner's, not the ground's) and says only that
+		setLabel(
+			piece,
+			"Level",
+			if row.Ground == here.ground
+				then `{row.Name}   +{Format.short(row.PowerPerRep)} / rep`
+				else `+{Format.short(row.PowerPerRep)} POWER / rep`
+		)
+		setLabel(
+			piece,
+			"Next",
+			if nextRow
+				then `NEXT: {nextRow.Name}  {Format.short(nextRow.Cost)} yen`
+				else "MAX LEVEL"
+		)
+	end
 end
 
 function PlotService:_dress(index: number, player: Player?, profile: any?, income: number)
@@ -236,89 +335,14 @@ function PlotService:_dress(index: number, player: Player?, profile: any?, incom
 	if not model then
 		return
 	end
-	self:_showGear(model, if profile then profile.gear else 0)
-	-- the prompts' small line: what the thing is, not the part's name ("Station2", "Gear")
-	local OBJECT_TEXT = { Gear = "Dojo gear", SlotSign = "Plot slots", NameBoard = "Your squad" }
+	self:_showGrounds(model, profile)
+	-- the prompts' small line: what the thing is, not the part's name
+	local OBJECT_TEXT = { SlotSign = "Plot slots", NameBoard = "Your squad" }
 	for name, text in OBJECT_TEXT do
 		local anchor = model:FindFirstChild(name)
 		local prompt = anchor and anchor:FindFirstChildWhichIsA("ProximityPrompt", true)
 		if prompt then
 			prompt.ObjectText = text
-		end
-	end
-	-- each station's sign: its name, or what unlocks it
-	local tier = if profile then profile.gear else 0
-	for i, row in Config.Training.Stations do
-		local mat = model:FindFirstChild("Station" .. i)
-		local trainPrompt = mat and mat:FindFirstChildWhichIsA("ProximityPrompt", true)
-		if trainPrompt then
-			trainPrompt.ObjectText = row.Name
-		end
-		local board = mat and mat:FindFirstChild("Title", true)
-		if board and board:IsA("BillboardGui") and not board:GetAttribute("Styled") then
-			-- owner's review 2026-11-16: the names were too big and sank into the props. A compact
-			-- plate floating over the station (above a trainee's head), drawn over the props
-			board:SetAttribute("Styled", true)
-			board.Size = UDim2.fromScale(9, 1.7)
-			-- hung from its own invisible anchor 7 studs over the mat (a sign on the mat itself, a
-			-- cylinder lying on its side, sat at floor level or did not draw: found 2026-11-16)
-			if mat:IsA("BasePart") then
-				local anchor = Instance.new("Part")
-				anchor.Name = "StationLabel"
-				anchor.Anchored = true
-				anchor.CanCollide = false
-				anchor.CanQuery = false
-				anchor.CanTouch = false
-				anchor.Transparency = 1
-				anchor.Size = Vector3.new(1, 1, 1)
-				anchor.CFrame = CFrame.new(mat.Position + Vector3.new(0, 7.8, 0))
-				anchor.Parent = mat
-				board.Parent = anchor
-			end
-			board.StudsOffsetWorldSpace = Vector3.zero
-			-- drawn in the world, not always-on-top: an always-on-top sign here did not draw at all
-			-- (measured in play 2026-11-16); 7 studs up clears the props
-			board.AlwaysOnTop = false
-			board.MaxDistance = 60
-			board.LightInfluence = 0
-			local plate = Instance.new("Frame")
-			plate.Name = "Plate"
-			plate.AnchorPoint = Vector2.new(0.5, 0.5)
-			plate.Position = UDim2.fromScale(0.5, 0.5)
-			plate.Size = UDim2.fromScale(1, 1)
-			plate.BackgroundColor3 = Color3.fromRGB(30, 26, 60)
-			plate.BackgroundTransparency = 0.15
-			plate.ZIndex = 0
-			local corner = Instance.new("UICorner")
-			corner.CornerRadius = UDim.new(0.5, 0)
-			corner.Parent = plate
-			local edge = Instance.new("UIStroke")
-			edge.Color = Color3.new(1, 1, 1)
-			edge.Thickness = 2.5
-			edge.Parent = plate
-			plate.Parent = board
-			local text = board:FindFirstChild("Text")
-			if text and text:IsA("TextLabel") then
-				text.ZIndex = 2
-				text.AnchorPoint = Vector2.new(0.5, 0.5)
-				text.Position = UDim2.fromScale(0.5, 0.52)
-				text.Size = UDim2.fromScale(0.9, 0.72)
-				text.TextStrokeTransparency = 1
-				local stroke = Instance.new("UIStroke")
-				stroke.Thickness = 2
-				stroke.Color = Color3.fromRGB(20, 16, 40)
-				stroke.Parent = text
-			end
-		end
-		if mat then
-			local gear = Config.Training.Equipment[row.Unlock]
-			setText(
-				if board and board.Parent then board.Parent else mat,
-				"Title",
-				if tier >= row.Unlock or not profile
-					then row.Name:upper()
-					else `LOCKED: {if gear then gear.Name:upper() else "NEXT GEAR"}`
-			)
 		end
 	end
 	local slots = if profile then profile.slots else 0
@@ -352,7 +376,6 @@ function PlotService:_dress(index: number, player: Player?, profile: any?, incom
 	if not player or not profile then
 		setText(model:FindFirstChild("NameBoard"), "Title", "Empty plot")
 		setText(model:FindFirstChild("SlotSign"), "Title", "Plot slots")
-		setText(model:FindFirstChild("Gear"), "Title", "Dojo gear")
 		return
 	end
 	local stars = if profile.rebirth > 0 then ` [R{profile.rebirth}]` else ""
@@ -368,14 +391,6 @@ function PlotService:_dress(index: number, player: Player?, profile: any?, incom
 		if slotCost
 			then `Slots {profile.slots} > {profile.slots + 1}\n{Format.short(slotCost)} yen`
 			else `Slots {profile.slots} (MAX)`
-	)
-	local gear = Config.Training.Equipment[profile.gear]
-	local gearCost = Progress.nextGearCost(Config, profile.gear)
-	setText(
-		model:FindFirstChild("Gear"),
-		"Title",
-		`{gear.Name}  +{Format.short(gear.PowerPerRep)}/rep\n`
-			.. (if gearCost then `Next: {Format.short(gearCost)} yen` else "MAX")
 	)
 end
 

@@ -1,0 +1,647 @@
+{
+ "name": "Train_Aura",
+ "note": "The awakened hero's aura (loop).",
+ "duration": 2.0,
+ "camera": {
+  "pos": [
+   7,
+   5,
+   14
+  ],
+  "at": [
+   0,
+   4.5,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "stripFloors": [
+  "#E9D2A2"
+ ],
+ "game": {
+  "loop": true,
+  "attach": "root",
+  "screen": false,
+  "origin": [
+   0,
+   3,
+   0
+  ]
+ },
+ "brief": {
+  "category": "aura_buff",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "cel flames round the body",
+  "dominant": "#FFC24A",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "flames lick up the body"
+  ],
+  "phases": [
+   {
+    "name": "sustain",
+    "t0": 0,
+    "t1": 2.0
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Feet",
+   "CFrame": [
+    0,
+    0.5,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3.4,
+    0.5,
+    3.4
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Flames",
+     "props": {
+      "Rate": 18,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/elements/flame_cel_02",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Box"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        7,
+        11
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.45,
+        0.65
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        -10,
+        10
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.1
+        ],
+        [
+         0.35,
+         1.9
+        ],
+        [
+         1,
+         0.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.2
+        ],
+        [
+         0.6,
+         0.3
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.2,
+      "LockedToPart": true,
+      "ZOffset": -1.6
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Tongues",
+     "props": {
+      "Rate": 12,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/elements/flame_cel_05",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Box"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        10,
+        15
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.35,
+        0.5
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        -14,
+        14
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.75
+        ],
+        [
+         0.4,
+         1.5
+        ],
+        [
+         1,
+         0.25
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.15
+        ],
+        [
+         0.7,
+         0.25
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.3,
+      "LockedToPart": true,
+      "ZOffset": -1.4
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Lines",
+     "props": {
+      "Rate": 16,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/specks/streak_cel_00",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Box"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "Speed": {
+       "NumberRange": [
+        18,
+        26
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.25,
+        0.35
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.75
+        ],
+        [
+         1,
+         0.25
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.45,
+      "LockedToPart": true,
+      "ZOffset": 0.8,
+      "Orientation": {
+       "Enum": "ParticleOrientation.VelocityParallel"
+      }
+     },
+     "attrs": {
+      "Tint": true
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Embers",
+     "props": {
+      "Rate": 12,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/specks/ember_cel_01",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Box"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        18,
+        18
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        6,
+        11
+       ]
+      },
+      "Drag": 0.6,
+      "Lifetime": {
+       "NumberRange": [
+        0.7,
+        1.1
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.0
+        ],
+        [
+         0.2,
+         0.35
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.5,
+      "ZOffset": 1
+     },
+     "attrs": {
+      "Tint": true
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Floor",
+   "CFrame": [
+    0,
+    0.15,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Glow",
+       "props": {
+        "Rate": 2.4,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_glow_02",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.7,
+          0.7
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.0
+          ],
+          [
+           1,
+           4.5
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           1
+          ],
+          [
+           0.2,
+           0.3
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 0.2
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Spiked",
+       "props": {
+        "Rate": 1.6,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_spiked_cel_02",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.5,
+          0.5
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.5
+          ],
+          [
+           1,
+           4.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.4
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.3,
+        "ZOffset": 0.25
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Lamp",
+   "CFrame": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "PointLight",
+     "name": "L",
+     "props": {
+      "Brightness": 0,
+      "Range": 14,
+      "Color": {
+       "Color3": [
+        1.0,
+        0.7608,
+        0.2902
+       ]
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "set",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "value": 0.4,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.4,
+  0.8,
+  1.2,
+  1.6
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

@@ -139,36 +139,42 @@ local function buildPlot(cfg: any, folder: Instance, index: number)
 	pad.Material = Enum.Material.Neon
 	label(pad, "Hint", "THROW SPOT", 7, 8) -- the fallback has no stage: a plain spot where it stands
 
-	-- the training stations (a mat with the Train prompt, and the target) on their two courts
-	for i, row in Config.Training.Stations do
-		local tx, tz, sx, sz = World.station(w, Config.Training, index, count, i)
-		local mat = part(
+	-- the two training courts: the anchor a ground's set piece stands on, and the two prompt
+	-- holders PlotService moves onto it (plan 13 phase D)
+	for court, row in Config.Training.Courts do
+		local cx, cz = World.court(w, index, count, row.Side)
+		local anchor = part(
 			plot,
-			"Station" .. i,
-			Vector3.new(w.StationRadius * 2, 0.3, w.StationRadius * 2),
-			Vector3.new(sx, y + 0.55, sz),
-			Color3.fromRGB(90, 150, 255)
-		)
-		mat:SetAttribute("Station", i)
-		prompt(mat, "train", "Train: " .. row.Name, index, Enum.KeyCode.E)
-		local p = mat:FindFirstChildOfClass("ProximityPrompt")
-		if p then
-			p:SetAttribute("Station", i)
-		end
-		local target = part(
-			plot,
-			if row.Prop == "gear_strike"
-				then "Gear"
-				elseif row.Prop == "gear_spirit" then "SpiritGear"
-				else "Target" .. i,
-			Vector3.new(3, 6, 3),
-			Vector3.new(tx, y + 3.7, tz),
+			"Ground" .. court,
+			Vector3.new(4, 0.2, 4),
+			Vector3.new(cx, y + 0.4, cz),
 			Color3.fromRGB(150, 110, 70)
 		)
-		if row.Prop == "gear_strike" then
-			label(target, "Title", "Dojo gear", 5, 16)
-			prompt(target, "gear", "Upgrade gear", index, Enum.KeyCode.F)
+		anchor.CanCollide = false
+		local spot = part(
+			plot,
+			"TrainSpot" .. court,
+			Vector3.new(1, 1, 1),
+			Vector3.new(cx, y + 3.4, cz),
+			Color3.fromRGB(90, 150, 255)
+		)
+		spot.Transparency = 1
+		spot.CanCollide = false
+		prompt(spot, "train", "Train", index, Enum.KeyCode.E)
+		local p = spot:FindFirstChildOfClass("ProximityPrompt")
+		if p then
+			p:SetAttribute("Station", court)
 		end
+		local gearSign = part(
+			plot,
+			"GearSign" .. court,
+			Vector3.new(1, 1, 1),
+			Vector3.new(cx - row.Side * 6, y + 3.4, cz + 8),
+			Color3.fromRGB(200, 160, 90)
+		)
+		gearSign.Transparency = 1
+		gearSign.CanCollide = false
+		prompt(gearSign, "gear", "Upgrade gear", index, Enum.KeyCode.F)
 	end
 
 	local signX, signZ = World.slotSign(w, index, count)

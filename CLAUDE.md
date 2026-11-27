@@ -58,7 +58,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 
 ## Where the game's pieces live (since section 2)
 
-- Code: `src/` (16 server services, 7 client controllers + `src/client/Ui/` (Screens, Pages), 12 pure Core modules with specs in `tests/`).
+- Code: `src/` (16 server services, 15 client controllers + `src/client/Ui/` (Screens, Pages), 16 pure Core modules with specs in `tests/`).
   `src/shared/Config/GameConfig.luau` is GENERATED from `design/game.json`: edit the JSON, then
   `python ~/.claude/skills/create-roblox-game/scripts/gen_config.py --dir .`. Pacing gate:
   `python tools/economy/econ_v2.py check` (the old `balance_sim.py` is retired). Server-only tunables (promo codes) live in `server_config`
@@ -145,11 +145,11 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   (`--upload-only`, then `tools/gen_icons.py`). Screens are now `tools/ui/screens_v50.py` (imported by `build_ui.py`).
 - Gear and slot purchases go through a client confirmation (`Controllers/UpgradeController`, `HudController:Confirm`); prompts never spend. Prompts are drawn by `Controllers/PromptController` (Style Custom).
 - The throw spot (the old pad's code and names) is held by the server (`ThrowService:SetPad`, remote `ThrowPad`), like training.
-- Training: 2 stations since 2026-11-22, Strike Dummy on the left court (dojo gear, tiers 1-3) and Waterfall Focus on the
-  right (spirit gear, opens at gear 2); curls and stone push were removed (owner: one per side, mini-games come later).
-  Power per rep is the gear's, not the station's (`config.Training.Stations`); the server snaps and locks the trainee,
-  judges perfect taps (`TrainTap`); client `Controllers/TrainingController`. The throw pad locks the player too
-  (`ThrowController:_lock`, exit by the meter's X / Backspace); one invisible wall (`Map.Barriers.LaneBlock`) closes the lane mouth behind the throw stage.
+- Training: two courts per base, each showing one training GROUND (see TRAINING GROUNDS below; the old stations and
+  gear models are gone since plan 13 phase D). Power per rep is the gear's, not the ground's; the server snaps and locks
+  the trainee and judges every beat (`TrainTap`); client `Controllers/TrainingController`. The throw pad locks the player
+  too (`ThrowController:_lock`, exit by the meter's X / Backspace); one invisible wall (`Map.Barriers.LaneBlock`) closes
+  the lane mouth behind the throw stage.
 - Studio sessions use their own stores (`Profiles_Dev`, `LB_*_Dev`); test commands are the TEST menu.
 - Hub v2 store models (cherry trees, dragon, summoning circle, horned shrine, torii, stone lantern, pagoda) are kept clean in
   `ServerStorage.StoreAssets.HubV2` (never delete). Servers hold 5 players (`config.Server.MaxPlayers`); the place's own
@@ -320,7 +320,8 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `StarterGui.ScreenOrientation` LandscapeSensor). On the stage the HUD is hidden: anything the player must know
   there goes through a toast from ThrowController (`_sealHint` is the example), and a toast holds ~48 characters.
 - FOOD AND TRAINING V2 (plan `design/plan/13-food-and-training-v2.md`, owner approved 2026-11-26; build log in its
-  section 11; phases A (rules and wiring), B (the 51 food models and icons) and C (throw feel; commit 3f88e12 = place version 939) are built; D to F (training grounds, playtest) are not). Numbers:
+  section 11; phases A (rules and wiring), B (the 51 food models and icons), C (throw feel; commit 3f88e12 = place version 939)
+  and D (the training framework + grounds 1 and 2; awaiting the owner's play) are built; E (grounds 3 to 8) and F (playtest) are not). Numbers:
   `tools/economy/econ_v3.py` (`gen`, `apply`, `check` = the pacing gate, `cadence`, `table`), then gen_characters.py,
   gen_config.py, gate.py. Rules: 51 foods = 3 per world (Snack, Meal, Signature); food gives LUCK only (reach = Power);
   a food counts half in a world later than its own (`Core/Foods`); the throw auto-picks the best owned food for the
@@ -348,6 +349,25 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   draws as a broken arc (use a ring sprite). The food in the hands on the throw spot: `ThrowController:_tickHeld`
   + `Fx/FoodHold` (the aiming camera is BEHIND the player: holds must read from behind). Sounds were picked from
   measured loudness curves, never heard: `SoundController` `STARTS` (skip a clip's lead-in) and `CAPS`.
+- TRAINING GROUNDS (plan 13 phase D, 2026-11-27; log in the plan's section 11). A base's two courts each show one
+  ground (`Core/Grounds`: the two newest opened by rebirth; before rebirth 1 the right court shows the Waterfall
+  LOCKED). Built: ground 1 Striking Post (game `ring`: tap as the ring lands) and ground 2 Waterfall Focus (game
+  `breath`: hold, let go on the gold); grounds 3 to 8 are phase E (a ground with no template shows nothing and its
+  prompts are off). Per-ground data is in `tools/economy/econ_v3.py` `GROUND_FEEL` (clips, `Marks` = the clip's rep
+  times, `Contact`, `MinHold`, `Hint`) -> `apply` -> gen_config. Rules: `Core/Beat` (`gradeHold`, `focus` scaled by
+  beat length, `upcoming`, `clipAt` = the clip run so its reps fall on the jittered beats). Server: `TrainingService`
+  (a session per court, stand point from the set piece's `Stand`, attributes `TrainPlot` / `TrainCourt` / `TrainAwake`
+  on the character); `PlotService:_showGrounds` stands `Assets.Grounds.Ground_<id>_T<tier>` on the anchor `Ground<court>`
+  (removes `L2` / `L3` below that level and `Lock` when open, moves the prompt holders `TrainSpot<court>` and
+  `GearSign<court>` onto `Stand` and `Sign`, writes the board). Client: `Controllers/TrainingController` (camera,
+  clip sync, tap / hold input, Focus bar; UI v5.2 `tools/ui/screens_v52.py`), `Controllers/GroundController` (the
+  awakening show for EVERY player from the attributes, the reps, the waterfall's sound), `Ui/GroundLook` (the card
+  model `Show_<id>_T<tier>`). Set pieces: `tools/studio/grounds/` (`ground_lab.luau` gathers generated `GROUND_<key>`
+  models -> `python tools/studio/grounds/run_build.py` builds every template with the effect texture ids;
+  `preview.luau` stands two on a base, take them away before a play test; `court_setup.luau` was the one-off that
+  made the anchors). Effects `assets/vfx/builders/build_train.py`, judged with `tools/studio/grounds/fx_judge.luau`;
+  sounds measured with `python tools/studio/sfx_probe.py <candidates.json>` (play session). `python tools/ui/build_ui.py
+  --only TrainingBar` rebuilds one screen (a full run rewrites every screen's sample text from today's config).
 - Driving a playtest over MCP: move the character on the SERVER datamodel (a client-side teleport does not
   replicate; the throw is then refused "not on own throw pad", printed only with workspace attribute `TFADebug`),
   then fire the remotes from the Client datamodel in a `task.spawn` and log into a StringValue (output from a
@@ -355,6 +375,20 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   `PlayerGui:GetGuiObjectsAtPosition` instead.
 
 ## Known traps on this machine
+
+- STUDIO DIES WHEN THE PC RUNS OUT OF MEMORY (2026-11-27: another app held 36 GB; "paging file is too small", then
+  Studio was gone mid play test at graphics level 21). Team Create had kept every edit. Check first
+  (`(Get-CimInstance Win32_OperatingSystem).FreeVirtualMemory`, under ~3 GB is too little for a play test at level
+  21), tell the owner what is holding the memory, and relaunch with
+  `RobloxStudioBeta.exe -task EditPlace -placeId 106586376894468 -universeId 10776373502` (the MCP gets a NEW studio
+  id; the Rojo plugin reconnected by itself). `settings().Rendering.QualityLevel` is a Studio setting and survives:
+  set it back to Automatic after judging.
+- An Attachment's `WorldCFrame` set BEFORE it has a parent is taken as its local CFrame (the waterfall's beams stood
+  13 studs up in the sky). A Beam's width lies along its attachments' Y axis, not Z. A generated mesh with a texture
+  cannot be tinted through `Color`.
+- `VirtualInputManager` is closed to `execute_luau` ("lacking capability RobloxScript"): to play a timing game in a
+  test, fire its remote from the Client datamodel when the HUD shows the moment (the play-test driver of plan 13
+  phase D watched the ring's size). A ProximityPrompt can be pressed with `prompt:InputHoldBegin()` / `InputHoldEnd()`.
 
 - A `GeometryService:UnionAsync` result keeps its FIRST part's CFrame: its Position and Size do not say where the geometry
   is. Measure a model BEFORE merging (attribute `TrueSize`, pivot at the base centre) and place it by its pivot, never by

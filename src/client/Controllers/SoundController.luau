@@ -26,6 +26,18 @@ local Screens = require(script.Parent.Parent.Ui.Screens)
 -- seconds. Values are the "cap" fields of assets/sfx/manifest.json (measured
 -- in Studio by the roblox-sfx stage); keep the two in step.
 local CAPS: { [string]: number } = {
+	-- plan 13 phase D: the training grounds
+	post_hit = 0.5,
+	post_crit = 0.8,
+	flurry_hit = 0.2,
+	post_break = 1.6,
+	post_rise = 1.2,
+	breath_perfect = 1.4,
+	awaken_start = 1.0,
+	awaken_sting = 2.4,
+	falls_split = 1.6,
+	falls_crash = 2.0,
+	focus_full = 1.0,
 	-- plan 13 phase C: the throw and landing sounds (seconds played after STARTS, then a fade)
 	throw_heave = 0.7,
 	throw_spin = 0.4,
@@ -89,6 +101,8 @@ local GAPS: { [string]: number } = {
 	ui_error = 0.15,
 	toast_pop = 0.1,
 	train_hit = 0.08,
+	post_hit = 0.08,
+	flurry_hit = 0.05,
 	train_lift = 0.1,
 	train_push = 0.15,
 	rarity_step = 0.12,
@@ -118,6 +132,15 @@ local GAPS: { [string]: number } = {
 -- air before the event. Measured in Studio from each clip's loudness curve (plan 13 phase C):
 -- the game skips to just before the attack, so the sound lands ON its moment.
 local STARTS: { [string]: number } = {
+	-- plan 13 phase D (measured lead-ins, work/sfx/probe_d.json)
+	post_break = 0.17,
+	post_rise = 0.33,
+	breath_pulse = 0.06,
+	breath_perfect = 0.1,
+	awaken_start = 0.25,
+	awaken_loop = 0.3,
+	falls_split = 0.08,
+	falls_crash = 0.14,
 	throw_heave = 0.62,
 	land_plate = 0.05,
 	land_glass = 0.05,
