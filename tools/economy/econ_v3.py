@@ -385,6 +385,14 @@ GROUND_FEEL = {
              "FinishClip": "PostFinish", "FinishAt": 0.5, "Contact": 2.87, "Hint": "TAP AS THE RING LANDS"},
     "falls": {"Clip": "TrainBreath", "ClipSeconds": 3.0, "Marks": [2.5], "AwakeClip": "BreathAscend",
               "Hint": "HOLD, LET GO IN THE GOLD", "MinHold": 0.6},
+    # phase E. Boulder: a needle sweeps a meter (the same judge as the ring, another picture).
+    "boulder": {"Clip": "TrainBoulder", "ClipSeconds": 4.0, "Marks": [1.5, 3.5], "AwakeClip": "BoulderBarrage",
+                "FinishClip": "BoulderFinish", "FinishAt": 0.6, "Contact": 2.87, "Hint": "TAP IN THE GOLD ZONE"},
+    # Peak: a reflex game. Lanes = the rods; the rod is marked Lead seconds before the strike; the right
+    # rod within React seconds of the mark is Perfect, later (before the strike) Good. LaneClips = the
+    # clip played over the waiting loop when the player answers with that lane.
+    "peak": {"Clip": "PeakReady", "AwakeClip": "PeakStorm", "Lanes": 3, "Lead": 1.0, "React": 0.55,
+             "LaneClips": ["PeakLeft", "PeakMid", "PeakRight"], "Hint": "TAP THE MARKED ROD"},
 }
 # the look of each gear tier (its model: Assets.Grounds.Ground_<ground id>_T<tier>); three levels each
 GEAR_MODELS = ["Wooden Post", "Banded Post", "Iron Post", "Mountain Falls", "Shrine Falls", "Granite Boulder",

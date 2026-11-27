@@ -1,7 +1,8 @@
 -- preview.luau - Studio EDIT mode. (Plan 13 phase D.) A look at the set pieces where they stand.
 -- Puts copies of two templates on the courts of Plot <PLOT> in Workspace.GroundPreview (dev only;
 -- run with _G.GROUND_PREVIEW = false to take them away again, and always before a play test or a
--- save). _G.GROUND_PREVIEW = { plot = 1, post = 3, falls = 5, level = 3, lock = false }.
+-- save). _G.GROUND_PREVIEW = { plot = 1, post = 3, falls = 5, level = 3, lock = false }, or
+-- { left = "Ground_boulder_T7", right = "Ground_peak_T9", level = 3 }.
 local RS = game:GetService("ReplicatedStorage")
 local want = (_G :: any).GROUND_PREVIEW
 local old = workspace:FindFirstChild("GroundPreview")
@@ -17,7 +18,8 @@ local folder = Instance.new("Folder")
 folder.Name = "GroundPreview"
 folder.Parent = workspace
 local out = {}
-for court, name in { "Ground_post_T" .. (want.post or 1), "Ground_falls_T" .. (want.falls or 4) } do
+-- (`left` / `right` name any template in full, e.g. left = "Ground_boulder_T7")
+for court, name in { want.left or ("Ground_post_T" .. (want.post or 1)), want.right or ("Ground_falls_T" .. (want.falls or 4)) } do
 	local template = RS.Assets.Grounds:FindFirstChild(name)
 	local anchor = plot:FindFirstChild("Ground" .. court)
 	if template and anchor then

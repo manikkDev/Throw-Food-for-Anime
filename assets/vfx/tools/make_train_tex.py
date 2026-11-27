@@ -119,8 +119,36 @@ def wood_splinter():
     save(rgba(rgb, a), "wood_splinter")
 
 
+def bolt_strip():
+    """A lightning bolt running ALONG x (a beam texture: the packer transposes it): a jagged white
+    core with two short forks and a soft glow, tintable. It does not tile: a beam stretches it."""
+    S, W, H = 3, 512, 128
+    img = Image.new("L", (W * S, H * S), 0)
+    d = ImageDraw.Draw(img)
+
+    def jag(x0, y0, x1, y1, steps, wobble, width):
+        pts = [(x0, y0)]
+        for i in range(1, steps):
+            u = i / steps
+            pts.append((x0 + (x1 - x0) * u, y0 + (y1 - y0) * u + RNG.uniform(-wobble, wobble)))
+        pts.append((x1, y1))
+        d.line([(x * S, y * S) for x, y in pts], fill=255, width=int(width * S), joint="curve")
+        return pts
+
+    main = jag(0, H / 2, W, H / 2, 14, 30, 9)
+    for k in (4, 9):
+        x, y = main[k]
+        jag(x, y, x + RNG.uniform(60, 100), y + RNG.choice((-1, 1)) * RNG.uniform(34, 50), 4, 9, 5)
+    core = np.asarray(img.resize((W, H), Image.LANCZOS), np.float32) / 255
+    glow = np.asarray(img.filter(ImageFilter.GaussianBlur(7 * S)).resize((W, H), Image.LANCZOS), np.float32) / 255
+    a = np.clip(core + glow * 1.4, 0, 1)
+    rgb = np.full((H, W, 3), 255, np.float32)
+    save(rgba(rgb, a), "bolt_strip")
+
+
 if __name__ == "__main__":
     water_sheet()
     water_foam()
     pool_ripple()
     wood_splinter()
+    bolt_strip()

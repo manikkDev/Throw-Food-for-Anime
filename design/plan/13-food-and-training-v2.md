@@ -661,3 +661,54 @@ gear models are archived (`MapArchive.TrainingCourts_v1`, `MapArchive.Gear_v1`).
   `RobloxStudioBeta.exe -task EditPlace -placeId 106586376894468 -universeId 10776373502`).
 
 Checkpoint: commit `224c9e1` (phase D) = place version 954 (saved 2026-11-27, not published, not pushed).
+
+### 2026-11-27: phase E, pair 1: Boulder Breaker and Thunder Peak (grounds 3 and 4)
+
+![phase E, pair 1](img/13-phaseE-pair1.jpg)
+
+| | Boulder Breaker (rebirth 2, left court) | Thunder Peak (rebirth 3, right court) |
+|---|---|---|
+| The game | `sweep`: a needle runs along a meter; TAP as it crosses the gold zone, every 2 s | `reflex`: lightning marks one of three rods; tap THAT rod before it strikes, every 2 s |
+| Input | tap, Space | the three rod buttons, A / S / D, the arrow keys, or that third of the screen |
+| Tiers (look) | Granite Boulder, Obsidian Boulder (tiers 6, 7) | Storm Peak, Thunder Peak (tiers 8, 9) |
+| Level II adds | a sacred rope round the rock, a stone fist, two banners | the thunder drums, two storm crystals |
+| Level III adds | two braziers, a gold crest ring | three lit crystals, a ring of light round the summit |
+| Awakening | a barrage, the boulder shakes and glows, shatters, a new one drops from the sky | lightning strikes the rods again and again and arcs to the hero, then one enormous bolt |
+| Extra | cracks spread over the rock's face as Focus fills | the marked rod crackles; a caught bolt runs from the rod's tip into the hand |
+
+- **Rules** (`Core/Beat`): `lane` (which rod a beat falls on: the beats are dealt in shuffled hands of three, so
+  every rod gets its exact share and none comes more than twice running; the first version, a hash with a
+  patch for runs, still gave three in a row and a spec caught it) and `gradeReflex` (the right rod within
+  `React` 0.55 s of the mark is Perfect, any later before the strike Good; the wrong rod, a guess before the
+  mark, or after the strike is a miss). The sweep is the ring's judge with another picture. 147 specs pass.
+- **Server:** a reflex session carries `lanes`, `lead`, `react`; `TrainTap` takes the lane as a number.
+- **Client:** `TrainingController` picks the picture by the ground's game (ring, breath disc, sweep meter, rods),
+  plays the answer clip over the waiting loop, and now RE-TAKES the camera if something else hands it back to
+  the player mid-session (found in the play test: a rebirth cinematic ending set it to Custom).
+  `GroundController`: one table (`STRIKE`) drives every ground where a blow lands on a target (post, boulder):
+  what plays for a rep, through the awakening, and whether the new target rises or drops; `Mark` (the rod's
+  tip), `Focus` (the cracks), the bolt from rod to hand (a copy of the set piece's `Arc` beam, alive for a blink).
+- **UI v5.3** (`tools/ui/screens_v53.py`): `SweepMeter` (Needle, Sweet, SweetCore) and `Rods` (Rod1..3, each
+  with a `Mark` ring inside its face) in the ring's place.
+- **Set pieces:** 15 more generated pieces (two boulders, quarry wall, crane, lifting stones, rubble, stone fist;
+  summit rock, two kinds of lightning rod, storm crystals, thunder drums). The storm cloud is built of matte
+  charcoal balls: the generator made it sky blue twice, and shiny black balls read as balloons.
+- **Effects** (8, `build_train.py`): `Boulder_Hit`, `Boulder_Barrage`, `Boulder_Shatter`, `Boulder_Land`,
+  `Peak_Strike` (a bolt from the sky as two beams that flicker twice), `Peak_Catch`, `Peak_Storm`, `Peak_Finale`;
+  one new texture (`bolt_strip`). **Sounds:** 12 new roles, all ProSoundEffects, from 92 measured candidates
+  (`work/sfx/probe_e1.json`); no mountain-wind ambience (only individual uploaders had one).
+- **Clips** (batch r9, uploaded): TrainBoulder (two heavy palm blows 2 s apart), BoulderBarrage, BoulderFinish (a
+  double palm thrust; the boulder shatters on it), PeakReady, PeakLeft / PeakMid / PeakRight (a 4-frame thrust of
+  one hand toward the rod, held with a tremor), PeakStorm (arms in a V). The author's rough spots: a sideways
+  arm raise is limited by the rig's shoulder, so the side catches go forward and out at about 45 degrees and
+  PeakMid's hand is over the right shoulder, not centred; palms touch 0.01 to 0.03 into the rock.
+- **Played in Studio** (auto-players that answer when the HUD shows the moment): the sweep filled Focus with
+  10 Perfects and awakened; a log of the end: BoulderFinish lands at 0, the boulder is gone at +0.07 s, the new
+  one falls from +0.5 and lands at +0.93 with `Boulder_Land`, the loop resumes in time. The reflex game
+  scored with answers 0.3 s after the mark, awakened, and showed the catch at the hand, the marked rod and its
+  ringed button. Seen and fixed: the middle rod stood hidden behind the hero (the camera now stands 3.6 to
+  one side), the awakening's lights flooded the summit yellow (cloud light 1.6 -> 0.5, strike lamp 1.2 -> 0.5).
+- **Not done, not verified:** as in phase D, nobody has played these by hand, the sounds are unheard, phones
+  are untried (three rod buttons of 72 px are the smallest targets so far), and the bolt from the sky was never
+  caught in a capture (it lives 0.2 s). Grounds 5 to 8 remain.
+

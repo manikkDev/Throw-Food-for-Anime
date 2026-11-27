@@ -1284,6 +1284,138 @@
       "looped": false,
       "kind": "SoundEffect",
       "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "boulder_hit",
+      "id": 9118617342,
+      "name": "Rock Impact Large Hit Scrape 1 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 0.864,
+      "volume": 0.35,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "boulder_crit",
+      "id": 9118584349,
+      "name": "Rock Cracks Big Boulder Hits 1 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 2.392,
+      "volume": 0.7,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "barrage_hit",
+      "id": 9118598279,
+      "name": "Rock Hit Dirt Impact 14 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 0.375,
+      "volume": 0.55,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "boulder_shatter",
+      "id": 9118693444,
+      "name": "Rocks Tumble 1 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 2.88,
+      "volume": 0.5,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "boulder_land",
+      "id": 9125869505,
+      "name": "Rock Drops Smashes Impacts Hits Some Rocking (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.581,
+      "volume": 0.9,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "rock_crack",
+      "id": 9125869141,
+      "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.506,
+      "volume": 1.0,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "rod_mark",
+      "id": 9114277338,
+      "name": "Electric Zaps 4 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 2.048,
+      "volume": 0.7,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "thunder_strike",
+      "id": 9126082854,
+      "name": "Synth Thunder Cracks Individual Explosion Bo (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 5.133,
+      "volume": 0.6,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "bolt_catch",
+      "id": 9114277239,
+      "name": "Electric Zaps 3 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 2.08,
+      "volume": 0.8,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "bolt_perfect",
+      "id": 9116277729,
+      "name": "Lightning Flashes Quick Electrical Bursts 28 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.632,
+      "volume": 0.6,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "storm_loop",
+      "id": 9119992826,
+      "name": "Tesla Coil 1 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 27.328,
+      "volume": 0.5,
+      "looped": true,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "storm_finale",
+      "id": 9120021539,
+      "name": "Thunder Sharp Booming Strikes Rumbling 3 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 15.413,
+      "volume": 0.8,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
     }
   ],
   "_picked": "by hand from measured candidates (two search rounds, 438 probed in Studio): Roblox-licensed libraries (ProSoundEffects, APMOfficial, DistrokidOfficial) preferred; game rips rejected; cap = seconds the game plays before fading"

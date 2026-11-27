@@ -39,6 +39,9 @@ type Session = {
 	station: number, -- the court (1 left, 2 right)
 	ground: number, -- index into Training.Grounds
 	minHold: number?, -- a held game: seconds the hold must last before its release counts
+	lanes: number?, -- a reflex game: how many lanes a beat can fall on (the input names one)
+	lead: number, -- a reflex game: seconds before the beat its lane is marked
+	react: number, -- a reflex game: seconds after the mark an answer is still Perfect
 	holdStart: number?, -- os.clock() the current hold began at
 	start: number, -- os.clock() of the start: reps and the timing game run from it
 	startServer: number, -- the same instant as workspace:GetServerTimeNow(), for the client's ring
@@ -142,6 +145,9 @@ function TrainingService:Start(player: Player, court: number)
 		station = court,
 		ground = shown.ground,
 		minHold = row.MinHold,
+		lanes = row.Lanes,
+		lead = row.Lead or 0,
+		react = row.React or 0,
 		start = now,
 		startServer = workspace:GetServerTimeNow(),
 		last = now,
@@ -252,8 +258,8 @@ end
 -- the game: grade this input against the nearest beat. One grade per beat; an input that misses
 -- still uses its beat up, so mashing the screen lands on "miss", not on a lucky "good".
 -- `down`: a held game sends true when the hold begins and false when it is let go (the release is
--- what is graded); a tapped game sends nothing.
-function TrainingService:_tap(player: Player, down: boolean?)
+-- what is graded); a tapped game sends nothing. `lane`: a reflex game sends the lane it answers with.
+function TrainingService:_tap(player: Player, down: boolean?, lane: number?)
 	local session = self._sessions[player]
 	local profile = self._data:Get(player)
 	if not session or not profile then
@@ -286,9 +292,23 @@ function TrainingService:_tap(player: Player, down: boolean?)
 	end
 	session.judged = n
 	local gap = elapsed - Beat.moment(session.beat, n, session.seed)
-	local grade = if held and session.minHold
-		then Beat.gradeHold(BEAT, gap, held, session.minHold, LAG_ALLOWANCE)
-		else Beat.grade(BEAT, gap, LAG_ALLOWANCE)
+	local grade: Beat.Grade
+	if session.lanes then
+		local expected = Beat.lane(n, session.seed, session.lanes)
+		grade = Beat.gradeReflex(
+			BEAT,
+			gap,
+			lane or 0,
+			expected,
+			session.lead,
+			session.react,
+			LAG_ALLOWANCE
+		)
+	elseif held and session.minHold then
+		grade = Beat.gradeHold(BEAT, gap, held, session.minHold, LAG_ALLOWANCE)
+	else
+		grade = Beat.grade(BEAT, gap, LAG_ALLOWANCE)
+	end
 	local mult = Beat.reward(BEAT, grade)
 	if mult > 1 then
 		-- the reps themselves are paid by the clock: this is the bonus on the beat's reps
@@ -328,7 +348,16 @@ function TrainingService:KnitStart()
 		if not Guard.allow(player, "TrainTap", rate, rate * 2) then
 			return
 		end
-		self:_tap(player, if typeof(down) == "boolean" then down else nil)
+		self:_tap(
+			player,
+			if typeof(down) == "boolean" then down else nil,
+			if typeof(down) == "number"
+					and down == math.floor(down)
+					and down >= 1
+					and down <= 8
+				then down
+				else nil
+		)
 	end)
 	Players.PlayerRemoving:Connect(function(player: Player)
 		self._sessions[player] = nil

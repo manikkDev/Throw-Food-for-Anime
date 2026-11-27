@@ -1,0 +1,559 @@
+{
+ "name": "Boulder_Hit",
+ "note": "A heavy blow lands on the boulder: crack flash, rock chips, dust.",
+ "duration": 0.7,
+ "camera": {
+  "pos": [
+   7,
+   4.5,
+   12
+  ],
+  "at": [
+   0,
+   3,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "stripFloors": [
+  "#E9D2A2"
+ ],
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": false,
+  "origin": [
+   0,
+   3.2,
+   0
+  ]
+ },
+ "brief": {
+  "category": "impact",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "crack + rock chips",
+  "dominant": "#9A9CA4",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "a crack flashes on the rock"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.27999999999999997
+   },
+   {
+    "name": "residue",
+    "t0": 0.27999999999999997,
+    "t1": 0.7
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Hit",
+   "CFrame": [
+    0,
+    3.2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Burst",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/impacts/comic_burst_cel_02",
+        "Lifetime": {
+         "NumberRange": [
+          0.16,
+          0.16
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.9
+          ],
+          [
+           1,
+           2.4
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.6,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           0.5,
+           [
+            1.0,
+            0.9137,
+            0.6588
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.5412,
+            0.1647
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.2,
+        "ZOffset": 2
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Crack",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/cracks/crack_cel_02",
+        "Lifetime": {
+         "NumberRange": [
+          0.3,
+          0.3
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.6
+          ],
+          [
+           0.2,
+           2.3
+          ],
+          [
+           1,
+           2.4
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.6,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            0.2275,
+            0.2275,
+            0.2667
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "ZOffset": 1.5
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Ring",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_cel_04",
+        "Lifetime": {
+         "NumberRange": [
+          0.22,
+          0.22
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.9
+          ],
+          [
+           0.3,
+           2.1
+          ],
+          [
+           1,
+           2.5
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            0.6039,
+            0.6118,
+            0.6431
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.2,
+        "ZOffset": 1
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Chips",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/elements/rock_chunk_cel_02",
+        "SpreadAngle": {
+         "Vector2": [
+          180,
+          180
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          10,
+          18
+         ]
+        },
+        "Drag": 2,
+        "Acceleration": {
+         "Vector3": [
+          0,
+          -42,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.35,
+          0.6
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "RotSpeed": {
+         "NumberRange": [
+          -500,
+          500
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.375
+          ],
+          [
+           0.7,
+           0.325
+          ],
+          [
+           1,
+           0.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            0.7843,
+            0.7843,
+            0.8157
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "ZOffset": 1.5
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Dust",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/flipbooks/smoke/smoke_puff_fb_cel_03_4x4",
+        "FlipbookLayout": {
+         "Enum": "ParticleFlipbookLayout.Grid4x4"
+        },
+        "FlipbookMode": {
+         "Enum": "ParticleFlipbookMode.OneShot"
+        },
+        "FlipbookBlendFrames": false,
+        "FlipbookFramerate": {
+         "NumberRange": [
+          32.0,
+          32.0
+         ]
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          180,
+          180
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          3,
+          6
+         ]
+        },
+        "Drag": 4,
+        "Lifetime": {
+         "NumberRange": [
+          0.4,
+          0.5
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.8
+          ],
+          [
+           1,
+           1.5
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.25
+          ],
+          [
+           0.6,
+           0.45
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            0.851,
+            0.8392,
+            0.8
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "ZOffset": 0.5
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Hit.A.Burst",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Crack",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Ring",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Chips",
+   "count": 6,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Dust",
+   "count": 3,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.0,
+  0.03,
+  0.07,
+  0.12,
+  0.2,
+  0.35
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

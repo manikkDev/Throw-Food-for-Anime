@@ -1,0 +1,135 @@
+{
+ "roles": {
+  "boulder_hit": [
+   {"rank": 1, "id": 9125869504, "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Rock striking rock with a crack and debris; short listing, closest to a palm into granite"},
+   {"rank": 2, "id": 9118614058, "name": "Rock Impact 23 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Rock impact variant; deep thud, check tail"},
+   {"rank": 3, "id": 9118612665, "name": "Rock Impact 7 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Rock impact variant"},
+   {"rank": 4, "id": 9118617342, "name": "Rock Impact Large Hit Scrape 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Large rock hit with a scrape; short, may carry a grind tail"},
+   {"rank": 5, "id": 9118614717, "name": "Rock Impact 30 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Rock impact, larger take; trim check"},
+   {"rank": 6, "id": 9118598279, "name": "Rock Hit Dirt Impact 14 (SFX)", "creator": "ProSoundEffects", "duration": 0, "duration_verified": false, "why": "Rock hit on dirt; listed length unknown, dirt-flavoured not stone"},
+   {"rank": 7, "id": 118068869072073, "name": "Impact_Rock_03", "creator": "CandiedRX1", "duration": 2, "duration_verified": false, "why": "Plain rock impact; individual uploader, licence basis unverified"},
+   {"rank": 8, "id": 104934835352245, "name": "e-break-rock", "creator": "JUANCRUZ130208", "duration": 1, "duration_verified": false, "why": "Short rock break hit; individual uploader, licence basis unverified"}
+  ],
+  "boulder_crit": [
+   {"rank": 1, "id": 9118584958, "name": "Rock Cracks Big Boulder Hits 5 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Big boulder hit with cracks; the bigger crack layer for a perfect"},
+   {"rank": 2, "id": 9118585250, "name": "Rock Cracks Big Boulder Hits 4 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Big boulder hit variant"},
+   {"rank": 3, "id": 9118584349, "name": "Rock Cracks Big Boulder Hits 1 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Big boulder hit, first take; shortest listing of the set"},
+   {"rank": 4, "id": 9118586224, "name": "Rock Cracks Big Boulder Hits 6 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Big boulder hit; long listing, trim to under 1 s"},
+   {"rank": 5, "id": 9118584627, "name": "Rock Cracks Big Boulder Hits 3 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Big boulder hit variant"},
+   {"rank": 6, "id": 139818366003696, "name": "boulder_impact_on_stones_14", "creator": "sherwin8846", "duration": 1, "duration_verified": false, "why": "Boulder impact on stones, short; individual uploader, licence basis unverified"},
+   {"rank": 7, "id": 105678434839185, "name": "Boulder Hit", "creator": "Sunfire89", "duration": 2, "duration_verified": false, "why": "Plain boulder hit; individual uploader, licence basis unverified"},
+   {"rank": 8, "id": 96463243089117, "name": "Stone impact", "creator": "SnatchedOwl", "duration": 1, "duration_verified": false, "why": "Plain stone impact, short; individual uploader, licence basis unverified"}
+  ],
+  "barrage_hit": [
+   {"rank": 1, "id": 9125869495, "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Short rock-on-rock thump; a single hit of a rapid barrage"},
+   {"rank": 2, "id": 9125869138, "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Same family, another take"},
+   {"rank": 3, "id": 9118617342, "name": "Rock Impact Large Hit Scrape 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Large rock hit; short, scrape may add tail"},
+   {"rank": 4, "id": 9118612665, "name": "Rock Impact 7 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Rock impact; listing 2 s so check tail under 0.3 s"},
+   {"rank": 5, "id": 9113436467, "name": "Big Rock Hits Dirt 3 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Big rock hit; dirt bed, weaker stone feel"},
+   {"rank": 6, "id": 9113436384, "name": "Big Rock Hits Dirt 2 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Big rock hit, second take; dirt bed"},
+   {"rank": 7, "id": 118068869072073, "name": "Impact_Rock_03", "creator": "CandiedRX1", "duration": 2, "duration_verified": false, "why": "Plain rock impact; individual uploader, licence basis unverified"},
+   {"rank": 8, "id": 104934835352245, "name": "e-break-rock", "creator": "JUANCRUZ130208", "duration": 1, "duration_verified": false, "why": "Short rock break; individual uploader, licence basis unverified"}
+  ],
+  "boulder_shatter": [
+   {"rank": 1, "id": 112627943804905, "name": "Rock Explosion 1", "creator": "GleonoffG", "duration": 3, "duration_verified": false, "why": "Rock explosion; the shatter core; individual uploader, licence basis unverified"},
+   {"rank": 2, "id": 114743565978001, "name": "Rock Explosion 2", "creator": "GleonoffG", "duration": 3, "duration_verified": false, "why": "Rock explosion, second take; individual uploader"},
+   {"rank": 3, "id": 120212342534790, "name": "Debris Explosion + Small Rocks Rumbling 2", "creator": "GleonoffG", "duration": 3, "duration_verified": false, "why": "Debris explosion with rumble; closer to rubble burst; individual uploader"},
+   {"rank": 4, "id": 106439630064558, "name": "Rock Explosion 3", "creator": "GleonoffG", "duration": 3, "duration_verified": false, "why": "Rock explosion variant; individual uploader"},
+   {"rank": 5, "id": 2174796713, "name": "Rock Explosion", "creator": "Cbritta", "duration": 3, "duration_verified": false, "why": "Rock explosion; individual uploader"},
+   {"rank": 6, "id": 9118693444, "name": "Rocks Tumble 1 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Rocks tumbling; Roblox-library, weaker explosion feel, the rubble tail"},
+   {"rank": 7, "id": 9125392745, "name": "Big Rocks Drop Interior Muffled Some Debris (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Big rocks dropping with debris; Roblox-library, long listing, trim to 2.5 s"},
+   {"rank": 8, "id": 139316396351592, "name": "rock explosion", "creator": "TIEN_GAMINGSTVN", "duration": 5, "duration_verified": false, "why": "Rock explosion; individual uploader, long listing"}
+  ],
+  "boulder_land": [
+   {"rank": 1, "id": 9118589474, "name": "Rock Drops 10 Ft High Onto Rocks Dirt 5 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Heavy rock drop onto rocks; closest to a boulder landing"},
+   {"rank": 2, "id": 9125392745, "name": "Big Rocks Drop Interior Muffled Some Debris (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Big rocks drop, muffled; long listing, trim to 2 s"},
+   {"rank": 3, "id": 9125869797, "name": "Rock Drops Smashes Impacts Hits Some Rocking (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Rock drop smash; short, may lack rumble"},
+   {"rank": 4, "id": 9125869505, "name": "Rock Drops Smashes Impacts Hits Some Rocking (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Same family, second take"},
+   {"rank": 5, "id": 9125869814, "name": "Rock Drops Smashes Impacts Hits Some Rocking (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Same family, third take"},
+   {"rank": 6, "id": 9118587698, "name": "Rock Drop On Concrete Drops Breaks 3 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Rock drop onto concrete; hard surface, less earth"},
+   {"rank": 7, "id": 89620476747699, "name": "Ground Slam SFX", "creator": "GleonoffG", "duration": 5, "duration_verified": false, "why": "Ground slam, massive impact; individual uploader, trim"},
+   {"rank": 8, "id": 134690409222127, "name": "stomp hard ground rubble sfx", "creator": "Axellatic", "duration": 3, "duration_verified": false, "why": "Heavy stomp onto ground with rubble; individual uploader"}
+  ],
+  "rock_crack": [
+   {"rank": 1, "id": 9125869107, "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Rock crack, short listing"},
+   {"rank": 2, "id": 9125869108, "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Rock crack, second take"},
+   {"rank": 3, "id": 9125869504, "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Rock crack variant"},
+   {"rank": 4, "id": 9125869141, "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Rock crack variant, listing 2 s"},
+   {"rank": 5, "id": 9118582680, "name": "Rock Crack 4 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Dedicated rock crack; long listing, trim to 0.8 s"},
+   {"rank": 6, "id": 9113219235, "name": "Avalanche Rock Cracks 1 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Rock cracking with avalanche flavour; may carry rumble"},
+   {"rank": 7, "id": 9113219397, "name": "Avalanche Rock Cracks 2 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Avalanche rock cracks, second take"},
+   {"rank": 8, "id": 9125869495, "name": "Rock Cracks Rock Hitting Rock Impact Debris (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Rock crack spare"}
+  ],
+  "rod_mark": [
+   {"rank": 1, "id": 9114277757, "name": "Electric Zaps 12 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Short electric zap tick; Roblox-library"},
+   {"rank": 2, "id": 9114277239, "name": "Electric Zaps 3 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Electric zap, short take"},
+   {"rank": 3, "id": 9114277338, "name": "Electric Zaps 4 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Electric zap variant"},
+   {"rank": 4, "id": 9114277402, "name": "Electric Zaps 6 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Electric zap variant"},
+   {"rank": 5, "id": 97096310054904, "name": "Quick Electric Zap", "creator": "ConeExpierence", "duration": 1, "duration_verified": false, "why": "Quick zap tick; individual uploader, licence basis unverified"},
+   {"rank": 6, "id": 78423142135998, "name": "Electric Discharge Short", "creator": "kuyson22", "duration": 1, "duration_verified": false, "why": "Short discharge, rising feel; individual uploader"},
+   {"rank": 7, "id": 84986266888002, "name": "Electric Crackle", "creator": "ReyesF10", "duration": 2, "duration_verified": false, "why": "Electric crackle; individual uploader, check length"},
+   {"rank": 8, "id": 92090867642655, "name": "Electric Zap Sound", "creator": "Siege1z", "duration": 2, "duration_verified": false, "why": "Electric zap; individual uploader"}
+  ],
+  "thunder_strike": [
+   {"rank": 1, "id": 72827145254925, "name": "thunder crack", "creator": "DundeiEh", "duration": 3, "duration_verified": false, "why": "Dedicated thunder crack; individual uploader, check no long tail"},
+   {"rank": 2, "id": 15110260312, "name": "Lightning Strike", "creator": "JohnW2th", "duration": 3, "duration_verified": false, "why": "Lightning strike; individual uploader"},
+   {"rank": 3, "id": 1079408535, "name": "lightning_strike", "creator": "Azrellie", "duration": 4, "duration_verified": false, "why": "Lightning strike; individual uploader"},
+   {"rank": 4, "id": 123469822942802, "name": "Lightning strike", "creator": "Sunfire89", "duration": 9, "duration_verified": false, "why": "Lightning strike; long listing, trim to 2 s"},
+   {"rank": 5, "id": 9126082854, "name": "Synth Thunder Cracks Individual Explosion Bo (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Synth thunder crack with explosion boom; Roblox-library, individual hit"},
+   {"rank": 6, "id": 9126083062, "name": "Synth Thunder Cracks Individual Explosion Bo (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Synth thunder crack, second take"},
+   {"rank": 7, "id": 93403424380357, "name": "lightning strike", "creator": "MoaiestOfMan", "duration": 6, "duration_verified": false, "why": "Lightning strike; individual uploader, long listing"},
+   {"rank": 8, "id": 135035379441832, "name": "Thunder clap and flash", "creator": "Raij1_n", "duration": 1, "duration_verified": false, "why": "Thunder clap with flash; short listing, individual uploader"}
+  ],
+  "bolt_catch": [
+   {"rank": 1, "id": 78423142135998, "name": "Electric Discharge Short", "creator": "kuyson22", "duration": 1, "duration_verified": false, "why": "Short electric discharge, punchy; individual uploader"},
+   {"rank": 2, "id": 76377461590418, "name": "Electric discharge", "creator": "Fey_Navy", "duration": 1, "duration_verified": false, "why": "Electric discharge, single hit; individual uploader"},
+   {"rank": 3, "id": 132256065081793, "name": "Electric Discharge", "creator": "Ferebur", "duration": 1, "duration_verified": false, "why": "Electric discharge; individual uploader"},
+   {"rank": 4, "id": 99361611096931, "name": "electric-discharge", "creator": "thanakit2502", "duration": 1, "duration_verified": false, "why": "Electric discharge; individual uploader"},
+   {"rank": 5, "id": 92090867642655, "name": "Electric Zap Sound", "creator": "Siege1z", "duration": 2, "duration_verified": false, "why": "Electric zap; individual uploader"},
+   {"rank": 6, "id": 97096310054904, "name": "Quick Electric Zap", "creator": "ConeExpierence", "duration": 1, "duration_verified": false, "why": "Quick zap; individual uploader"},
+   {"rank": 7, "id": 80881248969961, "name": "Electric Discharge Medium", "creator": "kuyson22", "duration": 2, "duration_verified": false, "why": "Medium discharge; individual uploader, check under 1 s"},
+   {"rank": 8, "id": 9114277239, "name": "Electric Zaps 3 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Roblox-library zap; alternate"}
+  ],
+  "bolt_perfect": [
+   {"rank": 1, "id": 9119992532, "name": "Tesla Coil 3 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Tesla coil discharge; Roblox-library, bigger electric blast feel"},
+   {"rank": 2, "id": 9119992547, "name": "Tesla Coil 1 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Tesla coil, longer; trim to 1.2 s"},
+   {"rank": 3, "id": 9119992534, "name": "Tesla Coil 2 (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Tesla coil variant; long listing"},
+   {"rank": 4, "id": 9119992790, "name": "Tesla Coil 4 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Tesla coil variant; long listing"},
+   {"rank": 5, "id": 9116277729, "name": "Lightning Flashes Quick Electrical Bursts 28 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Electrical burst; Roblox-library, bright flash feel"},
+   {"rank": 6, "id": 93698176583362, "name": "Electric Discharge", "creator": "ShepardOfTheDark", "duration": 2, "duration_verified": false, "why": "Electric discharge for a bigger hit; individual uploader"},
+   {"rank": 7, "id": 105089238888849, "name": "Electric Discharge Long", "creator": "kuyson22", "duration": 2, "duration_verified": false, "why": "Long discharge; trim to 1.2 s, individual uploader"},
+   {"rank": 8, "id": 80881248969961, "name": "Electric Discharge Medium", "creator": "kuyson22", "duration": 2, "duration_verified": false, "why": "Medium discharge; individual uploader"}
+  ],
+  "storm_loop": [
+   {"rank": 1, "id": 9126100090, "name": "Thunder Long Booming Strikes Rumbling Crackl (SFX)", "creator": "ProSoundEffects", "duration": 63, "duration_verified": false, "why": "Long rumbling thunder with crackle; listing implausible, audition for a loop bed"},
+   {"rank": 2, "id": 9119840148, "name": "Synth Thunder Gentle Rolls Slightly Phasey 1 (SFX)", "creator": "ProSoundEffects", "duration": 14, "duration_verified": false, "why": "Gentle synth thunder roll, phasey; steady bed, check it loops"},
+   {"rank": 3, "id": 9119841686, "name": "Synth Thunder Tubular Cracks Rolls 8 (SFX)", "creator": "ProSoundEffects", "duration": 10, "duration_verified": false, "why": "Tubular thunder cracks rolling; steady storm feel"},
+   {"rank": 4, "id": 9119841134, "name": "Synth Thunder Tubular Cracks Rolls 2 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Tubular thunder rolls, shorter"},
+   {"rank": 5, "id": 9119842116, "name": "Synth Thunder Tubular Cracks Rolls 9 (SFX)", "creator": "ProSoundEffects", "duration": 12, "duration_verified": false, "why": "Tubular thunder rolls variant; listed type Unknown"},
+   {"rank": 6, "id": 9119992826, "name": "Tesla Coil 1 (SFX)", "creator": "ProSoundEffects", "duration": 27, "duration_verified": false, "why": "Tesla coil bed; long listing, type Unknown, audition for a crackle loop"},
+   {"rank": 7, "id": 135475331188556, "name": "Slester Static Crackling 1", "creator": "Chetzalovania", "duration": 5, "duration_verified": false, "why": "Static crackling; individual uploader, check loop"},
+   {"rank": 8, "id": 124666497875357, "name": "energy buzz", "creator": "mastermilosz", "duration": 7, "duration_verified": false, "why": "Energy buzz bed; individual uploader"}
+  ],
+  "storm_finale": [
+   {"rank": 1, "id": 133005872302726, "name": "Thunder Clap", "creator": "Gabe809564", "duration": 3, "duration_verified": false, "why": "Thunder clap, single event; individual uploader, licence basis unverified"},
+   {"rank": 2, "id": 139797353086923, "name": "Thunder Clap and Flash", "creator": "NikoAvalon", "duration": 2, "duration_verified": false, "why": "Thunder clap with flash; individual uploader"},
+   {"rank": 3, "id": 119375500460202, "name": "Thunder clap", "creator": "Infinity World Inc.", "duration": 2, "duration_verified": false, "why": "Thunder clap; individual uploader, check length"},
+   {"rank": 4, "id": 81083699621284, "name": "Thunder Clap", "creator": "noidunlimited", "duration": 4, "duration_verified": false, "why": "Thunder clap; individual uploader"},
+   {"rank": 5, "id": 127971380132284, "name": "Thunder Clap", "creator": "Loge5031", "duration": 10, "duration_verified": false, "why": "Thunder clap; long listing, trim to 3 s"},
+   {"rank": 6, "id": 9120021539, "name": "Thunder Sharp Booming Strikes Rumbling 3 (SFX)", "creator": "ProSoundEffects", "duration": 15, "duration_verified": false, "why": "Sharp thunder boom; Roblox-library, listing implausible, audition"},
+   {"rank": 7, "id": 9120016256, "name": "Thunder Cracks Big Rumbling Blasts Booming 3 (SFX)", "creator": "ProSoundEffects", "duration": 7, "duration_verified": false, "why": "Big thunder crack and boom; Roblox-library, trim to 3 s"},
+   {"rank": 8, "id": 140089926923698, "name": "ThunderHeavy7", "creator": "ego256ehb", "duration": 5, "duration_verified": false, "why": "Heavy thunder; individual uploader"}
+  ],
+  "wind_loop": [
+   {"rank": 1, "id": 89819527389696, "name": "Wind sound on mountain SFX", "creator": "l0rdTilkiSelim_2", "duration": 7, "duration_verified": false, "why": "Mountain wind, the exact setting; individual uploader, check loop point"},
+   {"rank": 2, "id": 136162610502381, "name": "Cold Mountain Wind", "creator": "Goofy8NateDawg", "duration": 3, "duration_verified": false, "why": "Cold mountain wind; individual uploader, short listing, check it is over 5 s"},
+   {"rank": 3, "id": 687874741, "name": "Wind Loop", "creator": "ClicheChloe", "duration": 4, "duration_verified": false, "why": "Plain wind loop; individual uploader"},
+   {"rank": 4, "id": 93035214379043, "name": "wind_loop", "creator": "tientregua096", "duration": 8, "duration_verified": false, "why": "Plain wind loop; individual uploader"},
+   {"rank": 5, "id": 88113568272089, "name": "Wind Rush Loop", "creator": "f1rstn1ghtkn1ght", "duration": 9, "duration_verified": false, "why": "Wind rush loop; individual uploader"},
+   {"rank": 6, "id": 102354126031648, "name": "desert_wind_loop", "creator": "Vibe Shift Studios", "duration": 10, "duration_verified": false, "why": "Steady wind loop, desert flavour; individual uploader"},
+   {"rank": 7, "id": 133695413052572, "name": "pine forest wind loop", "creator": "6gunred", "duration": 6, "duration_verified": false, "why": "Forest wind loop; individual uploader, check for birds"},
+   {"rank": 8, "id": 6544555787, "name": "Fierce howling loud wind(loop)", "creator": "Festivereinhard2", "duration": 10, "duration_verified": false, "why": "Howling wind loop, loud; individual uploader, may need quieter volume"}
+  ]
+ },
+ "notes": "Candidates only: nothing downloaded, uploaded, edited or probed in Studio. Durations are toolbox listings (duration_verified false everywhere); listed 0 means unknown and listed values can be wrong in either direction. Licence basis is UNVERIFIED for every id in this file: the Creator Store and Roblox audio terms could not be read in this run, so ProSoundEffects, APMOfficial and DistrokidOfficial are treated as Roblox-library audio on the same basis as phase C and D, and every individual-uploader id (creators other than those three) needs the same licence check before use. No attribution-requiring item is in this file. Dropped: 83968071007875 ultrakill dig boulder (ULTRAKILL franchise), 140558324601866 Ultrakill rock break (franchise), 18606089065/18606089633 Zai Studios 'Audio/jujutsu' rock smash (Jujutsu Kaisen franchise naming), 18650085033 and 18650085493 Zai Studios lightning clips (same uploader, franchise-named set, not used), 77817964412998 shinji crater slam (character name, likely franchise clip), 99020298585044 electric zap CNZ boss (franchise-coded name), 9038652624 Big Hair Rock (APM, name does not match a stone hit: audition only, not listed), all DistrokidOfficial and APMOfficial Music-typed results (kind mismatch). Thin roles: storm_loop (no ProSoundEffects loop found; candidates are thunder rolls and a tesla bed with unknown or long listings; this is a loop-length question for Studio), wind_loop (no ProSoundEffects wind bed found; all candidates are individual uploaders, so licence risk is highest here), bolt_perfect (no bright ring found; tesla and discharge clips only), boulder_shatter (rock explosions are all individual uploaders), storm_finale (thunder claps are mostly individual uploaders)."
+}

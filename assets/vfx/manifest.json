@@ -106,6 +106,54 @@
    "notes": "Titan: wide gold ground ripple (radius 6-8 at scale 1) pulsing twice a second, ring pulse, dust."
   },
   {
+   "name": "Boulder_Barrage",
+   "loop": true,
+   "duration": 1.2,
+   "attach": "part",
+   "particles_peak": 19,
+   "strip": "assets/vfx/strips/Boulder_Barrage.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN tier budget anticipation+main 1.20s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN layer count 4 visual layers (corpus p25 5); WARN peak early brightest frame at 93% of the main event (want <= 25-30%)",
+   "notes": "The awakening's barrage on the boulder (loop)."
+  },
+  {
+   "name": "Boulder_Hit",
+   "loop": false,
+   "duration": 0.7,
+   "attach": "point",
+   "particles_peak": 12,
+   "strip": "assets/vfx/strips/Boulder_Hit.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN layer count 5 visual layers (corpus p25 6)",
+   "notes": "A heavy blow lands on the boulder: crack flash, rock chips, dust."
+  },
+  {
+   "name": "Boulder_Land",
+   "loop": false,
+   "duration": 1.3,
+   "attach": "point",
+   "particles_peak": 37,
+   "strip": "assets/vfx/strips/Boulder_Land.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN layer count 5 visual layers (corpus p25 6); WARN peak early brightest frame at 38% of the main event (want <= 25-30%)",
+   "notes": "A new boulder lands: dust, chips, a cracked floor."
+  },
+  {
+   "name": "Boulder_Shatter",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 62,
+   "strip": "assets/vfx/strips/Boulder_Shatter.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "PASS",
+   "notes": "The boulder shatters at the end of the awakening."
+  },
+  {
    "name": "Coin_Pop",
    "loop": false,
    "duration": 0.8,
@@ -218,6 +266,54 @@
    ],
    "critic": "WARN tier budget anticipation+main 2.00s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind",
    "notes": "Lucky throw armed (loop on the hand)."
+  },
+  {
+   "name": "Peak_Catch",
+   "loop": false,
+   "duration": 0.8,
+   "attach": "point",
+   "particles_peak": 20,
+   "strip": "assets/vfx/strips/Peak_Catch.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN layer count 4 visual layers (corpus p25 6); WARN peak early brightest frame at 36% of the main event (want <= 25-30%)",
+   "notes": "The hero catches the bolt: forks and sparks at the hand."
+  },
+  {
+   "name": "Peak_Finale",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 48,
+   "strip": "assets/vfx/strips/Peak_Finale.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "PASS",
+   "notes": "The Thunder Peak's awakening ends: one enormous bolt on the hero."
+  },
+  {
+   "name": "Peak_Storm",
+   "loop": true,
+   "duration": 2.0,
+   "attach": "root",
+   "particles_peak": 10,
+   "strip": "assets/vfx/strips/Peak_Storm.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN tier budget anticipation+main 2.00s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN peak early brightest frame at 38% of the main event (want <= 25-30%)",
+   "notes": "The awakened hero is wrapped in lightning (loop)."
+  },
+  {
+   "name": "Peak_Strike",
+   "loop": false,
+   "duration": 0.8,
+   "attach": "point",
+   "particles_peak": 27,
+   "strip": "assets/vfx/strips/Peak_Strike.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "PASS",
+   "notes": "Lightning strikes a rod: a bolt from the sky, forks and sparks at the tip."
   },
   {
    "name": "PerfectThrow_Flash",

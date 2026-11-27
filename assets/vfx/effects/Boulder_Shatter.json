@@ -1,0 +1,705 @@
+{
+ "name": "Boulder_Shatter",
+ "note": "The boulder shatters at the end of the awakening.",
+ "duration": 1.5,
+ "camera": {
+  "pos": [
+   9,
+   5,
+   16
+  ],
+  "at": [
+   0,
+   4,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "stripFloors": [
+  "#E9D2A2"
+ ],
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": true,
+  "origin": [
+   0,
+   3.2,
+   0
+  ]
+ },
+ "brief": {
+  "category": "impact",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "rock chunks + shock ring",
+  "dominant": "#9A9CA4",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "the boulder flies apart"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.6000000000000001
+   },
+   {
+    "name": "residue",
+    "t0": 0.6000000000000001,
+    "t1": 1.5
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Hit",
+   "CFrame": [
+    0,
+    3.2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3.6,
+    4.4,
+    3.6
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Pop",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/impacts/starburst_cel_00",
+      "Lifetime": {
+       "NumberRange": [
+        0.14,
+        0.14
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         4.5
+        ],
+        [
+         1,
+         6.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1.0,
+          0.8902,
+          0.3529
+         ]
+        ],
+        [
+         1,
+         [
+          1.0,
+          0.5412,
+          0.1647
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.15,
+      "ZOffset": 1
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Lines",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/impacts/speed_lines_cel_02",
+      "Lifetime": {
+       "NumberRange": [
+        0.22,
+        0.22
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         5.0
+        ],
+        [
+         1,
+         8.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.1
+        ],
+        [
+         0.5,
+         0.3
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          1,
+          1,
+          1
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.3,
+      "ZOffset": 1.5
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Shock",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/rings/ring_spiked_cel_02",
+      "Lifetime": {
+       "NumberRange": [
+        0.32,
+        0.32
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        0,
+        0
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         2.0
+        ],
+        [
+         0.3,
+         6.0
+        ],
+        [
+         1,
+         7.5
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.5,
+         0.1
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.6039,
+          0.6118,
+          0.6431
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.2,
+      "ZOffset": 1
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Chunks",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/elements/rock_chunk_cel_02",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Sphere"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        180,
+        180
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        32
+       ]
+      },
+      "Drag": 1.0,
+      "Acceleration": {
+       "Vector3": [
+        0,
+        -52,
+        0
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.8,
+        1.2
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -500,
+        500
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.4
+        ],
+        [
+         0.8,
+         1.2
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.7843,
+          0.7843,
+          0.8157
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0,
+      "ZOffset": 2
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Chips",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/elements/rock_chunk_cel_02",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Sphere"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        180,
+        180
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        22,
+        44
+       ]
+      },
+      "Drag": 2.2,
+      "Acceleration": {
+       "Vector3": [
+        0,
+        -46,
+        0
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.5,
+        0.9
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -800,
+        800
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.55
+        ],
+        [
+         0.7,
+         0.45
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.7216,
+          0.7216,
+          0.7608
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0,
+      "ZOffset": 1.5
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Dust",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/flipbooks/smoke/smoke_puff_fb_cel_03_4x4",
+      "FlipbookLayout": {
+       "Enum": "ParticleFlipbookLayout.Grid4x4"
+      },
+      "FlipbookMode": {
+       "Enum": "ParticleFlipbookMode.OneShot"
+      },
+      "FlipbookBlendFrames": false,
+      "FlipbookFramerate": {
+       "NumberRange": [
+        22.857142857142858,
+        22.857142857142858
+       ]
+      },
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Sphere"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        180,
+        180
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        8,
+        16
+       ]
+      },
+      "Drag": 4,
+      "Acceleration": {
+       "Vector3": [
+        0,
+        2,
+        0
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.6,
+        0.8
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.8
+        ],
+        [
+         0.3,
+         3.0
+        ],
+        [
+         1,
+         3.6
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.7,
+         0.15
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.851,
+          0.8392,
+          0.8
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0,
+      "ZOffset": 0.3
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Lamp",
+   "CFrame": [
+    0,
+    3.2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "PointLight",
+     "name": "L",
+     "props": {
+      "Brightness": 0,
+      "Range": 16,
+      "Color": {
+       "Color3": [
+        1.0,
+        0.8235,
+        0.2471
+       ]
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Hit.Pop",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.Lines",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.Shock",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.Chunks",
+   "count": 18,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.Chips",
+   "count": 26,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.Dust",
+   "count": 10,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.Dust",
+   "count": 5,
+   "t": 0.1
+  },
+  {
+   "do": "set",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "value": 1.4,
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "to": 0,
+   "time": 0.4,
+   "style": "Quad",
+   "dir": "Out",
+   "t": 0.02
+  },
+  {
+   "do": "shake",
+   "amp": 0.6,
+   "time": 0.3,
+   "freq": 24,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.0,
+  0.04,
+  0.1,
+  0.2,
+  0.35,
+  0.55,
+  0.8,
+  1.1
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

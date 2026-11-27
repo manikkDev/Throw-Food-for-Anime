@@ -2,6 +2,8 @@
 -- Builds the set pieces of the training grounds into ReplicatedStorage.Assets.Grounds:
 --   Ground_post_T1..T3    Striking Post   (left court):  Wooden Post, Banded Post, Iron Post
 --   Ground_falls_T4..T5   Waterfall Focus (right court): Mountain Falls, Shrine Falls
+--   Ground_boulder_T6..T7 Boulder Breaker (left court):  Granite Boulder, Obsidian Boulder
+--   Ground_peak_T8..T9    Thunder Peak    (right court): Storm Peak, Thunder Peak
 --   Show_<id>_T<tier>     a small display model of each tier, for dialogs and reward cards
 --
 -- RUN IT THROUGH  python tools/studio/grounds/run_build.py  (it puts the effect texture ids in
@@ -836,11 +838,261 @@ local function buildFalls(tier: number)
 	show.Parent = folder
 end
 
+-- a gold crest ring let into a deck, round `centre` (level III of the striking grounds)
+local function crestRing(parent: Instance, centre: Vector3, radius: number)
+	local ring = model(parent, "CrestRing")
+	for _, row in { { radius, 0.14, 32 }, { radius - 0.35, 0.06, 28 } } do
+		local r, thick, count = row[1], row[2], row[3]
+		for i = 0, count - 1 do
+			local a = i / count * math.pi * 2
+			local c = centre + V(math.cos(a) * r, 0.02, math.sin(a) * r)
+			local length = 2 * math.pi * r / count + 0.03
+			local seg = part(ring, "CrestSeg", V(length, 0.05, thick), CFrame.new(c) * CFrame.Angles(0, -a + math.pi / 2, 0), HEX("FFC83D"), M.Neon)
+			seg.CastShadow = false
+		end
+	end
+	for i = 0, 3 do
+		local a = i / 4 * math.pi * 2 + math.pi / 4
+		local c = centre + V(math.cos(a) * radius, 0.03, math.sin(a) * radius)
+		part(ring, "CrestStud", V(0.42, 0.07, 0.42), CFrame.new(c) * CFrame.Angles(0, math.pi / 4, 0), HEX("FFE9A8"), M.Neon).CastShadow = false
+	end
+end
+
+local function showModel(name: string, base: BasePart, build: (Model) -> ())
+	local show = Instance.new("Model")
+	show.Name = name
+	base.Parent = show
+	build(show)
+	show.PrimaryPart = base
+	local old = folder:FindFirstChild(name)
+	if old then
+		old:Destroy()
+	end
+	show.Parent = folder
+end
+
+-- ================================================================== BOULDER BREAKER (phase E)
+-- Left court, like the post: the walkway is +X, the trainee faces -Z toward the boulder and the
+-- quarry wall behind it, the training camera looks from +X in profile.
+local BOULDERS = {
+	[6] = { key = "boulder1", size = V(5.6, 6.2, 5.0), deck = HEX("8D8E93"), trim = HEX("5E5F66") },
+	[7] = { key = "boulder2", size = V(5.6, 7.2, 5.2), deck = HEX("4B4650"), trim = HEX("2C2A33") },
+}
+
+local function buildBoulder(tier: number)
+	local spec = BOULDERS[tier]
+	local m = begin("Ground_boulder_T" .. tier)
+	local L2, L3, fx = m.L2, m.L3, m.Fx
+
+	-- the quarry floor: stone flags
+	box(m, "Deck", V(13, DECK, 12.5), V(0, 0, -2.2), spec.deck, M.Slate, true)
+	for _, e in { { V(13.5, DECK + 0.08, 0.5), V(0, 0, 4.05) }, { V(13.5, DECK + 0.08, 0.5), V(0, 0, -8.45) }, { V(0.5, DECK + 0.08, 12.5), V(-6.5, 0, -2.2) }, { V(0.5, DECK + 0.08, 12.5), V(6.5, 0, -2.2) } } do
+		box(m, "DeckEdge", e[1], e[2], spec.trim, M.Cobblestone)
+	end
+	-- the quarry face behind: three lengths of dry-stone wall
+	for _, x in { -5.1, 0, 5.1 } do
+		mesh(m, "rock_wall", "QuarryWall", V(5.3, 5.4, 2.8), V(x, 0, -9.9), V(0, 0, 1), true)
+	end
+
+	-- the boulder
+	local target = model(m, "Target")
+	local rock = mesh(target, spec.key, "Boulder", spec.size, V(0, DECK, -5.4), V(0, 0, 1), true)
+	target.PrimaryPart = rock
+	target.WorldPivot = CFrame.new(0, DECK, -5.4)
+	-- it is round: at chest height its face stands a little behind its foremost point
+	local face = -5.4 + rock.Size.Z / 2 - 0.35
+	ghost(fx, "Strike", V(0.4, 0.4, 0.4), CFrame.new(0, DECK + 3.5, face + 0.12))
+	local standAt = V(0, DECK, face + Config.Training.Grounds[3].Contact)
+	ghost(m, "Stand", V(2, 0.1, 2), CFrame.lookAt(standAt, standAt - V(0, 0, 1)))
+	-- the cracks that grow with Focus: four panes on the struck face, one crack each, each turned
+	-- another way (GroundController:Focus shows them stage by stage)
+	local cracks = model(target, "Cracks")
+	for stage, turn in { 0, 115, 205, 290 } do
+		local pane = ghost(cracks, "Pane" .. stage, V(2.6 + stage * 0.5, 2.6 + stage * 0.5, 0.05), CFrame.new(0, DECK + 3.3, face + 0.03 + stage * 0.01) * CFrame.Angles(0, 0, math.rad(turn)))
+		local decal = Instance.new("Decal")
+		decal.Name = "Crack"
+		decal.Face = Enum.NormalId.Back
+		decal.Texture = tex("crack")
+		decal.Color3 = if tier == 7 then HEX("FF8A2A") else RGB(26, 24, 30)
+		decal.Transparency = 1
+		decal:SetAttribute("Stage", stage)
+		decal.Parent = pane
+	end
+
+	-- the yard: a quarry crane and lifting stones on the outer side, rubble against the wall
+	mesh(m, "quarry_crane", "Crane", 2.1, V(-5.4, 0, -4.4), V(1, 0, 0.15), true)
+	mesh(m, "stone_weights", "Weights", 1.0, V(-4.9, DECK, 1.9), V(1, 0, 0.2), true)
+	mesh(m, "rubble_pile", "Rubble", 0.9, V(3.4, DECK, -7.5), V(0.3, 0, 1), true)
+	mesh(m, "rubble_pile", "Rubble", 0.7, V(-2.9, DECK, -7.6), V(-1, 0, 0.4), true)
+	noticeBoard(m, V(6.6, 0, 8.3), V(0.55, 0, 0.83))
+
+	-- LEVEL II: the rock is made sacred: a rope round it, a stone fist and two banners
+	local ropeY = DECK + rock.Size.Y * 0.62
+	local radius = rock.Size.X / 2 * 0.93
+	local last: Vector3? = nil
+	for i = 0, 16 do
+		local a = i / 16 * math.pi * 2
+		local at = V(math.cos(a) * radius, ropeY + 0.18 * math.sin(a * 3), -5.4 + math.sin(a) * radius * (rock.Size.Z / rock.Size.X))
+		if last then
+			local mid = (last + at) / 2
+			cyl(L2, "SacredRope", (at - last).Magnitude + 0.14, 0.38, CFrame.lookAt(mid, at) * CFrame.Angles(0, math.rad(90), 0), HEX("D8B56A"), M.Fabric)
+		end
+		last = at
+	end
+	for _, a in { 0.9, 1.35, 1.8, 2.25 } do
+		shide(L2, V(math.cos(a) * radius, ropeY - 0.2, -5.4 + math.sin(a) * radius * (rock.Size.Z / rock.Size.X) + 0.12), V(0, 0, 1))
+	end
+	mesh(L2, "stone_fist", "StoneFist", 1.25, V(-7.2, 0, 7.0), V(1, 0, -0.35), true)
+	banner(L2, V(-7.9, 0, -8.6), V(0, 0, 1), 9.2, HEX("3A3F4A"), HEX("FFE9A8"), "岩\n砕")
+	banner(L2, V(-7.9, 0, 3.6), V(1, 0, 0), 8.4, HEX("F6EFD9"), HEX("3A3F4A"), "剛\n力")
+
+	-- LEVEL III: fire and gold
+	for _, x in { -5.9, 5.9 } do
+		local b = mesh(L3, "brazier", "Brazier", 1.3, V(x, DECK, -7.3), V(0, 0, 1), true)
+		fire(L3, V(x, DECK + b.Size.Y * 0.74, -7.3), 1.1)
+	end
+	crestRing(L3, V(0, DECK, standAt.Z - 0.4), 3.3)
+	finish(m)
+
+	showModel("Show_boulder_T" .. tier, cyl(folder, "Base", 0.4, 7.4, CFrame.new(0, 0.2, 0) * CFrame.Angles(0, 0, math.rad(90)), spec.deck, M.Slate), function(show)
+		mesh(show, spec.key, "Boulder", spec.size, V(0, 0.4, 0), V(0, 0, 1))
+	end)
+end
+
+-- ================================================================== THUNDER PEAK (phase E)
+-- Right court, like the falls: the walkway is -X. The trainee stands on the summit rock facing +Z
+-- (the lane); three lightning rods stand behind them (rod 1 = -X = the camera's left, rod 2 the
+-- tall middle one, rod 3 = +X); the training camera looks from the front, from below eye level.
+local PEAKS = {
+	[8] = { rod = "lightning_rod", side = 1.5, mid = 1.9, deck = HEX("5A5F6B"), clouds = 1 },
+	[9] = { rod = "rod2", side = 1.45, mid = 1.85, deck = HEX("474A58"), clouds = 2 },
+}
+local VOLT = HEX("FFE85A")
+
+local function buildPeak(tier: number)
+	local spec = PEAKS[tier]
+	local m = begin("Ground_peak_T" .. tier)
+	local L2, L3, fx = m.L2, m.L3, m.Fx
+
+	-- the mountain top: slate flags with drifts of snow
+	box(m, "Deck", V(15.5, 0.25, 15), V(0, 0, -1.6), spec.deck, M.Slate, true)
+	for _, d in { { V(-5.6, 0.25, 3.6), V(3.4, 0.08, 2.2) }, { V(5.9, 0.25, -3.4), V(2.6, 0.08, 3.4) }, { V(-6.2, 0.25, -5.2), V(2.4, 0.08, 2.8) }, { V(2.2, 0.25, 4.6), V(3.0, 0.08, 1.6) } } do
+		local snow = part(m, "Snow", d[2], CFrame.new(d[1] + V(0, 0.04, 0)), RGB(240, 246, 252), M.Sand)
+		snow.CastShadow = false
+	end
+	-- the summit rock the trainee stands on
+	local summit = mesh(m, "peak_rock", "Summit", V(8.4, 2.8, 7.4), V(0, 0.25, -1.2), V(0, 0, 1), true)
+	local top = 0.25 + summit.Size.Y - 0.3
+	local standAt = V(0, top, -0.8)
+	ghost(m, "Stand", V(2, 0.1, 2), CFrame.lookAt(standAt, standAt + V(0, 0, 1)))
+	ghost(fx, "Seat", V(0.4, 0.4, 0.4), CFrame.new(0, top + 0.05, -0.8))
+	-- two crags behind, either side
+	mesh(m, "peak_rock", "Crag", V(5.6, 8.6, 4.6), V(-6.6, 0.25, -8.6), V(-0.3, 0, 1), true)
+	mesh(m, "peak_rock", "Crag", V(5.2, 7.4, 4.4), V(6.7, 0.25, -8.7), V(1, 0, 0.5), true)
+
+	-- the three rods: the centrepiece
+	local target = model(m, "Target")
+	local places = { { -4.3, -6.4, spec.side }, { 0, -7.6, spec.mid }, { 4.3, -6.4, spec.side } }
+	for lane, at in places do
+		local rod = mesh(target, spec.rod, "Rod" .. lane, at[3], V(at[1], 0.25, at[2]), V(0, 0, 1), true)
+		if lane == 2 then
+			target.PrimaryPart = rod
+		end
+		-- its tip: where the bolt lands, and the mark that shows it is next
+		local tip = ghost(fx, "Rod" .. lane, V(0.6, 0.6, 0.6), CFrame.new(at[1], 0.25 + rod.Size.Y - 0.25, at[2]))
+		local mark = emitter(tip, "Mark", {
+			Texture = tex("boltsprite"),
+			Rate = 16,
+			Lifetime = NumberRange.new(0.08, 0.16),
+			Speed = NumberRange.new(0, 0.5),
+			Rotation = NumberRange.new(0, 360),
+			Size = NS({ 0, 1.6 }, { 1, 2.8 }),
+			Color = CS(RGB(255, 255, 255), VOLT),
+			LightEmission = 0.4,
+			ZOffset = 0.5,
+		})
+		mark.Enabled = false
+		local lamp = glow(tip, VOLT, 12, 1.2)
+		lamp.Enabled = false
+	end
+	target.WorldPivot = CFrame.new(0, 0.25, -7.6)
+	-- the bolt that runs from a rod to the trainee's hand (GroundController copies it per catch)
+	local holder = ghost(fx, "Arc", V(0.2, 0.2, 0.2), CFrame.new(0, 6, -4))
+	local bolt = Instance.new("Beam")
+	bolt.Name = "Arc"
+	bolt.Texture = tex("bolt")
+	bolt.TextureMode = Enum.TextureMode.Stretch
+	bolt.TextureLength = 1
+	bolt.Width0 = 1.7
+	bolt.Width1 = 1.2
+	bolt.Segments = 12
+	bolt.FaceCamera = true
+	bolt.LightEmission = 0.4
+	bolt.LightInfluence = 0
+	bolt.Brightness = 1.6
+	bolt.Color = CS(RGB(255, 255, 255), VOLT)
+	bolt.Transparency = NumberSequence.new(0)
+	bolt.Enabled = false
+	bolt.Parent = holder
+
+	-- the storm overhead
+	-- (built of dark balls: the generated cloud came sky blue twice, and a textured mesh cannot be tinted)
+	local puffs = { { 0, 0, 0, 5.2 }, { -3.0, -0.3, 0.4, 4.2 }, { 3.1, -0.2, -0.3, 4.4 }, { -5.4, -0.7, -0.2, 3.0 }, { 5.6, -0.6, 0.3, 3.2 },
+		{ -1.4, 1.1, -0.6, 3.6 }, { 1.7, 1.2, 0.5, 3.4 }, { 0.3, -0.9, 1.6, 3.4 }, { -2.2, -0.8, -1.7, 3.2 }, { 2.6, -0.9, -1.6, 3.0 }, { -4.0, -1.0, 1.2, 2.8 }, { 4.2, -1.0, 1.1, 2.8 },
+		{ 1.4, -1.2, -0.2, 3.2 }, { -1.3, -1.2, 0.3, 3.0 } }
+	for i = 1, spec.clouds do
+		local centre = if i == 1 then V(0.4, 17.2, -7.2) else V(-5.2, 14.8, -3.6)
+		local scale = if i == 1 then 1 else 0.62
+		local cloud = model(m, "StormCloud")
+		for n, puff in puffs do
+			local ball = part(cloud, "Puff", V(puff[4], puff[4], puff[4]) * scale, CFrame.new(centre + V(puff[1], puff[2], puff[3]) * scale),
+				-- (matte and charcoal, not black plastic: shiny black balls read as balloons)
+				if n % 3 == 0 then RGB(96, 100, 116) else RGB(74, 78, 94), M.Sand)
+			ball.Shape = Enum.PartType.Ball
+			ball.CastShadow = false
+		end
+		-- the flicker inside it while the trainee is awakened (no flat belly: a slab under the puffs
+		-- read as a black tray from the training camera, which looks up at it)
+		local heart = ghost(cloud, "Heart", V(1, 1, 1), CFrame.new(centre - V(0, 1.2 * scale, 0)))
+		glow(heart, VOLT, 18, 0.5, "awake")
+	end
+
+	noticeBoard(m, V(-6.6, 0, 8.3), V(-0.55, 0, 0.83))
+
+	-- LEVEL II: the thunder drums and the first storm crystals
+	mesh(L2, "thunder_drums", "ThunderDrums", 1.9, V(6.4, 0.25, 3.4), V(-0.55, 0, 0.83), true)
+	for _, at in { V(-5.0, 0.25, 1.8), V(4.9, 0.25, -1.0) } do
+		mesh(L2, "storm_crystal", "Crystal", 1.0, at, V(at.X, 0, 1), true)
+	end
+
+	-- LEVEL III: the peak is charged: glowing crystals round the rock, a ring of light under it
+	-- (none in front of the summit: the training camera looks up at the trainee from there)
+	for _, at in { V(-6.6, 0.25, -1.4), V(6.9, 0.25, 0.6), V(-6.5, 0.25, 4.7) } do
+		local crystal = mesh(L3, "storm_crystal", "Crystal", 1.25, at, V(-at.X, 0, 1), true)
+		glow(crystal, HEX("9FE3FF"), 9, 1.0)
+	end
+	crestRing(L3, V(0, 0.25, -1.2), 5.6)
+	finish(m)
+
+	showModel("Show_peak_T" .. tier, cyl(folder, "Base", 0.4, 13, CFrame.new(0, 0.2, 0) * CFrame.Angles(0, 0, math.rad(90)), spec.deck, M.Slate), function(show)
+		mesh(show, "peak_rock", "Summit", V(8.4, 2.8, 7.4), V(0, 0.4, 2.4), V(0, 0, 1))
+		for lane, at in places do
+			mesh(show, spec.rod, "Rod" .. lane, at[3], V(at[1], 0.4, at[2] + 3.6), V(0, 0, 1))
+		end
+	end)
+end
+
 for tier = 1, 3 do
 	buildPost(tier)
 end
 for tier = 4, 5 do
 	buildFalls(tier)
+end
+for tier = 6, 7 do
+	buildBoulder(tier)
+end
+for tier = 8, 9 do
+	buildPeak(tier)
 end
 
 -- the eight old gear models are kept, out of the game (plan 13 section 7)

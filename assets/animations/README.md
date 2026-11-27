@@ -80,6 +80,14 @@ KeyframeSequences with the skill's `scripts/upload_animation.py`.
 | TrainBreath | player | Action | yes | 3.0 | Pulse 2.5 | **r8** seated under the falls: hands rise up the centre line through the inhale, turn over at Pulse, press down. Seat: LowerTorso 1.65 below standing, its underside 0.32 above the clip's floor |
 | BreathAscend | player | Action | yes | 2.0 | - | **r8** the Waterfall's awakening: floating cross-legged 1.6 above the seat, arms open, a slow bob |
 
+| TrainBoulder | player | Action | yes | 4.0 | Hit 1.5, 3.5 | **r9** (`clips_r9.py`, plan 13 phase E, uploaded). Two heavy palm blows on a boulder, 2 s apart; the rock's face 2.87 in front of the HRP |
+| BoulderBarrage | player | Action | yes | 1.0 | Hit 0.1333, 0.3667, 0.6333, 0.8667 | **r9** Boulder Breaker's awakening: four alternating palm strikes a second |
+| BoulderFinish | player | Action | no | 1.3 | Hit 0.6 | **r9** ends the awakening: a double palm thrust; frame 0 = BoulderBarrage's, last frames = TrainBoulder's first |
+| PeakReady | player | Action | yes | 2.0 | - | **r9** Thunder Peak's waiting stance, facing the camera |
+| PeakLeft / PeakMid / PeakRight | player | Action | no | 0.8 | Catch 0.1333 | **r9** the answer to a rod: one hand thrust toward it in 4 frames (left = the hero's RIGHT hand, toward the camera's left), held with a tremor, back to PeakReady |
+| PeakStorm | player | Action | yes | 2.0 | - | **r9** Thunder Peak's awakening: arms in a V, trembling |
+
+Batch r9 hand-off (contacts, the catching hand's position per clip, rough spots): `work/anim/upload9/README.md`.
 Batch r8 hand-off (contact table, knuckle points for hit effects, the author's list of rough spots):
 `work/anim/upload8/README.md`. TrainStrike, TrainPush, TrainLift and TrainMeditate are no longer played by the game.
 

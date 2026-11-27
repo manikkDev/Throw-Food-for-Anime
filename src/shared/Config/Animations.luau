@@ -8,6 +8,8 @@ export type Clip = { id: string, priority: string, looped: boolean }
 
 local Animations: { Clips: { [string]: Clip }, Emotes: { string } } = {
 	Clips = {
+		BoulderBarrage = { id = "rbxassetid://115282352488137", priority = "Action", looped = true },
+		BoulderFinish = { id = "rbxassetid://140623011668422", priority = "Action", looped = false },
 		BreathAscend = { id = "rbxassetid://97059147871858", priority = "Action", looped = true },
 		CarriedRide = { id = "rbxassetid://129171837155585", priority = "Action", looped = true },
 		CarryHold = { id = "rbxassetid://123151573991982", priority = "Action", looped = true },
@@ -29,6 +31,11 @@ local Animations: { Clips: { [string]: Clip }, Emotes: { string } } = {
 		IdleNinja = { id = "rbxassetid://79047369672478", priority = "Core", looped = true },
 		IdlePower = { id = "rbxassetid://90410459126519", priority = "Core", looped = true },
 		IdleShy = { id = "rbxassetid://77216879621963", priority = "Core", looped = true },
+		PeakLeft = { id = "rbxassetid://72086607702575", priority = "Action", looped = false },
+		PeakMid = { id = "rbxassetid://82451217887679", priority = "Action", looped = false },
+		PeakReady = { id = "rbxassetid://97748981557866", priority = "Action", looped = true },
+		PeakRight = { id = "rbxassetid://81925006763761", priority = "Action", looped = false },
+		PeakStorm = { id = "rbxassetid://90151675511439", priority = "Action", looped = true },
 		PlaceHero = { id = "rbxassetid://77773650101040", priority = "Action", looped = false },
 		PostFinish = { id = "rbxassetid://112536509537880", priority = "Action", looped = false },
 		PostFlurry = { id = "rbxassetid://132319214674778", priority = "Action", looped = true },
@@ -38,6 +45,7 @@ local Animations: { Clips: { [string]: Clip }, Emotes: { string } } = {
 		Throw = { id = "rbxassetid://71725881856076", priority = "Action", looped = false },
 		ThrowHeave = { id = "rbxassetid://75510375255020", priority = "Action", looped = false },
 		ThrowSpin = { id = "rbxassetid://73973272432226", priority = "Action", looped = false },
+		TrainBoulder = { id = "rbxassetid://115567183891522", priority = "Action", looped = true },
 		TrainBreath = { id = "rbxassetid://116903687681313", priority = "Action", looped = true },
 		TrainLift = { id = "rbxassetid://125310741661163", priority = "Action", looped = true },
 		TrainMeditate = { id = "rbxassetid://114324040023472", priority = "Action", looped = true },

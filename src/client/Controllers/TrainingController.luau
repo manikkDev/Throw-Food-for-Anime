@@ -12,6 +12,10 @@
 --   * the game, one beat at a time (Core/Beat.upcoming), drawn in TrainingBar.TimingRing:
 --       ring    (Striking Post)    the Shrink ring closes on the gold Target; TAP as it lands
 --       breath  (Waterfall Focus)  the Fill disc swells out to the gold ring; HOLD, let go on it
+--       sweep   (Boulder Breaker)  the Needle sweeps the SweepMeter; TAP as it crosses the gold zone
+--                                  (the ring's judge, another picture)
+--       reflex  (Thunder Peak)     lightning marks one of the three Rods; tap THAT one (its button, A / S /
+--                                  D, the arrow keys, or that third of the screen) before the strike
 --     the grade is shown at once from the rule the server grades by; the server's answer
 --     (TrainTap: Focus, the awakening) follows
 --   * FOCUS fills the FocusBar; full = AWAKENING: the awakening clip, the ground's own show and
@@ -51,6 +55,9 @@ type Live = {
 	row: any, -- the Training.Grounds row
 	id: string,
 	hold: boolean, -- a held game (breath): press, let go on the beat
+	game: string, -- the picture: "ring", "breath", "sweep", "reflex"
+	lanes: number?, -- a reflex game: how many lanes; the input names one
+	laneTrack: AnimationTrack?, -- the answer clip playing over the loop
 	start: number, -- server time the session began at
 	seed: number,
 	beat: number, -- seconds between beats
@@ -123,7 +130,20 @@ function TrainingController:_shot(live: Live, awake: boolean): (CFrame, number)
 	local forward = live.stand.LookVector
 	local side = Vector3.new(live.inward, 0, 0)
 	local eye: Vector3, look: Vector3, fov: number
-	if live.hold then
+	if live.lanes then
+		-- on the peak, facing out, the three rods behind and above them: from the front and from
+		-- BELOW eye level, so the rods' tips and the sky are in the shot
+		-- (well to one side: straight on, the middle rod stood hidden behind the trainee)
+		if awake then
+			eye = at + forward * 11.5 + side * 3.6 + Vector3.new(0, 2.2, 0)
+			look = at + Vector3.new(0, 5.4, 0)
+			fov = 70
+		else
+			eye = at + forward * 12 + side * 3.6 + Vector3.new(0, 1.6, 0)
+			look = at + Vector3.new(0, 5.6, 0)
+			fov = 72
+		end
+	elseif live.hold then
 		-- seated under the falls, facing out: from the front, the water behind them
 		if awake then
 			-- they float 1.6 up and the falls open: back and up, the whole column in frame
@@ -215,10 +235,15 @@ function TrainingController:_land(live: Live, elapsed: number)
 		live.landed = n
 		-- a beat that passed long ago (the awakening ran over it) is not replayed
 		if elapsed - moment < 0.4 then
-			self._ground:Contact(live.piece, live.id, live.grades[n])
+			self._ground:Contact(live.piece, live.id, live.grades[n], self:_laneOf(live, n))
 		end
 		live.grades[n] = nil
 	end
+end
+
+-- the lane beat `n` falls on (a reflex game), else nil
+function TrainingController:_laneOf(live: Live, n: number): number?
+	return if live.lanes then Beat.lane(n, live.seed, live.lanes) else nil
 end
 
 -- --------------------------------------------------------------- a session --
@@ -237,6 +262,8 @@ function TrainingController:_begin(session: any)
 		row = row,
 		id = id or row.Id,
 		hold = row.MinHold ~= nil,
+		game = row.Game,
+		lanes = row.Lanes,
 		start = session.start,
 		seed = session.seed or 1,
 		beat = session.beat or row.BeatSeconds,
@@ -285,13 +312,69 @@ function TrainingController:_begin(session: any)
 	if title then
 		title.Visible = false
 	end
-	local ring = find("TimingRing")
+	-- one picture per game, in the ring's place
+	local ring, meter, rods = find("TimingRing"), find("SweepMeter"), find("Rods")
 	local shrink, fill = child(ring, "Shrink"), child(ring, "Fill")
+	if ring then
+		ring.Visible = live.game ~= "sweep" and live.game ~= "reflex"
+	end
+	if meter then
+		meter.Visible = live.game == "sweep"
+	end
+	if rods then
+		rods.Visible = live.game == "reflex"
+	end
 	if shrink then
 		shrink.Visible = not live.hold
 	end
 	if fill then
 		fill.Visible = live.hold
+	end
+	if live.lanes then
+		-- the rods: their buttons, and A / S / D or the arrow keys
+		for lane = 1, live.lanes do
+			local button = child(rods, "Rod" .. lane)
+			if button and button:IsA("GuiButton") then
+				table.insert(
+					live.marks,
+					button.Activated:Connect(function()
+						self:_press(lane)
+					end)
+				)
+			end
+		end
+		local keys = {
+			[Enum.KeyCode.A] = 1,
+			[Enum.KeyCode.Left] = 1,
+			[Enum.KeyCode.S] = 2,
+			[Enum.KeyCode.Up] = 2,
+			[Enum.KeyCode.Down] = 2,
+			[Enum.KeyCode.D] = 3,
+			[Enum.KeyCode.Right] = 3,
+		}
+		ContextActionService:BindActionAtPriority(
+			"TrainLane",
+			function(_, inputState: Enum.UserInputState, input: InputObject)
+				local lane = keys[input.KeyCode]
+				if
+					inputState == Enum.UserInputState.Begin
+					and lane
+					and lane <= (live.lanes or 0)
+				then
+					self:_press(lane)
+				end
+				return Enum.ContextActionResult.Sink
+			end,
+			false,
+			Enum.ContextActionPriority.High.Value,
+			Enum.KeyCode.A,
+			Enum.KeyCode.S,
+			Enum.KeyCode.D,
+			Enum.KeyCode.Left,
+			Enum.KeyCode.Up,
+			Enum.KeyCode.Down,
+			Enum.KeyCode.Right
+		)
 	end
 	local hint = find("TapHint")
 	if hint and hint:IsA("TextLabel") then
@@ -321,7 +404,10 @@ function TrainingController:_end()
 	Motion.stop(live.track, 0.3)
 	Motion.stop(live.awakeTrack, 0.2)
 	Motion.stop(live.finishTrack, 0.2)
+	Motion.stop(live.laneTrack, 0.15)
+	self._ground:Mark(live.piece, 0)
 	ContextActionService:UnbindAction("TrainTap")
+	ContextActionService:UnbindAction("TrainLane")
 	ProximityPromptService.Enabled = true
 	local camera = workspace.CurrentCamera
 	camera.CameraType = Enum.CameraType.Custom
@@ -345,7 +431,7 @@ function TrainingController:_awaken(live: Live)
 	-- the flurry: every blow of the awakening clip lands on the post
 	local conn = Motion.onMarker(live.awakeTrack, "Hit", function()
 		if self._live == live then
-			self._ground:Flurry(live.piece)
+			self._ground:Flurry(live.piece, live.id)
 		end
 	end)
 	if conn then
@@ -429,7 +515,10 @@ function TrainingController:_grade(
 			combo.Visible = false
 		end
 		self:_flash(
-			if short then "HOLD LONGER" elseif gap < 0 then "TOO EARLY" else "TOO LATE",
+			if short
+				then (if live.lanes then "WRONG ROD" else "HOLD LONGER")
+				elseif gap < 0 then "TOO EARLY"
+				else "TOO LATE",
 			0.4
 		)
 		return
@@ -439,9 +528,9 @@ function TrainingController:_grade(
 		live.grades[n] = grade
 	else
 		-- a touch late: the rep has already landed, so its bonus lands now
-		self._ground:Contact(live.piece, live.id, grade)
+		self._ground:Contact(live.piece, live.id, grade, self:_laneOf(live, n))
 	end
-	if not live.hold then
+	if not live.hold and not live.lanes then
 		Sound:Play(
 			"perfect_ding",
 			nil,
@@ -456,11 +545,34 @@ function TrainingController:_grade(
 	end
 end
 
--- a tap (ring), or the start of a hold (breath)
-function TrainingController:_press()
+-- a tap (ring, sweep), the start of a hold (breath), or an answer with a lane (reflex)
+function TrainingController:_press(lane: number?)
 	local live = self._live
 	local now = self._state:ServerNow()
 	if not live or now < live.awake then
+		return
+	end
+	if live.lanes then
+		local row = live.row
+		local n, gap = Beat.upcoming(live.beat, now - live.start, live.seed, BEAT.GoodWindow)
+		-- nothing is marked yet (or this beat is answered): the tap is not an answer
+		if not lane or n <= live.judged or gap < -row.Lead then
+			return
+		end
+		if self._tapRemote then
+			self._tapRemote:FireServer(lane)
+		end
+		-- the hero reaches for that rod, right or wrong
+		local _, humanoid = character()
+		local clip = row.LaneClips and row.LaneClips[lane]
+		if clip then
+			Motion.stop(live.laneTrack, 0.05)
+			live.laneTrack =
+				Motion.play(humanoid, clip, { fade = 0.05, looped = false, priority = "Action2" })
+		end
+		local expected = Beat.lane(n, live.seed, live.lanes)
+		local grade = Beat.gradeReflex(BEAT, gap, lane, expected, row.Lead, row.React)
+		self:_grade(live, n, grade, gap, lane ~= expected)
 		return
 	end
 	if live.hold then
@@ -548,6 +660,44 @@ function TrainingController:_draw(live: Live, elapsed: number, awake: boolean, n
 					else PALE
 			)
 		end
+	elseif live.game == "sweep" then
+		-- the needle runs along the meter and crosses the middle of the gold zone on the beat
+		local meter = find("SweepMeter")
+		local needle = child(meter, "Needle")
+		if meter and needle then
+			local sweetAt = (meter:GetAttribute("SweetAt") or 0.74) :: number
+			local x = if awake then sweetAt else math.min(0.04 + (sweetAt - 0.04) * progress, 0.97)
+			needle.Position = UDim2.fromScale(x, 0.5)
+			paint(needle, if awake then GOLD elseif sweet then GREEN else WHITE)
+		end
+	elseif live.lanes then
+		-- the marked rod: from Lead seconds before the strike until it has struck
+		local rods = find("Rods")
+		local n = Beat.upcoming(live.beat, elapsed, live.seed, BEAT.GoodWindow)
+		local marked = if not awake
+				and gap >= -live.row.Lead
+				and gap < 0
+			then Beat.lane(n, live.seed, live.lanes)
+			else 0
+		-- in the world too: the rod's tip crackles (it stays lit after the answer, until it strikes)
+		self._ground:Mark(live.piece, marked)
+		if n <= live.judged then
+			marked = 0
+		end
+		for lane = 1, live.lanes do
+			local button = child(rods, "Rod" .. lane)
+			-- (the build puts the ring inside the button's face, not directly under the button)
+			local mark = button and button:FindFirstChild("Mark", true)
+			if mark and mark:IsA("GuiObject") then
+				mark.Visible = awake or lane == marked
+				local scale = mark:FindFirstChildOfClass("UIScale")
+				if not scale then
+					scale = Instance.new("UIScale")
+					scale.Parent = mark
+				end
+				scale.Scale = 1 + 0.08 * math.sin(now * 18)
+			end
+		end
 	else
 		-- the ring closes on the gold target at the beat's moment; awake, it rests on it
 		local shrink = child(ring, "Shrink")
@@ -565,11 +715,15 @@ function TrainingController:_draw(live: Live, elapsed: number, awake: boolean, n
 	if hint and hint:IsA("TextLabel") then
 		hint.Text = if awake
 			then `AWAKENED!  x{Format.short(Beat.awakenedMult(BEAT))} POWER`
+			elseif live.lanes then (if gap >= -live.row.Lead
+				then "NOW!"
+				else live.row.Hint or "")
 			elseif not live.hold then live.row.Hint or ""
 			elseif holding then "LET GO IN THE GOLD"
 			else "HOLD"
 	end
 	-- Focus: fills with every good beat; awake, it is the time left, running down
+	self._ground:Focus(live.piece, if awake then 1 else live.focus / BEAT.FocusFull)
 	local bar = find("FocusBar")
 	local fill, text = child(bar, "Fill"), bar and bar:FindFirstChild("FocusText", true)
 	local fraction = if awake
@@ -595,6 +749,12 @@ function TrainingController:_frame()
 	local now = self._state:ServerNow()
 	local elapsed = now - live.start
 	local awake = now < live.awake
+	-- the camera is ours for the whole session: something else that takes it and hands it back to
+	-- the player (a rank or rebirth cinematic ending) is put right at once
+	local camera = workspace.CurrentCamera
+	if camera.CameraType ~= Enum.CameraType.Scriptable then
+		self:_frameCamera(live, awake, 0.3)
+	end
 	if awake and not live.wasAwake then
 		live.wasAwake = true
 		self:_awaken(live)
@@ -630,6 +790,9 @@ function TrainingController:KnitStart()
 			if row[key] then
 				table.insert(clips, row[key])
 			end
+		end
+		for _, clip in row.LaneClips or {} do
+			table.insert(clips, clip)
 		end
 	end
 	Motion.preload(clips)
@@ -688,7 +851,16 @@ function TrainingController:KnitStart()
 			return
 		end
 		if pointer(input) then
-			self:_press()
+			local live = self._live
+			if live and live.lanes then
+				-- that third of the screen is that rod
+				local width = workspace.CurrentCamera.ViewportSize.X
+				local third =
+					math.clamp(math.floor(input.Position.X / width * live.lanes) + 1, 1, live.lanes)
+				self:_press(third)
+			else
+				self:_press()
+			end
 		end
 	end)
 	UserInputService.InputEnded:Connect(function(input: InputObject)

@@ -1,4 +1,4 @@
-# VFX: 73 authored effects (section 4: 25; plan 13 phase C: the 39 food effects; phase D: 9 new training effects)
+# VFX: 81 authored effects (section 4: 25; plan 13 phase C: the 39 food effects; phases D and E: 17 new training effects)
 
 Authored with the roblox-vfx skill's authoring route: own textures (the skill's maths-made library
 `sim/textures/lib` + this game's own in `textures/`), judged frame by frame in the skill's browser
@@ -32,6 +32,9 @@ water), `Train_Awaken` and `Train_Aura` (tint: the awakening burst and the loope
 column of rising water where the trainee floats, the water crashing back). Their own textures: `tools/make_train_tex.py`
 (`water_sheet`, `water_foam`, `pool_ripple`, `wood_splinter`); the set pieces of the grounds
 (`tools/studio/grounds/build_grounds.luau`) use the same uploaded images on their own Beams, through `ids.json`.
+Phase E added eight for grounds 3 and 4: `Boulder_Hit`, `Boulder_Barrage` (loop), `Boulder_Shatter`, `Boulder_Land`,
+`Peak_Strike` (a bolt from the sky: two beams, `tfa/bolt_strip` over a soft sheath, that flicker on, off, on),
+`Peak_Catch` (tint), `Peak_Storm` (loop on the root), `Peak_Finale`.
 Judged in the game with `tools/studio/grounds/fx_judge.luau` (`_G.GroundJudge.play(name, spot, freezeAt, tint)`). What
 that taught, on top of phase C's rules:
 - a flame sprite drawn with `VelocityParallel` lies on its side (the aura streamed off the trainee's back): flames are

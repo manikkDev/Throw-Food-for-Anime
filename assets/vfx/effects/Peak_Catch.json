@@ -1,0 +1,444 @@
+{
+ "name": "Peak_Catch",
+ "note": "The hero catches the bolt: forks and sparks at the hand.",
+ "duration": 0.8,
+ "camera": {
+  "pos": [
+   7,
+   4.5,
+   12
+  ],
+  "at": [
+   0,
+   3,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": true
+ },
+ "stripFloors": [
+  "#E9D2A2"
+ ],
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": false,
+  "origin": [
+   0,
+   5,
+   0
+  ]
+ },
+ "brief": {
+  "category": "impact",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "electric burst at the hand",
+  "dominant": "#FFE85A",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "the hand crackles"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.32000000000000006
+   },
+   {
+    "name": "residue",
+    "t0": 0.32000000000000006,
+    "t1": 0.8
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Hand",
+   "CFrame": [
+    0,
+    5,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Pop",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/impacts/starburst_cel_00",
+        "Lifetime": {
+         "NumberRange": [
+          0.12,
+          0.12
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.0625
+          ],
+          [
+           1,
+           2.75
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.3,
+        "ZOffset": 1
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Forks",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/elements/bolt_cel_04",
+        "SpreadAngle": {
+         "Vector2": [
+          180,
+          180
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          1,
+          3
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.14,
+          0.24
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.1
+          ],
+          [
+           1,
+           1.9
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.6,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.4,
+        "ZOffset": 1
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Sparks",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/specks/streak_cel_00",
+        "SpreadAngle": {
+         "Vector2": [
+          180,
+          180
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          18,
+          30
+         ]
+        },
+        "Drag": 4,
+        "Lifetime": {
+         "NumberRange": [
+          0.2,
+          0.3
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.65
+          ],
+          [
+           1,
+           0.2
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.45,
+        "ZOffset": 1,
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityParallel"
+        }
+       },
+       "attrs": {
+        "Tint": true
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Ring",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_spiked_cel_02",
+        "Lifetime": {
+         "NumberRange": [
+          0.24,
+          0.24
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.0
+          ],
+          [
+           0.3,
+           2.75
+          ],
+          [
+           1,
+           3.25
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.3,
+        "ZOffset": 0.5
+       },
+       "attrs": {
+        "Tint": true
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Hand.A.Pop",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hand.A.Forks",
+   "count": 5,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hand.A.Sparks",
+   "count": 10,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hand.A.Ring",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hand.A.Forks",
+   "count": 3,
+   "t": 0.12
+  },
+  {
+   "do": "emit",
+   "target": "Hand.A.Forks",
+   "count": 3,
+   "t": 0.24
+  }
+ ],
+ "strip": [
+  0.0,
+  0.03,
+  0.08,
+  0.14,
+  0.25,
+  0.4
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

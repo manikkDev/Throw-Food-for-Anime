@@ -32,6 +32,9 @@ TEXTURES = {
     "ember": "lib__sprites__specks__ember_cel_01.png",
     "glint": "lib__sprites__stars__star_glow_04.png",
     "streak": "lib__sprites__specks__streak_cel_00.png",
+    "crack": "lib__sprites__cracks__crack_cel_02.png",
+    "bolt": "tfa__bolt_strip__vt.png",
+    "boltsprite": "lib__sprites__elements__bolt_cel_04.png",
 }
 
 

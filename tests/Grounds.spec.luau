@@ -64,16 +64,31 @@ return {
 		assert(Grounds.template(C, 2, 5) == "Ground_falls_T5")
 	end,
 
-	["the grounds of phase D have everything the framework reads"] = function()
-		for g = 1, 2 do
+	["the grounds built so far have everything the framework reads"] = function()
+		for g = 1, 4 do
 			local row = T.Grounds[g]
 			assert(row.Clip and row.AwakeClip and row.Hint, `ground {g} has no clips or hint`)
-			assert(#row.Marks >= 1 and row.ClipSeconds > 0)
-			for i, mark in row.Marks do
-				assert(mark > 0 and mark < row.ClipSeconds)
-				assert(i == 1 or mark > row.Marks[i - 1])
+			-- a clip that keeps time names its reps; a reflex ground's waiting loop has none
+			if row.Marks then
+				assert(#row.Marks >= 1 and row.ClipSeconds > 0)
+				for i, mark in row.Marks do
+					assert(mark > 0 and mark < row.ClipSeconds)
+					assert(i == 1 or mark > row.Marks[i - 1])
+				end
+			else
+				assert(row.Lanes, `ground {g} has neither reps nor lanes`)
 			end
 		end
+		local peak = T.Grounds[4]
+		assert(peak.Lanes == 3 and #peak.LaneClips == 3, "one answer clip per rod")
+		assert(
+			peak.React > 0.3 and peak.React < peak.Lead,
+			"a Perfect needs a human reaction, inside the lead"
+		)
+		assert(
+			peak.Lead < peak.BeatSeconds * 0.8 - B.GoodWindow,
+			"the mark shows after the beat before is over"
+		)
 		assert(T.Grounds[2].Game == "breath" and T.Grounds[2].MinHold > B.PerfectWindow)
 		assert(
 			T.Grounds[2].MinHold < T.Grounds[2].BeatSeconds * 0.5,
@@ -89,6 +104,46 @@ return {
 			Beat.gradeHold(B, 0, 0.55, 0.6, 0.08) == "perfect",
 			"the lag allowance covers the hold"
 		)
+	end,
+
+	["a reflex beat: the right lane fast is Perfect, later Good, wrong or guessed a miss"] = function()
+		local lead, react = T.Grounds[4].Lead, T.Grounds[4].React
+		assert(Beat.gradeReflex(B, -lead + 0.3, 2, 2, lead, react) == "perfect")
+		assert(Beat.gradeReflex(B, -lead + react + 0.05, 2, 2, lead, react) == "good")
+		assert(
+			Beat.gradeReflex(B, -0.01, 2, 2, lead, react) == "good",
+			"any time before the strike"
+		)
+		assert(
+			Beat.gradeReflex(B, B.PerfectWindow + 0.05, 2, 2, lead, react) == "miss",
+			"after the strike"
+		)
+		assert(Beat.gradeReflex(B, -lead + 0.3, 1, 2, lead, react) == "miss", "the wrong rod")
+		assert(
+			Beat.gradeReflex(B, -lead - 0.2, 2, 2, lead, react) == "miss",
+			"before the mark: a guess"
+		)
+	end,
+
+	["lanes: every rod gets its share, never three times running, the same for server and client"] = function()
+		for _, seed in { 1, 77, 4242 } do
+			local counts = { 0, 0, 0 }
+			local run, last = 0, 0
+			for n = 1, 600 do
+				local lane = Beat.lane(n, seed, 3)
+				assert(lane >= 1 and lane <= 3 and lane == Beat.lane(n, seed, 3))
+				counts[lane] += 1
+				run = if lane == last then run + 1 else 1
+				last = lane
+				assert(run <= 2, `seed {seed}: lane {lane} three times running at beat {n}`)
+			end
+			for lane = 1, 3 do
+				assert(
+					counts[lane] > 120,
+					`seed {seed}: rod {lane} is struck only {counts[lane]} times in 600`
+				)
+			end
+		end
 	end,
 
 	["a slow beat gives as much Focus as the reps it carries: every ground awakens alike"] = function()
@@ -117,7 +172,7 @@ return {
 	end,
 
 	["a clip in time: every rep of the clip falls on a beat, at a speed a body can move at"] = function()
-		for g = 1, 2 do
+		for g = 1, 3 do
 			local row = T.Grounds[g]
 			local seconds, marks, length = row.BeatSeconds, row.Marks, row.ClipSeconds
 			for n = 1, 40 do

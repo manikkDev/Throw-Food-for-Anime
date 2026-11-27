@@ -1916,6 +1916,11 @@ Root: `TrainingBar` (ScreenGui), file `src/ui/TrainingBar.model.json`
 | `TimingRing.Target` | Frame |
 | `TimingRing.Shrink` | Frame (the tapped game: closes on Target; hidden in the held game) |
 | `TimingRing.Fill` | Frame (the held game: the breath disc swelling out to Target; UI v5.2) |
+| `SweepMeter` | Frame (Boulder Breaker's picture; attributes SweetAt, SweetWidth; UI v5.3) |
+| `SweepMeter.Needle` | Frame (moved by code; crosses Sweet's middle on the beat) |
+| `SweepMeter.Sweet` / `SweepMeter.SweetCore` | Frame (the gold zone and its green core) |
+| `Rods` | Frame (Thunder Peak's picture; UI v5.3) |
+| `Rods.Rod1` / `Rod2` / `Rod3` | TextButton (answer with rod 1 / 2 / 3; attribute Lane; a `Mark` ring inside each shows the marked rod) |
 | `FocusBar` | Frame |
 | `FocusBar.Fill` | Frame (Focus; awakened: the time left, gold) |
 | `TapHint` | TextLabel (the ground's instruction, then what to do right now) |

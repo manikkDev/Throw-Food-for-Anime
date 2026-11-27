@@ -350,8 +350,234 @@ def falls_crash():
            cam=((7, 5, 15), (0, 3.5, 0)), beats=["a wall of water goes up"])
 
 
+# ------------------------------------------------------------------------------------ Boulder Breaker (phase E)
+STONE = hexc("9A9CA4")
+ROCK = "sprites/elements/rock_chunk_cel_02"
+
+
+def boulder_hit():
+    """A heavy blow on the boulder. Origin = the contact point (3.2 up in the strips)."""
+    tl = TL()
+    dust = hexc("D9D6CC")
+    a = [
+        pe("Burst", Texture=tex("sprites/impacts/comic_burst_cel_02"), Lifetime=NR(0.16), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 3.8), (1, 4.8)), Transparency=NS((0, 0), (0.6, 0), (1, 1)), Color=CS((0, WHITE), (0.5, hexc("FFE9A8")), (1, ORANGE)),
+           LightEmission=0.2, ZOffset=2),
+        pe("Crack", Texture=tex("sprites/cracks/crack_cel_02"), Lifetime=NR(0.3), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 3.2), (0.2, 4.6), (1, 4.8)), Transparency=NS((0, 0), (0.6, 0.1), (1, 1)), Color=CS((0, WHITE), (1, hexc("3A3A44"))),
+           LightEmission=0, ZOffset=1.5),
+        pe("Ring", Texture=tex("sprites/rings/ring_cel_04"), Lifetime=NR(0.22), Speed=NR(0), Size=NS((0, 1.8), (0.3, 4.2), (1, 5.0)),
+           Transparency=NS((0, 0), (1, 1)), Color=CS((0, WHITE), (1, STONE)), LightEmission=0.2, ZOffset=1),
+        pe("Chips", Texture=tex(ROCK), SpreadAngle=V2(180, 180), Speed=NR(10, 18), Drag=2, Acceleration=V3(0, -42, 0),
+           Lifetime=NR(0.35, 0.6), Rotation=NR(0, 360), RotSpeed=NR(-500, 500), Size=NS((0, 0.75), (0.7, 0.65), (1, 0)),
+           Color=CS((0, WHITE), (1, hexc("C8C8D0"))), LightEmission=0, ZOffset=1.5),
+        pe("Dust", Texture=tex("flipbooks/smoke/smoke_puff_fb_cel_03_4x4"), **fb(0.5), SpreadAngle=V2(180, 180), Speed=NR(3, 6), Drag=4,
+           Lifetime=NR(0.4, 0.5), Rotation=NR(0, 360), Size=NS((0, 1.6), (1, 3.0)), Transparency=NS((0, 0.25), (0.6, 0.45), (1, 1)),
+           Color=CS((0, WHITE), (1, dust)), LightEmission=0, ZOffset=0.5),
+    ]
+    inst = [carrier("Hit", (0, 3.2, 0, 0, 0, 0), [att("A", children=a)])]
+    for t, n in (("Burst", 1), ("Crack", 1), ("Ring", 1), ("Chips", 6), ("Dust", 3)):
+        tl.at(0, do="emit", target=f"Hit.A.{t}", count=n)
+    effect("Boulder_Hit", "A heavy blow lands on the boulder: crack flash, rock chips, dust.", 0.7, inst, tl, [0.0, 0.03, 0.07, 0.12, 0.2, 0.35], STONE,
+           "crack + rock chips", origin=(0, 3.2, 0), beats=["a crack flashes on the rock"])
+
+
+def boulder_barrage():
+    """(loop) The awakening's barrage on the boulder's face: bursts, chips and dust all over it."""
+    face = [
+        pe("Bursts", Texture=tex("sprites/impacts/comic_burst_cel_02"), Shape=BOX, Rate=10, Speed=NR(0), Lifetime=NR(0.12, 0.16),
+           Rotation=NR(0, 360), Size=NS((0, 2.8), (1, 4.0)), Transparency=NS((0, 0), (0.6, 0), (1, 1)),
+           Color=CS((0, WHITE), (0.5, hexc("FFE9A8")), (1, ORANGE)), LightEmission=0.2, ZOffset=2),
+        pe("Cracks", Texture=tex("sprites/cracks/crack_cel_02"), Shape=BOX, Rate=7, Speed=NR(0), Lifetime=NR(0.25, 0.3), Rotation=NR(0, 360),
+           Size=NS((0, 2.6), (1, 4.2)), Transparency=NS((0, 0), (0.6, 0.1), (1, 1)), Color=CS((0, WHITE), (1, hexc("3A3A44"))), LightEmission=0,
+           ZOffset=1.5),
+        pe("Chips", Texture=tex(ROCK), Shape=BOX, Rate=22, SpreadAngle=V2(180, 180), Speed=NR(10, 20), Drag=2, Acceleration=V3(0, -42, 0),
+           Lifetime=NR(0.35, 0.6), Rotation=NR(0, 360), RotSpeed=NR(-500, 500), Size=NS((0, 0.8), (0.7, 0.7), (1, 0)),
+           Color=CS((0, WHITE), (1, hexc("C8C8D0"))), LightEmission=0, ZOffset=1.5),
+        pe("Dust", Texture=tex("flipbooks/smoke/smoke_puff_fb_cel_03_4x4"), **fb(0.5), Shape=BOX, Rate=8, SpreadAngle=V2(180, 180),
+           Speed=NR(3, 6), Drag=4, Lifetime=NR(0.4, 0.5), Rotation=NR(0, 360), Size=NS((0, 1.8), (1, 3.2)),
+           Transparency=NS((0, 0.35), (0.6, 0.5), (1, 1)), Color=CS((0, WHITE), (1, hexc("D9D6CC"))), LightEmission=0, ZOffset=0.5),
+    ]
+    inst = [carrier("Face", (0, 3.2, 0, 0, 0, 0), face, size=(3.0, 3.2, 0.3))]
+    effect("Boulder_Barrage", "The awakening's barrage on the boulder (loop).", 1.2, inst, TL(), [0.2, 0.4, 0.6, 0.8, 1.0], STONE,
+           "bursts and chips all over the rock", loop=True, attach="part", origin=(0, 3.2, 0), beats=["the rock is being taken apart"])
+
+
+def boulder_shatter():
+    """The boulder shatters. Origin = the middle of the boulder (3.2 up)."""
+    tl = TL()
+    dust = hexc("D9D6CC")
+    a = [
+        pop("sprites/impacts/starburst_cel_00", size=12, color=CS((0, hexc("FFE35A")), (1, ORANGE)), life=0.14, LightEmission=0.15),
+        pe("Lines", Texture=tex("sprites/impacts/speed_lines_cel_02"), Lifetime=NR(0.22), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 10), (1, 17)), Transparency=NS((0, 0.1), (0.5, 0.3), (1, 1)), Color=CS(WHITE), LightEmission=0.3, ZOffset=1.5),
+        pe("Shock", Texture=tex("sprites/rings/ring_spiked_cel_02"), Lifetime=NR(0.32), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 4), (0.3, 12), (1, 15)), Transparency=NS((0, 0), (0.5, 0.1), (1, 1)), Color=CS((0, WHITE), (1, STONE)), LightEmission=0.2,
+           ZOffset=1),
+        # the boulder itself, in pieces: big chunks thrown out and up, tumbling, then falling
+        pe("Chunks", Texture=tex(ROCK), Shape=E("ParticleEmitterShape.Sphere"), SpreadAngle=V2(180, 180), Speed=NR(16, 32), Drag=1.0,
+           Acceleration=V3(0, -52, 0), Lifetime=NR(0.8, 1.2), Rotation=NR(0, 360), RotSpeed=NR(-500, 500),
+           Size=NS((0, 2.8), (0.8, 2.4), (1, 0)), Color=CS((0, WHITE), (1, hexc("C8C8D0"))), LightEmission=0, ZOffset=2),
+        pe("Chips", Texture=tex(ROCK), Shape=E("ParticleEmitterShape.Sphere"), SpreadAngle=V2(180, 180), Speed=NR(22, 44), Drag=2.2,
+           Acceleration=V3(0, -46, 0), Lifetime=NR(0.5, 0.9), Rotation=NR(0, 360), RotSpeed=NR(-800, 800),
+           Size=NS((0, 1.1), (0.7, 0.9), (1, 0)), Color=CS((0, WHITE), (1, hexc("B8B8C2"))), LightEmission=0, ZOffset=1.5),
+        pe("Dust", Texture=tex("flipbooks/smoke/smoke_puff_fb_cel_03_4x4"), **fb(0.7), Shape=E("ParticleEmitterShape.Sphere"),
+           SpreadAngle=V2(180, 180), Speed=NR(8, 16), Drag=4, Acceleration=V3(0, 2, 0), Lifetime=NR(0.6, 0.8), Rotation=NR(0, 360),
+           Size=NS((0, 3.6), (0.3, 6.0), (1, 7.2)), Transparency=FADE, Color=CS((0, WHITE), (1, dust)), LightEmission=0, ZOffset=0.3),
+    ]
+    inst = [carrier("Hit", (0, 3.2, 0, 0, 0, 0), a, size=(3.6, 4.4, 3.6)), light("Lamp", (0, 3.2, 0, 0, 0, 0), GOLD, 16)]
+    for t, n, when in (("Pop", 1, 0), ("Lines", 1, 0), ("Shock", 1, 0), ("Chunks", 18, 0), ("Chips", 26, 0), ("Dust", 10, 0), ("Dust", 5, 0.1)):
+        tl.at(when, do="emit", target=f"Hit.{t}", count=n)
+    tl.at(0, do="set", target="Lamp.L", prop="Brightness", value=1.4)
+    tl.at(0.02, do="tween", target="Lamp.L", prop="Brightness", to=0, time=0.4, style="Quad", dir="Out")
+    effect("Boulder_Shatter", "The boulder shatters at the end of the awakening.", 1.5, inst, tl, [0.0, 0.04, 0.1, 0.2, 0.35, 0.55, 0.8, 1.1], STONE,
+           "rock chunks + shock ring", origin=(0, 3.2, 0), shake=0.6, cam=((9, 5, 16), (0, 4, 0)), beats=["the boulder flies apart"])
+
+
+def boulder_land():
+    """A new, bigger boulder lands on the floor. Origin = the floor under it."""
+    tl = TL()
+    dust = hexc("D9D6CC")
+    rim = [
+        pe("Dust", Texture=tex("flipbooks/smoke/smoke_puff_fb_cel_03_4x4"), **fb(0.65), Shape=E("ParticleEmitterShape.Cylinder"),
+           ShapeStyle=E("ParticleEmitterShapeStyle.Surface"), EmissionDirection=TOP, SpreadAngle=V2(80, 80), Speed=NR(8, 14), Drag=4,
+           Lifetime=NR(0.55, 0.7), Rotation=NR(0, 360), Size=NS((0, 2.6), (0.3, 4.4), (1, 5.2)), Transparency=FADE,
+           Color=CS((0, WHITE), (1, dust)), LightEmission=0, ZOffset=0.3),
+        pe("Chips", Texture=tex(ROCK), Shape=E("ParticleEmitterShape.Cylinder"), EmissionDirection=TOP, SpreadAngle=V2(45, 45),
+           Speed=NR(16, 26), Acceleration=V3(0, -56, 0), Lifetime=NR(0.5, 0.75), Rotation=NR(0, 360), RotSpeed=NR(-400, 400),
+           Size=NS((0, 1.0), (0.8, 0.9), (1, 0)), Color=CS((0, WHITE), (1, hexc("C8C8D0"))), LightEmission=0, ZOffset=0.6),
+    ]
+    g = [ring("Ring", "sprites/rings/ring_cel_08", 5, 16, CS((0, WHITE), (1, dust)), life=0.5, le=0.1),
+         ring("Spiked", "sprites/rings/ring_spiked_cel_02", 5, 14, CS((0, WHITE), (1, GOLD)), life=0.4, le=0.25),
+         ring("Crack", "sprites/cracks/crack_cel_02", 11, 12, CS((0, hexc("3A3A44")), (1, hexc("3A3A44"))), life=1.2, le=0, Rotation=NR(0, 360),
+              Transparency=NS((0, 0), (0.7, 0.1), (1, 1)))]
+    inst = [carrier("Rim", (0, 0.3, 0, 0, 0, 0), rim, size=(6.0, 0.4, 6.0)), carrier("Ground", (0, 0.12, 0, 0, 0, 0), [att("A", children=g)])]
+    for t, n, when in (("Rim.Dust", 14, 0), ("Rim.Chips", 14, 0), ("Ground.A.Ring", 1, 0), ("Ground.A.Spiked", 1, 0), ("Ground.A.Crack", 1, 0),
+                       ("Rim.Dust", 6, 0.12)):
+        tl.at(when, do="emit", target=t, count=n)
+    effect("Boulder_Land", "A new boulder lands: dust, chips, a cracked floor.", 1.3, inst, tl, [0.0, 0.05, 0.12, 0.25, 0.4, 0.6], STONE,
+           "dust ring + cracked floor", origin=(0, 0, 0), shake=0.5, dummy=False, beats=["the floor cracks under it"])
+
+
+# ------------------------------------------------------------------------------------ Thunder Peak (phase E)
+VOLT = hexc("FFE85A")
+ARC = hexc("7FD8FF")
+BOLT = "sprites/elements/bolt_cel_04"
+
+
+def bolt_beams(name, H, width):
+    """A lightning bolt as two beams on one carrier, from the origin straight up H studs."""
+    return carrier(name, (0, 0, 0, 0, 0, 0), [
+        att("Bot", (0, 0, 0, 0, 0, 90)), att("Top", (0, H, 0, 0, 0, 90)),
+        beam("Glow", f"{name}.Bot", f"{name}.Top", Texture=tex("tfa/pillar_soft"), TextureMode=E("TextureMode.Stretch"), Width0=width * 1.7,
+             Width1=width * 1.2, Color=CS(ARC), LightEmission=0.15, Transparency=NS((0, 0.6), (0.7, 0.75), (1, 1)), Enabled=False, ZOffset=-0.2),
+        beam("Core", f"{name}.Bot", f"{name}.Top", Texture=tex("tfa/bolt_strip"), TextureMode=E("TextureMode.Stretch"), Width0=width,
+             Width1=width, Color=CS((0, WHITE), (1, VOLT)), LightEmission=0.4, Brightness=1.6, Transparency=NS((0, 0), (1, 0)), Enabled=False,
+             ZOffset=0.1),
+    ])
+
+
+def bolt_flicker(tl, name, t0=0.0):
+    """On for two frames, off for one, on again, gone: lightning."""
+    for b in ("Glow", "Core"):
+        for t, on in ((t0, True), (t0 + 0.07, False), (t0 + 0.1, True), (t0 + 0.2, False)):
+            tl.at(t, do="set", target=f"{name}.{b}", prop="Enabled", value=on)
+
+
+def peak_strike():
+    """Lightning strikes a rod. Origin = the rod's tip."""
+    tl = TL()
+    a = [
+        pop("sprites/impacts/starburst_cel_00", size=6.5, color=CS((0, WHITE), (1, VOLT)), life=0.12, LightEmission=0.3),
+        pe("Forks", Texture=tex(BOLT), SpreadAngle=V2(180, 180), Speed=NR(0.5, 2), Lifetime=NR(0.12, 0.2), Rotation=NR(0, 360),
+           Size=NS((0, 2.6), (1, 4.2)), Transparency=NS((0, 0), (0.6, 0), (1, 1)), Color=CS((0, WHITE), (1, VOLT)), LightEmission=0.4, ZOffset=1),
+        pe("Sparks", Texture=tex("sprites/specks/streak_cel_00"), SpreadAngle=V2(180, 180), Speed=NR(22, 36), Drag=4, Acceleration=V3(0, -30, 0),
+           Lifetime=NR(0.2, 0.35), Size=NS((0, 1.4), (1, 0.4)), Color=CS((0, WHITE), (1, VOLT)), LightEmission=0.45, ZOffset=1, **STREAK),
+        pe("Ring", Texture=tex("sprites/rings/ring_cel_04"), Lifetime=NR(0.22), Speed=NR(0), Size=NS((0, 1.5), (0.3, 4.5), (1, 5.5)),
+           Transparency=NS((0, 0), (1, 1)), Color=CS((0, WHITE), (1, ARC)), LightEmission=0.3, ZOffset=0.5),
+    ]
+    inst = [bolt_beams("Bolt", 46, 4.2), carrier("Tip", (0, 0, 0, 0, 0, 0), [att("A", children=a)]), light("Lamp", (0, 1, 0, 0, 0, 0), VOLT, 18)]
+    bolt_flicker(tl, "Bolt")
+    for t, n, when in (("Pop", 1, 0), ("Forks", 4, 0), ("Sparks", 12, 0), ("Ring", 1, 0), ("Forks", 3, 0.1), ("Sparks", 6, 0.1)):
+        tl.at(when, do="emit", target=f"Tip.A.{t}", count=n)
+    tl.at(0, do="set", target="Lamp.L", prop="Brightness", value=0.5)
+    tl.at(0.02, do="tween", target="Lamp.L", prop="Brightness", to=0, time=0.3, style="Quad", dir="Out")
+    effect("Peak_Strike", "Lightning strikes a rod: a bolt from the sky, forks and sparks at the tip.", 0.8, inst, tl, [0.0, 0.03, 0.08, 0.12, 0.2, 0.35],
+           VOLT, "bolt from the sky", origin=(0, 0, 0), dummy=False, cam=((10, 8, 30), (0, 14, 0)), beats=["the bolt flickers twice"])
+
+
+def peak_catch():
+    """(tint) The hero catches the bolt. Origin = the catching hand."""
+    tl = TL()
+    a = [
+        pop("sprites/impacts/starburst_cel_00", size=5.5, color=CS(WHITE), life=0.12, attrs=TINT, LightEmission=0.3),
+        pe("Forks", attrs=TINT, Texture=tex(BOLT), SpreadAngle=V2(180, 180), Speed=NR(1, 3), Lifetime=NR(0.14, 0.24), Rotation=NR(0, 360),
+           Size=NS((0, 2.2), (1, 3.8)), Transparency=NS((0, 0), (0.6, 0), (1, 1)), Color=CS(WHITE), LightEmission=0.4, ZOffset=1),
+        pe("Sparks", attrs=TINT, Texture=tex("sprites/specks/streak_cel_00"), SpreadAngle=V2(180, 180), Speed=NR(18, 30), Drag=4,
+           Lifetime=NR(0.2, 0.3), Size=NS((0, 1.3), (1, 0.4)), Color=CS(WHITE), LightEmission=0.45, ZOffset=1, **STREAK),
+        pe("Ring", attrs=TINT, Texture=tex("sprites/rings/ring_spiked_cel_02"), Lifetime=NR(0.24), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 2), (0.3, 5.5), (1, 6.5)), Transparency=NS((0, 0), (1, 1)), Color=CS(WHITE), LightEmission=0.3, ZOffset=0.5),
+    ]
+    inst = [carrier("Hand", (0, 5, 0, 0, 0, 0), [att("A", children=a)])]
+    for t, n, when in (("Pop", 1, 0), ("Forks", 5, 0), ("Sparks", 10, 0), ("Ring", 1, 0), ("Forks", 3, 0.12), ("Forks", 3, 0.24)):
+        tl.at(when, do="emit", target=f"Hand.A.{t}", count=n)
+    effect("Peak_Catch", "The hero catches the bolt: forks and sparks at the hand.", 0.8, inst, tl, [0.0, 0.03, 0.08, 0.14, 0.25, 0.4], VOLT,
+           "electric burst at the hand", origin=(0, 5, 0), beats=["the hand crackles"])
+
+
+def peak_storm():
+    """(loop) The awakened hero is wrapped in lightning. Rides on the root (3 above the floor)."""
+    body = [
+        pe("Forks", Texture=tex(BOLT), Shape=BOX, Rate=16, Speed=NR(0), Lifetime=NR(0.08, 0.14), Rotation=NR(0, 360),
+           Size=NS((0, 2.4), (1, 3.6)), Color=CS((0, WHITE), (1, VOLT)), LightEmission=0.4, LockedToPart=True, ZOffset=0.6),
+        pe("Arcs", Texture=tex(BOLT), Shape=BOX, Rate=9, Speed=NR(0), Lifetime=NR(0.1, 0.16), Rotation=NR(0, 360), Size=NS((0, 4.0), (1, 5.5)),
+           Color=CS((0, WHITE), (1, ARC)), LightEmission=0.3, LockedToPart=True, ZOffset=-1.2),
+        pe("Sparks", Texture=tex("sprites/specks/streak_cel_00"), Shape=BOX, Rate=18, SpreadAngle=V2(180, 180), Speed=NR(14, 24), Drag=4,
+           Lifetime=NR(0.18, 0.3), Size=NS((0, 1.2), (1, 0.4)), Color=CS((0, WHITE), (1, VOLT)), LightEmission=0.45, ZOffset=1, **STREAK),
+    ]
+    floor = [pe("Spiked", Texture=tex("sprites/rings/ring_spiked_cel_02"), **FLAT, Rate=2.2, Lifetime=NR(0.45), Rotation=NR(0, 360),
+                Size=NS((0, 5), (1, 9)), Transparency=NS((0, 0.3), (1, 1)), Color=CS((0, WHITE), (1, VOLT)), LightEmission=0.3, ZOffset=0.25)]
+    inst = [carrier("Body", (0, 3.2, 0, 0, 0, 0), body, size=(3.2, 5.0, 2.4)), carrier("Floor", (0, 0.15, 0, 0, 0, 0), [att("A", children=floor)]),
+            light("Lamp", (0, 3, 0, 0, 0, 0), VOLT, 14)]
+    tl = TL()
+    tl.at(0, do="set", target="Lamp.L", prop="Brightness", value=0.3)
+    effect("Peak_Storm", "The awakened hero is wrapped in lightning (loop).", 2.0, inst, tl, [0.4, 0.8, 1.2, 1.6], VOLT, "lightning round the body",
+           loop=True, attach="root", origin=(0, 3, 0), cam=((7, 5, 14), (0, 4.5, 0)), beats=["forks crawl over the body"])
+
+
+def peak_finale():
+    """The awakening ends: one enormous bolt on the hero. Origin = the hero's feet."""
+    tl = TL()
+    a = [
+        pop("sprites/impacts/starburst_cel_00", size=13, color=CS((0, WHITE), (1, VOLT)), life=0.16, LightEmission=0.3),
+        pe("Lines", Texture=tex("sprites/impacts/speed_lines_cel_02"), Lifetime=NR(0.24), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 10), (1, 18)), Transparency=NS((0, 0.1), (0.5, 0.3), (1, 1)), Color=CS(WHITE), LightEmission=0.3, ZOffset=1.5),
+        pe("Forks", Texture=tex(BOLT), SpreadAngle=V2(180, 180), Speed=NR(4, 10), Lifetime=NR(0.16, 0.28), Rotation=NR(0, 360),
+           Size=NS((0, 4.0), (1, 7.0)), Transparency=NS((0, 0), (0.6, 0), (1, 1)), Color=CS((0, WHITE), (1, VOLT)), LightEmission=0.4, ZOffset=1),
+        pe("Sparks", Texture=tex("sprites/specks/streak_cel_00"), SpreadAngle=V2(180, 180), Speed=NR(28, 48), Drag=4, Acceleration=V3(0, -30, 0),
+           Lifetime=NR(0.25, 0.45), Size=NS((0, 1.8), (1, 0.5)), Color=CS((0, WHITE), (1, VOLT)), LightEmission=0.45, ZOffset=1, **STREAK),
+    ]
+    g = [ring("Shock", "sprites/rings/ring_spiked_cel_02", 5, 19, CS((0, WHITE), (1, VOLT)), life=0.4, le=0.3),
+         ring("Ring", "sprites/rings/ring_cel_08", 4, 14, CS((0, WHITE), (1, ARC)), life=0.5, le=0.3),
+         ring("Scorch", "sprites/cracks/crack_cel_02", 10, 11, CS(hexc("2A2A34")), life=1.2, le=0, Rotation=NR(0, 360),
+              Transparency=NS((0, 0), (0.7, 0.1), (1, 1)))]
+    inst = [bolt_beams("Bolt", 50, 7.5), carrier("Hit", (0, 3, 0, 0, 0, 0), [att("A", children=a)]),
+            carrier("Ground", (0, 0.12, 0, 0, 0, 0), [att("A", children=g)]), light("Lamp", (0, 3, 0, 0, 0, 0), VOLT, 20)]
+    bolt_flicker(tl, "Bolt")
+    for t, n, when in (("Hit.A.Pop", 1, 0), ("Hit.A.Lines", 1, 0), ("Hit.A.Forks", 8, 0), ("Hit.A.Sparks", 20, 0), ("Ground.A.Shock", 1, 0),
+                       ("Ground.A.Scorch", 1, 0), ("Ground.A.Ring", 1, 0.06), ("Hit.A.Forks", 5, 0.1), ("Hit.A.Sparks", 10, 0.1)):
+        tl.at(when, do="emit", target=t, count=n)
+    tl.at(0, do="set", target="Lamp.L", prop="Brightness", value=1.4)
+    tl.at(0.02, do="tween", target="Lamp.L", prop="Brightness", to=0, time=0.45, style="Quad", dir="Out")
+    effect("Peak_Finale", "The Thunder Peak's awakening ends: one enormous bolt on the hero.", 1.5, inst, tl,
+           [0.0, 0.04, 0.1, 0.2, 0.35, 0.55, 0.8, 1.1], VOLT, "giant bolt + shock ring", origin=(0, 0, 0), shake=0.6, cam=((10, 8, 30), (0, 12, 0)),
+           beats=["the sky comes down on the hero"])
+
+
 EFFECTS = {"hit": train_hit, "crit": train_crit, "flurry": train_flurry, "pulse": train_pulse, "awaken": train_awaken, "aura": train_aura,
-           "post_burst": post_burst, "post_rise": post_rise, "falls_ascend": falls_ascend, "falls_crash": falls_crash}
+           "post_burst": post_burst, "post_rise": post_rise, "falls_ascend": falls_ascend, "falls_crash": falls_crash,
+           "boulder_hit": boulder_hit, "boulder_barrage": boulder_barrage, "boulder_shatter": boulder_shatter, "boulder_land": boulder_land,
+           "peak_strike": peak_strike, "peak_catch": peak_catch, "peak_storm": peak_storm, "peak_finale": peak_finale}
 
 if __name__ == "__main__":
     _ = (FB4, mix, rise)

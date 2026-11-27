@@ -67,6 +67,50 @@ function Beat.gradeHold(
 	return Beat.grade(cfgBeat, gap, lag)
 end
 
+--- The lane (1..count) beat `n` falls on, for a game that asks WHICH as well as
+--- WHEN (Thunder Peak: which of three rods the lightning marks). The same for
+--- server and client from the same `seed`. The beats are dealt in hands of
+--- `count`, each hand every lane once in a shuffled order: every lane gets its
+--- exact share and none comes more than twice running.
+function Beat.lane(n: number, seed: number, count: number): number
+	local hand = math.floor((n - 1) / count)
+	local order = table.create(count)
+	for i = 1, count do
+		order[i] = i
+	end
+	-- a Fisher-Yates shuffle on a hash of the hand
+	for i = count, 2, -1 do
+		local x = math.sin(hand * 39.3468 + i * 7.719 + seed * 11.135) * 24634.6345
+		local j = math.floor((x - math.floor(x)) * i) + 1
+		order[i], order[j] = order[j], order[i]
+	end
+	return order[(n - 1) % count + 1]
+end
+
+--- Grade a REFLEX beat: the lane is marked `lead` seconds before the beat's
+--- moment (the strike) and the player answers with a lane. The wrong lane, or
+--- an answer before the mark showed (a guess), is a miss; the right one within
+--- `react` seconds of the mark is Perfect, any later up to the strike is Good.
+function Beat.gradeReflex(
+	cfgBeat: any,
+	gap: number,
+	lane: number,
+	expected: number,
+	lead: number,
+	react: number,
+	lag: number?
+): Grade
+	local slack = lag or 0
+	if lane ~= expected or gap < -lead - slack then
+		return "miss"
+	elseif gap <= -lead + react + slack then
+		return "perfect"
+	elseif gap <= cfgBeat.PerfectWindow + slack then
+		return "good"
+	end
+	return "miss"
+end
+
 --- The Focus a graded beat gives on a ground whose beats are `beatSeconds`
 --- apart: a slow beat carries as many reps as it is long, and as much Focus,
 --- so every ground awakens at the same rate.

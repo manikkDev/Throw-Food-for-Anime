@@ -928,6 +928,476 @@
     0
    ],
    "strokePx": 2
+  },
+  {
+   "type": "frame",
+   "name": "SweepMeter",
+   "colour": [
+    "#0B0D29",
+    "#161A48"
+   ],
+   "keyline": "#FFFFFF",
+   "size": [
+    0,
+    320,
+    0,
+    40
+   ],
+   "corner": 20,
+   "pos": [
+    0,
+    800,
+    0,
+    340
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "visible": false,
+   "attrs": {
+    "SweetAt": 0.74,
+    "SweetWidth": 0.2
+   },
+   "children": [
+    {
+     "type": "frame",
+     "name": "Sweet",
+     "colour": [
+      "#FFE066",
+      "#FFA41B"
+     ],
+     "outline": false,
+     "corner": 8,
+     "size": [
+      0.2,
+      0,
+      1,
+      -8
+     ],
+     "pos": [
+      0.74,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 2
+    },
+    {
+     "type": "frame",
+     "name": "SweetCore",
+     "colour": [
+      "#7BF0A8",
+      "#34D17A"
+     ],
+     "outline": false,
+     "corner": 6,
+     "size": [
+      0.072,
+      0,
+      1,
+      -8
+     ],
+     "pos": [
+      0.74,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 3
+    },
+    {
+     "type": "frame",
+     "name": "Needle",
+     "colour": [
+      "#FFFFFF",
+      "#FFFFFF"
+     ],
+     "keyline": "#FFFFFF",
+     "corner": 4,
+     "size": [
+      0,
+      10,
+      1,
+      18
+     ],
+     "pos": [
+      0.1,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 5,
+     "strokePx": 3
+    }
+   ],
+   "strokePx": 3
+  },
+  {
+   "type": "frame",
+   "name": "Rods",
+   "transparent": true,
+   "size": [
+    0,
+    268,
+    0,
+    92
+   ],
+   "children": [
+    {
+     "type": "button",
+     "name": "Rod1",
+     "colour": "#4CC4F9",
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "corner": 36,
+     "depth": 3,
+     "sizeClass": "HUD",
+     "centre": false,
+     "children": [
+      {
+       "type": "ring",
+       "name": "Mark",
+       "size": [
+        0,
+        86,
+        0,
+        86
+       ],
+       "ringColour": "#FFC93C",
+       "thick": 7,
+       "children": [],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 4,
+       "overhang": true,
+       "visible": false
+      },
+      {
+       "type": "label",
+       "text": "<",
+       "size": [
+        0,
+        30,
+        0,
+        43
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.7907,
+       "textStroke": 2,
+       "name": "RodGlyph",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "maxText": 34,
+       "z": 3
+      }
+     ],
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#4CC4F9"
+      ],
+      [
+       0.49,
+       "#4CC4F9"
+      ],
+      [
+       0.5,
+       "#41A9D6"
+      ],
+      [
+       1.0,
+       "#3891B8"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3,
+      "Lane": 1,
+      "Rim": 0.5
+     },
+     "pos": [
+      0,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0,
+      0.5
+     ],
+     "stroke": 3,
+     "keyline": "#A6E2FC"
+    },
+    {
+     "type": "button",
+     "name": "Rod2",
+     "colour": "#4CC4F9",
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "corner": 36,
+     "depth": 3,
+     "sizeClass": "HUD",
+     "centre": false,
+     "children": [
+      {
+       "type": "ring",
+       "name": "Mark",
+       "size": [
+        0,
+        86,
+        0,
+        86
+       ],
+       "ringColour": "#FFC93C",
+       "thick": 7,
+       "children": [],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 4,
+       "overhang": true,
+       "visible": false
+      },
+      {
+       "type": "label",
+       "text": "^",
+       "size": [
+        0,
+        30,
+        0,
+        43
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.7907,
+       "textStroke": 2,
+       "name": "RodGlyph",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "maxText": 34,
+       "z": 3
+      }
+     ],
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#4CC4F9"
+      ],
+      [
+       0.49,
+       "#4CC4F9"
+      ],
+      [
+       0.5,
+       "#41A9D6"
+      ],
+      [
+       1.0,
+       "#3891B8"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3,
+      "Lane": 2,
+      "Rim": 0.5
+     },
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "stroke": 3,
+     "keyline": "#A6E2FC"
+    },
+    {
+     "type": "button",
+     "name": "Rod3",
+     "colour": "#4CC4F9",
+     "size": [
+      0,
+      72,
+      0,
+      72
+     ],
+     "corner": 36,
+     "depth": 3,
+     "sizeClass": "HUD",
+     "centre": false,
+     "children": [
+      {
+       "type": "ring",
+       "name": "Mark",
+       "size": [
+        0,
+        86,
+        0,
+        86
+       ],
+       "ringColour": "#FFC93C",
+       "thick": 7,
+       "children": [],
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "z": 4,
+       "overhang": true,
+       "visible": false
+      },
+      {
+       "type": "label",
+       "text": ">",
+       "size": [
+        0,
+        30,
+        0,
+        43
+       ],
+       "textColour": "onDark",
+       "align": "center",
+       "textScale": 0.7907,
+       "textStroke": 2,
+       "name": "RodGlyph",
+       "font": "display",
+       "pos": [
+        0.5,
+        0,
+        0.5,
+        0
+       ],
+       "anchor": [
+        0.5,
+        0.5
+       ],
+       "maxText": 34,
+       "z": 3
+      }
+     ],
+     "paintable": true,
+     "gloss": true,
+     "stops": [
+      [
+       0.0,
+       "#4CC4F9"
+      ],
+      [
+       0.49,
+       "#4CC4F9"
+      ],
+      [
+       0.5,
+       "#41A9D6"
+      ],
+      [
+       1.0,
+       "#3891B8"
+      ]
+     ],
+     "attrs": {
+      "PressLip": 3,
+      "Lane": 3,
+      "Rim": 0.5
+     },
+     "pos": [
+      1,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      1,
+      0.5
+     ],
+     "stroke": 3,
+     "keyline": "#A6E2FC"
+    }
+   ],
+   "pos": [
+    0,
+    800,
+    0,
+    340
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "visible": false
   }
  ],
  "enabled": false

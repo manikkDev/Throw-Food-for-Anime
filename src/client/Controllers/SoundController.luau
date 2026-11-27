@@ -26,6 +26,18 @@ local Screens = require(script.Parent.Parent.Ui.Screens)
 -- seconds. Values are the "cap" fields of assets/sfx/manifest.json (measured
 -- in Studio by the roblox-sfx stage); keep the two in step.
 local CAPS: { [string]: number } = {
+	-- plan 13 phase E: Boulder Breaker and Thunder Peak
+	boulder_hit = 0.7,
+	boulder_crit = 0.9,
+	barrage_hit = 0.3,
+	boulder_shatter = 2.0,
+	boulder_land = 1.4,
+	rock_crack = 0.8,
+	rod_mark = 0.5,
+	thunder_strike = 1.3,
+	bolt_catch = 0.6,
+	bolt_perfect = 1.0,
+	storm_finale = 2.4,
 	-- plan 13 phase D: the training grounds
 	post_hit = 0.5,
 	post_crit = 0.8,
@@ -102,6 +114,9 @@ local GAPS: { [string]: number } = {
 	toast_pop = 0.1,
 	train_hit = 0.08,
 	post_hit = 0.08,
+	boulder_hit = 0.1,
+	barrage_hit = 0.08,
+	thunder_strike = 0.2,
 	flurry_hit = 0.05,
 	train_lift = 0.1,
 	train_push = 0.15,
@@ -132,6 +147,14 @@ local GAPS: { [string]: number } = {
 -- air before the event. Measured in Studio from each clip's loudness curve (plan 13 phase C):
 -- the game skips to just before the attack, so the sound lands ON its moment.
 local STARTS: { [string]: number } = {
+	-- plan 13 phase E (measured lead-ins, work/sfx/probe_e1.json)
+	boulder_hit = 0.04,
+	boulder_shatter = 0.33,
+	rod_mark = 0.14,
+	bolt_catch = 0.08,
+	bolt_perfect = 0.05,
+	storm_loop = 0.35,
+	storm_finale = 0.16,
 	-- plan 13 phase D (measured lead-ins, work/sfx/probe_d.json)
 	post_break = 0.17,
 	post_rise = 0.33,

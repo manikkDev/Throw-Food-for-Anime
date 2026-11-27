@@ -1,0 +1,622 @@
+{
+ "name": "Boulder_Land",
+ "note": "A new boulder lands: dust, chips, a cracked floor.",
+ "duration": 1.3,
+ "camera": {
+  "pos": [
+   7,
+   4.5,
+   12
+  ],
+  "at": [
+   0,
+   3,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "stripFloors": [
+  "#E9D2A2"
+ ],
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": true,
+  "origin": [
+   0,
+   0,
+   0
+  ]
+ },
+ "brief": {
+  "category": "impact",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "dust ring + cracked floor",
+  "dominant": "#9A9CA4",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "the floor cracks under it"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.52
+   },
+   {
+    "name": "residue",
+    "t0": 0.52,
+    "t1": 1.3
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Rim",
+   "CFrame": [
+    0,
+    0.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    6.0,
+    0.4,
+    6.0
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "ParticleEmitter",
+     "name": "Dust",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/flipbooks/smoke/smoke_puff_fb_cel_03_4x4",
+      "FlipbookLayout": {
+       "Enum": "ParticleFlipbookLayout.Grid4x4"
+      },
+      "FlipbookMode": {
+       "Enum": "ParticleFlipbookMode.OneShot"
+      },
+      "FlipbookBlendFrames": false,
+      "FlipbookFramerate": {
+       "NumberRange": [
+        24.615384615384613,
+        24.615384615384613
+       ]
+      },
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Cylinder"
+      },
+      "ShapeStyle": {
+       "Enum": "ParticleEmitterShapeStyle.Surface"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        80,
+        80
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        8,
+        14
+       ]
+      },
+      "Drag": 4,
+      "Lifetime": {
+       "NumberRange": [
+        0.55,
+        0.7
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         1.3
+        ],
+        [
+         0.3,
+         2.2
+        ],
+        [
+         1,
+         2.6
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.7,
+         0.15
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.851,
+          0.8392,
+          0.8
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0,
+      "ZOffset": 0.3
+     }
+    },
+    {
+     "class": "ParticleEmitter",
+     "name": "Chips",
+     "props": {
+      "Rate": 0,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/sprites/elements/rock_chunk_cel_02",
+      "Shape": {
+       "Enum": "ParticleEmitterShape.Cylinder"
+      },
+      "EmissionDirection": {
+       "Enum": "NormalId.Top"
+      },
+      "SpreadAngle": {
+       "Vector2": [
+        45,
+        45
+       ]
+      },
+      "Speed": {
+       "NumberRange": [
+        16,
+        26
+       ]
+      },
+      "Acceleration": {
+       "Vector3": [
+        0,
+        -56,
+        0
+       ]
+      },
+      "Lifetime": {
+       "NumberRange": [
+        0.5,
+        0.75
+       ]
+      },
+      "Rotation": {
+       "NumberRange": [
+        0,
+        360
+       ]
+      },
+      "RotSpeed": {
+       "NumberRange": [
+        -400,
+        400
+       ]
+      },
+      "Size": {
+       "NumberSequence": [
+        [
+         0,
+         0.5
+        ],
+        [
+         0.8,
+         0.45
+        ],
+        [
+         1,
+         0.0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          1,
+          1,
+          1
+         ]
+        ],
+        [
+         1,
+         [
+          0.7843,
+          0.7843,
+          0.8157
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0,
+      "ZOffset": 0.6
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Ground",
+   "CFrame": [
+    0,
+    0.12,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Ring",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_cel_08",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.5,
+          0.5
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.5
+          ],
+          [
+           0.25,
+           6.9
+          ],
+          [
+           1,
+           8.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            0.851,
+            0.8392,
+            0.8
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.1,
+        "ZOffset": 0.2
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Spiked",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_spiked_cel_02",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.4,
+          0.4
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.5
+          ],
+          [
+           0.25,
+           6.1
+          ],
+          [
+           1,
+           7.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.8235,
+            0.2471
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.25,
+        "ZOffset": 0.2
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Crack",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/cracks/crack_cel_02",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          1.2,
+          1.2
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           5.5
+          ],
+          [
+           0.25,
+           5.9
+          ],
+          [
+           1,
+           6.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.7,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.2275,
+            0.2275,
+            0.2667
+           ]
+          ],
+          [
+           1,
+           [
+            0.2275,
+            0.2275,
+            0.2667
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "ZOffset": 0.2,
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "do": "emit",
+   "target": "Rim.Dust",
+   "count": 14,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Rim.Chips",
+   "count": 14,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Ring",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Spiked",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Crack",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Rim.Dust",
+   "count": 6,
+   "t": 0.12
+  },
+  {
+   "do": "shake",
+   "amp": 0.5,
+   "time": 0.3,
+   "freq": 24,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.0,
+  0.05,
+  0.12,
+  0.25,
+  0.4,
+  0.6
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

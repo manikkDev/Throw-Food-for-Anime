@@ -9,6 +9,10 @@
 --                    bursts into splinters and a new one rises out of the floor
 --   Waterfall Focus  the falls part down the middle and run UPWARD, a column of light stands
 --                    where the trainee floats; when the time is up the water crashes back
+--   Boulder Breaker  the boulder shakes and glows under a barrage; when the time is up it
+--                    shatters and a new one drops out of the sky
+--   Thunder Peak     lightning strikes the rods again and again and arcs to the trainee, who is
+--                    wrapped in it; when the time is up one enormous bolt comes down
 -- plus the aura on the trainee. The trainee's own client also calls Contact for every rep (the
 -- beats are known only to it and the server).
 --
@@ -16,6 +20,9 @@
 --   Target          the thing that is struck (a Model): it wobbles, bursts and rises
 --   Fx.Strike       where a fist lands;  Fx.Seat  where the trainee sits;  Fx.Pool  the splash
 --   Water.Left / Water.Right   the two halves of the falls (Models with the flow Beams)
+--   Fx.Rod1..3      the tips of the lightning rods (a `Mark` emitter and light on each);
+--   Fx.Arc          a part holding the Beam `Arc`, copied for every bolt from a rod to a hand
+--   Cracks          a part on the boulder's face whose Decals show as Focus grows
 --   emitters with attribute When = "awake" (on only during an awakening) or "calm" (off then)
 -- Everything here is local and cosmetic; whatever is moved is put back exactly.
 
@@ -35,6 +42,39 @@ local player = Players.LocalPlayer
 local ENERGY: { [string]: Color3 } = {
 	post = Color3.fromHex("FFB13B"),
 	falls = Color3.fromHex("5FD8FF"),
+	boulder = Color3.fromHex("FF8A3D"),
+	peak = Color3.fromHex("FFE85A"),
+}
+
+-- the grounds where a blow lands on a target: what plays for a rep, through the awakening, and
+-- how the awakening ends (the target bursts; a new one RISES out of the floor or DROPS from the sky)
+local STRIKE: { [string]: { [string]: any } } = {
+	post = {
+		hit = "Train_Hit",
+		hitSound = "post_hit",
+		critSound = "post_crit",
+		wobble = 1,
+		storm = "Train_Flurry",
+		flurrySound = "flurry_hit",
+		burst = "Post_Burst",
+		burstSound = "post_break",
+		arrive = "rise",
+		arriveFx = "Post_Rise",
+		arriveSound = "post_rise",
+	},
+	boulder = {
+		hit = "Boulder_Hit",
+		hitSound = "boulder_hit",
+		critSound = "boulder_crit",
+		wobble = 0.3,
+		storm = "Boulder_Barrage",
+		flurrySound = "barrage_hit",
+		burst = "Boulder_Shatter",
+		burstSound = "boulder_shatter",
+		arrive = "drop",
+		arriveFx = "Boulder_Land",
+		arriveSound = "boulder_land",
+	},
 }
 local WHITE = Color3.new(1, 1, 1)
 
@@ -135,25 +175,74 @@ function GroundController:_wobble(target: Instance?, strength: number)
 	end)
 end
 
+-- A bolt from a rod's tip to a hand: a copy of the set piece's Arc beam, alive for a blink.
+local function arc(piece: Instance, from: BasePart, hand: BasePart?)
+	local holder = spot(piece, "Arc")
+	local template = holder and holder:FindFirstChild("Arc")
+	if not template or not template:IsA("Beam") or not hand then
+		return
+	end
+	local anchor = Instance.new("Part")
+	anchor.Anchored = true
+	anchor.CanCollide = false
+	anchor.CanQuery = false
+	anchor.CanTouch = false
+	anchor.Transparency = 1
+	anchor.Size = Vector3.new(0.2, 0.2, 0.2)
+	anchor.CFrame = from.CFrame
+	local a0 = Instance.new("Attachment")
+	a0.Parent = anchor
+	local a1 = Instance.new("Attachment")
+	a1.Parent = hand
+	local beam = template:Clone()
+	beam.Attachment0 = a0
+	beam.Attachment1 = a1
+	beam.CurveSize0 = (math.random() - 0.5) * 6
+	beam.CurveSize1 = (math.random() - 0.5) * 6
+	beam.Enabled = true
+	beam.Parent = anchor
+	anchor.Parent = workspace
+	-- on, a blink off, on, gone
+	task.delay(0.08, function()
+		beam.Enabled = false
+	end)
+	task.delay(0.12, function()
+		beam.Enabled = true
+	end)
+	task.delay(0.26, function()
+		anchor:Destroy()
+		a1:Destroy()
+	end)
+end
+
+local function handOf(character: Model?, lane: number): BasePart?
+	-- the trainee faces the camera: the rod on the camera's left is on their own right
+	local hand = character
+		and character:FindFirstChild(if lane == 3 then "LeftHand" else "RightHand")
+	return if hand and hand:IsA("BasePart") then hand else nil
+end
+
 --- A rep of the local trainee lands on `piece` (ground `id`). `grade`: "perfect", "good" or nil.
-function GroundController:Contact(piece: Model?, id: string?, grade: string?)
+--- `lane`: the rod the lightning strikes (Thunder Peak).
+function GroundController:Contact(piece: Model?, id: string?, grade: string?, lane: number?)
 	if not piece or not id then
 		return
 	end
 	local perfect = grade == "perfect"
 	local strength = if perfect then 1.5 elseif grade == "good" then 1.1 else 0.75
-	if id == "post" then
+	local strike = STRIKE[id]
+	if strike then
 		local at = spot(piece, "Strike")
 		if at then
-			Vfx.play("Train_Hit", at.Position, { scale = strength })
+			Vfx.play(strike.hit, at.Position, { scale = strength })
 			if perfect then
 				Vfx.play("Train_Crit", at.Position)
 			end
 		end
-		self:_wobble(piece:FindFirstChild("Target"), strength)
-		Sound:Play("post_hit", nil, { pitchVary = 0.07 })
+		self:_wobble(piece:FindFirstChild("Target"), strength * strike.wobble)
+		Sound:Play(strike.hitSound, nil, { pitchVary = 0.07 })
 		if perfect then
-			Sound:Play("post_crit", nil, { pitchVary = 0.04 })
+			Sound:Play(strike.critSound, nil, { pitchVary = 0.04 })
 		end
 	elseif id == "falls" then
 		local at = spot(piece, "Seat")
@@ -165,45 +254,114 @@ function GroundController:Contact(piece: Model?, id: string?, grade: string?)
 			})
 		end
 		Sound:Play(if perfect then "breath_perfect" else "breath_pulse", nil, { pitchVary = 0.03 })
+	elseif id == "peak" and lane then
+		-- the bolt strikes its rod whatever the player did; caught, it runs on into the hand
+		local rod = spot(piece, "Rod" .. lane)
+		if rod then
+			Vfx.play("Peak_Strike", rod.Position)
+			Sound:Play("thunder_strike", nil, { pitchVary = 0.06 })
+			if grade == "perfect" or grade == "good" then
+				local hand = handOf(player.Character, lane)
+				arc(piece, rod, hand)
+				if hand then
+					Vfx.play("Peak_Catch", hand.Position, {
+						scale = if perfect then 1.3 else 1,
+						tint = if perfect then ENERGY.peak else Color3.fromHex("9FE3FF"),
+					})
+				end
+				Sound:Play(
+					if perfect then "bolt_perfect" else "bolt_catch",
+					nil,
+					{ pitchVary = 0.05 }
+				)
+			end
+		end
 	end
 end
 
 --- One blow of the awakening's flurry (the trainee's own client, on the clip's markers).
-function GroundController:Flurry(piece: Model?)
+function GroundController:Flurry(piece: Model?, id: string?)
+	local strike = STRIKE[id or "post"] or STRIKE.post
 	local at = spot(piece, "Strike")
 	if at then
 		local jitter = Vector3.new(0, (math.random() - 0.5) * 1.4, 0)
 			+ at.CFrame.RightVector * ((math.random() - 0.5) * 1.1)
-		Vfx.play("Train_Hit", at.Position + jitter, { scale = 0.8, mult = 0.6 })
+		Vfx.play(strike.hit, at.Position + jitter, { scale = 0.8, mult = 0.6 })
 	end
-	Sound:Play("flurry_hit", nil, { pitchVary = 0.12 })
+	Sound:Play(strike.flurrySound, nil, { pitchVary = 0.12 })
+end
+
+--- The rod the lightning has marked (0 = none): its tip crackles and glows until it strikes.
+function GroundController:Mark(piece: Model?, lane: number)
+	if not piece or piece:GetAttribute("Marked") == lane then
+		return
+	end
+	piece:SetAttribute("Marked", lane)
+	for index = 1, 3 do
+		local rod = spot(piece, "Rod" .. index)
+		if rod then
+			for _, item in rod:GetChildren() do
+				if item:IsA("ParticleEmitter") or item:IsA("Light") then
+					(item :: any).Enabled = index == lane
+				end
+			end
+		end
+	end
+	if lane > 0 then
+		Sound:Play("rod_mark", nil, { pitchVary = 0.08 })
+	end
+end
+
+--- How full the trainee's Focus is (0..1): the boulder's face cracks further as it fills.
+function GroundController:Focus(piece: Model?, fraction: number)
+	local cracks = piece and piece:FindFirstChild("Cracks", true)
+	if not cracks then
+		return
+	end
+	local stage = math.floor(math.clamp(fraction, 0, 1) * 4 + 0.001)
+	if cracks:GetAttribute("Stage") == stage then
+		return
+	end
+	local grew = stage > ((cracks:GetAttribute("Stage") :: number?) or 0)
+	cracks:SetAttribute("Stage", stage)
+	for _, decal in cracks:GetDescendants() do
+		if decal:IsA("Decal") then
+			local at = (decal:GetAttribute("Stage") :: number?) or 1
+			decal.Transparency = if stage >= at then 0.05 else 1
+		end
+	end
+	if grew then
+		Sound:Play("rock_crack", nil, { pitchVary = 0.1 })
+	end
 end
 
 -- ------------------------------------------------------------- the shows --
 
--- Striking Post: shaken and glowing through the flurry; at the end it bursts and a new one rises.
-local function showPost(self: any, piece: Model, own: boolean): Show
+-- Striking Post, Boulder Breaker: the target is shaken and glows through the flurry; at the end it
+-- bursts, and a new one rises out of the floor (post) or drops from the sky (boulder).
+local function showStrike(self: any, piece: Model, own: boolean, id: string): Show
+	local kind = STRIKE[id]
 	local target = piece:FindFirstChild("Target")
 	local strike = spot(piece, "Strike")
 	local base = if target and target:IsA("Model") then restOf(target) else CFrame.identity
 	local glow = Instance.new("Highlight")
 	glow.Name = "AwakeGlow"
-	glow.FillColor = ENERGY.post
+	glow.FillColor = ENERGY[id]
 	glow.OutlineColor = Color3.fromHex("FFF1C2")
 	glow.FillTransparency = 0.75
 	glow.OutlineTransparency = 0.2
 	glow.DepthMode = Enum.HighlightDepthMode.Occluded
 	glow.Adornee = target
 	glow.Parent = piece
-	local sparks = if strike then Vfx.play("Train_Flurry", strike, { loop = true }) else nil
+	local sparks = if strike then Vfx.play(kind.storm, strike, { loop = true }) else nil
 	local t0 = os.clock()
 	local shake = RunService.RenderStepped:Connect(function()
 		if target and target:IsA("Model") and target.Parent then
 			local t = os.clock() - t0
 			-- struck eight times a second: a fast shiver that grows as the post gives way
 			local grow = 0.6 + 0.4 * math.min(t / Config.Training.Beat.AwakeningSeconds, 1)
-			local lean = math.rad(2.6 * grow) * math.sin(t * 50)
-			local twist = math.rad(1.4 * grow) * math.sin(t * 37 + 1)
+			local lean = math.rad(2.6 * grow * kind.wobble) * math.sin(t * 50)
+			local twist = math.rad(1.4 * grow * kind.wobble) * math.sin(t * 37 + 1)
 			target:PivotTo(base * CFrame.Angles(-math.abs(lean), twist, 0))
 			glow.FillTransparency = 0.72 - 0.25 * grow * (0.5 + 0.5 * math.sin(t * 16))
 		end
@@ -222,33 +380,51 @@ local function showPost(self: any, piece: Model, own: boolean): Show
 				target:PivotTo(base)
 				return
 			end
-			-- the last blow: splinters, then a new post up out of the floor
+			-- the last blow: the target flies apart, then a new one arrives
 			self._busy[target] = true
 			local _, size = target:GetBoundingBox()
 			if strike then
-				Vfx.play("Post_Burst", strike.Position)
+				Vfx.play(kind.burst, strike.Position)
 			end
-			sound("post_break", own, strike)
-			target:PivotTo(base - Vector3.new(0, size.Y + 2, 0))
+			sound(kind.burstSound, own, strike)
+			self:Focus(piece, 0)
+			local drop = kind.arrive == "drop"
+			-- out of sight: under the floor (it will rise) or high above (it will fall)
+			local away = if drop then Vector3.new(0, 60, 0) else Vector3.new(0, -(size.Y + 2), 0)
+			target:PivotTo(base + away)
 			task.delay(0.45, function()
 				if not target.Parent then
 					self._busy[target] = nil
 					return
 				end
-				Vfx.play("Post_Rise", base.Position)
-				sound("post_rise", own, strike)
-				local rise0 = os.clock()
+				if not drop then
+					Vfx.play(kind.arriveFx, base.Position)
+					sound(kind.arriveSound, own, strike)
+				end
+				local t1 = os.clock()
+				local seconds = if drop then 0.38 else 0.5
+				local landed = false
 				local conn: RBXScriptConnection
 				conn = RunService.RenderStepped:Connect(function()
-					local u = math.clamp((os.clock() - rise0) / 0.5, 0, 1)
+					local u = math.clamp((os.clock() - t1) / seconds, 0, 1)
 					if not target.Parent then
 						conn:Disconnect()
 						self._busy[target] = nil
 						return
 					end
-					-- up fast, a small overshoot, settle
-					local back = 1 + 2.2 * (u - 1) ^ 3 + 1.2 * (u - 1) ^ 2
-					target:PivotTo(base - Vector3.new(0, (size.Y + 2) * (1 - back), 0))
+					if drop then
+						-- it falls faster and faster, lands, and the floor takes it
+						target:PivotTo(base + away * (1 - u * u))
+						if u >= 1 and not landed then
+							landed = true
+							Vfx.play(kind.arriveFx, base.Position)
+							sound(kind.arriveSound, own, strike)
+						end
+					else
+						-- up fast, a small overshoot, settle
+						local back = 1 + 2.2 * (u - 1) ^ 3 + 1.2 * (u - 1) ^ 2
+						target:PivotTo(base + away * (1 - back))
+					end
 					if u >= 1 then
 						conn:Disconnect()
 						target:PivotTo(base)
@@ -260,8 +436,44 @@ local function showPost(self: any, piece: Model, own: boolean): Show
 	}
 end
 
+-- Thunder Peak: lightning strikes the rods again and again and arcs to the trainee; at the end one
+-- enormous bolt comes down on them.
+local function showPeak(_self: any, piece: Model, own: boolean, _id: string, character: Model): Show
+	setWhen(piece, true)
+	local root = character:FindFirstChild("HumanoidRootPart")
+	local storm = if root then Vfx.play("Peak_Storm", root, { loop = true }) else nil
+	local alive = true
+	task.spawn(function()
+		local n = 0
+		while alive and piece.Parent and character.Parent do
+			n += 1
+			local lane = (n * 2) % 3 + 1
+			local rod = spot(piece, "Rod" .. lane)
+			if rod then
+				Vfx.play("Peak_Strike", rod.Position)
+				arc(piece, rod, handOf(character, if n % 2 == 0 then 1 else 3))
+				sound("thunder_strike", own, rod, { pitchVary = 0.1 })
+			end
+			task.wait(0.42)
+		end
+	end)
+	return {
+		finish = function(completed: boolean)
+			alive = false
+			if storm then
+				storm.stop()
+			end
+			setWhen(piece, false)
+			if completed and root and root:IsA("BasePart") then
+				Vfx.play("Peak_Finale", root.Position - Vector3.new(0, 3, 0))
+				sound("storm_finale", own, root)
+			end
+		end,
+	}
+end
+
 -- Waterfall Focus: the falls part and run upward; at the end the water crashes back.
-local function showFalls(_self: any, piece: Model, own: boolean): Show
+local function showFalls(_self: any, piece: Model, own: boolean, _id: string): Show
 	local water = piece:FindFirstChild("Water")
 	local seat = spot(piece, "Seat")
 	local pool = spot(piece, "Pool")
@@ -350,10 +562,13 @@ local function showFalls(_self: any, piece: Model, own: boolean): Show
 	}
 end
 
-local SHOWS: { [string]: (self: any, piece: Model, own: boolean) -> Show } = {
-	post = showPost,
-	falls = showFalls,
-}
+local SHOWS: { [string]: (self: any, piece: Model, own: boolean, id: string, character: Model) -> Show } =
+	{
+		post = showStrike,
+		boulder = showStrike,
+		falls = showFalls,
+		peak = showPeak,
+	}
 
 -- A character's TrainAwake changed: run (or end) the awakening on its ground.
 function GroundController:_awake(character: Model)
@@ -372,7 +587,9 @@ function GroundController:_awake(character: Model)
 	end
 	local own = character == player.Character
 	local colour = self:Energy(id)
-	local show = if SHOWS[id] then SHOWS[id](self, piece, own) else { finish = function() end }
+	local show = if SHOWS[id]
+		then SHOWS[id](self, piece, own, id, character)
+		else { finish = function() end }
 	self._shows[piece] = show
 	Vfx.play("Train_Awaken", root, { tint = colour })
 	local aura = Vfx.play("Train_Aura", root, { loop = true, tint = colour })
@@ -380,7 +597,11 @@ function GroundController:_awake(character: Model)
 	if own then
 		Sound:Play("awaken_sting", nil)
 	end
-	local hum = Sound:Play("awaken_loop", if own then nil else root, { fadeIn = 0.4 })
+	local hum = Sound:Play(
+		if id == "peak" then "storm_loop" else "awaken_loop",
+		if own then nil else root,
+		{ fadeIn = 0.4 }
+	)
 	task.spawn(function()
 		-- until the time is up, or the session ends early (the attribute goes, the character goes)
 		local completed = false
