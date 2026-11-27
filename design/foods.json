@@ -34,6 +34,24 @@
     "devil_ice_cream": {"size": 2.7, "throw": "pitch", "look": "waffle cone with three scoops (white, red, black), two red horns, red syrup"},
     "double_cherry": {"size": 2.1, "throw": "pitch", "look": "two glossy red cherries on joined green stems with a leaf"},
     "margherita": {"size": 2.8, "throw": "spin", "look": "whole pizza on a wooden board: puffy crust, red sauce, mozzarella, basil, one slice pulled out"},
-    "healing_pasta": {"size": 2.5, "throw": "heave", "look": "gold-rimmed plate with a twirl of black spaghetti, squid rings, tomato, basil, sparkles, a fork"}
+    "healing_pasta": {"size": 2.5, "throw": "heave", "look": "gold-rimmed plate with a twirl of black spaghetti, squid rings, tomato, basil, sparkles, a fork"},
+    "potato_chips": {"size": 2.4, "throw": "pitch", "look": "red and gold snack bag torn open, wavy golden chips sticking out"},
+    "red_apple": {"size": 2.0, "throw": "pitch", "look": "glossy blood-red apple with a dark stem and two black feathers"},
+    "detective_cake": {"size": 2.8, "throw": "heave", "look": "three-tier cake stand: shortcake slices, macarons, a sugar cube pyramid"},
+    "hero_banana": {"size": 2.5, "throw": "spin", "look": "half-peeled yellow banana with a bite taken out, a red sticker"},
+    "hero_udon": {"size": 2.4, "throw": "heave", "look": "yellow bowl with a red rim: thick udon, fried tofu, fish cake, egg yolk, chopsticks"},
+    "crab_hot_pot": {"size": 2.8, "throw": "heave", "look": "clay pot on a stove with a whole red crab on top, tofu, cabbage, mushrooms"},
+    "soul_candy": {"size": 2.4, "throw": "pitch", "look": "green candy dispenser with a yellow duck head, a candy in its beak"},
+    "strawberry_daifuku": {"size": 2.0, "throw": "pitch", "look": "white mochi cut open: red bean ring and a whole strawberry, on a black plate"},
+    "captains_curry": {"size": 2.7, "throw": "heave", "look": "oval plate: rice dome with a small flag, dark curry, a cutlet, red pickles"},
+    "kimbap": {"size": 2.5, "throw": "heave", "look": "wooden board with a row of seaweed rice rolls showing colourful fillings"},
+    "rice_cakes": {"size": 2.4, "throw": "heave", "look": "bowl of rice cake cylinders in glossy bright red sauce with fish cake and an egg"},
+    "elixir": {"size": 2.4, "throw": "pitch", "look": "round crystal flask of glowing violet-blue liquid with a gold stopper and rune band"},
+    "crepe": {"size": 2.6, "throw": "pitch", "look": "paper-wrapped crepe cone with cream, strawberries, banana and chocolate sauce"},
+    "meatball_pot": {"size": 2.6, "throw": "heave", "look": "black pot of red broth with big meatballs, cabbage, tofu, a ladle"},
+    "cream_mochi": {"size": 2.2, "throw": "pitch", "look": "box of pale green soft mochi, one cut open showing white cream and green paste"},
+    "hermit_bean": {"size": 2.0, "throw": "pitch", "look": "small cloth pouch tied with string, bright green beans spilling out"},
+    "god_pudding": {"size": 2.3, "throw": "heave", "look": "caramel custard pudding on a gold-rimmed dish with cream and a cherry"},
+    "saiyan_feast": {"size": 3.0, "throw": "heave", "turn": [90, 0, 0], "look": "huge table spread: stacked bowls of rice, meat buns, a roast, noodles, fish, dumplings"}
   }
 }

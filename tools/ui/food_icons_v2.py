@@ -86,9 +86,17 @@ def cut_out(white: Image.Image, black: Image.Image) -> Image.Image:
 
 
 def frame(cut: Image.Image) -> Image.Image:
-    box = cut.getchannel("A").point(lambda v: 255 if v > 40 else 0).getbbox()
+    # Studio's own overlays (the editor grid, a selection box) are drawn in the 3D view and so are
+    # in the captures as hairlines. Eroding the mask removes anything thin; the food is what is
+    # left, and everything outside its box is cleared.
+    mask = cut.getchannel("A").point(lambda v: 255 if v > 40 else 0)
+    box = mask.filter(ImageFilter.MinFilter(9)).getbbox()
     if not box:
         raise ValueError("the cut-out is empty")
+    pad = 6
+    box = (max(0, box[0] - pad), max(0, box[1] - pad), min(cut.width, box[2] + pad), min(cut.height, box[3] + pad))
+    if (box[2] - box[0]) < cut.width * 0.12 and (box[3] - box[1]) < cut.height * 0.2:
+        raise ValueError("the food is far too small in the capture")
     cut = cut.crop(box)
     scale = INSIDE / max(cut.size)
     cut = cut.resize((max(1, round(cut.width * scale)), max(1, round(cut.height * scale))), Image.LANCZOS)

@@ -458,3 +458,15 @@ rebirth Power gates do not change.
   one try each. 33 of 51 foods have their own model and icon.
 - Trap: one icon (the black pasta) came out as a small dark blob on its first render although the tool said
   ok: LOOK at the sheet after every icon run, the tool cannot tell a bad capture from a good one.
+
+**Phase B, batch 6 (worlds 12 to 17, eighteen foods), 2026-11-27: built. PHASE B IS COMPLETE: all 51 foods
+have their own textured model and icon (sheet: `assets/ui/food_icons_v2_sheet.png`).**
+- Seventeen passed on the first try. The Warrior's Feast took two: its roast came with a cartoon face; the
+  remake arrived standing on its edge (`turn` [90, 0, 0]).
+- Trap: after a Studio restart the editor's grid lines show in the 3D view and in every capture; the icon
+  cut-out took them for part of the food and nine icons came out tiny. `food_icons_v2.py` now erodes the mask
+  before it measures the food (hairlines vanish) and refuses a food that is far too small in the picture.
+- A spec now fails if any food in the config has no icon of its own.
+- Whole phase, tries per food: 41 of 51 on the first try, 8 on the second, the meat on its fourth plus a
+  texture pass, the ham on a texture pass. Not looked at in a play session: batches 2 to 6 (only batch 1's
+  shop cards and the ramen's throw were seen in the game).

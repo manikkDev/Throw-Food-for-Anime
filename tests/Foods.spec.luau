@@ -1,6 +1,7 @@
 --!strict
 -- Foods and Beat (plan 13): food is luck by world, the training judge.
 local Support = require("./Support")
+local Icons = require("../src/shared/Config/Icons")
 local Beat = require("../src/shared/Core/Beat")
 local Foods = require("../src/shared/Core/Foods")
 
@@ -75,6 +76,12 @@ return {
 		end
 		for _, food in C.Foods do
 			assert(loved[food.Id], `nobody's favourite: {food.Name}`)
+		end
+	end,
+
+	["every food has an icon of its own"] = function()
+		for _, food in C.Foods do
+			assert((Icons :: any)["Food_" .. food.Id] ~= nil, `no icon: {food.Name}`)
 		end
 	end,
 
