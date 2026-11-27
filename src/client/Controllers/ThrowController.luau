@@ -19,6 +19,7 @@
 
 local ContextActionService = game:GetService("ContextActionService")
 local Players = game:GetService("Players")
+local ContentProvider = game:GetService("ContentProvider")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -33,6 +34,8 @@ local Throw = require(ReplicatedStorage.Shared.Core.Throw)
 local World = require(ReplicatedStorage.Shared.Core.World)
 local Motion = require(script.Parent.Parent.Fx.Motion)
 local ThrowSequence = require(script.Parent.Parent.Fx.ThrowSequence)
+local FoodFx = require(script.Parent.Parent.Fx.FoodFx)
+local FoodHold = require(script.Parent.Parent.Fx.FoodHold)
 local Vfx = require(script.Parent.Parent.Fx.Vfx)
 local FoodLook = require(script.Parent.Parent.Ui.FoodLook)
 local Screens = require(script.Parent.Parent.Ui.Screens)
@@ -104,6 +107,9 @@ local ThrowController = Knit.CreateController({
 	_padRemote = nil :: RemoteEvent?,
 	_sentAt = 0,
 	_playing = false,
+	-- the food shown in the hands on the throw spot (see _tickHeld) and the id the next throw uses
+	_held = nil :: { foodId: string, ball: Part, size: Vector3, track: AnimationTrack? }?,
+	_thrownId = nil :: string?,
 	_playStart = 0,
 	_abort = false,
 	_taps = 0,
@@ -399,6 +405,7 @@ function ThrowController:_refreshUi()
 	local aimed = if self._aim > 0 then math.min(self._aim, self:_reach()) else self:_reach()
 	local thrown = FoodLook.current(state, aimed)
 	local thrownId = if thrown then thrown.Id else state.food
+	self._thrownId = thrownId
 	if self._gui:GetAttribute("FoodShown") ~= thrownId then
 		self._gui:SetAttribute("FoodShown", thrownId)
 		Screens.setIcon(self._foodIcon, FoodLook.iconKey(thrownId))
@@ -592,6 +599,58 @@ function ThrowController:_lock(on: boolean)
 	end
 end
 
+-- (defined below, with the flight code)
+local makeFood: (foodId: string) -> Part
+
+-- THE FOOD IN THE HANDS (plan 13 phase C). On the throw spot the player holds the food the next
+-- throw will use, in its own hold pose (Fx/FoodFx: one hand, both hands, or flat at the hip), so
+-- the throw starts from a pose that already says what kind of throw it is. Gone while a throw's
+-- cinematic plays (ThrowSequence makes its own food in the same hands) and off the spot.
+function ThrowController:_dropHeld()
+	local held = self._held
+	if held then
+		self._held = nil
+		held.ball:Destroy()
+		Motion.stop(held.track, 0.12)
+	end
+end
+
+function ThrowController:_tickHeld()
+	local foodId = if self._mode == "throw" and not self._playing then self._thrownId else nil
+	local held = self._held
+	if held and held.foodId ~= foodId then
+		self:_dropHeld()
+		held = nil
+	end
+	local character = player.Character
+	if not foodId or not character then
+		return
+	end
+	local class = FoodFx.throwClass(foodId)
+	if not held then
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		local ball = makeFood(foodId)
+		local trail = ball:FindFirstChildOfClass("Trail")
+		if trail then
+			trail.Enabled = false
+		end
+		held = {
+			foodId = foodId,
+			ball = ball,
+			size = FoodHold.sizeOf(ball),
+			track = if humanoid
+				then Motion.play(humanoid, FoodFx.clips(foodId).hold, { fade = 0.2, looped = true })
+				else nil,
+		}
+		self._held = held
+		Sound:Play("food_ready")
+	end
+	local at = FoodHold.cframe(character, class, held.size)
+	if at then
+		held.ball.CFrame = at
+	end
+end
+
 -- Leave the throw spot: the server sets the character down just behind the pad, facing the plot.
 function ThrowController:_exitPad()
 	if not self._locked or self._playing then
@@ -669,19 +728,23 @@ local FLIGHT_GROW = 0.25 -- seconds from hand size to FLIGHT_SCALE after the rel
 -- How a food turns in flight, by its template's Throw attribute (design/foods.json, plan 13):
 --   heave  a bowl, plate, tray or box flies LEVEL, its top leaning toward the chase camera behind
 --          it, with a slow flat turn: the soup never points at the ground
---   spin   a skewer or a flat thing flips end over end, like a thrown knife
+--   spin   a skewer or a stick flips end over end, like a thrown knife
+--   disc   a FLAT spin food (a pizza, a slice of toast) spins like a frisbee: flat, fast, its top
+--          leaning toward the chase camera (end over end, a pizza showed its underside half the time)
 --   else   a small solid food tumbles, slowly enough for its texture to be read
 local HEAVE_LEAN = CFrame.Angles(math.rad(-22), 0, 0)
 local function flightTurn(style: any, t: number): CFrame
 	if style == "heave" then
 		return HEAVE_LEAN * CFrame.Angles(0, t * 1.2, 0)
+	elseif style == "disc" then
+		return HEAVE_LEAN * CFrame.Angles(0, t * 14, 0)
 	elseif style == "spin" then
 		return CFrame.Angles(t * 7, 0, 0)
 	end
 	return CFrame.Angles(t * 2.6, t * 1.5, 0)
 end
 
-local function makeFood(foodId: string): Part
+function makeFood(foodId: string): Part
 	local food = MAPS.food[foodId]
 	local ball = Instance.new("Part")
 	ball.Name = "ThrownFood"
@@ -734,6 +797,13 @@ local function makeFood(foodId: string): Part
 		end
 		model.Parent = ball
 		local style = model:GetAttribute("Throw")
+		if style == "spin" then
+			-- a spin food much wider than it is tall is a disc
+			local _, box = model:GetBoundingBox()
+			if box.Y < 0.5 * math.max(box.X, box.Z) then
+				style = "disc"
+			end
+		end
 		-- tumble IN FLIGHT only (ThrowSequence sets "Tumble"); landed or in a hand it stays upright
 		-- (owner's review 5: "rotating like a tyre even after landing and in the hand")
 		local grownAt: number? = nil
@@ -769,6 +839,7 @@ end
 function ThrowController:_play(result: any)
 	local state = self._state.State
 	self._playing = true
+	self:_dropHeld()
 	self._busy = true
 	self._abort = false
 	self._taps = 0
@@ -808,7 +879,7 @@ function ThrowController:_play(result: any)
 				return self._heroes:Animate(model)
 			end,
 			land = function(model: Model, holding: boolean?)
-				self._heroes:RevealAnimate(model, holding)
+				self._heroes:RevealAnimate(model, holding, result.flavorMatch == true)
 			end,
 			bestZone = self._bestZone,
 			released = function()
@@ -929,22 +1000,29 @@ function ThrowController:_watch(seen: any)
 	if trail and trailFx.authored then
 		trail.Enabled = false
 	end
+	-- in flight: it grows to flight size and turns its own way (makeFood reads "Tumble")
+	ball:SetAttribute("Tumble", true)
 	task.spawn(function()
 		local t0 = os.clock()
 		while ball.Parent do
 			local t = math.clamp((os.clock() - t0) / seen.flight, 0, 1)
-			ball.Position = ThrowSequence.arcPoint(from, target, t)
+			-- CFrame, never Position: setting Position re-welds the carrier and leaves the food behind
+			ball.CFrame = ball.CFrame.Rotation + ThrowSequence.arcPoint(from, target, t)
 			if t >= 1 then
 				break
 			end
 			RunService.RenderStepped:Wait()
 		end
 		trailFx.stop()
-		Vfx.play(
-			"Land_Impact",
-			Vector3.new(seen.x, W.LaneY + 0.15, seen.z),
-			{ scale = 0.7, mult = 0.5 }
-		)
+		ball:SetAttribute("Tumble", false)
+		ball.CFrame = CFrame.new(target)
+		-- the dish's own landing, smaller and without sound or shake (it is someone else's throw)
+		local floor = Vector3.new(seen.x, W.LaneY + 0.15, seen.z)
+		local landName, landTint = FoodFx.landing(seen.food)
+		local landed = Vfx.play(landName, floor, { scale = 0.7, tint = landTint, mult = 0.5 })
+		if not landed.authored and landName ~= "Land_Impact" then
+			Vfx.play("Land_Impact", floor, { scale = 0.7, mult = 0.5 })
+		end
 		task.wait(seen.reveal + T.LandPauseSeconds)
 		-- a short reveal, no camera, no sound
 		Vfx.play("Reveal_" .. tostring(seen.rarity), target, {
@@ -967,6 +1045,11 @@ function ThrowController:KnitStart()
 	-- the clips of a throw, its reveal, the carry and a rebirth are fetched at once, not on first use
 	Motion.preload({
 		"Throw",
+		"ThrowHeave",
+		"ThrowSpin",
+		"HoldPitch",
+		"HoldHeave",
+		"HoldSpin",
 		"HeroStalk",
 		"HeroPickUp",
 		"HeroMenace",
@@ -975,6 +1058,19 @@ function ThrowController:KnitStart()
 		"PlaceHero",
 		"RebirthAwaken",
 	})
+	-- every food model is fetched in the background soon after joining: a food first shown on a
+	-- "NEW FOOD!" card, in the shop or in the hand is then already there (found in play: about half
+	-- of the cards came up with an empty stage the first time a food was shown)
+	task.spawn(Vfx.preload)
+	task.delay(4, function()
+		local assets = ReplicatedStorage:FindFirstChild("Assets")
+		local foods = assets and assets:FindFirstChild("Foods")
+		if foods then
+			pcall(function()
+				ContentProvider:PreloadAsync(foods:GetChildren())
+			end)
+		end
+	end)
 	self._state = Knit.GetController("StateController")
 	self._heroes = Knit.GetController("HeroController")
 	self._hud = Knit.GetController("HudController")
@@ -1118,6 +1214,7 @@ function ThrowController:KnitStart()
 		else
 			self._onPad = false
 		end
+		self:_tickHeld()
 		local mode = self:_wantedMode()
 		if mode ~= self._mode then
 			self:_setMode(mode)

@@ -1,0 +1,13 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_02__vt",
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/flipbooks/magic/magic_poof_cel_01_4x4",
+  "sim:lib/sprites/rings/ring_cel_08",
+  "sim:lib/sprites/rings/ripple_soft_00",
+  "sim:lib/sprites/smoke/cloud_cel_01",
+  "sim:tfa/clover_cel",
+  "sim:tfa/pillar_soft__vt"
+ ],
+ "meshes": []
+}

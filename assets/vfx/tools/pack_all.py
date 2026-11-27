@@ -99,7 +99,8 @@ def pack_effect(d, needs):
             out["k"] = [node(c, False) for c in n["children"]]
         return out
 
-    inst = [node(n, True) for n in d["instances"]]
+    # "sim": True marks a stand-in that exists for the judging strips only (the thrown food)
+    inst = [node(n, True) for n in d["instances"] if not n.get("sim")]
     tl = []
     for e in d.get("timeline", []):
         if e.get("sim"):

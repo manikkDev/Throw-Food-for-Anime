@@ -1,0 +1,11 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_04__vt",
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/sprites/shards/glass_cel_02",
+  "sim:lib/sprites/sigils/hex_grid_glow_00",
+  "sim:lib/sprites/specks/dot_cel_00",
+  "sim:tfa/ribbon_solid__vt"
+ ],
+ "meshes": []
+}

@@ -229,16 +229,28 @@ end
 --- food, so only the bite): RevealLand
 --- (Land_Impact at the feet on its "Land" marker), then Eat (eat_munch on each
 --- "Bite"), over its idle. Without the clips it simply idles.
-function HeroController:RevealAnimate(model: Model, holding: boolean?)
+function HeroController:RevealAnimate(model: Model, holding: boolean?, favourite: boolean?)
 	local ok, err = pcall(function()
 		self:Animate(model)
 		local humanoid = model:FindFirstChildOfClass("Humanoid")
+		-- its FAVOURITE dish (plan 13): after the bites it cheers (the idol wave) instead of
+		-- going back to its idle
+		local function cheerAfter(eat: AnimationTrack?)
+			if favourite and eat and humanoid then
+				eat.Stopped:Once(function()
+					if model.Parent then
+						Motion.play(humanoid, "IdleCheer", { fade = 0.15, priority = "Action" })
+					end
+				end)
+			end
+		end
 		if holding and humanoid then
 			-- it picked the food up in the suspense (owner's review 4): no landing, a bite of it
 			local eat = Motion.play(humanoid, "Eat", { fade = 0.2 })
 			Motion.onMarker(eat, "Bite", function()
 				Sound:Play("eat_munch", model.PrimaryPart, { pitchVary = 0.08 })
 			end)
+			cheerAfter(eat)
 			return
 		end
 		local land = if humanoid then Motion.play(humanoid, "RevealLand", { fade = 0.05 }) else nil
@@ -256,6 +268,7 @@ function HeroController:RevealAnimate(model: Model, holding: boolean?)
 			Motion.onMarker(eat, "Bite", function()
 				Sound:Play("eat_munch", model.PrimaryPart, { pitchVary = 0.08 })
 			end)
+			cheerAfter(eat)
 		end)
 	end)
 	if not ok then

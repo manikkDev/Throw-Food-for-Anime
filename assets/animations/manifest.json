@@ -585,6 +585,71 @@
    "sheet": "assets/animations/renders/CarriedRide_sheet.png",
    "gif": "assets/animations/renders/CarriedRide.gif",
    "axis_check": "pass"
+  },
+  {
+   "name": "HoldPitch",
+   "priority": "Action",
+   "loop": true,
+   "duration": 2.0,
+   "markers": [],
+   "spec": "assets/animations/specs/HoldPitch.json",
+   "sheet": "assets/animations/renders/HoldPitch_sheet.png",
+   "gif": "assets/animations/renders/HoldPitch.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "HoldHeave",
+   "priority": "Action",
+   "loop": true,
+   "duration": 2.0,
+   "markers": [],
+   "spec": "assets/animations/specs/HoldHeave.json",
+   "sheet": "assets/animations/renders/HoldHeave_sheet.png",
+   "gif": "assets/animations/renders/HoldHeave.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "ThrowHeave",
+   "priority": "Action",
+   "loop": false,
+   "duration": 1.5,
+   "markers": [
+    {
+     "name": "Release",
+     "time": 0.7667
+    }
+   ],
+   "spec": "assets/animations/specs/ThrowHeave.json",
+   "sheet": "assets/animations/renders/ThrowHeave_sheet.png",
+   "gif": "assets/animations/renders/ThrowHeave.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "HoldSpin",
+   "priority": "Action",
+   "loop": true,
+   "duration": 2.0,
+   "markers": [],
+   "spec": "assets/animations/specs/HoldSpin.json",
+   "sheet": "assets/animations/renders/HoldSpin_sheet.png",
+   "gif": "assets/animations/renders/HoldSpin.gif",
+   "axis_check": "pass"
+  },
+  {
+   "name": "ThrowSpin",
+   "priority": "Action",
+   "loop": false,
+   "duration": 1.5,
+   "markers": [
+    {
+     "name": "Release",
+     "time": 0.7
+    }
+   ],
+   "spec": "assets/animations/specs/ThrowSpin.json",
+   "sheet": "assets/animations/renders/ThrowSpin_sheet.png",
+   "gif": "assets/animations/renders/ThrowSpin.gif",
+   "axis_check": "pass"
   }
  ]
 }

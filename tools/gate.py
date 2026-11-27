@@ -31,6 +31,7 @@ STEPS = [
     ("icon table matches uploads", [str(ROOT / "tools" / "gen_icons.py"), "--check"]),
     ("icons framed (nothing cut off)", [str(ROOT / "tools" / "ui" / "icon_fit_check.py")]),
     ("animation table matches uploads", [str(ROOT / "tools" / "gen_anim_ids.py"), "--check"]),
+    ("food feel table, effects and sounds", [str(ROOT / "tools" / "gen_food_feel.py"), "--check"]),
     ("hero aura table matches design", [str(ROOT / "tools" / "gen_auras.py"), "--check"]),
     ("ui labels all bound", [str(SKILLS / "roblox-ui" / "scripts" / "verify_labels.py"), "--ui", str(ROOT / "src" / "ui"), "--client", str(ROOT / "src" / "client")]),
     ("contract valid", [str(SKILLS / "create-roblox-game" / "scripts" / "validate.py")]),

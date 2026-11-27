@@ -1,0 +1,14 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_02__vt",
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/flipbooks/smoke/plume_loop_soft_00_4x4",
+  "sim:lib/flipbooks/water/water_splash_cel_00_4x4",
+  "sim:lib/sprites/elements/bubbles_glow_02",
+  "sim:lib/sprites/impacts/starburst_cel_00",
+  "sim:lib/sprites/rings/ring_cel_02",
+  "sim:lib/sprites/rings/ring_cel_08",
+  "sim:tfa/pillar_soft__vt"
+ ],
+ "meshes": []
+}

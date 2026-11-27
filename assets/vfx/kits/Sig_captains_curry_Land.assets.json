@@ -1,0 +1,16 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_02__vt",
+  "sim:lib/beams/laser_soft_04__vt",
+  "sim:lib/flipbooks/ink/ink_splash_ink_00_4x4",
+  "sim:lib/sprites/rings/ring_cel_02",
+  "sim:lib/sprites/rings/ring_ink_02",
+  "sim:lib/sprites/slashes/slash_cel_01",
+  "sim:lib/sprites/slashes/slash_cross_cel_01",
+  "sim:lib/sprites/slashes/slash_cross_ink_01",
+  "sim:lib/sprites/slashes/slash_ink_02",
+  "sim:lib/sprites/specks/wisp_ink_01",
+  "sim:tfa/pillar_soft__vt"
+ ],
+ "meshes": []
+}

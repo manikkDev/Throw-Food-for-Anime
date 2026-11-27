@@ -10,6 +10,9 @@ Spec fields (ignored by to_roblox.py and rbx_axis_check.py):
   "_attach": [{"bone": "LeftHand", "pos": [...], "size": [...], "colour": [...]}]  boxes placed in rig
              space AT REST and parented to that deform bone, so they follow it on every frame
   optional per item: "shape": "sphere" (size = diameters), "show": [first, end) clip frames it is visible
+  "_track":  [{"glb": path, "colour": [r, g, b], "frames": [[12 floats: rotation rows (3x3, rig axes) + centre
+             (rig space)] per clip frame]}]  an object keyed per frame (e.g. a bowl placed from BOTH hands, which
+             no single-bone weld can show); after the last listed frame it holds (a thrown object left in the air)
 """
 import json
 import math
@@ -85,6 +88,45 @@ for i, it in enumerate(spec.get("_attach", [])):
     o.matrix_world = world          # keep the rest placement; Blender solves the bone-relative offset
     bpy.context.view_layer.update()
     show_keys(o, it)
+
+def track_items():
+    for ti, it in enumerate(spec.get("_track", [])):
+        before = set(bpy.data.objects)
+        bpy.ops.import_scene.gltf(filepath=it["glb"])
+        meshes = [o for o in set(bpy.data.objects) - before if o.type == "MESH"]
+        col = it.get("colour", [0.8, 0.4, 0.2])
+        mat = bpy.data.materials.new(f"Track{ti}_M")
+        mat.use_nodes = True
+        b = mat.node_tree.nodes.get("Principled BSDF")
+        if b:
+            b.inputs["Base Color"].default_value = (col[0], col[1], col[2], 1)
+        holder = bpy.data.objects.new(f"Track{ti}", None)
+        bpy.context.collection.objects.link(holder)
+        for o in meshes:
+            o.parent = None
+            bpy.context.view_layer.update()
+            bpy.ops.object.select_all(action="DESELECT")
+            o.select_set(True)
+            bpy.context.view_layer.objects.active = o
+            bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+            o.data.materials.clear()
+            o.data.materials.append(mat)
+            o.parent = holder
+            o["prop_keep_material"] = True
+        n = int(round(spec["duration"] * spec.get("fps", 30))) + (0 if spec.get("loop") else 1)
+        fr_ = it["frames"]
+        for i in range(n):
+            m = fr_[min(i, len(fr_) - 1)]
+            M4 = Matrix(((m[0], m[1], m[2], m[9] + ORIGIN.x), (m[3], m[4], m[5], m[10] + ORIGIN.y),
+                         (m[6], m[7], m[8], m[11] + ORIGIN.z), (0, 0, 0, 1)))
+            holder.matrix_world = M4
+            holder.keyframe_insert("location", frame=10 + i)
+            holder.rotation_mode = "XYZ"
+            holder.keyframe_insert("rotation_euler", frame=10 + i)
+
+
+track_items()
+
 
 def contact_report():
     """GROUND TRUTH from Blender's own meshes: at each marker, the frontmost (+Y) vertex of each hand

@@ -24,5 +24,10 @@
   "RebirthAwaken": 128371788611919,
   "HeroPickUp": 99290478316788,
   "CarryShoulder": 92687348195038,
-  "CarriedRide": 129171837155585
+  "CarriedRide": 129171837155585,
+  "HoldPitch": 108958635939226,
+  "HoldHeave": 103685919511269,
+  "ThrowHeave": 75510375255020,
+  "HoldSpin": 129761511631155,
+  "ThrowSpin": 73973272432226
 }

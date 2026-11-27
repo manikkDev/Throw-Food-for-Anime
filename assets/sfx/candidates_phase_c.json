@@ -1,0 +1,905 @@
+{
+ "roles": {
+  "throw_heave": [
+   {
+    "rank": 1,
+    "id": 9113077484,
+    "name": "Air Whoosh Heavy Bys And Impacts 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 5,
+    "duration_verified": false,
+    "why": "Heavy air whoosh with impacts; deep body for a two-hand heave"
+   },
+   {
+    "rank": 2,
+    "id": 9120697530,
+    "name": "Whoosh By Airy Whomping Humming Rumbling 19 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Airy whomping whoosh with rumble; weighty swing"
+   },
+   {
+    "rank": 3,
+    "id": 9119379402,
+    "name": "Solar Whoosh Single Pass Or Fly Bys Short 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Short single pass-by whoosh; punchy but needs a low-pass check"
+   },
+   {
+    "rank": 4,
+    "id": 9120720376,
+    "name": "Whoosh Giant Swish By 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Giant swish whoosh; big body, may be long for a 0.4-0.9 s band"
+   }
+  ],
+  "throw_spin": [
+   {
+    "rank": 1,
+    "id": 9113408887,
+    "name": "Beetle Whiz By Pass By Light Metallic 6 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "Light metallic whiz pass-by; spinning frisbee-style flick"
+   },
+   {
+    "rank": 2,
+    "id": 9113408696,
+    "name": "Beetle Whiz By Pass By Light Metallic 2 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "Second take of the same metallic whiz; a variant for repeats"
+   },
+   {
+    "rank": 3,
+    "id": 9119011187,
+    "name": "Servo Short Bursts Whir Mostly Fast Jerky 7 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Short fast whir bursts; sharp servo whirr"
+   },
+   {
+    "rank": 4,
+    "id": 124959706591171,
+    "name": "sharpshooter spin",
+    "creator": "Ren's roblox group",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "Spin/whip sound from an unknown creator; sharp spin feel; verify the licence basis"
+   }
+  ],
+  "food_ready": [
+   {
+    "rank": 1,
+    "id": 9113537815,
+    "name": "Boink Wet Suction Pop Blip Hollow 3 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Wet suction pop blip, hollow; soft item-in-hand pop"
+   },
+   {
+    "rank": 2,
+    "id": 119520002461268,
+    "name": "ui_hover_bubble_pop_01_s431471112_v1",
+    "creator": "GladGhost6",
+    "duration": 0,
+    "duration_verified": false,
+    "why": "Bubble pop UI sound from an unknown creator; soft and short"
+   },
+   {
+    "rank": 3,
+    "id": 125654556844603,
+    "name": "Pop",
+    "creator": "Babyjp1470",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Plain pop from an unknown creator; weakest fit, audition before use"
+   }
+  ],
+  "land_bowl": [
+   {
+    "rank": 1,
+    "id": 9113560108,
+    "name": "Bowl Wobble Impacts Ceramic Table 2 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Ceramic bowl wobble and impacts on a table; clink then settle, not a shatter"
+   },
+   {
+    "rank": 2,
+    "id": 9113558720,
+    "name": "Bowl 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Bowl set down; short ceramic knock"
+   },
+   {
+    "rank": 3,
+    "id": 9117653834,
+    "name": "Plate Ceramic Dish 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Ceramic plate/dish impact; clink-plus-thud"
+   },
+   {
+    "rank": 4,
+    "id": 9113753169,
+    "name": "Ceramic Movement 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Ceramic movement; clink on set-down"
+   }
+  ],
+  "land_plate": [
+   {
+    "rank": 1,
+    "id": 9116759903,
+    "name": "Metal Plate Movement 19 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 5,
+    "duration_verified": false,
+    "why": "Metal plate movement; tray clatter"
+   },
+   {
+    "rank": 2,
+    "id": 9117197803,
+    "name": "Pan Drop Various Metal Pans Hit Wood Floor 6 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Metal pan drop on wood floor; clatter with a hard wood thud"
+   },
+   {
+    "rank": 3,
+    "id": 9117638196,
+    "name": "Plastic Tray Drop Pickup Airliner Diner 4 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Plastic tray drop with pickup; diner tray clatter"
+   },
+   {
+    "rank": 4,
+    "id": 9116536883,
+    "name": "Metal Can Large Sized Hit Drop 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Large metal can hit and drop; heavy metal clatter"
+   }
+  ],
+  "land_soft": [
+   {
+    "rank": 1,
+    "id": 9117194833,
+    "name": "Pancake Plate 8 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Pancake plate soft drop; a soft flat thump, closest to squish"
+   },
+   {
+    "rank": 2,
+    "id": 9117196922,
+    "name": "Pancake Plate 13 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Pancake plate, second take; soft thump variant"
+   },
+   {
+    "rank": 3,
+    "id": 9114165461,
+    "name": "Dragon Footsteps 5 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Dragon footstep; a heavy soft thump, weaker squish"
+   }
+  ],
+  "land_sizzle": [
+   {
+    "rank": 1,
+    "id": 118044936345676,
+    "name": "sizzle",
+    "creator": "rafabmaga",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "Sizzle from an unknown creator; hot burst, check length"
+   },
+   {
+    "rank": 2,
+    "id": 106226416967678,
+    "name": "meat-on-the-grill-104901",
+    "creator": "mineflayer123456",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Meat on a grill; sizzle, length to verify"
+   },
+   {
+    "rank": 3,
+    "id": 135070355372217,
+    "name": "Sizzling",
+    "creator": "Lookingdd",
+    "duration": 8,
+    "duration_verified": false,
+    "why": "Sizzling from an unknown creator; hot burst"
+   }
+  ],
+  "land_glass": [
+   {
+    "rank": 1,
+    "id": 9113556857,
+    "name": "Bottle Slosh Down 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Bottle slosh set down; glass bottle, not a break"
+   },
+   {
+    "rank": 2,
+    "id": 9114618736,
+    "name": "Glass Tinks 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "Glass tinks clink; flask clink"
+   },
+   {
+    "rank": 3,
+    "id": 9114619050,
+    "name": "Glass Tinks 2 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Glass tinks, second take; clink variant"
+   },
+   {
+    "rank": 4,
+    "id": 9114611695,
+    "name": "Glass Pot Set Down 20 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Glass pot set down; clink, a pot not a bottle"
+   }
+  ],
+  "land_bag": [
+   {
+    "rank": 1,
+    "id": 9125723913,
+    "name": "Paper Shopping Bag Movement Handling Crinkli (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Paper shopping bag handling crinkle; paper bag rustle"
+   },
+   {
+    "rank": 2,
+    "id": 9125724350,
+    "name": "Paper Shopping Bag Movement Handling Crinkli (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Paper shopping bag, second take; rustle variant"
+   },
+   {
+    "rank": 3,
+    "id": 9125595603,
+    "name": "Grocery Bag Movement Plastic Rustling Crinkl (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Grocery plastic bag rustle and crinkle"
+   },
+   {
+    "rank": 4,
+    "id": 9117410302,
+    "name": "Plastic Bag Handling Crunchy Cellophane 13 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Crunchy cellophane bag handling; crisp packet crunch"
+   }
+  ],
+  "land_splash": [
+   {
+    "rank": 1,
+    "id": 9120572784,
+    "name": "Watermelon Splat 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Watermelon splat; wet thick splat"
+   },
+   {
+    "rank": 2,
+    "id": 9120572959,
+    "name": "Watermelon Splat 3 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Watermelon splat, second take"
+   },
+   {
+    "rank": 3,
+    "id": 9113481033,
+    "name": "Body Fall Wet Tile 2 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Body fall on wet tile; wet slosh impact"
+   },
+   {
+    "rank": 4,
+    "id": 9113469906,
+    "name": "Body Fall Gooshy Mud 3 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Body fall in gooshy mud; thick slosh"
+   }
+  ],
+  "sig_sting": [
+   {
+    "rank": 1,
+    "id": 9042321434,
+    "name": "Pocket Ghost - Sting 1",
+    "creator": "APMOfficial",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "APM Pocket Ghost sting 1; short mysterious accent"
+   },
+   {
+    "rank": 2,
+    "id": 9042321568,
+    "name": "Pocket Ghost - Sting 2",
+    "creator": "APMOfficial",
+    "duration": 5,
+    "duration_verified": false,
+    "why": "APM Pocket Ghost sting 2; alternative"
+   },
+   {
+    "rank": 3,
+    "id": 9047100306,
+    "name": "Hustler Sting 2",
+    "creator": "APMOfficial",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "APM Hustler sting 2; punchy accent"
+   },
+   {
+    "rank": 4,
+    "id": 9044986180,
+    "name": "Midwinter Snow Sting 3",
+    "creator": "APMOfficial",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "APM Midwinter sting 3; weakest anime fit"
+   }
+  ],
+  "sig_steam": [
+   {
+    "rank": 1,
+    "id": 137996096783884,
+    "name": "steam hiss",
+    "creator": "por_shei",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Steam hiss; big steam release"
+   },
+   {
+    "rank": 2,
+    "id": 8375254457,
+    "name": "espresso-steam",
+    "creator": "Foxzes",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Espresso steam; steam puff"
+   },
+   {
+    "rank": 3,
+    "id": 9116496050,
+    "name": "Medium Pressure Air Release 7 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 5,
+    "duration_verified": false,
+    "why": "Medium pressure air release; hiss-puff"
+   },
+   {
+    "rank": 4,
+    "id": 9119302862,
+    "name": "Snake Hiss 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 5,
+    "duration_verified": false,
+    "why": "Snake hiss; hiss, weaker steam fit"
+   }
+  ],
+  "sig_fire": [
+   {
+    "rank": 1,
+    "id": 9114447022,
+    "name": "Fire Whoosh 19 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Fire whoosh, ProSoundEffects; ignite burst"
+   },
+   {
+    "rank": 2,
+    "id": 100453569471578,
+    "name": "Flame Whoosh 2",
+    "creator": "Amekqu",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Flame whoosh; fire whoosh"
+   },
+   {
+    "rank": 3,
+    "id": 135097195613949,
+    "name": "Fire_ignition",
+    "creator": "ImBobTheOff",
+    "duration": 8,
+    "duration_verified": false,
+    "why": "Fire ignition from an unknown creator; ignite burst"
+   },
+   {
+    "rank": 4,
+    "id": 138046925686658,
+    "name": "Spicy Fire Woosh",
+    "creator": "FoulishFox",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "Spicy fire woosh from an unknown creator; fire whoosh"
+   }
+  ],
+  "sig_dark": [
+   {
+    "rank": 1,
+    "id": 9043355561,
+    "name": "ONE SHOT-LOW DRONE 04",
+    "creator": "APMOfficial",
+    "duration": 7,
+    "duration_verified": false,
+    "why": "APM low drone pulse; dark low pulse"
+   },
+   {
+    "rank": 2,
+    "id": 9114337990,
+    "name": "Energy Pass By Deep Pulsing Synth Drone 2 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 10,
+    "duration_verified": false,
+    "why": "Deep pulsing synth drone energy pass; dark warp"
+   },
+   {
+    "rank": 3,
+    "id": 9114332814,
+    "name": "Energy Pass By 12 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 10,
+    "duration_verified": false,
+    "why": "Energy pass-by, dark energy pulse; alternative"
+   }
+  ],
+  "sig_blast": [
+   {
+    "rank": 1,
+    "id": 86043814502994,
+    "name": "Explosion 2",
+    "creator": "GleonoffG",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Explosion from an unknown creator; small pop, audition for cartoon scale"
+   },
+   {
+    "rank": 2,
+    "id": 5855422842,
+    "name": "explosion_2",
+    "creator": "thienbao2109",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Explosion_2; small explosion"
+   },
+   {
+    "rank": 3,
+    "id": 15829924728,
+    "name": "explosion :3",
+    "creator": "sshirakamii",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Explosion; small explosion, alternative"
+   },
+   {
+    "rank": 4,
+    "id": 140278004623742,
+    "name": "explosion",
+    "creator": "TheyCallMeD33z",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Explosion from an unknown creator; small pop"
+   }
+  ],
+  "sig_gold": [
+   {
+    "rank": 1,
+    "id": 4612374393,
+    "name": "bling_diamond_pickup_2",
+    "creator": "thienbao2109",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Diamond pickup bling; bright gold sparkle"
+   },
+   {
+    "rank": 2,
+    "id": 4612374036,
+    "name": "bling_big_diamond_pickup",
+    "creator": "thienbao2109",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Big diamond pickup bling; bigger sparkle"
+   },
+   {
+    "rank": 3,
+    "id": 8807795651,
+    "name": "Fairy dust magic sound effect",
+    "creator": "Vamonoz",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Fairy dust magic sound; sparkle shimmer"
+   },
+   {
+    "rank": 4,
+    "id": 106443875576213,
+    "name": "FFPS - Twinkle",
+    "creator": "ElianMaster87",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Twinkle sparkle; shimmer from an unknown creator"
+   }
+  ],
+  "sig_wind": [
+   {
+    "rank": 1,
+    "id": 9119227893,
+    "name": "Slow Whoosh Beefy Airy Pass By 2 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Slow beefy airy pass-by; soft airy whoosh"
+   },
+   {
+    "rank": 2,
+    "id": 9120698183,
+    "name": "Whoosh By Howling Wind Light Rumbling 7 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "Howling wind light rumble whoosh; airy"
+   },
+   {
+    "rank": 3,
+    "id": 9114335724,
+    "name": "Energy Pass By Airy Synth Fast Pass Bys 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 5,
+    "duration_verified": false,
+    "why": "Energy airy pass-by; airy whoosh"
+   },
+   {
+    "rank": 4,
+    "id": 111969541177610,
+    "name": "Whoosh",
+    "creator": "ColaGuyVerf",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "Whoosh from an unknown creator; soft airy whoosh"
+   }
+  ],
+  "sig_quake": [
+   {
+    "rank": 1,
+    "id": 9113551773,
+    "name": "Boom Thump Rattling Impacts Light Crunch 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Boom thump rattling impacts; heavy thud with rumble"
+   },
+   {
+    "rank": 2,
+    "id": 9116908474,
+    "name": "Metal Whomps Deep Pounding Impacts 13 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Metal whomps deep pounding impact; heavy thud"
+   },
+   {
+    "rank": 3,
+    "id": 1841354543,
+    "name": "Deep Gaia Rolling Impact 3",
+    "creator": "APMOfficial",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "APM deep rolling impact; deep thud with rumble"
+   },
+   {
+    "rank": 4,
+    "id": 9116907950,
+    "name": "Metal Whomps Deep Pounding Impacts 8 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 1,
+    "duration_verified": false,
+    "why": "Metal whomps impact, second take"
+   }
+  ],
+  "sig_shatter": [
+   {
+    "rank": 1,
+    "id": 9103909576,
+    "name": "glass shatter",
+    "creator": "vulpineswag",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Glass shatter; shard break, not digital but close"
+   },
+   {
+    "rank": 2,
+    "id": 117947531369694,
+    "name": "glass_shatter_10",
+    "creator": "Robloxianr6o6c6m1y",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Glass shatter 10 from an unknown creator; shard break"
+   },
+   {
+    "rank": 3,
+    "id": 92650188901933,
+    "name": "Glass Break 2",
+    "creator": "KataDark75",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Glass break 2 from an unknown creator; break"
+   },
+   {
+    "rank": 4,
+    "id": 139826391278483,
+    "name": "glass_shatter_09",
+    "creator": "Robloxianr6o6c6m1y",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Glass shatter 09 from an unknown creator; shard break"
+   }
+  ],
+  "sig_ice": [
+   {
+    "rank": 1,
+    "id": 9125611312,
+    "name": "Ice Freeze Large Piece Crackles Liquid Nitro (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "Ice freeze crackles, liquid nitrogen; icy mist crackle"
+   },
+   {
+    "rank": 2,
+    "id": 9125611419,
+    "name": "Ice Freeze Large Piece Crackles Liquid Nitro (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Ice freeze crackles, second take"
+   },
+   {
+    "rank": 3,
+    "id": 9125611291,
+    "name": "Ice Freeze Large Piece Crackles Liquid Nitro (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "Ice freeze crackles, third take"
+   },
+   {
+    "rank": 4,
+    "id": 103299884118401,
+    "name": "crackle ice",
+    "creator": "natsuki cupcake",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Crackle ice from an unknown creator; icy crackle"
+   }
+  ],
+  "sig_magic": [
+   {
+    "rank": 1,
+    "id": 75127344844404,
+    "name": "magic power release sfx",
+    "creator": "thatoneinkling1",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Magic power release; spell cast"
+   },
+   {
+    "rank": 2,
+    "id": 113964966358375,
+    "name": "magic_retro_prismblow",
+    "creator": "BWMixezz",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Magic retro prism blow; shimmer spell"
+   },
+   {
+    "rank": 3,
+    "id": 7260423115,
+    "name": "Magic_Spells_CastShort_Water_Aggressive01",
+    "creator": "GunsForGuns34",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Magic spell cast short, water; spell cast hum"
+   }
+  ],
+  "sig_electric": [
+   {
+    "rank": 1,
+    "id": 9116274992,
+    "name": "Lightning Flashes Quick Electrical Bursts 45 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 5,
+    "duration_verified": false,
+    "why": "Lightning bursts, ProSoundEffects; electrical zap"
+   },
+   {
+    "rank": 2,
+    "id": 136960626560459,
+    "name": "lightning",
+    "creator": "Gold_Man55",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Lightning from an unknown creator; zap"
+   },
+   {
+    "rank": 3,
+    "id": 93445404616263,
+    "name": "lightning charge 2",
+    "creator": "dekmai4",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Lightning charge; electric charge zap"
+   }
+  ],
+  "sig_water": [
+   {
+    "rank": 1,
+    "id": 73128397332212,
+    "name": "Water burst",
+    "creator": "ryugrey385",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Water burst from an unknown creator; burst"
+   },
+   {
+    "rank": 2,
+    "id": 9120585252,
+    "name": "Water Splash Big Water Splash Dive In 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 4,
+    "duration_verified": false,
+    "why": "Big water splash dive in; splash burst"
+   },
+   {
+    "rank": 3,
+    "id": 9120589380,
+    "name": "Water Splash Jumping In Pool Huge Spray 1 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "Pool splash huge spray; spray burst"
+   },
+   {
+    "rank": 4,
+    "id": 77037334008419,
+    "name": "Roblox Water Splash SFX, but louder",
+    "creator": "withasix",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Water splash, louder version; splash burst"
+   }
+  ],
+  "sig_spirit": [
+   {
+    "rank": 1,
+    "id": 9119628767,
+    "name": "Steam Whoosh Phased 2 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "Steam whoosh phased; ghostly phased pass"
+   },
+   {
+    "rank": 2,
+    "id": 9120697982,
+    "name": "Whoosh By Howling Wind Light Rumbling 5 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "Howling wind rumble whoosh; eerie aura"
+   },
+   {
+    "rank": 3,
+    "id": 122276495774142,
+    "name": "cinematic-whoosh-wind-sound-effects_8N4S9ADA",
+    "creator": "WatameEnjoyer",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Cinematic whoosh from an unknown creator; aura whoosh"
+   },
+   {
+    "rank": 4,
+    "id": 9120720147,
+    "name": "Whoosh Giant Swish By 5 (SFX)",
+    "creator": "ProSoundEffects",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Giant swish whoosh; pressure wave, weaker ghost fit"
+   }
+  ],
+  "favourite_burst": [
+   {
+    "rank": 1,
+    "id": 105193542038988,
+    "name": "Cute level up",
+    "creator": "AshenS0los",
+    "duration": 2,
+    "duration_verified": false,
+    "why": "Cute level-up jingle from an unknown creator; happy jingle"
+   },
+   {
+    "rank": 2,
+    "id": 2167103930,
+    "name": "Chime",
+    "creator": "Magnetic_Aviator",
+    "duration": 3,
+    "duration_verified": false,
+    "why": "Chime from an unknown creator; bright chime"
+   },
+   {
+    "rank": 3,
+    "id": 9047636122,
+    "name": "Doober Afternoon Sting2",
+    "creator": "APMOfficial",
+    "duration": 6,
+    "duration_verified": false,
+    "why": "APM Doober sting; happy accent"
+   },
+   {
+    "rank": 4,
+    "id": 9046750033,
+    "name": "Merry Christmas Pop",
+    "creator": "APMOfficial",
+    "duration": 10,
+    "duration_verified": false,
+    "why": "APM Merry Christmas pop; seasonal, weak fit"
+   }
+  ]
+ },
+ "notes": {
+  "licence_basis": "Roblox Creator Store free-to-use audio (Creator Store audio tab). Roblox docs describe it as free-to-use audio for creators to use within their games. The Roblox Audio Terms text was NOT retrievable (403), so commercial use, territory and attribution terms are UNVERIFIED. No per-asset attribution is listed.",
+  "duration": "Toolbox listing duration, UNVERIFIED (integer-ish and often wrong). Prove with Sound.TimeLength.",
+  "dropped_for_licence": "Likely game or anime rips with unknown rights, not used: DBFZ explosions, 'glass shatter naoya', 'shinji' lightning, 'Swain_Spell_3', 'soc_whoosh_transform_gwyn_1'."
+ }
+}

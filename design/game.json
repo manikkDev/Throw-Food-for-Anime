@@ -5218,22 +5218,207 @@
         {
           "stage": "vfx",
           "name": "ThrowTrail_Basic",
-          "why": "food tiers 1-4 in flight"
-        },
-        {
-          "stage": "vfx",
-          "name": "ThrowTrail_Hot",
-          "why": "food tiers 5-8 in flight"
-        },
-        {
-          "stage": "vfx",
-          "name": "ThrowTrail_Epic",
-          "why": "food tiers 9-12 in flight"
+          "why": "a Snack in flight (tinted to the dish)"
         },
         {
           "stage": "vfx",
           "name": "Land_Impact",
-          "why": "food hits the ground"
+          "why": "a Snack hits the ground"
+        },
+        {
+          "stage": "vfx",
+          "name": "Aroma_Meal",
+          "why": "Aroma over the resting dish (loop until picked up)."
+        },
+        {
+          "stage": "vfx",
+          "name": "Aroma_Signature",
+          "why": "Aroma over the resting dish (loop until picked up)."
+        },
+        {
+          "stage": "vfx",
+          "name": "Favourite_Burst",
+          "why": "The caught hero's favourite dish: hearts round the hero."
+        },
+        {
+          "stage": "vfx",
+          "name": "Land_Meal",
+          "why": "A Meal lands: pop, dust, a ring in the food's colour and aroma wisps."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_boar_roast_Land",
+          "why": "Giant Boar Roast lands heavy: cracked ground, rocks, a shake."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_boar_roast_Trail",
+          "why": "Giant Boar Roast: a heavy smoke trail."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_captains_curry_Land",
+          "why": "Captain's Curry lands: a black and white pressure cross and ink strokes."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_captains_curry_Trail",
+          "why": "Captain's Curry: black and white spirit pressure streaks."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_crab_hot_pot_Land",
+          "why": "Crab Hot Pot lands: one clean shockwave and a column of steam."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_crab_hot_pot_Trail",
+          "why": "Crab Hot Pot: rolling steam, bubbles and clean pressure rings."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_cream_mochi_Land",
+          "why": "Infinity Cream Mochi lands: a blue orb and a red orb fly in from the sides and burst violet."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_cream_mochi_Trail",
+          "why": "Infinity Cream Mochi: a blue orb stream and a red one meet behind the dish and turn violet."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_detective_cake_Land",
+          "why": "Detective's Cake Tower lands: sugar cubes bounce out, black feathers drift down."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_detective_cake_Trail",
+          "why": "Detective's Cake Tower: sugar cubes and black feathers."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_devil_ice_cream_Land",
+          "why": "Devil Ice Cream lands: a red chain ring snaps out on the floor in cold mist."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_devil_ice_cream_Trail",
+          "why": "Devil Ice Cream: cold mist and red chain rings."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_elixir_Land",
+          "why": "Elixir of Life lands: a violet rune circle turns on the floor in a blue glow."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_elixir_Trail",
+          "why": "Elixir of Life: violet rune circles and a blue glow."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_flame_bento_Land",
+          "why": "Flame Bento lands: fire burst, ember fountain, a scorch mark."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_flame_bento_Trail",
+          "why": "Flame Bento: a tail of flame and embers."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_floor_boss_stew_Land",
+          "why": "Floor Boss Stew lands: the floor shatters into blue polygons."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_floor_boss_stew_Trail",
+          "why": "Floor Boss Stew: the world breaks into blue polygons behind it."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_healing_pasta_Land",
+          "why": "Healing Squid Ink Pasta lands: a golden healing rise and menacing glyphs floating up."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_healing_pasta_Trail",
+          "why": "Healing Squid Ink Pasta: golden sparkle and drifting sound-effect glyphs."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_legend_ramen_Land",
+          "why": "Legendary Ramen lands: steam burst, fish-cake slices, a pink swirl."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_legend_ramen_Trail",
+          "why": "Legendary Ramen: steam spiral and spinning fish-cake swirls."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_mapo_tofu_Land",
+          "why": "Explosion Mapo Tofu lands: a small comic blast."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_mapo_tofu_Trail",
+          "why": "Explosion Mapo Tofu: little orange blasts popping along the path."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_officers_ham_Land",
+          "why": "Officer's Ham lands: two wings of green feathers open, steam, feathers drift down."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_officers_ham_Trail",
+          "why": "Officer's Ham: steam and green wing feathers swept back like a cape."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_rank_one_steak_Land",
+          "why": "Rank One Steak lands: speed-line burst and a gold number one."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_rank_one_steak_Trail",
+          "why": "Rank One Steak: blue speed lines racing past."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_saiyan_feast_Land",
+          "why": "Warrior's Feast lands: a golden aura erupts with lightning, the ground cracks."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_saiyan_feast_Trail",
+          "why": "Warrior's Feast: a golden aura flaring off the dish, lightning crackling round it."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_sheep_feast_Land",
+          "why": "Cotton Sheep Feast lands: a wool poof and clovers fluttering down."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_sheep_feast_Trail",
+          "why": "Cotton Sheep Feast: soft wool puffs and clover leaves."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_swirl_fruit_Land",
+          "why": "Swirl Fruit lands: its spiral turns behind it and on the floor, motes pulled in, a dark ring."
+        },
+        {
+          "stage": "vfx",
+          "name": "Sig_swirl_fruit_Trail",
+          "why": "Swirl Fruit: purple spirals turning in the wake."
+        },
+        {
+          "stage": "vfx",
+          "name": "ThrowTrail_Meal",
+          "why": "Meal flight: tintable streak + sparks that ride with the food."
         },
         {
           "stage": "vfx",

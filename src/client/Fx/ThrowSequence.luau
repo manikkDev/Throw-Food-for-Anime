@@ -36,19 +36,18 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
 local Config = require(ReplicatedStorage.Shared.Config.GameConfig)
-local Lookup = require(ReplicatedStorage.Shared.Core.Lookup)
 local World = require(ReplicatedStorage.Shared.Core.World)
+local FoodFx = require(script.Parent.FoodFx)
+local FoodHold = require(script.Parent.FoodHold)
 local ImportedFx = require(script.Parent.ImportedFx)
 local Motion = require(script.Parent.Motion)
 local ThrowPose = require(script.Parent.ThrowPose)
 local Vfx = require(script.Parent.Vfx)
 local Sound = require(script.Parent.Parent.Controllers.SoundController)
 local RevealUi = require(script.Parent.Parent.Ui.RevealUi)
-local FoodLook = require(script.Parent.Parent.Ui.FoodLook)
 local Theme = require(script.Parent.Parent.Ui.Theme)
 local Viewports = require(script.Parent.Parent.Ui.Viewports)
 
-local MAPS = Lookup.of(Config)
 local T = Config.Throw
 local W = Config.World
 local COUNT = Config.Server.PlotCount
@@ -68,17 +67,33 @@ local STINGS: { [string]: { role: string, speed: number? } } = {
 	Secret = { role = "reveal_mythic", speed = 0.85 },
 }
 
---- The trail effect for a food: by its role (snack, meal, signature dish).
+--- The trail effect for a food (Fx/FoodFx): a Snack's streak, a Meal's streak
+--- and sparks, a Signature dish's own effect.
 local function trailFor(foodId: string): (string, Color3?)
-	local food = MAPS.food[foodId]
-	if not food then
-		return "ThrowTrail_Basic", nil
+	return FoodFx.trail(foodId)
+end
+
+--- A food's landing: its effect (a Signature dish's own, else by role), the
+--- owner's rock-and-crack impact sized by the dish's weight, the sound of what
+--- it is made of and, for a Signature dish, its sting and accent. Returns the
+--- camera shake it earns.
+local function landFood(foodId: string, floor: Vector3, ball: BasePart): number
+	local weight = FoodFx.weight(foodId)
+	local name, tint = FoodFx.landing(foodId)
+	local played = Vfx.play(name, floor, { tint = tint, life = 5 })
+	if not played.authored and name ~= "Land_Impact" then
+		Vfx.play("Land_Impact", floor)
 	end
-	local name = if food.Role == "Signature"
-		then "ThrowTrail_Epic"
-		elseif food.Role == "Meal" then "ThrowTrail_Hot"
-		else "ThrowTrail_Basic"
-	return name, FoodLook.color(food)
+	ImportedFx.play("LandingImpact", CFrame.new(floor), { scale = 0.5 + 0.5 * weight })
+	Sound:Play("food_land", ball)
+	Sound:Play("food_impact", nil, { speed = 1.25 - 0.3 * weight })
+	for index, role in FoodFx.landSounds(foodId) do
+		-- the dish first, the sting and the accent a beat behind it so each is heard
+		task.delay((index - 1) * 0.07, function()
+			Sound:Play(role, if index == 1 then ball else nil, { cap = 1.6 })
+		end)
+	end
+	return 0.45 + 0.5 * weight
 end
 
 -- The rarities from least to most rare: the suspense escalates through them one step at a time
@@ -166,6 +181,8 @@ type Windup = {
 	hand: BasePart?,
 	--- True once the clip's "Release" marker has been reached.
 	marked: boolean,
+	--- The throw class the wind-up really plays ("pitch" when a class clip fell back to Throw).
+	class: string,
 	stop: () -> (),
 }
 
@@ -173,22 +190,37 @@ local ThrowSequence = {}
 
 ThrowSequence.trailFor = trailFor
 
--- The wind-up: the authored Throw clip when there is one (released on its
--- "Release" marker or at RELEASE_AT, whichever is first), else the
--- code-driven ThrowPose. `budget` is the most time the wind-up may take.
-local function windUp(character: Model?, budget: number): Windup
+-- The wind-up: the food's own throw (Fx/FoodFx: the overhand Throw, the two-hand
+-- ThrowHeave, the side-arm ThrowSpin), released on the clip's "Release" marker
+-- or at its release time, whichever is first. A class clip that is not in the
+-- place falls back to Throw; with no clip at all, the code-driven ThrowPose.
+-- `budget` is the most time the wind-up may take.
+local function windUp(character: Model?, budget: number, foodId: string): Windup
 	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-	local track = if humanoid then Motion.load(humanoid, "Throw") else nil
+	local clips = FoodFx.clips(foodId)
+	local clip, releaseTime = clips.throw, clips.releaseAt
+	local track = if humanoid then Motion.load(humanoid, clip) else nil
+	if not track and clip ~= "Throw" then
+		clip, releaseTime = "Throw", RELEASE_AT
+		track = if humanoid then Motion.load(humanoid, clip) else nil
+	end
 	if not track then
 		local pose = ThrowPose.start(character, budget)
-		return { releaseAt = pose.releaseAt, hand = pose.hand, marked = false, stop = pose.stop }
+		return {
+			releaseAt = pose.releaseAt,
+			hand = pose.hand,
+			marked = false,
+			class = "pitch",
+			stop = pose.stop,
+		}
 	end
 	local hand = character and character:FindFirstChild("RightHand")
-	local speed = math.clamp(RELEASE_AT / math.max(budget * 1.1, 0.05), 1, 2.5)
+	local speed = math.clamp(releaseTime / math.max(budget * 1.1, 0.05), 1, 2.5)
 	local handle: Windup = {
-		releaseAt = os.clock() + RELEASE_AT / speed,
+		releaseAt = os.clock() + releaseTime / speed,
 		hand = if hand and hand:IsA("BasePart") then hand else nil,
 		marked = false,
+		class = if clip == "Throw" then "pitch" else FoodFx.throwClass(foodId),
 		stop = function() end,
 	}
 	local marker = Motion.onMarker(track, "Release", function()
@@ -197,7 +229,7 @@ local function windUp(character: Model?, budget: number): Windup
 			handle.releaseAt = math.min(handle.releaseAt, os.clock())
 		end
 	end)
-	Motion.play(humanoid, "Throw", { fade = 0.08, speed = speed })
+	Motion.play(humanoid, clip, { fade = 0.08, speed = speed })
 	handle.stop = function()
 		if marker then
 			marker:Disconnect()
@@ -331,6 +363,7 @@ function ThrowSequence.play(deps: Deps): boolean
 	local silhouette: Model? = nil
 	local hero: Model? = nil
 	local trailFx: Vfx.Handle? = nil
+	local aromaFx: Vfx.Handle? = nil
 	local drumroll: Sound? = nil
 	local flightSound: Sound? = nil
 	local riser: Sound? = nil
@@ -421,17 +454,17 @@ function ThrowSequence.play(deps: Deps): boolean
 		-- studs in front of the root, so a camera in front had the food fill the lens
 		local sideCam =
 			CFrame.lookAt(stand + Vector3.new(-10, 2.2, 2.2), stand + Vector3.new(0, 1, 2))
-		local thrown = windUp(character, windup)
+		local thrown = windUp(character, windup, deps.foodId)
 		pose = thrown
 		local hand = thrown.hand
 		local inHand = stand + Vector3.new(1, 1.5, 1)
-		-- a bowl, a plate or a tray (template attribute Throw = "heave") stays level in the hand: it
-		-- must not tip its soup out as the arm winds up; anything else turns with the hand
-		local carried = ball:FindFirstChildWhichIsA("Model")
-		local level = carried ~= nil and carried:GetAttribute("Throw") == "heave"
+		-- the food rides the hands its own way (Fx/FoodHold): one hand for a pitch, level between
+		-- both for a heave (a bowl must not tip its soup out), flat at the hand for a spin
+		local class = thrown.class
+		local foodSize = FoodHold.sizeOf(ball)
 		local flowing = frames(thrown.releaseAt, function(now: number)
-			local held = if hand then hand.CFrame * HAND_OFFSET else CFrame.new(inHand)
-			ball.CFrame = if level then CFrame.new(held.Position) else held
+			ball.CFrame = FoodHold.cframe(character, class, foodSize)
+				or (if hand then hand.CFrame * HAND_OFFSET else CFrame.new(inHand))
 			local u = smooth((now - t0) / math.max(thrown.releaseAt - t0, 0.01))
 			camera.CFrame = sideCam * CFrame.new(0, 0, -1.5 * u)
 		end, function(): boolean
@@ -444,6 +477,10 @@ function ThrowSequence.play(deps: Deps): boolean
 		ball:SetAttribute("Tumble", true)
 		deps.released()
 		Sound:Play("throw_whoosh", nil, { pitchVary = 0.06 })
+		if class ~= "pitch" then
+			-- a heave's heavy whoosh, a spin's sharp flick, over the plain one
+			Sound:Play(FoodFx.clips(deps.foodId).sound, nil, { pitchVary = 0.05 })
+		end
 		if result.perfect then
 			Vfx.play("PerfectThrow_Flash", hand or from)
 			Sound:Play("perfect_ding")
@@ -516,12 +553,7 @@ function ThrowSequence.play(deps: Deps): boolean
 			local firstHop = T.LandPauseSeconds * 0.45
 			local secondHop = T.LandPauseSeconds * 0.3
 			local dusted = false
-			Vfx.play("Land_Impact", floor)
-			-- the owner's rock-and-crack impact under our dust ring, a deep boom, a kick of the camera
-			ImportedFx.play("LandingImpact", CFrame.new(floor))
-			Sound:Play("food_land", ball)
-			Sound:Play("food_impact")
-			shake = 0.9
+			shake = landFood(deps.foodId, floor, ball)
 			flowing = frames(revealStart, function(now: number)
 				local since = now - flightEnd
 				local lift = 0
@@ -552,6 +584,24 @@ function ThrowSequence.play(deps: Deps): boolean
 		if trailFx then
 			trailFx.stop()
 			trailFx = nil
+		end
+		-- the dish rests: its aroma rises (a Meal's lines, a Signature dish's lines and glints)
+		-- until the hero's hand closes on it
+		do
+			local aroma, aromaTint = FoodFx.aroma(deps.foodId)
+			if aroma and flowing and not deps.fast then
+				aromaFx = Vfx.play(
+					aroma,
+					target - Vector3.new(0, 0.6, 0),
+					{ loop = true, tint = aromaTint }
+				)
+			end
+		end
+		local function endAroma()
+			if aromaFx then
+				aromaFx.stop()
+				aromaFx = nil
+			end
 		end
 
 		-- SUSPENSE (not in the fast version). Owner's reviews 3 and 4: a slow villain entry, nothing
@@ -761,6 +811,7 @@ function ThrowSequence.play(deps: Deps): boolean
 					if pick then
 						local grab = Motion.onMarker(pick, "Grab", function()
 							grabbed = true
+							endAroma()
 							shrinkFood()
 							Sound:Play("hero_pickup", nil, { speed = 0.85 })
 						end)
@@ -781,6 +832,7 @@ function ThrowSequence.play(deps: Deps): boolean
 						Motion.play(shape, "HeroMenace", { fade = 0.25 })
 						task.delay(pickupTime * 0.45, function()
 							grabbed = true
+							endAroma()
 							shrinkFood()
 							lifted = true
 						end)
@@ -949,6 +1001,7 @@ function ThrowSequence.play(deps: Deps): boolean
 			RevealUi.oddsTension(0)
 		end
 
+		endAroma()
 		-- FINAL BEAT: always reached, at its time or straight from a tap
 		local skipped = not flowing
 		tapsSeen = deps.taps()
@@ -1033,6 +1086,13 @@ function ThrowSequence.play(deps: Deps): boolean
 			tint = Theme.rarity(result.rarity),
 			mult = if deps.fast then 0.5 else 1,
 		})
+		if result.flavorMatch then
+			-- its favourite dish: hearts round the hero, a beat after the rarity burst
+			task.delay(0.35, function()
+				Vfx.play("Favourite_Burst", heroSpot, { scale = scale })
+				Sound:Play("favourite_burst", nil, { cap = 1.8 })
+			end)
+		end
 		local sting = STINGS[result.rarity] or STINGS.Common
 		Sound:Play(sting.role, nil, {
 			speed = sting.speed,
@@ -1101,6 +1161,9 @@ function ThrowSequence.play(deps: Deps): boolean
 	end
 	if trailFx then
 		trailFx.stop()
+	end
+	if aromaFx then
+		aromaFx.stop()
 	end
 	if drumroll then
 		Sound:Stop(drumroll)

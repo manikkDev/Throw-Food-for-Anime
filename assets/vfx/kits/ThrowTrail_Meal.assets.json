@@ -1,0 +1,10 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_04__vt",
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/flipbooks/specks/sparks_glow_00_8x8",
+  "sim:lib/sprites/stars/star_glow_04",
+  "sim:tfa/ribbon_solid__vt"
+ ],
+ "meshes": []
+}

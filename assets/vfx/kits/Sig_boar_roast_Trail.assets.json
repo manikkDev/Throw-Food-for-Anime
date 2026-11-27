@@ -1,0 +1,11 @@
+{
+ "textures": [
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/beams/smoke_trail_soft_02__vt",
+  "sim:lib/flipbooks/smoke/smoke_puff_fb_cel_03_4x4",
+  "sim:lib/sprites/elements/rock_chunk_cel_02",
+  "sim:lib/sprites/specks/ember_glow_00",
+  "sim:tfa/ribbon_solid__vt"
+ ],
+ "meshes": []
+}

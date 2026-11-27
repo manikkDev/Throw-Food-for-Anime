@@ -1,4 +1,12 @@
 {
+ "Aroma_Meal": [
+  "OK",
+  "OK"
+ ],
+ "Aroma_Signature": [
+  "OK",
+  "OK"
+ ],
  "Aura_Flame": [
   "OK",
   "OK"
@@ -27,7 +35,15 @@
   "OK",
   "OK"
  ],
+ "Favourite_Burst": [
+  "OK",
+  "OK"
+ ],
  "Land_Impact": [
+  "OK",
+  "OK"
+ ],
+ "Land_Meal": [
   "OK",
   "OK"
  ],
@@ -79,6 +95,142 @@
   "OK",
   "OK"
  ],
+ "Sig_boar_roast_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_boar_roast_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_captains_curry_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_captains_curry_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_crab_hot_pot_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_crab_hot_pot_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_cream_mochi_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_cream_mochi_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_detective_cake_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_detective_cake_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_devil_ice_cream_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_devil_ice_cream_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_elixir_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_elixir_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_flame_bento_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_flame_bento_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_floor_boss_stew_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_floor_boss_stew_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_healing_pasta_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_healing_pasta_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_legend_ramen_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_legend_ramen_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_mapo_tofu_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_mapo_tofu_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_officers_ham_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_officers_ham_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_rank_one_steak_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_rank_one_steak_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_saiyan_feast_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_saiyan_feast_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_sheep_feast_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_sheep_feast_Trail": [
+  "OK",
+  "OK"
+ ],
+ "Sig_swirl_fruit_Land": [
+  "OK",
+  "OK"
+ ],
+ "Sig_swirl_fruit_Trail": [
+  "OK",
+  "OK"
+ ],
  "Slot_Unlock": [
   "OK",
   "OK"
@@ -91,11 +243,7 @@
   "OK",
   "OK"
  ],
- "ThrowTrail_Epic": [
-  "OK",
-  "OK"
- ],
- "ThrowTrail_Hot": [
+ "ThrowTrail_Meal": [
   "OK",
   "OK"
  ],

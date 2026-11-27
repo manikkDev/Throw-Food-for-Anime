@@ -1,6 +1,36 @@
 {
  "effects": [
   {
+   "name": "Aroma_Meal",
+   "loop": true,
+   "duration": 2.4,
+   "attach": "point",
+   "particles_peak": null,
+   "strip": null,
+   "kit": "assets/vfx/kits/Aroma_Meal.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": null,
+   "notes": "Aroma over the resting dish (loop until picked up)."
+  },
+  {
+   "name": "Aroma_Signature",
+   "loop": true,
+   "duration": 2.4,
+   "attach": "point",
+   "particles_peak": 13,
+   "strip": "assets/vfx/strips/Aroma_Signature.jpg",
+   "kit": "assets/vfx/kits/Aroma_Signature.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 2.40s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN layer count 3 visual layers (corpus p25 4); WARN peak early brightest frame at 61% of the main event (want <= 25-30%)",
+   "notes": "Aroma over the resting dish (loop until picked up)."
+  },
+  {
    "name": "Aura_Flame",
    "loop": true,
    "duration": 2.4,
@@ -106,6 +136,21 @@
    "notes": "Hero dashes home (loop until stop)."
   },
   {
+   "name": "Favourite_Burst",
+   "loop": false,
+   "duration": 1.6,
+   "attach": "point",
+   "particles_peak": 27,
+   "strip": "assets/vfx/strips/Favourite_Burst.jpg",
+   "kit": "assets/vfx/kits/Favourite_Burst.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "PASS",
+   "notes": "The caught hero's favourite dish: hearts round the hero."
+  },
+  {
    "name": "Land_Impact",
    "loop": false,
    "duration": 0.9,
@@ -119,6 +164,21 @@
    ],
    "critic": "WARN layer count 4 visual layers (corpus p25 6); WARN peak early brightest frame at 33% of the main event (want <= 25-30%)",
    "notes": "Food hits the floor."
+  },
+  {
+   "name": "Land_Meal",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 20,
+   "strip": "assets/vfx/strips/Land_Meal.jpg",
+   "kit": "assets/vfx/kits/Land_Meal.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 44% of the main event (want <= 25-30%)",
+   "notes": "A Meal lands: pop, dust, a ring in the food's colour and aroma wisps."
   },
   {
    "name": "LuckyThrow_Charge",
@@ -301,6 +361,516 @@
    "notes": "Server luck active: soft green-and-gold aurora arcs + drifting clovers over the hub (loop)."
   },
   {
+   "name": "Sig_boar_roast_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 29,
+   "strip": "assets/vfx/strips/Sig_boar_roast_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_boar_roast_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
+   "notes": "Giant Boar Roast lands heavy: cracked ground, rocks, a shake."
+  },
+  {
+   "name": "Sig_boar_roast_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 35,
+   "strip": "assets/vfx/strips/Sig_boar_roast_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_boar_roast_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 6 deg (want a complementary/cool contrast or a white accent)",
+   "notes": "Giant Boar Roast: a heavy smoke trail."
+  },
+  {
+   "name": "Sig_captains_curry_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 33,
+   "strip": "assets/vfx/strips/Sig_captains_curry_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_captains_curry_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
+   "notes": "Captain's Curry lands: a black and white pressure cross and ink strokes."
+  },
+  {
+   "name": "Sig_captains_curry_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 13,
+   "strip": "assets/vfx/strips/Sig_captains_curry_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_captains_curry_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN distinct lifetimes 2 distinct of 3 emitters (layers must die at different times); WARN accent hue distance 15 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 81% of the main event (want <= 25-30%)",
+   "notes": "Captain's Curry: black and white spirit pressure streaks."
+  },
+  {
+   "name": "Sig_crab_hot_pot_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 33,
+   "strip": "assets/vfx/strips/Sig_crab_hot_pot_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_crab_hot_pot_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 85% of the main event (want <= 25-30%)",
+   "notes": "Crab Hot Pot lands: one clean shockwave and a column of steam."
+  },
+  {
+   "name": "Sig_crab_hot_pot_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 29,
+   "strip": "assets/vfx/strips/Sig_crab_hot_pot_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_crab_hot_pot_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN distinct lifetimes 2 distinct of 3 emitters (layers must die at different times); WARN accent hue distance 1 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 100% of the main event (want <= 25-30%)",
+   "notes": "Crab Hot Pot: rolling steam, bubbles and clean pressure rings."
+  },
+  {
+   "name": "Sig_cream_mochi_Land",
+   "loop": false,
+   "duration": 1.6,
+   "attach": "point",
+   "particles_peak": 35,
+   "strip": "assets/vfx/strips/Sig_cream_mochi_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_cream_mochi_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 37% of the main event (want <= 25-30%)",
+   "notes": "Infinity Cream Mochi lands: a blue orb and a red orb fly in from the sides and burst violet."
+  },
+  {
+   "name": "Sig_cream_mochi_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 33,
+   "strip": "assets/vfx/strips/Sig_cream_mochi_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_cream_mochi_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 6 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 94% of the main event (want <= 25-30%)",
+   "notes": "Infinity Cream Mochi: a blue orb stream and a red one meet behind the dish and turn violet."
+  },
+  {
+   "name": "Sig_detective_cake_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 32,
+   "strip": "assets/vfx/strips/Sig_detective_cake_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_detective_cake_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
+   "notes": "Detective's Cake Tower lands: sugar cubes bounce out, black feathers drift down."
+  },
+  {
+   "name": "Sig_detective_cake_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 33,
+   "strip": "assets/vfx/strips/Sig_detective_cake_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_detective_cake_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0])",
+   "notes": "Detective's Cake Tower: sugar cubes and black feathers."
+  },
+  {
+   "name": "Sig_devil_ice_cream_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 26,
+   "strip": "assets/vfx/strips/Sig_devil_ice_cream_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_devil_ice_cream_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 48% of the main event (want <= 25-30%)",
+   "notes": "Devil Ice Cream lands: a red chain ring snaps out on the floor in cold mist."
+  },
+  {
+   "name": "Sig_devil_ice_cream_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 36,
+   "strip": "assets/vfx/strips/Sig_devil_ice_cream_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_devil_ice_cream_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 2 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 85% of the main event (want <= 25-30%)",
+   "notes": "Devil Ice Cream: cold mist and red chain rings."
+  },
+  {
+   "name": "Sig_elixir_Land",
+   "loop": false,
+   "duration": 1.8,
+   "attach": "point",
+   "particles_peak": 28,
+   "strip": "assets/vfx/strips/Sig_elixir_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_elixir_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
+   "notes": "Elixir of Life lands: a violet rune circle turns on the floor in a blue glow."
+  },
+  {
+   "name": "Sig_elixir_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 26,
+   "strip": "assets/vfx/strips/Sig_elixir_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_elixir_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 2 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 100% of the main event (want <= 25-30%)",
+   "notes": "Elixir of Life: violet rune circles and a blue glow."
+  },
+  {
+   "name": "Sig_flame_bento_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 36,
+   "strip": "assets/vfx/strips/Sig_flame_bento_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_flame_bento_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 52% of the main event (want <= 25-30%)",
+   "notes": "Flame Bento lands: fire burst, ember fountain, a scorch mark."
+  },
+  {
+   "name": "Sig_flame_bento_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 49,
+   "strip": "assets/vfx/strips/Sig_flame_bento_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_flame_bento_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 16 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 85% of the main event (want <= 25-30%)",
+   "notes": "Flame Bento: a tail of flame and embers."
+  },
+  {
+   "name": "Sig_floor_boss_stew_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 31,
+   "strip": "assets/vfx/strips/Sig_floor_boss_stew_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_floor_boss_stew_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
+   "notes": "Floor Boss Stew lands: the floor shatters into blue polygons."
+  },
+  {
+   "name": "Sig_floor_boss_stew_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 27,
+   "strip": "assets/vfx/strips/Sig_floor_boss_stew_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_floor_boss_stew_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 25 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 93% of the main event (want <= 25-30%)",
+   "notes": "Floor Boss Stew: the world breaks into blue polygons behind it."
+  },
+  {
+   "name": "Sig_healing_pasta_Land",
+   "loop": false,
+   "duration": 1.8,
+   "attach": "point",
+   "particles_peak": 23,
+   "strip": "assets/vfx/strips/Sig_healing_pasta_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_healing_pasta_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
+   "notes": "Healing Squid Ink Pasta lands: a golden healing rise and menacing glyphs floating up."
+  },
+  {
+   "name": "Sig_healing_pasta_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 20,
+   "strip": "assets/vfx/strips/Sig_healing_pasta_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_healing_pasta_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 9 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 48% of the main event (want <= 25-30%)",
+   "notes": "Healing Squid Ink Pasta: golden sparkle and drifting sound-effect glyphs."
+  },
+  {
+   "name": "Sig_legend_ramen_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 22,
+   "strip": "assets/vfx/strips/Sig_legend_ramen_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_legend_ramen_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 56% of the main event (want <= 25-30%)",
+   "notes": "Legendary Ramen lands: steam burst, fish-cake slices, a pink swirl."
+  },
+  {
+   "name": "Sig_legend_ramen_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 24,
+   "strip": "assets/vfx/strips/Sig_legend_ramen_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_legend_ramen_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 2 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 87% of the main event (want <= 25-30%)",
+   "notes": "Legendary Ramen: steam spiral and spinning fish-cake swirls."
+  },
+  {
+   "name": "Sig_mapo_tofu_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 29,
+   "strip": "assets/vfx/strips/Sig_mapo_tofu_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_mapo_tofu_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 37% of the main event (want <= 25-30%)",
+   "notes": "Explosion Mapo Tofu lands: a small comic blast."
+  },
+  {
+   "name": "Sig_mapo_tofu_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 29,
+   "strip": "assets/vfx/strips/Sig_mapo_tofu_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_mapo_tofu_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 4 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 91% of the main event (want <= 25-30%)",
+   "notes": "Explosion Mapo Tofu: little orange blasts popping along the path."
+  },
+  {
+   "name": "Sig_officers_ham_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 33,
+   "strip": "assets/vfx/strips/Sig_officers_ham_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_officers_ham_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
+   "notes": "Officer's Ham lands: two wings of green feathers open, steam, feathers drift down."
+  },
+  {
+   "name": "Sig_officers_ham_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 32,
+   "strip": "assets/vfx/strips/Sig_officers_ham_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_officers_ham_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 2 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 43% of the main event (want <= 25-30%)",
+   "notes": "Officer's Ham: steam and green wing feathers swept back like a cape."
+  },
+  {
+   "name": "Sig_rank_one_steak_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 33,
+   "strip": "assets/vfx/strips/Sig_rank_one_steak_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_rank_one_steak_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 37% of the main event (want <= 25-30%)",
+   "notes": "Rank One Steak lands: speed-line burst and a gold number one."
+  },
+  {
+   "name": "Sig_rank_one_steak_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 31,
+   "strip": "assets/vfx/strips/Sig_rank_one_steak_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_rank_one_steak_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 12 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 74% of the main event (want <= 25-30%)",
+   "notes": "Rank One Steak: blue speed lines racing past."
+  },
+  {
+   "name": "Sig_saiyan_feast_Land",
+   "loop": false,
+   "duration": 1.7,
+   "attach": "point",
+   "particles_peak": 70,
+   "strip": "assets/vfx/strips/Sig_saiyan_feast_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_saiyan_feast_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 48% of the main event (want <= 25-30%)",
+   "notes": "Warrior's Feast lands: a golden aura erupts with lightning, the ground cracks."
+  },
+  {
+   "name": "Sig_saiyan_feast_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 40,
+   "strip": "assets/vfx/strips/Sig_saiyan_feast_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_saiyan_feast_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 10 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 91% of the main event (want <= 25-30%)",
+   "notes": "Warrior's Feast: a golden aura flaring off the dish, lightning crackling round it."
+  },
+  {
+   "name": "Sig_sheep_feast_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 35,
+   "strip": "assets/vfx/strips/Sig_sheep_feast_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_sheep_feast_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s; WARN peak early brightest frame at 89% of the main event (want <= 25-30%)",
+   "notes": "Cotton Sheep Feast lands: a wool poof and clovers fluttering down."
+  },
+  {
+   "name": "Sig_sheep_feast_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 23,
+   "strip": "assets/vfx/strips/Sig_sheep_feast_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_sheep_feast_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 14 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 91% of the main event (want <= 25-30%)",
+   "notes": "Cotton Sheep Feast: soft wool puffs and clover leaves."
+  },
+  {
+   "name": "Sig_swirl_fruit_Land",
+   "loop": false,
+   "duration": 1.5,
+   "attach": "point",
+   "particles_peak": 37,
+   "strip": "assets/vfx/strips/Sig_swirl_fruit_Land.jpg",
+   "kit": "assets/vfx/kits/Sig_swirl_fruit_Land.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN tier budget anticipation+main 0.45s vs skill 0.8-2.0s",
+   "notes": "Swirl Fruit lands: its spiral turns behind it and on the floor, motes pulled in, a dark ring."
+  },
+  {
+   "name": "Sig_swirl_fruit_Trail",
+   "loop": true,
+   "duration": 1.1,
+   "attach": "part",
+   "particles_peak": 23,
+   "strip": "assets/vfx/strips/Sig_swirl_fruit_Trail.jpg",
+   "kit": "assets/vfx/kits/Sig_swirl_fruit_Trail.luau",
+   "kit_checks": [
+    "OK",
+    "OK"
+   ],
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 1 deg (want a complementary/cool contrast or a white accent)",
+   "notes": "Swirl Fruit: purple spirals turning in the wake."
+  },
+  {
    "name": "Slot_Unlock",
    "loop": false,
    "duration": 1.5,
@@ -346,34 +916,19 @@
    "notes": "Food trail (Basic) v2: 3-stud core + dark edge copy + crumbs; runs until stop."
   },
   {
-   "name": "ThrowTrail_Epic",
+   "name": "ThrowTrail_Meal",
    "loop": true,
    "duration": 1.1,
    "attach": "part",
-   "particles_peak": 32,
-   "strip": "assets/vfx/strips/ThrowTrail_Epic.jpg",
-   "kit": "assets/vfx/kits/ThrowTrail_Epic.luau",
+   "particles_peak": 27,
+   "strip": "assets/vfx/strips/ThrowTrail_Meal.jpg",
+   "kit": "assets/vfx/kits/ThrowTrail_Meal.luau",
    "kit_checks": [
     "OK",
     "OK"
    ],
-   "critic": "WARN accent hue distance 4 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 93% of the main event (want <= 25-30%)",
-   "notes": "Food trail (Epic) v2: 3-stud core + dark edge copy + crumbs; runs until stop."
-  },
-  {
-   "name": "ThrowTrail_Hot",
-   "loop": true,
-   "duration": 1.1,
-   "attach": "part",
-   "particles_peak": 48,
-   "strip": "assets/vfx/strips/ThrowTrail_Hot.jpg",
-   "kit": "assets/vfx/kits/ThrowTrail_Hot.luau",
-   "kit_checks": [
-    "OK",
-    "OK"
-   ],
-   "critic": "WARN accent hue distance 19 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 96% of the main event (want <= 25-30%)",
-   "notes": "Food trail (Hot) v2: 3-stud core + dark edge copy + crumbs; runs until stop."
+   "critic": "WARN residue:main 0.22 (corpus 4.8 [3.6..6.0]); WARN accent hue distance 13 deg (want a complementary/cool contrast or a white accent); WARN peak early brightest frame at 98% of the main event (want <= 25-30%)",
+   "notes": "Meal flight: tintable streak + sparks that ride with the food."
   },
   {
    "name": "Train_Hit",

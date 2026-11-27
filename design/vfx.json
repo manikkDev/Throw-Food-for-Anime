@@ -81,26 +81,248 @@
   {
    "name": "ThrowTrail_Basic",
    "from": "authored in the sim: Trail + ribbon particles on the food",
-   "why": "food tiers 1-4 in flight",
-   "loop": false
-  },
-  {
-   "name": "ThrowTrail_Hot",
-   "from": "authored in the sim: Trail + ribbon particles on the food",
-   "why": "food tiers 5-8 in flight",
-   "loop": false
-  },
-  {
-   "name": "ThrowTrail_Epic",
-   "from": "authored in the sim: Trail + ribbon particles on the food",
-   "why": "food tiers 9-12 in flight",
+   "why": "a Snack in flight (tinted to the dish)",
    "loop": false
   },
   {
    "name": "Land_Impact",
    "from": "authored in the roblox-vfx sim; harvest from a free Creator Store pack first if the user's library has a close match",
-   "why": "food hits the ground",
+   "why": "a Snack hits the ground",
    "loop": false
+  },
+  {
+   "name": "Aroma_Meal",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Aroma over the resting dish (loop until picked up).",
+   "loop": true
+  },
+  {
+   "name": "Aroma_Signature",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Aroma over the resting dish (loop until picked up).",
+   "loop": true
+  },
+  {
+   "name": "Favourite_Burst",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "The caught hero's favourite dish: hearts round the hero.",
+   "loop": false
+  },
+  {
+   "name": "Land_Meal",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "A Meal lands: pop, dust, a ring in the food's colour and aroma wisps.",
+   "loop": false
+  },
+  {
+   "name": "Sig_boar_roast_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Giant Boar Roast lands heavy: cracked ground, rocks, a shake.",
+   "loop": false
+  },
+  {
+   "name": "Sig_boar_roast_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Giant Boar Roast: a heavy smoke trail.",
+   "loop": true
+  },
+  {
+   "name": "Sig_captains_curry_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Captain's Curry lands: a black and white pressure cross and ink strokes.",
+   "loop": false
+  },
+  {
+   "name": "Sig_captains_curry_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Captain's Curry: black and white spirit pressure streaks.",
+   "loop": true
+  },
+  {
+   "name": "Sig_crab_hot_pot_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Crab Hot Pot lands: one clean shockwave and a column of steam.",
+   "loop": false
+  },
+  {
+   "name": "Sig_crab_hot_pot_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Crab Hot Pot: rolling steam, bubbles and clean pressure rings.",
+   "loop": true
+  },
+  {
+   "name": "Sig_cream_mochi_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Infinity Cream Mochi lands: a blue orb and a red orb fly in from the sides and burst violet.",
+   "loop": false
+  },
+  {
+   "name": "Sig_cream_mochi_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Infinity Cream Mochi: a blue orb stream and a red one meet behind the dish and turn violet.",
+   "loop": true
+  },
+  {
+   "name": "Sig_detective_cake_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Detective's Cake Tower lands: sugar cubes bounce out, black feathers drift down.",
+   "loop": false
+  },
+  {
+   "name": "Sig_detective_cake_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Detective's Cake Tower: sugar cubes and black feathers.",
+   "loop": true
+  },
+  {
+   "name": "Sig_devil_ice_cream_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Devil Ice Cream lands: a red chain ring snaps out on the floor in cold mist.",
+   "loop": false
+  },
+  {
+   "name": "Sig_devil_ice_cream_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Devil Ice Cream: cold mist and red chain rings.",
+   "loop": true
+  },
+  {
+   "name": "Sig_elixir_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Elixir of Life lands: a violet rune circle turns on the floor in a blue glow.",
+   "loop": false
+  },
+  {
+   "name": "Sig_elixir_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Elixir of Life: violet rune circles and a blue glow.",
+   "loop": true
+  },
+  {
+   "name": "Sig_flame_bento_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Flame Bento lands: fire burst, ember fountain, a scorch mark.",
+   "loop": false
+  },
+  {
+   "name": "Sig_flame_bento_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Flame Bento: a tail of flame and embers.",
+   "loop": true
+  },
+  {
+   "name": "Sig_floor_boss_stew_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Floor Boss Stew lands: the floor shatters into blue polygons.",
+   "loop": false
+  },
+  {
+   "name": "Sig_floor_boss_stew_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Floor Boss Stew: the world breaks into blue polygons behind it.",
+   "loop": true
+  },
+  {
+   "name": "Sig_healing_pasta_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Healing Squid Ink Pasta lands: a golden healing rise and menacing glyphs floating up.",
+   "loop": false
+  },
+  {
+   "name": "Sig_healing_pasta_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Healing Squid Ink Pasta: golden sparkle and drifting sound-effect glyphs.",
+   "loop": true
+  },
+  {
+   "name": "Sig_legend_ramen_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Legendary Ramen lands: steam burst, fish-cake slices, a pink swirl.",
+   "loop": false
+  },
+  {
+   "name": "Sig_legend_ramen_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Legendary Ramen: steam spiral and spinning fish-cake swirls.",
+   "loop": true
+  },
+  {
+   "name": "Sig_mapo_tofu_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Explosion Mapo Tofu lands: a small comic blast.",
+   "loop": false
+  },
+  {
+   "name": "Sig_mapo_tofu_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Explosion Mapo Tofu: little orange blasts popping along the path.",
+   "loop": true
+  },
+  {
+   "name": "Sig_officers_ham_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Officer's Ham lands: two wings of green feathers open, steam, feathers drift down.",
+   "loop": false
+  },
+  {
+   "name": "Sig_officers_ham_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Officer's Ham: steam and green wing feathers swept back like a cape.",
+   "loop": true
+  },
+  {
+   "name": "Sig_rank_one_steak_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Rank One Steak lands: speed-line burst and a gold number one.",
+   "loop": false
+  },
+  {
+   "name": "Sig_rank_one_steak_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Rank One Steak: blue speed lines racing past.",
+   "loop": true
+  },
+  {
+   "name": "Sig_saiyan_feast_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Warrior's Feast lands: a golden aura erupts with lightning, the ground cracks.",
+   "loop": false
+  },
+  {
+   "name": "Sig_saiyan_feast_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Warrior's Feast: a golden aura flaring off the dish, lightning crackling round it.",
+   "loop": true
+  },
+  {
+   "name": "Sig_sheep_feast_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Cotton Sheep Feast lands: a wool poof and clovers fluttering down.",
+   "loop": false
+  },
+  {
+   "name": "Sig_sheep_feast_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Cotton Sheep Feast: soft wool puffs and clover leaves.",
+   "loop": true
+  },
+  {
+   "name": "Sig_swirl_fruit_Land",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Swirl Fruit lands: its spiral turns behind it and on the floor, motes pulled in, a dark ring.",
+   "loop": false
+  },
+  {
+   "name": "Sig_swirl_fruit_Trail",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Swirl Fruit: purple spirals turning in the wake.",
+   "loop": true
+  },
+  {
+   "name": "ThrowTrail_Meal",
+   "from": "authored in the sim (assets/vfx/builders/build_food.py), judged in the game with tools/studio/foods/fx_judge.luau",
+   "why": "Meal flight: tintable streak + sparks that ride with the food.",
+   "loop": true
   },
   {
    "name": "PerfectThrow_Flash",

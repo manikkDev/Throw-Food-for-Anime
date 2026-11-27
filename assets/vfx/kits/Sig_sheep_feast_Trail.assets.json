@@ -1,0 +1,10 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_soft_03__vt",
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/sprites/smoke/cloud_cel_01",
+  "sim:tfa/clover_cel",
+  "sim:tfa/ribbon_solid__vt"
+ ],
+ "meshes": []
+}

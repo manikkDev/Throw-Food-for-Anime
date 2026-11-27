@@ -188,8 +188,8 @@ def lucky_charge():
 
 if __name__ == "__main__":
     trail_fx("ThrowTrail_Basic", "Basic")
-    trail_fx("ThrowTrail_Hot", "Hot")
-    trail_fx("ThrowTrail_Epic", "Epic")
+    # ThrowTrail_Hot and ThrowTrail_Epic are retired (plan 13 phase C): a Meal flies ThrowTrail_Meal and
+    # every Signature dish its own effect (build_food.py)
     land_impact()
     perfect_flash()
     lucky_charge()

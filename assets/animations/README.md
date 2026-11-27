@@ -69,6 +69,11 @@ KeyframeSequences with the skill's `scripts/upload_animation.py`.
 | CarriedRide | carried hero | Action | yes | 1.6 | - | **r6** seated on the carrier's shoulder, left hand on its head, right arm waving, hip bounce; start together with CarryShoulder |
 | PlaceHero (v2) | player | Action | no | 1.3 | Hop 0.2, Grab 0.4333, Place 0.8 | **r6**, replaces r3's: hero hops off the shoulder, caught under the arms, set on the pedestal; hero path `work/anim/upload6/placehero_path.json` |
 | HeroPickUp | hero | Action | no | 2.5 | Grab 1.2667, Lift 2.0333, Hold 2.2333 | **r5, NOT YET UPLOADED** (`clips_r5.py`, hand-off `work/anim/upload5`). From the stalk's right Step: plant, rear foot steps back, hip-hinge bend, right fist onto the top of the food (2.71 ahead, 1.01 right), slow rise, food held out at shoulder height to his right, head turned to it; held. Root 0.5 studs Quad Out over 0.6667 s. Food weld `CFrame.new(0, -(0.15 + r), 0)` on RightHand from Grab |
+| HoldPitch | player | Action | yes | 2.0 | - | **r7** (`clips_r7.py`, plan 13 phase C, uploaded). On the throw spot with a one-hand food: the food on the upturned right hand beside the head (read from the aiming camera BEHIND the player) |
+| HoldHeave | player | Action | yes | 2.0 | - | **r7** a bowl, plate or feast carried overhead in both hands, level |
+| ThrowHeave | player | Action | no | 1.5 | Release 0.7667 | **r7** from HoldHeave: arch back, overhead throw-in with both arms, settle; the bowl level until Release |
+| HoldSpin | player | Action | yes | 2.0 | - | **r7** a flat or stick food held flat out to the right at shoulder height, arm cocked |
+| ThrowSpin | player | Action | no | 1.5 | Release 0.7 | **r7** from HoldSpin: coil, stride, side-arm sling across the body |
 
 ## Contact and props (rev 2) - what the main thread places
 

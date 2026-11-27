@@ -1,0 +1,1092 @@
+{
+ "name": "Sig_cream_mochi_Trail",
+ "note": "Infinity Cream Mochi: a blue orb stream and a red one meet behind the dish and turn violet.",
+ "duration": 1.1,
+ "camera": {
+  "pos": [
+   0,
+   12,
+   15
+  ],
+  "at": [
+   0,
+   4,
+   -12
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "stripFloors": [
+  "#F4EBD0"
+ ],
+ "stripGrounds": [
+  "light"
+ ],
+ "game": {
+  "loop": true,
+  "attach": "part",
+  "screen": false,
+  "origin": [
+   0,
+   5,
+   0
+  ]
+ },
+ "brief": {
+  "category": "projectile",
+  "tier": "basic",
+  "style": "stylised_game",
+  "shape": "comet with a wake that rides along",
+  "dominant": "#9B5CFF",
+  "accent": "#2A0F6B",
+  "signature_beats": [
+   "blue and red converge into violet"
+  ],
+  "phases": [
+   {
+    "name": "sustain",
+    "t0": 0,
+    "t1": 0.9
+   },
+   {
+    "name": "residue",
+    "t0": 0.9,
+    "t1": 1.1
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Food",
+   "CFrame": [
+    0,
+    5,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    2,
+    2,
+    2
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "T0",
+     "CFrame": [
+      0,
+      1.2,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "T1",
+     "CFrame": [
+      0,
+      -1.2,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "E0",
+     "CFrame": [
+      0,
+      1.56,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "E1",
+     "CFrame": [
+      0,
+      -1.56,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "G0",
+     "CFrame": [
+      0,
+      0.96,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "G1",
+     "CFrame": [
+      0,
+      -0.96,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "S0",
+     "CFrame": [
+      0,
+      0.35,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "S1",
+     "CFrame": [
+      0,
+      -0.35,
+      0
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      -0.3,
+      2.2
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Violet",
+       "props": {
+        "Rate": 5.12,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_glow_02",
+        "LockedToPart": true,
+        "EmissionDirection": {
+         "Enum": "NormalId.Back"
+        },
+        "Speed": {
+         "NumberRange": [
+          13.5,
+          14.850000000000001
+         ]
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          0,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.34,
+          0.38
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.5625
+          ],
+          [
+           1,
+           4.6875
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.9176,
+            0.8745,
+            1.0
+           ]
+          ],
+          [
+           1,
+           [
+            0.6078,
+            0.3608,
+            1.0
+           ]
+          ]
+         ]
+        },
+        "ZOffset": 1.5,
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.1
+          ],
+          [
+           0.6,
+           0.4
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "LightEmission": 0.45,
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "class": "Attachment",
+     "name": "B",
+     "CFrame": [
+      0,
+      -0.4,
+      3.6
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "Blue",
+     "CFrame": [
+      -2.5,
+      0,
+      0,
+      0,
+      28,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Orb",
+       "props": {
+        "Rate": 13,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/shapes/orb_glow_00",
+        "LockedToPart": true,
+        "EmissionDirection": {
+         "Enum": "NormalId.Back"
+        },
+        "Speed": {
+         "NumberRange": [
+          11,
+          12
+         ]
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          0,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.36,
+          0.4
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.45
+          ],
+          [
+           0.7,
+           1.15
+          ],
+          [
+           1,
+           0.45
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.1843,
+            0.4824,
+            1.0
+           ]
+          ],
+          [
+           0.6,
+           [
+            0.1843,
+            0.4824,
+            1.0
+           ]
+          ],
+          [
+           1,
+           [
+            0.6078,
+            0.3608,
+            1.0
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.2,
+        "ZOffset": 2
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Tail",
+       "props": {
+        "Rate": 26,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/specks/dot_glow_00",
+        "LockedToPart": true,
+        "EmissionDirection": {
+         "Enum": "NormalId.Back"
+        },
+        "Speed": {
+         "NumberRange": [
+          8,
+          12
+         ]
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          8,
+          8
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.25,
+          0.4
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.4
+          ],
+          [
+           1,
+           0.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            0.1843,
+            0.4824,
+            1.0
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.6
+       }
+      }
+     ]
+    },
+    {
+     "class": "Attachment",
+     "name": "Red",
+     "CFrame": [
+      2.5,
+      0,
+      0,
+      0,
+      -28,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Orb",
+       "props": {
+        "Rate": 13,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/shapes/orb_glow_00",
+        "LockedToPart": true,
+        "EmissionDirection": {
+         "Enum": "NormalId.Back"
+        },
+        "Speed": {
+         "NumberRange": [
+          11,
+          12
+         ]
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          0,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.36,
+          0.4
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.45
+          ],
+          [
+           0.7,
+           1.15
+          ],
+          [
+           1,
+           0.45
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1.0,
+            0.2314,
+            0.3059
+           ]
+          ],
+          [
+           0.6,
+           [
+            1.0,
+            0.2314,
+            0.3059
+           ]
+          ],
+          [
+           1,
+           [
+            0.6078,
+            0.3608,
+            1.0
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.2,
+        "ZOffset": 2
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Tail",
+       "props": {
+        "Rate": 26,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/specks/dot_glow_00",
+        "LockedToPart": true,
+        "EmissionDirection": {
+         "Enum": "NormalId.Back"
+        },
+        "Speed": {
+         "NumberRange": [
+          8,
+          12
+         ]
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          8,
+          8
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.25,
+          0.4
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.4
+          ],
+          [
+           1,
+           0.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1.0,
+            0.2314,
+            0.3059
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.6
+       }
+      }
+     ]
+    },
+    {
+     "class": "Attachment",
+     "name": "MergeAt",
+     "CFrame": [
+      0,
+      0,
+      4.6,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Merge",
+       "props": {
+        "Rate": 6,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/shapes/orb_glow_02",
+        "LockedToPart": true,
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.3,
+          0.3
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.6
+          ],
+          [
+           0.5,
+           1.5
+          ],
+          [
+           1,
+           2.1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.7882,
+            0.651,
+            1.0
+           ]
+          ],
+          [
+           0.3,
+           [
+            0.6078,
+            0.3608,
+            1.0
+           ]
+          ],
+          [
+           1,
+           [
+            0.1647,
+            0.0588,
+            0.4196
+           ]
+          ]
+         ]
+        },
+        "ZOffset": 0.2,
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0.15
+          ],
+          [
+           0.6,
+           0.35
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "LightEmission": 0.25
+       }
+      }
+     ]
+    },
+    {
+     "class": "Trail",
+     "name": "Edge",
+     "props": {
+      "Attachment0": {
+       "Ref": "Food.E0"
+      },
+      "Attachment1": {
+       "Ref": "Food.E1"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:tfa/ribbon_solid",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.22,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         0.5,
+         0.55
+        ],
+        [
+         1,
+         0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.2755,
+          0.1343,
+          0.5647
+         ]
+        ],
+        [
+         1,
+         [
+          0.1647,
+          0.0588,
+          0.4196
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.2
+        ],
+        [
+         0.6,
+         0.30000000000000004
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0
+     }
+    },
+    {
+     "class": "Trail",
+     "name": "Ribbon",
+     "props": {
+      "Attachment0": {
+       "Ref": "Food.T0"
+      },
+      "Attachment1": {
+       "Ref": "Food.T1"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:tfa/ribbon_solid",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.2,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         0.5,
+         0.5
+        ],
+        [
+         1,
+         0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.9176,
+          0.8745,
+          1.0
+         ]
+        ],
+        [
+         0.2,
+         [
+          0.6078,
+          0.3608,
+          1.0
+         ]
+        ],
+        [
+         1,
+         [
+          0.4749,
+          0.2702,
+          0.8259
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.2
+        ],
+        [
+         0.6,
+         0.30000000000000004
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0.1
+     }
+    },
+    {
+     "class": "Trail",
+     "name": "Glow",
+     "props": {
+      "Attachment0": {
+       "Ref": "Food.G0"
+      },
+      "Attachment1": {
+       "Ref": "Food.G1"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/beams/energy_glow_04",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.24000000000000002,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         1,
+         0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.9176,
+          0.8745,
+          1.0
+         ]
+        ],
+        [
+         1,
+         [
+          0.6078,
+          0.3608,
+          1.0
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.6,
+         0.2
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0.35
+     }
+    },
+    {
+     "class": "Trail",
+     "name": "Line",
+     "props": {
+      "Attachment0": {
+       "Ref": "Food.S0"
+      },
+      "Attachment1": {
+       "Ref": "Food.S1"
+      },
+      "FaceCamera": true,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/beams/laser_glow_04",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Lifetime": 0.16,
+      "MinLength": 0.05,
+      "WidthScale": {
+       "NumberSequence": [
+        [
+         0,
+         1
+        ],
+        [
+         1,
+         0
+        ]
+       ]
+      },
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.9176,
+          0.8745,
+          1.0
+         ]
+        ],
+        [
+         1,
+         [
+          0.9176,
+          0.8745,
+          1.0
+         ]
+        ]
+       ]
+      },
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "LightEmission": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "SimFood",
+   "CFrame": [
+    0,
+    5.0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3.6,
+    2.6,
+    3.6
+   ],
+   "Shape": "Ball",
+   "Transparency": 0,
+   "Color": {
+    "Color3": [
+     0.7058,
+     0.5206,
+     1.0
+    ]
+   },
+   "props": {
+    "Color": {
+     "Color3": [
+      0.7058,
+      0.5206,
+      1.0
+     ]
+    }
+   },
+   "children": [],
+   "sim": true
+  }
+ ],
+ "timeline": [
+  {
+   "do": "path",
+   "target": "Food",
+   "points": [
+    [
+     0,
+     5,
+     0
+    ],
+    [
+     0,
+     5,
+     -75
+    ],
+    [
+     0,
+     5,
+     -150
+    ]
+   ],
+   "time": 0.9,
+   "style": "Linear",
+   "sim": true,
+   "t": 0.0
+  },
+  {
+   "do": "path",
+   "target": "SimFood",
+   "points": [
+    [
+     0,
+     5,
+     0
+    ],
+    [
+     0,
+     5,
+     -75
+    ],
+    [
+     0,
+     5,
+     -150
+    ]
+   ],
+   "time": 0.9,
+   "style": "Linear",
+   "sim": true,
+   "t": 0.0
+  },
+  {
+   "do": "camera",
+   "pos": [
+    0,
+    12,
+    15
+   ],
+   "at": [
+    0,
+    4,
+    -12
+   ],
+   "sim": true,
+   "t": 0.0
+  },
+  {
+   "do": "camera",
+   "pos": [
+    0,
+    12,
+    -135
+   ],
+   "at": [
+    0,
+    4,
+    -162
+   ],
+   "time": 0.9,
+   "style": "Linear",
+   "sim": true,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.25,
+  0.45,
+  0.65,
+  0.85
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

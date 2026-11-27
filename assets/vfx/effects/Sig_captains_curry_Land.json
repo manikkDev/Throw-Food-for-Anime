@@ -1,0 +1,1288 @@
+{
+ "name": "Sig_captains_curry_Land",
+ "note": "Captain's Curry lands: a black and white pressure cross and ink strokes.",
+ "duration": 1.5,
+ "camera": {
+  "pos": [
+   5,
+   4.5,
+   17
+  ],
+  "at": [
+   0,
+   4.5,
+   0
+  ]
+ },
+ "stage": {
+  "ground": "light",
+  "dummy": false
+ },
+ "stripFloors": [
+  "#F4EBD0"
+ ],
+ "game": {
+  "loop": false,
+  "attach": "point",
+  "screen": true
+ },
+ "brief": {
+  "category": "impact",
+  "tier": "skill",
+  "style": "stylised_game",
+  "shape": "burst + pillar in the dish's colour",
+  "dominant": "#F4F6FA",
+  "accent": "#FFFFFF",
+  "signature_beats": [
+   "black cross, white cross"
+  ],
+  "phases": [
+   {
+    "name": "release",
+    "t0": 0,
+    "t1": 0.016666666666666666
+   },
+   {
+    "name": "sustain",
+    "t0": 0.016666666666666666,
+    "t1": 0.45
+   },
+   {
+    "name": "residue",
+    "t0": 0.45,
+    "t1": 1.5
+   }
+  ]
+ },
+ "instances": [
+  {
+   "class": "Part",
+   "name": "Hit",
+   "CFrame": [
+    0,
+    0.9,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Pop",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/slashes/slash_cross_ink_01",
+        "Lifetime": {
+         "NumberRange": [
+          0.22,
+          0.22
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           4.125
+          ],
+          [
+           1,
+           5.5
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ],
+          [
+           1,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "ZOffset": 1
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "WhiteX",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/slashes/slash_cross_cel_01",
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.2,
+          0.2
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          40,
+          50
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           3.5
+          ],
+          [
+           1,
+           5.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.6,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.6,
+        "ZOffset": 1.6
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Ink",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/flipbooks/ink/ink_splash_ink_00_4x4",
+        "FlipbookLayout": {
+         "Enum": "ParticleFlipbookLayout.Grid4x4"
+        },
+        "FlipbookMode": {
+         "Enum": "ParticleFlipbookMode.OneShot"
+        },
+        "FlipbookBlendFrames": false,
+        "FlipbookFramerate": {
+         "NumberRange": [
+          29.09090909090909,
+          29.09090909090909
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          0,
+          0
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.55,
+          0.55
+         ]
+        },
+        "Rotation": {
+         "NumberRange": [
+          0,
+          360
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           3.0
+          ],
+          [
+           0.3,
+           5.5
+          ],
+          [
+           1,
+           6.0
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ],
+          [
+           1,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "ZOffset": 0.6
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Strokes",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/slashes/slash_ink_02",
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          80,
+          80
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          26,
+          40
+         ]
+        },
+        "Drag": 3.5,
+        "Lifetime": {
+         "NumberRange": [
+          0.3,
+          0.42
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.25
+          ],
+          [
+           1,
+           0.75
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ],
+          [
+           1,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityParallel"
+        }
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Light",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/slashes/slash_cel_01",
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          80,
+          80
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          26,
+          40
+         ]
+        },
+        "Drag": 3.5,
+        "Lifetime": {
+         "NumberRange": [
+          0.3,
+          0.42
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.0
+          ],
+          [
+           1,
+           0.6
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 0.2,
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityParallel"
+        }
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Wisps",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/specks/wisp_ink_01",
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "SpreadAngle": {
+         "Vector2": [
+          30,
+          30
+         ]
+        },
+        "Speed": {
+         "NumberRange": [
+          4,
+          8
+         ]
+        },
+        "Drag": 1.2,
+        "Lifetime": {
+         "NumberRange": [
+          0.7,
+          1.0
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           0.75
+          ],
+          [
+           1,
+           1.75
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ],
+          [
+           1,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           1
+          ],
+          [
+           0.15,
+           0.2
+          ],
+          [
+           0.7,
+           0.35
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "Rotation": {
+         "NumberRange": [
+          -20,
+          20
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Ground",
+   "CFrame": [
+    0,
+    0.12,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "A",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "children": [
+      {
+       "class": "ParticleEmitter",
+       "name": "Dark",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_ink_02",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.5,
+          0.5
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           2.0
+          ],
+          [
+           0.25,
+           6.4
+          ],
+          [
+           1,
+           7.5
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ],
+          [
+           1,
+           [
+            0.04,
+            0.04,
+            0.05
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0,
+        "ZOffset": 0.2
+       }
+      },
+      {
+       "class": "ParticleEmitter",
+       "name": "Ring",
+       "props": {
+        "Rate": 0,
+        "LightInfluence": 0,
+        "Texture": "sim:lib/sprites/rings/ring_cel_02",
+        "Orientation": {
+         "Enum": "ParticleOrientation.VelocityPerpendicular"
+        },
+        "EmissionDirection": {
+         "Enum": "NormalId.Top"
+        },
+        "Speed": {
+         "NumberRange": [
+          0.01,
+          0.01
+         ]
+        },
+        "Lifetime": {
+         "NumberRange": [
+          0.42,
+          0.42
+         ]
+        },
+        "Size": {
+         "NumberSequence": [
+          [
+           0,
+           1.5
+          ],
+          [
+           0.25,
+           5.1
+          ],
+          [
+           1,
+           6.0
+          ]
+         ]
+        },
+        "Transparency": {
+         "NumberSequence": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           0.1
+          ],
+          [
+           1,
+           1
+          ]
+         ]
+        },
+        "Color": {
+         "ColorSequence": [
+          [
+           0,
+           [
+            1,
+            1,
+            1
+           ]
+          ],
+          [
+           1,
+           [
+            1,
+            1,
+            1
+           ]
+          ]
+         ]
+        },
+        "LightEmission": 0.5,
+        "ZOffset": 0.2
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Pillar",
+   "CFrame": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "Attachment",
+     "name": "Bot",
+     "CFrame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      90
+     ],
+     "children": []
+    },
+    {
+     "class": "Attachment",
+     "name": "Top",
+     "CFrame": [
+      0,
+      12,
+      0,
+      0,
+      0,
+      90
+     ],
+     "children": []
+    },
+    {
+     "class": "Beam",
+     "name": "Halo",
+     "props": {
+      "Attachment0": {
+       "Ref": "Pillar.Bot"
+      },
+      "Attachment1": {
+       "Ref": "Pillar.Top"
+      },
+      "FaceCamera": true,
+      "Segments": 10,
+      "LightInfluence": 0,
+      "Texture": "sim:tfa/pillar_soft",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Width0": 9.5,
+      "Width1": 6.0,
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.902,
+          0.9098,
+          0.9412
+         ]
+        ],
+        [
+         1,
+         [
+          0.902,
+          0.9098,
+          0.9412
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.3,
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0.2
+        ],
+        [
+         0.6,
+         0.5
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Enabled": false,
+      "ZOffset": -0.1
+     }
+    },
+    {
+     "class": "Beam",
+     "name": "Body",
+     "props": {
+      "Attachment0": {
+       "Ref": "Pillar.Bot"
+      },
+      "Attachment1": {
+       "Ref": "Pillar.Top"
+      },
+      "FaceCamera": true,
+      "Segments": 10,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/beams/energy_glow_02",
+      "TextureMode": {
+       "Enum": "TextureMode.Wrap"
+      },
+      "TextureLength": 7,
+      "TextureSpeed": -2.4,
+      "Width0": 5.0,
+      "Width1": 3.0,
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.902,
+          0.9098,
+          0.9412
+         ]
+        ],
+        [
+         1,
+         [
+          0.902,
+          0.9098,
+          0.9412
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0.35,
+      "Brightness": 1.2,
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.7,
+         0.3
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Enabled": false,
+      "ZOffset": -0.05
+     }
+    },
+    {
+     "class": "Beam",
+     "name": "Core",
+     "props": {
+      "Attachment0": {
+       "Ref": "Pillar.Bot"
+      },
+      "Attachment1": {
+       "Ref": "Pillar.Top"
+      },
+      "FaceCamera": true,
+      "Segments": 10,
+      "LightInfluence": 0,
+      "Texture": "sim:lib/beams/laser_soft_04",
+      "TextureMode": {
+       "Enum": "TextureMode.Stretch"
+      },
+      "Width0": 2.5,
+      "Width1": 0.8999999999999999,
+      "Color": {
+       "ColorSequence": [
+        [
+         0,
+         [
+          0.04,
+          0.04,
+          0.05
+         ]
+        ],
+        [
+         1,
+         [
+          0.04,
+          0.04,
+          0.05
+         ]
+        ]
+       ]
+      },
+      "LightEmission": 0,
+      "Brightness": 1,
+      "Transparency": {
+       "NumberSequence": [
+        [
+         0,
+         0
+        ],
+        [
+         0.75,
+         0.15
+        ],
+        [
+         1,
+         1
+        ]
+       ]
+      },
+      "Enabled": false,
+      "ZOffset": 0.1
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "Lamp",
+   "CFrame": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    1,
+    1,
+    1
+   ],
+   "Transparency": 1,
+   "children": [
+    {
+     "class": "PointLight",
+     "name": "L",
+     "props": {
+      "Brightness": 0,
+      "Range": 16,
+      "Color": {
+       "Color3": [
+        1,
+        1,
+        1
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "class": "Part",
+   "name": "SimFood",
+   "CFrame": [
+    0,
+    1.3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "Size": [
+    3.6,
+    2.4,
+    3.6
+   ],
+   "Shape": "Ball",
+   "Transparency": 0,
+   "props": {
+    "Color": {
+     "Color3": [
+      0.7843,
+      0.5255,
+      0.1647
+     ]
+    }
+   },
+   "children": [],
+   "sim": true
+  }
+ ],
+ "timeline": [
+  {
+   "do": "set",
+   "target": "Pillar.Halo",
+   "prop": "Enabled",
+   "value": true,
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Halo",
+   "prop": "Width0",
+   "from": 14.25,
+   "to": 9.5,
+   "time": 0.12,
+   "style": "Quint",
+   "dir": "Out",
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Halo",
+   "prop": "Width0",
+   "to": 0,
+   "time": 0.3,
+   "style": "Quad",
+   "dir": "In",
+   "t": 0.3
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Halo",
+   "prop": "Width1",
+   "to": 0,
+   "time": 0.24,
+   "style": "Quad",
+   "dir": "In",
+   "t": 0.3
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Halo",
+   "prop": "Enabled",
+   "value": false,
+   "t": 0.62
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Halo",
+   "prop": "Width0",
+   "value": 9.5,
+   "t": 0.64
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Halo",
+   "prop": "Width1",
+   "value": 6.0,
+   "t": 0.64
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Body",
+   "prop": "Enabled",
+   "value": true,
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Body",
+   "prop": "Width0",
+   "from": 7.5,
+   "to": 5.0,
+   "time": 0.12,
+   "style": "Quint",
+   "dir": "Out",
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Body",
+   "prop": "Width0",
+   "to": 0,
+   "time": 0.3,
+   "style": "Quad",
+   "dir": "In",
+   "t": 0.3
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Body",
+   "prop": "Width1",
+   "to": 0,
+   "time": 0.24,
+   "style": "Quad",
+   "dir": "In",
+   "t": 0.3
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Body",
+   "prop": "Enabled",
+   "value": false,
+   "t": 0.62
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Body",
+   "prop": "Width0",
+   "value": 5.0,
+   "t": 0.64
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Body",
+   "prop": "Width1",
+   "value": 3.0,
+   "t": 0.64
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Core",
+   "prop": "Enabled",
+   "value": true,
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Core",
+   "prop": "Width0",
+   "from": 3.75,
+   "to": 2.5,
+   "time": 0.12,
+   "style": "Quint",
+   "dir": "Out",
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Core",
+   "prop": "Width0",
+   "to": 0,
+   "time": 0.3,
+   "style": "Quad",
+   "dir": "In",
+   "t": 0.3
+  },
+  {
+   "do": "tween",
+   "target": "Pillar.Core",
+   "prop": "Width1",
+   "to": 0,
+   "time": 0.24,
+   "style": "Quad",
+   "dir": "In",
+   "t": 0.3
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Core",
+   "prop": "Enabled",
+   "value": false,
+   "t": 0.62
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Core",
+   "prop": "Width0",
+   "value": 2.5,
+   "t": 0.64
+  },
+  {
+   "do": "set",
+   "target": "Pillar.Core",
+   "prop": "Width1",
+   "value": 0.8999999999999999,
+   "t": 0.64
+  },
+  {
+   "do": "set",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "value": 2.2,
+   "t": 0.0
+  },
+  {
+   "do": "tween",
+   "target": "Lamp.L",
+   "prop": "Brightness",
+   "to": 0,
+   "time": 0.45,
+   "style": "Quad",
+   "dir": "Out",
+   "t": 0.02
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Pop",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.WhiteX",
+   "count": 1,
+   "t": 0.03
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Ink",
+   "count": 1,
+   "t": 0.02
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Strokes",
+   "count": 12,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Light",
+   "count": 10,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Dark",
+   "count": 1,
+   "t": 0.0
+  },
+  {
+   "do": "emit",
+   "target": "Ground.A.Ring",
+   "count": 1,
+   "t": 0.05
+  },
+  {
+   "do": "emit",
+   "target": "Hit.A.Wisps",
+   "count": 6,
+   "t": 0.2
+  },
+  {
+   "do": "shake",
+   "amp": 0.3,
+   "time": 0.3,
+   "freq": 24,
+   "t": 0.0
+  }
+ ],
+ "strip": [
+  0.0,
+  0.04,
+  0.1,
+  0.2,
+  0.35,
+  0.55,
+  0.8,
+  1.1
+ ],
+ "seed": 7,
+ "sizeConvention": "roblox"
+}

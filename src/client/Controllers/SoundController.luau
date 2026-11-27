@@ -26,6 +26,31 @@ local Screens = require(script.Parent.Parent.Ui.Screens)
 -- seconds. Values are the "cap" fields of assets/sfx/manifest.json (measured
 -- in Studio by the roblox-sfx stage); keep the two in step.
 local CAPS: { [string]: number } = {
+	-- plan 13 phase C: the throw and landing sounds (seconds played after STARTS, then a fade)
+	throw_heave = 0.7,
+	throw_spin = 0.4,
+	food_ready = 0.5,
+	land_bowl = 0.9,
+	land_plate = 0.7,
+	land_soft = 0.6,
+	land_sizzle = 1.4,
+	land_glass = 0.9,
+	land_splash = 1.0,
+	sig_sting = 1.2,
+	sig_steam = 1.2,
+	sig_fire = 1.3,
+	sig_dark = 1.6,
+	sig_blast = 1.0,
+	sig_gold = 1.2,
+	sig_wind = 0.9,
+	sig_quake = 1.7,
+	sig_shatter = 0.9,
+	sig_ice = 1.6,
+	sig_magic = 1.2,
+	sig_electric = 1.1,
+	sig_water = 1.0,
+	sig_spirit = 0.9,
+	favourite_burst = 1.6,
 	reveal_drumroll = 6.0,
 	reveal_legendary = 5.5,
 	reveal_epic = 4.5,
@@ -87,6 +112,23 @@ local GAPS: { [string]: number } = {
 	-- diff; a product: the grant AND the state diff): heard once
 	daily_claim = 0.5,
 	buy_success = 0.5,
+}
+
+-- Where a sound starts (seconds in): library recordings of a pass-by or a hit often open with
+-- air before the event. Measured in Studio from each clip's loudness curve (plan 13 phase C):
+-- the game skips to just before the attack, so the sound lands ON its moment.
+local STARTS: { [string]: number } = {
+	throw_heave = 0.62,
+	land_plate = 0.05,
+	land_glass = 0.05,
+	land_splash = 0.05,
+	sig_sting = 0.2,
+	sig_dark = 0.3,
+	sig_blast = 0.05,
+	sig_wind = 0.2,
+	sig_quake = 0.2,
+	sig_ice = 0.2,
+	sig_spirit = 0.4,
 }
 
 -- buttons that make their own sound (the throw tap is the throw)
@@ -181,6 +223,10 @@ function SoundController:Play(role: string, parent: Instance?, opts: Opts?): Sou
 		sound.SoundGroup = self:_group(if isMusic(role) then "Music" else "Effects")
 		if o.speed then
 			sound.PlaybackSpeed = o.speed
+		end
+		local start = STARTS[role]
+		if start then
+			sound.TimePosition = start
 		end
 		if o.fadeIn and o.fadeIn > 0 then
 			local full = sound.Volume

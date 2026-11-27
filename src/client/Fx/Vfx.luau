@@ -520,6 +520,16 @@ function Vfx.touchAuras()
 	queueEval()
 end
 
+--- Fetch every effect texture now (yields: call once at join, inside a task). Without it the first
+--- play of an effect draws nothing until its textures arrive (seen in play, plan 13 phase C: a
+--- Signature dish's first landing came up as a bare ring).
+function Vfx.preload()
+	local k = getKit()
+	if k and typeof(k.preload) == "function" then
+		pcall(k.preload)
+	end
+end
+
 --- Low detail (Settings): the kit drops to its cheap versions.
 function Vfx.setLowDetail(on: boolean)
 	if on == lowDetail then

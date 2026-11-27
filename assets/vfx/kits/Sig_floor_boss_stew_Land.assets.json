@@ -1,0 +1,14 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_02__vt",
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/flipbooks/shards/shatter_glow_01_4x4",
+  "sim:lib/sprites/impacts/starburst_glow_00",
+  "sim:lib/sprites/rings/ring_dashed_cel_00",
+  "sim:lib/sprites/shards/glass_cel_02",
+  "sim:lib/sprites/sigils/hex_grid_cel_00",
+  "sim:lib/sprites/specks/dot_cel_00",
+  "sim:tfa/pillar_soft__vt"
+ ],
+ "meshes": []
+}

@@ -332,6 +332,22 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   generate_mesh with the prompt starting `FOOD_<id>:` -> `tools/studio/foods/food_lab.luau` (judging row) ->
   `install_foods.py` -> `tools/ui/food_icons_v2.py` (then `--sheet` and LOOK, then `--upload`). Flight by the
   template's `Throw` attribute: heave = level, spin = end over end, else a slow tumble. Saves: `Profiles_v3` / `Profiles_Dev_v3`.
+- THROW FEEL (plan 13 phase C, 2026-11-27; log in the plan's section 11). `src/client/Fx/FoodFx.luau` is the ONE
+  place that says how a food is thrown: Snack = `ThrowTrail_Basic` + `Land_Impact`; Meal = `ThrowTrail_Meal` +
+  `Land_Meal` + `Aroma_Meal`; Signature = its own `Sig_<id>_Trail` / `Sig_<id>_Land` + `Aroma_Signature`, a sting
+  and an accent sound; a favourite dish adds `Favourite_Burst`. Per-food data: `design/foods.json` (`throw`,
+  `land`, `accent`) -> `python tools/gen_food_feel.py` -> `src/shared/Config/FoodFeel.luau` (GENERATED; also the
+  dish's own colour, taken from its icon; `--check` is a gate step and fails if a Signature dish lacks an effect
+  or a sound). Effects: `assets/vfx/builders/build_food.py` (+ `tools/make_food_tex.py`) -> `tools/upload_tex.py`
+  (new textures -> `ids.json`) -> `tools/pack_all.py` -> run `work/vfx/build_templates.luau` in edit mode.
+  A FLIGHT EFFECT MUST RIDE WITH THE FOOD (`LockedToPart`, born behind the food): at 125 to 2,100 studs a second
+  nothing left in the world is seen and a Trail's texture never reads. JUDGE IN THE GAME with
+  `tools/studio/foods/fx_judge.luau` (client datamodel of a play session: `_G.FxJudge.fly(id)`, `.land(id, t)`
+  freezes the burst, `.rest(id)`, `.stop()`), at QualityLevel 21: soft glow / "hot" flame sprites that look fine
+  in the sim fuse into a pale cloud in the game (use the cel sprites), and a flipbook laid flat on the floor
+  draws as a broken arc (use a ring sprite). The food in the hands on the throw spot: `ThrowController:_tickHeld`
+  + `Fx/FoodHold` (the aiming camera is BEHIND the player: holds must read from behind). Sounds were picked from
+  measured loudness curves, never heard: `SoundController` `STARTS` (skip a clip's lead-in) and `CAPS`.
 - Driving a playtest over MCP: move the character on the SERVER datamodel (a client-side teleport does not
   replicate; the throw is then refused "not on own throw pad", printed only with workspace attribute `TFADebug`),
   then fire the remotes from the Client datamodel in a `task.spawn` and log into a StringValue (output from a

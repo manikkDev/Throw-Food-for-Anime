@@ -1,0 +1,11 @@
+{
+ "textures": [
+  "sim:lib/beams/energy_glow_04__vt",
+  "sim:lib/beams/laser_glow_04__vt",
+  "sim:lib/sprites/shapes/feather_ink_03",
+  "sim:lib/sprites/specks/dot_glow_00",
+  "sim:tfa/ribbon_solid__vt",
+  "sim:tfa/sugar_cube"
+ ],
+ "meshes": []
+}

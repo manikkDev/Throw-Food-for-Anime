@@ -89,3 +89,13 @@ contact distances and the Throw's root travel.
 CarryShoulder 92687348195038, CarriedRide 129171837155585, PlaceHero v2 77773650101040. See work/anim/upload6/README.md.
 - A 0.55 hero cannot straddle a 1.2-stud block head (hips at +-0.275, leg < 1 stud): one-shoulder seat instead, measured with tools/anim/duo.py.
 - New tooling: duo.py (two rigs as oriented part boxes, SAT depth), duo_blender.py / duo_run.py (hero = copies of the rig's real part meshes keyed per frame; renders + real-mesh clash report). The shipped CarryHold measured 0.10 of hero foot inside the player's head on most frames.
+
+## Batch r7 (plan 13 phase C: hold + throw per food class) - DONE on disk 2026-11-27, NOT BUILT/UPLOADED
+HoldPitch, HoldHeave, ThrowHeave, HoldSpin, ThrowSpin (tools/anim/clips_r7.py; its V2 block = the behind-camera
+versions: bowl OVERHEAD, disc out to the RIGHT). Hand-off: work/anim/upload7 (build_r7.lua + README). Axis pass (worst 1.00 deg).
+- Every food-holding hand is SOLVED per frame from the food (clips_r7.solve_h, food as an obstacle); heave hands are rigid
+  in the bowl frame (2.673 apart, level), so the game must place the bowl from BOTH hands, not weld it to one.
+- Block-rig limits measured: a palm-up hand on a level forearm buries a r0.9 ball in the forearm (forearm must point up);
+  a right hand cannot reach the left hip (1.95 needed, 1.69 there); overhead bowl centre max ~0.85 above the head top.
+- anim_render derived grip disagreed with the render (pitch: (-0.18,-2.57,0.46) vs authored (0,-1.05,0), the sheet shows
+  the ball ON the hand): suspect its hand rest box is read at a posed frame. Use the authored CFrames (upload7 README).

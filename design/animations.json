@@ -191,6 +191,41 @@
    "_intent": "the reveal: the silhouette picks the thrown food up before it is revealed (owner's review 4)",
    "used_by": "characters",
    "priority": "Action"
+  },
+  {
+   "name": "HoldPitch",
+   "reference": "on the throw spot with a one-hand food: the food on the upturned right hand beside the head, out to the right of the shoulder (visible from the aiming camera behind); feet as Throw's first frame; 2.0 s loop",
+   "_intent": "plan 13 phase C: the food is in the hand while the player aims",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "HoldHeave",
+   "reference": "on the throw spot with a bowl, plate or feast: carried OVERHEAD in both hands, level, palms under its two edges, knees soft; 2.0 s loop",
+   "_intent": "plan 13 phase C: a bowl at the belly is hidden from the camera behind the player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "ThrowHeave",
+   "reference": "from HoldHeave: arches back and sinks with the bowl behind the head, steps and hurls it overhead with both arms (Release 0.7667), arms swing down, settles; the bowl stays level until Release; 1.5 s",
+   "_intent": "plan 13 phase C: the two-hand throw of bowls, plates and feasts",
+   "priority": "Action",
+   "looped": false
+  },
+  {
+   "name": "HoldSpin",
+   "reference": "on the throw spot with a flat or stick food: held flat out to the right at shoulder height, arm cocked back and out, left arm forward, weight on the back foot; 2.0 s loop",
+   "_intent": "plan 13 phase C",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "ThrowSpin",
+   "reference": "from HoldSpin: coils, strides and slings the disc forward across the body with a wrist snap (Release 0.7), follows through, settles; 1.5 s",
+   "_intent": "plan 13 phase C: the side-arm throw of pizza, toast, skewers",
+   "priority": "Action",
+   "looped": false
   }
  ],
  "roblox_owned": {
