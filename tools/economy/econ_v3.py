@@ -393,6 +393,14 @@ GROUND_FEEL = {
     # clip played over the waiting loop when the player answers with that lane.
     "peak": {"Clip": "PeakReady", "AwakeClip": "PeakStorm", "Lanes": 3, "Lead": 1.0, "React": 0.55,
              "LaneClips": ["PeakLeft", "PeakMid", "PeakRight"], "Hint": "TAP THE MARKED ROD"},
+    # Gravity: push-ups on the beat. Rests: one beat in every hand of that many is a REST (a gap in the
+    # line: do not tap it; the hero holds the plank); the beats that are played pay for the hand.
+    "gravity": {"Clip": "TrainPushup", "ClipSeconds": 2.0, "Marks": [0.5, 1.5], "AwakeClip": "GravityFloat",
+                "Rests": 4, "Hint": "TAP THE BEATS, SKIP GAPS"},
+    # Orb: a held game like the falls, with a long hold: the charge must have begun MinHold before the
+    # pulse. The orb is thrown at the awakening's end (FinishClip, its Release marker at FinishAt).
+    "orb": {"Clip": "TrainOrb", "ClipSeconds": 4.0, "Marks": [3.5], "AwakeClip": "OrbAwaken",
+            "FinishClip": "OrbThrow", "FinishAt": 0.5, "MinHold": 2.0, "Hint": "HOLD TO CHARGE"},
 }
 # the look of each gear tier (its model: Assets.Grounds.Ground_<ground id>_T<tier>); three levels each
 GEAR_MODELS = ["Wooden Post", "Banded Post", "Iron Post", "Mountain Falls", "Shrine Falls", "Granite Boulder",

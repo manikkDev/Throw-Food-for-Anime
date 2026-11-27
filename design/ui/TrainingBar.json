@@ -1398,6 +1398,425 @@
     0.5
    ],
    "visible": false
+  },
+  {
+   "type": "frame",
+   "name": "BeatTrack",
+   "colour": [
+    "#0B0D29",
+    "#161A48"
+   ],
+   "keyline": "#FFFFFF",
+   "size": [
+    0,
+    340,
+    0,
+    60
+   ],
+   "corner": 30,
+   "pos": [
+    0,
+    800,
+    0,
+    340
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "visible": false,
+   "attrs": {
+    "HitAt": 0.16,
+    "PerSecond": 0.27
+   },
+   "children": [
+    {
+     "type": "frame",
+     "name": "Line",
+     "colour": [
+      "#3A4196",
+      "#3A4196"
+     ],
+     "outline": false,
+     "corner": 2,
+     "size": [
+      1,
+      -40,
+      0,
+      4
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "z": 1
+    },
+    {
+     "type": "ring",
+     "name": "Hit",
+     "size": [
+      0,
+      50,
+      0,
+      50
+     ],
+     "ringColour": "#FFC93C",
+     "thick": 6,
+     "children": [],
+     "pos": [
+      0.16,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "z": 4,
+     "overhang": true
+    },
+    {
+     "type": "frame",
+     "name": "Note1",
+     "colour": [
+      "#FFFFFF",
+      "#D9D4FF"
+     ],
+     "keyline": "#FFFFFF",
+     "corner": 18,
+     "size": [
+      0,
+      36,
+      0,
+      36
+     ],
+     "pos": [
+      0.6,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 3,
+     "strokePx": 3
+    },
+    {
+     "type": "frame",
+     "name": "Note2",
+     "colour": [
+      "#FFFFFF",
+      "#D9D4FF"
+     ],
+     "keyline": "#FFFFFF",
+     "corner": 18,
+     "size": [
+      0,
+      36,
+      0,
+      36
+     ],
+     "pos": [
+      0.7,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 3,
+     "strokePx": 3
+    },
+    {
+     "type": "frame",
+     "name": "Note3",
+     "colour": [
+      "#FFFFFF",
+      "#D9D4FF"
+     ],
+     "keyline": "#FFFFFF",
+     "corner": 18,
+     "size": [
+      0,
+      36,
+      0,
+      36
+     ],
+     "pos": [
+      0.8,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 3,
+     "strokePx": 3
+    },
+    {
+     "type": "frame",
+     "name": "Note4",
+     "colour": [
+      "#FFFFFF",
+      "#D9D4FF"
+     ],
+     "keyline": "#FFFFFF",
+     "corner": 18,
+     "size": [
+      0,
+      36,
+      0,
+      36
+     ],
+     "pos": [
+      0.9,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 3,
+     "strokePx": 3
+    },
+    {
+     "type": "frame",
+     "name": "Note5",
+     "colour": [
+      "#FFFFFF",
+      "#D9D4FF"
+     ],
+     "keyline": "#FFFFFF",
+     "corner": 18,
+     "size": [
+      0,
+      36,
+      0,
+      36
+     ],
+     "pos": [
+      1.0,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 3,
+     "strokePx": 3
+    },
+    {
+     "type": "frame",
+     "name": "Note6",
+     "colour": [
+      "#FFFFFF",
+      "#D9D4FF"
+     ],
+     "keyline": "#FFFFFF",
+     "corner": 18,
+     "size": [
+      0,
+      36,
+      0,
+      36
+     ],
+     "pos": [
+      1.1,
+      0,
+      0.5,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 3,
+     "strokePx": 3
+    }
+   ],
+   "strokePx": 3
+  },
+  {
+   "type": "frame",
+   "name": "ChargeMeter",
+   "colour": [
+    "#0B0D29",
+    "#161A48"
+   ],
+   "keyline": "#FFFFFF",
+   "size": [
+    0,
+    58,
+    0,
+    210
+   ],
+   "corner": 29,
+   "pos": [
+    0,
+    800,
+    0,
+    340
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "visible": false,
+   "attrs": {
+    "SweetAt": 0.84
+   },
+   "children": [
+    {
+     "type": "frame",
+     "name": "Fill",
+     "colour": [
+      "#B8FFE6",
+      "#3FE0A0"
+     ],
+     "outline": false,
+     "corner": 10,
+     "size": [
+      1,
+      -12,
+      0.3,
+      0
+     ],
+     "pos": [
+      0.5,
+      0,
+      1,
+      -6
+     ],
+     "anchor": [
+      0.5,
+      1
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 1
+    },
+    {
+     "type": "frame",
+     "name": "Sweet",
+     "colour": [
+      "#FFE066",
+      "#FFA41B"
+     ],
+     "alpha": 0.25,
+     "outline": false,
+     "corner": 8,
+     "size": [
+      1,
+      -8,
+      0.18,
+      0
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.16,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 2
+    },
+    {
+     "type": "frame",
+     "name": "SweetCore",
+     "colour": [
+      "#7BF0A8",
+      "#34D17A"
+     ],
+     "alpha": 0.15,
+     "outline": false,
+     "corner": 4,
+     "size": [
+      1,
+      -8,
+      0.0648,
+      0
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.16,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 3
+    },
+    {
+     "type": "frame",
+     "name": "Marker",
+     "colour": [
+      "#FFFFFF",
+      "#FFFFFF"
+     ],
+     "keyline": "#FFFFFF",
+     "corner": 3,
+     "size": [
+      1,
+      6,
+      0,
+      8
+     ],
+     "pos": [
+      0.5,
+      0,
+      0.9,
+      0
+     ],
+     "anchor": [
+      0.5,
+      0.5
+     ],
+     "children": [],
+     "overhang": true,
+     "z": 5,
+     "strokePx": 2
+    }
+   ],
+   "strokePx": 3
   }
  ],
  "enabled": false

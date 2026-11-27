@@ -35,6 +35,7 @@ TEXTURES = {
     "crack": "lib__sprites__cracks__crack_cel_02.png",
     "bolt": "tfa__bolt_strip__vt.png",
     "boltsprite": "lib__sprites__elements__bolt_cel_04.png",
+    "streakline": "tfa__speed_line.png",
 }
 
 

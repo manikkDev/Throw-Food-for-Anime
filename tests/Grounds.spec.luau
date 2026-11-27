@@ -199,4 +199,66 @@ return {
 			end
 		end
 	end,
+
+	["rests: one beat in every hand, never two together, and the played beats pay for the hand"] = function()
+		for seed = 1, 30 do
+			assert(not Beat.rest(1, seed, 4), "a session opens on a played beat")
+			local played = 0
+			for n = 1, 200 do
+				local rest = Beat.rest(n, seed, 4)
+				assert(not (rest and Beat.rest(n + 1, seed, 4)), `two rests together at {n}`)
+				if not rest then
+					played += 1
+				end
+				assert(Beat.played(n, seed, 4) == played, `played count at {n}`)
+			end
+			assert(played == 150, "three beats in four are played")
+		end
+		assert(Beat.share(4) == 0.75 and Beat.share(nil) == 1)
+		assert(not Beat.rest(7, 3, nil) and Beat.played(9, 3, nil) == 9)
+	end,
+
+	["a clip over rests: reps only on played beats, the top of the push-up held over a rest"] = function()
+		local row
+		for _, ground in T.Grounds do
+			if ground.Rests then
+				row = ground
+			end
+		end
+		assert(row, "a ground with rests")
+		local seconds, marks, length, rests = row.BeatSeconds, row.Marks, row.ClipSeconds, row.Rests
+		local k = 0
+		for n = 1, 60 do
+			local moment = Beat.moment(seconds, n, 9)
+			local clip, speed = Beat.clipAt(seconds, moment - 1e-4, 9, marks, length, rests)
+			if Beat.rest(n, 9, rests) then
+				-- midway between two reps and still
+				local before, after = marks[(k - 1) % #marks + 1], marks[k % #marks + 1]
+				local mid = (before + (after - before) % length / 2) % length
+				local off = math.abs(clip - mid)
+				assert(
+					math.min(off, length - off) < 0.01,
+					`rest {n}: the clip is at {clip}, not {mid}`
+				)
+				assert(speed == 0, "held")
+			else
+				k += 1
+				local mark = marks[(k - 1) % #marks + 1]
+				local off = math.abs(clip - mark)
+				assert(
+					math.min(off, length - off) < 0.01,
+					`beat {n}: the clip is at {clip}, its rep at {mark}`
+				)
+			end
+		end
+		local last = Beat.clipAt(seconds, 0, 9, marks, length, rests)
+		for i = 1, 800 do
+			local t = i * 0.025
+			local clip, speed = Beat.clipAt(seconds, t, 9, marks, length, rests)
+			local step = (clip - last) % length
+			assert(step < 0.025 * 1.8 + 1e-6, `the clip jumped {step} at {t}`)
+			assert(speed >= 0 and speed < 1.8)
+			last = clip
+		end
+	end,
 }

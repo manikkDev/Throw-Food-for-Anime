@@ -146,9 +146,34 @@ def bolt_strip():
     save(rgba(rgb, a), "bolt_strip")
 
 
+def speed_line():
+    """One speed line, long axis UP (a particle drawn VelocityParallel runs its texture's up along its
+    travel, and the library's streak is drawn lying at 20 degrees: falling straight down it showed as a
+    row of sideways dashes). A hard white spindle, sharp at both ends, fatter toward the head (top);
+    tintable."""
+    # (square: a particle is drawn square whatever its image, so a narrow image came out a fat cone)
+    S, W, H = 4, 256, 256
+    img = Image.new("L", (W * S, H * S), 0)
+    d = ImageDraw.Draw(img)
+    cx = W * S / 2
+    pts_l, pts_r = [], []
+    for i in range(0, 101):
+        u = i / 100  # 0 = top (head), 1 = bottom (tail)
+        # widest at a quarter of the way down, a long tail
+        w = (math.sin(min(u / 0.25, 1) * math.pi / 2) if u < 0.25 else (1 - (u - 0.25) / 0.75) ** 1.4) * 0.05 * W * S
+        y = (0.03 + 0.94 * u) * H * S
+        pts_l.append((cx - w, y))
+        pts_r.append((cx + w, y))
+    d.polygon(pts_l + pts_r[::-1], fill=255)
+    a = np.asarray(img.resize((W, H), Image.LANCZOS), np.float32) / 255
+    rgb = np.full((H, W, 3), 255, np.float32)
+    save(rgba(rgb, a), "speed_line")
+
+
 if __name__ == "__main__":
     water_sheet()
     water_foam()
     pool_ripple()
     wood_splinter()
     bolt_strip()
+    speed_line()

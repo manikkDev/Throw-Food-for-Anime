@@ -26,6 +26,15 @@ local Screens = require(script.Parent.Parent.Ui.Screens)
 -- seconds. Values are the "cap" fields of assets/sfx/manifest.json (measured
 -- in Studio by the roblox-sfx stage); keep the two in step.
 local CAPS: { [string]: number } = {
+	-- plan 13 phase E, pair 2: Gravity Chamber and Spirit Orb
+	gravity_pulse = 0.5,
+	gravity_perfect = 0.9,
+	gravity_flip = 1.1,
+	gravity_slam = 1.6,
+	orb_release = 0.9,
+	orb_perfect = 1.2,
+	orb_throw = 0.8,
+	orb_burst = 2.6,
 	-- plan 13 phase E: Boulder Breaker and Thunder Peak
 	boulder_hit = 0.7,
 	boulder_crit = 0.9,
@@ -115,6 +124,7 @@ local GAPS: { [string]: number } = {
 	train_hit = 0.08,
 	post_hit = 0.08,
 	boulder_hit = 0.1,
+	gravity_pulse = 0.1,
 	barrage_hit = 0.08,
 	thunder_strike = 0.2,
 	flurry_hit = 0.05,
@@ -147,6 +157,12 @@ local GAPS: { [string]: number } = {
 -- air before the event. Measured in Studio from each clip's loudness curve (plan 13 phase C):
 -- the game skips to just before the attack, so the sound lands ON its moment.
 local STARTS: { [string]: number } = {
+	-- plan 13 phase E, pair 2 (measured lead-ins, work/sfx/probe_e2.json)
+	gravity_perfect = 0.2,
+	gravity_slam = 0.1,
+	orb_charge = 0.25,
+	orb_perfect = 0.05,
+	orb_burst = 0.08,
 	-- plan 13 phase E (measured lead-ins, work/sfx/probe_e1.json)
 	boulder_hit = 0.04,
 	boulder_shatter = 0.33,

@@ -330,6 +330,46 @@
    "used_by": "player",
    "priority": "Action",
    "looped": true
+  },
+  {
+   "name": "TrainPushup",
+   "reference": "push-ups under crushing gravity seen in profile: a straight plank on planted palms and toes, a fast heavy drop to 0.25 studs off the floor (Rep 0.5 s and 1.5 s), a 2-frame tremor at the bottom, a slower strained push to locked arms; 2.0 s loop, two reps 1.0 s apart",
+   "_intent": "plan 13 phase E: Gravity Chamber's training loop; the game runs the clip so each Rep falls on a played beat and holds the top of the push-up over a rest",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "GravityFloat",
+   "reference": "weightless: the whole body about 2.4 studs above its standing height, upright but slack, arms drifting out and up, knees a little bent, head tilted back, a slow bob and a gentle roll of the torso; 2.0 s loop",
+   "_intent": "plan 13 phase E: Gravity Chamber's awakening loop (gravity is turned over)",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "TrainOrb",
+   "reference": "holding a growing ball of energy overhead on both open palms, feet wide and braced: the knees sink and the arms tremble as it grows heavy, then a sharp push up of both arms (Pulse 3.5 s) and a recovery; 4.0 s loop",
+   "_intent": "plan 13 phase E: Spirit Orb's training loop; the game runs the clip so the Pulse falls on the beat and carries the orb on the two hands",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "OrbAwaken",
+   "reference": "under an enormous orb: arms at full stretch overhead and wide, legs braced very wide and deep, back arched, head thrown back, the whole body shaking under the load; 2.0 s loop",
+   "_intent": "plan 13 phase E: Spirit Orb's awakening loop",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": true
+  },
+  {
+   "name": "OrbThrow",
+   "reference": "from under the enormous orb: a short dip, then a full-body throw straight up and a little forward (Release 0.5 s, arms at full extension, hands flick open), a held follow-through, settles to TrainOrb's first frame; 1.2 s, not looped",
+   "_intent": "plan 13 phase E: ends Spirit Orb's awakening; the orb leaves the hands at Release",
+   "used_by": "player",
+   "priority": "Action",
+   "looped": false
   }
  ],
  "roblox_owned": {

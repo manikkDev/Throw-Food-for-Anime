@@ -1416,6 +1416,127 @@
       "looped": false,
       "kind": "SoundEffect",
       "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "gravity_pulse",
+      "id": 9126009571,
+      "name": "Subwoofer Impact Deep Rumbling Pops Booming (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 0.634,
+      "volume": 0.5,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "gravity_perfect",
+      "id": 9116684884,
+      "name": "Metal Impacts 5 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 2.005,
+      "volume": 0.4,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "gravity_hum",
+      "id": 9125446543,
+      "name": "Command Room Tone Deep Air Conditioning Hum (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 18.016,
+      "volume": 0.3,
+      "looped": true,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "gravity_flip",
+      "id": 9125805579,
+      "name": "Rising Whoosh Hissing Build Up Ascending Swo (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.141,
+      "volume": 0.9,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "gravity_slam",
+      "id": 9116614130,
+      "name": "Metal Drop 3 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 3.168,
+      "volume": 0.8,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "orb_charge",
+      "id": 9125975053,
+      "name": "Spaceship Blast High Pitch Energy Charge Up (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 2.496,
+      "volume": 0.7,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "orb_release",
+      "id": 9116384799,
+      "name": "Magic Burst 2 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.813,
+      "volume": 0.6,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "orb_perfect",
+      "id": 9116385087,
+      "name": "Magic Burst 5 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 2.272,
+      "volume": 0.6,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "orb_loop",
+      "id": 9125674129,
+      "name": "Metallic Glow Constant Deep Ticking Bassy Hum (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 13.515,
+      "volume": 0.5,
+      "looped": true,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "orb_throw",
+      "id": 9120733724,
+      "name": "Whoosh Rising Swish Airy Various Pitches 2 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 1.446,
+      "volume": 0.8,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
+    },
+    {
+      "role": "orb_burst",
+      "id": 9117876706,
+      "name": "Power Explosions Big Heavy Searing Boom 2 (SFX)",
+      "creator": "ProSoundEffects",
+      "length": 4.859,
+      "volume": 0.7,
+      "looped": false,
+      "kind": "SoundEffect",
+      "source": "Roblox Creator Store, free, inserted by id. No upload."
     }
   ],
   "_picked": "by hand from measured candidates (two search rounds, 438 probed in Studio): Roblox-licensed libraries (ProSoundEffects, APMOfficial, DistrokidOfficial) preferred; game rips rejected; cap = seconds the game plays before fading"

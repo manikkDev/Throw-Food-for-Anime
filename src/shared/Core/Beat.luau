@@ -87,6 +87,42 @@ function Beat.lane(n: number, seed: number, count: number): number
 	return order[(n - 1) % count + 1]
 end
 
+--- Whether beat `n` is a REST, for a game with gaps in its line (Gravity Chamber:
+--- no push-up on that beat, and a tap on it is a slip). The beats come in hands
+--- of `every`; one beat of each hand rests, never the hand's first, so two rests
+--- never come together and a session opens on a played beat.
+function Beat.rest(n: number, seed: number, every: number?): boolean
+	if not every or every < 2 then
+		return false
+	end
+	local hand = math.floor((n - 1) / every)
+	local x = math.sin(hand * 21.7381 + seed * 5.417) * 15731.743
+	local at = 2 + math.floor((x - math.floor(x)) * (every - 1))
+	return (n - 1) % every + 1 == at
+end
+
+--- How many of the beats 1..n are played (not rests).
+function Beat.played(n: number, seed: number, every: number?): number
+	if not every or every < 2 then
+		return n
+	end
+	local full = math.floor(n / every)
+	local count = full * (every - 1)
+	for k = full * every + 1, n do
+		if not Beat.rest(k, seed, every) then
+			count += 1
+		end
+	end
+	return count
+end
+
+--- The share of the beats that are played on a ground that rests one beat in
+--- `every`: a played beat pays (and fills Focus) for 1 / share beats, so the
+--- ground earns what a ground without rests does.
+function Beat.share(every: number?): number
+	return if every and every >= 2 then (every - 1) / every else 1
+end
+
 --- Grade a REFLEX beat: the lane is marked `lead` seconds before the beat's
 --- moment (the strike) and the player answers with a lane. The wrong lane, or
 --- an answer before the mark showed (a guess), is a miss; the right one within
@@ -144,12 +180,16 @@ end
 --- (one loop is `length` long) of its reps, in order; beat n lands on mark
 --- ((n - 1) mod #marks) + 1. Returns the clip time (0..length) the clip should
 --- be at when the session is at `t`, and the speed it should run at there.
+--- `rests` (Beat.rest): only played beats carry a rep. Over a rest the clip
+--- runs half the way to the next rep at its own pace, HOLDS there (the pose
+--- midway between two reps: the top of a push-up) and runs on in time.
 function Beat.clipAt(
 	beatSeconds: number,
 	t: number,
 	seed: number,
 	marks: { number },
-	length: number
+	length: number,
+	rests: number?
 ): (number, number)
 	local count = #marks
 	-- the clip time of beat n's rep, unwrapped (it grows by `length` every `count` beats)
@@ -165,9 +205,28 @@ function Beat.clipAt(
 	while n > 1 and Beat.moment(beatSeconds, n - 1, seed) > t do
 		n -= 1
 	end
+	-- the played beats either side of t (beat 0, the session's start, counts as played)
+	local n0 = n - 1
+	while Beat.rest(n, seed, rests) do
+		n += 1
+	end
+	while n0 >= 1 and Beat.rest(n0, seed, rests) do
+		n0 -= 1
+	end
 	local t1 = Beat.moment(beatSeconds, n, seed)
-	local t0 = if n > 1 then Beat.moment(beatSeconds, n - 1, seed) else 0
-	local c1, c0 = at(n), at(n - 1)
+	local t0 = if n0 >= 1 then Beat.moment(beatSeconds, n0, seed) else 0
+	local k = Beat.played(n, seed, rests)
+	local c1, c0 = at(k), at(k - 1)
+	if n - n0 > 1 then
+		local half = math.min(beatSeconds, t1 - t0) / 2
+		local speed = (c1 - c0) / 2 / math.max(half, 1e-3)
+		if t - t0 < half then
+			return (c0 + (t - t0) * speed) % length, speed
+		elseif t1 - t < half then
+			return (c1 - (t1 - t) * speed) % length, speed
+		end
+		return ((c0 + c1) / 2) % length, 0
+	end
 	local speed = (c1 - c0) / math.max(t1 - t0, 1e-3)
 	local clip = c0 + (t - t0) * speed
 	return clip % length, speed

@@ -1,4 +1,4 @@
-# VFX: 81 authored effects (section 4: 25; plan 13 phase C: the 39 food effects; phases D and E: 17 new training effects)
+# VFX: 87 authored effects (section 4: 25; plan 13 phase C: the 39 food effects; phases D and E: 23 new training effects)
 
 Authored with the roblox-vfx skill's authoring route: own textures (the skill's maths-made library
 `sim/textures/lib` + this game's own in `textures/`), judged frame by frame in the skill's browser
@@ -35,11 +35,19 @@ column of rising water where the trainee floats, the water crashing back). Their
 Phase E added eight for grounds 3 and 4: `Boulder_Hit`, `Boulder_Barrage` (loop), `Boulder_Shatter`, `Boulder_Land`,
 `Peak_Strike` (a bolt from the sky: two beams, `tfa/bolt_strip` over a soft sheath, that flicker on, off, on),
 `Peak_Catch` (tint), `Peak_Storm` (loop on the root), `Peak_Finale`.
+Then six for grounds 5 and 6, all tinted by the set piece's own colour: `Gravity_Pulse` (a push-up lands: floor
+rings, lines of weight coming down), `Gravity_Flip` (gravity turns over: everything flung up), `Gravity_Float` (loop:
+dust and light drift up off the deck), `Gravity_Slam`, `Orb_Release` (a pulse leaves the orb), `Orb_Burst` (the
+thrown orb bursts 40 studs over the court). Their straight lines use `tfa/speed_line` (`tools/make_train_tex.py`):
+upright, in a square image.
 Judged in the game with `tools/studio/grounds/fx_judge.luau` (`_G.GroundJudge.play(name, spot, freezeAt, tint)`). What
 that taught, on top of phase C's rules:
 - a flame sprite drawn with `VelocityParallel` lies on its side (the aura streamed off the trainee's back): flames are
   upright camera-facing sprites that RISE; only streak textures take `VelocityParallel`.
 - a critical flash that starts white blooms to a plain white blob at max graphics: start it gold, put a small white cross on top.
+- the library's streak sprite is drawn lying at about 20 degrees: with `VelocityParallel` (the texture's up along the
+  travel) particles falling or rising straight showed as sideways dashes. A straight line needs an upright texture,
+  and a square one: a particle is drawn square whatever its image's shape.
 - lamps and soft halos on pale rock white the whole scene out at max graphics (the waterfall's awakening): PointLights
   at 0.35 to 0.5, halos narrow and above 0.7 transparent, water beams at LightEmission 0.05 to 0.15.
 

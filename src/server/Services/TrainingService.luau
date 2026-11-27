@@ -11,7 +11,9 @@
 --   * the game (Core/Beat): beats come at jittered moments from the session's seed, the ground's
 --     BeatSeconds apart. One input per beat is graded here against the session's own clock: a TAP
 --     on the beat (ring), or a HOLD let go on the beat (breath: the hold must have begun MinHold
---     before). PERFECT / GOOD add to that beat's reps and fill FOCUS; a full bar AWAKENS the hero
+--     before; charge the same with a long hold), an answer with a LANE (reflex), or a tap on
+--     every beat but the RESTS (rhythm: a tap on a rest is a slip that costs Focus).
+--     PERFECT / GOOD add to that beat's reps and fill FOCUS; a full bar AWAKENS the hero
 --     for a few seconds (every rep an automatic perfect, x AwakeningMult), during which input does
 --     not count. A player who never touches anything still gets every rep: the x1 floor.
 --   * everyone sees it: the character carries TrainPlot / TrainCourt while it trains and
@@ -42,6 +44,7 @@ type Session = {
 	lanes: number?, -- a reflex game: how many lanes a beat can fall on (the input names one)
 	lead: number, -- a reflex game: seconds before the beat its lane is marked
 	react: number, -- a reflex game: seconds after the mark an answer is still Perfect
+	rests: number?, -- a game with gaps: one beat in every hand of this many is a rest (Beat.rest)
 	holdStart: number?, -- os.clock() the current hold began at
 	start: number, -- os.clock() of the start: reps and the timing game run from it
 	startServer: number, -- the same instant as workspace:GetServerTimeNow(), for the client's ring
@@ -148,6 +151,7 @@ function TrainingService:Start(player: Player, court: number)
 		lanes = row.Lanes,
 		lead = row.Lead or 0,
 		react = row.React or 0,
+		rests = row.Rests,
 		start = now,
 		startServer = workspace:GetServerTimeNow(),
 		last = now,
@@ -291,6 +295,14 @@ function TrainingService:_tap(player: Player, down: boolean?, lane: number?)
 		return
 	end
 	session.judged = n
+	if Beat.rest(n, session.seed, session.rests) then
+		-- a tap in the gap: nothing is paid and the slip costs a little Focus
+		session.focus = math.max(0, session.focus - BEAT.FocusGood * 2)
+		self._tapRemote:FireClient(player, "miss", session.focus, session.awakeServer)
+		return
+	end
+	-- a ground that rests some beats: the played ones pay, and fill Focus, for the whole hand
+	local share = Beat.share(session.rests)
 	local gap = elapsed - Beat.moment(session.beat, n, session.seed)
 	local grade: Beat.Grade
 	if session.lanes then
@@ -312,10 +324,10 @@ function TrainingService:_tap(player: Player, down: boolean?, lane: number?)
 	local mult = Beat.reward(BEAT, grade)
 	if mult > 1 then
 		-- the reps themselves are paid by the clock: this is the bonus on the beat's reps
-		local reps = session.beat / REP
+		local reps = session.beat / REP / share
 		self:AddPower(player, self:_perRep(player, profile) * reps * (mult - 1), true)
 	end
-	session.focus += Beat.focus(BEAT, grade, session.beat, REP)
+	session.focus += Beat.focus(BEAT, grade, session.beat, REP) / share
 	if session.focus >= BEAT.FocusFull then
 		session.focus = 0
 		session.awakeUntil = now + BEAT.AwakeningSeconds

@@ -574,10 +574,202 @@ def peak_finale():
            beats=["the sky comes down on the hero"])
 
 
+# ------------------------------------------------------------------------------------ Gravity Chamber (phase E, pair 2)
+# Seen side-on and LOW (the push-up camera stands 9 studs off, 1.5 up): what lies flat on the floor is a
+# thin ellipse there, so every effect also has something that stands up off the floor.
+GRAV = hexc("B58CFF")
+BOTTOM = E("NormalId.Bottom")
+HEXES = "sprites/sigils/hex_grid_cel_02"
+
+
+def gravity_pulse():
+    """(tint) A push-up lands under heavy gravity: the floor rings under the chest. Origin = the floor."""
+    tl = TL()
+    g = [
+        ring("Ring", "sprites/rings/ring_cel_08", 2.5, 9, CS(WHITE), life=0.4, le=0.3, attrs=TINT),
+        ring("Dashed", "sprites/rings/ring_dashed_cel_02", 2, 6.5, CS(WHITE), life=0.5, le=0.35, attrs=TINT, Rotation=NR(0, 360)),
+        ring("Plates", HEXES, 5.5, 6.5, CS(WHITE), life=0.35, le=0.3, attrs=TINT, Transparency=NS((0, 0.25), (0.5, 0.45), (1, 1))),
+    ]
+    press = [
+        # the weight coming down: short streaks falling onto the floor round the body
+        pe("Press", attrs=TINT, Texture=tex("tfa/speed_line"), Shape=BOX, EmissionDirection=BOTTOM, SpreadAngle=V2(0, 0),
+           Speed=NR(22, 30), Lifetime=NR(0.09, 0.12), Size=NS((0, 1.5), (1, 0.6)), Color=CS(WHITE), LightEmission=0.4, ZOffset=1, **STREAK),
+    ]
+    rim = [
+        pe("Dust", Texture=tex("flipbooks/smoke/smoke_puff_fb_cel_03_4x4"), **fb(0.4), Shape=E("ParticleEmitterShape.Cylinder"),
+           ShapeStyle=E("ParticleEmitterShapeStyle.Surface"), EmissionDirection=TOP, SpreadAngle=V2(80, 80), Speed=NR(2, 4), Drag=4,
+           Lifetime=NR(0.3, 0.4), Rotation=NR(0, 360), Size=NS((0, 0.9), (1, 1.8)), Transparency=NS((0, 0.35), (0.6, 0.5), (1, 1)),
+           Color=CS((0, WHITE), (1, hexc("CFC8E6"))), LightEmission=0, ZOffset=0.4),
+        pe("Motes", attrs=TINT, Texture=tex("sprites/specks/dot_cel_00"), Shape=E("ParticleEmitterShape.Cylinder"), EmissionDirection=TOP,
+           SpreadAngle=V2(25, 25), Speed=NR(4, 8), Drag=3, Lifetime=NR(0.3, 0.45), Size=NS((0, 0.4), (1, 0)), Color=CS(WHITE),
+           LightEmission=0.45, ZOffset=0.8),
+    ]
+    inst = [carrier("Floor", (0, 0.12, 0, 0, 0, 0), [att("A", children=g)]), carrier("Press", (0, 2.6, 0, 0, 0, 0), press, size=(4.5, 0.2, 2.2)),
+            carrier("Rim", (0, 0.25, 0, 0, 0, 0), rim, size=(3.6, 0.3, 3.6))]
+    for t, n, when in (("Floor.A.Ring", 1, 0), ("Floor.A.Plates", 1, 0), ("Floor.A.Dashed", 1, 0.05), ("Press.Press", 9, 0), ("Rim.Dust", 5, 0),
+                       ("Rim.Motes", 8, 0)):
+        tl.at(when, do="emit", target=t, count=n)
+    effect("Gravity_Pulse", "A push-up lands under heavy gravity: the floor rings.", 0.7, inst, tl, [0.0, 0.03, 0.07, 0.12, 0.2, 0.35], GRAV,
+           "floor ring + falling pressure lines", origin=(0, 0, 0), dummy=False, cam=((9, 1.8, 3), (0, 1.2, 0)),
+           beats=["the weight lands on the floor"])
+
+
+def gravity_flip():
+    """(tint) Gravity turns over: everything on the floor is flung UP. Origin = the floor."""
+    tl = TL()
+    g = [
+        ring("Shock", "sprites/rings/ring_spiked_cel_02", 5, 20, CS(WHITE), life=0.45, le=0.3, attrs=TINT),
+        ring("Ring", "sprites/rings/ring_cel_08", 4, 15, CS(WHITE), life=0.55, le=0.3, attrs=TINT),
+        ring("Plates", HEXES, 12, 14, CS(WHITE), life=0.6, le=0.3, attrs=TINT, Transparency=NS((0, 0.2), (0.5, 0.4), (1, 1))),
+    ]
+    up = [
+        pe("Lift", attrs=TINT, Texture=tex("tfa/speed_line"), Shape=BOX, EmissionDirection=TOP, SpreadAngle=V2(3, 3),
+           Speed=NR(26, 44), Drag=1.5, Lifetime=NR(0.3, 0.5), Size=NS((0, 2.2), (1, 0.6)), Color=CS(WHITE), LightEmission=0.4, ZOffset=1,
+           **STREAK),
+        pe("Chips", Texture=tex(ROCK), Shape=BOX, EmissionDirection=TOP, SpreadAngle=V2(12, 12), Speed=NR(9, 16), Drag=2.2,
+           Lifetime=NR(0.9, 1.3), Rotation=NR(0, 360), RotSpeed=NR(-200, 200), Size=NS((0, 0.7), (0.8, 0.6), (1, 0)),
+           Color=CS((0, WHITE), (1, hexc("B8B4CC"))), LightEmission=0, ZOffset=0.6),
+        pe("Dust", Texture=tex("flipbooks/smoke/smoke_puff_fb_cel_03_4x4"), **fb(0.7), Shape=BOX, EmissionDirection=TOP, SpreadAngle=V2(20, 20),
+           Speed=NR(6, 11), Drag=2.5, Lifetime=NR(0.6, 0.8), Rotation=NR(0, 360), Size=NS((0, 1.8), (1, 3.4)),
+           Transparency=NS((0, 0.4), (0.6, 0.55), (1, 1)), Color=CS((0, WHITE), (1, hexc("CFC8E6"))), LightEmission=0, ZOffset=0.3),
+    ]
+    hit = [
+        pe("Lines", attrs=TINT, Texture=tex("sprites/impacts/speed_lines_cel_02"), Lifetime=NR(0.25), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 9), (1, 15)), Transparency=NS((0, 0.15), (0.5, 0.35), (1, 1)), Color=CS(WHITE), LightEmission=0.3, ZOffset=1.5),
+    ]
+    inst = [carrier("Ground", (0, 0.12, 0, 0, 0, 0), [att("A", children=g)]), carrier("Up", (0, 0.3, 0, 0, 0, 0), up, size=(10, 0.3, 10)),
+            carrier("Hit", (0, 3, 0, 0, 0, 0), [att("A", children=hit)]), light("Lamp", (0, 3, 0, 0, 0, 0), GRAV, 18)]
+    for t, n, when in (("Ground.A.Shock", 1, 0), ("Ground.A.Plates", 1, 0), ("Ground.A.Ring", 1, 0.06), ("Up.Lift", 26, 0), ("Up.Chips", 14, 0),
+                       ("Up.Dust", 8, 0), ("Hit.A.Lines", 1, 0), ("Up.Lift", 14, 0.12)):
+        tl.at(when, do="emit", target=t, count=n)
+    tl.at(0, do="set", target="Lamp.L", prop="Brightness", value=0.5)
+    tl.at(0.02, do="tween", target="Lamp.L", prop="Brightness", to=0, time=0.5, style="Quad", dir="Out")
+    effect("Gravity_Flip", "Gravity turns over: everything on the floor is flung up.", 1.3, inst, tl, [0.0, 0.04, 0.1, 0.2, 0.35, 0.55, 0.8],
+           GRAV, "everything flung upward", origin=(0, 0, 0), shake=0.4, cam=((11, 2.6, 6), (0, 3.6, 0)), beats=["the floor lets go"])
+
+
+def gravity_float():
+    """(loop, tint) While gravity is turned over: dust, grit and light drift UP off the whole deck. Rides
+    on the floor spot."""
+    deck = [
+        pe("Motes", attrs=TINT, Texture=tex("sprites/specks/dot_cel_00"), Shape=BOX, EmissionDirection=TOP, SpreadAngle=V2(6, 6), Rate=16,
+           Speed=NR(2, 4.5), Lifetime=NR(1.6, 2.4), Size=NS((0, 0), (0.15, 0.45), (0.8, 0.35), (1, 0)), Color=CS(WHITE), LightEmission=0.45,
+           ZOffset=0.8),
+        pe("Grit", Texture=tex(ROCK), Shape=BOX, EmissionDirection=TOP, SpreadAngle=V2(8, 8), Rate=5, Speed=NR(1.2, 2.6), Lifetime=NR(2.0, 2.8),
+           Rotation=NR(0, 360), RotSpeed=NR(-60, 60), Size=NS((0, 0), (0.12, 0.6), (0.85, 0.5), (1, 0)),
+           Color=CS((0, WHITE), (1, hexc("B8B4CC"))), LightEmission=0, ZOffset=0.5),
+        pe("Lift", attrs=TINT, Texture=tex("tfa/speed_line"), Shape=BOX, EmissionDirection=TOP, SpreadAngle=V2(0, 0), Rate=7,
+           Speed=NR(10, 16), Lifetime=NR(0.5, 0.8), Size=NS((0, 0), (0.2, 1.3), (1, 0.3)), Transparency=NS((0, 0.35), (1, 0.7)),
+           Color=CS(WHITE), LightEmission=0.4, ZOffset=0.6, **STREAK),
+    ]
+    floor = [pe("Dashed", attrs=TINT, Texture=tex("sprites/rings/ring_dashed_cel_02"), **FLAT, Rate=0.9, Lifetime=NR(1.3), Rotation=NR(0, 360),
+                RotSpeed=NR(25, 25), Size=NS((0, 5), (1, 13)), Transparency=NS((0, 0.45), (0.6, 0.6), (1, 1)), Color=CS(WHITE), LightEmission=0.3,
+                ZOffset=0.25)]
+    inst = [carrier("Deck", (0, 0.3, 0, 0, 0, 0), deck, size=(11, 0.3, 11)), carrier("Floor", (0, 0.14, 0, 0, 0, 0), [att("A", children=floor)])]
+    effect("Gravity_Float", "Gravity is turned over: dust and light drift up off the deck (loop).", 2.4, inst, TL(), [0.5, 1.0, 1.5, 2.0], GRAV,
+           "everything drifts upward", loop=True, attach="part", origin=(0, 0, 0), cam=((11, 2.6, 6), (0, 3.6, 0)),
+           beats=["motes and grit rise and never fall"])
+
+
+def gravity_slam():
+    """(tint) Gravity comes back: everything slams into the floor. Origin = the floor."""
+    tl = TL()
+    dust = hexc("CFC8E6")
+    g = [
+        ring("Shock", "sprites/rings/ring_spiked_cel_02", 6, 22, CS(WHITE), life=0.4, le=0.3, attrs=TINT),
+        ring("Ring", "sprites/rings/ring_cel_08", 5, 17, CS((0, WHITE), (1, dust)), life=0.5, le=0.15),
+        ring("Plates", HEXES, 13, 15, CS(WHITE), life=0.5, le=0.3, attrs=TINT, Transparency=NS((0, 0.15), (0.5, 0.4), (1, 1))),
+        ring("Crack", "sprites/cracks/crack_cel_02", 12, 13, CS(hexc("2C2838")), life=1.2, le=0, Rotation=NR(0, 360),
+             Transparency=NS((0, 0), (0.7, 0.1), (1, 1))),
+    ]
+    down = [
+        pe("Press", attrs=TINT, Texture=tex("tfa/speed_line"), Shape=BOX, EmissionDirection=BOTTOM, SpreadAngle=V2(0, 0),
+           Speed=NR(46, 60), Lifetime=NR(0.1, 0.13), Size=NS((0, 2.6), (1, 0.8)), Color=CS(WHITE), LightEmission=0.4, ZOffset=1, **STREAK),
+    ]
+    rim = [
+        pe("Dust", Texture=tex("flipbooks/smoke/smoke_puff_fb_cel_03_4x4"), **fb(0.65), Shape=E("ParticleEmitterShape.Cylinder"),
+           ShapeStyle=E("ParticleEmitterShapeStyle.Surface"), EmissionDirection=TOP, SpreadAngle=V2(80, 80), Speed=NR(9, 15), Drag=4,
+           Lifetime=NR(0.55, 0.7), Rotation=NR(0, 360), Size=NS((0, 2.4), (0.3, 4.2), (1, 5.0)), Transparency=FADE,
+           Color=CS((0, WHITE), (1, dust)), LightEmission=0, ZOffset=0.3),
+        pe("Chips", Texture=tex(ROCK), Shape=E("ParticleEmitterShape.Cylinder"), EmissionDirection=TOP, SpreadAngle=V2(45, 45),
+           Speed=NR(16, 28), Acceleration=V3(0, -70, 0), Lifetime=NR(0.45, 0.7), Rotation=NR(0, 360), RotSpeed=NR(-400, 400),
+           Size=NS((0, 0.9), (0.8, 0.8), (1, 0)), Color=CS((0, WHITE), (1, hexc("B8B4CC"))), LightEmission=0, ZOffset=0.6),
+    ]
+    inst = [carrier("Ground", (0, 0.12, 0, 0, 0, 0), [att("A", children=g)]), carrier("Down", (0, 7, 0, 0, 0, 0), down, size=(10, 0.3, 10)),
+            carrier("Rim", (0, 0.3, 0, 0, 0, 0), rim, size=(7, 0.4, 7)), light("Lamp", (0, 2, 0, 0, 0, 0), GRAV, 18)]
+    for t, n, when in (("Down.Press", 26, 0), ("Ground.A.Shock", 1, 0.02), ("Ground.A.Plates", 1, 0.02), ("Ground.A.Crack", 1, 0.02),
+                       ("Rim.Dust", 16, 0.02), ("Rim.Chips", 16, 0.02), ("Ground.A.Ring", 1, 0.08), ("Rim.Dust", 6, 0.14)):
+        tl.at(when, do="emit", target=t, count=n)
+    tl.at(0, do="set", target="Lamp.L", prop="Brightness", value=0.5)
+    tl.at(0.02, do="tween", target="Lamp.L", prop="Brightness", to=0, time=0.45, style="Quad", dir="Out")
+    effect("Gravity_Slam", "Gravity comes back: everything slams into the floor.", 1.4, inst, tl, [0.0, 0.04, 0.1, 0.2, 0.35, 0.55, 0.8], GRAV,
+           "slam: shock ring + dust wall", origin=(0, 0, 0), shake=0.6, dummy=False, cam=((11, 2.6, 6), (0, 2.4, 0)),
+           beats=["the whole deck is driven into the floor"])
+
+
+# ------------------------------------------------------------------------------------ Spirit Orb (phase E, pair 2)
+# Seen from the front, the orb over the hero's raised hands. Camera-facing shapes round the orb.
+SPIRIT = hexc("6CF5B0")
+
+
+def orb_release():
+    """(tint) The charge is let go: a pulse leaves the orb. Origin = the orb's centre."""
+    tl = TL()
+    a = [
+        pop("sprites/impacts/starburst_cel_00", size=4.2, color=CS(WHITE), life=0.1, attrs=TINT, LightEmission=0.3),
+        pe("Ring", attrs=TINT, Texture=tex("sprites/rings/ring_cel_04"), Lifetime=NR(0.36), Speed=NR(0), Size=NS((0, 2), (0.3, 7.5), (1, 9.5)),
+           Transparency=NS((0, 0), (0.5, 0.15), (1, 1)), Color=CS(WHITE), LightEmission=0.3, ZOffset=0.5),
+        pe("Soft", attrs=TINT, Texture=tex("sprites/rings/ring_glow_02"), Lifetime=NR(0.3), Speed=NR(0), Size=NS((0, 1.5), (1, 7)),
+           Transparency=NS((0, 0.3), (1, 1)), Color=CS(WHITE), LightEmission=0.5, ZOffset=0.3),
+        pe("Sparks", attrs=TINT, Texture=tex("sprites/stars/star_cel_01"), SpreadAngle=V2(180, 180), Speed=NR(10, 18), Drag=3.5,
+           Lifetime=NR(0.35, 0.55), Rotation=NR(0, 360), RotSpeed=NR(-300, 300), Size=NS((0, 0.9), (0.6, 0.7), (1, 0)), Color=CS(WHITE),
+           LightEmission=0.4, ZOffset=1),
+        pe("Rays", attrs=TINT, Texture=tex("sprites/specks/streak_cel_00"), SpreadAngle=V2(180, 180), Speed=NR(20, 30), Drag=5,
+           Lifetime=NR(0.16, 0.26), Size=NS((0, 1.4), (1, 0.4)), Color=CS(WHITE), LightEmission=0.45, ZOffset=1, **STREAK),
+    ]
+    inst = [carrier("Orb", (0, 8, 0, 0, 0, 0), [att("A", children=a)])]
+    for t, n, when in (("Pop", 1, 0), ("Ring", 1, 0), ("Soft", 1, 0), ("Sparks", 8, 0), ("Rays", 10, 0)):
+        tl.at(when, do="emit", target=f"Orb.A.{t}", count=n)
+    effect("Orb_Release", "The charge is let go: a pulse leaves the orb.", 0.7, inst, tl, [0.0, 0.03, 0.07, 0.12, 0.2, 0.35], SPIRIT,
+           "pulse ring from the orb", origin=(0, 8, 0), cam=((1.5, 2.4, 13), (0, 5.2, 0)), beats=["a ring of light leaves the orb"])
+
+
+def orb_burst():
+    """(tint) The thrown orb bursts high over the court. Origin = the burst, seen from 50 studs below."""
+    tl = TL()
+    a = [
+        pop("sprites/impacts/starburst_cel_00", size=30, color=CS((0, hexc("FFF1A8")), (1, WHITE)), life=0.16, attrs=TINT, LightEmission=0.2),
+        pe("Lines", attrs=TINT, Texture=tex("sprites/impacts/speed_lines_cel_02"), Lifetime=NR(0.3), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 26), (1, 46)), Transparency=NS((0, 0.1), (0.5, 0.3), (1, 1)), Color=CS(WHITE), LightEmission=0.3, ZOffset=1.5),
+        pe("Ring", attrs=TINT, Texture=tex("sprites/rings/ring_cel_08"), Lifetime=NR(0.55), Speed=NR(0), Size=NS((0, 8), (0.3, 36), (1, 46)),
+           Transparency=NS((0, 0), (0.5, 0.15), (1, 1)), Color=CS(WHITE), LightEmission=0.3, ZOffset=0.5),
+        pe("Spiked", attrs=TINT, Texture=tex("sprites/rings/ring_spiked_cel_02"), Lifetime=NR(0.4), Speed=NR(0), Rotation=NR(0, 360),
+           Size=NS((0, 8), (0.3, 30), (1, 38)), Transparency=NS((0, 0), (0.5, 0.1), (1, 1)), Color=CS(WHITE), LightEmission=0.3, ZOffset=0.8),
+        # the orb's light comes down as glitter
+        pe("Glitter", attrs=TINT, Texture=tex("sprites/stars/star_cel_01"), SpreadAngle=V2(180, 180), Speed=NR(30, 62), Drag=2.6,
+           Acceleration=V3(0, -14, 0), Lifetime=NR(1.1, 1.8), Rotation=NR(0, 360), RotSpeed=NR(-250, 250),
+           Size=NS((0, 3.2), (0.6, 2.4), (1, 0)), Color=CS(WHITE), LightEmission=0.4, ZOffset=1),
+        pe("Rays", attrs=TINT, Texture=tex("sprites/specks/streak_cel_00"), SpreadAngle=V2(180, 180), Speed=NR(70, 110), Drag=3.5,
+           Lifetime=NR(0.3, 0.5), Size=NS((0, 5), (1, 1.4)), Color=CS(WHITE), LightEmission=0.45, ZOffset=1, **STREAK),
+        pe("Motes", attrs=TINT, Texture=tex("sprites/specks/dot_cel_00"), SpreadAngle=V2(180, 180), Speed=NR(14, 34), Drag=2,
+           Acceleration=V3(0, -8, 0), Lifetime=NR(1.4, 2.2), Size=NS((0, 1.4), (0.7, 1.0), (1, 0)), Color=CS(WHITE), LightEmission=0.45,
+           ZOffset=0.6),
+    ]
+    inst = [carrier("Sky", (0, 50, 0, 0, 0, 0), [att("A", children=a)])]
+    for t, n, when in (("Pop", 1, 0), ("Lines", 1, 0), ("Ring", 1, 0), ("Spiked", 1, 0), ("Glitter", 34, 0), ("Rays", 30, 0), ("Motes", 30, 0),
+                       ("Ring", 1, 0.14), ("Glitter", 14, 0.14)):
+        tl.at(when, do="emit", target=f"Sky.A.{t}", count=n)
+    effect("Orb_Burst", "The thrown orb bursts high over the court: rings, rays and falling glitter.", 2.2, inst, tl,
+           [0.0, 0.04, 0.1, 0.2, 0.4, 0.7, 1.1, 1.6], SPIRIT, "sky burst", origin=(0, 50, 0), shake=0.5, dummy=True,
+           cam=((2, 1.5, 24), (0, 20, 0)), beats=["the sky lights up over the court"])
+
+
 EFFECTS = {"hit": train_hit, "crit": train_crit, "flurry": train_flurry, "pulse": train_pulse, "awaken": train_awaken, "aura": train_aura,
            "post_burst": post_burst, "post_rise": post_rise, "falls_ascend": falls_ascend, "falls_crash": falls_crash,
            "boulder_hit": boulder_hit, "boulder_barrage": boulder_barrage, "boulder_shatter": boulder_shatter, "boulder_land": boulder_land,
-           "peak_strike": peak_strike, "peak_catch": peak_catch, "peak_storm": peak_storm, "peak_finale": peak_finale}
+           "peak_strike": peak_strike, "peak_catch": peak_catch, "peak_storm": peak_storm, "peak_finale": peak_finale,
+           "gravity_pulse": gravity_pulse, "gravity_flip": gravity_flip, "gravity_float": gravity_float, "gravity_slam": gravity_slam,
+           "orb_release": orb_release, "orb_burst": orb_burst}
 
 if __name__ == "__main__":
     _ = (FB4, mix, rise)

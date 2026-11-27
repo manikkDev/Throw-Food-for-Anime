@@ -714,3 +714,62 @@ Checkpoint: commit `224c9e1` (phase D) = place version 954 (saved 2026-11-27, no
 
 
 Checkpoint: commit `a8184f9` (phase E pair 1) = place version 964 (saved 2026-11-27, not published, not pushed).
+
+### 2026-11-27: phase E, pair 2: Gravity Chamber and Spirit Orb (grounds 5 and 6)
+
+![phase E, pair 2](img/13-phaseE-pair2.jpg)
+
+(Top: the push-up game with a gap in the line; the awakening, gravity turned over; Gravity Core at level III.
+Bottom: the orb charging; the awakening; the thrown orb bursting over the court.)
+
+- **Two more games on the same judge.** `rhythm` (Gravity Chamber, 1 s beat): the beats ride a track as notes and
+  are tapped as they sit in the gold ring; one beat in every hand of four is a REST (`Rests` 4, `Beat.rest`: never
+  the hand's first, so two rests never meet and a session opens on a played beat). A tap on a rest is a slip: no
+  pay, and it costs 2 Focus. The played beats pay and fill Focus for the whole hand (`Beat.share`, x 4/3), so the
+  ground earns what the others do. `charge` (Spirit Orb, 4 s beat): the falls' held judge with a long hold
+  (`MinHold` 2.0): hold to charge, let go in the gold; a hold that began too late shows grey on the gauge.
+- **The clip over a rest** (`Beat.clipAt` with `rests`): reps fall only on played beats; over a rest the clip runs
+  half the way to the next rep at its own pace, HOLDS there (the top of the push-up) and runs on in time. Specs
+  for both.
+- **Client.** `TrainingController`: BeatTrack and ChargeMeter pictures (UI v5.4, `tools/ui/screens_v54.py`), a low
+  side-on shot for the push-ups, a front shot under the orb, and after the orb is thrown a shot that follows it up
+  to its burst before coming back. The grade flashes UNDER the beat track (over it, it hid the notes on every
+  beat). `GroundController`: `Contact` for both grounds, `Hold` (the charge is heard), `Charge` (the orb grows
+  with the gauge and falls away when let go), the shows `showGravity` (everything in `Floaters` drifts up and
+  turns, then drops) and `showOrb` (the orb swells to `OrbAwake`, is thrown 40 studs up, bursts, and a new one
+  gathers). The orb rides on the trainee's two palms, read from the hands every frame (the R15 arm reaches only
+  2.2 above the root, and the clips move the hands). A piece carries its tier's colour (attribute `Energy`).
+- **Studio-only test input.** `Players.LocalPlayer.TrainTestInput` (a BindableEvent made only in Studio):
+  `Fire("press", lane?)` / `Fire("release")` go through the controller's own input path, so a scripted play test
+  plays the real client (grades, clips, effects), not only the remote.
+- **Set pieces** (`buildGravity` tiers 10 and 11, `buildOrb` tiers 12 and 13; nine generated pieces): a steel deck
+  with rings of light under a field ring held by four emitter pylons, the gravity generator (tier 11: the gravity
+  core) behind, iron weights and plates that fly, a glass readout behind the trainee and on the console (10 / 25 /
+  50 G, then 100 / 250 / 500 G by level); a stone dais between four standing stones (tier 13: sun pillars) before
+  a shrine, incense, a rope and streamers at level II, spirit lights at level III. Seen and fixed: pale Neon
+  blooms to white at once (every Neon part now takes a saturated colour of its own, `neon` in the spec); a Neon
+  ball draws as a flat disc (the orb is a lit ball under a glowing shell); the far pylon on the camera's side and
+  the notice board stood in the awakened shots (pylons moved out, the orb's awakened camera crosses the walkway).
+- **Effects** (six, 87 in all): `Gravity_Pulse`, `Gravity_Flip`, `Gravity_Float` (loop), `Gravity_Slam`,
+  `Orb_Release`, `Orb_Burst`, all tinted by the piece. A new texture `tfa/speed_line`: the library's streak is
+  drawn lying at 20 degrees, so particles falling or rising straight (VelocityParallel) showed as rows of sideways
+  dashes; the new line is drawn upright in a SQUARE image (a narrow image came out a fat cone: a particle is
+  always square).
+- **Sounds** (eleven, 139 roles, all ProSoundEffects, picked from measured curves in `work/sfx/probe_e2.json`):
+  gravity_pulse, gravity_perfect, gravity_hum (heard from the court, like the falls), gravity_flip, gravity_slam,
+  orb_charge (2.5 s, played at 0.7 speed so it rises through the charge), orb_release, orb_perfect, orb_loop,
+  orb_throw, orb_burst.
+- **Animations** batch r10, uploaded: TrainPushup 122314366779681, GravityFloat 118935430592079, TrainOrb
+  115401504923373, OrbAwaken 106871952864981, OrbThrow 120378684758693 (hand-off and numbers:
+  `work/anim/upload10/README.md`).
+- **Played in Studio** through the test input: the push-up auto-player tapped every note in the ring and left the
+  rests, Focus filled in about 20 s, the hero floated with the weights and the readout behind; the orb player
+  held from the bottom of the gauge and let go in the gold: five Perfects to an awakening, the orb swelled, was
+  thrown, burst in the sky shot and a new one gathered; the cadence was the same over three rounds.
+- **Not done, not verified:** nobody has played these by hand, the sounds are unheard, phones are untried, and a
+  second client's view is untried. (The captures were taken at graphics level 21: Studio's quality had been left
+  there; it is back on Automatic.) The gravity slam and the release
+  pulse were never caught in a capture (they pass in under half a second); they were judged in the simulator
+  strips only. Once, a capture showed the word AWAKENING! two seconds after an awakening had ended; a frame-by-
+  frame log of two more rounds did not show it again. The push-up's elbows read weakly in pure profile and the
+  float is a little stiff (the animator's own notes). Grounds 7 and 8 remain.

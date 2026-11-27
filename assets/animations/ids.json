@@ -42,5 +42,10 @@
   "PeakLeft": 72086607702575,
   "PeakMid": 82451217887679,
   "PeakRight": 81925006763761,
-  "PeakStorm": 90151675511439
+  "PeakStorm": 90151675511439,
+  "TrainPushup": 122314366779681,
+  "GravityFloat": 118935430592079,
+  "TrainOrb": 115401504923373,
+  "OrbAwaken": 106871952864981,
+  "OrbThrow": 120378684758693
 }

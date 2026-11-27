@@ -1,0 +1,7300 @@
+{
+ "name": "GravityFloat",
+ "rbx_name": "GravityFloat",
+ "priority": "Action",
+ "loop": true,
+ "fps": 30,
+ "duration": 2.0,
+ "_intent": "Gravity flipped: the hero floats weightless 2.2 studs above standing height (feet ~2.2 clear of the floor), upright but relaxed: arms drifting out and up, hands open, knees soft with the right leg higher, head back, a slow bob of +-0.2 and a gentle roll of the torso.",
+ "_reference": "zero-gravity float, 2.0 s loop",
+ "markers": [],
+ "w": 300,
+ "h": 300,
+ "margin": 1.08,
+ "plain": true,
+ "preview": false,
+ "views": {
+  "side": [
+   1.0,
+   0.0,
+   0.05
+  ],
+  "front34": [
+   0.7,
+   1.0,
+   0.3
+  ],
+  "left": [
+   -1.0,
+   0.0,
+   0.05
+  ]
+ },
+ "properties": {
+  "ARM_IK_FK.L": 0.0,
+  "ARM_IK_FK.R": 0.0,
+  "LEG_IK_FK.L": 0.0,
+  "LEG_IK_FK.R": 0.0
+ },
+ "keyframes": [
+  {
+   "t": 0.0,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.22,
+      0.0,
+      3.56
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.57,
+      0.89,
+      -2.5
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.45,
+      -0.44,
+      -0.43
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -12.0,
+      0.0,
+      68.52
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.59,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -7.3,
+      0.0,
+      -71.98
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.18,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -22.876553231625216,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      38.6999614577649,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.966659241809875,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.316046833244368,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0,
+      0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.6
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.0333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.03,
+      0.0,
+      3.73
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.69,
+      1.18,
+      -2.48
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.24,
+      -0.59,
+      -0.5
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -11.37,
+      0.0,
+      69.18
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.79,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.94,
+      0.0,
+      -72.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30.83,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -23.41,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.06,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.89,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.03,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.621
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.0667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.86,
+      0.0,
+      3.86
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.79,
+      1.46,
+      -2.43
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.03,
+      -0.73,
+      -0.57
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -10.75,
+      0.0,
+      69.79
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.92,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.63,
+      0.0,
+      -71.92
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30.44,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -23.91,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.37,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.77,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      19.7,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.642
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.1,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.69,
+      0.0,
+      3.95
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.87,
+      1.73,
+      -2.35
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.81,
+      -0.86,
+      -0.64
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -10.15,
+      0.0,
+      70.34
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.99,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.38,
+      0.0,
+      -71.76
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -29.99,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -24.36,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.62,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.61,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      19.32,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.662
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.1333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.54,
+      0.0,
+      3.99
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.94,
+      1.98,
+      -2.25
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.6,
+      -0.99,
+      -0.7
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -9.56,
+      0.0,
+      70.81
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.99,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.19,
+      0.0,
+      -71.52
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -29.5,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -24.77,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.81,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.41,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.92,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.681
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.1667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.4,
+      0.0,
+      3.99
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.98,
+      2.2,
+      -2.13
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.39,
+      -1.1,
+      -0.75
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -9.0,
+      0.0,
+      71.21
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.93,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.06,
+      0.0,
+      -71.19
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -28.97,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.12,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.94,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.18,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.48,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.7
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.2,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.29,
+      0.0,
+      3.95
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      8.0,
+      2.4,
+      -1.98
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.19,
+      -1.2,
+      -0.79
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -8.47,
+      0.0,
+      71.54
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.8,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.01,
+      0.0,
+      -70.79
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -28.41,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.42,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.99,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -8.91,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.01,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.718
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.2333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.19,
+      0.0,
+      3.86
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      8.0,
+      2.58,
+      -1.81
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.0,
+      -1.29,
+      -0.82
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -7.99,
+      0.0,
+      71.77
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.61,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.01,
+      0.0,
+      -70.31
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -27.82,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.66,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.99,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -8.6,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      17.52,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.734
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.2667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.11,
+      0.0,
+      3.73
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.97,
+      2.72,
+      -1.62
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.82,
+      -1.36,
+      -0.85
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -7.54,
+      0.0,
+      71.93
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.36,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.08,
+      0.0,
+      -69.76
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -27.21,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.84,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.92,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -8.27,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      17.01,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.749
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.3,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.05,
+      0.0,
+      3.56
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.93,
+      2.84,
+      -1.41
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.65,
+      -1.42,
+      -0.86
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -7.15,
+      0.0,
+      72.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.05,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.22,
+      0.0,
+      -69.15
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -26.59,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.95,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.78,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -7.91,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      16.49,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.762
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.3333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.02,
+      0.0,
+      3.35
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.86,
+      2.93,
+      -1.19
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.49,
+      -1.46,
+      -0.87
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.8,
+      0.0,
+      71.98
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -30.68,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.42,
+      0.0,
+      -68.48
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -25.97,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -26.0,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.58,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -7.54,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      15.97,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.773
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.3667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.0,
+      0.0,
+      3.11
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.77,
+      2.98,
+      -0.95
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.36,
+      -1.49,
+      -0.86
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.52,
+      0.0,
+      71.87
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -30.26,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -6.68,
+      0.0,
+      -67.76
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -25.34,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.98,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.32,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -7.14,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      15.45,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.783
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.4,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.01,
+      0.0,
+      2.83
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.67,
+      3.0,
+      -0.7
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.24,
+      -1.5,
+      -0.85
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.29,
+      0.0,
+      71.68
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -29.8,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -7.0,
+      0.0,
+      -67.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -24.72,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.9,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      39.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -6.74,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      14.93,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.79
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.4333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.04,
+      0.0,
+      2.52
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.54,
+      2.99,
+      -0.45
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.14,
+      -1.49,
+      -0.83
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.13,
+      0.0,
+      71.4
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -29.29,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -7.37,
+      0.0,
+      -66.21
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -24.11,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.75,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      38.63,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -6.32,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      14.43,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.796
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.4667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.09,
+      0.0,
+      2.18
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.4,
+      2.94,
+      -0.19
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.06,
+      -1.47,
+      -0.8
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.03,
+      0.0,
+      71.04
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -28.75,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -7.8,
+      0.0,
+      -65.4
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -23.53,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.54,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      38.2,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -5.9,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      13.94,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.799
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.5,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.16,
+      0.0,
+      1.81
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.24,
+      2.87,
+      0.07
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.0,
+      -1.43,
+      -0.75
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.0,
+      0.0,
+      70.6
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -28.17,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -8.27,
+      0.0,
+      -64.57
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -22.97,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -25.27,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      37.73,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -5.48,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      13.48,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.8
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.5333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.25,
+      0.0,
+      1.43
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.07,
+      2.76,
+      0.33
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      12.97,
+      -1.38,
+      -0.71
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.03,
+      0.0,
+      70.09
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -27.58,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -8.78,
+      0.0,
+      -63.73
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -22.45,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -24.94,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      37.22,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -5.07,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      13.04,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.799
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.5667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.36,
+      0.0,
+      1.03
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.89,
+      2.62,
+      0.59
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      12.95,
+      -1.31,
+      -0.65
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.13,
+      0.0,
+      69.52
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -26.96,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -9.33,
+      0.0,
+      -62.89
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -21.96,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -24.55,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      36.67,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4.67,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      12.63,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.796
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.6,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.49,
+      0.0,
+      0.62
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.7,
+      2.45,
+      0.84
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      12.96,
+      -1.23,
+      -0.59
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.29,
+      0.0,
+      68.88
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -26.34,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -9.91,
+      0.0,
+      -62.07
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -21.52,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -24.12,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      36.09,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4.28,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      12.27,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.79
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.6333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.63,
+      0.0,
+      0.21
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.5,
+      2.26,
+      1.08
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      12.99,
+      -1.13,
+      -0.52
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.52,
+      0.0,
+      68.19
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -25.71,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -10.5,
+      0.0,
+      -61.27
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -21.13,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -23.64,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      35.5,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -3.92,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.94,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.783
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.6667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.79,
+      0.0,
+      -0.21
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.29,
+      2.04,
+      1.31
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.04,
+      -1.02,
+      -0.44
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -6.8,
+      0.0,
+      67.46
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -25.09,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -11.12,
+      0.0,
+      -60.5
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.79,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -23.12,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      34.88,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -3.57,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.66,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.773
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.7,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -1.97,
+      0.0,
+      -0.63
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.08,
+      1.8,
+      1.53
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.12,
+      -0.9,
+      -0.36
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -7.15,
+      0.0,
+      66.69
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -24.47,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -11.75,
+      0.0,
+      -59.77
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.51,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -22.57,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      34.25,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -3.25,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.42,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.762
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.7333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.15,
+      0.0,
+      -1.04
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.88,
+      1.54,
+      1.73
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.21,
+      -0.77,
+      -0.28
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -7.54,
+      0.0,
+      65.88
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -23.87,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -12.37,
+      0.0,
+      -59.08
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.28,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -21.99,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      33.63,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.96,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.24,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.749
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.7667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.35,
+      0.0,
+      -1.44
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.67,
+      1.26,
+      1.91
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.33,
+      -0.63,
+      -0.19
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -7.99,
+      0.0,
+      65.06
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -23.3,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -13.0,
+      0.0,
+      -58.45
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.12,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -21.39,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      33.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.71,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.1,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.734
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.8,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.55,
+      0.0,
+      -1.82
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.46,
+      0.97,
+      2.06
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.46,
+      -0.48,
+      -0.1
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -8.47,
+      0.0,
+      64.23
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -22.75,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -13.61,
+      0.0,
+      -57.88
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.03,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -20.77,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      32.39,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.49,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.02,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.718
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.8333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.75,
+      0.0,
+      -2.18
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.26,
+      0.67,
+      2.2
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.61,
+      -0.33,
+      -0.01
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -9.0,
+      0.0,
+      63.39
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -22.24,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -14.21,
+      0.0,
+      -57.37
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -20.14,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      31.79,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.31,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.7
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.8667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.96,
+      0.0,
+      -2.52
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.07,
+      0.36,
+      2.31
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.78,
+      -0.18,
+      0.08
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -9.56,
+      0.0,
+      62.56
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -21.78,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -14.78,
+      0.0,
+      -56.94
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.04,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -19.51,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      31.22,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.17,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.03,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.681
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.9,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.17,
+      0.0,
+      -2.83
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.89,
+      0.04,
+      2.4
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      13.95,
+      -0.02,
+      0.17
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -10.15,
+      0.0,
+      61.74
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -21.35,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -15.32,
+      0.0,
+      -56.59
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.14,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -18.89,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      30.68,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.07,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.12,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.662
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.9333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.38,
+      0.0,
+      -3.11
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.73,
+      -0.27,
+      2.46
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.14,
+      0.14,
+      0.26
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -10.75,
+      0.0,
+      60.95
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.98,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -15.82,
+      0.0,
+      -56.31
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.3,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -18.28,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      30.18,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.01,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.25,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.642
+     ]
+    }
+   }
+  },
+  {
+   "t": 0.9667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.58,
+      0.0,
+      -3.36
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.57,
+      -0.58,
+      2.49
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.34,
+      0.29,
+      0.35
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -11.37,
+      0.0,
+      60.2
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.67,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -16.28,
+      0.0,
+      -56.12
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.53,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -17.69,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      29.72,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.44,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.621
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.0,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.78,
+      0.0,
+      -3.56
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.43,
+      -0.89,
+      2.5
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.55,
+      0.44,
+      0.43
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -12.0,
+      0.0,
+      59.48
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.41,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -16.7,
+      0.0,
+      -56.02
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -20.82,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -17.12,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      29.3,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.03,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.68,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.6
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.0333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.97,
+      0.0,
+      -3.73
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.31,
+      -1.18,
+      2.48
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.76,
+      0.59,
+      0.5
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -12.63,
+      0.0,
+      58.82
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.21,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.06,
+      0.0,
+      -56.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -21.17,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -16.59,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.94,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.11,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      11.97,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.579
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.0667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.14,
+      0.0,
+      -3.86
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.21,
+      -1.46,
+      2.43
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      14.97,
+      0.73,
+      0.57
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -13.25,
+      0.0,
+      58.21
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.08,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.37,
+      0.0,
+      -56.08
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -21.56,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -16.09,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.63,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.23,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      12.3,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.558
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.1,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.31,
+      0.0,
+      -3.95
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.13,
+      -1.73,
+      2.35
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.19,
+      0.86,
+      0.64
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -13.85,
+      0.0,
+      57.66
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.01,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.62,
+      0.0,
+      -56.24
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -22.01,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -15.64,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.38,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.39,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      12.68,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.538
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.1333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.46,
+      0.0,
+      -3.99
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.06,
+      -1.98,
+      2.25
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.4,
+      0.99,
+      0.7
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -14.44,
+      0.0,
+      57.19
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.01,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.81,
+      0.0,
+      -56.48
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -22.5,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -15.23,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.19,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.59,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      13.08,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.519
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.1667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.6,
+      0.0,
+      -3.99
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.02,
+      -2.2,
+      2.13
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.61,
+      1.1,
+      0.75
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -15.0,
+      0.0,
+      56.79
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.07,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.94,
+      0.0,
+      -56.81
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -23.03,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.88,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.06,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -2.82,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      13.52,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.5
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.2,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.71,
+      0.0,
+      -3.95
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.0,
+      -2.4,
+      1.98
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.81,
+      1.2,
+      0.79
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -15.53,
+      0.0,
+      56.46
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.2,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.99,
+      0.0,
+      -57.21
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -23.59,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.58,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.01,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -3.09,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      13.99,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.482
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.2333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.81,
+      0.0,
+      -3.86
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.0,
+      -2.58,
+      1.81
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.0,
+      1.29,
+      0.82
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -16.01,
+      0.0,
+      56.23
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.39,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.99,
+      0.0,
+      -57.69
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -24.18,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.34,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.01,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -3.4,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      14.48,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.466
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.2667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.89,
+      0.0,
+      -3.73
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.03,
+      -2.72,
+      1.62
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.18,
+      1.36,
+      0.85
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -16.46,
+      0.0,
+      56.07
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.64,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.92,
+      0.0,
+      -58.24
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -24.79,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.16,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.08,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -3.73,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      14.99,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.451
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.3,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.95,
+      0.0,
+      -3.56
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.07,
+      -2.84,
+      1.41
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.35,
+      1.42,
+      0.86
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -16.85,
+      0.0,
+      56.0
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -20.95,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.78,
+      0.0,
+      -58.85
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -25.41,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.05,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.22,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4.09,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      15.51,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.438
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.3333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.98,
+      0.0,
+      -3.35
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.14,
+      -2.93,
+      1.19
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.51,
+      1.46,
+      0.87
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.2,
+      0.0,
+      56.02
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -21.32,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.58,
+      0.0,
+      -59.52
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -26.03,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.0,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.42,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4.46,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      16.03,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.427
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.3667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -5.0,
+      0.0,
+      -3.11
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.23,
+      -2.98,
+      0.95
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.64,
+      1.49,
+      0.86
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.48,
+      0.0,
+      56.13
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -21.74,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.32,
+      0.0,
+      -60.24
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -26.66,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.02,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      28.68,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -4.86,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      16.55,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.417
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.4,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.99,
+      0.0,
+      -2.83
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.33,
+      -3.0,
+      0.7
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.76,
+      1.5,
+      0.85
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.71,
+      0.0,
+      56.32
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -22.2,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -17.0,
+      0.0,
+      -61.0
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -27.28,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.1,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      29.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -5.26,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      17.07,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.41
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.4333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.96,
+      0.0,
+      -2.52
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.46,
+      -2.99,
+      0.45
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.86,
+      1.49,
+      0.83
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.87,
+      0.0,
+      56.6
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -22.71,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -16.63,
+      0.0,
+      -61.79
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -27.89,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.25,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      29.37,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -5.68,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      17.57,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.404
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.4667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.91,
+      0.0,
+      -2.18
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.6,
+      -2.94,
+      0.19
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.94,
+      1.47,
+      0.8
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.97,
+      0.0,
+      56.96
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -23.25,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -16.2,
+      0.0,
+      -62.6
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -28.47,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.46,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      29.8,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -6.1,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.06,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.401
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.5,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.84,
+      0.0,
+      -1.81
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.76,
+      -2.87,
+      -0.07
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      17.0,
+      1.43,
+      0.75
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      57.4
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -23.83,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -15.73,
+      0.0,
+      -63.43
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -29.03,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -14.73,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      30.27,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -6.52,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.52,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.4
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.5333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.75,
+      0.0,
+      -1.43
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      4.93,
+      -2.76,
+      -0.33
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      17.03,
+      1.38,
+      0.71
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.97,
+      0.0,
+      57.91
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -24.42,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -15.22,
+      0.0,
+      -64.27
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -29.55,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -15.06,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      30.78,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -6.93,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      18.96,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.401
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.5667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.64,
+      0.0,
+      -1.03
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.11,
+      -2.62,
+      -0.59
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      17.05,
+      1.31,
+      0.65
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.87,
+      0.0,
+      58.48
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -25.04,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -14.67,
+      0.0,
+      -65.11
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30.04,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -15.45,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      31.33,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -7.33,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      19.37,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.404
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.6,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.51,
+      0.0,
+      -0.62
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.3,
+      -2.45,
+      -0.84
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      17.04,
+      1.23,
+      0.59
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.71,
+      0.0,
+      59.12
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -25.66,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -14.09,
+      0.0,
+      -65.93
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30.48,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -15.88,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      31.91,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -7.72,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      19.73,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.41
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.6333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.37,
+      0.0,
+      -0.21
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.5,
+      -2.26,
+      -1.08
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      17.01,
+      1.13,
+      0.52
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.48,
+      0.0,
+      59.81
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -26.29,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -13.5,
+      0.0,
+      -66.73
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -30.87,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -16.36,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      32.5,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -8.08,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.06,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.417
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.6667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.21,
+      0.0,
+      0.21
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.71,
+      -2.04,
+      -1.31
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.96,
+      1.02,
+      0.44
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -17.2,
+      0.0,
+      60.54
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -26.91,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -12.88,
+      0.0,
+      -67.5
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.21,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -16.88,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      33.12,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -8.43,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.34,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.427
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.7,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -4.03,
+      0.0,
+      0.63
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      5.92,
+      -1.8,
+      -1.53
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.88,
+      0.9,
+      0.36
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -16.85,
+      0.0,
+      61.31
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -27.53,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -12.25,
+      0.0,
+      -68.23
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.49,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -17.43,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      33.75,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -8.75,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.58,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.438
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.7333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.85,
+      0.0,
+      1.04
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.12,
+      -1.54,
+      -1.73
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.79,
+      0.77,
+      0.28
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -16.46,
+      0.0,
+      62.12
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -28.13,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -11.63,
+      0.0,
+      -68.92
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.72,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -18.01,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      34.37,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.04,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.76,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.451
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.7667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.65,
+      0.0,
+      1.44
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.33,
+      -1.26,
+      -1.91
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.67,
+      0.63,
+      0.19
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -16.01,
+      0.0,
+      62.94
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -28.7,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -11.0,
+      0.0,
+      -69.55
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.88,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -18.61,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      35.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.29,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.9,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.466
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.8,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.45,
+      0.0,
+      1.82
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.54,
+      -0.97,
+      -2.06
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.54,
+      0.48,
+      0.1
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -15.53,
+      0.0,
+      63.77
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -29.25,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -10.39,
+      0.0,
+      -70.12
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.97,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -19.23,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      35.61,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.51,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.98,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.482
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.8333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.25,
+      0.0,
+      2.18
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.74,
+      -0.67,
+      -2.2
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.39,
+      0.33,
+      0.01
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -15.0,
+      0.0,
+      64.61
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -29.76,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -9.79,
+      0.0,
+      -70.63
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -32.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -19.86,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      36.21,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.69,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      21.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.5
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.8667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -3.04,
+      0.0,
+      2.52
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      6.93,
+      -0.36,
+      -2.31
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.22,
+      0.18,
+      -0.08
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -14.44,
+      0.0,
+      65.44
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -30.22,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -9.22,
+      0.0,
+      -71.06
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.96,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -20.49,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      36.78,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.83,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.97,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.519
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.9,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.83,
+      0.0,
+      2.83
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.11,
+      -0.04,
+      -2.4
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      16.05,
+      0.02,
+      -0.17
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -13.85,
+      0.0,
+      66.26
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -30.65,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -8.68,
+      0.0,
+      -71.41
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.86,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -21.11,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      37.32,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.93,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.88,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.538
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.9333,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.62,
+      0.0,
+      3.11
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.27,
+      0.27,
+      -2.46
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.86,
+      -0.14,
+      -0.26
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -13.25,
+      0.0,
+      67.05
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.02,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -8.18,
+      0.0,
+      -71.69
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.7,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -21.72,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      37.82,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.99,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.75,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.558
+     ]
+    }
+   }
+  },
+  {
+   "t": 1.9667,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.42,
+      0.0,
+      3.36
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.43,
+      0.58,
+      -2.49
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.66,
+      -0.29,
+      -0.35
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -12.63,
+      0.0,
+      67.8
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.33,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -7.72,
+      0.0,
+      -71.88
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.47,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -22.31,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      38.28,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -10.0,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.56,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0.0,
+      0.0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.579
+     ]
+    }
+   }
+  },
+  {
+   "t": 2.0,
+   "ease": "linear",
+   "_note": "weightless: drifting, arms floating up and out (loop)",
+   "bones": {
+    "TORSO": {
+     "rot": [
+      -2.22,
+      0.0,
+      3.56
+     ]
+    },
+    "UpTorso": {
+     "rot": [
+      7.57,
+      0.89,
+      -2.5
+     ]
+    },
+    "HEAD": {
+     "rot": [
+      15.45,
+      -0.44,
+      -0.43
+     ]
+    },
+    "FK_UpperArm.R": {
+     "rot": [
+      -12.0,
+      0.0,
+      68.52
+     ]
+    },
+    "FK_LowerArm.R": {
+     "rot": [
+      -31.59,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.R": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperArm.L": {
+     "rot": [
+      -7.3,
+      0.0,
+      -71.98
+     ]
+    },
+    "FK_LowerArm.L": {
+     "rot": [
+      -31.18,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_Hand.L": {
+     "rot": [
+      -18.0,
+      0.0,
+      0.0
+     ]
+    },
+    "FK_UpperLeg.R": {
+     "rot": [
+      -22.876553231625216,
+      0.0,
+      6.0
+     ]
+    },
+    "FK_LowerLeg.R": {
+     "rot": [
+      38.6999614577649,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.R": {
+     "rot": [
+      22.0,
+      0,
+      0
+     ]
+    },
+    "FK_UpperLeg.L": {
+     "rot": [
+      -9.966659241809875,
+      0.0,
+      -5.0
+     ]
+    },
+    "FK_LowerLeg.L": {
+     "rot": [
+      20.316046833244368,
+      0,
+      0
+     ]
+    },
+    "FK_Foot.L": {
+     "rot": [
+      28.0,
+      0,
+      0
+     ]
+    },
+    "ROOT": {
+     "loc": [
+      0.0,
+      0.0,
+      2.6
+     ]
+    }
+   }
+  }
+ ]
+}

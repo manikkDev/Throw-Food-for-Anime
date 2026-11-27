@@ -322,7 +322,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - FOOD AND TRAINING V2 (plan `design/plan/13-food-and-training-v2.md`, owner approved 2026-11-26; build log in its
   section 11; phases A (rules and wiring), B (the 51 food models and icons), C (throw feel; commit 3f88e12 = place version 939)
   and D (the training framework + grounds 1 and 2; commit 224c9e1 = place version 954; awaiting the owner's play) are built;
-  E is under way (grounds 3 and 4 built: commit a8184f9 = place version 964; 5 to 8 not); F (playtest) is not). Numbers:
+  E is under way (grounds 3 and 4: commit a8184f9 = place version 964; grounds 5 and 6 built; 7 and 8 not); F (playtest) is not). Numbers:
   `tools/economy/econ_v3.py` (`gen`, `apply`, `check` = the pacing gate, `cadence`, `table`), then gen_characters.py,
   gen_config.py, gate.py. Rules: 51 foods = 3 per world (Snack, Meal, Signature); food gives LUCK only (reach = Power);
   a food counts half in a world later than its own (`Core/Foods`); the throw auto-picks the best owned food for the
@@ -354,15 +354,17 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   ground (`Core/Grounds`: the two newest opened by rebirth; before rebirth 1 the right court shows the Waterfall
   LOCKED). Built: ground 1 Striking Post (game `ring`: tap as the ring lands), ground 2 Waterfall Focus (game
   `breath`: hold, let go on the gold), ground 3 Boulder Breaker (`sweep`: tap as the needle crosses the gold zone)
-  and ground 4 Thunder Peak (`reflex`: tap the rod the lightning marks; `Lanes`, `Lead`, `React`, `LaneClips`);
-  grounds 5 to 8 are still phase E (a ground with no template shows nothing and its prompts are off). Per-ground data is in `tools/economy/econ_v3.py` `GROUND_FEEL` (clips, `Marks` = the clip's rep
+  and ground 4 Thunder Peak (`reflex`: tap the rod the lightning marks; `Lanes`, `Lead`, `React`, `LaneClips`),
+  ground 5 Gravity Chamber (`rhythm`: tap the notes, leave the REST, `Rests`) and ground 6 Spirit Orb (`charge`:
+  a long hold, `MinHold` 2; the orb rides on the trainee's hands; a piece's colour is its attribute `Energy`);
+  grounds 7 and 8 are still phase E (a ground with no template shows nothing and its prompts are off). Per-ground data is in `tools/economy/econ_v3.py` `GROUND_FEEL` (clips, `Marks` = the clip's rep
   times, `Contact`, `MinHold`, `Hint`) -> `apply` -> gen_config. Rules: `Core/Beat` (`gradeHold`, `focus` scaled by
   beat length, `upcoming`, `clipAt` = the clip run so its reps fall on the jittered beats, `lane` + `gradeReflex`). Server: `TrainingService`
   (a session per court, stand point from the set piece's `Stand`, attributes `TrainPlot` / `TrainCourt` / `TrainAwake`
   on the character); `PlotService:_showGrounds` stands `Assets.Grounds.Ground_<id>_T<tier>` on the anchor `Ground<court>`
   (removes `L2` / `L3` below that level and `Lock` when open, moves the prompt holders `TrainSpot<court>` and
   `GearSign<court>` onto `Stand` and `Sign`, writes the board). Client: `Controllers/TrainingController` (camera,
-  clip sync, tap / hold / lane input, Focus bar; UI v5.3 `tools/ui/screens_v53.py`), `Controllers/GroundController` (the
+  clip sync, tap / hold / lane input, Focus bar; UI v5.4 `tools/ui/screens_v54.py`), `Controllers/GroundController` (the
   awakening show for EVERY player from the attributes, the reps (`STRIKE` = the grounds where a blow lands on a
   target), the rod marks, the boulder's cracks, the waterfall's sound), `Ui/GroundLook` (the card
   model `Show_<id>_T<tier>`). Set pieces: `tools/studio/grounds/` (`ground_lab.luau` gathers generated `GROUND_<key>`
@@ -393,9 +395,15 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   3D view is not the active tab): close the tabs (`ScriptEditorService:GetScriptDocuments()`, `doc:CloseAsync()` in a
   `task.spawn`) and capture again. A test command that jumps rebirths (`best <n>`) plays the rebirth cinematic for
   several seconds: wait about 10 s before starting a training session, or the cinematic's end takes the camera.
-- `VirtualInputManager` is closed to `execute_luau` ("lacking capability RobloxScript"): to play a timing game in a
-  test, fire its remote from the Client datamodel when the HUD shows the moment (the play-test driver of plan 13
-  phase D watched the ring's size). A ProximityPrompt can be pressed with `prompt:InputHoldBegin()` / `InputHoldEnd()`.
+- `VirtualInputManager` is closed to `execute_luau` ("lacking capability RobloxScript"): to play a training game in a
+  test, fire `Players.LocalPlayer.TrainTestInput` (a BindableEvent TrainingController makes only in Studio:
+  `Fire("press", lane?)` / `Fire("release")`) from the Client datamodel when the HUD shows the moment; it goes through
+  the real input path. A `screen_capture` lands several seconds after the call that precedes it: to catch a moment,
+  read the time left from an attribute, return about 4 s early and take five or six captures in one message.
+- A Neon part in a pale colour blooms to white (and a Neon ball draws as a flat disc): give Neon a saturated colour and
+  build a glowing ball as a lit ball under a transparent Neon shell. A particle is always SQUARE, and VelocityParallel
+  runs the texture's UP along its travel: a line that must fall or rise straight needs an upright line in a square
+  image (`tfa/speed_line`), not the library's slanted streak. A ProximityPrompt can be pressed with `prompt:InputHoldBegin()` / `InputHoldEnd()`.
 
 - A `GeometryService:UnionAsync` result keeps its FIRST part's CFrame: its Position and Size do not say where the geometry
   is. Measure a model BEFORE merging (attribute `TrueSize`, pivot at the base centre) and place it by its pivot, never by

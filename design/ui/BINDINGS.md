@@ -1921,6 +1921,12 @@ Root: `TrainingBar` (ScreenGui), file `src/ui/TrainingBar.model.json`
 | `SweepMeter.Sweet` / `SweepMeter.SweetCore` | Frame (the gold zone and its green core) |
 | `Rods` | Frame (Thunder Peak's picture; UI v5.3) |
 | `Rods.Rod1` / `Rod2` / `Rod3` | TextButton (answer with rod 1 / 2 / 3; attribute Lane; a `Mark` ring inside each shows the marked rod) |
+| `BeatTrack` | Frame (Gravity Chamber's picture; attributes HitAt, PerSecond; UI v5.4) |
+| `BeatTrack.Hit` | Frame (the gold ring a note is tapped in) |
+| `BeatTrack.Note1` .. `Note6` | Frame (moved, sized and faded by code: one per coming beat; a rest is a small dim one) |
+| `ChargeMeter` | Frame (Spirit Orb's picture; attribute SweetAt; UI v5.4) |
+| `ChargeMeter.Fill` / `ChargeMeter.Marker` | Frame (the held charge climbing; the level it would have, shown always) |
+| `ChargeMeter.Sweet` / `ChargeMeter.SweetCore` | Frame (the gold band and its green core) |
 | `FocusBar` | Frame |
 | `FocusBar.Fill` | Frame (Focus; awakened: the time left, gold) |
 | `TapHint` | TextLabel (the ground's instruction, then what to do right now) |

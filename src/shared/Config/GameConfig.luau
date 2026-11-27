@@ -776,6 +776,15 @@ local GameConfig = {
 				Side = -1,
 				Game = "rhythm",
 				BeatSeconds = 1,
+				Clip = "TrainPushup",
+				ClipSeconds = 2,
+				Marks = {
+					0.5,
+					1.5,
+				},
+				AwakeClip = "GravityFloat",
+				Rests = 4,
+				Hint = "TAP THE BEATS, SKIP GAPS",
 			},
 			{
 				Id = "orb",
@@ -784,6 +793,16 @@ local GameConfig = {
 				Side = 1,
 				Game = "charge",
 				BeatSeconds = 4,
+				Clip = "TrainOrb",
+				ClipSeconds = 4,
+				Marks = {
+					3.5,
+				},
+				AwakeClip = "OrbAwaken",
+				FinishClip = "OrbThrow",
+				FinishAt = 0.5,
+				MinHold = 2,
+				Hint = "HOLD TO CHARGE",
 			},
 			{
 				Id = "chains",

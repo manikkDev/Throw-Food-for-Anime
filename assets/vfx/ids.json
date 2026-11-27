@@ -149,7 +149,9 @@
   "tfa__water_foam__vt.png": 107461682001420,
   "tfa__water_sheet__vt.png": 90130101110366,
   "tfa__wood_splinter.png": 89131742746517,
-  "tfa__bolt_strip__vt.png": 89782378136082
+  "tfa__bolt_strip__vt.png": 89782378136082,
+  "lib__sprites__sigils__hex_grid_cel_02.png": 133282763927164,
+  "tfa__speed_line.png": 135047329097408
  },
  "meshes": {}
 }

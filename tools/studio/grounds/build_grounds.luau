@@ -4,6 +4,8 @@
 --   Ground_falls_T4..T5   Waterfall Focus (right court): Mountain Falls, Shrine Falls
 --   Ground_boulder_T6..T7 Boulder Breaker (left court):  Granite Boulder, Obsidian Boulder
 --   Ground_peak_T8..T9    Thunder Peak    (right court): Storm Peak, Thunder Peak
+--   Ground_gravity_T10..T11 Gravity Chamber (left court): Gravity Room, Gravity Core
+--   Ground_orb_T12..T13   Spirit Orb      (right court): Spirit Orb, Sun Orb
 --   Show_<id>_T<tier>     a small display model of each tier, for dialogs and reward cards
 --
 -- RUN IT THROUGH  python tools/studio/grounds/run_build.py  (it puts the effect texture ids in
@@ -18,6 +20,9 @@
 --   Target       Model: the thing that is struck / the centrepiece that pops in on an upgrade
 --   Fx.Strike / Fx.Seat / Fx.Pool   invisible parts: where effects are played
 --   Water.Left / Water.Right        the two halves of the falls (Beams with attribute Flow)
+--   Fx.Floor / Fx.Hum / Floaters    the gravity deck's floor spot, its machine, what drifts up
+--   Fx.Orb / Fx.Field / Target.Core + Shell   the spirit orb: where it rests, the charge, its two balls
+--   attributes Energy (the tier's colour), OrbRest / OrbFull / OrbAwake (diameters)
 --   emitters with attribute When = "awake" / "calm"
 --   L2, L3       Models: what gear levels II and III add (the server removes them below that level)
 --   Lock         Model: chains and a board (the server removes it when the ground is open)
@@ -1082,6 +1087,398 @@ local function buildPeak(tier: number)
 	end)
 end
 
+-- a ring of glowing segments let into a floor (any colour; the gold crest ring is crestRing)
+local function neonRing(parent: Instance, centre: Vector3, radius: number, thick: number, color: Color3, count: number, name: string?)
+	for i = 0, count - 1 do
+		local a = i / count * math.pi * 2
+		local c = centre + V(math.cos(a) * radius, 0.02, math.sin(a) * radius)
+		local length = 2 * math.pi * radius / count + 0.03
+		local seg = part(parent, name or "RingSeg", V(length, 0.05, thick), CFrame.new(c) * CFrame.Angles(0, -a + math.pi / 2, 0), color, M.Neon)
+		seg.CastShadow = false
+	end
+end
+
+-- ================================================================== GRAVITY CHAMBER (phase E, pair 2)
+-- Left court, like the post: the walkway is +X, the trainee does push-ups facing -Z toward the
+-- generator, the training camera looks from +X in profile and LOW (nothing tall stands between
+-- x 0 and 9 beside the trainee). A round steel deck under a ring held up by four emitter pylons.
+local GRAVITY = {
+	[10] = { machine = "gravity_generator", scale = 1.1, energy = HEX("B58CFF"), neon = HEX("7A3CFF"), deck = HEX("34364A"), trim = HEX("8C7A4A"), g = { "10 G", "25 G", "50 G" } },
+	[11] = { machine = "gravity_core", scale = 1.08, energy = HEX("FF5CD6"), neon = HEX("E01FB4"), deck = HEX("26222E"), trim = HEX("C9A24A"), g = { "100 G", "250 G", "500 G" } },
+}
+
+local function buildGravity(tier: number)
+	local spec = GRAVITY[tier]
+	local m = begin("Ground_gravity_T" .. tier)
+	local L2, L3, fx = m.L2, m.L3, m.Fx
+	m:SetAttribute("Energy", spec.energy)
+	local TOP_Y = 0.36
+	local C = V(0, 0, -1.2) -- the deck's centre
+
+	-- the deck: a steel disc on a wider brass-edged step, rings of light let into it
+	post(m, "DeckStep", 0.2, 14.2, C, spec.trim, M.Metal, true)
+	post(m, "Deck", TOP_Y, 13.2, C, spec.deck, M.DiamondPlate, true)
+	neonRing(m, C + V(0, TOP_Y, 0), 6.2, 0.16, spec.neon, 36)
+	neonRing(m, C + V(0, TOP_Y, 0), 3.4, 0.1, spec.neon, 24)
+	for i = 0, 7 do
+		local a = i / 8 * math.pi * 2 + math.pi / 8
+		local mid = C + V(math.cos(a) * 4.8, TOP_Y + 0.01, math.sin(a) * 4.8)
+		part(m, "DeckSeam", V(2.7, 0.04, 0.12), CFrame.new(mid) * CFrame.Angles(0, -a, 0), HEX("15161F"), M.Metal).CastShadow = false
+	end
+	local standAt = V(0, TOP_Y, -0.6)
+	ghost(m, "Stand", V(2, 0.1, 2), CFrame.lookAt(standAt, standAt - V(0, 0, 1)))
+	-- under the chest (the plank lies from the toes at +2.1 behind to the hands at 1.3 in front)
+	ghost(fx, "Floor", V(0.4, 0.2, 0.4), CFrame.new(0, TOP_Y + 0.05, -1.2))
+
+	-- the machine behind the deck: the centrepiece
+	local target = model(m, "Target")
+	local machine = mesh(target, spec.machine, "Machine", spec.scale, V(0, 0, -9.0), V(0, 0, 1), true)
+	target.PrimaryPart = machine
+	target.WorldPivot = CFrame.new(0, 0, -9.0)
+	local hum = ghost(fx, "Hum", V(0.4, 0.4, 0.4), CFrame.new(0, 3.6, -8.4))
+	glow(hum, spec.energy, 12, 0.6)
+
+	-- four emitter pylons hold a ring over the deck
+	local RING_Y, RING_R = 10.6, 5.0
+	-- (the two on the camera's side stand wide: at x 6.2 the far one stood in the training shot)
+	local pylons = { V(7.5, 0, 3.8), V(7.5, 0, -7.6), V(-6.2, 0, 4.4), V(-6.2, 0, -6.8) }
+	for _, at in pylons do
+		local pylon = mesh(m, "gravity_pylon", "Pylon", 1.2, at, V(-at.X, 0, -at.Z + C.Z), true)
+		local tip = at + V(0, pylon.Size.Y - 0.5, 0)
+		local dir = (C - at) * V(1, 0, 1)
+		local hold = C + V(0, RING_Y, 0) - dir.Unit * RING_R
+		local mid = (tip + hold) / 2
+		cyl(m, "Strut", (hold - tip).Magnitude, 0.22, CFrame.lookAt(mid, hold) * CFrame.Angles(0, math.rad(90), 0), HEX("23242E"), M.Metal)
+	end
+	local ring = model(m, "FieldRing")
+	for i = 0, 23 do
+		local a = i / 24 * math.pi * 2
+		local c = C + V(math.cos(a) * RING_R, RING_Y, math.sin(a) * RING_R)
+		local length = 2 * math.pi * RING_R / 24 + 0.05
+		part(ring, "RingBody", V(length, 0.55, 0.7), CFrame.new(c) * CFrame.Angles(0, -a + math.pi / 2, 0), HEX("23242E"), M.Metal)
+		local lit = part(ring, "RingLight", V(length, 0.14, 0.74), CFrame.new(c - V(0, 0.3, 0)) * CFrame.Angles(0, -a + math.pi / 2, 0), spec.neon, M.Neon)
+		lit.CastShadow = false
+	end
+	-- the field itself: faint columns of light from the ring to the deck (they run DOWN; awakened, UP)
+	for i = 0, 5 do
+		local a = i / 6 * math.pi * 2 + 0.3
+		local foot = C + V(math.cos(a) * RING_R, TOP_Y + 0.05, math.sin(a) * RING_R)
+		local holder = ghost(ring, "FieldLine", V(0.2, 0.2, 0.2), CFrame.new(foot))
+		local a0 = Instance.new("Attachment")
+		a0.Parent = holder
+		a0.WorldCFrame = CFrame.new(foot + V(0, RING_Y - TOP_Y - 0.4, 0)) * CFrame.Angles(0, 0, math.rad(90))
+		local a1 = Instance.new("Attachment")
+		a1.Parent = holder
+		a1.WorldCFrame = CFrame.new(foot) * CFrame.Angles(0, 0, math.rad(90))
+		for _, when in { "calm", "awake" } do
+			local beam = Instance.new("Beam")
+			beam.Name = "Field_" .. when
+			beam.Attachment0 = if when == "calm" then a0 else a1
+			beam.Attachment1 = if when == "calm" then a1 else a0
+			beam.Texture = tex("streakline")
+			beam.TextureMode = Enum.TextureMode.Wrap
+			beam.TextureLength = 5
+			beam.TextureSpeed = if when == "calm" then 1.4 else 4.5
+			beam.Width0 = 0.9
+			beam.Width1 = 0.9
+			beam.FaceCamera = true
+			beam.LightEmission = 0.3
+			beam.LightInfluence = 0
+			beam.Color = CS(spec.energy)
+			beam.Transparency = NS({ 0, 1 }, { 0.2, if when == "calm" then 0.72 else 0.45 }, { 0.8, if when == "calm" then 0.72 else 0.45 }, { 1, 1 })
+			beam:SetAttribute("When", when)
+			beam.Enabled = when == "calm"
+			beam.Parent = holder
+		end
+	end
+	local heart = ghost(ring, "RingHeart", V(1, 1, 1), CFrame.new(C + V(0, RING_Y - 1, 0)))
+	glow(heart, spec.energy, 20, 0.5, "awake")
+
+	-- the readout: how heavy it is in there, on a glass panel behind the trainee (the training
+	-- camera reads it from +X) and on the console at the front (the player walking up reads that)
+	local function readout(parent: Instance, text: string, grow: number)
+		local panel = part(parent, "Readout", V(0.12 + grow, 2.0 + grow, 4.6 + grow), CFrame.new(-5.0, 5.2, -1.2), HEX("12121C"), M.Glass)
+		panel.Transparency = 0.35
+		panel.CastShadow = false
+		for _, face in { Enum.NormalId.Right, Enum.NormalId.Left } do
+			local label = words(panel, face, text, spec.energy, 60, HEX("12121C"))
+			label.Parent.LightInfluence = 0
+		end
+		local dial = part(parent, "DialReadout", V(1.5 + grow, 0.62 + grow, 0.06 + grow / 2), CFrame.new(-5.3, 4.55, 7.62) * CFrame.Angles(0, math.rad(-17), 0), HEX("12121C"), M.SmoothPlastic)
+		dial.CastShadow = false
+		local label = words(dial, Enum.NormalId.Back, text, spec.energy, 80)
+		label.Parent.LightInfluence = 0
+	end
+	for _, z in { -3.2, 0.8 } do
+		post(m, "ReadoutPost", 4.3, 0.18, V(-5.0, 0, z), HEX("23242E"), M.Metal)
+	end
+	box(m, "ReadoutFoot", V(0.8, 0.3, 4.8), V(-5.0, 0, -1.2), HEX("23242E"), M.Metal, true)
+	readout(m, spec.g[1], 0)
+	mesh(m, "gravity_console", "Console", 1.0, V(-5.6, 0, 6.6), V(0.3, 0, 1), true)
+	noticeBoard(m, V(6.6, 0, 8.3), V(0.55, 0, 0.83))
+
+	-- what is loose: it drifts up when gravity is turned over (GroundController: Floaters)
+	local floaters = model(m, "Floaters")
+	local function loose(parent: Instance, name: string, build: (Model) -> ())
+		local one = model(parent, name)
+		build(one)
+		local cf = one:GetBoundingBox()
+		one.WorldPivot = cf
+	end
+	for i, row in { { V(-3.9, TOP_Y, -4.6), 0.95 }, { V(-3.4, TOP_Y, 2.9), 0.62 }, { V(3.3, TOP_Y, -5.9), 0.55 } } do
+		loose(floaters, "Weight" .. i, function(one)
+			mesh(one, "iron_weight", "Weight", row[2], row[1], V(1, 0, 0.3 * i), true)
+		end)
+	end
+	for i, row in { { -1.9, -5.3, 0.7 }, { -4.6, -1.4, 0.5 }, { -2.6, 0.9, 0.42 }, { 1.6, -5.9, 0.45 }, { -4.9, 1.4, 0.6 }, { -1.4, 3.6, 0.38 } } do
+		loose(floaters, "Plate" .. i, function(one)
+			local slab = part(one, "Plate", V(row[3] * 2, row[3] * 0.5, row[3] * 1.4), CFrame.new(row[1], TOP_Y + row[3] * 0.25, row[2] - 1.2 + 1.2) * CFrame.Angles(0, i * 1.1, 0), spec.deck, M.DiamondPlate, true)
+			local _ = slab
+		end)
+	end
+
+	-- LEVEL II: heavier: more iron, the banners, the higher reading
+	for i, row in { { V(-5.6, 0, -3.9), 1.15 }, { V(4.9, TOP_Y, 3.4), 0.5 } } do
+		loose(floaters, "Heavy" .. i, function(one)
+			mesh(one, "iron_weight", "Weight", row[2], row[1], V(1, 0, -0.4), true)
+		end)
+		-- (in Floaters so it flies, but it belongs to level II: the server takes L2 away, so mark it)
+		local heavy = floaters:FindFirstChild("Heavy" .. i) :: Model
+		heavy.Parent = L2
+		heavy.Name = "Floater"
+	end
+	readout(L2, spec.g[2], 0.06)
+	banner(L2, V(-7.9, 0, -8.6), V(0, 0, 1), 9.2, HEX("2A2440"), spec.energy, "重\n力")
+	banner(L2, V(-7.9, 0, 3.4), V(1, 0, 0), 8.4, HEX("F6EFD9"), HEX("2A2440"), "百\n倍")
+
+	-- LEVEL III: the chamber at full power: a second ring of light overhead, the crest in the deck
+	readout(L3, spec.g[3], 0.12)
+	for i = 0, 23 do
+		local a = i / 24 * math.pi * 2
+		local c = C + V(math.cos(a) * (RING_R + 0.9), RING_Y + 0.5, math.sin(a) * (RING_R + 0.9))
+		local length = 2 * math.pi * (RING_R + 0.9) / 24 + 0.05
+		local lit = part(L3, "OuterLight", V(length, 0.2, 0.2), CFrame.new(c) * CFrame.Angles(0, -a + math.pi / 2, 0), HEX("FFB81F"), M.Neon)
+		lit.CastShadow = false
+	end
+	crestRing(L3, C + V(0, TOP_Y, 0), 5.3)
+	for _, at in pylons do
+		local lamp = ghost(L3, "PylonLamp", V(0.4, 0.4, 0.4), CFrame.new(at + V(0, 6.9, 0)))
+		glow(lamp, spec.energy, 9, 0.9)
+	end
+	finish(m)
+
+	showModel("Show_gravity_T" .. tier, cyl(folder, "Base", 0.4, 9, CFrame.new(0, 0.2, 0) * CFrame.Angles(0, 0, math.rad(90)), spec.deck, M.DiamondPlate), function(show)
+		mesh(show, spec.machine, "Machine", spec.scale, V(0, 0.4, -0.6), V(0, 0, 1))
+		mesh(show, "iron_weight", "Weight", 0.7, V(-3.0, 0.4, 1.8), V(1, 0, 0.3))
+		mesh(show, "iron_weight", "Weight", 0.5, V(3.0, 0.4, 2.0), V(-1, 0, 0.3))
+	end)
+end
+
+-- ================================================================== SPIRIT ORB (phase E, pair 2)
+-- Right court, like the falls: the walkway is -X. The trainee stands on a stone dais facing +Z (the
+-- lane) with the orb over their raised hands; the shrine stands behind them between standing
+-- stones; the training camera looks from the front, from below eye level.
+local ORBS = {
+	[12] = { stone = "spirit_monolith", size = V(2.3, 5.0, 2.3), energy = HEX("7CF59A"), neon = HEX("12C552"), body = HEX("46E882"), deck = HEX("C9CBC4"), step = HEX("9A9E98"), rest = 1.6, full = 4.0, awake = 8.5 },
+	[13] = { stone = "sun_pillar", size = V(3.2, 7.5, 2.5), energy = HEX("FFB02E"), neon = HEX("FF7A14"), body = HEX("FFA62B"), deck = HEX("E6D3A6"), step = HEX("C9A86A"), rest = 1.9, full = 4.6, awake = 9.5 },
+}
+
+local function buildOrb(tier: number)
+	local spec = ORBS[tier]
+	local m = begin("Ground_orb_T" .. tier)
+	local L2, L3, fx = m.L2, m.L3, m.Fx
+	m:SetAttribute("Energy", spec.energy)
+	m:SetAttribute("OrbRest", spec.rest)
+	m:SetAttribute("OrbFull", spec.full)
+	m:SetAttribute("OrbAwake", spec.awake)
+	local TOP_Y = 0.55
+	local C = V(0, 0, -0.8)
+
+	-- the dais: two steps of pale stone, a ring of light let into the top
+	post(m, "DaisStep", 0.28, 14.4, C, spec.step, M.Slate, true)
+	post(m, "Dais", TOP_Y, 12.8, C, spec.deck, M.Slate, true)
+	neonRing(m, C + V(0, TOP_Y, 0), 5.9, 0.16, spec.neon, 36)
+	neonRing(m, C + V(0, TOP_Y, 0), 2.7, 0.1, spec.neon, 20)
+	for i = 0, 7 do
+		local a = i / 8 * math.pi * 2
+		local c = C + V(math.cos(a) * 4.3, TOP_Y + 0.02, math.sin(a) * 4.3)
+		part(m, "RuneStud", V(0.5, 0.06, 0.5), CFrame.new(c) * CFrame.Angles(0, a + math.pi / 4, 0), spec.neon, M.Neon).CastShadow = false
+	end
+	local standAt = V(0, TOP_Y, -0.4)
+	ghost(m, "Stand", V(2, 0.1, 2), CFrame.lookAt(standAt, standAt + V(0, 0, 1)))
+	ghost(fx, "Seat", V(0.4, 0.4, 0.4), CFrame.new(0, TOP_Y + 0.05, -0.4))
+
+	-- the orb: its underside rests on this point over the raised hands (the root stands 3 above the
+	-- floor, the hands reach 2.2 above that; the client carries it on the hands while someone trains)
+	local restAt = V(0, TOP_Y + 3 + 2.2 + 0.45, -0.2)
+	ghost(fx, "Orb", V(0.3, 0.3, 0.3), CFrame.new(restAt))
+	local target = model(m, "Target")
+	local centre = restAt + V(0, spec.rest / 2, 0)
+	-- (a lit ball under a glowing shell: a Neon ball alone drew as a flat disc and bloomed to cyan-white)
+	local core = part(target, "Core", V(spec.rest, spec.rest, spec.rest), CFrame.new(centre), spec.body, M.SmoothPlastic)
+	core.Shape = Enum.PartType.Ball
+	core.CastShadow = false
+	local shell = part(target, "Shell", V(spec.rest, spec.rest, spec.rest) * 1.16, CFrame.new(centre), spec.neon, M.Neon)
+	shell.Shape = Enum.PartType.Ball
+	shell.Transparency = 0.6
+	shell.CastShadow = false
+	target.PrimaryPart = core
+	target.WorldPivot = CFrame.new(centre)
+	glow(core, spec.energy, 12, 0.7)
+	-- wisps that leave it all the time; a corona while it is enormous
+	emitter(core, "Wisps", {
+		Texture = tex("dot"),
+		Rate = 7,
+		Lifetime = NumberRange.new(0.7, 1.1),
+		Speed = NumberRange.new(1, 2.4),
+		SpreadAngle = Vector2.new(180, 180),
+		Shape = Enum.ParticleEmitterShape.Sphere,
+		ShapeStyle = Enum.ParticleEmitterShapeStyle.Surface,
+		Size = NS({ 0, 0 }, { 0.2, 0.34 }, { 1, 0 }),
+		Color = CS(Color3.new(1, 1, 1), spec.energy),
+		LightEmission = 0.45,
+		ZOffset = 0.5,
+	})
+	emitter(core, "Corona", {
+		When = "awake",
+		Enabled = false,
+		Texture = tex("glint"),
+		Rate = 14,
+		Lifetime = NumberRange.new(0.35, 0.6),
+		Speed = NumberRange.new(3, 7),
+		SpreadAngle = Vector2.new(180, 180),
+		Shape = Enum.ParticleEmitterShape.Sphere,
+		ShapeStyle = Enum.ParticleEmitterShapeStyle.Surface,
+		Rotation = NumberRange.new(0, 90),
+		Size = NS({ 0, 0 }, { 0.3, 1.6 }, { 1, 0 }),
+		Color = CS(Color3.new(1, 1, 1), spec.energy),
+		LightEmission = 0.5,
+		ZOffset = 1,
+	})
+	-- the wake it leaves when it is thrown
+	local t0 = Instance.new("Attachment")
+	t0.Name = "TrailA"
+	t0.Position = V(0, 0.5, 0)
+	t0.Parent = core
+	local t1 = Instance.new("Attachment")
+	t1.Name = "TrailB"
+	t1.Position = V(0, -0.5, 0)
+	t1.Parent = core
+	local trail = Instance.new("Trail")
+	trail.Attachment0 = t0
+	trail.Attachment1 = t1
+	trail.Lifetime = 0.45
+	trail.WidthScale = NS({ 0, 5 }, { 1, 0.5 })
+	trail.FaceCamera = true
+	trail.LightEmission = 0.4
+	trail.LightInfluence = 0
+	trail.Color = CS(Color3.new(1, 1, 1), spec.energy)
+	trail.Transparency = NS({ 0, 0.15 }, { 1, 1 })
+	trail.Enabled = false
+	trail.Parent = core
+	-- the charge: motes drawn IN to the orb from all round (GroundController turns Motes on while the
+	-- player holds; Gather runs through the awakening)
+	local field = ghost(fx, "Field", V(10, 10, 10), CFrame.new(restAt + V(0, 1.6, 0)))
+	field.Shape = Enum.PartType.Ball
+	for name, rate in { Motes = 22, Gather = 34 } do
+		local e = emitter(field, name, {
+			Texture = tex("dot"),
+			Rate = rate,
+			Lifetime = NumberRange.new(0.5, 0.75),
+			Speed = NumberRange.new(5.5, 7.5),
+			Shape = Enum.ParticleEmitterShape.Sphere,
+			ShapeInOut = Enum.ParticleEmitterShapeInOut.Inward,
+			ShapeStyle = Enum.ParticleEmitterShapeStyle.Surface,
+			Size = NS({ 0, 0 }, { 0.25, 0.42 }, { 1, 0.15 }),
+			Color = CS(spec.energy, Color3.new(1, 1, 1)),
+			LightEmission = 0.45,
+			ZOffset = 0.5,
+		})
+		e.Enabled = false
+		if name == "Gather" then
+			e:SetAttribute("When", "awake")
+		end
+	end
+
+	-- the shrine behind, between standing stones
+	mesh(m, "spirit_shrine", "Shrine", 1.0, V(0, 0, -8.8), V(0, 0, 1), true)
+	local stones = { V(-4.7, TOP_Y, -4.3), V(4.7, TOP_Y, -4.3), V(-7.5, 0, -1.4), V(7.5, 0, -1.4) }
+	for _, at in stones do
+		mesh(m, spec.stone, "Stone", spec.size, at, V(-at.X * 0.4, 0, 1), true)
+	end
+	-- incense at the front corners
+	-- (small and beside the dais: at the front corners they filled the corners of the training shot)
+	for _, x in { -7.4, 7.4 } do
+		local urn = mesh(m, "incense_burner", "Incense", 0.68, V(x, 0, 2.6), V(-x * 0.3, 0, 1), true)
+		local top = ghost(m, "IncenseTop", V(0.5, 0.2, 0.5), CFrame.new(x, urn.Size.Y + 0.05, 2.6))
+		emitter(top, "Smoke", {
+			Texture = tex("mist"),
+			Rate = 3,
+			Lifetime = NumberRange.new(2.2, 3.0),
+			Speed = NumberRange.new(0.8, 1.4),
+			SpreadAngle = Vector2.new(8, 8),
+			EmissionDirection = Enum.NormalId.Top,
+			Rotation = NumberRange.new(0, 360),
+			RotSpeed = NumberRange.new(-20, 20),
+			Size = NS({ 0, 0.4 }, { 1, 1.7 }),
+			Transparency = NS({ 0, 0.6 }, { 0.6, 0.8 }, { 1, 1 }),
+			Color = CS(RGB(235, 235, 240)),
+			LightEmission = 0.05,
+			LightInfluence = 1,
+		})
+	end
+	noticeBoard(m, V(-6.6, 0, 8.3), V(-0.55, 0, 0.83))
+
+	-- LEVEL II: the ground is made sacred: a rope from stone to stone, paper streamers, the banners
+	local hang = spec.size.Y * 0.74
+	local run = { stones[3] + V(0, hang, 0), stones[1] + V(0, hang - TOP_Y + 0.55, 0), stones[2] + V(0, hang - TOP_Y + 0.55, 0), stones[4] + V(0, hang, 0) }
+	for i = 1, 3 do
+		rope(L2, "SacredRope", run[i], run[i + 1], if i == 2 then 1.1 else 0.6, 0.3, HEX("D8B56A"), if i == 2 then 12 else 6)
+	end
+	for _, x in { -2.4, -0.8, 0.8, 2.4 } do
+		local sag = 1.1 * 4 * ((x + 4.7) / 9.4) * (1 - (x + 4.7) / 9.4)
+		shide(L2, V(x, run[2].Y - sag - 0.1, -4.3 + 0.1), V(0, 0, 1))
+	end
+	banner(L2, V(7.9, 0, -8.6), V(0, 0, 1), 9.2, HEX("1F3A34"), spec.energy, "霊\n気")
+	banner(L2, V(7.9, 0, 3.4), V(-1, 0, 0), 8.4, HEX("F6EFD9"), HEX("1F3A34"), "集\n中")
+
+	-- LEVEL III: spirit lights gather round the dais, the crest in the stone
+	crestRing(L3, C + V(0, TOP_Y, 0), 5.2)
+	for i = 0, 5 do
+		local a = i / 6 * math.pi * 2 + 0.5
+		-- (none straight in front: the training camera looks up at the trainee from there)
+		if math.sin(a) < 0.8 then
+			local at = C + V(math.cos(a) * 6.9, 2.6 + (i % 3) * 0.9, math.sin(a) * 6.9)
+			local wisp = part(L3, "SpiritLight", V(0.55, 0.55, 0.55), CFrame.new(at), spec.neon, M.Neon)
+			wisp.Shape = Enum.PartType.Ball
+			wisp.CastShadow = false
+			glow(wisp, spec.energy, 7, 0.7)
+			emitter(wisp, "Tail", {
+				Texture = tex("dot"),
+				Rate = 5,
+				Lifetime = NumberRange.new(0.6, 1.0),
+				Speed = NumberRange.new(0.6, 1.4),
+				SpreadAngle = Vector2.new(30, 30),
+				EmissionDirection = Enum.NormalId.Top,
+				Size = NS({ 0, 0.3 }, { 1, 0 }),
+				Color = CS(Color3.new(1, 1, 1), spec.energy),
+				LightEmission = 0.45,
+			})
+		end
+	end
+	finish(m)
+
+	showModel("Show_orb_T" .. tier, cyl(folder, "Base", 0.4, 8.5, CFrame.new(0, 0.2, 0) * CFrame.Angles(0, 0, math.rad(90)), spec.deck, M.Slate), function(show)
+		mesh(show, spec.stone, "Stone", spec.size * 0.8, V(-2.6, 0.4, -0.6), V(0.3, 0, 1))
+		mesh(show, spec.stone, "Stone", spec.size * 0.8, V(2.6, 0.4, -0.6), V(-0.3, 0, 1))
+		local ball = part(show, "Core", V(2.6, 2.6, 2.6), CFrame.new(0, 4.4, 0.4), spec.neon, M.Neon)
+		ball.Shape = Enum.PartType.Ball
+		local halo = part(show, "Shell", V(3.1, 3.1, 3.1), CFrame.new(0, 4.4, 0.4), spec.energy, M.Neon)
+		halo.Shape = Enum.PartType.Ball
+		halo.Transparency = 0.72
+	end)
+end
+
 for tier = 1, 3 do
 	buildPost(tier)
 end
@@ -1093,6 +1490,12 @@ for tier = 6, 7 do
 end
 for tier = 8, 9 do
 	buildPeak(tier)
+end
+for tier = 10, 11 do
+	buildGravity(tier)
+end
+for tier = 12, 13 do
+	buildOrb(tier)
 end
 
 -- the eight old gear models are kept, out of the game (plan 13 section 7)

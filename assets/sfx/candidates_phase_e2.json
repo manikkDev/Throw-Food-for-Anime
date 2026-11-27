@@ -1,0 +1,115 @@
+{
+ "roles": {
+  "gravity_pulse": [
+   {"rank": 1, "id": 9113551995, "name": "Boom Thump Rumble Deep Resonant Impact 1 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Deep resonant boom-thump, the closest to a sub-bass push-up landing; listing 5 s, trim to under 0.6 s"},
+   {"rank": 2, "id": 9113552058, "name": "Boom Thump Rumble Deep Resonant Impact 2 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Second take of the same deep thump; trim to under 0.6 s"},
+   {"rank": 3, "id": 9126009571, "name": "Subwoofer Impact Deep Rumbling Pops Booming (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Subwoofer impact, short listing; the sub thump itself, pops may need trimming"},
+   {"rank": 4, "id": 9126009589, "name": "Subwoofer Impact Deep Rumbling Pops Booming (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Second take of the subwoofer impact"},
+   {"rank": 5, "id": 9125404320, "name": "Boom Impact Deep Distant Thumping Hits Boomi (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Deep boom impact, distant thumping; more distant than ideal, check the tail"},
+   {"rank": 6, "id": 9119875018, "name": "Synth Whomps 39 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Synth whomp, low and short; sub-bass character, listed type Unknown so check it is a one-shot"},
+   {"rank": 7, "id": 9113437465, "name": "Big Thuds Wall Impact 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Heavy thud, short listing; less sub than the boom family"},
+   {"rank": 8, "id": 9116892160, "name": "Metal Tank Impact Deep Metallic Boom 1 (SFX)", "creator": "ProSoundEffects", "duration": 7, "duration_verified": false, "why": "Deep metallic boom; long listing, trim to under 0.6 s; metallic tail may suit the chamber"}
+  ],
+  "gravity_perfect": [
+   {"rank": 1, "id": 9116521446, "name": "Metal Bangs 19 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Short metal bang for the bright ping layer over a low thump; trim to under 0.8 s"},
+   {"rank": 2, "id": 9116521880, "name": "Metal Bangs 2 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Metal bang, the punchier take; trim to under 0.8 s"},
+   {"rank": 3, "id": 9116520191, "name": "Metal Bangs 3 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Metal bang variant for the perfect impact"},
+   {"rank": 4, "id": 9116700296, "name": "Metal Impacts 15 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Metal impact with a ring; closest to a metallic ping on top"},
+   {"rank": 5, "id": 9116684884, "name": "Metal Impacts 5 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Metal impact, short take"},
+   {"rank": 6, "id": 9116698647, "name": "Metal Impacts 11 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Metal impact variant; trim to under 0.8 s"},
+   {"rank": 7, "id": 9119873738, "name": "Synth Whomps 22 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Synth whomp as the low body under the metal layer; listed type Unknown"},
+   {"rank": 8, "id": 9126009582, "name": "Subwoofer Impact Deep Rumbling Pops Booming (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Subwoofer impact with pops, a tighter low body for the perfect layer"}
+  ],
+  "gravity_hum": [
+   {"rank": 1, "id": 1842359866, "name": "Machine Hum", "creator": "APMOfficial", "duration": 41, "duration_verified": false, "why": "Steady machine hum, the right kind; listing type Unknown so confirm it is a sound in Studio; long enough to loop"},
+   {"rank": 2, "id": 1840158542, "name": "Machine Hum", "creator": "APMOfficial", "duration": 41, "duration_verified": false, "why": "Second APM machine hum; listing type Unknown, same check"},
+   {"rank": 3, "id": 9125446564, "name": "Command Room Tone Deep Air Conditioning Hum (SFX)", "creator": "ProSoundEffects", "duration": 35, "duration_verified": false, "why": "Deep room-tone hum, machine-room character; listing type Unknown, long enough to loop"},
+   {"rank": 4, "id": 9125446543, "name": "Command Room Tone Deep Air Conditioning Hum (SFX)", "creator": "ProSoundEffects", "duration": 18, "duration_verified": false, "why": "Shorter take of the command room hum; listing type Unknown"},
+   {"rank": 5, "id": 9114031637, "name": "Death Rumble Constant Deep Quivering Hum 3 (SFX)", "creator": "ProSoundEffects", "duration": 36, "duration_verified": false, "why": "Constant deep quivering hum, the low drone flavour; listing type Unknown, quieter mix needed"},
+   {"rank": 6, "id": 9125674114, "name": "Metallic Glow Constant Deep Ticking Bassy Hum (SFX)", "creator": "ProSoundEffects", "duration": 19, "duration_verified": false, "why": "Bassy hum with metallic ticks; ticking may be too busy for a quiet world loop; listing type Unknown"},
+   {"rank": 7, "id": 9125674129, "name": "Metallic Glow Constant Deep Ticking Bassy Hum (SFX)", "creator": "ProSoundEffects", "duration": 14, "duration_verified": false, "why": "Second take of the bassy hum; same ticking caveat"},
+   {"rank": 8, "id": 9126086336, "name": "Synth Tone Rumbly Pulsing Rizzy Smooth Evil (SFX)", "creator": "ProSoundEffects", "duration": 18, "duration_verified": false, "why": "Rumbly pulsing synth tone; a pulse rather than a steady hum, weakest fit, listing type Unknown"}
+  ],
+  "gravity_flip": [
+   {"rank": 1, "id": 9117869243, "name": "Power Down 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Power-down, the gravity-off moment; short listing, check it reads as a drop-out"},
+   {"rank": 2, "id": 9125805579, "name": "Rising Whoosh Hissing Build Up Ascending Swo (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Rising whoosh with build-up; the rise as gravity reverses"},
+   {"rank": 3, "id": 9120733055, "name": "Whoosh Rising Swish Airy Various Pitches 1 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Airy rising swish, clean pitch sweep; fits 1 to 2 s"},
+   {"rank": 4, "id": 9125807267, "name": "Rising Whoosh Hissing Suck Burst Swooshing I (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Suck-in then burst; reads as gravity pulling away then releasing"},
+   {"rank": 5, "id": 9114340693, "name": "Energy Pass By Sci Fi Tonal Whooshes 1 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Tonal sci-fi whoosh, the sci-fi sweep; trim to 2 s"},
+   {"rank": 6, "id": 9117871125, "name": "Power Down 1 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Longer take of the power-down; trim to 2 s"},
+   {"rank": 7, "id": 9125806038, "name": "Rising Whoosh Hissing Build Up Ascending Swo (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Rising whoosh, second take at the 1 to 2 s band"},
+   {"rank": 8, "id": 9114583503, "name": "Giant Servo Motor Powering Up 2 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Mechanical power-up as a mechanical alternative; trim to 2 s"}
+  ],
+  "gravity_slam": [
+   {"rank": 1, "id": 9126003813, "name": "Steel Pallet Drop On Concrete Big Metal Bang (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Heavy steel drop onto concrete, metal and hard floor; trim to 0.8 to 2 s"},
+   {"rank": 2, "id": 9117876319, "name": "Power Explosions Big Heavy Searing Boom 1 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Big heavy boom, the massive low impact; trim"},
+   {"rank": 3, "id": 9116614130, "name": "Metal Drop 3 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Metal dropped to the floor; metal-and-stone slam component"},
+   {"rank": 4, "id": 9116612839, "name": "Metal Drop 6 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Metal drop variant; trim to under 2 s"},
+   {"rank": 5, "id": 9114663996, "name": "Grounder Hard Impact Ground 3 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Hard ground impact; stone-floor character, long listing"},
+   {"rank": 6, "id": 9125392706, "name": "Big Rocks Drop Interior Muffled Some Debris (SFX)", "creator": "ProSoundEffects", "duration": 8, "duration_verified": false, "why": "Big rocks dropping with debris for the stone part of the slam; trim to 2 s"},
+   {"rank": 7, "id": 9118587701, "name": "Rock Drop On Concrete Drops Breaks 4 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Rock drop onto concrete, short; the hard-surface slam"},
+   {"rank": 8, "id": 9116892391, "name": "Metal Tank Impact Deep Metallic Boom 3 (SFX)", "creator": "ProSoundEffects", "duration": 8, "duration_verified": false, "why": "Deep metallic boom, the metal layer of a slam; trim to 2 s"}
+  ],
+  "orb_charge": [
+   {"rank": 1, "id": 9125973984, "name": "Spaceship Blast High Pitch Energy Charge Up (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Energy charge-up, high pitch rising; listing 1 s, the 3.5 s length must be measured and may need the take with more build"},
+   {"rank": 2, "id": 9125973882, "name": "Spaceship Blast High Pitch Energy Charge Up (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Same family, another take"},
+   {"rank": 3, "id": 9125973433, "name": "Spaceship Blast High Pitch Energy Charge Up (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Same family, another take"},
+   {"rank": 4, "id": 9125975053, "name": "Spaceship Blast High Pitch Energy Charge Up (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Longest listing of the family (3 s), nearest to 3 to 4 s"},
+   {"rank": 5, "id": 9125974640, "name": "Spaceship Blast High Pitch Energy Charge Up (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Same family, another take"},
+   {"rank": 6, "id": 9125973342, "name": "Spaceship Blast High Pitch Energy Charge Up (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Same family, another take"},
+   {"rank": 7, "id": 9114583503, "name": "Giant Servo Motor Powering Up 2 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Rising mechanical power-up, the machine version of a charge; trim to 3.5 s"},
+   {"rank": 8, "id": 9125446911, "name": "Computer Room Power Up And Down Whirring Buz (SFX)", "creator": "ProSoundEffects", "duration": 19, "duration_verified": false, "why": "Power-up whirr with buzz; listing type Unknown, may carry a power-down tail, audition"}
+  ],
+  "orb_release": [
+   {"rank": 1, "id": 9116405618, "name": "Magic Poofs Short Breathy Bursts Punchy 2 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Short punchy magic burst; fits a soft pulse every 4 s"},
+   {"rank": 2, "id": 9116405713, "name": "Magic Poofs Short Breathy Bursts Punchy 2 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Second take of the punchy poof"},
+   {"rank": 3, "id": 9116393512, "name": "Magic Glow Short Pulsing Bursts 3 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Pulsing magic glow burst, soft; trim to 1.2 s"},
+   {"rank": 4, "id": 9116393589, "name": "Magic Glow Short Pulsing Bursts 5 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Pulsing magic glow, another take"},
+   {"rank": 5, "id": 9114315023, "name": "Energy Burst Growl 1 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Energy burst with growl; the energy-release character, trim to 1.2 s"},
+   {"rank": 6, "id": 9116384799, "name": "Magic Burst 2 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Magic burst, soft take; trim to 1.2 s"},
+   {"rank": 7, "id": 9116384473, "name": "Magic Burst 2 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Magic burst, other take; trim"},
+   {"rank": 8, "id": 9125625388, "name": "Layered Rips High End Short Energy Bursts Sp (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Short high-end energy burst, a light pulse; listing type Unknown"}
+  ],
+  "orb_perfect": [
+   {"rank": 1, "id": 9116384485, "name": "Magic Burst 1 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Magic burst, the bigger version; trim to 1.5 s"},
+   {"rank": 2, "id": 9116385087, "name": "Magic Burst 5 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Magic burst, short take; fits 1.5 s"},
+   {"rank": 3, "id": 9114315422, "name": "Energy Burst Growl 11 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Energy burst growl, brighter take"},
+   {"rank": 4, "id": 9114315138, "name": "Energy Burst Growl 5 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Energy burst growl, another take"},
+   {"rank": 5, "id": 9116385079, "name": "Magic Burst 4 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Magic burst variant"},
+   {"rank": 6, "id": 9116394525, "name": "Magic Glow Short Pulsing Bursts 15 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Pulsing glow with shimmer, the perfect's sparkle"},
+   {"rank": 7, "id": 9114342132, "name": "Energy Pass By Sci Fi Tonal Whooshes 2 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Tonal shimmer whoosh layer for the perfect; trim to 1.5 s"},
+   {"rank": 8, "id": 9126102254, "name": "Time Warp Big Explosion Blast Boom Tonal Tai (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Big tonal blast, the biggest burst; long listing, trim to 1.5 s"}
+  ],
+  "orb_loop": [
+   {"rank": 1, "id": 1842359866, "name": "Machine Hum", "creator": "APMOfficial", "duration": 41, "duration_verified": false, "why": "Steady machine hum, long enough to loop over 3 s; listing type Unknown, weakest on 'energy' character"},
+   {"rank": 2, "id": 9125674114, "name": "Metallic Glow Constant Deep Ticking Bassy Hum (SFX)", "creator": "ProSoundEffects", "duration": 19, "duration_verified": false, "why": "Constant bassy hum with a metallic glow; ticks may need the quieter take; listing type Unknown"},
+   {"rank": 3, "id": 9125674129, "name": "Metallic Glow Constant Deep Ticking Bassy Hum (SFX)", "creator": "ProSoundEffects", "duration": 14, "duration_verified": false, "why": "Second take of the glow hum"},
+   {"rank": 4, "id": 9114031637, "name": "Death Rumble Constant Deep Quivering Hum 3 (SFX)", "creator": "ProSoundEffects", "duration": 36, "duration_verified": false, "why": "Constant deep quivering hum, plasma-core drone character; listing type Unknown, quieter mix"},
+   {"rank": 5, "id": 9125446564, "name": "Command Room Tone Deep Air Conditioning Hum (SFX)", "creator": "ProSoundEffects", "duration": 35, "duration_verified": false, "why": "Deep room tone, a steady core drone; listing type Unknown"},
+   {"rank": 6, "id": 1843828165, "name": "Low Drone 1", "creator": "APMOfficial", "duration": 122, "duration_verified": false, "why": "APM low drone, very long and steady; loopable if the tail is clean; listing type Unknown, may be music-like"},
+   {"rank": 7, "id": 9112886237, "name": "Tire Constant 1 (SFX)", "creator": "ProSoundEffects", "duration": 27, "duration_verified": false, "why": "Constant tone bed; not an energy field, weakest fit, listing type Unknown"},
+   {"rank": 8, "id": 9113043891, "name": "Aero Brakes Vibration Sweetener 3 (SFX)", "creator": "ProSoundEffects", "duration": 28, "duration_verified": false, "why": "Constant vibration bed for a held power field; listing type Unknown, weakest fit"}
+  ],
+  "orb_throw": [
+   {"rank": 1, "id": 9120733724, "name": "Whoosh Rising Swish Airy Various Pitches 2 (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Airy rising swish, the launch into the sky; fits 0.8 to 1.8 s"},
+   {"rank": 2, "id": 9125805759, "name": "Rising Whoosh Hissing Build Up Ascending Swo (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Rising whoosh, the rocket-like rise"},
+   {"rank": 3, "id": 9120733315, "name": "Whoosh Rising Swish Airy Various Pitches 2 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Second take of the rising swish"},
+   {"rank": 4, "id": 9120732831, "name": "Whoosh Rising Swish Airy Various Pitches 2 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Third take of the rising swish"},
+   {"rank": 5, "id": 9120734018, "name": "Whoosh Rising Swish Airy Various Pitches 3 (SFX)", "creator": "ProSoundEffects", "duration": 3, "duration_verified": false, "why": "Rising swish variant; trim to 1.8 s"},
+   {"rank": 6, "id": 9125807311, "name": "Rising Whoosh Hissing Suck Burst Swooshing I (SFX)", "creator": "ProSoundEffects", "duration": 1, "duration_verified": false, "why": "Suck-and-burst whoosh, a throw with a snap at the top"},
+   {"rank": 7, "id": 9120733948, "name": "Whoosh Rising Swish Airy Various Pitches 1 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Rising swish, first take; trim to 1.8 s"},
+   {"rank": 8, "id": 9114342143, "name": "Energy Pass By Sci Fi Tonal Whooshes 2 (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Tonal sci-fi whoosh, the energy flavour of the throw; trim to 1.8 s"}
+  ],
+  "orb_burst": [
+   {"rank": 1, "id": 9117876319, "name": "Power Explosions Big Heavy Searing Boom 1 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Big bright power explosion; trim to 1 to 2.5 s"},
+   {"rank": 2, "id": 9117876706, "name": "Power Explosions Big Heavy Searing Boom 2 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Second take of the power explosion"},
+   {"rank": 3, "id": 9126102564, "name": "Time Warp Big Explosion Blast Boom Tonal Tai (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Tonal big explosion with sparkle-like tone; trim to 2.5 s"},
+   {"rank": 4, "id": 9114361763, "name": "Explosion Oxyacetylene Gas 1 (SFX)", "creator": "ProSoundEffects", "duration": 5, "duration_verified": false, "why": "Gas explosion, a firework-style pop; trim"},
+   {"rank": 5, "id": 9125484367, "name": "Deep Hits Big Reverberant Booms Rumbling Tai (SFX)", "creator": "ProSoundEffects", "duration": 4, "duration_verified": false, "why": "Reverberant big boom for the far-off detonation; trim to 2.5 s"},
+   {"rank": 6, "id": 9116384757, "name": "Magic Burst 1 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Magic burst detonation with sparkle; the smaller, brighter option"},
+   {"rank": 7, "id": 9116385056, "name": "Magic Burst 3 (SFX)", "creator": "ProSoundEffects", "duration": 2, "duration_verified": false, "why": "Magic burst variant"},
+   {"rank": 8, "id": 9126102402, "name": "Time Warp Big Explosion Blast Boom Tonal Tai (SFX)", "creator": "ProSoundEffects", "duration": 6, "duration_verified": false, "why": "Big tonal blast, another take; trim"}
+  ]
+ },
+ "notes": "Candidates only: nothing downloaded, uploaded, edited or probed in Studio. Creators restricted to ProSoundEffects, APMOfficial, DistrokidOfficial and Roblox per the owner's rule; individual uploaders and SoundEffectsRoblox were excluded. Music-typed results were rejected (for example DistrokidOfficial Music items such as 'Sub-Bass Ambient' and 'Power Cutz'). Durations are toolbox listings only: duration_verified is false everywhere, 0 or 1 values mean short or unknown, and the 3.5 s charge, 1 to 2 s flip and 8 s orb-hold lengths must be measured in Studio. Many library hits report listing type Unknown (Machine Hum, Command Room Tone, Death Rumble Hum, Metallic Glow Hum, Power Down-style takes, Synth Tone): their kind must be checked when probed, because the toolbox listing does not say SoundEffect. Licence basis is UNVERIFIED for every id in this file, the same basis as the e1 and phase C and D batches: the Creator Store and Roblox audio terms were not read in this run. No attribution-requiring item is in this file. Dropped: 120436235187042 'gojostartup' (SoundEffectsRoblox, not an allowed creator); 102816315467705 'Box Fan Hum for Sleep' (DistrokidOfficial, ambient fan noise, not an energy field, listed Unknown); all DistrokidOfficial and APMOfficial Music-typed results (drones, brown noise, lullabies). Thin roles: gravity_hum and orb_loop (no ProSoundEffects steady hum typed SoundEffect; the best are APM 'Machine Hum' and Unknown-typed ProSound hums, and orb_loop has no energy-field loop at all); orb_throw (no rocket or launch clip in the library, only rising swishes); gravity_perfect (only metal-bang and metal-impact takes for the bright ping, no true bright ping found); gravity_pulse (no ProSoundEffects sub-bass kick below 0.6 s; the picks are boom and thump impacts, longer than the band); orb_burst (no firework burst from an allowed creator; explosions and magic bursts only). Search phrasings that worked: 'rising whoosh', 'energy charge up', 'magic burst', 'energy burst', 'deep boom impact', 'metal stone slam', 'metal impact', 'power down', 'energy pass by sci fi', 'swoosh up', 'explosion boom big', 'sub bass boom' (returned only Music/individual hits). Phrasings with no allowed hits: 'generator hum', 'plasma hum', 'power core hum', 'electric hum loop', 'rocket launch whoosh', 'firework burst', 'magic orb'. The search tool intermittently returned HTTP 400 on some queries at limit 40, so every run used limit 30."
+}

@@ -16,6 +16,10 @@
 --                                  (the ring's judge, another picture)
 --       reflex  (Thunder Peak)     lightning marks one of the three Rods; tap THAT one (its button, A / S /
 --                                  D, the arrow keys, or that third of the screen) before the strike
+--       rhythm  (Gravity Chamber)  the beats ride the BeatTrack as notes; TAP as each sits in the gold Hit
+--                                  ring. One beat in four is a REST (a gap, a small dim note): no tap
+--       charge  (Spirit Orb)       HOLD: the ChargeMeter's Fill climbs and the orb grows; let go in the gold
+--                                  (the breath's judge with a long hold, another picture)
 --     the grade is shown at once from the rule the server grades by; the server's answer
 --     (TrainTap: Focus, the awakening) follows
 --   * FOCUS fills the FocusBar; full = AWAKENING: the awakening clip, the ground's own show and
@@ -48,6 +52,8 @@ local GOLD = Color3.fromHex("FFC93C")
 local GREEN = Color3.fromHex("48D687")
 local CYAN = Color3.fromHex("5FD8FF")
 local PALE = Color3.fromHex("BFE9FF")
+local JADE = Color3.fromHex("5CF0B4")
+local GREY = Color3.fromHex("8A8FB8")
 local FOV = 70
 
 type Live = {
@@ -55,7 +61,8 @@ type Live = {
 	row: any, -- the Training.Grounds row
 	id: string,
 	hold: boolean, -- a held game (breath): press, let go on the beat
-	game: string, -- the picture: "ring", "breath", "sweep", "reflex"
+	game: string, -- the picture: "ring", "breath", "sweep", "reflex", "rhythm", "charge"
+	rests: number?, -- a game with gaps: one beat in every hand of this many is a rest
 	lanes: number?, -- a reflex game: how many lanes; the input names one
 	laneTrack: AnimationTrack?, -- the answer clip playing over the loop
 	start: number, -- server time the session began at
@@ -130,7 +137,33 @@ function TrainingController:_shot(live: Live, awake: boolean): (CFrame, number)
 	local forward = live.stand.LookVector
 	local side = Vector3.new(live.inward, 0, 0)
 	local eye: Vector3, look: Vector3, fov: number
-	if live.lanes then
+	if live.game == "rhythm" then
+		-- push-ups: side-on and LOW, the whole plank in profile along the floor
+		if awake then
+			-- they float up and so does everything loose: back and up
+			-- (no further out: the pylon on the camera's side then stands in the shot)
+			eye = at + side * 9.6 + forward * 0.4 + Vector3.new(0, 2.2, 0)
+			look = at + forward * 0.4 + Vector3.new(0, 3.9, 0)
+			fov = 72
+		else
+			eye = at + side * 9 + forward * 0.4 + Vector3.new(0, 1.5, 0)
+			look = at + forward * 0.4 + Vector3.new(0, 1.5, 0)
+			fov = FOV
+		end
+	elseif live.game == "charge" then
+		-- the orb overhead: from the front, below eye level, hero and orb both in the shot
+		if awake then
+			-- the orb is enormous: well back, looking up at it
+			-- (from the far side of the walkway: on its own side the notice board stood in the shot)
+			eye = at + forward * 15 - side * 3.2 + Vector3.new(0, 1.6, 0)
+			look = at + Vector3.new(0, 7.6, 0)
+			fov = 74
+		else
+			eye = at + forward * 12.5 + side * 1.0 + Vector3.new(0, 2.2, 0)
+			look = at + Vector3.new(0, 5.0, 0)
+			fov = FOV
+		end
+	elseif live.lanes then
 		-- on the peak, facing out, the three rods behind and above them: from the front and from
 		-- BELOW eye level, so the rods' tips and the sky are in the shot
 		-- (well to one side: straight on, the middle rod stood hidden behind the trainee)
@@ -213,7 +246,7 @@ function TrainingController:_sync(live: Live, elapsed: number)
 	if not track or not marks or not length or track.Length <= 0 then
 		return
 	end
-	local clip, speed = Beat.clipAt(live.beat, elapsed, live.seed, marks, length)
+	local clip, speed = Beat.clipAt(live.beat, elapsed, live.seed, marks, length, live.rests)
 	if math.abs(track.Speed - speed) > 0.02 then
 		track:AdjustSpeed(speed)
 	end
@@ -233,8 +266,8 @@ function TrainingController:_land(live: Live, elapsed: number)
 			return
 		end
 		live.landed = n
-		-- a beat that passed long ago (the awakening ran over it) is not replayed
-		if elapsed - moment < 0.4 then
+		-- a beat that passed long ago (the awakening ran over it) is not replayed; a rest has no rep
+		if elapsed - moment < 0.4 and not Beat.rest(n, live.seed, live.rests) then
 			self._ground:Contact(live.piece, live.id, live.grades[n], self:_laneOf(live, n))
 		end
 		live.grades[n] = nil
@@ -264,6 +297,7 @@ function TrainingController:_begin(session: any)
 		hold = row.MinHold ~= nil,
 		game = row.Game,
 		lanes = row.Lanes,
+		rests = row.Rests,
 		start = session.start,
 		seed = session.seed or 1,
 		beat = session.beat or row.BeatSeconds,
@@ -313,16 +347,18 @@ function TrainingController:_begin(session: any)
 		title.Visible = false
 	end
 	-- one picture per game, in the ring's place
-	local ring, meter, rods = find("TimingRing"), find("SweepMeter"), find("Rods")
+	local ring, rods = find("TimingRing"), find("Rods")
 	local shrink, fill = child(ring, "Shrink"), child(ring, "Fill")
 	if ring then
-		ring.Visible = live.game ~= "sweep" and live.game ~= "reflex"
+		ring.Visible = live.game == "ring" or live.game == "breath"
 	end
-	if meter then
-		meter.Visible = live.game == "sweep"
-	end
-	if rods then
-		rods.Visible = live.game == "reflex"
+	for name, game in
+		{ SweepMeter = "sweep", Rods = "reflex", BeatTrack = "rhythm", ChargeMeter = "charge" }
+	do
+		local picture = find(name)
+		if picture then
+			picture.Visible = live.game == game
+		end
 	end
 	if shrink then
 		shrink.Visible = not live.hold
@@ -381,6 +417,17 @@ function TrainingController:_begin(session: any)
 		hint.Text = row.Hint or "TAP AS THE RING LANDS"
 		hint.Visible = true
 	end
+	-- the grade flashes over the game's picture, except on the beat track: there it would hide the
+	-- notes on every beat, so it flashes under the track
+	local flash = find("PerfectLabel")
+	if flash then
+		local home = flash:GetAttribute("Home")
+		if typeof(home) ~= "UDim2" then
+			home = flash.Position
+			flash:SetAttribute("Home", home)
+		end
+		flash.Position = if live.game == "rhythm" then home + UDim2.fromOffset(0, 58) else home
+	end
 	local combo = find("Combo")
 	if combo then
 		combo.Visible = false
@@ -406,6 +453,8 @@ function TrainingController:_end()
 	Motion.stop(live.finishTrack, 0.2)
 	Motion.stop(live.laneTrack, 0.15)
 	self._ground:Mark(live.piece, 0)
+	self._ground:Hold(live.piece, live.id, false)
+	self._ground:Charge(live.piece, 0)
 	ContextActionService:UnbindAction("TrainTap")
 	ContextActionService:UnbindAction("TrainLane")
 	ProximityPromptService.Enabled = true
@@ -456,13 +505,16 @@ function TrainingController:_finisher(live: Live)
 	live.finishTrack = track
 	Motion.stop(live.awakeTrack, 0.1)
 	live.awakeTrack = nil
-	local hit = Motion.onMarker(track, "Hit", function()
-		if self._live == live then
-			self:_punch(9)
+	-- (the blow of a strike, or the orb leaving the hands)
+	for _, marker in { "Hit", "Release" } do
+		local hit = Motion.onMarker(track, marker, function()
+			if self._live == live then
+				self:_punch(9)
+			end
+		end)
+		if hit then
+			table.insert(live.marks, hit)
 		end
-	end)
-	if hit then
-		table.insert(live.marks, hit)
 	end
 	track.Stopped:Once(function()
 		if self._live == live and live.finishTrack == track then
@@ -480,7 +532,34 @@ function TrainingController:_calm(live: Live)
 	if not live.finishTrack then
 		self:_loop(live)
 	end
+	if live.game == "charge" then
+		-- the orb has just left the hands: the camera follows it up, sees it burst over the court,
+		-- and comes back down
+		local at = live.stand.Position
+		local eye = at
+			+ live.stand.LookVector * 24
+			- Vector3.new(live.inward, 0, 0) * 2
+			+ Vector3.new(0, 1.5, 0)
+		local camera = workspace.CurrentCamera
+		local info = TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+		TweenService:Create(
+			camera,
+			info,
+			{ CFrame = CFrame.lookAt(eye, at + Vector3.new(0, 23, 0)), FieldOfView = 74 }
+		):Play()
+		self._fov = 74
+		task.delay(1.7, function()
+			if self._live == live and not live.wasAwake then
+				self:_frameCamera(live, false, 0.7)
+			end
+		end)
+		return
+	end
 	self:_frameCamera(live, false, 0.6)
+	if live.game == "rhythm" then
+		-- gravity comes back: everything slams down
+		self:_punch(8)
+	end
 end
 
 -- ---------------------------------------------------------------- input --
@@ -581,6 +660,7 @@ function TrainingController:_press(lane: number?)
 			if self._tapRemote then
 				self._tapRemote:FireServer(true)
 			end
+			self._ground:Hold(live.piece, live.id, true)
 		end
 		return
 	end
@@ -590,6 +670,17 @@ function TrainingController:_press(lane: number?)
 	end
 	if self._tapRemote then
 		self._tapRemote:FireServer()
+	end
+	if Beat.rest(n, live.seed, live.rests) then
+		-- a tap in the gap: a slip (the server takes a little Focus for it)
+		live.judged = n
+		live.combo = 0
+		local combo = find("Combo")
+		if combo then
+			combo.Visible = false
+		end
+		self:_flash("REST!", 0.4)
+		return
 	end
 	self:_grade(live, n, Beat.grade(BEAT, gap), gap, false)
 end
@@ -603,6 +694,7 @@ function TrainingController:_release()
 	local now = self._state:ServerNow()
 	local held = now - live.pressAt
 	live.pressAt = nil
+	self._ground:Hold(live.piece, live.id, false)
 	if now < live.awake then
 		return
 	end
@@ -639,12 +731,71 @@ end
 -- ----------------------------------------------------------------- frame --
 
 function TrainingController:_draw(live: Live, elapsed: number, awake: boolean, now: number)
-	local _, gap, progress = Beat.upcoming(live.beat, elapsed, live.seed, BEAT.GoodWindow)
+	local upcoming, gap, progress = Beat.upcoming(live.beat, elapsed, live.seed, BEAT.GoodWindow)
 	local ring = find("TimingRing")
 	local targetScale = ((ring and ring:GetAttribute("TargetScale")) or 0.62) :: number
 	local sweet = math.abs(gap) <= BEAT.PerfectWindow
 	local holding = live.pressAt ~= nil
-	if live.hold then
+	if live.game == "charge" then
+		-- the gauge: the level climbs to the gold band on the beat. Held, it is the Fill (grey when the
+		-- hold began too late to count); not held, only the Marker shows where it would be
+		local gauge = find("ChargeMeter")
+		local fill, marker = child(gauge, "Fill"), child(gauge, "Marker")
+		local sweetAt = ((gauge and gauge:GetAttribute("SweetAt")) or 0.84) :: number
+		local level = if awake then sweetAt else math.min(sweetAt * progress, 0.98)
+		local late = live.pressAt ~= nil
+			and live.pressAt - live.start > elapsed - gap - (live.row.MinHold or 0)
+		if fill then
+			fill.Visible = awake or holding
+			fill.Size = UDim2.new(1, -12, level, -6)
+			paint(fill, if awake then GOLD elseif late then GREY elseif sweet then GREEN else JADE)
+		end
+		if marker then
+			marker.Position = UDim2.fromScale(0.5, 1 - level)
+			paint(marker, if awake then GOLD elseif sweet then GREEN else WHITE)
+		end
+		-- the orb over the hero grows with the hold (the show has it while awakened)
+		self._ground:Charge(live.piece, if holding and not late then math.min(progress, 1.1) else 0)
+	elseif live.game == "rhythm" then
+		-- the notes: one per beat, riding right to left; a beat is in the Hit ring at its moment
+		local track = find("BeatTrack")
+		local hitAt = ((track and track:GetAttribute("HitAt")) or 0.16) :: number
+		local perSecond = ((track and track:GetAttribute("PerSecond")) or 0.27) :: number
+		local first = math.max(1, upcoming - 1)
+		for i = 1, 6 do
+			local note = child(track, "Note" .. i)
+			if note then
+				local n = first + i - 1
+				local x = hitAt + (Beat.moment(live.beat, n, live.seed) - elapsed) * perSecond
+				local rest = Beat.rest(n, live.seed, live.rests)
+				note.Visible = not awake and n > live.judged and x > hitAt - 0.07 and x < 1.02
+				if note.Visible then
+					local side = if rest then 14 else 36
+					note.Position = UDim2.fromScale(x, 0.5)
+					note.Size = UDim2.fromOffset(side, side)
+					local fade = math.clamp((x - 0.86) / 0.14, 0, 1)
+					note.BackgroundTransparency = if rest then 0.45 + 0.55 * fade else fade
+					local stroke = note:FindFirstChildOfClass("UIStroke")
+					if stroke then
+						stroke.Transparency = if rest then 1 else fade
+					end
+					paint(
+						note,
+						if rest then GREY elseif n == upcoming and sweet then GREEN else WHITE
+					)
+				end
+			end
+		end
+		local hit = child(track, "Hit")
+		local stroke = hit and hit:FindFirstChildOfClass("UIStroke")
+		if stroke then
+			stroke.Color = if awake
+					or not sweet
+					or Beat.rest(upcoming, live.seed, live.rests)
+				then GOLD
+				else GREEN
+		end
+	elseif live.hold then
 		-- the breath: the disc swells out to the gold ring on the beat (and a little past it)
 		local fill = child(ring, "Fill")
 		if fill then
@@ -720,6 +871,7 @@ function TrainingController:_draw(live: Live, elapsed: number, awake: boolean, n
 				else live.row.Hint or "")
 			elseif not live.hold then live.row.Hint or ""
 			elseif holding then "LET GO IN THE GOLD"
+			elseif live.game == "charge" then live.row.Hint or "HOLD"
 			else "HOLD"
 	end
 	-- Focus: fills with every good beat; awake, it is the time left, running down
@@ -868,6 +1020,20 @@ function TrainingController:KnitStart()
 			self:_release()
 		end
 	end)
+	-- Studio only: a play test driven by script cannot press keys (VirtualInputManager is closed to
+	-- it), so it plays through this event: Fire("press", lane?) / Fire("release")
+	if RunService:IsStudio() then
+		local test = Instance.new("BindableEvent")
+		test.Name = "TrainTestInput"
+		test.Event:Connect(function(kind: unknown, lane: unknown)
+			if kind == "press" then
+				self:_press(if typeof(lane) == "number" then lane else nil)
+			elseif kind == "release" then
+				self:_release()
+			end
+		end)
+		test.Parent = player
+	end
 	RunService.RenderStepped:Connect(function()
 		if self._live then
 			local ok, err = pcall(function()

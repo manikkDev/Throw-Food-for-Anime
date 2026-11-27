@@ -223,6 +223,54 @@
    "notes": "The caught hero's favourite dish: hearts round the hero."
   },
   {
+   "name": "Gravity_Flip",
+   "loop": false,
+   "duration": 1.3,
+   "attach": "point",
+   "particles_peak": 66,
+   "strip": "assets/vfx/strips/Gravity_Flip.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN peak early brightest frame at 38% of the main event (want <= 25-30%)",
+   "notes": "Gravity turns over: everything on the floor is flung up."
+  },
+  {
+   "name": "Gravity_Float",
+   "loop": true,
+   "duration": 2.4,
+   "attach": "part",
+   "particles_peak": 51,
+   "strip": "assets/vfx/strips/Gravity_Float.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN tier budget anticipation+main 2.40s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind; WARN layer count 4 visual layers (corpus p25 5); WARN peak early brightest frame at 70% of the main event (want <= 25-30%)",
+   "notes": "Gravity is turned over: dust and light drift up off the deck (loop)."
+  },
+  {
+   "name": "Gravity_Pulse",
+   "loop": false,
+   "duration": 0.7,
+   "attach": "point",
+   "particles_peak": 25,
+   "strip": "assets/vfx/strips/Gravity_Pulse.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN peak early brightest frame at 36% of the main event (want <= 25-30%)",
+   "notes": "A push-up lands under heavy gravity: the floor rings."
+  },
+  {
+   "name": "Gravity_Slam",
+   "loop": false,
+   "duration": 1.4,
+   "attach": "point",
+   "particles_peak": 62,
+   "strip": "assets/vfx/strips/Gravity_Slam.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "PASS",
+   "notes": "Gravity comes back: everything slams into the floor."
+  },
+  {
    "name": "Land_Impact",
    "loop": false,
    "duration": 0.9,
@@ -266,6 +314,30 @@
    ],
    "critic": "WARN tier budget anticipation+main 2.00s vs basic 0.3-0.8s; WARN residue no residue phase: pro effects leave something behind",
    "notes": "Lucky throw armed (loop on the hand)."
+  },
+  {
+   "name": "Orb_Burst",
+   "loop": false,
+   "duration": 2.2,
+   "attach": "point",
+   "particles_peak": 113,
+   "strip": "assets/vfx/strips/Orb_Burst.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "PASS",
+   "notes": "The thrown orb bursts high over the court: rings, rays and falling glitter."
+  },
+  {
+   "name": "Orb_Release",
+   "loop": false,
+   "duration": 0.7,
+   "attach": "point",
+   "particles_peak": 21,
+   "strip": "assets/vfx/strips/Orb_Release.jpg",
+   "kit": null,
+   "kit_checks": null,
+   "critic": "WARN layer count 5 visual layers (corpus p25 6); WARN peak early brightest frame at 36% of the main event (want <= 25-30%)",
+   "notes": "The charge is let go: a pulse leaves the orb."
   },
   {
    "name": "Peak_Catch",

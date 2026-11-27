@@ -589,6 +589,13 @@
    "transposed": false
   },
   {
+   "file": "lib__sprites__sigils__hex_grid_cel_02.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__sigils__hex_grid_cel_02.png",
+   "kind": "Image",
+   "source": "C:\\Users\\manik\\.claude\\skills\\roblox-vfx\\sim\\textures\\lib\\sprites\\sigils\\hex_grid_cel_02.png",
+   "transposed": false
+  },
+  {
    "file": "lib__sprites__sigils__hex_grid_glow_00.png",
    "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\lib__sprites__sigils__hex_grid_glow_00.png",
    "kind": "Image",
@@ -902,6 +909,13 @@
    "kind": "Image",
    "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\ribbon_solid.png",
    "transposed": true
+  },
+  {
+   "file": "tfa__speed_line.png",
+   "path": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\upload\\tfa__speed_line.png",
+   "kind": "Image",
+   "source": "D:\\Roblox Studio Games\\Throw food for Anime\\assets\\vfx\\textures\\speed_line.png",
+   "transposed": false
   },
   {
    "file": "tfa__sugar_cube.png",

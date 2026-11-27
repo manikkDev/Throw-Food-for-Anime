@@ -87,6 +87,13 @@ KeyframeSequences with the skill's `scripts/upload_animation.py`.
 | PeakLeft / PeakMid / PeakRight | player | Action | no | 0.8 | Catch 0.1333 | **r9** the answer to a rod: one hand thrust toward it in 4 frames (left = the hero's RIGHT hand, toward the camera's left), held with a tremor, back to PeakReady |
 | PeakStorm | player | Action | yes | 2.0 | - | **r9** Thunder Peak's awakening: arms in a V, trembling |
 
+| TrainPushup | player | Action | yes | 2.0 | Rep 0.5, 1.5 | **r10** (`clips_r10.py`, plan 13 phase E, uploaded). Push-ups in profile, a plank on planted palms and toes; the game holds the top over a rest beat |
+| GravityFloat | player | Action | yes | 2.0 | - | **r10** Gravity Chamber's awakening: weightless, about 2.4 above standing height |
+| TrainOrb | player | Action | yes | 4.0 | Pulse 3.5 | **r10** Spirit Orb's loop: a growing orb held overhead on both palms, a push up at the Pulse; the game carries the orb on the hands |
+| OrbAwaken | player | Action | yes | 2.0 | - | **r10** Spirit Orb's awakening: braced under an enormous orb |
+| OrbThrow | player | Action | no | 1.2 | Release 0.5 | **r10** ends the awakening: the orb is thrown straight up |
+
+Batch r10 hand-off (palm and toe positions, the hands' heights per clip, rough spots): `work/anim/upload10/README.md`.
 Batch r9 hand-off (contacts, the catching hand's position per clip, rough spots): `work/anim/upload9/README.md`.
 Batch r8 hand-off (contact table, knuckle points for hit effects, the author's list of rough spots):
 `work/anim/upload8/README.md`. TrainStrike, TrainPush, TrainLift and TrainMeditate are no longer played by the game.
