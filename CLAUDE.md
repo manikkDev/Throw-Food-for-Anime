@@ -322,7 +322,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
 - FOOD AND TRAINING V2 (plan `design/plan/13-food-and-training-v2.md`, owner approved 2026-11-26; build log in its
   section 11; phases A (rules and wiring), B (the 51 food models and icons), C (throw feel; commit 3f88e12 = place version 939)
   and D (the training framework + grounds 1 and 2; commit 224c9e1 = place version 954; awaiting the owner's play) are built;
-  E is under way (grounds 3 and 4: commit a8184f9 = place version 964; grounds 5 and 6 built; 7 and 8 not); F (playtest) is not). Numbers:
+  E is DONE with SIX grounds (owner, 2026-11-27: keep six, no grounds 7 and 8; pair 1 commit a8184f9 = place version 964, pair 2 commit c4d74da = place version 972); F (playtest) is not). Numbers:
   `tools/economy/econ_v3.py` (`gen`, `apply`, `check` = the pacing gate, `cadence`, `table`), then gen_characters.py,
   gen_config.py, gate.py. Rules: 51 foods = 3 per world (Snack, Meal, Signature); food gives LUCK only (reach = Power);
   a food counts half in a world later than its own (`Core/Foods`); the throw auto-picks the best owned food for the
@@ -357,7 +357,10 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   and ground 4 Thunder Peak (`reflex`: tap the rod the lightning marks; `Lanes`, `Lead`, `React`, `LaneClips`),
   ground 5 Gravity Chamber (`rhythm`: tap the notes, leave the REST, `Rests`) and ground 6 Spirit Orb (`charge`:
   a long hold, `MinHold` 2; the orb rides on the trainee's hands; a piece's colour is its attribute `Energy`);
-  grounds 7 and 8 are still phase E (a ground with no template shows nothing and its prompts are off). Per-ground data is in `tools/economy/econ_v3.py` `GROUND_FEEL` (clips, `Marks` = the clip's rep
+  there are no more (the owner dropped grounds 7 and 8). The 19 gear tiers are shared out 3 / 3 / 3 / 3 / 3 / 4
+  (`econ_v3.py` `GEAR_GROUND`; templates post T1-3, falls T4-6, boulder T7-9, peak T10-12, gravity T13-15, orb T16-19)
+  and a ground opens at the rebirth tier where its first tier's world is reached (0, 1, 2, 4, 5, 7), so the gear's own
+  ground is always on show (a ground with no template shows nothing and its prompts are off). Per-ground data is in `tools/economy/econ_v3.py` `GROUND_FEEL` (clips, `Marks` = the clip's rep
   times, `Contact`, `MinHold`, `Hint`) -> `apply` -> gen_config. Rules: `Core/Beat` (`gradeHold`, `focus` scaled by
   beat length, `upcoming`, `clipAt` = the clip run so its reps fall on the jittered beats, `lane` + `gradeReflex`). Server: `TrainingService`
   (a session per court, stand point from the set piece's `Stand`, attributes `TrainPlot` / `TrainCourt` / `TrainAwake`
@@ -368,7 +371,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   awakening show for EVERY player from the attributes, the reps (`STRIKE` = the grounds where a blow lands on a
   target), the rod marks, the boulder's cracks, the waterfall's sound), `Ui/GroundLook` (the card
   model `Show_<id>_T<tier>`). Set pieces: `tools/studio/grounds/` (`ground_lab.luau` gathers generated `GROUND_<key>`
-  models -> `python tools/studio/grounds/run_build.py` builds every template with the effect texture ids;
+  models -> `python tools/studio/grounds/run_build.py` clears and builds EVERY template with the effect texture ids;
   `preview.luau` stands two on a base, take them away before a play test; `court_setup.luau` was the one-off that
   made the anchors). Effects `assets/vfx/builders/build_train.py`, judged with `tools/studio/grounds/fx_judge.luau`;
   sounds measured with `python tools/studio/sfx_probe.py <candidates.json>` (play session). `python tools/ui/build_ui.py

@@ -235,6 +235,9 @@ shows the Waterfall locked, with "REBIRTH 1" on it: a visible reason to take the
 | 7 | Titan Chains | rebirth 6 | three rings in a row (tap, tap, tap), then a rest, hauling a chained colossus weight | 3 s | the chains snap, the weight is lifted overhead |
 | 8 | Timeless Hall | rebirth 7 | a medley: every 20 s it switches between the earlier games, faster | mixed | the white hall fills with every earlier aura |
 
+> **Superseded 2026-11-27:** the owner kept SIX grounds. Grounds 7 and 8 were never built, and the gear tiers in the
+> table below were shared out again over the six (3 / 3 / 3 / 3 / 3 / 4). See "six grounds, not eight" in section 11.
+
 Each ground is a full set piece on the court: textured models, its own two animations (training
 loop and awakening), effects, sounds and music sting, a sign with its name and level.
 
@@ -773,3 +776,39 @@ Bottom: the orb charging; the awakening; the thrown orb bursting over the court.
   strips only. Once, a capture showed the word AWAKENING! two seconds after an awakening had ended; a frame-by-
   frame log of two more rounds did not show it again. The push-up's elbows read weakly in pure profile and the
   float is a little stiff (the animator's own notes). Grounds 7 and 8 remain.
+
+Checkpoint: commit `c4d74da` (phase E pair 2) = place version 972 (saved 2026-11-27, not published, not pushed).
+
+### 2026-11-27: six grounds, not eight (owner's decision)
+
+The owner, after pair 2: "let these many games be there. don't add more ... lets keep only 6. distribute them
+accordingly." Titan Chains and Timeless Hall (grounds 7 and 8 of section 5.2, never built) are dropped; phase E
+ends here. What changed:
+
+- **The 19 gear tiers are shared out 3 / 3 / 3 / 3 / 3 / 4** (`tools/economy/econ_v3.py` `GEAR_GROUND`); prices
+  and Power per rep did not move, only which ground a tier belongs to and what it is called:
+
+  | Ground | Opens at rebirth | Tiers | Looks |
+  |---|---|---|---|
+  | Striking Post | 0 | 1 to 3 | Wooden Post, Banded Post, Iron Post |
+  | Waterfall Focus | 1 | 4 to 6 | Mountain Falls, Shrine Falls, **Dragon Falls** |
+  | Boulder Breaker | 2 | 7 to 9 | Granite Boulder, Obsidian Boulder, **Magma Boulder** |
+  | Thunder Peak | 4 | 10 to 12 | Storm Peak, Thunder Peak, **Heaven's Peak** |
+  | Gravity Chamber | 5 | 13 to 15 | Gravity Room, Gravity Core, **Singularity** |
+  | Spirit Orb | 7 | 16 to 19 | Spirit Orb, Sun Orb, **Star Orb**, **Galaxy Orb** |
+
+- **A ground opens at the rebirth tier in which its first gear tier's world is reached** (0, 1, 2, 4, 5, 7; it
+  was one per rebirth). So the ground the owner's gear belongs to is always one of the two a base shows: a spec
+  checks it for all 57 gear rows. Rebirths 3 and 6 open no new ground (the gear moves to the ground's later tiers).
+- **Six new tier looks** (the bold names), five new generated pieces: stone dragons that spout into the pool, a
+  dark lava-cracked boulder (third try: the first came pale with craters, the second as a stepped cone), golden
+  dragon rods, a singularity engine (tinted: its cradle came cream), star and galaxy pillars with a blue and a
+  violet orb. The builder now clears every old template first and builds all 19 tiers (38 templates with the card
+  models); the tier numbers of grounds 3 to 6 moved (Ground_boulder_T7..T9, peak T10..T12, gravity T13..T15, orb
+  T16..T19).
+- **Checked in a play session:** stepping a test save through worlds 4, 6, 9, 10, 13, 16 and 17 showed post +
+  falls (locked, then open), boulder + falls, boulder + peak, gravity + peak, gravity + orb. The new tiers were
+  looked at standing on a base in edit mode; none was trained on (they are the same builders as the tiers that
+  were).
+- **Not done:** as before, nothing here has been played by hand, heard, or tried on a phone or with a second
+  client. Phase F (the full playtest and tuning) is what is left of plan 13.

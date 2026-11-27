@@ -10,21 +10,37 @@ local T = C.Training
 local B = T.Beat
 
 return {
-	["one ground per rebirth band, on alternating courts, each with gear tiers of its own"] = function()
-		assert(#T.Grounds == 8)
+	["six grounds on alternating courts, each with gear tiers of its own, open when its gear is reached"] = function()
+		assert(#T.Grounds == 6)
 		local covered = 0
+		local opened = -1
 		for g, row in T.Grounds do
-			assert(row.Rebirth == g - 1, `ground {g} opens at rebirth {row.Rebirth}`)
+			assert(row.Rebirth > opened, `ground {g} opens after the one before it`)
+			opened = row.Rebirth
 			assert(
 				Grounds.court(C, g) == (g - 1) % 2 + 1,
 				"courts alternate, the first on the left"
 			)
 			local first, last = Grounds.tiers(C, g)
 			assert(
-				first == covered + 1 and last >= first + 1,
+				first == covered + 1 and last >= first + 2,
 				`ground {g} has tiers {first}..{last}`
 			)
 			covered = last
+			-- its first gear tier's world is reached in the rebirth tier that opens it, not before:
+			-- the ground the owner's gear belongs to is then always one of the two a base shows
+			local firstRow = T.Equipment[(first - 1) * 3 + 1]
+			local need = firstRow.RebirthReq or C.Zones[firstRow.Zone].RebirthReq
+			assert(row.Rebirth == need, `ground {g} opens at {row.Rebirth}, its gear at {need}`)
+		end
+		-- whatever gear a player can own at a rebirth tier, its ground is on show
+		for i, gear in T.Equipment do
+			local need = gear.RebirthReq or C.Zones[gear.Zone].RebirthReq
+			local shown = Grounds.shown(C, need)
+			assert(
+				shown[1].ground == gear.Ground or shown[2].ground == gear.Ground,
+				`gear {i} ({gear.Name}) trains on a ground that is not shown at rebirth {need}`
+			)
 		end
 		assert(covered == #T.Equipment / 3, "every gear tier belongs to a ground")
 		for i, row in T.Equipment do
@@ -39,7 +55,12 @@ return {
 		assert(start[2].ground == 2 and start[2].locked == 1, "the waterfall waits for rebirth 1")
 		for rebirth = 1, 10 do
 			local shown = Grounds.shown(C, rebirth)
-			local newest = math.min(rebirth + 1, #T.Grounds)
+			local newest = 1
+			for g, row in T.Grounds do
+				if row.Rebirth <= rebirth then
+					newest = g
+				end
+			end
 			local seen = { [shown[1].ground] = true, [shown[2].ground] = true }
 			assert(seen[newest] and seen[newest - 1], `rebirth {rebirth} shows the wrong grounds`)
 			assert(shown[1].locked == nil and shown[2].locked == nil)
@@ -61,11 +82,15 @@ return {
 		assert(tier == 4 and level == 1)
 		tier, level = Grounds.look(C, 2, 15)
 		assert(tier == 5 and level == 3)
+		tier, level = Grounds.look(C, 2, 30) -- far past the falls: their last tier at its best
+		assert(tier == 6 and level == 3)
+		tier, level = Grounds.look(C, 6, 57)
+		assert(tier == 19 and level == 3, "the last gear is the orb's fourth tier")
 		assert(Grounds.template(C, 2, 5) == "Ground_falls_T5")
 	end,
 
 	["the grounds built so far have everything the framework reads"] = function()
-		for g = 1, 4 do
+		for g = 1, #T.Grounds do
 			local row = T.Grounds[g]
 			assert(row.Clip and row.AwakeClip and row.Hint, `ground {g} has no clips or hint`)
 			-- a clip that keeps time names its reps; a reflex ground's waiting loop has none

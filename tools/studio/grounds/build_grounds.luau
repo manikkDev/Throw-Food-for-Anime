@@ -1,11 +1,12 @@
 -- build_grounds.luau - Studio EDIT mode, rerunnable. (Plan 13 phase D.)
 -- Builds the set pieces of the training grounds into ReplicatedStorage.Assets.Grounds:
---   Ground_post_T1..T3    Striking Post   (left court):  Wooden Post, Banded Post, Iron Post
---   Ground_falls_T4..T5   Waterfall Focus (right court): Mountain Falls, Shrine Falls
---   Ground_boulder_T6..T7 Boulder Breaker (left court):  Granite Boulder, Obsidian Boulder
---   Ground_peak_T8..T9    Thunder Peak    (right court): Storm Peak, Thunder Peak
---   Ground_gravity_T10..T11 Gravity Chamber (left court): Gravity Room, Gravity Core
---   Ground_orb_T12..T13   Spirit Orb      (right court): Spirit Orb, Sun Orb
+-- (SIX grounds share the 19 gear tiers, 3 / 3 / 3 / 3 / 3 / 4: tools/economy/econ_v3.py GEAR_GROUND)
+--   Ground_post_T1..T3      Striking Post   (left court):  Wooden Post, Banded Post, Iron Post
+--   Ground_falls_T4..T6     Waterfall Focus (right court): Mountain Falls, Shrine Falls, Dragon Falls
+--   Ground_boulder_T7..T9   Boulder Breaker (left court):  Granite Boulder, Obsidian Boulder, Magma Boulder
+--   Ground_peak_T10..T12    Thunder Peak    (right court): Storm Peak, Thunder Peak, Heaven's Peak
+--   Ground_gravity_T13..T15 Gravity Chamber (left court):  Gravity Room, Gravity Core, Singularity
+--   Ground_orb_T16..T19     Spirit Orb      (right court): Spirit Orb, Sun Orb, Star Orb, Galaxy Orb
 --   Show_<id>_T<tier>     a small display model of each tier, for dialogs and reward cards
 --
 -- RUN IT THROUGH  python tools/studio/grounds/run_build.py  (it puts the effect texture ids in
@@ -74,6 +75,8 @@ local M = Enum.Material
 local SHADE: { [string]: Color3 } = {
 	river_rocks = Color3.fromRGB(150, 156, 162),
 	stone_lantern = Color3.fromRGB(205, 205, 200),
+	-- (its cradle came out cream, not gold)
+	gravity_singularity = Color3.fromRGB(255, 205, 140),
 }
 
 local function flat(v: Vector3): Vector3
@@ -405,6 +408,13 @@ if not folder then
 	folder.Parent = RS.Assets
 end
 
+-- every run builds every template: whatever an older tier numbering left behind goes
+for _, old in folder:GetChildren() do
+	if string.match(old.Name, "^Ground_") or string.match(old.Name, "^Show_") then
+		old:Destroy()
+	end
+end
+
 local out = {}
 local function finish(m: Model)
 	local old = folder:FindFirstChild(m.Name)
@@ -676,7 +686,7 @@ end
 local function buildFalls(tier: number)
 	local m = begin("Ground_falls_T" .. tier)
 	local L2, L3, fx = m.L2, m.L3, m.Fx
-	local tall = tier == 5
+	local tall = tier >= 5
 
 	-- the rock: the generated cliff, with the pool at its foot
 	local target = model(m, "Target")
@@ -770,6 +780,32 @@ local function buildFalls(tier: number)
 	})
 	-- (weak: a bright lamp on the pale rock whited the court out at max graphics)
 	glow(gap, HEX("4FC4FF"), 12, 0.45, "awake")
+
+	if tier == 6 then
+		-- Dragon Falls: a stone dragon on each shoulder of the cliff spouts into the pool, and the
+		-- kerb's corners are capped in gold
+		for _, row in { { -6.0, 7.6 }, { 6.0, 6.8 } } do
+			local x, top = row[1], row[2]
+			local head = mesh(m, "dragon_spout", "Dragon", 1.4, V(x, top - 0.5, -6.6), V(-x * 0.2, 0, 1), true)
+			local mouth = ghost(m, "Spout", V(0.5, 0.3, 0.3), CFrame.lookAt(V(x * 0.97, top - 0.5 + head.Size.Y * 0.42, -6.6 + head.Size.Z / 2), V(x * 0.8, top, 0)))
+			emitter(mouth, "Stream", {
+				Texture = tex("dot"),
+				Rate = 34,
+				Lifetime = NumberRange.new(0.75, 0.9),
+				Speed = NumberRange.new(5, 6),
+				SpreadAngle = Vector2.new(3, 3),
+				EmissionDirection = Enum.NormalId.Front,
+				Acceleration = V(0, -26, 0),
+				Size = NS({ 0, 0.5 }, { 1, 0.75 }),
+				Transparency = NS({ 0, 0.1 }, { 0.8, 0.25 }, { 1, 1 }),
+				Color = CS(RGB(255, 255, 255), HEX("9FDBFF")),
+				LightEmission = 0.15,
+			})
+		end
+		for _, c in { V(-6.65, 0, 4.1), V(6.65, 0, 4.1) } do
+			box(m, "KerbCap", V(1.2, 0.95, 1.2), c, HEX("E3B341"), M.Metal, true)
+		end
+	end
 
 	-- the notice board, at the open front corner (the walkway is -X here)
 	noticeBoard(m, V(-6.6, 0, 8.3), V(-0.55, 0, 0.83))
@@ -880,8 +916,9 @@ end
 -- Left court, like the post: the walkway is +X, the trainee faces -Z toward the boulder and the
 -- quarry wall behind it, the training camera looks from +X in profile.
 local BOULDERS = {
-	[6] = { key = "boulder1", size = V(5.6, 6.2, 5.0), deck = HEX("8D8E93"), trim = HEX("5E5F66") },
-	[7] = { key = "boulder2", size = V(5.6, 7.2, 5.2), deck = HEX("4B4650"), trim = HEX("2C2A33") },
+	[7] = { key = "boulder1", size = V(5.6, 6.2, 5.0), deck = HEX("8D8E93"), trim = HEX("5E5F66"), crack = RGB(26, 24, 30) },
+	[8] = { key = "boulder2", size = V(5.6, 7.2, 5.2), deck = HEX("4B4650"), trim = HEX("2C2A33"), crack = HEX("FF8A2A") },
+	[9] = { key = "boulder3", size = V(6.2, 6.6, 5.8), deck = HEX("3A2A2A"), trim = HEX("7A2E1E"), crack = HEX("FFD23F") },
 }
 
 local function buildBoulder(tier: number)
@@ -918,7 +955,7 @@ local function buildBoulder(tier: number)
 		decal.Name = "Crack"
 		decal.Face = Enum.NormalId.Back
 		decal.Texture = tex("crack")
-		decal.Color3 = if tier == 7 then HEX("FF8A2A") else RGB(26, 24, 30)
+		decal.Color3 = spec.crack
 		decal.Transparency = 1
 		decal:SetAttribute("Stage", stage)
 		decal.Parent = pane
@@ -969,8 +1006,10 @@ end
 -- (the lane); three lightning rods stand behind them (rod 1 = -X = the camera's left, rod 2 the
 -- tall middle one, rod 3 = +X); the training camera looks from the front, from below eye level.
 local PEAKS = {
-	[8] = { rod = "lightning_rod", side = 1.5, mid = 1.9, deck = HEX("5A5F6B"), clouds = 1 },
-	[9] = { rod = "rod2", side = 1.45, mid = 1.85, deck = HEX("474A58"), clouds = 2 },
+	[10] = { rod = "lightning_rod", side = 1.5, mid = 1.9, deck = HEX("5A5F6B"), clouds = 1 },
+	[11] = { rod = "rod2", side = 1.45, mid = 1.85, deck = HEX("474A58"), clouds = 2 },
+	-- Heaven's Peak: golden dragon rods on a pale summit
+	[12] = { rod = "rod3", side = 1.15, mid = 1.48, deck = HEX("8E93A8"), clouds = 2 },
 }
 local VOLT = HEX("FFE85A")
 
@@ -1103,8 +1142,9 @@ end
 -- generator, the training camera looks from +X in profile and LOW (nothing tall stands between
 -- x 0 and 9 beside the trainee). A round steel deck under a ring held up by four emitter pylons.
 local GRAVITY = {
-	[10] = { machine = "gravity_generator", scale = 1.1, energy = HEX("B58CFF"), neon = HEX("7A3CFF"), deck = HEX("34364A"), trim = HEX("8C7A4A"), g = { "10 G", "25 G", "50 G" } },
-	[11] = { machine = "gravity_core", scale = 1.08, energy = HEX("FF5CD6"), neon = HEX("E01FB4"), deck = HEX("26222E"), trim = HEX("C9A24A"), g = { "100 G", "250 G", "500 G" } },
+	[13] = { machine = "gravity_generator", scale = 1.1, energy = HEX("B58CFF"), neon = HEX("7A3CFF"), deck = HEX("34364A"), trim = HEX("8C7A4A"), g = { "10 G", "25 G", "50 G" } },
+	[14] = { machine = "gravity_core", scale = 1.08, energy = HEX("FF5CD6"), neon = HEX("E01FB4"), deck = HEX("26222E"), trim = HEX("C9A24A"), g = { "100 G", "250 G", "500 G" } },
+	[15] = { machine = "gravity_singularity", scale = 1.3, energy = HEX("FF8A5C"), neon = HEX("FF3A14"), deck = HEX("1C1A1E"), trim = HEX("D8B24A"), g = { "1000 G", "2500 G", "5000 G" } },
 }
 
 local function buildGravity(tier: number)
@@ -1279,8 +1319,10 @@ end
 -- lane) with the orb over their raised hands; the shrine stands behind them between standing
 -- stones; the training camera looks from the front, from below eye level.
 local ORBS = {
-	[12] = { stone = "spirit_monolith", size = V(2.3, 5.0, 2.3), energy = HEX("7CF59A"), neon = HEX("12C552"), body = HEX("46E882"), deck = HEX("C9CBC4"), step = HEX("9A9E98"), rest = 1.6, full = 4.0, awake = 8.5 },
-	[13] = { stone = "sun_pillar", size = V(3.2, 7.5, 2.5), energy = HEX("FFB02E"), neon = HEX("FF7A14"), body = HEX("FFA62B"), deck = HEX("E6D3A6"), step = HEX("C9A86A"), rest = 1.9, full = 4.6, awake = 9.5 },
+	[16] = { stone = "spirit_monolith", size = V(2.3, 5.0, 2.3), energy = HEX("7CF59A"), neon = HEX("12C552"), body = HEX("46E882"), deck = HEX("C9CBC4"), step = HEX("9A9E98"), rest = 1.6, full = 4.0, awake = 8.5 },
+	[17] = { stone = "sun_pillar", size = V(3.2, 7.5, 2.5), energy = HEX("FFB02E"), neon = HEX("FF7A14"), body = HEX("FFA62B"), deck = HEX("E6D3A6"), step = HEX("C9A86A"), rest = 1.9, full = 4.6, awake = 9.5 },
+	[18] = { stone = "star_pillar", size = V(3.0, 7.2, 2.7), energy = HEX("8FC4FF"), neon = HEX("2A6BFF"), body = HEX("5AA0FF"), deck = HEX("C9D2E6"), step = HEX("8E9BB8"), rest = 2.1, full = 5.0, awake = 10 },
+	[19] = { stone = "galaxy_pillar", size = V(2.9, 7.6, 2.9), energy = HEX("E08CFF"), neon = HEX("A02CFF"), body = HEX("C45CFF"), deck = HEX("4A3F66"), step = HEX("2A2140"), rest = 2.3, full = 5.4, awake = 10.5 },
 }
 
 local function buildOrb(tier: number)
@@ -1482,19 +1524,19 @@ end
 for tier = 1, 3 do
 	buildPost(tier)
 end
-for tier = 4, 5 do
+for tier = 4, 6 do
 	buildFalls(tier)
 end
-for tier = 6, 7 do
+for tier = 7, 9 do
 	buildBoulder(tier)
 end
-for tier = 8, 9 do
+for tier = 10, 12 do
 	buildPeak(tier)
 end
-for tier = 10, 11 do
+for tier = 13, 15 do
 	buildGravity(tier)
 end
-for tier = 12, 13 do
+for tier = 16, 19 do
 	buildOrb(tier)
 end
 

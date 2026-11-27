@@ -366,12 +366,17 @@ def load() -> dict:
     return json.loads(DRAFT.read_text(encoding="utf-8"))
 
 
+# SIX grounds (owner, 2026-11-27: "let these many games be there, don't add more ... distribute them accordingly";
+# the plan had eight). The 19 gear tiers are shared out 3 / 3 / 3 / 3 / 3 / 4 (GEAR_GROUND), and a ground opens at the
+# rebirth tier in which its FIRST gear tier's world is reached, so the ground the owner's gear belongs to is always
+# one of the two a base shows.
 GROUND_ROWS = [  # id, name, rebirth tier that opens it, court side (-1 left, 1 right), the game, seconds per beat
     ("post", "Striking Post", 0, -1, "ring", 1), ("falls", "Waterfall Focus", 1, 1, "breath", 3),
-    ("boulder", "Boulder Breaker", 2, -1, "sweep", 2), ("peak", "Thunder Peak", 3, 1, "reflex", 2),
-    ("gravity", "Gravity Chamber", 4, -1, "rhythm", 1), ("orb", "Spirit Orb", 5, 1, "charge", 4),
-    ("chains", "Titan Chains", 6, -1, "triple", 3), ("hall", "Timeless Hall", 7, 1, "medley", 2),
+    ("boulder", "Boulder Breaker", 2, -1, "sweep", 2), ("peak", "Thunder Peak", 4, 1, "reflex", 2),
+    ("gravity", "Gravity Chamber", 5, -1, "rhythm", 1), ("orb", "Spirit Orb", 7, 1, "charge", 4),
 ]
+# the ground of each gear tier (1..19)
+GEAR_GROUND = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 6]
 # what a ground needs beyond its numbers (plan 13 phase D; the grounds of phase E get theirs then):
 # the clips (training loop, awakening loop, the one-shot that ends the awakening), the marker that is
 # the rep, the line under the game, and for a game that is held: how long before the beat the hold
@@ -403,10 +408,9 @@ GROUND_FEEL = {
             "FinishClip": "OrbThrow", "FinishAt": 0.5, "MinHold": 2.0, "Hint": "HOLD TO CHARGE"},
 }
 # the look of each gear tier (its model: Assets.Grounds.Ground_<ground id>_T<tier>); three levels each
-GEAR_MODELS = ["Wooden Post", "Banded Post", "Iron Post", "Mountain Falls", "Shrine Falls", "Granite Boulder",
-               "Obsidian Boulder", "Storm Peak", "Thunder Peak", "Gravity Room", "Gravity Core", "Spirit Orb",
-               "Sun Orb", "Titan Chains", "Colossus Chains", "Timeless Hall", "Hall of Ages", "Endless Dojo",
-               "Hall of Gods"]
+GEAR_MODELS = ["Wooden Post", "Banded Post", "Iron Post", "Mountain Falls", "Shrine Falls", "Dragon Falls",
+               "Granite Boulder", "Obsidian Boulder", "Magma Boulder", "Storm Peak", "Thunder Peak", "Heaven's Peak",
+               "Gravity Room", "Gravity Core", "Singularity", "Spirit Orb", "Sun Orb", "Star Orb", "Galaxy Orb"]
 BEAT = {"PerfectBonus": 1.0, "GoodBonus": 0.5, "FocusPerfect": 2, "FocusGood": 1, "FocusFull": 40,
         "AwakeningSeconds": 8, "AwakeningMult": 1.5, "PerfectWindow": 0.12, "GoodWindow": 0.3,
         "MinTapGap": 0.1}
@@ -441,7 +445,7 @@ def run_apply(_a) -> int:
     for g in d["Gear"]:
         model = names[g["Tier"] - 1]
         row = {"Name": f"{model} {LEVEL_NAMES[g['Level'] - 1]}", "Model": model, "Tier": g["Tier"],
-               "Level": g["Level"], "Ground": min(8, v2.tier_of_zone(min(g["Tier"], 17)) + 1),
+               "Level": g["Level"], "Ground": GEAR_GROUND[g["Tier"] - 1],
                "Cost": g["Cost"], "PowerPerRep": g["PowerPerRep"], "Zone": g["Zone"]}
         if g.get("RebirthReq"):
             row["RebirthReq"] = g["RebirthReq"]
