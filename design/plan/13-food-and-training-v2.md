@@ -659,3 +659,5 @@ gear models are archived (`MapArchive.TrainingCourts_v1`, `MapArchive.Gear_v1`).
   tests fires `TrainTap` when the HUD's ring lands instead); Studio crashed twice when the PC ran out of memory
   with another heavy app open (Team Create kept everything; relaunch with
   `RobloxStudioBeta.exe -task EditPlace -placeId 106586376894468 -universeId 10776373502`).
+
+Checkpoint: commit `224c9e1` (phase D) = place version 954 (saved 2026-11-27, not published, not pushed).

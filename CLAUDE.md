@@ -321,7 +321,7 @@ Roblox game built almost entirely by AI agents with the SyphoDev Roblox skills
   there goes through a toast from ThrowController (`_sealHint` is the example), and a toast holds ~48 characters.
 - FOOD AND TRAINING V2 (plan `design/plan/13-food-and-training-v2.md`, owner approved 2026-11-26; build log in its
   section 11; phases A (rules and wiring), B (the 51 food models and icons), C (throw feel; commit 3f88e12 = place version 939)
-  and D (the training framework + grounds 1 and 2; awaiting the owner's play) are built; E (grounds 3 to 8) and F (playtest) are not). Numbers:
+  and D (the training framework + grounds 1 and 2; commit 224c9e1 = place version 954; awaiting the owner's play) are built; E (grounds 3 to 8) and F (playtest) are not). Numbers:
   `tools/economy/econ_v3.py` (`gen`, `apply`, `check` = the pacing gate, `cadence`, `table`), then gen_characters.py,
   gen_config.py, gate.py. Rules: 51 foods = 3 per world (Snack, Meal, Signature); food gives LUCK only (reach = Power);
   a food counts half in a world later than its own (`Core/Foods`); the throw auto-picks the best owned food for the
